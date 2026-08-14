@@ -564,40 +564,47 @@ button { font: inherit; color: inherit; }
 .page > li:nth-child(4) { transition-duration: 0.5s; transform: rotateY(-34deg); }
 .page > li:nth-child(5) { transition-duration: 0.6s; transform: rotateY(-36deg); }
 
-/* ── HOVER & CLICK OPEN EVENTS (CODROPS 3D FLIP) ──────────────────────── */
+/* ── HOVER & CLICK OPEN EVENTS (CODROPS 3D FLIP STABLE) ──────────────── */
 
-.hardcover-book:hover > .hardcover_front,
-.hardcover-book.open > .hardcover_front {
+.book-scene:hover .hardcover_front,
+.hardcover-book:hover .hardcover_front,
+.hardcover-book.open .hardcover_front {
   transform: rotateY(-145deg) translateZ(0);
   z-index: 0;
 }
 
-.hardcover-book:hover > .page li:nth-child(1),
-.hardcover-book.open > .page li:nth-child(1) {
+.book-scene:hover .page li:nth-child(1),
+.hardcover-book:hover .page li:nth-child(1),
+.hardcover-book.open .page li:nth-child(1) {
   transform: rotateY(-30deg);
   transition-duration: 1.5s;
 }
 
-.hardcover-book:hover > .page li:nth-child(2),
-.hardcover-book.open > .page li:nth-child(2) {
+.book-scene:hover .page li:nth-child(2),
+.hardcover-book:hover .page li:nth-child(2),
+.hardcover-book.open .page li:nth-child(2) {
   transform: rotateY(-35deg);
   transition-duration: 1.8s;
+  z-index: 80;
 }
 
-.hardcover-book:hover > .page li:nth-child(3),
-.hardcover-book.open > .page li:nth-child(3) {
+.book-scene:hover .page li:nth-child(3),
+.hardcover-book:hover .page li:nth-child(3),
+.hardcover-book.open .page li:nth-child(3) {
   transform: rotateY(-118deg);
   transition-duration: 1.6s;
 }
 
-.hardcover-book:hover > .page li:nth-child(4),
-.hardcover-book.open > .page li:nth-child(4) {
+.book-scene:hover .page li:nth-child(4),
+.hardcover-book:hover .page li:nth-child(4),
+.hardcover-book.open .page li:nth-child(4) {
   transform: rotateY(-130deg);
   transition-duration: 1.4s;
 }
 
-.hardcover-book:hover > .page li:nth-child(5),
-.hardcover-book.open > .page li:nth-child(5) {
+.book-scene:hover .page li:nth-child(5),
+.hardcover-book:hover .page li:nth-child(5),
+.hardcover-book.open .page li:nth-child(5) {
   transform: rotateY(-140deg);
   transition-duration: 1.2s;
 }
@@ -1244,9 +1251,9 @@ button { font: inherit; color: inherit; }
 /* ── RESPONSIVE MEDIA QUERIES (MOBILE OPTIMIZATION) ───────────────────── */
 
 @media (max-width: 768px) {
-  .hardcover-book { display: none !important; }
-  .mobile-book-card { display: block !important; }
-  .book-scene { min-height: auto; padding: 20px 0; }
+  .book-scene {
+    display: none !important;
+  }
   
   .road-steps {
     grid-template-columns: 1fr;

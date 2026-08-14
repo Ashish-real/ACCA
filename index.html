@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Career Bible — ACCA Master Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --card: #1a1a24;
+      --card-hover: #222232;
+      --border: #2a2a3a;
+      --border-accent: rgba(108, 99, 255, 0.4);
+      --accent: #6c63ff;
+      --accent-glow: rgba(108, 99, 255, 0.25);
+      --accent2: #00d4aa;
+      --accent3: #ff6b6b;
+      --accent4: #ffd93d;
+      --accent5: #e879f9;
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --mono: 'Space Mono', monospace;
+      --sans: 'Space Grotesk', sans-serif;
+      --body: 'Inter', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(19, 19, 26, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+      font-family: var(--sans);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #fff 40%, var(--muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-text span {
+      font-size: 0.75rem;
+      color: var(--accent2);
+      font-family: var(--mono);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .search-container {
+      flex: 1;
+      max-width: 480px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 16px 10px 42px;
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #564eca);
+      border: none;
+      color: #fff;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+    }
+
+    /* ── HERO BANNER ── */
+    .hero {
+      padding: 40px 28px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, rgba(19, 19, 26, 0.9), rgba(26, 26, 36, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 36px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(108, 99, 255, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content h2 {
+      font-family: var(--sans);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-content p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 650px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-value {
+      font-family: var(--mono);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent2);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .progress-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .progress-bar-bg {
+      height: 8px;
+      background: var(--card);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 4px;
+      transition: width 0.4s ease;
+    }
+
+    /* ── FILTER TABS ── */
+    .filter-section {
+      max-width: 1400px;
+      margin: 0 auto 24px;
+      padding: 0 28px;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+    }
+
+    .filter-chip {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .filter-chip:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .filter-chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 2px 10px var(--accent-glow);
+    }
+
+    /* ── CHAPTER GRID ── */
+    .grid-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 28px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+
+    .chapter-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all 0.25 ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .chapter-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+      background: var(--card);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .chapter-card.completed::after {
+      content: '✓ Read';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 212, 170, 0.15);
+      border: 1px solid var(--accent2);
+      color: var(--accent2);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .module-badge {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(108, 99, 255, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(108, 99, 255, 0.2);
+    }
+
+    .chapter-num {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .chapter-title {
+      font-family: var(--sans);
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 14px;
+      margin-top: auto;
+    }
+
+    .read-time {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .read-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chapter-card:hover .read-btn {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ── FULLSCREEN READER OVERLAY ── */
+    .reader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--bg);
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+    }
+
+    .reader-overlay.active {
+      display: flex;
+    }
+
+    .reader-navbar {
+      height: 60px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .reader-title-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .sidebar-toggle {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .current-chapter-title {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .reader-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reader-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .reader-sidebar {
+      width: 320px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      transition: margin-left 0.3s ease;
+    }
+
+    .reader-sidebar.collapsed {
+      margin-left: -320px;
+    }
+
+    .toc-search {
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .toc-item {
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.15s ease;
+    }
+
+    .toc-item:hover {
+      background: var(--card);
+      color: var(--text);
+    }
+
+    .toc-item.active {
+      background: rgba(108, 99, 255, 0.15);
+      color: var(--accent);
+      font-weight: 600;
+      border-left: 3px solid var(--accent);
+    }
+
+    .reader-iframe-container {
+      flex: 1;
+      height: 100%;
+      background: var(--bg);
+      position: relative;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: stretch; }
+      .hero-card { flex-direction: column; align-items: stretch; }
+      .reader-sidebar { position: absolute; height: 100%; z-index: 10; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#" class="brand" onclick="closeReader()">
+      <div class="brand-logo">FCB</div>
+      <div class="brand-text">
+        <h1>Finance Career Bible</h1>
+        <span>ACCA Master Edition</span>
+      </div>
+    </a>
+
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search chapters, topics, IFRS, or formulas (e.g. Valuation, SBR, Audit)..." oninput="handleSearch()">
+    </div>
+
+    <div class="header-actions">
+      <button class="btn btn-primary" onclick="resumeReading()">
+        <span>📖</span> Resume Reading
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero">
+    <div class="hero-card">
+      <div class="hero-content">
+        <h2>ACCA & Finance Mastery Hub</h2>
+        <p>A comprehensive 51-part guide covering entire ACCA curriculum, financial modeling, FP&A, IFRS standards, corporate law, valuation, and career roadmaps.</p>
+        
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-value">50</span>
+            <span class="stat-label">Chapters</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">1</span>
+            <span class="stat-label">Appendices</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">100+</span>
+            <span class="stat-label">Models & Formulas</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">ACCA Aligned</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-box">
+        <div class="progress-header">
+          <span>Overall Progress</span>
+          <span id="progressText">0 / 51 Read</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="progressBarFill" class="progress-bar-fill"></div>
+        </div>
+        <button class="btn" style="width: 100%; justify-content: center;" onclick="quickOpenChapter('Finance_Career_Bible_Chapter49.html')">
+          ⚡ Master Formula Cheat-Sheet
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER CHIPS -->
+  <div class="filter-section">
+    <button class="filter-chip active" onclick="filterModule('all', this)">All Modules (51)</button>
+    <button class="filter-chip" onclick="filterModule('foundations', this)">Foundations (Ch 1-10)</button>
+    <button class="filter-chip" onclick="filterModule('acca-structure', this)">ACCA & Exams (Ch 13-17)</button>
+    <button class="filter-chip" onclick="filterModule('analysis-fpa', this)">Financial Analysis & FP&A (Ch 11-12, 18-21)</button>
+    <button class="filter-chip" onclick="filterModule('corp-finance-law', this)">Corporate Finance & Law (Ch 22-25)</button>
+    <button class="filter-chip" onclick="filterModule('advanced-acca', this)">Advanced ACCA (Ch 26-38)</button>
+    <button class="filter-chip" onclick="filterModule('tech-career', this)">Tech, Analytics & Career (Ch 39-48)</button>
+    <button class="filter-chip" onclick="filterModule('reference', this)">Formulas & Practice (Ch 49-50 & App)</button>
+  </div>
+
+  <!-- CHAPTER GRID -->
+  <main class="grid-container" id="chapterGrid">
+    <!-- Rendered dynamically -->
+  </main>
+
+  <!-- READER OVERLAY -->
+  <div class="reader-overlay" id="readerOverlay">
+    <div class="reader-navbar">
+      <div class="reader-title-area">
+        <button class="sidebar-toggle" onclick="toggleSidebar()" title="Toggle Table of Contents">☰</button>
+        <span class="current-chapter-title" id="readerTitle">Chapter 1: Finance Industry Overview</span>
+      </div>
+
+      <div class="reader-controls">
+        <button class="btn" id="prevBtn" onclick="navigateChapter(-1)">← Previous</button>
+        <button class="btn" id="nextBtn" onclick="navigateChapter(1)">Next →</button>
+        <button class="btn btn-primary" onclick="closeReader()">✕ Close</button>
+      </div>
+    </div>
+
+    <div class="reader-body">
+      <aside class="reader-sidebar" id="readerSidebar">
+        <div class="toc-search">
+          <input type="text" class="search-input" placeholder="Search TOC..." oninput="filterTOC(this.value)">
+        </div>
+        <div class="toc-list" id="tocList">
+          <!-- Rendered dynamically -->
+        </div>
+      </aside>
+
+      <div class="reader-iframe-container">
+        <iframe id="readerIframe" src="about:blank"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const CHAPTERS = [
+      { num: 1, filename: "Finance_Career_Bible_Chapter1.html", title: "Chapter 1: Finance Industry Overview", module: "foundations", time: "15 min" },
+      { num: 2, filename: "Finance_Career_Bible_Chapter2.html", title: "Chapter 2: Accounting From Zero", module: "foundations", time: "20 min" },
+      { num: 3, filename: "Finance_Career_Bible_Chapter3.html", title: "Chapter 3: Financial Statements", module: "foundations", time: "22 min" },
+      { num: 4, filename: "Finance_Career_Bible_Chapter4.html", title: "Chapter 4: IFRS Fundamentals", module: "foundations", time: "18 min" },
+      { num: 5, filename: "Finance_Career_Bible_Chapter5.html", title: "Chapter 5: Cost Accounting Fundamentals", module: "foundations", time: "18 min" },
+      { num: 6, filename: "Finance_Career_Bible_Chapter6.html", title: "Chapter 6: Management Accounting", module: "foundations", time: "20 min" },
+      { num: 7, filename: "Finance_Career_Bible_Chapter7.html", title: "Chapter 7: Revenue Recognition", module: "foundations", time: "16 min" },
+      { num: 8, filename: "Finance_Career_Bible_Chapter8.html", title: "Chapter 8: Property, Plant & Equipment", module: "foundations", time: "25 min" },
+      { num: 9, filename: "Finance_Career_Bible_Chapter9.html", title: "Chapter 9: Inventory Accounting", module: "foundations", time: "16 min" },
+      { num: 10, filename: "Finance_Career_Bible_Chapter10.html", title: "Chapter 10: Financial Instruments Basics", module: "foundations", time: "18 min" },
+
+      { num: 11, filename: "Finance_Career_Bible_Chapter11.html", title: "Chapter 11: Consolidation Basics", module: "analysis-fpa", time: "20 min" },
+      { num: 12, filename: "Finance_Career_Bible_Chapter12.html", title: "Chapter 12: Interpretation of Financial Statements", module: "analysis-fpa", time: "24 min" },
+
+      { num: 13, filename: "Finance_Career_Bible_Chapter13.html", title: "Chapter 13: ACCA Qualification Structure", module: "acca-structure", time: "15 min" },
+      { num: 14, filename: "Finance_Career_Bible_Chapter14.html", title: "Chapter 14: Skills Level Papers", module: "acca-structure", time: "15 min" },
+      { num: 15, filename: "Finance_Career_Bible_Chapter15.html", title: "Chapter 15: Strategic Professional Papers", module: "acca-structure", time: "16 min" },
+      { num: 16, filename: "Finance_Career_Bible_Chapter16.html", title: "Chapter 16: Ethics & Professional Skills", module: "acca-structure", time: "16 min" },
+      { num: 17, filename: "Finance_Career_Bible_Chapter17.html", title: "Chapter 17: ACCA Exam Strategy", module: "acca-structure", time: "15 min" },
+
+      { num: 18, filename: "Finance_Career_Bible_Chapter18.html", title: "Chapter 18: Financial Analysis", module: "analysis-fpa", time: "30 min" },
+      { num: 19, filename: "Finance_Career_Bible_Chapter19.html", title: "Chapter 19: Ratio Analysis", module: "analysis-fpa", time: "25 min" },
+      { num: 20, filename: "Finance_Career_Bible_Chapter20.html", title: "Chapter 20: Budgeting & Forecasting (FP&A)", module: "analysis-fpa", time: "30 min" },
+      { num: 21, filename: "Finance_Career_Bible_Chapter21.html", title: "Chapter 21: Financial Modelling", module: "analysis-fpa", time: "30 min" },
+
+      { num: 22, filename: "Finance_Career_Bible_Chapter22.html", title: "Chapter 22: Corporate Finance", module: "corp-finance-law", time: "30 min" },
+      { num: 23, filename: "Finance_Career_Bible_Chapter23.html", title: "Chapter 23: Corporate & Business Law", module: "corp-finance-law", time: "26 min" },
+      { num: 24, filename: "Finance_Career_Bible_Chapter24.html", title: "Chapter 24: Advanced Management Accounting Tools", module: "corp-finance-law", time: "20 min" },
+      { num: 25, filename: "Finance_Career_Bible_Chapter25.html", title: "Chapter 25: Advanced Working Capital & Treasury", module: "corp-finance-law", time: "18 min" },
+
+      { num: 26, filename: "Finance_Career_Bible_Chapter26.html", title: "Chapter 26: Advanced Financial Management", module: "advanced-acca", time: "18 min" },
+      { num: 27, filename: "Finance_Career_Bible_Chapter27.html", title: "Chapter 27: Advanced Performance Management", module: "advanced-acca", time: "18 min" },
+      { num: 28, filename: "Finance_Career_Bible_Chapter28.html", title: "Chapter 28: Advanced Taxation", module: "advanced-acca", time: "22 min" },
+      { num: 29, filename: "Finance_Career_Bible_Chapter29.html", title: "Chapter 29: Advanced Audit & Assurance", module: "advanced-acca", time: "18 min" },
+      { num: 30, filename: "Finance_Career_Bible_Chapter30.html", title: "Chapter 30: SBR Complex Topics", module: "advanced-acca", time: "18 min" },
+      { num: 31, filename: "Finance_Career_Bible_Chapter31.html", title: "Chapter 31: SBL Strategic Frameworks", module: "advanced-acca", time: "20 min" },
+      { num: 32, filename: "Finance_Career_Bible_Chapter32.html", title: "Chapter 32: Organisational Behaviour & HR Depth", module: "advanced-acca", time: "20 min" },
+      { num: 33, filename: "Finance_Career_Bible_Chapter33.html", title: "Chapter 33: Valuation Basics", module: "advanced-acca", time: "35 min" },
+      { num: 34, filename: "Finance_Career_Bible_Chapter34.html", title: "Chapter 34: Audit Fundamentals", module: "advanced-acca", time: "30 min" },
+      { num: 35, filename: "Finance_Career_Bible_Chapter35.html", title: "Chapter 35: Internal Controls", module: "advanced-acca", time: "28 min" },
+      { num: 36, filename: "Finance_Career_Bible_Chapter36.html", title: "Chapter 36: Risk Management", module: "advanced-acca", time: "28 min" },
+      { num: 37, filename: "Finance_Career_Bible_Chapter37.html", title: "Chapter 37: Taxation Fundamentals", module: "advanced-acca", time: "26 min" },
+      { num: 38, filename: "Finance_Career_Bible_Chapter38.html", title: "Chapter 38: Corporate Governance", module: "advanced-acca", time: "26 min" },
+
+      { num: 39, filename: "Finance_Career_Bible_Chapter39.html", title: "Chapter 39: Excel Mastery", module: "tech-career", time: "28 min" },
+      { num: 40, filename: "Finance_Career_Bible_Chapter40.html", title: "Chapter 40: Power BI", module: "tech-career", time: "24 min" },
+      { num: 41, filename: "Finance_Career_Bible_Chapter41.html", title: "Chapter 41: Data Analytics", module: "tech-career", time: "26 min" },
+      { num: 42, filename: "Finance_Career_Bible_Chapter42.html", title: "Chapter 42: AI & Automation in Finance", module: "tech-career", time: "25 min" },
+      { num: 43, filename: "Finance_Career_Bible_Chapter43.html", title: "Chapter 43: Big 4 Career Guide", module: "tech-career", time: "25 min" },
+      { num: 44, filename: "Finance_Career_Bible_Chapter44.html", title: "Chapter 44: Communication & Leadership", module: "tech-career", time: "25 min" },
+      { num: 45, filename: "Finance_Career_Bible_Chapter45.html", title: "Chapter 45: Resume, Interviews & Networking", module: "tech-career", time: "25 min" },
+      { num: 46, filename: "Finance_Career_Bible_Chapter46.html", title: "Chapter 46: ESG & Sustainability", module: "tech-career", time: "24 min" },
+      { num: 47, filename: "Finance_Career_Bible_Chapter47.html", title: "Chapter 47: Future of Finance (2030–2050)", module: "tech-career", time: "20 min" },
+      { num: 48, filename: "Finance_Career_Bible_Chapter48.html", title: "Chapter 48: Lifelong Learning Roadmap", module: "tech-career", time: "16 min" },
+
+      { num: 49, filename: "Finance_Career_Bible_Chapter49.html", title: "Chapter 49: Master Formula Cheat-Sheet", module: "reference", time: "40 min" },
+      { num: 50, filename: "Finance_Career_Bible_Chapter50.html", title: "Chapter 50: Practice Questions Bank", module: "reference", time: "30 min" },
+      { num: 999, filename: "Finance_Career_Bible_Appendices.html", title: "Appendices: Reference Docs & Data", module: "reference", time: "20 min" }
+    ];
+
+    let currentChapterIndex = 0;
+    let completedChapters = new Set(JSON.parse(localStorage.getItem('fcb_completed') || '[]'));
+    let activeModuleFilter = 'all';
+
+    function init() {
+      renderGrid();
+      renderTOC();
+      updateProgressUI();
+
+      // Check URL params or last read
+      const lastRead = localStorage.getItem('fcb_last_read');
+      if (lastRead) {
+        const idx = CHAPTERS.findIndex(c => c.filename === lastRead);
+        if (idx !== -1) currentChapterIndex = idx;
+      }
+    }
+
+    function renderGrid(filterText = '') {
+      const grid = document.getElementById('chapterGrid');
+      grid.innerHTML = '';
+
+      const filtered = CHAPTERS.filter(ch => {
+        const matchesModule = activeModuleFilter === 'all' || ch.module === activeModuleFilter;
+        const matchesSearch = filterText === '' || ch.title.toLowerCase().includes(filterText.toLowerCase()) || ch.filename.toLowerCase().includes(filterText.toLowerCase());
+        return matchesModule && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--muted);">No chapters matching your search.</div>`;
+        return;
+      }
+
+      filtered.forEach(ch => {
+        const isDone = completedChapters.has(ch.filename);
+        const card = document.createElement('div');
+        card.className = `chapter-card ${isDone ? 'completed' : ''}`;
+        card.onclick = () => openChapterByFilename(ch.filename);
+
+        card.innerHTML = `
+          <div class="card-top">
+            <span class="module-badge">${ch.module}</span>
+            <span class="chapter-num">${ch.num === 999 ? 'APP' : 'CH ' + ch.num}</span>
+          </div>
+          <h3 class="chapter-title">${ch.title}</h3>
+          <div class="card-footer">
+            <span class="read-time">⏱️ ${ch.time}</span>
+            <button class="read-btn">Read →</button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    function renderTOC(filterText = '') {
+      const toc = document.getElementById('tocList');
+      toc.innerHTML = '';
+
+      CHAPTERS.forEach((ch, idx) => {
+        if (filterText && !ch.title.toLowerCase().includes(filterText.toLowerCase())) return;
+
+        const item = document.createElement('div');
+        item.className = `toc-item ${idx === currentChapterIndex ? 'active' : ''}`;
+        item.onclick = () => {
+          openChapterByIndex(idx);
+        };
+
+        item.innerHTML = `
+          <span>${ch.num === 999 ? 'APP' : 'Ch ' + ch.num}: ${ch.title.replace(/Chapter \d+: /, '')}</span>
+          ${completedChapters.has(ch.filename) ? '<span>✓</span>' : ''}
+        `;
+
+        toc.appendChild(item);
+      });
+    }
+
+    function filterModule(mod, element) {
+      activeModuleFilter = mod;
+      document.querySelectorAll('.filter-chip').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+      renderGrid(document.getElementById('searchInput').value);
+    }
+
+    function handleSearch() {
+      const val = document.getElementById('searchInput').value;
+      renderGrid(val);
+    }
+
+    function filterTOC(val) {
+      renderTOC(val);
+    }
+
+    function openChapterByIndex(index) {
+      if (index < 0 || index >= CHAPTERS.length) return;
+      currentChapterIndex = index;
+      const ch = CHAPTERS[index];
+
+      document.getElementById('readerTitle').innerText = ch.title;
+      document.getElementById('readerIframe').src = ch.filename;
+      document.getElementById('readerOverlay').classList.add('active');
+
+      // Update TOC active state
+      renderTOC();
+
+      // Save state
+      localStorage.setItem('fcb_last_read', ch.filename);
+      completedChapters.add(ch.filename);
+      localStorage.setItem('fcb_completed', JSON.stringify([...completedChapters]));
+      updateProgressUI();
+      renderGrid(document.getElementById('searchInput').value);
+    }
+
+    function openChapterByFilename(filename) {
+      const idx = CHAPTERS.findIndex(c => c.filename === filename);
+      if (idx !== -1) openChapterByIndex(idx);
+    }
+
+    function quickOpenChapter(filename) {
+      openChapterByFilename(filename);
+    }
+
+    function resumeReading() {
+      const lastRead = localStorage.getItem('fcb_last_read') || CHAPTERS[0].filename;
+      openChapterByFilename(lastRead);
+    }
+
+    function navigateChapter(direction) {
+      const newIdx = currentChapterIndex + direction;
+      if (newIdx >= 0 && newIdx < CHAPTERS.length) {
+        openChapterByIndex(newIdx);
+      }
+    }
+
+    function closeReader() {
+      document.getElementById('readerOverlay').classList.remove('active');
+      document.getElementById('readerIframe').src = 'about:blank';
+    }
+
+    function toggleSidebar() {
+      document.getElementById('readerSidebar').classList.toggle('collapsed');
+    }
+
+    function updateProgressUI() {
+      const count = completedChapters.size;
+      const pct = Math.round((count / CHAPTERS.length) * 100);
+      document.getElementById('progressText').innerText = `${count} / ${CHAPTERS.length} Read (${pct}%)`;
+      document.getElementById('progressBarFill').style.width = `${pct}%`;
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>

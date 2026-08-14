@@ -3,31 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ACCA — The Complete Career & Exam Masterclass</title>
+  <title>ACCA — Big 4 Career & Exam Masterclass</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fbfbfa;
-      --surface: #ffffff;
-      --surface-subtle: #f4f4f0;
-      --border: #e4e4df;
-      --border-dark: #cbd5e1;
+      --bg: #050505;
+      --surface: #0d0e12;
+      --surface-elevated: #14161d;
+      --card: #1a1d26;
+      --card-hover: #222632;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-emerald: rgba(16, 185, 129, 0.4);
       
-      --text-main: #0f172a;
-      --text-muted: #475569;
+      --emerald: #10b981;
+      --emerald-glow: rgba(16, 185, 129, 0.2);
+      --mint: #34d399;
+      --cyan: #06b6d4;
+      --gold: #f59e0b;
+      --gold-bg: rgba(245, 158, 11, 0.08);
+      --gold-border: rgba(245, 158, 11, 0.25);
+      
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
       --text-subtle: #64748b;
       
-      --navy: #0f2942;
-      --navy-light: #1e3a8a;
-      --gold: #b45309;
-      --gold-bg: #fffbeb;
-      --gold-border: #fde68a;
-      --emerald: #047857;
-
-      --font-serif: 'Newsreader', Georgia, serif;
-      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
@@ -44,101 +46,117 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── HEADER ── */
+    /* ── FLOATING NAVBAR ── */
     header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
       position: sticky;
-      top: 0;
+      top: 16px;
       z-index: 1000;
-    }
-
-    .header-inner {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
-      padding: 16px 24px;
+      width: calc(100% - 32px);
+      background: rgba(13, 14, 18, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       text-decoration: none;
-      color: var(--navy);
+      color: var(--text-main);
     }
 
     .brand-logo {
-      background: var(--navy);
-      color: #ffffff;
-      font-family: var(--font-sans);
-      font-weight: 800;
-      font-size: 1.1rem;
-      padding: 8px 14px;
-      border-radius: 6px;
-      letter-spacing: 1.5px;
-    }
-
-    .brand-title {
-      font-family: var(--font-serif);
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--navy);
-    }
-
-    .nav-links {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--emerald), #047857);
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 1rem;
+      color: #fff;
+      box-shadow: 0 0 20px var(--emerald-glow);
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      background: linear-gradient(135deg, #fff 60%, var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-tabs {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--surface-elevated);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
     }
 
     .nav-btn {
       background: transparent;
-      border: 1px solid transparent;
+      border: none;
       color: var(--text-muted);
-      padding: 8px 16px;
-      border-radius: 6px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.88rem;
       font-weight: 600;
-      font-size: 0.9rem;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.2s ease;
     }
 
     .nav-btn:hover {
-      background: var(--surface-subtle);
       color: var(--text-main);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .nav-btn.active {
-      background: var(--navy);
-      color: #ffffff;
+      background: var(--emerald);
+      color: #000;
+      font-weight: 700;
+      box-shadow: 0 0 15px var(--emerald-glow);
     }
 
     .btn-resume {
-      background: var(--gold);
-      color: #ffffff;
+      background: linear-gradient(135deg, var(--emerald), #059669);
       border: none;
-      padding: 9px 18px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.9rem;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 800;
       cursor: pointer;
-      transition: background 0.15s ease;
+      box-shadow: 0 4px 20px var(--emerald-glow);
+      transition: all 0.2s ease;
     }
 
     .btn-resume:hover {
-      background: #92400e;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
     }
 
     /* ── MAIN CONTENT AREA ── */
     main {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
       width: 100%;
-      padding: 40px 24px 80px;
+      padding: 40px 16px 80px;
       flex: 1;
     }
 
@@ -148,90 +166,121 @@
 
     .tab-content.active {
       display: block;
+      animation: fadeIn 0.3s ease-out;
     }
 
-    /* ── EDITORIAL HERO & MISSION ── */
-    .hero-editorial {
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HERO HEROINE ── */
+    .hero-box {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 24px;
       padding: 48px;
-      margin-bottom: 40px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-tag {
-      font-family: var(--font-mono);
+    .hero-box::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 6px 16px;
+      border-radius: 100px;
       font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 14px;
+      font-weight: 700;
+      color: var(--mint);
+      margin-bottom: 20px;
     }
 
-    .hero-heading {
-      font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.15;
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
       margin-bottom: 18px;
     }
 
-    .hero-lead {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 820px;
-      margin-bottom: 32px;
-      line-height: 1.7;
+    .hero-title span {
+      background: linear-gradient(135deg, var(--emerald), var(--mint), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    /* THE 3 PILLARS / TARGETS */
-    .pillars-grid {
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    /* 3 CORE TARGETS */
+    .targets-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 20px;
       border-top: 1px solid var(--border);
       padding-top: 32px;
     }
 
-    .pillar-item {
+    .target-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
       display: flex;
       gap: 16px;
     }
 
-    .pillar-icon {
+    .target-icon {
       font-size: 1.8rem;
-      background: var(--surface-subtle);
-      width: 52px;
-      height: 52px;
-      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      color: var(--emerald);
     }
 
-    .pillar-info h3 {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      color: var(--navy);
+    .target-info h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
       margin-bottom: 4px;
     }
 
-    .pillar-info p {
-      font-size: 0.88rem;
+    .target-info p {
+      font-size: 0.85rem;
       color: var(--text-subtle);
       line-height: 1.5;
     }
 
-    /* BIG 4 HIGHLIGHT BANNER */
+    /* BIG 4 BANNER */
     .big4-banner {
       background: var(--gold-bg);
       border: 1px solid var(--gold-border);
-      border-radius: 10px;
-      padding: 20px 24px;
+      border-radius: 18px;
+      padding: 24px 30px;
       margin-bottom: 40px;
       display: flex;
       align-items: center;
@@ -241,105 +290,104 @@
     }
 
     .big4-text h4 {
-      font-family: var(--font-serif);
       font-size: 1.15rem;
+      font-weight: 700;
       color: var(--gold);
       margin-bottom: 4px;
     }
 
     .big4-text p {
       font-size: 0.9rem;
-      color: #78350f;
+      color: var(--text-muted);
     }
 
-    .big4-badges {
+    .big4-chips {
       display: flex;
       gap: 10px;
       font-family: var(--font-mono);
       font-weight: 700;
       font-size: 0.85rem;
-      color: #92400e;
     }
 
     .big4-chip {
-      background: #ffffff;
-      border: 1px solid var(--gold-border);
-      padding: 6px 12px;
-      border-radius: 6px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 6px 14px;
+      border-radius: 8px;
     }
 
-    /* ── CATEGORY SECTIONS ── */
-    .section-block {
+    /* ── PILLAR SECTIONS ── */
+    .pillar-section {
       margin-bottom: 48px;
     }
 
-    .section-header {
+    .pillar-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 2px solid var(--navy);
-      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
       margin-bottom: 24px;
     }
 
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--navy);
+    .pillar-title {
+      font-size: 1.4rem;
+      font-weight: 800;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .count-badge {
+    .count-chip {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
-      background: var(--surface-subtle);
-      color: var(--text-muted);
-      padding: 3px 10px;
+      font-size: 0.75rem;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 10px;
       border-radius: 100px;
-      border: 1px solid var(--border);
     }
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
       gap: 20px;
     }
 
     .chapter-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 18px;
       padding: 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 16px;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
       cursor: pointer;
       position: relative;
     }
 
     .chapter-card:hover {
-      border-color: var(--navy);
-      box-shadow: 0 8px 24px rgba(15, 41, 66, 0.08);
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      border-color: var(--border-emerald);
+      background: var(--card);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
     }
 
     .chapter-card.completed::after {
-      content: '✓ Completed';
+      content: '✓ Read';
       position: absolute;
       top: 18px;
       right: 18px;
-      background: #ecfdf5;
-      border: 1px solid #a7f3d0;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--emerald);
       color: var(--emerald);
       font-size: 0.72rem;
       font-weight: 700;
       padding: 2px 8px;
-      border-radius: 4px;
+      border-radius: 6px;
     }
 
     .card-top {
@@ -348,11 +396,14 @@
       justify-content: space-between;
     }
 
-    .ch-num {
+    .ch-badge {
       font-family: var(--font-mono);
       font-size: 0.8rem;
       font-weight: 700;
-      color: var(--navy-light);
+      color: var(--emerald);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
     }
 
     .ch-time {
@@ -361,68 +412,66 @@
     }
 
     .ch-title {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
+      line-height: 1.4;
       color: var(--text-main);
-      line-height: 1.35;
     }
 
     .card-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid var(--surface-subtle);
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
       padding-top: 14px;
     }
 
     .ch-cat {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--text-subtle);
       font-weight: 500;
     }
 
-    .btn-read {
-      color: var(--navy);
+    .read-link {
+      font-size: 0.82rem;
       font-weight: 700;
-      font-size: 0.85rem;
+      color: var(--emerald);
       display: flex;
       align-items: center;
       gap: 4px;
     }
 
     /* ── FORMULA VAULT (TAB 2) ── */
-    .vault-search-box {
+    .search-input {
+      width: 100%;
       max-width: 600px;
       margin: 0 auto 30px;
-    }
-
-    .input-search {
-      width: 100%;
-      background: var(--surface);
-      border: 1px solid var(--border-dark);
-      border-radius: 8px;
-      padding: 14px 18px;
-      font-size: 0.95rem;
+      display: block;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      color: var(--text-main);
+      font-size: 1rem;
       outline: none;
     }
 
-    .input-search:focus {
-      border-color: var(--navy);
-      box-shadow: 0 0 0 3px rgba(15, 41, 66, 0.1);
+    .search-input:focus {
+      border-color: var(--emerald);
+      box-shadow: 0 0 20px var(--emerald-glow);
     }
 
     .formula-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 20px;
     }
 
     .formula-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
+      border-radius: 16px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -432,42 +481,38 @@
       font-family: var(--font-mono);
       font-size: 0.75rem;
       font-weight: 700;
-      color: var(--gold);
-      text-transform: uppercase;
+      color: var(--mint);
     }
 
     .formula-name {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      color: var(--navy);
     }
 
     .formula-eq {
-      background: var(--surface-subtle);
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 12px;
+      border-radius: 10px;
+      padding: 14px;
       font-family: var(--font-mono);
-      font-size: 0.9rem;
-      color: var(--navy-light);
-      word-break: break-all;
+      font-size: 0.92rem;
+      color: var(--emerald);
     }
 
     .btn-copy {
       align-self: flex-end;
-      background: var(--surface-subtle);
+      background: transparent;
       border: 1px solid var(--border);
       color: var(--text-muted);
       padding: 4px 10px;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 0.75rem;
       cursor: pointer;
     }
 
     .btn-copy:hover {
-      background: var(--navy);
-      color: #ffffff;
+      border-color: var(--emerald);
+      color: var(--text-main);
     }
 
     /* ── QUIZ HUB (TAB 3) ── */
@@ -476,17 +521,15 @@
       margin: 0 auto;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 20px;
       padding: 36px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     }
 
     .quiz-q {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      color: var(--navy);
       margin-bottom: 24px;
+      line-height: 1.5;
     }
 
     .quiz-opts {
@@ -497,42 +540,41 @@
     }
 
     .opt-btn {
-      background: var(--surface-subtle);
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 18px;
+      border-radius: 12px;
+      padding: 16px 20px;
       font-size: 0.95rem;
+      color: var(--text-main);
       text-align: left;
       cursor: pointer;
-      color: var(--text-main);
-      transition: all 0.15s ease;
+      transition: all 0.2s ease;
     }
 
     .opt-btn:hover {
-      background: #e2e8f0;
-      border-color: var(--navy);
+      border-color: var(--emerald);
+      background: var(--card-hover);
     }
 
     .opt-btn.correct {
-      background: #ecfdf5;
-      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--emerald);
       color: var(--emerald);
       font-weight: 700;
     }
 
     .opt-btn.incorrect {
-      background: #fef2f2;
+      background: rgba(239, 68, 68, 0.15);
       border-color: #ef4444;
-      color: #dc2626;
+      color: #f87171;
     }
 
     .quiz-exp {
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
       padding: 16px;
       font-size: 0.9rem;
-      color: #1e40af;
       margin-bottom: 20px;
       display: none;
     }
@@ -544,7 +586,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: #ffffff;
+      background: var(--bg);
       z-index: 3000;
       display: none;
       flex-direction: column;
@@ -556,9 +598,9 @@
 
     .reader-bar {
       height: 60px;
-      background: var(--navy);
-      color: #ffffff;
-      padding: 0 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -572,7 +614,7 @@
 
     .reader-toc {
       width: 320px;
-      background: var(--surface-subtle);
+      background: var(--surface);
       border-right: 1px solid var(--border);
       overflow-y: auto;
       padding: 16px;
@@ -583,21 +625,21 @@
 
     .toc-item {
       padding: 10px 14px;
-      border-radius: 6px;
-      font-size: 0.88rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
       color: var(--text-muted);
       cursor: pointer;
     }
 
     .toc-item:hover {
-      background: #e2e8f0;
+      background: var(--surface-elevated);
       color: var(--text-main);
     }
 
     .toc-item.active {
-      background: var(--navy);
-      color: #ffffff;
-      font-weight: 600;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald);
+      font-weight: 700;
     }
 
     iframe {
@@ -609,70 +651,67 @@
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- FLOATING NAVBAR -->
   <header>
-    <div class="header-inner">
-      <a href="#" class="brand" onclick="switchTab('curriculum')">
-        <div class="brand-logo">ACCA</div>
-        <div class="brand-title">Career & Exam Masterclass</div>
-      </a>
-
-      <div class="nav-links">
-        <button class="nav-btn active" onclick="switchTab('curriculum', this)">Curriculum Pillars</button>
-        <button class="nav-btn" onclick="switchTab('formulas', this)">Formula Vault</button>
-        <button class="nav-btn" onclick="switchTab('quiz', this)">Exam Practice</button>
-        <button class="nav-btn" onclick="switchTab('about', this)">About ACCA & Big 4</button>
+    <a href="#" class="brand" onclick="switchTab('pillars')">
+      <div class="brand-logo">ACCA</div>
+      <div class="brand-text">
+        <h1>Career & Exam Masterclass</h1>
       </div>
+    </a>
 
-      <button class="btn-resume" onclick="resumeReading()">📖 Resume Reading</button>
+    <div class="nav-tabs">
+      <button class="nav-btn active" onclick="switchTab('pillars', this)">Curriculum Pillars</button>
+      <button class="nav-btn" onclick="switchTab('formulas', this)">Formula Vault</button>
+      <button class="nav-btn" onclick="switchTab('quiz', this)">Exam Practice</button>
+      <button class="nav-btn" onclick="switchTab('about', this)">About ACCA & Big 4</button>
     </div>
+
+    <button class="btn-resume" onclick="resumeReading()">📖 Resume Reading</button>
   </header>
 
   <main>
     <!-- ==================== TAB 1: CURRICULUM PILLARS ==================== -->
-    <div id="tab-curriculum" class="tab-content active">
-      
-      <!-- HERO & MISSION -->
-      <section class="hero-editorial">
-        <div class="hero-tag">Official 50-Chapter Roadmap</div>
-        <h1 class="hero-heading">Master ACCA Exams.<br>Land a Career at the Big 4.</h1>
-        <p class="hero-lead">
-          The complete structured curriculum for the <strong>Association of Chartered Certified Accountants (ACCA)</strong>. Designed to take you from foundational financial accounting to advanced strategic decision-making, financial modelling, and executive presentation.
-        </p>
+    <div id="tab-pillars" class="tab-content active">
+      <!-- HERO HEROINE -->
+      <section class="hero-box">
+        <div class="hero-badge">⚡ Official 50-Chapter ACCA Roadmap</div>
+        <h1 class="hero-title">Master 50 Chapters. Pass ACCA.<br><span>Land a Career at the Big 4.</span></h1>
+        <p class="hero-sub">The definitive curriculum for the <strong>Association of Chartered Certified Accountants (ACCA)</strong> qualification—engineered to turn students into Big 4 accounting, valuation, and FP&A leaders.</p>
 
-        <!-- THE 3 TARGETS -->
-        <div class="pillars-grid">
-          <div class="pillar-item">
-            <div class="pillar-icon">🛠️</div>
-            <div class="pillar-info">
+        <!-- 3 CORE TARGETS -->
+        <div class="targets-grid">
+          <div class="target-card">
+            <div class="target-icon">🛠️</div>
+            <div class="target-info">
               <h3>1. Practical Skills</h3>
-              <p>Financial modelling, DCF valuation, Excel mastery, Power BI, and SQL analytics.</p>
+              <p>Financial modelling, DCF valuation, Excel, Power BI, and SQL analytics.</p>
             </div>
           </div>
-          <div class="pillar-item">
-            <div class="pillar-icon">📚</div>
-            <div class="pillar-info">
+          <div class="target-card">
+            <div class="target-icon">📚</div>
+            <div class="target-info">
               <h3>2. 50 Core Chapters</h3>
-              <p>Exhaustive coverage of IFRS, Management Accounting, Tax, Audit, and Law.</p>
+              <p>Full syllabus mapped across IFRS, Tax, Audit, Law, and Strategy.</p>
             </div>
           </div>
-          <div class="pillar-item">
-            <div class="pillar-icon">🎯</div>
-            <div class="pillar-info">
+          <div class="target-card">
+            <div class="target-icon">🎯</div>
+            <div class="target-info">
               <h3>3. Strategic Guidance</h3>
-              <p>Exam strategy for all 13 papers + Big 4 interview & resume preparation.</p>
+              <p>Exam strategy for all 13 papers + Big 4 resume & interview prep.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- BIG 4 TARGET BANNER -->
+      <!-- BIG 4 BANNER -->
       <div class="big4-banner">
         <div class="big4-text">
-          <h4>🏆 Target Career: Big 4 Accounting & Advisory Firms</h4>
-          <p>This masterclass specifically prepares candidates for Assurance, Tax, and Valuation roles at the world's leading firms.</p>
+          <h4>🏆 Target Career: Big 4 Audit, Advisory & Valuation Roles</h4>
+          <p>Prepares you for technical entry and advisory positions at global accounting leaders.</p>
         </div>
-        <div class="big4-badges">
+        <div class="big4-chips">
           <span class="big4-chip">PwC</span>
           <span class="big4-chip">Deloitte</span>
           <span class="big4-chip">EY</span>
@@ -681,62 +720,59 @@
       </div>
 
       <!-- PILLAR 1: FINANCIAL & ACCOUNTING CORE -->
-      <section class="section-block">
-        <div class="section-header">
-          <h2 class="section-title">📊 1. Financial & Accounting Core <span class="count-badge">10 Chapters</span></h2>
-          <span style="font-size: 0.88rem; color: var(--text-subtle);">FA / FR / SBR</span>
+      <section class="pillar-section">
+        <div class="pillar-header">
+          <h2 class="pillar-title">📊 1. Financial & Accounting Core <span class="count-chip">10 Chapters</span></h2>
+          <span style="font-size: 0.85rem; color: var(--text-subtle);">FA / FR / SBR</span>
         </div>
         <div class="cards-grid" id="grid-financial"></div>
       </section>
 
       <!-- PILLAR 2: TAXATION & AUDIT CORE -->
-      <section class="section-block">
-        <div class="section-header">
-          <h2 class="section-title">⚖️ 2. Taxation & Audit Core <span class="count-badge">5 Chapters</span></h2>
-          <span style="font-size: 0.88rem; color: var(--text-subtle);">TX / ATX / AA / AAA</span>
+      <section class="pillar-section">
+        <div class="pillar-header">
+          <h2 class="pillar-title">⚖️ 2. Taxation & Audit Core <span class="count-chip">5 Chapters</span></h2>
+          <span style="font-size: 0.85rem; color: var(--text-subtle);">TX / ATX / AA / AAA</span>
         </div>
         <div class="cards-grid" id="grid-tax-audit"></div>
       </section>
 
       <!-- PILLAR 3: CORPORATE FINANCE, FP&A & STRATEGY -->
-      <section class="section-block">
-        <div class="section-header">
-          <h2 class="section-title">📈 3. Corporate Finance, FP&A & Strategy <span class="count-badge">13 Chapters</span></h2>
-          <span style="font-size: 0.88rem; color: var(--text-subtle);">MA / PM / FM / AFM / SBL / APM</span>
+      <section class="pillar-section">
+        <div class="pillar-header">
+          <h2 class="pillar-title">📈 3. Corporate Finance, FP&A & Strategy <span class="count-chip">13 Chapters</span></h2>
+          <span style="font-size: 0.85rem; color: var(--text-subtle);">MA / PM / FM / AFM / SBL / APM</span>
         </div>
         <div class="cards-grid" id="grid-finance-strategy"></div>
       </section>
 
-      <!-- PILLAR 4: EXTRA SKILLS & BIG 4 CAREER PREP -->
-      <section class="section-block">
-        <div class="section-header">
-          <h2 class="section-title">💼 4. Practical Skills & Big 4 Career Prep <span class="count-badge">10 Chapters</span></h2>
-          <span style="font-size: 0.88rem; color: var(--text-subtle);">Excel / Power BI / AI / Leadership / Resumes</span>
+      <!-- PILLAR 4: PRACTICAL SKILLS & BIG 4 CAREER PREP -->
+      <section class="pillar-section">
+        <div class="pillar-header">
+          <h2 class="pillar-title">💼 4. Practical Skills & Big 4 Career Prep <span class="count-chip">10 Chapters</span></h2>
+          <span style="font-size: 0.85rem; color: var(--text-subtle);">Excel / Power BI / AI / Interviews</span>
         </div>
         <div class="cards-grid" id="grid-skills-career"></div>
       </section>
 
-      <!-- PILLAR 5: ACCA EXAM STRATEGY & TOOLS -->
-      <section class="section-block">
-        <div class="section-header">
-          <h2 class="section-title">🎓 5. ACCA Exam Guidance & Practice Bank <span class="count-badge">8 Chapters</span></h2>
-          <span style="font-size: 0.88rem; color: var(--text-subtle);">Qualification Map / Formula Sheet / Question Bank</span>
+      <!-- PILLAR 5: ACCA EXAM GUIDANCE & TOOLS -->
+      <section class="pillar-section">
+        <div class="pillar-header">
+          <h2 class="pillar-title">🎓 5. ACCA Exam Guidance & Practice Bank <span class="count-chip">8 Chapters</span></h2>
+          <span style="font-size: 0.85rem; color: var(--text-subtle);">Qualification Structure / Formulas / Question Bank</span>
         </div>
         <div class="cards-grid" id="grid-exam-tools"></div>
       </section>
-
     </div>
 
     <!-- ==================== TAB 2: FORMULA VAULT ==================== -->
     <div id="tab-formulas" class="tab-content">
-      <div style="text-align: center; margin-bottom: 30px;">
-        <h2 style="font-family: var(--font-serif); font-size: 2.2rem; color: var(--navy);">⚡ Master Formula Vault (Chapter 49)</h2>
-        <p style="color: var(--text-muted);">Organised formula cheat-sheet for rapid exam revision across all ACCA papers.</p>
+      <div style="text-align: center; margin-bottom: 24px;">
+        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 8px;">⚡ Master Formula Vault (Chapter 49)</h2>
+        <p style="color: var(--text-muted);">Organized formula cheat-sheet across all ACCA papers.</p>
       </div>
 
-      <div class="vault-search-box">
-        <input type="text" class="input-search" placeholder="Search formula by name or topic (e.g. WACC, CAPM, IFRS, EOQ)..." oninput="renderFormulas(this.value)">
-      </div>
+      <input type="text" class="search-input" placeholder="Search formula by name or paper (e.g. WACC, CAPM, IFRS, EOQ)..." oninput="renderFormulas(this.value)">
 
       <div class="formula-grid" id="formulaGrid"></div>
     </div>
@@ -744,9 +780,9 @@
     <!-- ==================== TAB 3: QUIZ HUB ==================== -->
     <div id="tab-quiz" class="tab-content">
       <div class="quiz-box">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 14px;">
-          <span id="quizBadge" style="font-family: var(--font-mono); font-weight: 700; color: var(--gold);">BT — Business & Technology</span>
-          <span id="quizScore" style="font-family: var(--font-mono); font-weight: 700; color: var(--navy);">Score: 0 / 0</span>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 14px;">
+          <span id="quizBadge" style="font-family: var(--font-mono); font-weight: 700; color: var(--emerald);">BT — Business & Technology</span>
+          <span id="quizScore" style="font-family: var(--font-mono); font-weight: 700; color: var(--mint);">Score: 0 / 0</span>
         </div>
 
         <h3 class="quiz-q" id="quizQuestion">Which analysis tool examines Political, Economic, Social, Technological, Environmental and Legal factors?</h3>
@@ -762,29 +798,28 @@
 
     <!-- ==================== TAB 4: ABOUT ACCA ==================== -->
     <div id="tab-about" class="tab-content">
-      <div style="max-width: 820px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 40px;">
-        <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--navy); margin-bottom: 16px;">What is ACCA?</h2>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">The <strong>Association of Chartered Certified Accountants (ACCA)</strong> is the global body for professional accountants. Recognized in over 180 countries, the qualification validates expertise in financial accounting, management reporting, taxation, audit, corporate finance, and executive leadership.</p>
+      <div style="max-width: 820px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 40px;">
+        <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px;">What is ACCA?</h2>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">The <strong>Association of Chartered Certified Accountants (ACCA)</strong> is the world's leading body for professional finance & accounting practitioners. Recognized in 180+ countries, ACCA prepares financial managers, auditors, tax specialists, and corporate strategists.</p>
 
-        <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--navy); margin: 24px 0 12px;">Landing a Big 4 Job</h3>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">The Big 4 accounting firms (PwC, Deloitte, EY, KPMG) actively recruit ACCA qualified professionals and candidates. This 50-chapter guide equips you with both the theoretical exam knowledge and practical analytical skills (Excel, Power BI, financial modelling) expected in technical Big 4 interviews.</p>
+        <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--emerald); margin: 24px 0 12px;">Landing a Big 4 Job</h3>
+        <p style="color: var(--text-muted);">This 50-chapter guide specifically equips candidates with both the exam theory and practical tools (Excel, Power BI, Financial Modelling) required to clear technical Big 4 interviews at PwC, Deloitte, EY, and KPMG.</p>
       </div>
     </div>
-
   </main>
 
   <!-- FULLSCREEN READER MODAL -->
   <div class="reader-modal" id="readerModal">
     <div class="reader-bar">
       <div style="display: flex; align-items: center; gap: 14px;">
-        <button style="background: rgba(255,255,255,0.15); border: none; color: #fff; padding: 6px 12px; border-radius: 4px; cursor: pointer;" onclick="toggleToc()">☰ TOC</button>
-        <span style="font-family: var(--font-serif); font-weight: 700; font-size: 1.05rem;" id="readerTitle">Chapter 1</span>
+        <button style="background: var(--surface-elevated); border: 1px solid var(--border); color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer;" onclick="toggleToc()">☰ TOC</button>
+        <span style="font-weight: 700; font-size: 1rem;" id="readerTitle">Chapter 1</span>
       </div>
 
       <div style="display: flex; gap: 10px;">
-        <button style="background: rgba(255,255,255,0.15); border: none; color: #fff; padding: 6px 12px; border-radius: 4px; cursor: pointer;" onclick="navChapter(-1)">← Prev</button>
-        <button style="background: rgba(255,255,255,0.15); border: none; color: #fff; padding: 6px 12px; border-radius: 4px; cursor: pointer;" onclick="navChapter(1)">Next →</button>
-        <button style="background: var(--gold); border: none; color: #fff; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-weight: 700;" onclick="closeReader()">✕ Close</button>
+        <button style="background: var(--surface-elevated); border: 1px solid var(--border); color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer;" onclick="navChapter(-1)">← Prev</button>
+        <button style="background: var(--surface-elevated); border: 1px solid var(--border); color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer;" onclick="navChapter(1)">Next →</button>
+        <button class="btn-resume" onclick="closeReader()">✕ Close</button>
       </div>
     </div>
 
@@ -874,7 +909,7 @@
       }
     ];
 
-    let completedSet = new Set(JSON.parse(localStorage.getItem('acc_done_ed') || '[]'));
+    let completedSet = new Set(JSON.parse(localStorage.getItem('acc_done_oe') || '[]'));
     let currentChIdx = 0;
     let quizIdx = 0;
     let quizScore = 0;
@@ -911,13 +946,13 @@
 
           card.innerHTML = `
             <div class="card-top">
-              <span class="ch-num">${c.num === 999 ? 'APP' : 'CH ' + (c.num < 10 ? '0' + c.num : c.num)}</span>
+              <span class="ch-badge">${c.num === 999 ? 'APP' : 'CH ' + (c.num < 10 ? '0' + c.num : c.num)}</span>
               <span class="ch-time">⏱️ ${c.time}</span>
             </div>
             <h3 class="ch-title">${c.title}</h3>
             <div class="card-bottom">
               <span class="ch-cat">${c.cat}</span>
-              <span class="btn-read">Read Chapter →</span>
+              <span class="read-link">Read →</span>
             </div>
           `;
 
@@ -937,7 +972,7 @@
           <span class="formula-paper">${f.paper}</span>
           <h3 class="formula-name">${f.title}</h3>
           <div class="formula-eq">${f.eq}</div>
-          <button class="btn-copy" onclick="copyText('${f.eq}')">📋 Copy Formula</button>
+          <button class="btn-copy" onclick="copyText('${f.eq}')">📋 Copy</button>
         `;
         grid.appendChild(card);
       });
@@ -1006,8 +1041,8 @@
       document.getElementById('readerModal').classList.add('open');
 
       completedSet.add(c.filename);
-      localStorage.setItem('acc_done_ed', JSON.stringify([...completedSet]));
-      localStorage.setItem('acc_last_ed', c.filename);
+      localStorage.setItem('acc_done_oe', JSON.stringify([...completedSet]));
+      localStorage.setItem('acc_last_oe', c.filename);
       renderPillars();
       renderTOC();
     }
@@ -1018,7 +1053,7 @@
     }
 
     function resumeReading() {
-      const last = localStorage.getItem('acc_last_ed') || CHAPTERS[0].filename;
+      const last = localStorage.getItem('acc_last_oe') || CHAPTERS[0].filename;
       openChapterFile(last);
     }
 

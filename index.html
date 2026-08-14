@@ -3,437 +3,445 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Finance Career Bible — 50-chapter ACCA masterclass portal. IFRS, financial modelling, FP&A and Big 4 career preparation." />
-  <title>Finance Career Bible | ACCA Masterclass Portal</title>
-
+  <meta name="description" content="Finance Career Bible — Where ACCA Knowledge Becomes a Finance Career." />
+  <title>Finance Career Bible | ACCA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+  <script src="search_index.js"></script>
 </head>
 <body>
+  <div class="page-shell">
 
-  <!-- ══════════════════ NAVBAR ══════════════════ -->
-  <header class="navbar">
-    <div class="nav-inner">
-      <a class="brand" href="#" onclick="switchTab('pillars'); return false;">
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <a class="brand" href="#" onclick="switchTab('pillars')">
         <span class="brand-mark">FCB</span>
-        <span class="brand-name">Finance Career Bible<small>ACCA · BIG 4</small></span>
+        <span class="brand-name">Finance Career Bible</span>
       </a>
 
-      <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
-
-      <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <nav class="nav-links" aria-label="Primary navigation">
         <button class="nav-btn active" onclick="switchTab('pillars', this)">Chapters</button>
-        <button class="nav-btn" onclick="switchTab('roadmap-tab', this)">Roadmap</button>
+        <button class="nav-btn" onclick="switchTab('roadmap-tab', this)">ACCA Roadmap</button>
         <button class="nav-btn" onclick="switchTab('formulas', this)">Formula Vault</button>
-        <button class="nav-btn" onclick="switchTab('quiz', this)">Practice</button>
+        <button class="nav-btn" onclick="switchTab('quiz', this)">Exam Practice</button>
         <button class="nav-btn" onclick="switchTab('about', this)">About</button>
-        <button class="nav-search" onclick="openGlobalSearchModal()">
-          <span>Search</span><kbd>Ctrl K</kbd>
-        </button>
-        <button class="nav-cta" onclick="resumeReading()">Resume →</button>
+        <button class="nav-btn" onclick="openGlobalSearchModal()" style="font-weight: 700;">🔍 Search (Ctrl+K)</button>
+        <button class="nav-cta" onclick="resumeReading()">Resume Learning →</button>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main>
-
-    <!-- ══════════════════ TAB 1 — CHAPTERS ══════════════════ -->
-    <div id="tab-pillars" class="tab-content active">
-
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero-inner">
+    <main>
+      <!-- ==================== TAB 1: CHAPTERS & HERO ==================== -->
+      <div id="tab-pillars" class="tab-content active">
+        <!-- HERO -->
+        <section class="hero section">
           <div class="hero-copy">
-            <div class="hero-tag"><i></i> ACCA · 50 Chapters · 2026</div>
-            <h1>From first ledger<br>to <span class="grad">Big 4 offer.</span></h1>
-            <p class="hero-sub">Where ACCA knowledge becomes a finance career.</p>
+            <div class="eyebrow"><span></span> ACCA</div>
+            <h1>Finance<br><em>Career Bible</em></h1>
+            <p class="hero-title">Where ACCA Knowledge Becomes a Finance Career.</p>
             <p class="hero-text">
-              A structured masterclass covering IFRS reporting, financial modelling, FP&amp;A
-              forecasting, valuation and audit — mapped across all 13 ACCA papers and built
-              toward technical roles at PwC, Deloitte, EY and KPMG.
+              A structured resource for mastering ACCA, building practical finance skills,
+              and developing a clear path toward technical Big 4 audit, advisory, and valuation roles.
             </p>
+
             <div class="hero-actions">
-              <button class="btn btn-primary" onclick="resumeReading()">Start reading <span>↗</span></button>
-              <button class="btn btn-ghost" onclick="openGlobalSearchModal()">Search 51 chapters <span>→</span></button>
+              <button class="btn btn-primary" onclick="switchTab('roadmap-tab')">Start Your ACCA Journey <span>↗</span></button>
+              <button class="btn btn-secondary" onclick="openGlobalSearchModal()">Search 50 Chapters <span>→</span></button>
             </div>
           </div>
 
-          <!-- 3D BOOK -->
-          <div class="book-scene" id="bookScene" aria-hidden="true">
-            <div class="book-glow"></div>
-            <div class="book" id="book">
+          <!-- INTERACTIVE 3D FLIPBOOK CONTAINER -->
+          <div class="book-scene" aria-label="Interactive 3D Finance Career Bible FlipBook">
+            <div class="flipbook-wrapper">
+              <div id="flipbook">
+                <!-- Page 1 (Front Cover) -->
+                <div class="my-page" data-density="hard">
+                  <div class="page-content book-cover-front">
+                    <div class="cover-top">ACCA • FINANCE • CAREER</div>
+                    <div class="cover-line"></div>
+                    <div class="cover-title">Finance<br><span>Career</span><br>Bible</div>
+                    <div class="cover-subtitle">A structured guide from knowledge to career.</div>
+                    <div class="gold-seal">FCB</div>
+                    <div class="cover-bottom">
+                      <span>50 CHAPTERS</span>
+                      <span>2026 EDITION</span>
+                    </div>
+                  </div>
+                </div>
 
-              <!-- Inner leaf, revealed as the cover swings open -->
-              <div class="book-face book-inner">
-                <div class="inner-label">CONTENTS</div>
-                <div class="inner-row"><b>01</b> Finance Industry Overview</div>
-                <div class="inner-row"><b>04</b> IFRS Fundamentals</div>
-                <div class="inner-row"><b>21</b> Financial Modelling</div>
-                <div class="inner-row"><b>33</b> Valuation — DCF</div>
-                <div class="inner-row"><b>43</b> Big 4 Career Guide</div>
-                <div class="inner-row"><b>49</b> Formula Cheat-Sheet</div>
-                <div class="inner-meter"><i></i></div>
+                <!-- Page 2 (Inside Cover - Table of Contents) -->
+                <div class="my-page">
+                  <div class="page-content book-inner-page">
+                    <div class="inner-page-header">
+                      <span class="inner-kicker">01 / OVERVIEW</span>
+                      <h4>Table of Contents</h4>
+                    </div>
+                    <ul class="toc-preview-list">
+                      <li><strong>Pillar 1:</strong> Financial & Accounting Core (10 Ch)</li>
+                      <li><strong>Pillar 2:</strong> Taxation & Audit Core (5 Ch)</li>
+                      <li><strong>Pillar 3:</strong> Corporate Finance & Strategy (13 Ch)</li>
+                      <li><strong>Pillar 4:</strong> Practical Skills & Big 4 (10 Ch)</li>
+                      <li><strong>Pillar 5:</strong> ACCA Exam Guidance & Tools (8 Ch)</li>
+                    </ul>
+                    <div class="inner-page-footer">Page 1</div>
+                  </div>
+                </div>
+
+                <!-- Page 3 (Pillar 1 Preview) -->
+                <div class="my-page">
+                  <div class="page-content book-inner-page">
+                    <div class="inner-page-header">
+                      <span class="inner-kicker">PILLAR 01</span>
+                      <h4>Financial Core</h4>
+                    </div>
+                    <div class="chapter-preview-box">
+                      <h5>Ch 2: Accounting From Zero</h5>
+                      <p>Double entry fundamentals, debit & credit mechanics, trial balance.</p>
+                    </div>
+                    <div class="chapter-preview-box">
+                      <h5>Ch 4: IFRS Fundamentals</h5>
+                      <p>IASB conceptual framework, IAS 1 presentation, accounting policies.</p>
+                    </div>
+                    <div class="inner-page-footer">Page 2</div>
+                  </div>
+                </div>
+
+                <!-- Page 4 (Pillar 3 Preview) -->
+                <div class="my-page">
+                  <div class="page-content book-inner-page">
+                    <div class="inner-page-header">
+                      <span class="inner-kicker">PILLAR 03</span>
+                      <h4>Corporate Finance</h4>
+                    </div>
+                    <div class="chapter-preview-box">
+                      <h5>Ch 21: Financial Modelling</h5>
+                      <p>3-statement integrated financial model building & forecast assumptions.</p>
+                    </div>
+                    <div class="chapter-preview-box">
+                      <h5>Ch 33: Valuation Basics</h5>
+                      <p>Discounted Cash Flow (DCF), WACC calculation, EV/EBITDA multiples.</p>
+                    </div>
+                    <div class="inner-page-footer">Page 3</div>
+                  </div>
+                </div>
+
+                <!-- Page 5 (Pillar 4 Preview) -->
+                <div class="my-page">
+                  <div class="page-content book-inner-page">
+                    <div class="inner-page-header">
+                      <span class="inner-kicker">PILLAR 04</span>
+                      <h4>Practical Skills & Big 4</h4>
+                    </div>
+                    <div class="chapter-preview-box">
+                      <h5>Ch 39: Excel Mastery</h5>
+                      <p>XLOOKUP, INDEX/MATCH, Dynamic Arrays, Financial Functions.</p>
+                    </div>
+                    <div class="chapter-preview-box">
+                      <h5>Ch 43: Big 4 Career Guide</h5>
+                      <p>Interview preparation for PwC, Deloitte, EY, KPMG advisory teams.</p>
+                    </div>
+                    <div class="inner-page-footer">Page 4</div>
+                  </div>
+                </div>
+
+                <!-- Page 6 (Back Cover) -->
+                <div class="my-page" data-density="hard">
+                  <div class="page-content book-cover-back">
+                    <div class="cover-top">FINANCE CAREER BIBLE</div>
+                    <div class="cover-title-back">Master ACCA.<br><span>Land the Job.</span></div>
+                    <p class="cover-back-text">Prepares candidates for technical audit, advisory, valuation & corporate finance careers.</p>
+                    <div class="cover-bottom">
+                      <span>PwC • DELOITTE • EY • KPMG</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <!-- Front cover -->
-              <div class="book-face book-cover">
-                <div class="cover-top">ACCA • FINANCE • CAREER</div>
-                <div class="cover-rule"></div>
-                <div class="cover-title">Finance<br><span>Career</span><br>Bible</div>
-                <div class="cover-sub">A structured guide from first principles to professional practice.</div>
-                <div class="cover-seal">FCB</div>
-                <div class="cover-foot"><span>50 CHAPTERS</span><span>ED. 2026</span></div>
-              </div>
-
-              <div class="book-pages"></div>
-              <div class="book-spine"><span>FINANCE CAREER BIBLE</span></div>
             </div>
-            <div class="book-caption">Knowledge · Skills · Career</div>
+
+            <!-- CONTROLS -->
+            <div class="flipbook-controls">
+              <button class="flip-btn" id="btnPrevPage">◄ Prev Page</button>
+              <span class="flip-status" id="flipPageStatus">Page 1 of 6</span>
+              <button class="flip-btn" id="btnNextPage">Next Page ►</button>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <!-- STAT STRIP -->
-      <section class="stat-strip">
-        <div class="stat-strip-inner">
-          <div class="stat"><div class="stat-num">50</div><div class="stat-label">Chapters</div></div>
-          <div class="stat"><div class="stat-num">13</div><div class="stat-label">ACCA Papers</div></div>
-          <div class="stat"><div class="stat-num">322</div><div class="stat-label">Formulas</div></div>
-          <div class="stat"><div class="stat-num">44</div><div class="stat-label">Practice MCQs</div></div>
-          <div class="stat"><div class="stat-num">4</div><div class="stat-label">Big 4 Targets</div></div>
-        </div>
-      </section>
-
-      <!-- LIBRARY -->
-      <section class="section shell">
-        <div class="section-head">
-          <div class="kicker">02 / THE LIBRARY</div>
-          <h2>50 chapters. <span class="grad">One system.</span></h2>
-          <p>Grouped into five functional pillars — from accounting foundations through to
-             Big 4 interview preparation. Open a pillar to browse its chapters.</p>
-        </div>
-
-        <section class="pillar-section collapsed" id="section-financial">
-          <button class="pillar-header" aria-expanded="false" onclick="togglePillarSection('section-financial', this)">
-            <span class="pillar-icon">📊</span>
-            <span>
-              <h3 class="pillar-title">Financial &amp; Accounting Core</h3>
-              <div class="pillar-meta">IFRS · revenue · consolidation · reporting</div>
-            </span>
-            <span class="count-chip">10</span>
-            <span class="accordion-arrow">▼</span>
-          </button>
-          <div class="pillar-body"><div class="cards-grid" id="grid-financial"></div></div>
         </section>
 
-        <section class="pillar-section collapsed" id="section-tax-audit">
-          <button class="pillar-header" aria-expanded="false" onclick="togglePillarSection('section-tax-audit', this)">
-            <span class="pillar-icon">⚖️</span>
-            <span>
-              <h3 class="pillar-title">Taxation &amp; Audit Core</h3>
-              <div class="pillar-meta">LW · TX · ATX · AA · AAA · controls</div>
-            </span>
-            <span class="count-chip">6</span>
-            <span class="accordion-arrow">▼</span>
-          </button>
-          <div class="pillar-body"><div class="cards-grid" id="grid-tax-audit"></div></div>
+        <!-- TRUST STRIP -->
+        <section class="trust-strip">
+          <div><strong>50</strong><span>Chapters</span></div>
+          <div><strong>14</strong><span>Finance Areas</span></div>
+          <div><strong>ACCA</strong><span>Focused</span></div>
+          <div><strong>Skills</strong><span>Beyond the syllabus</span></div>
+          <div><strong>Big 4</strong><span>Target (PwC, EY, Deloitte, KPMG)</span></div>
         </section>
 
-        <section class="pillar-section collapsed" id="section-finance-strategy">
-          <button class="pillar-header" aria-expanded="false" onclick="togglePillarSection('section-finance-strategy', this)">
-            <span class="pillar-icon">📈</span>
-            <span>
-              <h3 class="pillar-title">Corporate Finance, FP&amp;A &amp; Strategy</h3>
-              <div class="pillar-meta">modelling · valuation · risk · governance · AFM · SBL</div>
-            </span>
-            <span class="count-chip">16</span>
-            <span class="accordion-arrow">▼</span>
-          </button>
-          <div class="pillar-body"><div class="cards-grid" id="grid-finance-strategy"></div></div>
+        <!-- CHAPTERS LIBRARY SECTION -->
+        <section class="section chapters" id="chapters" style="padding-top: 80px; padding-bottom: 80px;">
+          <div class="section-heading">
+            <div>
+              <div class="section-kicker">02 / THE LIBRARY</div>
+              <h2 style="color: #fff;">50 Chapters.<br><em>One complete system.</em></h2>
+            </div>
+            <p>
+              A structured knowledge base covering accounting, ACCA, corporate finance, technology,
+              careers, professional skills and exam tools.
+            </p>
+          </div>
+
+          <div style="margin-top: 50px;">
+            <!-- COLLAPSIBLE PILLAR 1 (CLOSED BY DEFAULT) -->
+            <section class="pillar-section collapsed" id="section-financial">
+              <div class="pillar-header" onclick="togglePillarSection('section-financial')">
+                <h3 class="pillar-title">📊 1. Financial & Accounting Core <span class="count-chip">10 Chapters</span></h3>
+                <span class="accordion-arrow">▼</span>
+              </div>
+              <div class="pillar-body">
+                <div class="cards-grid" id="grid-financial"></div>
+              </div>
+            </section>
+
+            <!-- COLLAPSIBLE PILLAR 2 (CLOSED BY DEFAULT) -->
+            <section class="pillar-section collapsed" id="section-tax-audit">
+              <div class="pillar-header" onclick="togglePillarSection('section-tax-audit')">
+                <h3 class="pillar-title">⚖️ 2. Taxation & Audit Core <span class="count-chip">5 Chapters</span></h3>
+                <span class="accordion-arrow">▼</span>
+              </div>
+              <div class="pillar-body">
+                <div class="cards-grid" id="grid-tax-audit"></div>
+              </div>
+            </section>
+
+            <!-- COLLAPSIBLE PILLAR 3 (CLOSED BY DEFAULT) -->
+            <section class="pillar-section collapsed" id="section-finance-strategy">
+              <div class="pillar-header" onclick="togglePillarSection('section-finance-strategy')">
+                <h3 class="pillar-title">📈 3. Corporate Finance, FP&A & Strategy <span class="count-chip">13 Chapters</span></h3>
+                <span class="accordion-arrow">▼</span>
+              </div>
+              <div class="pillar-body">
+                <div class="cards-grid" id="grid-finance-strategy"></div>
+              </div>
+            </section>
+
+            <!-- COLLAPSIBLE PILLAR 4 (CLOSED BY DEFAULT) -->
+            <section class="pillar-section collapsed" id="section-skills-career">
+              <div class="pillar-header" onclick="togglePillarSection('section-skills-career')">
+                <h3 class="pillar-title">💼 4. Practical Skills & Big 4 Career Prep <span class="count-chip">10 Chapters</span></h3>
+                <span class="accordion-arrow">▼</span>
+              </div>
+              <div class="pillar-body">
+                <div class="cards-grid" id="grid-skills-career"></div>
+              </div>
+            </section>
+
+            <!-- COLLAPSIBLE PILLAR 5 (CLOSED BY DEFAULT) -->
+            <section class="pillar-section collapsed" id="section-exam-tools">
+              <div class="pillar-header" onclick="togglePillarSection('section-exam-tools')">
+                <h3 class="pillar-title">🎓 5. ACCA Exam Guidance & Practice Bank <span class="count-chip">8 Chapters</span></h3>
+                <span class="accordion-arrow">▼</span>
+              </div>
+              <div class="pillar-body">
+                <div class="cards-grid" id="grid-exam-tools"></div>
+              </div>
+            </section>
+          </div>
         </section>
+      </div>
 
-        <section class="pillar-section collapsed" id="section-skills-career">
-          <button class="pillar-header" aria-expanded="false" onclick="togglePillarSection('section-skills-career', this)">
-            <span class="pillar-icon">💼</span>
-            <span>
-              <h3 class="pillar-title">Practical Skills &amp; Big 4 Career Prep</h3>
-              <div class="pillar-meta">Excel · Power BI · analytics · AI · interviews · ESG</div>
-            </span>
-            <span class="count-chip">10</span>
-            <span class="accordion-arrow">▼</span>
-          </button>
-          <div class="pillar-body"><div class="cards-grid" id="grid-skills-career"></div></div>
-        </section>
+      <!-- ==================== TAB 2: ROADMAP ==================== -->
+      <div id="tab-roadmap-tab" class="tab-content">
+        <section class="section roadmap-section">
+          <div class="section-kicker">03 / THE JOURNEY</div>
+          <div class="roadmap-head">
+            <h2>Your ACCA journey<br><em>is bigger than the exam.</em></h2>
+            <p>Your qualification is the beginning. Your career is the goal.</p>
+          </div>
 
-        <section class="pillar-section collapsed" id="section-exam-tools">
-          <button class="pillar-header" aria-expanded="false" onclick="togglePillarSection('section-exam-tools', this)">
-            <span class="pillar-icon">🎓</span>
-            <span>
-              <h3 class="pillar-title">ACCA Exam Guidance &amp; Tools</h3>
-              <div class="pillar-meta">qualification map · ethics · formula bank · appendices</div>
-            </span>
-            <span class="count-chip">9</span>
-            <span class="accordion-arrow">▼</span>
-          </button>
-          <div class="pillar-body"><div class="cards-grid" id="grid-exam-tools"></div></div>
-        </section>
-      </section>
-    </div>
-
-    <!-- ══════════════════ TAB 2 — ROADMAP ══════════════════ -->
-    <div id="tab-roadmap-tab" class="tab-content">
-      <section class="section shell">
-        <div class="section-head">
-          <div class="kicker">03 / THE JOURNEY</div>
-          <h2>Your ACCA journey is<br><span class="grad">bigger than the exam.</span></h2>
-          <p>The qualification is the beginning; the career is the goal. Five stages from
-             school-leaver to a technical seat at a Big 4 firm.</p>
-        </div>
-
-        <div class="roadmap-wrap" id="roadmapWrap">
-          <svg class="roadmap-svg" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="roadGradient" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%"   stop-color="#6c63ff"/>
-                <stop offset="100%" stop-color="#00d4aa"/>
-              </linearGradient>
-            </defs>
-            <!-- Static rail, then the gradient path drawn over it -->
-            <path class="roadmap-track" d="M 100 60 L 300 60 L 500 60 L 700 60 L 900 60" />
-            <path class="roadmap-path" id="roadmapPath" d="M 100 60 L 300 60 L 500 60 L 700 60 L 900 60" />
-            <g class="road-node" data-node="0"><circle class="ring" cx="100" cy="60" r="11"/><circle class="core" cx="100" cy="60" r="4"/></g>
-            <g class="road-node" data-node="1"><circle class="ring" cx="300" cy="60" r="11"/><circle class="core" cx="300" cy="60" r="4"/></g>
-            <g class="road-node" data-node="2"><circle class="ring" cx="500" cy="60" r="11"/><circle class="core" cx="500" cy="60" r="4"/></g>
-            <g class="road-node" data-node="3"><circle class="ring" cx="700" cy="60" r="11"/><circle class="core" cx="700" cy="60" r="4"/></g>
-            <g class="road-node" data-node="4"><circle class="ring" cx="900" cy="60" r="11"/><circle class="core" cx="900" cy="60" r="4"/></g>
-          </svg>
-
-          <div class="road-steps">
-            <div class="road-step" data-step="0">
-              <div class="no">STAGE 01</div>
+          <div class="roadmap">
+            <div class="road-step">
+              <span class="step-no">01</span>
+              <div class="step-dot"></div>
               <h3>Class 12</h3>
-              <p>Choose your direction and understand what a finance career actually involves.</p>
-              <span class="tagline">CH 01</span>
+              <p>Choose your direction.</p>
             </div>
-            <div class="road-step" data-step="1">
-              <div class="no">STAGE 02</div>
+            <div class="road-step">
+              <span class="step-no">02</span>
+              <div class="step-dot"></div>
               <h3>ACCA / B.Com + ACCA</h3>
-              <p>Build the academic foundation — Applied Knowledge through Applied Skills.</p>
-              <span class="tagline">CH 13–17</span>
+              <p>Build the academic foundation.</p>
             </div>
-            <div class="road-step current" data-step="2">
-              <div class="no">STAGE 03</div>
+            <div class="road-step active">
+              <span class="step-no">03</span>
+              <div class="step-dot"></div>
               <h3>Knowledge + Skills</h3>
-              <p>Go beyond exam preparation into Excel, Power BI, modelling and analytics.</p>
-              <span class="tagline">CH 39–42</span>
+              <p>Go beyond exam preparation.</p>
             </div>
-            <div class="road-step" data-step="3">
-              <div class="no">STAGE 04</div>
+            <div class="road-step">
+              <span class="step-no">04</span>
+              <div class="step-dot"></div>
               <h3>Experience</h3>
-              <p>Turn knowledge into practice — PER, internships and real reporting cycles.</p>
-              <span class="tagline">CH 43–45</span>
+              <p>Turn knowledge into practice.</p>
             </div>
-            <div class="road-step" data-step="4">
-              <div class="no">STAGE 05</div>
+            <div class="road-step">
+              <span class="step-no">05</span>
+              <div class="step-dot"></div>
               <h3>Big 4 Finance Career</h3>
-              <p>Audit, advisory or valuation at PwC, Deloitte, EY or KPMG — and beyond.</p>
-              <span class="tagline">CH 46–50</span>
+              <p>Build the professional future.</p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section shell" style="padding-top:0;">
-        <div class="section-head">
-          <div class="kicker">04 / BEYOND THE SYLLABUS</div>
-          <h2>ACCA prepares you for the profession.<br><span class="grad">We prepare you for the career.</span></h2>
-          <p>The technical toolkit that separates a qualified accountant from a hired one.</p>
-        </div>
-        <div class="skill-cloud">
-          <span class="skill hot">Excel Mastery</span>
-          <span class="skill hot">Financial Modelling</span>
-          <span class="skill">Power BI</span>
-          <span class="skill">Data Analytics</span>
-          <span class="skill">SQL</span>
-          <span class="skill hot">DCF Valuation</span>
-          <span class="skill">AI &amp; Automation</span>
-          <span class="skill">FP&amp;A Forecasting</span>
-          <span class="skill hot">Big 4 Interviews</span>
-          <span class="skill">Communication</span>
-          <span class="skill">ESG Reporting</span>
-          <span class="skill">Future of Finance</span>
-        </div>
-      </section>
-    </div>
-
-    <!-- ══════════════════ TAB 3 — FORMULA VAULT ══════════════════ -->
-    <div id="tab-formulas" class="tab-content">
-      <section class="section shell">
-        <div class="section-head">
-          <div class="kicker">05 / REVISION TOOLS</div>
-          <h2>Master <span class="grad">Formula Vault</span></h2>
-          <p>Every formula from Chapter 49, filterable by paper and searchable by name.
-             One click copies it to your clipboard.</p>
-        </div>
-
-        <div class="toolbar">
-          <input type="text" class="search-input" id="formulaSearch"
-                 placeholder="Search by name, paper or term — WACC, CAPM, IAS 16, EOQ…"
-                 oninput="renderFormulas(this.value)">
-        </div>
-        <div class="chip-row" id="formulaChips"></div>
-        <div class="result-count" id="formulaCount"></div>
-        <div class="formula-grid" id="formulaGrid"></div>
-      </section>
-    </div>
-
-    <!-- ══════════════════ TAB 4 — PRACTICE ══════════════════ -->
-    <div id="tab-quiz" class="tab-content">
-      <section class="section shell">
-        <div class="section-head">
-          <div class="kicker">06 / EXAM PRACTICE</div>
-          <h2>Practice <span class="grad">Question Bank</span></h2>
-          <p>44 exam-style MCQs across 15 ACCA papers, with the reasoning behind every answer.</p>
-        </div>
-
-        <div class="chip-row" id="quizChips"></div>
-
-        <div class="quiz-box">
-          <div class="quiz-head">
-            <span id="quizBadge">—</span>
-            <span id="quizScore">Score: 0 / 0</span>
-          </div>
-
-          <h3 class="quiz-q" id="quizQuestion">Loading question…</h3>
-          <div class="quiz-opts" id="quizOptions"></div>
-          <div class="quiz-exp" id="quizExplanation"></div>
-
-          <div class="quiz-foot">
-            <span class="quiz-progress" id="quizProgress"></span>
-            <button class="btn btn-primary" onclick="nextQuiz()">Next question ↗</button>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- ══════════════════ TAB 5 — ABOUT ══════════════════ -->
-    <div id="tab-about" class="tab-content">
-      <section class="section shell">
-        <div class="section-head">
-          <div class="kicker">01 / THE IDEA</div>
-          <h2>More than <span class="grad">study material.</span></h2>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-copy">
-            <p class="lead">
-              Finance Career Bible brings ACCA learning, finance knowledge, practical skills
-              and career guidance into one structured system.
-            </p>
+        <!-- BEYOND THE SYLLABUS -->
+        <section class="section beyond">
+          <div class="beyond-intro">
+            <div class="section-kicker">05 / BEYOND THE SYLLABUS</div>
+            <h2>ACCA prepares you<br>for the profession.<br><em>We prepare you for the career.</em></h2>
             <p>
-              Whether you are starting after Class 12, studying B.Com alongside ACCA, already
-              deep into the Strategic Professional papers, or simply building a career in
-              finance — the material is designed to give you a clear path from learning to
-              professional growth.
-            </p>
-            <p>
-              Every chapter is self-contained and readable offline. Progress, last-read
-              position and quiz scores are saved locally in your browser.
+              Finance Career Bible extends beyond qualification-focused learning into
+              practical tools, technology and professional development.
             </p>
           </div>
 
-          <div>
-            <div class="mini-pillars">
-              <div><span>01</span><b>Learn</b><small>ACCA &amp; finance fundamentals</small></div>
-              <div><span>02</span><b>Build</b><small>Practical technical skills</small></div>
-              <div><span>03</span><b>Prepare</b><small>Exams &amp; Big 4 interviews</small></div>
-              <div><span>04</span><b>Grow</b><small>Long-term career strategy</small></div>
-            </div>
+          <div class="skill-cloud">
+            <span class="skill large">Excel</span>
+            <span class="skill">Power BI</span>
+            <span class="skill dark">Data Analytics</span>
+            <span class="skill">AI & Automation</span>
+            <span class="skill large dark">Big 4 Career Guide</span>
+            <span class="skill">Communication & Leadership</span>
+            <span class="skill">Resume & Interviews</span>
+            <span class="skill">ESG</span>
+            <span class="skill large">Future of Finance</span>
           </div>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <!-- ══════════════════ FOOTER ══════════════════ -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="brand">
-            <span class="brand-mark">FCB</span>
-            <span class="brand-name">Finance Career Bible<small>ACCA · BIG 4</small></span>
-          </div>
-          <p>Where ACCA knowledge becomes a finance career. 50 chapters, open source, built for serious learners.</p>
-        </div>
-        <div class="footer-col">
-          <b>Explore</b>
-          <button onclick="switchTab('pillars')">50 Chapters</button>
-          <button onclick="switchTab('roadmap-tab')">ACCA Roadmap</button>
-          <button onclick="switchTab('about')">Beyond ACCA</button>
-        </div>
-        <div class="footer-col">
-          <b>Resources</b>
-          <button onclick="switchTab('formulas')">Formula Vault</button>
-          <button onclick="switchTab('quiz')">Practice Questions</button>
-          <button onclick="openGlobalSearchModal()">Full-text Search</button>
-        </div>
-        <div class="footer-col">
-          <b>Papers</b>
-          <button onclick="switchTab('pillars')">Applied Knowledge</button>
-          <button onclick="switchTab('pillars')">Applied Skills</button>
-          <button onclick="switchTab('pillars')">Strategic Professional</button>
-        </div>
+        </section>
       </div>
+
+      <!-- ==================== TAB 3: FORMULA VAULT ==================== -->
+      <div id="tab-formulas" class="tab-content">
+        <section class="section">
+          <div style="text-align: center; margin-bottom: 30px;">
+            <div class="section-kicker">06 / REVISION TOOLS</div>
+            <h2>Master Formula Vault<br><em>Chapter 49</em></h2>
+            <p style="color: var(--muted); margin-top: 10px;">Organized formula cheat-sheet across all ACCA papers.</p>
+          </div>
+
+          <input type="text" class="search-input" placeholder="Search formula by name or paper (e.g. WACC, CAPM, IFRS, EOQ)..." oninput="renderFormulas(this.value)">
+
+          <div class="formula-grid" id="formulaGrid"></div>
+        </section>
+      </div>
+
+      <!-- ==================== TAB 4: QUIZ HUB ==================== -->
+      <div id="tab-quiz" class="tab-content">
+        <section class="section">
+          <div class="quiz-box">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 24px; border-bottom: 1px solid var(--line); padding-bottom: 16px;">
+              <span id="quizBadge" style="font-size: 12px; font-weight: 700; color: var(--gold);">BT — Business & Technology</span>
+              <span id="quizScore" style="font-size: 12px; font-weight: 700; color: var(--navy);">Score: 0 / 0</span>
+            </div>
+
+            <h3 class="quiz-q" id="quizQuestion">Which analysis tool examines Political, Economic, Social, Technological, Environmental and Legal factors?</h3>
+
+            <div class="quiz-opts" id="quizOptions"></div>
+            <div class="quiz-exp" id="quizExplanation"></div>
+
+            <div style="display: flex; justify-content: flex-end;">
+              <button class="btn btn-primary" onclick="nextQuiz()">Next Question ↗</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ==================== TAB 5: ABOUT ==================== -->
+      <div id="tab-about" class="tab-content">
+        <section class="section intro">
+          <div class="section-kicker">01 / THE IDEA</div>
+          <div class="intro-grid">
+            <h2>More than<br><em>ACCA study material.</em></h2>
+            <div class="intro-copy">
+              <p class="lead">
+                Finance Career Bible brings ACCA learning, finance knowledge, practical skills
+                and career guidance into one structured system.
+              </p>
+              <p>
+                Whether you are starting after Class 12, studying B.Com with ACCA, already
+                pursuing ACCA, or simply building a career in finance, the material is designed
+                to give you a clear path from learning to professional growth.
+              </p>
+              <div class="mini-pillars">
+                <div><span>01</span><b>Learn</b><small>ACCA & Finance</small></div>
+                <div><span>02</span><b>Build</b><small>Practical Skills</small></div>
+                <div><span>03</span><b>Prepare</b><small>Career & Exams</small></div>
+                <div><span>04</span><b>Grow</b><small>Long-term Career</small></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark">FCB</span>
+          <span class="brand-name">Finance Career Bible</span>
+        </div>
+        <p>Where ACCA Knowledge Becomes a Finance Career.</p>
+      </div>
+
+      <div class="footer-links">
+        <div><b>Explore</b><a href="#chapters">50 Chapters</a><a href="#roadmap">ACCA Roadmap</a><a href="#beyond">Beyond ACCA</a></div>
+        <div><b>Resources</b><a href="#formulas">Formula Cheat-Sheet</a><a href="#quiz">Practice Questions</a></div>
+        <div><b>Connect</b><a href="#about">About</a></div>
+        <div><b>Legal</b><a href="#">Terms & Privacy</a></div>
+      </div>
+
       <div class="footer-bottom">
-        <span>© 2026 FINANCE CAREER BIBLE · MIT LICENSE</span>
-        <span>BUILT FOR SERIOUS LEARNERS</span>
+        <span>© 2026 Finance Career Bible</span>
+        <span>Built for serious learners.</span>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 
-  <!-- ══════════════════ GLOBAL SEARCH MODAL ══════════════════ -->
-  <div class="search-modal-overlay" id="globalSearchOverlay"
-       onclick="if(event.target===this) closeGlobalSearchModal()">
-    <div class="search-dialog" role="dialog" aria-label="Full-text search">
+  <!-- FULL-TEXT GLOBAL SEARCH MODAL -->
+  <div class="search-modal-overlay" id="globalSearchOverlay" onclick="if(event.target===this) closeGlobalSearchModal()">
+    <div class="search-dialog">
       <div class="search-dialog-header">
-        <span>🔍</span>
-        <input type="text" class="search-dialog-input" id="fullTextSearchInput"
-               placeholder="Search all 51 chapters — IAS 16, NPV, WACC, PESTEL, goodwill…"
-               oninput="handleFullTextSearch(this.value)">
-        <span class="search-dialog-hint">ESC</span>
+        <span style="font-size: 1.2rem;">🔍</span>
+        <input type="text" class="search-dialog-input" id="fullTextSearchInput" placeholder="Search full text across all 51 chapters (e.g., IAS 16, NPV, WACC, PESTEL, Goodwill)..." oninput="handleFullTextSearch(this.value)">
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);">ESC to close</span>
       </div>
       <div class="search-dialog-results" id="fullTextSearchResults">
-        <div class="search-placeholder">Type any formula, concept, standard or keyword to search the full chapter text.</div>
+        <div style="text-align: center; padding: 40px; color: var(--muted);">Type any formula, concept, standard, or keyword to search full chapter texts.</div>
       </div>
     </div>
   </div>
 
-  <!-- ══════════════════ READER ══════════════════ -->
+  <!-- FULLSCREEN READER MODAL -->
   <div class="reader-modal" id="readerModal">
     <div class="reader-bar">
-      <div class="reader-bar-group">
-        <button class="reader-btn" onclick="toggleToc()">☰ Contents</button>
-        <span id="readerTitle">Chapter</span>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 14px; border-radius: 2px; cursor: pointer; font-weight: 600;" onclick="toggleToc()">☰ TOC</button>
+        <span style="font-family: var(--serif); font-weight: 600; font-size: 1.1rem;" id="readerTitle">Chapter 1</span>
       </div>
-      <div class="reader-bar-group">
-        <button class="reader-btn" onclick="navChapter(-1)">← Prev</button>
-        <button class="reader-btn" onclick="navChapter(1)">Next →</button>
-        <button class="reader-btn close" onclick="closeReader()">✕ Close</button>
+
+      <div style="display: flex; gap: 12px;">
+        <button style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 14px; border-radius: 2px; cursor: pointer; font-weight: 600;" onclick="navChapter(-1)">← Prev</button>
+        <button style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 14px; border-radius: 2px; cursor: pointer; font-weight: 600;" onclick="navChapter(1)">Next →</button>
+        <button class="btn btn-light" style="padding: 6px 14px; font-size: 12px;" onclick="closeReader()">✕ Close</button>
       </div>
     </div>
+
     <div class="reader-body">
       <div class="reader-toc" id="tocBox"></div>
-      <iframe id="readerFrame" src="about:blank" title="Chapter reader"></iframe>
+      <iframe id="readerFrame" src="about:blank"></iframe>
     </div>
   </div>
 
-  <!-- Generated data must load before the engine that consumes it. -->
-  <script src="formulas_data.js"></script>
-  <script src="quiz_data.js"></script>
-  <script src="search_index.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

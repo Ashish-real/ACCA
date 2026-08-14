@@ -141,27 +141,37 @@ Qualification mapping, exam strategy, ethics module, master formula cheat-sheet,
 
 ## Key Web Application Features
 
-1. **Sleek Obsidian & Emerald Dark Aesthetic**:
-   - Built with an obsidian black background (`#050505`), dark elevated cards (`#14161d`), emerald green highlights (`#10b981`), and warm gold Big 4 badges (`#f59e0b`). Zero AI neon slop or serif clutter.
+1. **Unified Dark Aesthetic Across Portal and Chapters**:
+   - The portal shell and all 51 chapter pages share one design system: obsidian background (`#0a0a0f`), elevated cards (`#1a1a24`), violet (`#6c63ff`) and teal (`#00d4aa`) accents, with Space Grotesk / Space Mono typography.
 
-2. **Closed-by-Default Collapsible Pillar Accordions**:
+2. **Animated 3D Hero Book**:
+   - A true CSS 3D book (`transform-style: preserve-3d`) whose cover swings open on load to reveal a contents leaf, idles with a slow float, and tilts to follow the pointer.
+
+3. **Scroll-Driven ACCA Roadmap**:
+   - An SVG path that draws itself as the roadmap enters view, igniting each of the 5 career milestones in sequence. Replays on every visit to the tab.
+
+4. **Closed-by-Default Collapsible Pillar Accordions**:
    - The 5 curriculum pillars feature interactive expandable accordions (`▼` / `▲`).
    - Closed by default to keep the homepage clean, fast, and uncluttered.
 
-3. **Global Full-Text Search Engine (`Ctrl + K`)**:
+5. **Global Full-Text Search Engine (`Ctrl + K`)**:
    - Powered by `search_index.js`, which indexes all **5,327 text blocks across all 51 chapter HTML files**.
    - Text-level search (searches body content, formulas, standards, and terms).
-   - Returns matched snippets with glowing emerald `<mark class="search-highlight">` tags.
+   - Opens the matched chapter and auto-scrolls to the highlighted keyword.
 
-4. **Standalone Formula Vault (Chapter 49)**:
-   - Filterable formula cards tagged by ACCA Paper (FM, FR, MA, FA, TX, AA, EXCEL).
+6. **Master Formula Vault — 322 Formulas**:
+   - Every formula extracted from Chapter 49, filterable by ACCA paper and searchable by name, equation or section.
    - Includes 1-click **Copy Formula** to clipboard.
 
-5. **Interactive Practice Quiz Engine (Chapter 50)**:
-   - Attempt MCQs with instant green/red answer checking, rationale popups, and score tracking.
+7. **Practice Quiz Engine — 44 MCQs**:
+   - The full Chapter 50 question bank across 15 ACCA papers, filterable by paper, with instant answer checking, rationale, and running score.
 
-6. **State Persistence (`localStorage`)**:
-   - Saves completed chapters, last-read location, and quiz scores automatically.
+8. **State Persistence (`localStorage`)**:
+   - Saves completed chapters and last-read location automatically.
+
+> Formula and quiz data are generated from the chapter files by `tools/extract_data.py`.
+> Re-run it after editing Chapter 49 or 50. `tools/smoke_test.js` runs a headless
+> check of the portal's render and interaction paths (`node tools/smoke_test.js`).
 
 ---
 
@@ -194,6 +204,12 @@ npx serve . -p 8000
 ```text
 D:\Trinno\ACCA\
 ├── index.html                           # Master Single Page Application (SPA)
+├── style.css                            # Portal design system (matches chapter pages)
+├── script.js                            # Reader, search, quiz and formula engine
+├── formulas_data.js                     # Generated — 322 formulas from Chapter 49
+├── quiz_data.js                         # Generated — 44 MCQs from Chapter 50
+├── tools/extract_data.py                # Regenerates the two data files above
+├── tools/smoke_test.js                  # Headless render/interaction check
 ├── search_index.js                      # Generated Full-Text Search Index (5,327 text blocks)
 ├── start_reader.cmd                     # Windows 1-Click Startup Batch Script
 ├── README.md                            # Complete Project Documentation

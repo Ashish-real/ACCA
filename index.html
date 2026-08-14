@@ -3,825 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ACCA — Big 4 Career & Exam Masterclass</title>
+  <meta name="description" content="Finance Career Bible — Where ACCA Knowledge Becomes a Finance Career.">
+  <title>Finance Career Bible | ACCA Big 4 Masterclass</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <script src="search_index.js"></script>
-  <style>
-    :root {
-      --bg: #07080b;
-      --surface: #0e1017;
-      --surface-elevated: #151822;
-      --card: #1b1e2b;
-      --card-hover: #232738;
-      --border: rgba(255, 255, 255, 0.07);
-      --border-emerald: rgba(16, 185, 129, 0.4);
-      
-      --emerald: #10b981;
-      --emerald-glow: rgba(16, 185, 129, 0.25);
-      --mint: #34d399;
-      --cyan: #06b6d4;
-      --gold: #f59e0b;
-      --gold-bg: rgba(245, 158, 11, 0.08);
-      --gold-border: rgba(245, 158, 11, 0.25);
-      
-      --text-main: #ffffff;
-      --text-muted: #94a3b8;
-      --text-subtle: #64748b;
-      
-      --font-sans: 'Plus Jakarta Sans', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      font-family: var(--font-sans);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      background-image: 
-        radial-gradient(circle at 50% -100px, rgba(16, 185, 129, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 90% 400px, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
-    }
-
-    /* ── FLOATING GLASS CAPSULE NAVBAR ── */
-    header {
-      position: sticky;
-      top: 20px;
-      z-index: 1000;
-      max-width: 1280px;
-      margin: 0 auto;
-      width: calc(100% - 40px);
-      background: rgba(14, 16, 23, 0.75);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--text-main);
-    }
-
-    .brand-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--emerald), #047857);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-weight: 800;
-      font-size: 1.05rem;
-      color: #fff;
-      box-shadow: 0 0 25px var(--emerald-glow);
-    }
-
-    .brand-text h1 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-      background: linear-gradient(135deg, #fff 60%, var(--text-muted));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .nav-tabs {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 5px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-    }
-
-    .nav-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      padding: 8px 18px;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .nav-btn:hover {
-      color: var(--text-main);
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .nav-btn.active {
-      background: var(--emerald);
-      color: #000;
-      font-weight: 800;
-      box-shadow: 0 0 20px var(--emerald-glow);
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .global-search-trigger {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 9px 16px;
-      border-radius: 12px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.2s ease;
-    }
-
-    .global-search-trigger:hover {
-      border-color: var(--emerald);
-      color: var(--text-main);
-    }
-
-    .kbd-chip {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 2px 7px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text-subtle);
-    }
-
-    .btn-resume {
-      background: linear-gradient(135deg, var(--emerald), #059669);
-      border: none;
-      color: #000;
-      padding: 10px 22px;
-      border-radius: 12px;
-      font-size: 0.88rem;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 4px 25px var(--emerald-glow);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .btn-resume:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.45);
-    }
-
-    /* ── MAIN CONTENT AREA ── */
-    main {
-      max-width: 1280px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 50px 20px 100px;
-      flex: 1;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-      animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── HERO BANNER ── */
-    .hero-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 56px 48px;
-      margin-bottom: 36px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 6px 18px;
-      border-radius: 100px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--mint);
-      margin-bottom: 24px;
-    }
-
-    .hero-title {
-      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
-      font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -1.8px;
-      margin-bottom: 20px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, var(--emerald), var(--mint), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-sub {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 820px;
-      margin-bottom: 40px;
-      line-height: 1.65;
-    }
-
-    /* 3 CORE TARGETS */
-    .targets-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      border-top: 1px solid var(--border);
-      padding-top: 36px;
-    }
-
-    .target-card {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 24px;
-      display: flex;
-      gap: 18px;
-    }
-
-    .target-icon {
-      font-size: 1.9rem;
-      background: rgba(16, 185, 129, 0.1);
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--emerald);
-    }
-
-    .target-info h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .target-info p {
-      font-size: 0.88rem;
-      color: var(--text-subtle);
-      line-height: 1.55;
-    }
-
-    /* BIG 4 BANNER */
-    .big4-banner {
-      background: var(--gold-bg);
-      border: 1px solid var(--gold-border);
-      border-radius: 22px;
-      padding: 26px 36px;
-      margin-bottom: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .big4-text h4 {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .big4-text p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-    }
-
-    .big4-chips {
-      display: flex;
-      gap: 12px;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 0.88rem;
-    }
-
-    .big4-chip {
-      background: rgba(245, 158, 11, 0.15);
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 8px 18px;
-      border-radius: 10px;
-    }
-
-    /* ── COLLAPSIBLE PILLAR SECTIONS (CLOSED BY DEFAULT) ── */
-    .pillar-section {
-      margin-bottom: 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .pillar-section:hover {
-      border-color: var(--border-emerald);
-    }
-
-    .pillar-header {
-      padding: 24px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-      background: var(--surface);
-    }
-
-    .pillar-title {
-      font-size: 1.4rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .count-chip {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      background: rgba(16, 185, 129, 0.1);
-      color: var(--emerald);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 4px 14px;
-      border-radius: 100px;
-    }
-
-    .accordion-arrow {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* CLOSED BY DEFAULT STYLING */
-    .pillar-section.collapsed .accordion-arrow {
-      transform: rotate(-90deg);
-    }
-
-    .pillar-body {
-      padding: 0 32px 32px;
-      transition: all 0.3s ease;
-    }
-
-    .pillar-section.collapsed .pillar-body {
-      display: none;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 22px;
-      padding-top: 10px;
-    }
-
-    .chapter-card {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 18px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-      position: relative;
-    }
-
-    .chapter-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--border-emerald);
-      background: var(--card);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    .chapter-card.completed::after {
-      content: '✓ Read';
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid var(--emerald);
-      color: var(--emerald);
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 6px;
-    }
-
-    .card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .ch-badge {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--emerald);
-      background: rgba(16, 185, 129, 0.1);
-      padding: 4px 12px;
-      border-radius: 8px;
-    }
-
-    .ch-time {
-      font-size: 0.8rem;
-      color: var(--text-subtle);
-    }
-
-    .ch-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      line-height: 1.4;
-      color: var(--text-main);
-    }
-
-    .card-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-      padding-top: 16px;
-    }
-
-    .ch-cat {
-      font-size: 0.78rem;
-      color: var(--text-subtle);
-      font-weight: 500;
-    }
-
-    .read-link {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: var(--emerald);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    /* ── FORMULA VAULT (TAB 2) ── */
-    .search-input {
-      width: 100%;
-      max-width: 640px;
-      margin: 0 auto 36px;
-      display: block;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px 24px;
-      color: var(--text-main);
-      font-size: 1rem;
-      outline: none;
-    }
-
-    .search-input:focus {
-      border-color: var(--emerald);
-      box-shadow: 0 0 25px var(--emerald-glow);
-    }
-
-    .formula-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 22px;
-    }
-
-    .formula-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .formula-paper {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--mint);
-    }
-
-    .formula-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
-    .formula-eq {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      font-family: var(--font-mono);
-      font-size: 0.95rem;
-      color: var(--emerald);
-    }
-
-    .btn-copy {
-      align-self: flex-end;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 0.78rem;
-      cursor: pointer;
-    }
-
-    .btn-copy:hover {
-      border-color: var(--emerald);
-      color: var(--text-main);
-    }
-
-    /* ── QUIZ HUB (TAB 3) ── */
-    .quiz-box {
-      max-width: 850px;
-      margin: 0 auto;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 40px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .quiz-q {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 28px;
-      line-height: 1.55;
-    }
-
-    .quiz-opts {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .opt-btn {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 24px;
-      font-size: 0.98rem;
-      color: var(--text-main);
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .opt-btn:hover {
-      border-color: var(--emerald);
-      background: var(--card-hover);
-    }
-
-    .opt-btn.correct {
-      background: rgba(16, 185, 129, 0.15);
-      border-color: var(--emerald);
-      color: var(--emerald);
-      font-weight: 700;
-    }
-
-    .opt-btn.incorrect {
-      background: rgba(239, 68, 68, 0.15);
-      border-color: #ef4444;
-      color: #f87171;
-    }
-
-    .quiz-exp {
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 14px;
-      padding: 20px;
-      font-size: 0.92rem;
-      margin-bottom: 24px;
-      display: none;
-    }
-
-    /* ── FULL-TEXT GLOBAL SEARCH MODAL ── */
-    .search-modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(5, 5, 5, 0.9);
-      backdrop-filter: blur(24px);
-      z-index: 5000;
-      display: none;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 80px;
-    }
-
-    .search-modal-overlay.active {
-      display: flex;
-    }
-
-    .search-dialog {
-      width: 100%;
-      max-width: 760px;
-      background: var(--surface);
-      border: 1px solid var(--border-emerald);
-      border-radius: 24px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      max-height: 82vh;
-    }
-
-    .search-dialog-header {
-      padding: 24px 28px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .search-dialog-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      color: var(--text-main);
-      font-size: 1.2rem;
-      outline: none;
-      font-family: var(--font-sans);
-    }
-
-    .search-dialog-results {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .search-match-card {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px 24px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .search-match-card:hover {
-      border-color: var(--emerald);
-      background: var(--card);
-    }
-
-    .search-match-ch {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--emerald);
-      margin-bottom: 4px;
-    }
-
-    .search-match-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .search-match-snippet {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    mark.search-highlight {
-      background: rgba(16, 185, 129, 0.35);
-      color: var(--mint);
-      font-weight: 700;
-      border-radius: 4px;
-      padding: 0 4px;
-    }
-
-    /* ── FULLSCREEN READER MODAL ── */
-    .reader-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: var(--bg);
-      z-index: 3000;
-      display: none;
-      flex-direction: column;
-    }
-
-    .reader-modal.open {
-      display: flex;
-    }
-
-    .reader-bar {
-      height: 64px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 0 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .reader-body {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
-    }
-
-    .reader-toc {
-      width: 340px;
-      background: var(--surface);
-      border-right: 1px solid var(--border);
-      overflow-y: auto;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .toc-item {
-      padding: 12px 16px;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      cursor: pointer;
-    }
-
-    .toc-item:hover {
-      background: var(--surface-elevated);
-      color: var(--text-main);
-    }
-
-    .toc-item.active {
-      background: rgba(16, 185, 129, 0.15);
-      color: var(--emerald);
-      font-weight: 700;
-    }
-  </style>
 </head>
 <body>
 
   <!-- FLOATING NAVBAR -->
   <header>
     <a href="#" class="brand" onclick="switchTab('pillars')">
-      <div class="brand-logo">ACCA</div>
+      <div class="brand-logo">FCB</div>
       <div class="brand-text">
-        <h1>Career & Exam Masterclass</h1>
+        <h1>Finance Career Bible</h1>
       </div>
     </a>
 
-    <div class="nav-tabs">
+    <nav class="nav-tabs">
       <button class="nav-btn active" onclick="switchTab('pillars', this)">Curriculum Pillars</button>
+      <button class="nav-btn" onclick="switchTab('roadmap-tab', this)">ACCA Roadmap</button>
       <button class="nav-btn" onclick="switchTab('formulas', this)">Formula Vault</button>
       <button class="nav-btn" onclick="switchTab('quiz', this)">Exam Practice</button>
       <button class="nav-btn" onclick="switchTab('about', this)">About ACCA & Big 4</button>
-    </div>
+    </nav>
 
     <div class="header-right">
       <button class="global-search-trigger" onclick="openGlobalSearchModal()">
@@ -834,11 +41,33 @@
   <main>
     <!-- ==================== TAB 1: CURRICULUM PILLARS ==================== -->
     <div id="tab-pillars" class="tab-content active">
-      <!-- HERO HEROINE -->
+      <!-- HERO WITH CLIENT 3D BOOK VISUAL -->
       <section class="hero-box">
-        <div class="hero-badge">⚡ Official 50-Chapter ACCA Roadmap</div>
-        <h1 class="hero-title">Master 50 Chapters. Pass ACCA.<br><span>Land a Career at the Big 4.</span></h1>
-        <p class="hero-sub">The definitive curriculum for the <strong>Association of Chartered Certified Accountants (ACCA)</strong> qualification—engineered to turn students into Big 4 accounting, valuation, and FP&A leaders.</p>
+        <div class="hero-copy">
+          <div class="hero-badge">⚡ ACCA • FINANCE • CAREER BIBLE</div>
+          <h1 class="hero-title">Finance<br><span>Career Bible</span></h1>
+          <p style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--mint); margin-bottom: 12px;">Where ACCA Knowledge Becomes a Finance Career.</p>
+          <p class="hero-sub">A structured resource for mastering ACCA, building practical finance skills, and developing a clear path toward technical Big 4 audit, advisory, and valuation roles.</p>
+        </div>
+
+        <!-- CLIENT 3D BOOK visuals -->
+        <div class="book-scene" aria-label="Finance Career Bible 3D Visual">
+          <div class="book">
+            <div class="book-cover">
+              <div class="cover-top">ACCA • FINANCE • CAREER</div>
+              <div class="cover-line"></div>
+              <div class="cover-title">Finance<br><span>Career</span><br>Bible</div>
+              <div class="cover-subtitle">A structured guide from knowledge to career.</div>
+              <div class="cover-bottom">
+                <span>50 CHAPTERS</span>
+                <span>2026</span>
+              </div>
+              <div class="gold-seal">FCB</div>
+            </div>
+            <div class="book-pages"></div>
+            <div class="book-spine">FINANCE CAREER BIBLE</div>
+          </div>
+        </div>
 
         <!-- 3 CORE TARGETS -->
         <div class="targets-grid">
@@ -879,6 +108,9 @@
           <span class="big4-chip">KPMG</span>
         </div>
       </div>
+
+      <!-- EDITORIAL KICKER -->
+      <div class="section-kicker">02 / THE LIBRARY — 50 CHAPTERS</div>
 
       <!-- COLLAPSIBLE PILLAR 1 (CLOSED BY DEFAULT) -->
       <section class="pillar-section collapsed" id="section-financial">
@@ -936,9 +168,66 @@
       </section>
     </div>
 
-    <!-- ==================== TAB 2: FORMULA VAULT ==================== -->
+    <!-- ==================== TAB 2: ROADMAP ==================== -->
+    <div id="tab-roadmap-tab" class="tab-content">
+      <div class="section-kicker">03 / THE JOURNEY</div>
+      <div class="roadmap-box">
+        <div class="roadmap-head">
+          <h2>Your ACCA Journey<br><span style="font-family: var(--font-serif); font-style: italic; color: var(--gold);">is bigger than the exam.</span></h2>
+          <p style="color: var(--text-muted); margin-top: 8px;">Your qualification is the beginning. Your career is the goal.</p>
+        </div>
+
+        <div class="roadmap">
+          <div class="road-step">
+            <span class="step-no">01</span>
+            <h3>Class 12</h3>
+            <p>Choose your direction & foundations.</p>
+          </div>
+          <div class="road-step">
+            <span class="step-no">02</span>
+            <h3>ACCA / B.Com + ACCA</h3>
+            <p>Build the academic foundation.</p>
+          </div>
+          <div class="road-step active">
+            <span class="step-no">03</span>
+            <h3>Knowledge + Skills</h3>
+            <p>Go beyond exam preparation into financial modelling & data tools.</p>
+          </div>
+          <div class="road-step">
+            <span class="step-no">04</span>
+            <h3>Experience</h3>
+            <p>Turn knowledge into real-world corporate practice.</p>
+          </div>
+          <div class="road-step">
+            <span class="step-no">05</span>
+            <h3>Big 4 Finance Career</h3>
+            <p>Build your professional future at PwC, Deloitte, EY, or KPMG.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS BEYOND SYLLABUS CLOUD -->
+      <div style="margin-top: 40px;">
+        <div class="section-kicker">05 / BEYOND THE SYLLABUS</div>
+        <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px;">ACCA prepares you for the profession.<br><span style="font-family: var(--font-serif); font-style: italic; color: var(--mint);">We prepare you for the career.</span></h2>
+        <div class="skill-cloud">
+          <span class="skill-pill large">Excel Mastery</span>
+          <span class="skill-pill">Power BI</span>
+          <span class="skill-pill">Data Analytics</span>
+          <span class="skill-pill">AI & Automation</span>
+          <span class="skill-pill large">Big 4 Career Guide</span>
+          <span class="skill-pill">Communication & Leadership</span>
+          <span class="skill-pill">Resume & Technical Interviews</span>
+          <span class="skill-pill">ESG & Sustainability</span>
+          <span class="skill-pill large">Future of Finance</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 3: FORMULA VAULT ==================== -->
     <div id="tab-formulas" class="tab-content">
       <div style="text-align: center; margin-bottom: 28px;">
+        <div class="section-kicker">06 / REVISION TOOLS</div>
         <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 8px;">⚡ Master Formula Vault (Chapter 49)</h2>
         <p style="color: var(--text-muted);">Organized formula cheat-sheet across all ACCA papers.</p>
       </div>
@@ -948,7 +237,7 @@
       <div class="formula-grid" id="formulaGrid"></div>
     </div>
 
-    <!-- ==================== TAB 3: QUIZ HUB ==================== -->
+    <!-- ==================== TAB 4: QUIZ HUB ==================== -->
     <div id="tab-quiz" class="tab-content">
       <div class="quiz-box">
         <div style="display: flex; justify-content: space-between; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 16px;">
@@ -967,9 +256,10 @@
       </div>
     </div>
 
-    <!-- ==================== TAB 4: ABOUT ACCA ==================== -->
+    <!-- ==================== TAB 5: ABOUT ACCA ==================== -->
     <div id="tab-about" class="tab-content">
       <div style="max-width: 850px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 44px;">
+        <div class="section-kicker">01 / THE IDEA</div>
         <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 18px;">What is ACCA?</h2>
         <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 1.05rem;">The <strong>Association of Chartered Certified Accountants (ACCA)</strong> is the world's leading body for professional finance & accounting practitioners. Recognized in 180+ countries, ACCA prepares financial managers, auditors, tax specialists, and corporate strategists.</p>
 
@@ -1014,400 +304,6 @@
     </div>
   </div>
 
-  <script>
-    const CHAPTERS = [
-      { num: 2, filename: "Finance_Career_Bible_Chapter2.html", title: "Chapter 2: Accounting From Zero", pillar: "financial", cat: "Financial Accounting", time: "20 min" },
-      { num: 3, filename: "Finance_Career_Bible_Chapter3.html", title: "Chapter 3: Financial Statements", pillar: "financial", cat: "Financial Accounting", time: "22 min" },
-      { num: 4, filename: "Finance_Career_Bible_Chapter4.html", title: "Chapter 4: IFRS Fundamentals", pillar: "financial", cat: "Financial Reporting", time: "18 min" },
-      { num: 7, filename: "Finance_Career_Bible_Chapter7.html", title: "Chapter 7: Revenue Recognition", pillar: "financial", cat: "Financial Reporting", time: "16 min" },
-      { num: 8, filename: "Finance_Career_Bible_Chapter8.html", title: "Chapter 8: Property, Plant & Equipment", pillar: "financial", cat: "Financial Reporting", time: "25 min" },
-      { num: 9, filename: "Finance_Career_Bible_Chapter9.html", title: "Chapter 9: Inventory Accounting", pillar: "financial", cat: "Financial Reporting", time: "16 min" },
-      { num: 10, filename: "Finance_Career_Bible_Chapter10.html", title: "Chapter 10: Financial Instruments Basics", pillar: "financial", cat: "Financial Reporting", time: "18 min" },
-      { num: 11, filename: "Finance_Career_Bible_Chapter11.html", title: "Chapter 11: Consolidation Basics", pillar: "financial", cat: "Financial Reporting", time: "20 min" },
-      { num: 12, filename: "Finance_Career_Bible_Chapter12.html", title: "Chapter 12: Interpretation of Financial Statements", pillar: "financial", cat: "Financial Analysis", time: "24 min" },
-      { num: 30, filename: "Finance_Career_Bible_Chapter30.html", title: "Chapter 30: SBR Complex Topics", pillar: "financial", cat: "Strategic Business Reporting", time: "18 min" },
-
-      { num: 28, filename: "Finance_Career_Bible_Chapter28.html", title: "Chapter 28: Advanced Taxation", pillar: "tax-audit", cat: "Taxation (ATX)", time: "22 min" },
-      { num: 29, filename: "Finance_Career_Bible_Chapter29.html", title: "Chapter 29: Advanced Audit & Assurance", pillar: "tax-audit", cat: "Audit & Assurance (AAA)", time: "18 min" },
-      { num: 34, filename: "Finance_Career_Bible_Chapter34.html", title: "Chapter 34: Audit Fundamentals", pillar: "tax-audit", cat: "Audit & Assurance (AA)", time: "30 min" },
-      { num: 35, filename: "Finance_Career_Bible_Chapter35.html", title: "Chapter 35: Internal Controls", pillar: "tax-audit", cat: "Audit & Assurance", time: "28 min" },
-      { num: 37, filename: "Finance_Career_Bible_Chapter37.html", title: "Chapter 37: Taxation Fundamentals", pillar: "tax-audit", cat: "Taxation (TX)", time: "26 min" },
-
-      { num: 5, filename: "Finance_Career_Bible_Chapter5.html", title: "Chapter 5: Cost Accounting Fundamentals", pillar: "finance-strategy", cat: "Management Accounting", time: "18 min" },
-      { num: 6, filename: "Finance_Career_Bible_Chapter6.html", title: "Chapter 6: Management Accounting", pillar: "finance-strategy", cat: "Management Accounting", time: "20 min" },
-      { num: 18, filename: "Finance_Career_Bible_Chapter18.html", title: "Chapter 18: Financial Analysis", pillar: "finance-strategy", cat: "Financial Analysis", time: "30 min" },
-      { num: 19, filename: "Finance_Career_Bible_Chapter19.html", title: "Chapter 19: Ratio Analysis", pillar: "finance-strategy", cat: "Financial Analysis", time: "25 min" },
-      { num: 20, filename: "Finance_Career_Bible_Chapter20.html", title: "Chapter 20: Budgeting & Forecasting (FP&A)", pillar: "finance-strategy", cat: "FP&A", time: "30 min" },
-      { num: 21, filename: "Finance_Career_Bible_Chapter21.html", title: "Chapter 21: Financial Modelling", pillar: "finance-strategy", cat: "Financial Modelling", time: "30 min" },
-      { num: 22, filename: "Finance_Career_Bible_Chapter22.html", title: "Chapter 22: Corporate Finance", pillar: "finance-strategy", cat: "Corporate Finance", time: "30 min" },
-      { num: 24, filename: "Finance_Career_Bible_Chapter24.html", title: "Chapter 24: Advanced Management Accounting Tools", pillar: "finance-strategy", cat: "Performance Management", time: "20 min" },
-      { num: 25, filename: "Finance_Career_Bible_Chapter25.html", title: "Chapter 25: Advanced Working Capital & Treasury", pillar: "finance-strategy", cat: "Treasury", time: "18 min" },
-      { num: 26, filename: "Finance_Career_Bible_Chapter26.html", title: "Chapter 26: Advanced Financial Management", pillar: "finance-strategy", cat: "Financial Management (AFM)", time: "18 min" },
-      { num: 27, filename: "Finance_Career_Bible_Chapter27.html", title: "Chapter 27: Advanced Performance Management", pillar: "finance-strategy", cat: "Performance Management (APM)", time: "18 min" },
-      { num: 31, filename: "Finance_Career_Bible_Chapter31.html", title: "Chapter 31: SBL Strategic Frameworks", pillar: "finance-strategy", cat: "Strategic Business Leader", time: "20 min" },
-      { num: 33, filename: "Finance_Career_Bible_Chapter33.html", title: "Chapter 33: Valuation Basics", pillar: "finance-strategy", cat: "Valuation", time: "35 min" },
-
-      { num: 39, filename: "Finance_Career_Bible_Chapter39.html", title: "Chapter 39: Excel Mastery", pillar: "skills-career", cat: "Excel Skills", time: "28 min" },
-      { num: 40, filename: "Finance_Career_Bible_Chapter40.html", title: "Chapter 40: Power BI", pillar: "skills-career", cat: "Data Analytics", time: "24 min" },
-      { num: 41, filename: "Finance_Career_Bible_Chapter41.html", title: "Chapter 41: Data Analytics", pillar: "skills-career", cat: "Data Analytics", time: "26 min" },
-      { num: 42, filename: "Finance_Career_Bible_Chapter42.html", title: "Chapter 42: AI & Automation in Finance", pillar: "skills-career", cat: "AI & Tech", time: "25 min" },
-      { num: 43, filename: "Finance_Career_Bible_Chapter43.html", title: "Chapter 43: Big 4 Career Guide", pillar: "skills-career", cat: "Big 4 Guide", time: "25 min" },
-      { num: 44, filename: "Finance_Career_Bible_Chapter44.html", title: "Chapter 44: Communication & Leadership", pillar: "skills-career", cat: "Leadership", time: "25 min" },
-      { num: 45, filename: "Finance_Career_Bible_Chapter45.html", title: "Chapter 45: Resume, Interviews & Networking", pillar: "skills-career", cat: "Big 4 Interviews", time: "25 min" },
-      { num: 46, filename: "Finance_Career_Bible_Chapter46.html", title: "Chapter 46: ESG & Sustainability", pillar: "skills-career", cat: "ESG", time: "24 min" },
-      { num: 47, filename: "Finance_Career_Bible_Chapter47.html", title: "Chapter 47: Future of Finance (2030–2050)", pillar: "skills-career", cat: "Future Trends", time: "20 min" },
-      { num: 48, filename: "Finance_Career_Bible_Chapter48.html", title: "Chapter 48: Lifelong Learning Roadmap", pillar: "skills-career", cat: "Career Growth", time: "16 min" },
-
-      { num: 1, filename: "Finance_Career_Bible_Chapter1.html", title: "Chapter 1: Finance Industry Overview", pillar: "exam-tools", cat: "Overview", time: "15 min" },
-      { num: 13, filename: "Finance_Career_Bible_Chapter13.html", title: "Chapter 13: ACCA Qualification Structure", pillar: "exam-tools", cat: "Exam Guidance", time: "15 min" },
-      { num: 14, filename: "Finance_Career_Bible_Chapter14.html", title: "Chapter 14: Skills Level Papers", pillar: "exam-tools", cat: "Exam Guidance", time: "15 min" },
-      { num: 15, filename: "Finance_Career_Bible_Chapter15.html", title: "Chapter 15: Strategic Professional Papers", pillar: "exam-tools", cat: "Exam Guidance", time: "16 min" },
-      { num: 16, filename: "Finance_Career_Bible_Chapter16.html", title: "Chapter 16: Ethics & Professional Skills", pillar: "exam-tools", cat: "Exam Guidance", time: "16 min" },
-      { num: 17, filename: "Finance_Career_Bible_Chapter17.html", title: "Chapter 17: ACCA Exam Strategy", pillar: "exam-tools", cat: "Exam Strategy", time: "15 min" },
-      { num: 49, filename: "Finance_Career_Bible_Chapter49.html", title: "Chapter 49: Master Formula Cheat-Sheet", pillar: "exam-tools", cat: "Formula Bank", time: "40 min" },
-      { num: 50, filename: "Finance_Career_Bible_Chapter50.html", title: "Chapter 50: Practice Questions Bank", pillar: "exam-tools", cat: "Question Bank", time: "30 min" }
-    ];
-
-    const FORMULAS = [
-      { paper: "FM / AFM", title: "Weighted Average Cost of Capital (WACC)", eq: "WACC = (Ke × Ve / V) + [Kd × (1 - T) × Vd / V]" },
-      { paper: "FM / AFM", title: "Capital Asset Pricing Model (CAPM)", eq: "Ke = Rf + β × (Rm - Rf)" },
-      { paper: "FR / SBR", title: "Goodwill on Acquisition (IFRS 3)", eq: "Goodwill = Consideration Transferred + NCI - Net Assets" },
-      { paper: "FR / SBR", title: "Basic Earnings Per Share (IAS 33)", eq: "EPS = (Net Profit - Pref Divs) / Weighted Avg Shares" },
-      { paper: "MA / PM", title: "Economic Order Quantity (EOQ)", eq: "EOQ = √[(2 × D × Co) / Ch]" },
-      { paper: "MA / PM", title: "Break-Even Point (Units)", eq: "Break-Even = Fixed Costs / Contribution per Unit" }
-    ];
-
-    const QUIZ = [
-      {
-        paper: "BT — Business & Technology",
-        q: "Which analysis tool examines Political, Economic, Social, Technological, Environmental and Legal factors?",
-        opts: ["A) SWOT Analysis", "B) PESTEL Analysis", "C) Porter's Five Forces", "D) BCG Matrix"],
-        ans: 1,
-        exp: "PESTEL is specifically designed for scanning the macro-environment across these 6 factors."
-      },
-      {
-        paper: "FA — Financial Accounting",
-        q: "Under IFRS 15 Revenue Recognition, what is Step 3 of the model?",
-        opts: ["A) Identify Contract", "B) Identify Obligations", "C) Determine Transaction Price", "D) Allocate Price"],
-        ans: 2,
-        exp: "Step 3 is determining the Transaction Price."
-      }
-    ];
-
-    let completedSet = new Set(JSON.parse(localStorage.getItem('acc_done_v5') || '[]'));
-    let currentChIdx = 0;
-    let quizIdx = 0;
-    let quizScore = 0;
-    let currentSearchTerm = '';
-
-    function init() {
-      renderPillars();
-      renderTOC();
-      renderFormulas();
-      loadQuiz();
-
-      document.addEventListener('keydown', e => {
-        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-          e.preventDefault();
-          openGlobalSearchModal();
-        }
-        if (e.key === 'Escape') {
-          closeGlobalSearchModal();
-        }
-      });
-
-      const iframe = document.getElementById('readerFrame');
-      iframe.onload = () => {
-        if (currentSearchTerm && iframe.contentDocument) {
-          highlightTextInIframe(iframe.contentDocument, currentSearchTerm);
-        }
-      };
-    }
-
-    function togglePillarSection(secId) {
-      const el = document.getElementById(secId);
-      if (el) el.classList.toggle('collapsed');
-    }
-
-    function switchTab(tabId, btn) {
-      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-
-      document.getElementById('tab-' + tabId).classList.add('active');
-      if (btn) btn.classList.add('active');
-    }
-
-    function renderPillars() {
-      const pillars = ['financial', 'tax-audit', 'finance-strategy', 'skills-career', 'exam-tools'];
-
-      pillars.forEach(p => {
-        const grid = document.getElementById('grid-' + p);
-        if (!grid) return;
-        grid.innerHTML = '';
-
-        const list = CHAPTERS.filter(c => c.pillar === p);
-
-        list.forEach(c => {
-          const card = document.createElement('div');
-          card.className = `chapter-card ${completedSet.has(c.filename) ? 'completed' : ''}`;
-          card.onclick = () => openChapterFile(c.filename);
-
-          card.innerHTML = `
-            <div class="card-top">
-              <span class="ch-badge">${c.num === 999 ? 'APP' : 'CH ' + (c.num < 10 ? '0' + c.num : c.num)}</span>
-              <span class="ch-time">⏱️ ${c.time}</span>
-            </div>
-            <h3 class="ch-title">${c.title}</h3>
-            <div class="card-bottom">
-              <span class="ch-cat">${c.cat}</span>
-              <span class="read-link">Read →</span>
-            </div>
-          `;
-
-          grid.appendChild(card);
-        });
-      });
-    }
-
-    function renderFormulas(query = '') {
-      const grid = document.getElementById('formulaGrid');
-      grid.innerHTML = '';
-
-      FORMULAS.filter(f => !query || f.title.toLowerCase().includes(query.toLowerCase()) || f.paper.toLowerCase().includes(query.toLowerCase())).forEach(f => {
-        const card = document.createElement('div');
-        card.className = 'formula-card';
-        card.innerHTML = `
-          <span class="formula-paper">${f.paper}</span>
-          <h3 class="formula-name">${f.title}</h3>
-          <div class="formula-eq">${f.eq}</div>
-          <button class="btn-copy" onclick="copyText('${f.eq}')">📋 Copy</button>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function loadQuiz() {
-      const q = QUIZ[quizIdx];
-      document.getElementById('quizBadge').innerText = q.paper;
-      document.getElementById('quizQuestion').innerText = q.q;
-
-      const optsBox = document.getElementById('quizOptions');
-      optsBox.innerHTML = '';
-      document.getElementById('quizExplanation').style.display = 'none';
-
-      q.opts.forEach((optText, i) => {
-        const btn = document.createElement('button');
-        btn.className = 'opt-btn';
-        btn.innerText = optText;
-        btn.onclick = () => answerQuiz(i, q.ans, q.exp, btn);
-        optsBox.appendChild(btn);
-      });
-    }
-
-    function answerQuiz(selected, correct, exp, btnEl) {
-      const btns = document.querySelectorAll('.opt-btn');
-      btns.forEach(b => b.style.pointerEvents = 'none');
-
-      if (selected === correct) {
-        btnEl.classList.add('correct');
-        quizScore++;
-      } else {
-        btnEl.classList.add('incorrect');
-        btns[correct].classList.add('correct');
-      }
-
-      document.getElementById('quizScore').innerText = `Score: ${quizScore} / ${QUIZ.length}`;
-      const expBox = document.getElementById('quizExplanation');
-      expBox.innerText = exp;
-      expBox.style.display = 'block';
-    }
-
-    function nextQuiz() {
-      quizIdx = (quizIdx + 1) % QUIZ.length;
-      loadQuiz();
-    }
-
-    function renderTOC() {
-      const box = document.getElementById('tocBox');
-      box.innerHTML = '';
-
-      CHAPTERS.forEach((c, idx) => {
-        const item = document.createElement('div');
-        item.className = `toc-item ${idx === currentChIdx ? 'active' : ''}`;
-        item.onclick = () => openChapterIdx(idx);
-        item.innerText = `Ch ${c.num}: ${c.title.replace(/Chapter \d+: /, '')}`;
-        box.appendChild(item);
-      });
-    }
-
-    function openChapterIdx(idx, searchTerm = '') {
-      currentChIdx = idx;
-      currentSearchTerm = searchTerm;
-      const c = CHAPTERS[idx];
-
-      document.getElementById('readerTitle').innerText = c.title;
-      document.getElementById('readerFrame').src = c.filename;
-      document.getElementById('readerModal').classList.add('open');
-
-      completedSet.add(c.filename);
-      localStorage.setItem('acc_done_v5', JSON.stringify([...completedSet]));
-      localStorage.setItem('acc_last_v5', c.filename);
-      renderPillars();
-      renderTOC();
-    }
-
-    function openChapterFile(fn, searchTerm = '') {
-      const idx = CHAPTERS.findIndex(c => c.filename === fn);
-      if (idx !== -1) openChapterIdx(idx, searchTerm);
-    }
-
-    function resumeReading() {
-      const last = localStorage.getItem('acc_last_v5') || CHAPTERS[0].filename;
-      openChapterFile(last);
-    }
-
-    function navChapter(dir) {
-      const n = currentChIdx + dir;
-      if (n >= 0 && n < CHAPTERS.length) openChapterIdx(n);
-    }
-
-    function closeReader() {
-      document.getElementById('readerModal').classList.remove('open');
-      document.getElementById('readerFrame').src = 'about:blank';
-      currentSearchTerm = '';
-    }
-
-    function toggleToc() {
-      const box = document.getElementById('tocBox');
-      box.style.display = box.style.display === 'none' ? 'flex' : 'none';
-    }
-
-    /* ── IN-IFRAME KEYWORD HIGHLIGHTING & AUTO-SCROLL ── */
-    function highlightTextInIframe(doc, query) {
-      if (!doc || !query) return;
-
-      if (!doc.getElementById('search-pulse-style')) {
-        const styleEl = doc.createElement('style');
-        styleEl.id = 'search-pulse-style';
-        styleEl.textContent = `
-          .search-keyword-pulse {
-            background: #f59e0b !important;
-            color: #000000 !important;
-            font-weight: 800 !important;
-            padding: 2px 6px !important;
-            border-radius: 4px !important;
-            box-shadow: 0 0 25px #f59e0b !important;
-            animation: pulseFade 4s ease-in-out forwards !important;
-            display: inline-block !important;
-          }
-          @keyframes pulseFade {
-            0% { background: #f59e0b; box-shadow: 0 0 25px #f59e0b; }
-            50% { background: #10b981; box-shadow: 0 0 20px #10b981; }
-            100% { background: rgba(16, 185, 129, 0.25); color: inherit; box-shadow: none; }
-          }
-        `;
-        doc.head.appendChild(styleEl);
-      }
-
-      const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, null, false);
-      let node;
-      const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
-      let firstMatchSpan = null;
-      const nodesToReplace = [];
-
-      while (node = walker.nextNode()) {
-        if (node.parentElement && ['SCRIPT', 'STYLE', 'MARK'].includes(node.parentElement.tagName)) continue;
-        if (regex.test(node.nodeValue)) {
-          nodesToReplace.push(node);
-        }
-      }
-
-      nodesToReplace.forEach(textNode => {
-        const span = doc.createElement('span');
-        span.innerHTML = textNode.nodeValue.replace(regex, `<mark class="search-keyword-pulse">$1</mark>`);
-        textNode.parentElement.replaceChild(span, textNode);
-        if (!firstMatchSpan) {
-          firstMatchSpan = span.querySelector('.search-keyword-pulse');
-        }
-      });
-
-      if (firstMatchSpan) {
-        setTimeout(() => {
-          firstMatchSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 200);
-      }
-    }
-
-    /* ── FULL-TEXT GLOBAL SEARCH ENGINE ── */
-    function openGlobalSearchModal() {
-      document.getElementById('globalSearchOverlay').classList.add('active');
-      document.getElementById('fullTextSearchInput').focus();
-    }
-
-    function closeGlobalSearchModal() {
-      document.getElementById('globalSearchOverlay').classList.remove('active');
-    }
-
-    function handleFullTextSearch(query) {
-      const resultsContainer = document.getElementById('fullTextSearchResults');
-      resultsContainer.innerHTML = '';
-
-      const q = query.trim().toLowerCase();
-      if (!q || q.length < 2) {
-        resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">Type at least 2 characters to search text across all 51 chapters...</div>`;
-        return;
-      }
-
-      if (typeof FULL_TEXT_INDEX === 'undefined') {
-        resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">Search index loading...</div>`;
-        return;
-      }
-
-      const matches = [];
-      const regex = new RegExp(`(${escapeRegExp(q)})`, 'gi');
-
-      for (let item of FULL_TEXT_INDEX) {
-        if (item.text.toLowerCase().includes(q) || item.title.toLowerCase().includes(q)) {
-          matches.push(item);
-          if (matches.length >= 25) break;
-        }
-      }
-
-      if (matches.length === 0) {
-        resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">No text matches found for "${query}". Try another term.</div>`;
-        return;
-      }
-
-      matches.forEach(m => {
-        const card = document.createElement('div');
-        card.className = 'search-match-card';
-        card.onclick = () => {
-          closeGlobalSearchModal();
-          openChapterFile(m.filename, query);
-        };
-
-        const highlightedSnippet = m.text.replace(regex, '<mark class="search-highlight">$1</mark>');
-
-        card.innerHTML = `
-          <div class="search-match-ch">${m.filename.replace("Finance_Career_Bible_", "").replace(".html", "")}</div>
-          <div class="search-match-title">${m.title}</div>
-          <div class="search-match-snippet">...${highlightedSnippet}...</div>
-        `;
-
-        resultsContainer.appendChild(card);
-      });
-    }
-
-    function escapeRegExp(string) {
-      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }
-
-    function copyText(txt) {
-      navigator.clipboard.writeText(txt);
-      alert('Copied to clipboard!');
-    }
-
-    window.onload = init;
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

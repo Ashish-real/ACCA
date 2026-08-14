@@ -9,11 +9,11 @@
 
 ---
 
-## 📌 Executive Summary & Mission
+## Executive Summary & Mission
 
 The **ACCA Big 4 Career & Exam Masterclass** is an exhaustive, open-source educational platform engineered to take candidates from zero foundational accounting knowledge to mastering complex financial analysis, IFRS reporting, valuation models, FP&A forecasting, and Strategic Professional ACCA papers.
 
-### 🏆 Big 4 Career Target
+### Big 4 Career Target
 
 This masterclass specifically bridges the gap between academic theory and practical corporate finance expectations, preparing candidates for technical entry and advisory positions at global accounting leaders:
 
@@ -24,7 +24,7 @@ This masterclass specifically bridges the gap between academic theory and practi
 
 ---
 
-## 🎯 The 3 Core Target Pillars
+## The 3 Core Target Pillars
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -39,11 +39,11 @@ This masterclass specifically bridges the gap between academic theory and practi
 
 ---
 
-## 🏛️ Comprehensive Chapter Breakdown (5 Pillars)
+## Comprehensive Chapter Breakdown (5 Pillars)
 
 The 50 chapters plus appendices are structured into **5 Functional Pillars**:
 
-### Pillar 1: 📊 Financial & Accounting Core (10 Chapters)
+### Pillar 1: Financial & Accounting Core (10 Chapters)
 
 Focuses on financial statement preparation, IFRS accounting standards, revenue recognition, property valuation, inventory, consolidation, and complex reporting under SBR.
 
@@ -58,7 +58,7 @@ Focuses on financial statement preparation, IFRS accounting standards, revenue r
 - **Chapter 12**: Interpretation of Financial Statements *(FR)*
 - **Chapter 30**: SBR Complex Topics *(Strategic Business Reporting)*
 
-### Pillar 2: ⚖️ Taxation & Audit Core (5 Chapters)
+### Pillar 2: Taxation & Audit Core (5 Chapters)
 
 Comprehensive coverage of tax fundamentals, corporate tax computations, audit risk models, internal controls, and advanced assurance under AAA.
 
@@ -68,7 +68,7 @@ Comprehensive coverage of tax fundamentals, corporate tax computations, audit ri
 - **Chapter 35**: Internal Controls & Governance *(AA)*
 - **Chapter 37**: Taxation Fundamentals *(TX)*
 
-### Pillar 3: 📈 Corporate Finance, FP&A & Strategy (13 Chapters)
+### Pillar 3: Corporate Finance, FP&A & Strategy (13 Chapters)
 
 Deep dive into management accounting, cost control, FP&A forecasting, financial modelling, working capital, treasury, valuation, AFM, APM, and SBL strategic frameworks.
 
@@ -86,7 +86,7 @@ Deep dive into management accounting, cost control, FP&A forecasting, financial 
 - **Chapter 31**: SBL Strategic Frameworks *(Strategic Business Leader)*
 - **Chapter 33**: Valuation Basics — DCF & Multiples *(AFM)*
 
-### Pillar 4: 💼 Practical Skills & Big 4 Career Prep (10 Chapters)
+### Pillar 4: Practical Skills & Big 4 Career Prep (10 Chapters)
 
 Real-world technical tools required for modern finance executives, tech automation, leadership, and Big 4 interview preparation.
 
@@ -101,7 +101,7 @@ Real-world technical tools required for modern finance executives, tech automati
 - **Chapter 47**: Future of Finance (2030–2050)
 - **Chapter 48**: Lifelong Learning Roadmap
 
-### Pillar 5: 🎓 ACCA Exam Guidance & Tools (8 Chapters)
+### Pillar 5: ACCA Exam Guidance & Tools (8 Chapters)
 
 Qualification mapping, exam strategy, ethics module, master formula cheat-sheet, and interactive question bank.
 
@@ -117,10 +117,10 @@ Qualification mapping, exam strategy, ethics module, master formula cheat-sheet,
 
 ---
 
-## 📊 Subject Topic Matrix (14 Subject Areas)
+## Subject Topic Matrix (14 Subject Areas)
 
 | # | Subject Area | ACCA Papers | Chapter Count | Chapters Included |
-|---|---|---|---|---|
+| :--- | :--- | :--- | :--- | :--- |
 | **1** | Accounting & Financial Reporting | FA / FR / SBR | **10** | 2, 3, 4, 7, 8, 9, 10, 11, 12, 30 |
 | **2** | Corporate Finance & Financial Mgmt | FM / AFM | **5** | 21, 22, 25, 26, 33 |
 | **3** | ACCA Meta & Exam Guidance | ALL | **5** | 13, 14, 15, 16, 17 |
@@ -139,7 +139,7 @@ Qualification mapping, exam strategy, ethics module, master formula cheat-sheet,
 
 ---
 
-## ⚡ Key Web Application Features
+## Key Web Application Features
 
 1. **Sleek Obsidian & Emerald Dark Aesthetic**:
    - Built with an obsidian black background (`#050505`), dark elevated cards (`#14161d`), emerald green highlights (`#10b981`), and warm gold Big 4 badges (`#f59e0b`). Zero AI neon slop or serif clutter.
@@ -165,7 +165,7 @@ Qualification mapping, exam strategy, ethics module, master formula cheat-sheet,
 
 ---
 
-## 🚀 Local Quick Start & Installation
+## Local Quick Start & Installation
 
 ### Method A: 1-Click Windows Launcher
 
@@ -189,7 +189,7 @@ npx serve . -p 8000
 
 ---
 
-## 📁 Repository Directory Structure
+## Repository Directory Structure
 
 ```text
 D:\Trinno\ACCA\
@@ -207,7 +207,7 @@ D:\Trinno\ACCA\
 
 ---
 
-## 📜 License & Credits
+## License & Credits
 
 - **Content**: ACCA & Finance Career Bible Curriculum
 - **License**: MIT Open Source License

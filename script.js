@@ -535,6 +535,11 @@ function fallbackCopy(txt) {
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function resumeReading() {
+  const last = localStorage.getItem('last_read_chapter') || 'Finance_Career_Bible_Chapter2.html';
+  openChapterFile(last);
+}
+
 function toggle3DBook() {
   const book = document.getElementById('book');
   const btn = document.getElementById('bookToggleBtn');

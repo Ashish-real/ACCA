@@ -60,44 +60,76 @@
             </div>
           </div>
 
-          <!-- 3D BOOK -->
+          <!-- 3D CODROPS HARDCOVER BOOK -->
           <div class="book-scene" id="bookScene">
             <div class="book-glow"></div>
-            <div class="book" id="book" onclick="toggle3DBook()" title="Click to open/close book">
-              <!-- Back Cover -->
-              <div class="book-face book-back">
-                <div class="back-seal">FCB</div>
-                <div class="back-text">ACCA • BIG 4 CAREER BIBLE</div>
-              </div>
+            <figure class="book hardcover-book" id="book" onclick="toggle3DBook()" title="Click to open or close book">
 
-              <!-- Inner leaf, revealed as the cover swings open -->
-              <div class="book-face book-inner">
-                <div class="inner-label">CONTENTS PREVIEW</div>
-                <div class="inner-row"><b>01</b> Finance Industry Overview</div>
-                <div class="inner-row"><b>04</b> IFRS Fundamentals</div>
-                <div class="inner-row"><b>21</b> Financial Modelling</div>
-                <div class="inner-row"><b>33</b> Valuation — DCF</div>
-                <div class="inner-row"><b>43</b> Big 4 Career Guide</div>
-                <div class="inner-row"><b>49</b> Formula Cheat-Sheet</div>
-                <div class="inner-meter"><i></i></div>
-              </div>
+              <!-- FRONT COVER (3D Bevels & Inlay) -->
+              <ul class="hardcover_front">
+                <li>
+                  <div class="coverDesign dark">
+                    <span class="ribbon">2026</span>
+                    <div class="cover-top">ACCA • FINANCE • CAREER</div>
+                    <div class="cover-rule"></div>
+                    <h1 class="cover-title">Finance<br><span>Career</span><br>Bible</h1>
+                    <p class="cover-sub">A structured guide from first principles to professional practice.</p>
+                    <div class="cover-seal">FCB</div>
+                    <div class="cover-foot">
+                      <span>50 CHAPTERS</span>
+                      <span>BIG 4 GUIDE</span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="cover-inside">
+                    <div class="inner-label">CURRICULUM PILLARS</div>
+                    <div class="inner-row"><b>P1</b> Financial &amp; Accounting</div>
+                    <div class="inner-row"><b>P2</b> Taxation &amp; Audit Core</div>
+                    <div class="inner-row"><b>P3</b> Corp Finance &amp; Strategy</div>
+                    <div class="inner-row"><b>P4</b> Practical Skills &amp; Big 4</div>
+                    <div class="inner-row"><b>P5</b> ACCA Exam Guidance</div>
+                  </div>
+                </li>
+              </ul>
 
-              <!-- Front cover -->
-              <div class="book-face book-cover">
-                <div class="cover-top">ACCA • FINANCE • CAREER</div>
-                <div class="cover-rule"></div>
-                <div class="cover-title">Finance<br><span>Career</span><br>Bible</div>
-                <div class="cover-sub">A structured guide from first principles to professional practice.</div>
-                <div class="cover-seal">FCB</div>
-                <div class="cover-foot"><span>50 CHAPTERS</span><span>ED. 2026</span></div>
-              </div>
+              <!-- 5 LAYERED 3D REALISTIC PAGES -->
+              <ul class="page">
+                <li></li>
+                <li>
+                  <div class="page-content">
+                    <div class="page-top-label">CONTENTS PREVIEW</div>
+                    <div class="toc-row"><span>01. Accounting Basics</span><b>Ch 2</b></div>
+                    <div class="toc-row"><span>02. IFRS Financial Reporting</span><b>Ch 4</b></div>
+                    <div class="toc-row"><span>03. Financial Modelling</span><b>Ch 21</b></div>
+                    <div class="toc-row"><span>04. DCF Valuation</span><b>Ch 33</b></div>
+                    <div class="toc-row"><span>05. Big 4 Career Strategy</span><b>Ch 43</b></div>
+                    <button class="btn-read-inside" onclick="event.stopPropagation(); resumeReading();">Read Chapter ↗</button>
+                  </div>
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
 
-              <!-- 3D Box Edges -->
-              <div class="book-edge book-pages-right"></div>
-              <div class="book-edge book-pages-top"></div>
-              <div class="book-edge book-pages-bottom"></div>
-              <div class="book-edge book-spine"><span>FINANCE CAREER BIBLE</span></div>
-            </div>
+              <!-- BACK COVER (3D Bevels) -->
+              <ul class="hardcover_back">
+                <li></li>
+                <li>
+                  <div class="cover-back-design">
+                    <div class="back-seal">FCB</div>
+                    <p>PwC • DELOITTE • EY • KPMG</p>
+                  </div>
+                </li>
+              </ul>
+
+              <!-- 3D SPINE -->
+              <ul class="book_spine">
+                <li><span>FINANCE CAREER BIBLE</span></li>
+                <li></li>
+              </ul>
+            </figure>
+
             <div class="book-caption">
               <span>ACCA • Skills • Career</span>
               <button class="book-toggle-btn" id="bookToggleBtn" onclick="toggle3DBook()">📖 Open Book</button>

@@ -1,8 +1,8 @@
 # ACCA — Big 4 Career & Exam Masterclass
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
-[![ACCA Qualification](https://img.shields.io/badge/ACCA-13%20Papers%20Covered-10b981.svg)](#curriculum-pillars)
-[![Chapters](https://img.shields.io/badge/Curriculum-50%20Chapters%20%2B%20Appendices-34d399.svg)](#chapter-breakdown)
+[![ACCA Qualification](https://img.shields.io/badge/ACCA-13%20Papers%20Covered-10b981.svg)](#comprehensive-chapter-breakdown-5-pillars)
+[![Chapters](https://img.shields.io/badge/Curriculum-50%20Chapters%20%2B%20Appendices-34d399.svg)](#comprehensive-chapter-breakdown-5-pillars)
 [![Target Career](https://img.shields.io/badge/Target-Big%204%20(PwC%2C%20Deloitte%2C%20EY%2C%20KPMG)-f59e0b.svg)](#big-4-career-target)
 
 > **The definitive 50-chapter masterclass portal for the Association of Chartered Certified Accountants (ACCA) qualification, financial modelling, FP&A forecasting, IFRS standards, and Big 4 advisory career preparation.**
@@ -14,7 +14,9 @@
 The **ACCA Big 4 Career & Exam Masterclass** is an exhaustive, open-source educational platform engineered to take candidates from zero foundational accounting knowledge to mastering complex financial analysis, IFRS reporting, valuation models, FP&A forecasting, and Strategic Professional ACCA papers.
 
 ### 🏆 Big 4 Career Target
+
 This masterclass specifically bridges the gap between academic theory and practical corporate finance expectations, preparing candidates for technical entry and advisory positions at global accounting leaders:
+
 - **PwC** (PricewaterhouseCoopers)
 - **Deloitte**
 - **EY** (Ernst & Young)
@@ -24,7 +26,7 @@ This masterclass specifically bridges the gap between academic theory and practi
 
 ## 🎯 The 3 Core Target Pillars
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                          ACCA MASTERCLASS TARGETS                           │
 ├──────────────────────────────┬──────────────────────────────┬───────────────┤
@@ -42,7 +44,9 @@ This masterclass specifically bridges the gap between academic theory and practi
 The 50 chapters plus appendices are structured into **5 Functional Pillars**:
 
 ### Pillar 1: 📊 Financial & Accounting Core (10 Chapters)
+
 Focuses on financial statement preparation, IFRS accounting standards, revenue recognition, property valuation, inventory, consolidation, and complex reporting under SBR.
+
 - **Chapter 2**: Accounting From Zero *(FA / FR)*
 - **Chapter 3**: Financial Statements *(FA / FR)*
 - **Chapter 4**: IFRS Fundamentals *(FR)*
@@ -55,7 +59,9 @@ Focuses on financial statement preparation, IFRS accounting standards, revenue r
 - **Chapter 30**: SBR Complex Topics *(Strategic Business Reporting)*
 
 ### Pillar 2: ⚖️ Taxation & Audit Core (5 Chapters)
+
 Comprehensive coverage of tax fundamentals, corporate tax computations, audit risk models, internal controls, and advanced assurance under AAA.
+
 - **Chapter 28**: Advanced Taxation *(ATX)*
 - **Chapter 29**: Advanced Audit & Assurance *(AAA)*
 - **Chapter 34**: Audit Fundamentals *(AA)*
@@ -63,7 +69,9 @@ Comprehensive coverage of tax fundamentals, corporate tax computations, audit ri
 - **Chapter 37**: Taxation Fundamentals *(TX)*
 
 ### Pillar 3: 📈 Corporate Finance, FP&A & Strategy (13 Chapters)
+
 Deep dive into management accounting, cost control, FP&A forecasting, financial modelling, working capital, treasury, valuation, AFM, APM, and SBL strategic frameworks.
+
 - **Chapter 5**: Cost Accounting Fundamentals *(MA)*
 - **Chapter 6**: Management Accounting *(MA)*
 - **Chapter 18**: Financial Analysis *(FM)*
@@ -79,7 +87,9 @@ Deep dive into management accounting, cost control, FP&A forecasting, financial 
 - **Chapter 33**: Valuation Basics — DCF & Multiples *(AFM)*
 
 ### Pillar 4: 💼 Practical Skills & Big 4 Career Prep (10 Chapters)
+
 Real-world technical tools required for modern finance executives, tech automation, leadership, and Big 4 interview preparation.
+
 - **Chapter 39**: Excel Mastery *(Formulas, Pivot Tables, Macros)*
 - **Chapter 40**: Power BI & Dashboarding
 - **Chapter 41**: Data Analytics for Accountants
@@ -92,7 +102,9 @@ Real-world technical tools required for modern finance executives, tech automati
 - **Chapter 48**: Lifelong Learning Roadmap
 
 ### Pillar 5: 🎓 ACCA Exam Guidance & Tools (8 Chapters)
+
 Qualification mapping, exam strategy, ethics module, master formula cheat-sheet, and interactive question bank.
+
 - **Chapter 1**: Finance Industry Overview
 - **Chapter 13**: ACCA Qualification Structure
 - **Chapter 14**: Skills Level Papers Breakdown
@@ -118,11 +130,11 @@ Qualification mapping, exam strategy, ethics module, master formula cheat-sheet,
 | **7** | Audit & Assurance | AA / AAA | **3** | 29, 34, 35 |
 | **8** | Cost & Management Accounting | MA / PM | **3** | 5, 6, 24 |
 | **9** | Financial Analysis & FP&A | FM | **3** | 18, 19, 20 |
-| **10**| Taxation | TX / ATX | **2** | 28, 37 |
-| **11**| Exam Tools | Revision | **2** | 49, 50 |
-| **12**| ESG & Future of Finance | Trends | **2** | 46, 47 |
-| **13**| Corporate Law | LW | **1** | 23 |
-| **14**| Risk Management | Risk | **1** | 36 |
+| **10** | Taxation | TX / ATX | **2** | 28, 37 |
+| **11** | Exam Tools | Revision | **2** | 49, 50 |
+| **12** | ESG & Future of Finance | Trends | **2** | 46, 47 |
+| **13** | Corporate Law | LW | **1** | 23 |
+| **14** | Risk Management | Risk | **1** | 36 |
 | **TOTAL** | | | **50** | **+ Appendices** |
 
 ---
@@ -156,16 +168,21 @@ Qualification mapping, exam strategy, ethics module, master formula cheat-sheet,
 ## 🚀 Local Quick Start & Installation
 
 ### Method A: 1-Click Windows Launcher
+
 Double-click `start_reader.cmd` inside the repository directory.
 
 ### Method B: Python Local HTTP Server
+
 Run the following in your terminal inside `D:\Trinno\ACCA`:
+
 ```bash
 python -m http.server 8000
 ```
+
 Then open [http://localhost:8000](http://localhost:8000) in your web browser.
 
 ### Method C: Node / npm Serve
+
 ```bash
 npx serve . -p 8000
 ```
@@ -174,7 +191,7 @@ npx serve . -p 8000
 
 ## 📁 Repository Directory Structure
 
-```
+```text
 D:\Trinno\ACCA\
 ├── index.html                           # Master Single Page Application (SPA)
 ├── search_index.js                      # Generated Full-Text Search Index (5,327 text blocks)

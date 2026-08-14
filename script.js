@@ -1,7 +1,7 @@
 /* ==========================================================================
    FINANCE CAREER BIBLE (ACCA) — MASTERCLASS SCRIPT ENGINE
-   Interactive 3D FlipBook, Full-Text Search, In-Iframe Keyword Auto-Scroll,
-   Quiz Engine, Formula Vault, Accordion Toggles, and State Persistence.
+   Full-Text Search, In-Iframe Keyword Auto-Scroll & Highlighting, Quiz Engine,
+   Formula Vault, Accordion Toggles, and State Persistence.
    ========================================================================== */
 
 const CHAPTERS = [
@@ -16,6 +16,7 @@ const CHAPTERS = [
   { num: 12, filename: "Finance_Career_Bible_Chapter12.html", title: "Chapter 12: Interpretation of Financial Statements", pillar: "financial", cat: "Financial Analysis", time: "24 min" },
   { num: 30, filename: "Finance_Career_Bible_Chapter30.html", title: "Chapter 30: SBR Complex Topics", pillar: "financial", cat: "Strategic Business Reporting", time: "18 min" },
 
+  { num: 23, filename: "Finance_Career_Bible_Chapter23.html", title: "Chapter 23: Corporate & Business Law", pillar: "tax-audit", cat: "Corporate Law (LW)", time: "24 min" },
   { num: 28, filename: "Finance_Career_Bible_Chapter28.html", title: "Chapter 28: Advanced Taxation", pillar: "tax-audit", cat: "Taxation (ATX)", time: "22 min" },
   { num: 29, filename: "Finance_Career_Bible_Chapter29.html", title: "Chapter 29: Advanced Audit & Assurance", pillar: "tax-audit", cat: "Audit & Assurance (AAA)", time: "18 min" },
   { num: 34, filename: "Finance_Career_Bible_Chapter34.html", title: "Chapter 34: Audit Fundamentals", pillar: "tax-audit", cat: "Audit & Assurance (AA)", time: "30 min" },
@@ -34,7 +35,10 @@ const CHAPTERS = [
   { num: 26, filename: "Finance_Career_Bible_Chapter26.html", title: "Chapter 26: Advanced Financial Management", pillar: "finance-strategy", cat: "Financial Management (AFM)", time: "18 min" },
   { num: 27, filename: "Finance_Career_Bible_Chapter27.html", title: "Chapter 27: Advanced Performance Management", pillar: "finance-strategy", cat: "Performance Management (APM)", time: "18 min" },
   { num: 31, filename: "Finance_Career_Bible_Chapter31.html", title: "Chapter 31: SBL Strategic Frameworks", pillar: "finance-strategy", cat: "Strategic Business Leader", time: "20 min" },
+  { num: 32, filename: "Finance_Career_Bible_Chapter32.html", title: "Chapter 32: Organisational Behaviour & HR", pillar: "finance-strategy", cat: "Strategy & People", time: "22 min" },
   { num: 33, filename: "Finance_Career_Bible_Chapter33.html", title: "Chapter 33: Valuation Basics", pillar: "finance-strategy", cat: "Valuation", time: "35 min" },
+  { num: 36, filename: "Finance_Career_Bible_Chapter36.html", title: "Chapter 36: Risk Management", pillar: "finance-strategy", cat: "Risk Management", time: "26 min" },
+  { num: 38, filename: "Finance_Career_Bible_Chapter38.html", title: "Chapter 38: Corporate Governance", pillar: "finance-strategy", cat: "Governance", time: "24 min" },
 
   { num: 39, filename: "Finance_Career_Bible_Chapter39.html", title: "Chapter 39: Excel Mastery", pillar: "skills-career", cat: "Excel Skills", time: "28 min" },
   { num: 40, filename: "Finance_Career_Bible_Chapter40.html", title: "Chapter 40: Power BI", pillar: "skills-career", cat: "Data Analytics", time: "24 min" },
@@ -54,48 +58,34 @@ const CHAPTERS = [
   { num: 16, filename: "Finance_Career_Bible_Chapter16.html", title: "Chapter 16: Ethics & Professional Skills", pillar: "exam-tools", cat: "Exam Guidance", time: "16 min" },
   { num: 17, filename: "Finance_Career_Bible_Chapter17.html", title: "Chapter 17: ACCA Exam Strategy", pillar: "exam-tools", cat: "Exam Strategy", time: "15 min" },
   { num: 49, filename: "Finance_Career_Bible_Chapter49.html", title: "Chapter 49: Master Formula Cheat-Sheet", pillar: "exam-tools", cat: "Formula Bank", time: "40 min" },
-  { num: 50, filename: "Finance_Career_Bible_Chapter50.html", title: "Chapter 50: Practice Questions Bank", pillar: "exam-tools", cat: "Question Bank", time: "30 min" }
+  { num: 50, filename: "Finance_Career_Bible_Chapter50.html", title: "Chapter 50: Practice Questions Bank", pillar: "exam-tools", cat: "Question Bank", time: "30 min" },
+  { num: 999, filename: "Finance_Career_Bible_Appendices.html", title: "Appendices: Reference Data & Tables", pillar: "exam-tools", cat: "Reference", time: "20 min" }
 ];
 
-const FORMULAS = [
-  { paper: "FM / AFM", title: "Weighted Average Cost of Capital (WACC)", eq: "WACC = (Ke × Ve / V) + [Kd × (1 - T) × Vd / V]" },
-  { paper: "FM / AFM", title: "Capital Asset Pricing Model (CAPM)", eq: "Ke = Rf + β × (Rm - Rf)" },
-  { paper: "FR / SBR", title: "Goodwill on Acquisition (IFRS 3)", eq: "Goodwill = Consideration Transferred + NCI - Net Assets" },
-  { paper: "FR / SBR", title: "Basic Earnings Per Share (IAS 33)", eq: "EPS = (Net Profit - Pref Divs) / Weighted Avg Shares" },
-  { paper: "MA / PM", title: "Economic Order Quantity (EOQ)", eq: "EOQ = √[(2 × D × Co) / Ch]" },
-  { paper: "MA / PM", title: "Break-Even Point (Units)", eq: "Break-Even = Fixed Costs / Contribution per Unit" }
-];
-
-const QUIZ = [
-  {
-    paper: "BT — Business & Technology",
-    q: "Which analysis tool examines Political, Economic, Social, Technological, Environmental and Legal factors?",
-    opts: ["A) SWOT Analysis", "B) PESTEL Analysis", "C) Porter's Five Forces", "D) BCG Matrix"],
-    ans: 1,
-    exp: "PESTEL is specifically designed for scanning the macro-environment across these 6 factors."
-  },
-  {
-    paper: "FA — Financial Accounting",
-    q: "Under IFRS 15 Revenue Recognition, what is Step 3 of the model?",
-    opts: ["A) Identify Contract", "B) Identify Obligations", "C) Determine Transaction Price", "D) Allocate Price"],
-    ans: 2,
-    exp: "Step 3 is determining the Transaction Price."
-  }
-];
+/* FORMULAS (formulas_data.js) and QUIZ (quiz_data.js) are generated from
+   Chapters 49 and 50 by tools/extract_data.py and loaded ahead of this file. */
 
 let completedSet = new Set(JSON.parse(localStorage.getItem('acc_done_v6') || '[]'));
 let currentChIdx = 0;
 let quizIdx = 0;
 let quizScore = 0;
+let quizAnswered = 0;
 let currentSearchTerm = '';
-let pageFlipInstance = null;
+
+let formulaPaper = 'ALL';   // active Formula Vault paper filter
+let formulaQuery = '';      // active Formula Vault search text
+let quizPaper = 'ALL';      // active Practice paper filter
+let quizPool = [];          // QUIZ entries matching quizPaper
 
 function init() {
   renderPillars();
   renderTOC();
+  renderFormulaChips();
   renderFormulas();
-  loadQuiz();
-  init3DFlipBook();
+  renderQuizChips();
+  setQuizPaper('ALL');
+  initBookParallax();
+  initRoadmap();
 
   document.addEventListener('keydown', e => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -108,76 +98,37 @@ function init() {
   });
 
   const iframe = document.getElementById('readerFrame');
-  if (iframe) {
-    iframe.onload = () => {
-      if (currentSearchTerm && iframe.contentDocument) {
-        highlightTextInIframe(iframe.contentDocument, currentSearchTerm);
-      }
-    };
-  }
+  iframe.onload = () => {
+    if (currentSearchTerm && iframe.contentDocument) {
+      highlightTextInIframe(iframe.contentDocument, currentSearchTerm);
+    }
+  };
 }
 
-/* ── INTERACTIVE 3D PAGE FLIP ENGINE ── */
-function init3DFlipBook() {
-  const flipContainer = document.getElementById('flipbook');
-  if (!flipContainer || typeof St === 'undefined') return;
-
-  try {
-    pageFlipInstance = new St.PageFlip(flipContainer, {
-      width: 320,
-      height: 440,
-      size: "stretch",
-      minWidth: 260,
-      maxWidth: 380,
-      minHeight: 360,
-      maxHeight: 500,
-      maxShadowOpacity: 0.6,
-      showCover: true,
-      usePortrait: true,
-      startPage: 0,
-      mobileScrollSupport: false
-    });
-
-    pageFlipInstance.loadFromHTML(document.querySelectorAll('.my-page'));
-
-    const statusEl = document.getElementById('flipPageStatus');
-    const updateStatus = () => {
-      if (!pageFlipInstance || !statusEl) return;
-      const current = pageFlipInstance.getCurrentPageIndex() + 1;
-      const total = pageFlipInstance.getPageCount();
-      if (current === 1) {
-        statusEl.innerText = `Cover Page (1/${total})`;
-      } else {
-        statusEl.innerText = `Page ${current} of ${total}`;
-      }
-    };
-
-    pageFlipInstance.on('flip', updateStatus);
-
-    document.getElementById('btnPrevPage')?.addEventListener('click', () => {
-      pageFlipInstance?.flipPrev();
-    });
-
-    document.getElementById('btnNextPage')?.addEventListener('click', () => {
-      pageFlipInstance?.flipNext();
-    });
-  } catch (err) {
-    console.error("FlipBook init error:", err);
-  }
-}
-
-function togglePillarSection(secId) {
+function togglePillarSection(secId, headerEl) {
   const el = document.getElementById(secId);
-  if (el) el.classList.toggle('collapsed');
+  if (!el) return;
+  el.classList.toggle('collapsed');
+  if (headerEl) headerEl.setAttribute('aria-expanded', String(!el.classList.contains('collapsed')));
 }
 
 function switchTab(tabId, btn) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 
-  const targetTab = document.getElementById('tab-' + tabId);
-  if (targetTab) targetTab.classList.add('active');
+  document.getElementById('tab-' + tabId).classList.add('active');
   if (btn) btn.classList.add('active');
+
+  // Collapse the mobile menu after a jump.
+  const nav = document.getElementById('navLinks');
+  if (nav) nav.classList.remove('open');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMenu() {
+  const nav = document.getElementById('navLinks');
+  if (nav) nav.classList.toggle('open');
 }
 
 function renderPillars() {
@@ -212,29 +163,127 @@ function renderPillars() {
   });
 }
 
+/* ── FORMULA VAULT ── */
+function renderFormulaChips() {
+  const box = document.getElementById('formulaChips');
+  if (!box) return;
+
+  const papers = ['ALL', ...Array.from(new Set(FORMULAS.map(f => f.paper))).sort()];
+  box.innerHTML = '';
+
+  papers.forEach(p => {
+    const chip = document.createElement('button');
+    chip.className = 'chip' + (p === formulaPaper ? ' active' : '');
+    chip.textContent = p === 'ALL' ? `ALL (${FORMULAS.length})` : p;
+    chip.onclick = () => {
+      formulaPaper = p;
+      renderFormulaChips();
+      renderFormulas(formulaQuery);
+    };
+    box.appendChild(chip);
+  });
+}
+
 function renderFormulas(query = '') {
   const grid = document.getElementById('formulaGrid');
   if (!grid) return;
+
+  formulaQuery = query;
+  const q = query.trim().toLowerCase();
   grid.innerHTML = '';
 
-  FORMULAS.filter(f => !query || f.title.toLowerCase().includes(query.toLowerCase()) || f.paper.toLowerCase().includes(query.toLowerCase())).forEach(f => {
+  const matches = FORMULAS.filter(f => {
+    if (formulaPaper !== 'ALL' && f.paper !== formulaPaper) return false;
+    if (!q) return true;
+    return f.title.toLowerCase().includes(q)
+        || f.paper.toLowerCase().includes(q)
+        || f.eq.toLowerCase().includes(q)
+        || (f.section || '').toLowerCase().includes(q);
+  });
+
+  const counter = document.getElementById('formulaCount');
+  if (counter) {
+    counter.textContent = `${matches.length} formula${matches.length === 1 ? '' : 's'}`
+      + (formulaPaper === 'ALL' ? '' : ` · ${formulaPaper}`);
+  }
+
+  if (!matches.length) {
+    grid.innerHTML = '<div class="empty-state">No formulas match that search.</div>';
+    return;
+  }
+
+  matches.forEach(f => {
     const card = document.createElement('div');
     card.className = 'formula-card';
     card.innerHTML = `
-      <span class="formula-paper">${f.paper}</span>
-      <h3 class="formula-name">${f.title}</h3>
-      <div class="formula-eq">${f.eq}</div>
-      <button class="btn-resume" style="padding: 6px 12px; font-size: 11px; align-self: flex-end;" onclick="copyText('${f.eq}')">📋 Copy</button>
+      <span class="formula-paper">${escapeHtml(f.paper)}</span>
+      <h3 class="formula-name">${escapeHtml(f.title)}</h3>
+      <div class="formula-eq">${escapeHtml(f.eq)}</div>
+      ${f.section ? `<div class="formula-section">${escapeHtml(f.section)}</div>` : ''}
+      <button class="btn-copy" type="button">📋 Copy</button>
     `;
+
+    // Bind the handler rather than inlining the equation into an onclick
+    // attribute — a great many of these contain apostrophes and quotes.
+    const btn = card.querySelector('.btn-copy');
+    btn.addEventListener('click', () => copyFormula(f.eq, btn));
+
     grid.appendChild(card);
   });
 }
 
+function copyFormula(text, btn) {
+  copyText(text);
+  const original = btn.textContent;
+  btn.textContent = '✓ Copied';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.textContent = original;
+    btn.classList.remove('copied');
+  }, 1400);
+}
+
+/* ── PRACTICE QUIZ ── */
+function renderQuizChips() {
+  const box = document.getElementById('quizChips');
+  if (!box) return;
+
+  const codes = ['ALL', ...Array.from(new Set(QUIZ.map(q => q.code || 'ACCA')))];
+  box.innerHTML = '';
+
+  codes.forEach(code => {
+    const n = code === 'ALL' ? QUIZ.length : QUIZ.filter(q => (q.code || 'ACCA') === code).length;
+    const chip = document.createElement('button');
+    chip.className = 'chip' + (code === quizPaper ? ' active' : '');
+    chip.textContent = `${code} (${n})`;
+    chip.onclick = () => setQuizPaper(code);
+    box.appendChild(chip);
+  });
+}
+
+function setQuizPaper(code) {
+  quizPaper = code;
+  quizPool = code === 'ALL' ? QUIZ.slice() : QUIZ.filter(q => (q.code || 'ACCA') === code);
+  quizIdx = 0;
+  quizScore = 0;
+  quizAnswered = 0;
+  renderQuizChips();
+  loadQuiz();
+}
+
 function loadQuiz() {
-  const q = QUIZ[quizIdx];
   if (!document.getElementById('quizBadge')) return;
+  if (!quizPool.length) quizPool = QUIZ.slice();
+
+  const q = quizPool[quizIdx];
+  if (!q) return;
+
   document.getElementById('quizBadge').innerText = q.paper;
   document.getElementById('quizQuestion').innerText = q.q;
+  updateQuizScore();
+
+  const progress = document.getElementById('quizProgress');
+  if (progress) progress.innerText = `Question ${quizIdx + 1} of ${quizPool.length}`;
 
   const optsBox = document.getElementById('quizOptions');
   optsBox.innerHTML = '';
@@ -253,22 +302,30 @@ function answerQuiz(selected, correct, exp, btnEl) {
   const btns = document.querySelectorAll('.opt-btn');
   btns.forEach(b => b.style.pointerEvents = 'none');
 
+  quizAnswered++;
   if (selected === correct) {
     btnEl.classList.add('correct');
     quizScore++;
   } else {
     btnEl.classList.add('incorrect');
-    btns[correct].classList.add('correct');
+    if (btns[correct]) btns[correct].classList.add('correct');
   }
 
-  document.getElementById('quizScore').innerText = `Score: ${quizScore} / ${QUIZ.length}`;
+  updateQuizScore();
   const expBox = document.getElementById('quizExplanation');
   expBox.innerText = exp;
   expBox.style.display = 'block';
 }
 
+function updateQuizScore() {
+  // Score against questions actually attempted, not the whole bank.
+  const el = document.getElementById('quizScore');
+  if (el) el.innerText = `Score: ${quizScore} / ${quizAnswered}`;
+}
+
 function nextQuiz() {
-  quizIdx = (quizIdx + 1) % QUIZ.length;
+  if (!quizPool.length) return;
+  quizIdx = (quizIdx + 1) % quizPool.length;
   loadQuiz();
 }
 
@@ -337,19 +394,19 @@ function highlightTextInIframe(doc, query) {
     styleEl.id = 'search-pulse-style';
     styleEl.textContent = `
       .search-keyword-pulse {
-        background: #f59e0b !important;
-        color: #000000 !important;
+        background: #ffd93d !important;
+        color: #0a0a0f !important;
         font-weight: 800 !important;
         padding: 2px 6px !important;
         border-radius: 4px !important;
-        box-shadow: 0 0 25px rgba(245, 158, 11, 0.6) !important;
+        box-shadow: 0 0 25px rgba(255, 217, 61, .8) !important;
         animation: pulseFade 4s ease-in-out forwards !important;
         display: inline-block !important;
       }
       @keyframes pulseFade {
-        0% { background: #f59e0b; box-shadow: 0 0 25px rgba(245, 158, 11, 0.6); }
-        50% { background: #10b981; color: #000000; }
-        100% { background: rgba(16, 185, 129, 0.25); color: inherit; box-shadow: none; }
+        0%   { background: #ffd93d; box-shadow: 0 0 25px rgba(255, 217, 61, .8); }
+        50%  { background: #00d4aa; box-shadow: 0 0 20px rgba(0, 212, 170, .7); }
+        100% { background: rgba(0, 212, 170, .25); color: inherit; box-shadow: none; }
       }
     `;
     doc.head.appendChild(styleEl);
@@ -400,12 +457,12 @@ function handleFullTextSearch(query) {
 
   const q = query.trim().toLowerCase();
   if (!q || q.length < 2) {
-    resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">Type at least 2 characters to search text across all 51 chapters...</div>`;
+    resultsContainer.innerHTML = `<div class="search-placeholder">Type at least 2 characters to search text across all 51 chapters...</div>`;
     return;
   }
 
   if (typeof FULL_TEXT_INDEX === 'undefined') {
-    resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">Search index loading...</div>`;
+    resultsContainer.innerHTML = `<div class="search-placeholder">Search index loading...</div>`;
     return;
   }
 
@@ -420,7 +477,7 @@ function handleFullTextSearch(query) {
   }
 
   if (matches.length === 0) {
-    resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">No text matches found for "${query}". Try another term.</div>`;
+    resultsContainer.innerHTML = `<div class="search-placeholder">No text matches found for "${query}". Try another term.</div>`;
     return;
   }
 
@@ -448,9 +505,125 @@ function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 function copyText(txt) {
-  navigator.clipboard.writeText(txt);
-  alert('Copied to clipboard!');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).catch(() => fallbackCopy(txt));
+  } else {
+    fallbackCopy(txt);
+  }
+}
+
+/* clipboard API needs a secure context; file:// opens without one. */
+function fallbackCopy(txt) {
+  const ta = document.createElement('textarea');
+  ta.value = txt;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch (e) { /* nothing else to try */ }
+  document.body.removeChild(ta);
+}
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── HERO BOOK: MOUSE PARALLAX ──
+   Written as CSS custom properties so the tilt composes with the idle float
+   animation instead of overwriting its transform. */
+function initBookParallax() {
+  const scene = document.getElementById('bookScene');
+  const book = document.getElementById('book');
+  if (!scene || !book || prefersReducedMotion) return;
+  if (window.matchMedia('(hover: none)').matches) return;
+
+  scene.addEventListener('pointermove', e => {
+    const r = scene.getBoundingClientRect();
+    const dx = (e.clientX - r.left) / r.width - .5;
+    const dy = (e.clientY - r.top) / r.height - .5;
+    book.style.setProperty('--tilt-y', `${dx * 18}deg`);
+    book.style.setProperty('--tilt-x', `${-dy * 12}deg`);
+  });
+
+  scene.addEventListener('pointerleave', () => {
+    book.style.setProperty('--tilt-y', '0deg');
+    book.style.setProperty('--tilt-x', '0deg');
+  });
+}
+
+/* ── ROADMAP: SCROLL-DRIVEN PATH DRAW ──
+   The roadmap lives inside a tab that is display:none until selected, and an
+   IntersectionObserver never fires for a display:none subtree. So we also watch
+   the tab's class list and replay the draw whenever it becomes active. */
+function initRoadmap() {
+  const wrap = document.getElementById('roadmapWrap');
+  const path = document.getElementById('roadmapPath');
+  const tab = document.getElementById('tab-roadmap-tab');
+  if (!wrap || !path || !tab) return;
+
+  const nodes = wrap.querySelectorAll('.road-node');
+  const steps = wrap.querySelectorAll('.road-step');
+  const len = path.getTotalLength();
+
+  path.style.strokeDasharray = len;
+
+  const light = () => {
+    nodes.forEach(n => n.classList.add('lit'));
+    steps.forEach(s => s.classList.add('lit'));
+  };
+
+  if (prefersReducedMotion) {
+    path.style.strokeDashoffset = 0;
+    light();
+    return;
+  }
+
+  let timers = [];
+
+  const reset = () => {
+    timers.forEach(clearTimeout);
+    timers = [];
+    path.style.transition = 'none';
+    path.style.strokeDashoffset = len;
+    nodes.forEach(n => n.classList.remove('lit'));
+    steps.forEach(s => s.classList.remove('lit'));
+    void path.getBoundingClientRect();   // flush, so the reset actually paints
+  };
+
+  const play = () => {
+    reset();
+    path.style.transition = 'stroke-dashoffset 2.4s cubic-bezier(.22,.61,.36,1)';
+    path.style.strokeDashoffset = 0;
+
+    // Ignite each milestone as the line reaches it.
+    nodes.forEach((node, i) => {
+      timers.push(setTimeout(() => {
+        node.classList.add('lit');
+        if (steps[i]) steps[i].classList.add('lit');
+      }, 180 + i * (2400 / nodes.length)));
+    });
+  };
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) play(); });
+  }, { threshold: .35 });
+
+  io.observe(wrap);
+
+  // Replay on every visit to the tab.
+  new MutationObserver(() => {
+    if (tab.classList.contains('active')) {
+      io.unobserve(wrap);
+      io.observe(wrap);
+    }
+  }).observe(tab, { attributes: true, attributeFilter: ['class'] });
 }
 
 window.onload = init;

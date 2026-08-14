@@ -131,8 +131,10 @@ function init3DFlipBook() {
       maxWidth: 380,
       minHeight: 360,
       maxHeight: 500,
-      maxShadowOpacity: 0.5,
+      maxShadowOpacity: 0.6,
       showCover: true,
+      usePortrait: true,
+      startPage: 0,
       mobileScrollSupport: false
     });
 
@@ -143,7 +145,11 @@ function init3DFlipBook() {
       if (!pageFlipInstance || !statusEl) return;
       const current = pageFlipInstance.getCurrentPageIndex() + 1;
       const total = pageFlipInstance.getPageCount();
-      statusEl.innerText = `Page ${current} of ${total}`;
+      if (current === 1) {
+        statusEl.innerText = `Cover Page (1/${total})`;
+      } else {
+        statusEl.innerText = `Page ${current} of ${total}`;
+      }
     };
 
     pageFlipInstance.on('flip', updateStatus);
@@ -218,7 +224,7 @@ function renderFormulas(query = '') {
       <span class="formula-paper">${f.paper}</span>
       <h3 class="formula-name">${f.title}</h3>
       <div class="formula-eq">${f.eq}</div>
-      <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 11px; align-self: flex-end;" onclick="copyText('${f.eq}')">📋 Copy</button>
+      <button class="btn-resume" style="padding: 6px 12px; font-size: 11px; align-self: flex-end;" onclick="copyText('${f.eq}')">📋 Copy</button>
     `;
     grid.appendChild(card);
   });
@@ -312,7 +318,6 @@ function navChapter(dir) {
 }
 
 function closeReader() {
-  document.getElementById('readerModal').classList.remove('remove');
   document.getElementById('readerModal').classList.remove('open');
   document.getElementById('readerFrame').src = 'about:blank';
   currentSearchTerm = '';
@@ -332,19 +337,19 @@ function highlightTextInIframe(doc, query) {
     styleEl.id = 'search-pulse-style';
     styleEl.textContent = `
       .search-keyword-pulse {
-        background: #b79a5b !important;
-        color: #ffffff !important;
+        background: #f59e0b !important;
+        color: #000000 !important;
         font-weight: 800 !important;
         padding: 2px 6px !important;
-        border-radius: 2px !important;
-        box-shadow: 0 0 15px rgba(183,154,91,0.6) !important;
+        border-radius: 4px !important;
+        box-shadow: 0 0 25px rgba(245, 158, 11, 0.6) !important;
         animation: pulseFade 4s ease-in-out forwards !important;
         display: inline-block !important;
       }
       @keyframes pulseFade {
-        0% { background: #b79a5b; box-shadow: 0 0 15px rgba(183,154,91,0.6); }
-        50% { background: #0b1930; color: #ffffff; }
-        100% { background: rgba(183,154,91,0.25); color: inherit; box-shadow: none; }
+        0% { background: #f59e0b; box-shadow: 0 0 25px rgba(245, 158, 11, 0.6); }
+        50% { background: #10b981; color: #000000; }
+        100% { background: rgba(16, 185, 129, 0.25); color: inherit; box-shadow: none; }
       }
     `;
     doc.head.appendChild(styleEl);
@@ -395,12 +400,12 @@ function handleFullTextSearch(query) {
 
   const q = query.trim().toLowerCase();
   if (!q || q.length < 2) {
-    resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--muted);">Type at least 2 characters to search text across all 51 chapters...</div>`;
+    resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">Type at least 2 characters to search text across all 51 chapters...</div>`;
     return;
   }
 
   if (typeof FULL_TEXT_INDEX === 'undefined') {
-    resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--muted);">Search index loading...</div>`;
+    resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">Search index loading...</div>`;
     return;
   }
 
@@ -415,7 +420,7 @@ function handleFullTextSearch(query) {
   }
 
   if (matches.length === 0) {
-    resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--muted);">No text matches found for "${query}". Try another term.</div>`;
+    resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">No text matches found for "${query}". Try another term.</div>`;
     return;
   }
 

@@ -352,9 +352,9 @@
       border-radius: 8px;
     }
 
-    /* ── COLLAPSIBLE PILLAR SECTIONS ── */
+    /* ── COLLAPSIBLE PILLAR SECTIONS (CLOSED BY DEFAULT) ── */
     .pillar-section {
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 20px;
@@ -367,7 +367,7 @@
     }
 
     .pillar-header {
-      padding: 24px 28px;
+      padding: 22px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -395,11 +395,12 @@
     }
 
     .accordion-arrow {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
       transition: transform 0.3s ease;
     }
 
+    /* CLOSED BY DEFAULT STYLING */
     .pillar-section.collapsed .accordion-arrow {
       transform: rotate(-90deg);
     }
@@ -417,6 +418,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 20px;
+      padding-top: 8px;
     }
 
     .chapter-card {
@@ -884,8 +886,8 @@
         </div>
       </div>
 
-      <!-- COLLAPSIBLE PILLAR 1 -->
-      <section class="pillar-section" id="section-financial">
+      <!-- COLLAPSIBLE PILLAR 1 (CLOSED BY DEFAULT) -->
+      <section class="pillar-section collapsed" id="section-financial">
         <div class="pillar-header" onclick="togglePillarSection('section-financial')">
           <h2 class="pillar-title">📊 1. Financial & Accounting Core <span class="count-chip">10 Chapters</span></h2>
           <span class="accordion-arrow">▼</span>
@@ -895,8 +897,8 @@
         </div>
       </section>
 
-      <!-- COLLAPSIBLE PILLAR 2 -->
-      <section class="pillar-section" id="section-tax-audit">
+      <!-- COLLAPSIBLE PILLAR 2 (CLOSED BY DEFAULT) -->
+      <section class="pillar-section collapsed" id="section-tax-audit">
         <div class="pillar-header" onclick="togglePillarSection('section-tax-audit')">
           <h2 class="pillar-title">⚖️ 2. Taxation & Audit Core <span class="count-chip">5 Chapters</span></h2>
           <span class="accordion-arrow">▼</span>
@@ -906,8 +908,8 @@
         </div>
       </section>
 
-      <!-- COLLAPSIBLE PILLAR 3 -->
-      <section class="pillar-section" id="section-finance-strategy">
+      <!-- COLLAPSIBLE PILLAR 3 (CLOSED BY DEFAULT) -->
+      <section class="pillar-section collapsed" id="section-finance-strategy">
         <div class="pillar-header" onclick="togglePillarSection('section-finance-strategy')">
           <h2 class="pillar-title">📈 3. Corporate Finance, FP&A & Strategy <span class="count-chip">13 Chapters</span></h2>
           <span class="accordion-arrow">▼</span>
@@ -917,8 +919,8 @@
         </div>
       </section>
 
-      <!-- COLLAPSIBLE PILLAR 4 -->
-      <section class="pillar-section" id="section-skills-career">
+      <!-- COLLAPSIBLE PILLAR 4 (CLOSED BY DEFAULT) -->
+      <section class="pillar-section collapsed" id="section-skills-career">
         <div class="pillar-header" onclick="togglePillarSection('section-skills-career')">
           <h2 class="pillar-title">💼 4. Practical Skills & Big 4 Career Prep <span class="count-chip">10 Chapters</span></h2>
           <span class="accordion-arrow">▼</span>
@@ -928,8 +930,8 @@
         </div>
       </section>
 
-      <!-- COLLAPSIBLE PILLAR 5 -->
-      <section class="pillar-section" id="section-exam-tools">
+      <!-- COLLAPSIBLE PILLAR 5 (CLOSED BY DEFAULT) -->
+      <section class="pillar-section collapsed" id="section-exam-tools">
         <div class="pillar-header" onclick="togglePillarSection('section-exam-tools')">
           <h2 class="pillar-title">🎓 5. ACCA Exam Guidance & Practice Bank <span class="count-chip">8 Chapters</span></h2>
           <span class="accordion-arrow">▼</span>
@@ -1098,10 +1100,11 @@
       }
     ];
 
-    let completedSet = new Set(JSON.parse(localStorage.getItem('acc_done_v2') || '[]'));
+    let completedSet = new Set(JSON.parse(localStorage.getItem('acc_done_v4') || '[]'));
     let currentChIdx = 0;
     let quizIdx = 0;
     let quizScore = 0;
+    let currentSearchTerm = '';
 
     function init() {
       renderPillars();
@@ -1118,6 +1121,14 @@
           closeGlobalSearchModal();
         }
       });
+
+      // Bind iframe load listener for in-iframe keyword highlighting & auto-scroll
+      const iframe = document.getElementById('readerFrame');
+      iframe.onload = () => {
+        if (currentSearchTerm && iframe.contentDocument) {
+          highlightTextInIframe(iframe.contentDocument, currentSearchTerm);
+        }
+      };
     }
 
     function togglePillarSection(secId) {
@@ -1236,8 +1247,9 @@
       });
     }
 
-    function openChapterIdx(idx) {
+    function openChapterIdx(idx, searchTerm = '') {
       currentChIdx = idx;
+      currentSearchTerm = searchTerm;
       const c = CHAPTERS[idx];
 
       document.getElementById('readerTitle').innerText = c.title;
@@ -1245,19 +1257,19 @@
       document.getElementById('readerModal').classList.add('open');
 
       completedSet.add(c.filename);
-      localStorage.setItem('acc_done_v2', JSON.stringify([...completedSet]));
-      localStorage.setItem('acc_last_v2', c.filename);
+      localStorage.setItem('acc_done_v4', JSON.stringify([...completedSet]));
+      localStorage.setItem('acc_last_v4', c.filename);
       renderPillars();
       renderTOC();
     }
 
-    function openChapterFile(fn) {
+    function openChapterFile(fn, searchTerm = '') {
       const idx = CHAPTERS.findIndex(c => c.filename === fn);
-      if (idx !== -1) openChapterIdx(idx);
+      if (idx !== -1) openChapterIdx(idx, searchTerm);
     }
 
     function resumeReading() {
-      const last = localStorage.getItem('acc_last_v2') || CHAPTERS[0].filename;
+      const last = localStorage.getItem('acc_last_v4') || CHAPTERS[0].filename;
       openChapterFile(last);
     }
 
@@ -1269,11 +1281,68 @@
     function closeReader() {
       document.getElementById('readerModal').classList.remove('open');
       document.getElementById('readerFrame').src = 'about:blank';
+      currentSearchTerm = '';
     }
 
     function toggleToc() {
       const box = document.getElementById('tocBox');
       box.style.display = box.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    /* ── IN-IFRAME KEYWORD HIGHLIGHTING & AUTO-SCROLL ── */
+    function highlightTextInIframe(doc, query) {
+      if (!doc || !query) return;
+
+      if (!doc.getElementById('search-pulse-style')) {
+        const styleEl = doc.createElement('style');
+        styleEl.id = 'search-pulse-style';
+        styleEl.textContent = `
+          .search-keyword-pulse {
+            background: #f59e0b !important;
+            color: #000000 !important;
+            font-weight: 800 !important;
+            padding: 2px 6px !important;
+            border-radius: 4px !important;
+            box-shadow: 0 0 25px #f59e0b !important;
+            animation: pulseFade 4s ease-in-out forwards !important;
+            display: inline-block !important;
+          }
+          @keyframes pulseFade {
+            0% { background: #f59e0b; box-shadow: 0 0 25px #f59e0b; }
+            50% { background: #10b981; box-shadow: 0 0 20px #10b981; }
+            100% { background: rgba(16, 185, 129, 0.25); color: inherit; box-shadow: none; }
+          }
+        `;
+        doc.head.appendChild(styleEl);
+      }
+
+      const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, null, false);
+      let node;
+      const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+      let firstMatchSpan = null;
+      const nodesToReplace = [];
+
+      while (node = walker.nextNode()) {
+        if (node.parentElement && ['SCRIPT', 'STYLE', 'MARK'].includes(node.parentElement.tagName)) continue;
+        if (regex.test(node.nodeValue)) {
+          nodesToReplace.push(node);
+        }
+      }
+
+      nodesToReplace.forEach(textNode => {
+        const span = doc.createElement('span');
+        span.innerHTML = textNode.nodeValue.replace(regex, `<mark class="search-keyword-pulse">$1</mark>`);
+        textNode.parentElement.replaceChild(span, textNode);
+        if (!firstMatchSpan) {
+          firstMatchSpan = span.querySelector('.search-keyword-pulse');
+        }
+      });
+
+      if (firstMatchSpan) {
+        setTimeout(() => {
+          firstMatchSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 200);
+      }
     }
 
     /* ── FULL-TEXT GLOBAL SEARCH ENGINE ── */
@@ -1307,7 +1376,7 @@
       for (let item of FULL_TEXT_INDEX) {
         if (item.text.toLowerCase().includes(q) || item.title.toLowerCase().includes(q)) {
           matches.push(item);
-          if (matches.length >= 25) break; // cap results for speed
+          if (matches.length >= 25) break;
         }
       }
 
@@ -1321,7 +1390,7 @@
         card.className = 'search-match-card';
         card.onclick = () => {
           closeGlobalSearchModal();
-          openChapterFile(m.filename);
+          openChapterFile(m.filename, query);
         };
 
         const highlightedSnippet = m.text.replace(regex, '<mark class="search-highlight">$1</mark>');

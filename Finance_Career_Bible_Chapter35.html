@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 35: Internal Controls</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #00d4aa; --accent2: #6c63ff; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(0,212,170,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent);  border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent2); border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent); padding:14px 20px; background:rgba(0,212,170,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent); background:rgba(0,212,170,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(0,212,170,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(0,212,170,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(0,212,170,0.07),rgba(108,99,255,0.05)); border:1px solid rgba(0,212,170,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(0,212,170,0.1); border:1px solid rgba(0,212,170,0.2); color:var(--text); }
+  .tag.teal { color:var(--accent); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(0,212,170,0.09),rgba(108,99,255,0.06)); border:1px solid rgba(0,212,170,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 35</div>
+  <h1>Internal<br><span>Controls</span></h1>
+  <p class="hero-sub">How organisations protect themselves from error, fraud, and operational failure. The systems, processes, and safeguards that keep financial information reliable and assets secure — essential for ACCA, Big 4, and every finance professional.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">COSO</div><div class="stat-label">Global Framework</div></div>
+    <div class="stat"><div class="stat-num">SOX</div><div class="stat-label">USA Regulation</div></div>
+    <div class="stat"><div class="stat-num">ACCA</div><div class="stat-label">AA & P3 Core</div></div>
+    <div class="stat"><div class="stat-num">Big 4</div><div class="stat-label">Advisory Revenue</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 35 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">35.1</span>What Are Internal Controls & Why They Matter</div>
+    <div class="toc-item"><span class="toc-num">35.2</span>Objectives of Internal Controls — The Three Lines</div>
+    <div class="toc-item"><span class="toc-num">35.3</span>COSO Framework — The Global Standard for Internal Controls</div>
+    <div class="toc-item"><span class="toc-num">35.4</span>Types of Controls — Preventive, Detective, Corrective</div>
+    <div class="toc-item"><span class="toc-num">35.5</span>Control Activities — The Actual Controls in Practice</div>
+    <div class="toc-item"><span class="toc-num">35.6</span>Segregation of Duties — The Most Important Control</div>
+    <div class="toc-item"><span class="toc-num">35.7</span>IT Controls — General Controls & Application Controls</div>
+    <div class="toc-item"><span class="toc-num">35.8</span>Controls Over Key Business Cycles</div>
+    <div class="toc-item"><span class="toc-num">35.9</span>Limitations of Internal Controls</div>
+    <div class="toc-item"><span class="toc-num">35.10</span>Evaluating & Testing Internal Controls</div>
+    <div class="toc-item"><span class="toc-num">35.11</span>Reporting on Internal Controls — Management & Auditor</div>
+    <div class="toc-item"><span class="toc-num">35.12</span>Three Lines of Defence Model</div>
+    <div class="toc-item"><span class="toc-num">35.13</span>Internal Controls in India — Regulatory Requirements</div>
+    <div class="toc-item"><span class="toc-num">35.14</span>Real World Control Failures — Case Studies</div>
+    <div class="toc-item"><span class="toc-num">35.15</span>Key Takeaways, Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+  </div>
+
+  <!-- 35.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">35.1</div>
+      <div class="section-title">What Are Internal Controls & Why They Matter</div>
+    </div>
+    <p class="prose">Internal controls are the <strong>policies, procedures, systems, and processes</strong> put in place by an organisation's management and board to provide reasonable assurance that objectives are being achieved. They are the invisible infrastructure that keeps an organisation from falling into chaos, fraud, and error.</p>
+
+    <div class="quote">"Internal control is a process, effected by an entity's board of directors, management, and other personnel, designed to provide reasonable assurance regarding the achievement of objectives." — COSO Framework</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <div class="card-title">Why Internal Controls Exist</div>
+        <ul class="card-items">
+          <li>Organisations are too large for any one person to supervise everything — controls create systematic oversight</li>
+          <li>People make mistakes — controls catch errors before they become problems</li>
+          <li>Some people are dishonest — controls prevent and detect fraud and theft</li>
+          <li>Laws and regulations must be followed — controls ensure compliance</li>
+          <li>Management needs reliable information to make decisions — controls ensure data quality</li>
+          <li>Investors and lenders need to trust financial statements — controls provide that foundation of trust</li>
+        </ul>
+        <div class="card-tag">Foundation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Who is Responsible for Internal Controls?</div>
+        <ul class="card-items">
+          <li><strong>Board of Directors:</strong> Ultimate responsibility — set the tone, oversight of control environment</li>
+          <li><strong>Audit Committee:</strong> Specific oversight of financial reporting controls and internal audit function</li>
+          <li><strong>Management (CEO, CFO):</strong> Design, implement, and maintain effective controls</li>
+          <li><strong>All Employees:</strong> Follow controls in their daily work — controls only work if people actually use them</li>
+          <li><strong>Internal Audit:</strong> Independent assurance that controls are working — reports to Audit Committee</li>
+          <li><strong>External Auditor:</strong> Evaluates controls for audit purposes — not responsible for designing or maintaining them</li>
+        </ul>
+        <div class="card-tag">Responsibility</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Real Cost of Poor Internal Controls</div>
+        <ul class="card-items">
+          <li>ACFE (Association of Certified Fraud Examiners) estimates organisations lose ~5% of annual revenue to fraud — most due to weak controls</li>
+          <li>Average fraud loss per case: $1.7 million (global median)</li>
+          <li>Regulatory fines for control failures: banks fined billions globally for AML (Anti-Money Laundering) control failures</li>
+          <li>Reputational damage: once trust is lost, it takes years to rebuild — customer and investor flight</li>
+          <li>In India: IL&FS (₹91,000Cr), DHFL, PMC Bank — all involved catastrophic control failures</li>
+        </ul>
+        <div class="card-tag">Cost of Failure</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">35.2</div>
+      <div class="section-title">Objectives of Internal Controls — The Three Pillars</div>
+    </div>
+    <p class="prose">COSO defines three categories of objectives that internal controls are designed to achieve. Every control in an organisation exists to support one or more of these objectives.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">1. Financial Reporting Reliability</div>
+        <ul class="card-items">
+          <li>Ensure financial statements are accurate, complete, and prepared in accordance with IFRS/Ind AS</li>
+          <li>Prevent and detect errors and fraud in financial data</li>
+          <li>Ensure transactions are properly authorised, recorded, and reported</li>
+          <li>Examples: reconciliations, journal entry controls, period-end close controls, financial statement review</li>
+          <li>This is the primary focus of external auditors — they assess controls over financial reporting</li>
+          <li>ACCA connection: most audit questions on internal controls relate to this objective</li>
+        </ul>
+        <div class="card-tag">Financial Reporting</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">2. Operational Effectiveness & Efficiency</div>
+        <ul class="card-items">
+          <li>Ensure resources (people, money, assets) are used effectively and efficiently</li>
+          <li>Prevent waste, inefficiency, and operational errors</li>
+          <li>Examples: procurement controls (3 quotes before purchase), inventory management controls, HR controls (proper onboarding/offboarding), production quality controls</li>
+          <li>This is the primary focus of internal audit — operational audits assess efficiency</li>
+          <li>Not directly tested by external auditor — but weak operational controls increase financial misstatement risk</li>
+        </ul>
+        <div class="card-tag">Operations</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">3. Compliance with Laws & Regulations</div>
+        <ul class="card-items">
+          <li>Ensure the organisation complies with applicable laws, regulations, and internal policies</li>
+          <li>Prevent regulatory violations that could result in fines, sanctions, or licence revocation</li>
+          <li>Examples: SEBI compliance controls for listed companies, RBI compliance for banks, GST compliance controls, environmental compliance, data privacy (PDPB India)</li>
+          <li>Compliance failures can be existential — e.g. bank licence revoked due to AML failures</li>
+          <li>Compliance audit is a separate engagement type specifically testing this objective</li>
+        </ul>
+        <div class="card-tag">Compliance</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Reasonable Assurance — Not Absolute</div>
+      Internal controls provide REASONABLE assurance — not absolute certainty — that objectives will be achieved. This is because:<br><br>
+      <strong>1. Cost-Benefit:</strong> The cost of implementing a control must be proportionate to the risk it mitigates. Perfect controls for every risk would be prohibitively expensive.<br>
+      <strong>2. Human Error:</strong> Even the best-designed controls can fail if people make mistakes.<br>
+      <strong>3. Collusion:</strong> Two or more people working together can circumvent segregation of duties.<br>
+      <strong>4. Management Override:</strong> Senior management can bypass controls they themselves designed.<br>
+      <strong>5. Changing Conditions:</strong> Controls designed for yesterday's environment may not work for today's.<br><br>
+      This is the same "reasonable assurance" concept used in audit — both build on the same foundation.
+    </div>
+  </div>
+
+  <!-- 35.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">35.3</div>
+      <div class="section-title">COSO Framework — The Global Standard for Internal Controls</div>
+      <div class="section-meta">Most Important Framework</div>
+    </div>
+    <p class="prose">The <strong>Committee of Sponsoring Organizations (COSO)</strong> framework is the globally accepted standard for internal control. First published in 1992 (updated 2013), it defines internal control as consisting of five interrelated components, each of which must be present and functioning for controls to be effective.</p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">COMPONENT 1</div>
+        <div class="step-content"><strong>Control Environment — The Foundation of Everything</strong><br>
+        The control environment is the "tone at the top" — the set of standards, processes, and structures that provide the basis for carrying out internal control across the organisation. It includes: management's commitment to integrity and ethical values, board independence and oversight effectiveness, organisational structure and assignment of authority, HR policies (hiring, training, performance evaluation), commitment to competence.<br><br>
+        <strong>Why it's #1:</strong> If the control environment is weak — management is dishonest, ethics are ignored, "win at any cost" culture prevails — all other controls become ineffective. You can have the best procedures on paper, but if the culture is rotten, people won't follow them. Enron had extensive written controls — but the culture glorified rule-breaking.<br><br>
+        <strong>ACCA/Audit connection:</strong> Auditors spend significant time assessing the control environment — it directly affects their overall risk assessment and the nature of the entire audit.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">COMPONENT 2</div>
+        <div class="step-content"><strong>Risk Assessment — Identifying What Could Go Wrong</strong><br>
+        Management must identify and analyse risks that could prevent the organisation from achieving its objectives. This involves: defining objectives clearly enough to identify and assess risks, identifying risks across the entire entity (strategic, operational, financial, compliance), analysing likelihood and impact of each risk, considering how to respond (accept, avoid, reduce, share the risk), and specifically considering the risk of fraud.<br><br>
+        <strong>Key concept — Fraud Risk Assessment:</strong> Management must specifically consider risks of fraudulent financial reporting and misappropriation of assets — and design controls to address them. This is required under ISA 240 and COSO 2013.<br><br>
+        <strong>Dynamic nature:</strong> Risk assessment is not a one-time exercise. Risks change as the business environment changes — new regulations, new technology, new competitors, economic changes all create new risks that require new controls.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">COMPONENT 3</div>
+        <div class="step-content"><strong>Control Activities — The Actual Controls</strong><br>
+        Control activities are the actions established through policies and procedures that help ensure management's directives to mitigate risks to achievement of objectives are carried out. These are the specific, tangible controls people think of when they hear "internal controls" — covered in detail in Section 35.5.<br><br>
+        Types include: authorisation controls, segregation of duties, physical controls, reconciliations, performance reviews, IT application controls, and many others. Control activities occur at all levels and functions of the organisation — from board level down to individual transactions.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">COMPONENT 4</div>
+        <div class="step-content"><strong>Information & Communication — The Nervous System</strong><br>
+        For controls to work, people need accurate, timely information — and they need to be able to communicate effectively. This includes: information systems that capture and process financial and operational data reliably, communication flowing downward (policies, procedures, expectations), upward (problems, fraud concerns, control weaknesses), and laterally (between departments).<br><br>
+        <strong>Whistleblower mechanisms:</strong> Critical element — employees must have safe, confidential channels to report suspected fraud or control failures without fear of retaliation. In India, Companies Act 2013 requires listed companies to have a vigil mechanism (whistleblower policy).<br><br>
+        <strong>External communication:</strong> Communication with regulators, auditors, customers, and suppliers must also be controlled — false external communications are themselves a fraud risk.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">COMPONENT 5</div>
+        <div class="step-content"><strong>Monitoring — Checking That Controls Are Working</strong><br>
+        Controls that were effective last year may not be effective today — people leave, processes change, technology evolves. Monitoring involves ongoing assessments and periodic separate evaluations to determine whether each component of internal control is present and functioning.<br><br>
+        <strong>Ongoing monitoring:</strong> Built into normal operations — supervisory reviews, management reporting, automated exception alerts, customer complaints analysis, reconciliation reviews.<br><br>
+        <strong>Separate evaluations:</strong> Internal audit reviews, external audit, regulatory examinations, management self-assessments (control self-assessments or CSAs).<br><br>
+        <strong>Reporting deficiencies:</strong> Control deficiencies must be reported to appropriate levels of management — significant deficiencies and material weaknesses must reach the audit committee and board. External auditors must report significant deficiencies found during audit to those charged with governance (ISA 265).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">35.4</div>
+      <div class="section-title">Types of Controls — Preventive, Detective, Corrective</div>
+    </div>
+    <p class="prose">Controls can be classified by WHEN they act — before, during, or after an event. A robust control system uses all three types in combination.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">Preventive Controls — Stop It Before It Happens</div>
+        <ul class="card-items">
+          <li>Designed to PREVENT errors or fraud from occurring in the first place</li>
+          <li>Most cost-effective — catching a problem before it occurs is always cheaper than fixing it after</li>
+          <li><strong>Examples:</strong></li>
+          <li>Segregation of duties — prevents one person committing and concealing fraud</li>
+          <li>Authorisation requirements — requires approval before transaction proceeds</li>
+          <li>Access controls — prevents unauthorised people from accessing systems or assets</li>
+          <li>Input validation in IT systems — prevents invalid data being entered</li>
+          <li>Password policies — prevents unauthorised system access</li>
+          <li>Pre-employment background checks — prevents hiring of dishonest employees</li>
+        </ul>
+        <div class="card-tag">Before the Event</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Detective Controls — Find It When It Happens</div>
+        <ul class="card-items">
+          <li>Designed to DETECT errors or fraud after they have occurred</li>
+          <li>Essential because preventive controls cannot catch everything</li>
+          <li><strong>Examples:</strong></li>
+          <li>Bank reconciliations — detect discrepancies between cash book and bank statement</li>
+          <li>Supplier statement reconciliations — detect unrecorded liabilities or duplicate payments</li>
+          <li>Inventory counts — detect discrepancies between physical stock and records</li>
+          <li>Exception reports — IT system flags unusual transactions for review</li>
+          <li>Internal audit reviews — detect control failures after the fact</li>
+          <li>Variance analysis — detect differences between budget and actual</li>
+          <li>CCTV cameras — detect theft of physical assets</li>
+        </ul>
+        <div class="card-tag">During/After Event</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔧</div>
+        <div class="card-title">Corrective Controls — Fix It After Detection</div>
+        <ul class="card-items">
+          <li>Designed to CORRECT errors or recover from fraud once detected</li>
+          <li>Minimise damage after a control failure has been identified</li>
+          <li><strong>Examples:</strong></li>
+          <li>Backup and recovery systems — restore data after IT failure or cyber attack</li>
+          <li>Insurance — financial recovery after loss events</li>
+          <li>Disciplinary procedures — correct employee behaviour after policy violation</li>
+          <li>Legal action against fraudsters — recover losses, deter future fraud</li>
+          <li>Error correction journals — fix accounting errors once detected</li>
+          <li>Business continuity plans — restore operations after disaster</li>
+        </ul>
+        <div class="card-tag">After Detection</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Also Know: Manual vs Automated Controls</div>
+      <strong>Manual Controls:</strong> Performed by people — e.g. a manager reviewing and approving invoices before payment. More flexible, can use judgement, but dependent on the person being competent and honest. Can be overridden or skipped when people are busy.<br><br>
+      <strong>Automated Controls (IT Application Controls):</strong> Performed by computer systems automatically — e.g. system will not allow a purchase order to be raised above a limit without electronic approval. More consistent and reliable — doesn't depend on human discipline. But can be circumvented if IT general controls are weak (e.g. if access to change system settings is not properly controlled).<br><br>
+      <strong>Best practice:</strong> Use both — automated controls for routine, high-volume transactions; manual controls for complex, judgement-based decisions. Over-reliance on either alone creates risk.
+    </div>
+  </div>
+
+  <!-- 35.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">35.5</div>
+      <div class="section-title">Control Activities — The Actual Controls in Practice</div>
+    </div>
+    <p class="prose">Control activities are the specific policies and procedures that help ensure management directives are carried out. These are the day-to-day controls that every finance professional encounters in their work.</p>
+
+    <table class="data-table">
+      <tr><th>Control Activity</th><th>What It Is</th><th>Example in Practice</th><th>Risk It Mitigates</th></tr>
+      <tr><td>Authorisation & Approval</td><td>All significant transactions must be approved by appropriate authority before proceeding</td><td>Purchase orders above ₹1L require Finance Manager approval. Payments above ₹10L require CFO approval. New supplier onboarding requires Procurement Director sign-off.</td><td>Unauthorised or fraudulent transactions. Excessive spending. Unapproved commitments.</td></tr>
+      <tr><td>Segregation of Duties (SoD)</td><td>Different people perform different parts of a transaction — no one person can commit AND conceal fraud</td><td>Person who raises purchase order ≠ Person who approves it ≠ Person who receives goods ≠ Person who processes payment. Cashier handles cash but doesn't record receipts in the books.</td><td>Fraud and embezzlement. Errors going undetected. Single points of failure.</td></tr>
+      <tr><td>Reconciliations</td><td>Comparing two independent sets of records to identify and investigate discrepancies</td><td>Monthly bank reconciliation. Supplier statement reconciliation. Debtor ledger vs debtor control account. Inventory count vs inventory records. Payroll records vs HR records.</td><td>Undetected errors. Missing transactions. Duplicate payments. Cash theft.</td></tr>
+      <tr><td>Physical Controls</td><td>Physical safeguards over assets and records</td><td>Locked storage for cash, inventory, and valuable assets. Access cards for restricted areas. CCTV in warehouses and cash handling areas. Fireproof safes for important documents. Regular inventory counts.</td><td>Theft of physical assets. Unauthorised access. Loss or destruction of assets.</td></tr>
+      <tr><td>Performance Reviews</td><td>Management compares actual results to budgets, forecasts, prior periods, and industry benchmarks</td><td>Monthly management accounts reviewed by CFO vs budget. Gross margin analysis — flag if margin drops significantly. Revenue per employee ratio. Capex tracking vs approved budget.</td><td>Undetected financial misstatement. Operational inefficiency. Budget overruns going unnoticed.</td></tr>
+      <tr><td>Information Processing Controls</td><td>Controls over data input, processing, and output to ensure accuracy and completeness</td><td>Input validation (system rejects negative quantities). Batch totals — check total of invoices before posting equals sum of individual items. Sequence checks — missing invoice numbers flagged. Edit checks — postcode format validated.</td><td>Data entry errors. Incomplete processing. Incorrect financial records.</td></tr>
+      <tr><td>Documentation & Record Keeping</td><td>All transactions are supported by adequate documentation — creating an audit trail</td><td>All payments supported by invoice, purchase order, and goods received note (the "3-way match"). All journal entries supported by reason, authorisation, and back-up. Contracts filed and accessible. Board minutes document all key decisions.</td><td>Undetectable fraud. Inability to investigate errors. Regulatory non-compliance.</td></tr>
+    </table>
+  </div>
+
+  <!-- 35.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">35.6</div>
+      <div class="section-title">Segregation of Duties — The Most Important Control</div>
+      <div class="section-meta">Core Concept — Always Tested</div>
+    </div>
+    <p class="prose">Segregation of Duties (SoD) is arguably the single most important internal control. The principle is simple: <strong>no one person should be able to both commit a fraud AND conceal it.</strong> For any significant transaction, the key functions should be separated among different people.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">The Four Functions That Must Be Separated</div>
+      <div class="formula-row">
+        <div class="formula-name">1. Authorisation</div>
+        <div class="formula-eq">The person who APPROVES a transaction<br><span style="color:var(--muted);">e.g. Manager who approves a purchase order or payment</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">2. Custody</div>
+        <div class="formula-eq">The person who has PHYSICAL CONTROL of the asset<br><span style="color:var(--muted);">e.g. Cashier who handles cash; warehouse staff who control inventory</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">3. Recording</div>
+        <div class="formula-eq">The person who RECORDS the transaction in the books<br><span style="color:var(--muted);">e.g. Accounts payable clerk who posts invoices to the ledger</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">4. Reconciliation</div>
+        <div class="formula-eq">The person who CHECKS and RECONCILES the records<br><span style="color:var(--muted);">e.g. Finance manager who reviews bank reconciliations</span></div>
+      </div>
+    </div>
+
+    <p class="section-label">SoD in Practice — Purchases & Payables Cycle</p>
+    <div class="wide-card">
+      <h4>✅ Good Segregation vs ❌ Poor Segregation — Purchases Example</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:13px;color:var(--muted);line-height:2;">
+        <div>
+          <div style="color:var(--accent);font-family:var(--mono);font-size:10px;margin-bottom:10px;">✅ GOOD SEGREGATION</div>
+          Purchasing dept raises Purchase Order → <span style="color:var(--text);">Person A</span><br>
+          Finance Manager approves PO → <span style="color:var(--text);">Person B</span><br>
+          Warehouse receives goods, signs GRN → <span style="color:var(--text);">Person C</span><br>
+          Accounts Payable matches PO+GRN+Invoice, posts to ledger → <span style="color:var(--text);">Person D</span><br>
+          Treasury processes payment → <span style="color:var(--text);">Person E</span><br>
+          Finance Controller reconciles supplier statements → <span style="color:var(--text);">Person F</span><br><br>
+          <span style="color:var(--accent);">Result: No single person can place, approve, receive, record, pay AND reconcile a fictitious purchase.</span>
+        </div>
+        <div>
+          <div style="color:var(--accent3);font-family:var(--mono);font-size:10px;margin-bottom:10px;">❌ POOR SEGREGATION</div>
+          Same person raises PO, approves it, receives goods, posts invoice to ledger, processes payment, AND reconciles supplier statements → <span style="color:var(--accent3);">ONE PERSON does everything</span><br><br>
+          This person can:<br>
+          → Create a fictitious supplier<br>
+          → Raise a fake PO for goods never received<br>
+          → Pay the fake supplier (their own bank account)<br>
+          → Record it as a legitimate expense<br>
+          → Reconcile so it looks clean<br><br>
+          <span style="color:var(--accent3);">Result: Perfect opportunity for undetectable fraud.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">⚠️ SoD in Small Organisations — The Practical Problem</div>
+      Perfect segregation of duties requires enough staff. A company with 3 employees CANNOT fully segregate all functions — there simply aren't enough people. This is a fundamental limitation of internal controls in small businesses.<br><br>
+      <strong>Compensating controls for small organisations:</strong><br>
+      → Owner/director personally reviews ALL bank statements monthly<br>
+      → All payments above a threshold require two signatures<br>
+      → Director personally approves all new supplier additions<br>
+      → External accountant performs monthly reconciliations independently<br>
+      → Surprise cash counts by director<br><br>
+      <strong>ACCA exam tip:</strong> When a question gives a small company scenario, acknowledge that full SoD may not be possible, and recommend compensating controls instead.
+    </div>
+  </div>
+
+  <!-- 35.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">35.7</div>
+      <div class="section-title">IT Controls — General Controls & Application Controls</div>
+    </div>
+    <p class="prose">As businesses become increasingly digital, IT controls have become critical. A failure in IT controls can undermine ALL other controls — because if someone can change system settings or access unauthorized data, even the best manual controls become worthless. IT controls fall into two categories.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <div class="card-title">IT General Controls (ITGCs) — The Foundation</div>
+        <ul class="card-items">
+          <li>Controls over the IT environment that support all application controls</li>
+          <li><strong>Access Controls:</strong> Who can access which systems and data? User IDs, passwords, role-based access (people can only do what their job requires). Leavers' access removed immediately.</li>
+          <li><strong>Change Management:</strong> All changes to IT systems must go through a formal change process — tested in a separate environment before live deployment. Prevents unauthorised system changes.</li>
+          <li><strong>Operations Controls:</strong> Systems availability, job scheduling, monitoring of system performance, incident management.</li>
+          <li><strong>Backup & Recovery:</strong> Regular backups of all data. Tested recovery procedures. Off-site backup storage. Business continuity plan for IT failure.</li>
+          <li><strong>Physical Security:</strong> Data centres physically secured. Access restricted. Environmental controls (fire, flood, temperature).</li>
+          <li><strong>Why ITGCs matter:</strong> If ITGCs are weak, application controls cannot be relied upon — auditors will not rely on any automated controls if ITGCs are poor.</li>
+        </ul>
+        <div class="card-tag">IT Environment</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">IT Application Controls — Within Each System</div>
+        <ul class="card-items">
+          <li>Automated controls built into specific applications (ERP, accounting system, payroll system)</li>
+          <li><strong>Input Controls:</strong> Validate data as it enters the system. Format checks (date must be valid date), range checks (quantity cannot be negative), completeness checks (mandatory fields), duplicate checks (same invoice cannot be posted twice).</li>
+          <li><strong>Processing Controls:</strong> Ensure data is processed completely and accurately. Batch totals, run-to-run totals, application logs.</li>
+          <li><strong>Output Controls:</strong> Ensure outputs are complete and distributed to authorised recipients only. Exception reports, control totals on reports, restricted distribution of sensitive reports.</li>
+          <li><strong>System Access Controls:</strong> Application-level access — e.g. accounts payable clerk can post invoices but cannot approve payments or change supplier bank details.</li>
+          <li><strong>Key strength:</strong> Once programmed correctly, automated controls are applied consistently every time — never tired, never distracted, never dishonest.</li>
+        </ul>
+        <div class="card-tag">Application Level</div>
+      </div>
+    </div>
+
+    <p class="section-label">Cybersecurity Controls — Modern Critical Area</p>
+    <div class="wide-card">
+      <h4>🔒 Key Cybersecurity Controls Every Finance Professional Should Know</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;">
+        <strong style="color:var(--text);">Multi-Factor Authentication (MFA):</strong> Requires two forms of identity verification — password + mobile OTP. Even if password is stolen, attacker cannot access the system without the second factor.<br><br>
+        <strong style="color:var(--text);">Encryption:</strong> Financial data encrypted at rest and in transit — even if data is stolen, it cannot be read without the encryption key.<br><br>
+        <strong style="color:var(--text);">Penetration Testing:</strong> Regular ethical hacking to find vulnerabilities before malicious hackers do.<br><br>
+        <strong style="color:var(--text);">Phishing Training:</strong> Finance staff are prime targets — training reduces risk of employees clicking malicious links or sharing credentials.<br><br>
+        <strong style="color:var(--text);">Supplier/Vendor Controls (Business Email Compromise):</strong> Fraudsters impersonate suppliers, request change of bank details. Control: always verify bank detail changes via a SEPARATE phone call to a known number — never via email alone. This single control prevents enormous fraud losses.<br><br>
+        <strong style="color:var(--text);">Incident Response Plan:</strong> What to do when a breach occurs — contain, notify, recover, investigate. Required by data protection regulations (India's PDPB, EU's GDPR).
+      </div>
+    </div>
+  </div>
+
+  <!-- 35.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">35.8</div>
+      <div class="section-title">Controls Over Key Business Cycles</div>
+    </div>
+    <p class="prose">Every business has core transaction cycles. Understanding the specific controls needed for each cycle is essential for ACCA AA exams and for practical finance roles.</p>
+
+    <table class="data-table">
+      <tr><th>Business Cycle</th><th>Key Risks</th><th>Key Controls</th></tr>
+      <tr><td>Sales & Receivables (Revenue Cycle)</td><td>Fictitious sales. Sales to uncreditworthy customers. Goods despatched but not invoiced. Revenue recognised in wrong period. Cash collected but not recorded (teeming and lading).</td><td>Credit checks before new customer approved. Credit limits in system — cannot exceed without authorisation. Sequentially numbered invoices — gaps investigated. Despatch note matched to invoice before posting. Aged receivables review — old balances escalated. Cash collected by one person, recorded by another (SoD). Bank reconciliation catches missing receipts.</td></tr>
+      <tr><td>Purchases & Payables (Expenditure Cycle)</td><td>Payments to fictitious suppliers. Duplicate payments. Payments without goods received. Goods received but not recorded as liability. Fraud by purchasing staff (kickbacks).</td><td>Approved supplier list — only pay approved suppliers. 3-way match: Purchase Order + Goods Received Note + Invoice must all agree before payment. Duplicate payment check in system. Two signatories for payments above threshold. Regular supplier statement reconciliations. Rotation of purchasing staff. Gifts/hospitality register for staff receiving benefits from suppliers.</td></tr>
+      <tr><td>Payroll Cycle</td><td>Ghost employees (paying people who don't exist). Inflated salaries. Unauthorised overtime. Payroll processed for leavers. Payroll fraud by payroll staff.</td><td>Payroll only processed for employees on authorised HR list. New starters and leavers require HR authorisation before payroll change. Independent reconciliation of payroll to headcount. Salary changes require authorised change form signed by HR director. Payroll staff ≠ HR staff (SoD). Bank transfer details changed only by Treasury, not payroll. Surprise payroll audits.</td></tr>
+      <tr><td>Inventory Cycle</td><td>Theft of inventory. Inventory recorded but doesn't exist. Obsolete inventory not written down. Inventory counted incorrectly.</td><td>Physical access controls to warehouse. Regular cycle counts and annual full inventory count. Count performed by staff independent of those who normally handle inventory. Count results compared to system records — discrepancies investigated. Write-off of damaged/obsolete stock requires management authorisation. Inventory movements recorded in real-time (perpetual inventory system).</td></tr>
+      <tr><td>Fixed Assets Cycle</td><td>Assets stolen or misappropriated. Capitalisation of revenue items. Assets not in use still being depreciated. Disposals not recorded.</td><td>Fixed asset register maintained and reconciled to physical assets. Annual physical verification of assets. Capitalisation policy documented — clear threshold (e.g. items above ₹25,000 and with useful life &gt;1 year are capitalised). Disposal requires authorisation and removal from asset register. Depreciation policy approved by Board and applied consistently.</td></tr>
+      <tr><td>Cash & Treasury Cycle</td><td>Theft of cash. Unauthorised payments. Window dressing (moving cash near year end). Fraud by treasury staff.</td><td>Bank reconciliation prepared monthly by someone independent of cash handling. All bank accounts listed and approved by CFO. New bank accounts or signatories require Board approval. Cheque signing by two authorised signatories. Electronic payments require dual authorisation. Petty cash maintained on imprest basis — counted regularly by independent person.</td></tr>
+    </table>
+  </div>
+
+  <!-- 35.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">35.9</div>
+      <div class="section-title">Limitations of Internal Controls</div>
+    </div>
+    <p class="prose">No internal control system is perfect. Understanding the limitations is as important as understanding the controls themselves — for ACCA exams and for real-world application.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">👑</div>
+        <div class="card-title">Management Override</div>
+        <ul class="card-items">
+          <li>The most dangerous limitation — senior management can bypass controls they themselves designed</li>
+          <li>Example: CFO instructs accounts team to post a journal entry without normal authorisation — overriding the journal entry control</li>
+          <li>Example: CEO pressures auditors to accept aggressive revenue recognition — overriding the financial reporting control environment</li>
+          <li>Classic fraud pattern: senior management fraud almost always involves override</li>
+          <li>Mitigation: strong, independent audit committee; external auditors sceptical of management; whistleblower mechanisms; board oversight</li>
+          <li>Cannot be fully eliminated — fundamental limitation</li>
+        </ul>
+        <div class="card-tag">Most Dangerous</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">Collusion</div>
+        <ul class="card-items">
+          <li>Two or more people working together to circumvent controls — especially segregation of duties</li>
+          <li>Example: Purchasing clerk and warehouse manager collude — purchasing clerk raises fictitious POs, warehouse manager signs fake GRNs confirming receipt of non-existent goods</li>
+          <li>Harder to detect than individual fraud — two people's stories align</li>
+          <li>Mitigation: job rotation, surprise audits, data analytics to detect unusual patterns, culture of integrity, mandatory leave policies (fraudsters often refuse leave because the fraud will be discovered)</li>
+          <li>Cannot be fully eliminated — fundamental limitation</li>
+        </ul>
+        <div class="card-tag">Two-Person Fraud</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">❌</div>
+        <div class="card-title">Human Error</div>
+        <ul class="card-items">
+          <li>Even well-designed, well-intentioned controls fail due to human mistakes</li>
+          <li>Example: Bank reconciliation prepared but reconciling items not investigated — preparer just accepts them without follow-up</li>
+          <li>Example: Authorisation control — manager approves invoice without carefully reading it (rubber-stamping)</li>
+          <li>Mitigation: training, clear procedures, supervision, automated controls where possible, culture that encourages careful checking rather than rushing</li>
+          <li>Automation reduces but doesn't eliminate human error (humans programme the systems)</li>
+        </ul>
+        <div class="card-tag">Honest Mistakes</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Cost vs Benefit</div>
+        <ul class="card-items">
+          <li>Every control has a cost — time, money, people, systems</li>
+          <li>Controls must be proportionate to the risk they mitigate</li>
+          <li>Example: requiring three sign-offs for a ₹500 stationery purchase is disproportionate — the control costs more than the potential loss</li>
+          <li>Over-controlled environments: staff spend so much time on controls they cannot do their actual work — operational inefficiency</li>
+          <li>Under-controlled environments: fraud and error flourish</li>
+          <li>Solution: risk-based approach — proportionate controls based on likelihood and impact of each risk</li>
+        </ul>
+        <div class="card-tag">Proportionality</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Changing Conditions</div>
+        <ul class="card-items">
+          <li>Controls designed for the current environment may become obsolete as conditions change</li>
+          <li>New technology creates new risks not anticipated by old controls</li>
+          <li>Business growth — controls suitable for a 50-person company may be inadequate for a 5,000-person company</li>
+          <li>New products, new markets, new regulations — all require reassessment of controls</li>
+          <li>Example: A company implements a new ERP system — all old manual controls need to be redesigned for the new system</li>
+          <li>Mitigation: regular control reviews, change management process, monitoring for control gaps</li>
+        </ul>
+        <div class="card-tag">Obsolescence</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎭</div>
+        <div class="card-title">Sophisticated Fraud</div>
+        <ul class="card-items">
+          <li>Determined, sophisticated fraudsters can design schemes specifically to circumvent controls</li>
+          <li>Example: Fraudster studies the control environment carefully, identifies gaps, and exploits them systematically</li>
+          <li>Example: Satyam — Raju specifically ensured his fraud was concealed from auditors through fabricated bank confirmations</li>
+          <li>No control system can prevent a determined, sophisticated fraudster with access and knowledge of the controls</li>
+          <li>Mitigation: rotation of staff, unpredictable audits, data analytics, culture of integrity, strong governance</li>
+        </ul>
+        <div class="card-tag">Determined Fraudster</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">35.10</div>
+      <div class="section-title">Evaluating & Testing Internal Controls</div>
+    </div>
+    <p class="prose">Both management and auditors need to evaluate whether controls are designed well and operating effectively. The process has two stages — design effectiveness and operating effectiveness.</p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">STAGE 01</div>
+        <div class="step-content"><strong>Understand and Document the Control System</strong><br>
+        Before evaluating controls, you must understand them. Methods include: narrative descriptions (written description of the process and controls), flowcharts (visual mapping of transaction flows and control points — excellent for identifying where controls exist and gaps), and Internal Control Questionnaires (ICQs — structured set of yes/no questions about specific controls). ICQs are particularly useful in ACCA exam questions — a "No" answer typically signals a control weakness.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STAGE 02</div>
+        <div class="step-content"><strong>Assess Design Effectiveness</strong><br>
+        Is the control DESIGNED to prevent or detect the relevant risk? A control can be perfectly executed but still fail if it is designed to address the wrong risk. Walk-through tests: trace one or two transactions from start to finish through the system — does the control apply at the right point? Does it address the right risk? Is the control precise enough to catch material misstatements? Design assessment is done BEFORE testing operation.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STAGE 03</div>
+        <div class="step-content"><strong>Test Operating Effectiveness — Tests of Controls</strong><br>
+        A well-designed control that is never actually followed provides no protection. Tests of controls assess whether controls are operating as designed throughout the period. Methods: Inspection (examine evidence that control operated — e.g. authorisation signature on invoices), Re-performance (auditor independently re-performs the control — e.g. re-does the bank reconciliation), Observation (watch the control being performed — limitation: behaviour may change when watched), Enquiry (ask staff about how the control operates — least reliable on its own). Sample size for tests of controls depends on frequency: daily controls require larger samples than monthly controls.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STAGE 04</div>
+        <div class="step-content"><strong>Identify Control Deficiencies</strong><br>
+        Three levels of severity: <strong>Control Deficiency</strong> — a control is missing or not operating effectively, but the likelihood and magnitude of potential misstatement is low. <strong>Significant Deficiency</strong> — more severe than a deficiency; less than a material weakness; requires prompt attention from management. <strong>Material Weakness</strong> — a deficiency or combination of deficiencies in internal control such that there is a reasonable possibility that a material misstatement will not be prevented or detected. Material weaknesses must be reported to the audit committee and (for listed companies in USA under SOX) publicly disclosed.</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 ACCA Exam Technique — Internal Control Questions</div>
+      When a question presents a scenario and asks you to identify control weaknesses and recommend improvements:<br><br>
+      <strong>Structure your answer as:</strong><br>
+      1. <strong>Weakness identified:</strong> State the control deficiency clearly — what is missing or not working<br>
+      2. <strong>Risk/implication:</strong> Explain what could go wrong as a result — what fraud or error could occur<br>
+      3. <strong>Recommendation:</strong> Suggest a specific, practical control to address the weakness<br><br>
+      Example:<br>
+      <strong>Weakness:</strong> The same employee who raises purchase orders also approves them.<br>
+      <strong>Risk:</strong> This employee could raise fictitious purchase orders for goods or services never received, approve them, and process payment to a fictitious or personally controlled supplier — resulting in misappropriation of company funds.<br>
+      <strong>Recommendation:</strong> Purchase order authorisation should be performed by a different person than the one who raises the PO — ideally the department manager or a designated approver with no access to the PO creation function. System controls should prevent the same user from both creating and approving a PO.
+    </div>
+  </div>
+
+  <!-- 35.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">35.11</div>
+      <div class="section-title">Reporting on Internal Controls</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Auditor's Report on Control Deficiencies (ISA 265)</div>
+        <ul class="card-items">
+          <li>External auditors must communicate significant deficiencies in internal control identified during audit to those charged with governance (Audit Committee)</li>
+          <li>Communication must be in writing — management letter or report to those charged with governance</li>
+          <li>Content: description of deficiency, potential effect, recommendation for remediation</li>
+          <li>Timing: communicated promptly — should not wait until audit report is issued</li>
+          <li>Minor deficiencies may be communicated to management (not necessarily to audit committee)</li>
+          <li>Follow up: in subsequent year's audit, check whether prior year deficiencies have been remediated</li>
+        </ul>
+        <div class="card-tag">ISA 265</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">SOX Section 404 — USA Listed Companies</div>
+        <ul class="card-items">
+          <li>Sarbanes-Oxley Act (2002) — USA law enacted after Enron/WorldCom scandals</li>
+          <li>Section 404: Management must assess and report on the effectiveness of internal controls over financial reporting (ICFR) in the annual report</li>
+          <li>External auditors must INDEPENDENTLY attest to management's assessment of ICFR</li>
+          <li>Any material weaknesses in ICFR must be publicly disclosed — major reputational and regulatory consequence</li>
+          <li>Applies to all US-listed companies — including large Indian companies listed on NYSE/NASDAQ (Infosys, TCS ADRs)</li>
+          <li>Cost of compliance is significant — but benefit is much stronger control environments in US-listed companies</li>
+        </ul>
+        <div class="card-tag">USA Regulation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🇮🇳</div>
+        <div class="card-title">India — ICFR Under Companies Act 2013</div>
+        <ul class="card-items">
+          <li>Section 134(5)(e) — Board must confirm in the Directors' Responsibility Statement that adequate internal financial controls (IFC) exist and are operating effectively</li>
+          <li>Section 143(3)(i) — Auditors must report whether the company has adequate IFC in place and whether they are operating effectively</li>
+          <li>Applicable to: all listed companies and large public unlisted companies</li>
+          <li>ICAI has issued Guidance Note on Audit of Internal Financial Controls — practical guidance for auditors</li>
+          <li>Introduced after IL&FS and other corporate governance failures — India's version of SOX 404 for IFC</li>
+        </ul>
+        <div class="card-tag">India IFC</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">35.12</div>
+      <div class="section-title">Three Lines of Defence Model</div>
+    </div>
+    <p class="prose">The Three Lines of Defence (now called Three Lines Model — IIA 2020) is a widely used framework for understanding how different functions within an organisation provide assurance and oversight over risks and controls.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">1️⃣</div>
+        <div class="card-title">First Line — Operational Management</div>
+        <ul class="card-items">
+          <li>The business itself — those who OWN and MANAGE risks day-to-day</li>
+          <li>Implement and maintain controls as part of normal operations</li>
+          <li>Examples: Finance team performing reconciliations, Procurement team following 3-way match process, HR team managing payroll controls, Sales team ensuring credit limits are adhered to</li>
+          <li>They are responsible for making the controls WORK in practice</li>
+          <li>First and most important line — if they don't follow controls, nothing else matters</li>
+          <li>Weakness: they may be too close to the business to identify all risks objectively</li>
+        </ul>
+        <div class="card-tag">Business Operations</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">2️⃣</div>
+        <div class="card-title">Second Line — Risk & Compliance Functions</div>
+        <ul class="card-items">
+          <li>Functions that OVERSEE and MONITOR the first line</li>
+          <li>Risk Management function — identifies, assesses, and monitors risks; ensures first line has appropriate controls</li>
+          <li>Compliance function — monitors adherence to laws, regulations, and internal policies</li>
+          <li>Financial Control / Controller function — ensures financial reporting controls are in place</li>
+          <li>IT Security function — monitors cybersecurity controls</li>
+          <li>They do NOT own the risk — that remains with the first line. They provide expertise, oversight, and challenge.</li>
+          <li>Report to senior management and board on risk and control status</li>
+        </ul>
+        <div class="card-tag">Risk & Compliance</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">3️⃣</div>
+        <div class="card-title">Third Line — Internal Audit</div>
+        <ul class="card-items">
+          <li>Provides INDEPENDENT assurance to the board and audit committee</li>
+          <li>Reviews the effectiveness of both first and second lines</li>
+          <li>Reports directly to the Audit Committee — independent of management</li>
+          <li>Cannot be directed by management to avoid certain areas — must have unrestricted access</li>
+          <li>Conducts risk-based audits — focusing on highest-risk areas</li>
+          <li>Issues audit reports with findings, recommendations, and management responses</li>
+          <li>Tracks implementation of recommendations</li>
+          <li>External auditors and regulators are sometimes called "fourth line" — entirely outside the organisation</li>
+        </ul>
+        <div class="card-tag">Internal Audit</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">35.13</div>
+      <div class="section-title">Internal Controls in India — Regulatory Requirements</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Companies Act 2013 — Key IFC Requirements</div>
+        <ul class="card-items">
+          <li>Section 134: Board must confirm adequacy of IFC in Directors' Responsibility Statement</li>
+          <li>Section 143: Auditors must opine on IFC adequacy for listed and large companies</li>
+          <li>Section 177: All listed companies must have Audit Committee with at least 3 independent directors</li>
+          <li>Section 177(9): Vigil mechanism (whistleblower policy) mandatory for listed companies and large companies</li>
+          <li>Schedule IV: Code for Independent Directors — must review and guide risk policy and ensure integrity of financial reporting</li>
+        </ul>
+        <div class="card-tag">Companies Act</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">SEBI Requirements for Listed Companies</div>
+        <ul class="card-items">
+          <li>SEBI LODR (Listing Obligations & Disclosure Requirements) 2015 — comprehensive governance requirements</li>
+          <li>Mandatory internal audit — listed companies must have internal audit function</li>
+          <li>CFO and CEO must certify adequacy of IFC in annual compliance certificate to stock exchange</li>
+          <li>Related Party Transaction controls — Board/shareholder approval required for material RPTs</li>
+          <li>Risk Management Committee mandatory for top 1,000 listed companies</li>
+          <li>Annual report must include Management Discussion & Analysis — including discussion of internal control adequacy</li>
+        </ul>
+        <div class="card-tag">SEBI LODR</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">RBI Requirements — Banks & NBFCs</div>
+        <ul class="card-items">
+          <li>RBI has most comprehensive internal control requirements in India — banks handle public money</li>
+          <li>KYC (Know Your Customer) controls — mandatory for all customer onboarding</li>
+          <li>AML (Anti-Money Laundering) controls — transaction monitoring, suspicious transaction reporting</li>
+          <li>Credit risk controls — loan appraisal, sanction, monitoring, recovery</li>
+          <li>Concurrent audit — ongoing real-time audit of high-value transactions at branches</li>
+          <li>Internal Audit: must be independent, risk-based, cover all significant activities</li>
+          <li>Cybersecurity framework — RBI has issued comprehensive circular on IT and cybersecurity controls</li>
+        </ul>
+        <div class="card-tag">Banking Controls</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">35.14</div>
+      <div class="section-title">Real World Control Failures — Case Studies</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Case</th><th>Control Failures</th><th>Lesson</th></tr>
+      <tr><td>Satyam Computer (India, 2009) ₹7,136Cr fraud</td><td>Fake cash balances — bank confirmations were fabricated. No independent verification of bank accounts. Board failed to challenge CEO Raju. Auditor PwC failed to obtain confirmations directly from banks. Collusion between Raju and key finance staff.</td><td>Bank confirmations must be obtained DIRECTLY by auditors, not through management. Independent directors must genuinely challenge promoters. Control environment failure — tone at the top was dishonest, all other controls became meaningless.</td></tr>
+      <tr><td>IL&FS (India, 2018) ₹91,000Cr default</td><td>Complex group structure used to hide debt across hundreds of SPVs. Related party lending concealed. Internal audit was ineffective — lacked independence. Rating agencies failed to downgrade despite warning signs. Multiple auditors across group failed to see the whole picture.</td><td>Complex group structures specifically designed to obscure risk. Need for group-level consolidated risk assessment. Internal audit must be truly independent — reporting to group CEO (as here) destroys independence. Auditors must look beyond their individual entity to group risks.</td></tr>
+      <tr><td>Punjab National Bank (India, 2018) ₹13,500Cr Nirav Modi fraud</td><td>Fraudulent Letters of Undertaking (LoUs) issued for years without being recorded in the core banking system. SWIFT messaging system not integrated with CBS — creating a gap that Nirav Modi exploited. Branch staff colluded with fraudsters for years. IT general controls failure — critical system not integrated.</td><td>IT systems integration is a critical control — gaps between systems create fraud opportunities. SoD failure — same branch officers processed LoUs without oversight. Management override of controls at branch level. Shows how sophisticated fraudsters exploit specific system vulnerabilities.</td></tr>
+      <tr><td>Wirecard (Germany, 2020) €1.9B missing cash</td><td>Cash balances held in "third-party acquirer" accounts that didn't exist. EY failed for YEARS to confirm these balances directly with the banks/trustees holding the funds. Management provided fake balance confirmations. Whistleblower reports ignored by management and auditor.</td><td>External confirmation of cash is fundamental — must go DIRECTLY to the bank, not through management. Whistleblower reports must be investigated — not dismissed. Auditor independence from management was compromised by long relationship and fee dependency. Professional scepticism failure — management explanations accepted without corroboration.</td></tr>
+      <tr><td>Nick Leeson / Barings Bank (UK, 1995) $1.3B</td><td>Leeson was BOTH head trader AND in charge of back-office settlement — complete absence of SoD. Created hidden "error account" (88888) to hide losses. No independent risk oversight. Management too impressed by his trading profits to ask questions.</td><td>Most famous example of SoD failure in history. The person generating profits should NEVER control the back office that settles and records those profits. Independent risk management is non-negotiable in trading. Never let profit performance stop you from asking tough control questions.</td></tr>
+    </table>
+  </div>
+
+  <!-- 35.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">35.15</div>
+      <div class="section-title">Key Takeaways, Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+    </div>
+
+    <p class="section-label">Part A — 10 Core Takeaways</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">COSO — 5 Components</div><ul class="card-items"><li>Control Environment (tone at top — most important)</li><li>Risk Assessment (identify what could go wrong)</li><li>Control Activities (the actual controls)</li><li>Information & Communication (nervous system)</li><li>Monitoring (checking controls work)</li><li>All five must be present and functioning</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Three Types of Controls</div><ul class="card-items"><li>Preventive — stop errors/fraud before they happen</li><li>Detective — identify them when they happen</li><li>Corrective — fix the damage after detection</li><li>A robust system uses ALL three</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">SoD — The Most Important Control</div><ul class="card-items"><li>Separate: Authorisation, Custody, Recording, Reconciliation</li><li>No one person can commit AND conceal fraud</li><li>Small companies: compensating controls if full SoD impossible</li><li>Most famous failures involved SoD breakdown (Barings, PNB)</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">IT Controls — Foundation of Modern Business</div><ul class="card-items"><li>ITGCs (access, change management, backup) support all application controls</li><li>If ITGCs weak → cannot rely on any automated controls</li><li>Application controls: input validation, processing controls, output controls</li><li>Cybersecurity controls — critical in digital age</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Limitations — Always Acknowledge</div><ul class="card-items"><li>Management override — most dangerous, cannot be eliminated</li><li>Collusion — two people bypass SoD</li><li>Human error — even honest people make mistakes</li><li>Cost vs benefit — controls must be proportionate</li><li>Changing conditions — controls become obsolete</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Three Lines of Defence</div><ul class="card-items"><li>1st Line: Business operations — own and manage risks</li><li>2nd Line: Risk & Compliance — oversight and monitoring</li><li>3rd Line: Internal Audit — independent assurance to board</li><li>External auditor: independent external assurance</li></ul></div>
+      <div class="card"><div class="card-icon">7️⃣</div><div class="card-title">ACCA Exam Format — Weakness + Risk + Recommendation</div><ul class="card-items"><li>Always follow: Identify weakness → Explain risk → Recommend specific control</li><li>Be specific — generic answers earn no marks</li><li>Consider direction of fraud risk (overstatement vs understatement)</li><li>Consider SoD, authorisation, physical controls, reconciliations</li></ul></div>
+      <div class="card"><div class="card-icon">8️⃣</div><div class="card-title">India Regulatory Requirements</div><ul class="card-items"><li>Companies Act: Section 134 (Board IFC statement) + Section 143 (Auditor IFC opinion)</li><li>SEBI LODR: Internal audit mandatory for listed companies</li><li>RBI: Most comprehensive controls for banks (KYC, AML, credit risk)</li><li>Vigil mechanism (whistleblower) mandatory for listed companies</li></ul></div>
+      <div class="card"><div class="card-icon">9️⃣</div><div class="card-title">Key Business Cycles + Their Controls</div><ul class="card-items"><li>Revenue: credit checks, SoD on cash, aged receivables review</li><li>Purchases: approved supplier list, 3-way match, two signatories</li><li>Payroll: HR authorised list, SoD between HR and payroll</li><li>Cash: bank reconciliation by independent person, dual authorisation</li></ul></div>
+      <div class="card"><div class="card-icon">🔟</div><div class="card-title">Control Deficiency Severity Levels</div><ul class="card-items"><li>Control Deficiency — low likelihood/magnitude</li><li>Significant Deficiency — more severe, needs prompt attention</li><li>Material Weakness — reasonable possibility of material misstatement</li><li>Material weaknesses: report to audit committee, disclosed publicly (SOX/India IFC)</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part B — Common Exam Mistakes</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">❌ MISTAKE 1</div><div class="step-content"><strong>Not Following Weakness → Risk → Recommendation Structure</strong><br>Stating only the weakness without explaining the RISK of what could go wrong earns half marks. Always complete the full structure: what is wrong, what could happen as a result, and what specific control would fix it.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 2</div><div class="step-content"><strong>Generic Recommendations ("Implement Better Controls")</strong><br>"Management should implement better controls over purchases" is not an answer. Be SPECIFIC: "A purchase order should require authorisation by a manager who did not raise the PO, before any goods can be ordered — this should be enforced at the system level to prevent bypass."</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 3</div><div class="step-content"><strong>Forgetting IT Controls</strong><br>Students focus on manual controls and forget IT controls entirely. Modern businesses are digital — IT application controls (input validation, duplicate checks, access controls) and IT general controls (change management, access management) are always relevant. Include them.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 4</div><div class="step-content"><strong>Ignoring Control Environment When Discussing Limitations</strong><br>When asked about limitations of internal controls — students list collusion and human error but forget management override and control environment weakness. If tone at the top is poor — no control will work effectively. Always include this.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 5</div><div class="step-content"><strong>Confusing Internal Audit with External Audit</strong><br>Internal audit reports to the BOARD/AUDIT COMMITTEE — not to management. External auditors can USE internal audit work but cannot DELEGATE their responsibility. Internal audit assesses controls — external audit assesses financial statements (using control evidence). These are distinct functions.</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part C — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">COSO 5 Components</div><ul class="card-items"><li><strong>C</strong>ontrol Environment</li><li><strong>R</strong>isk Assessment</li><li><strong>C</strong>ontrol Activities</li><li><strong>I</strong>nformation & Communication</li><li><strong>M</strong>onitoring</li><li>Mnemonic: <strong>"CRCIM"</strong> or just remember the order</li></ul><div class="card-tag">Flashcard 1</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">SoD — 4 Functions to Separate</div><ul class="card-items"><li><strong>A</strong>uthorisation — who approves</li><li><strong>C</strong>ustody — who holds the asset</li><li><strong>R</strong>ecording — who enters it in books</li><li><strong>R</strong>econciliation — who checks it</li><li>Mnemonic: <strong>ACRR</strong></li></ul><div class="card-tag">Flashcard 2</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">3 Lines of Defence</div><ul class="card-items"><li>1st: Business Operations (own the risk)</li><li>2nd: Risk & Compliance (monitor)</li><li>3rd: Internal Audit (independent assurance)</li><li>External: Auditors/Regulators (outside assurance)</li></ul><div class="card-tag">Flashcard 3</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">3-Way Match — Purchases Control</div><ul class="card-items"><li>Purchase Order (authorised order)</li><li>Goods Received Note (goods actually received)</li><li>Supplier Invoice (amount to be paid)</li><li>All three must MATCH before payment processed</li><li>Prevents payment for goods not received or at wrong price</li></ul><div class="card-tag">Flashcard 4</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Model Answer</th></tr>
+      <tr><td>"What is segregation of duties and why is it important?"</td><td>Segregation of duties means separating the authorisation, custody, recording, and reconciliation functions so that no single individual can both commit a fraud and conceal it. It is the most important internal control because it requires collusion between at least two people to perpetrate and conceal fraud — making it significantly harder. Classic example: the person who raises purchase orders should not also approve them, receive the goods, record the payment, or reconcile supplier statements.</td></tr>
+      <tr><td>"What is the COSO framework?"</td><td>COSO (Committee of Sponsoring Organizations) is the globally accepted framework for internal control. It defines internal control as having five interrelated components: Control Environment (tone at the top, integrity, ethics), Risk Assessment (identifying and analysing risks), Control Activities (the actual policies and procedures), Information and Communication (systems to support control), and Monitoring (ongoing assessment that controls are working). All five must be present and functioning for the control system to be effective.</td></tr>
+      <tr><td>"What are the limitations of internal controls?"</td><td>Internal controls provide reasonable, not absolute, assurance. Key limitations: management override — senior management can bypass controls they designed; collusion — two or more people can circumvent segregation of duties; human error — even well-designed controls fail when people make mistakes; cost vs benefit — not all controls are cost-effective to implement; and changing conditions — controls can become obsolete as the business and environment evolve. These limitations are why independent audit is still necessary even with strong internal controls.</td></tr>
+      <tr><td>"What is the difference between IT general controls and IT application controls?"</td><td>IT General Controls (ITGCs) are controls over the IT environment — access management, change management, operations, and backup/recovery. They support ALL systems and applications. If ITGCs are weak, no automated application control can be relied upon. IT Application Controls are built into specific systems — input validation, duplicate checks, access permissions within the application. They are more granular and transaction-specific. ITGCs are the foundation; application controls are the structure built on top.</td></tr>
+    </table>
+
+    <p class="section-label" style="margin-top:36px;">Part E — Action Steps</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 35 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ THIS WEEK: Draw the COSO framework from memory — 5 components with 2 examples each</span>
+        <span class="tag teal">✅ THIS WEEK: For any company you know — identify 3 real control weaknesses and write the full Weakness → Risk → Recommendation for each</span>
+        <span class="tag teal">✅ THIS WEEK: Map out the purchases cycle of any real company — identify where SoD exists and where it might be weak</span>
+        <span class="tag teal">✅ THIS WEEK: Read an ACCA AA past paper question on internal controls — attempt it, then mark against model answer</span>
+        <span class="tag teal">✅ THIS WEEK: Research the PNB Nirav Modi fraud — identify every specific control that failed</span>
+        <span class="tag teal">✅ THIS MONTH: Study all 6 business cycles (Revenue, Purchases, Payroll, Inventory, Fixed Assets, Cash) and memorise 3 key controls and 3 key risks for each</span>
+        <span class="tag teal">✅ THIS MONTH: Practise the Three Lines of Defence model — explain each line's role, independence, and reporting lines out loud</span>
+        <span class="tag teal">✅ THIS MONTH: Attempt 2 full ACCA AA internal controls questions under timed conditions</span>
+        <span class="tag teal">✅ THIS MONTH: Read ICAI's Guidance Note on Audit of Internal Financial Controls — understand India-specific IFC requirements</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Control Environment (Tone at Top — Culture of Integrity)<br>
+      + Segregation of Duties (No One Person Does Everything)<br>
+      + Preventive + Detective + Corrective Controls (Defence in Depth)<br>
+      + IT Controls (Automated + Manual Working Together)<br>
+      + Three Lines of Defence (Business + Risk + Internal Audit)<br>
+      + Monitoring (Controls That Aren't Checked Eventually Stop Working)<br>
+      = <strong style="color:var(--accent4);">Internal Control Excellence — The Shield Against Fraud, Error & Failure</strong>
+    </div>
+    <h3>Chapter 35: Internal Controls — Complete 🔒✅</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 36: Risk Management — how organisations identify, measure, and respond to the risks that threaten their objectives. ⚠️</p>
+  </div>
+
+</div>
+</body>
+</html>

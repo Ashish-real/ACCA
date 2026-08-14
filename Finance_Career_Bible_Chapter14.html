@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 14: Skills Level Papers</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #fb923c;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero { padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(251,146,60,0.09) 0%, transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-orange { background: rgba(251,146,60,0.2); color: var(--accent5); border: 1px solid rgba(251,146,60,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(251,146,60,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(251,146,60,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(251,146,60,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(251,146,60,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(251,146,60,0.07), rgba(255,217,61,0.05)); border: 1px solid rgba(251,146,60,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  /* PAPER PROFILE CARD */
+  .paper-profile { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 20px; }
+  .paper-profile-header { background: rgba(251,146,60,0.08); padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .paper-code-big { font-family: var(--mono); font-size: 28px; font-weight: 700; color: var(--accent5); }
+  .paper-title-block { flex: 1; }
+  .paper-full-name { font-size: 15px; font-weight: 700; color: var(--text); }
+  .paper-old-name { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .paper-stats { display: flex; gap: 16px; flex-wrap: wrap; }
+  .paper-stat { text-align: center; }
+  .paper-stat-num { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--accent2); }
+  .paper-stat-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .paper-body { padding: 18px 20px; }
+  .paper-section-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; margin-top: 14px; }
+  .paper-section-title:first-child { margin-top: 0; }
+  .syllabus-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .syllabus-tag { font-size: 11px; padding: 4px 10px; border-radius: 6px; background: rgba(108,99,255,0.1); border: 1px solid rgba(108,99,255,0.2); color: var(--text); }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(251,146,60,0.1); border: 1px solid rgba(251,146,60,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(251,146,60,0.09), rgba(255,217,61,0.06)); border: 1px solid rgba(251,146,60,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 14</div>
+  <h1>Skills Level<br><span>Papers</span></h1>
+  <p class="hero-sub">A deep dive into LW, PM, TX, FR, AA, and FM — what each paper covers, how it's structured, and exactly how to pass it on your first attempt.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Papers Covered</div></div>
+    <div class="stat"><div class="stat-num">50%</div><div class="stat-label">Pass Mark (All)</div></div>
+    <div class="stat"><div class="stat-num">3hr</div><div class="stat-label">Exam Duration</div></div>
+    <div class="stat"><div class="stat-num">CBE</div><div class="stat-label">Format</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 14 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">14.1</span>Applied Skills — The Big Picture</div>
+    <div class="toc-item"><span class="toc-num">14.2</span>LW — Corporate & Business Law</div>
+    <div class="toc-item"><span class="toc-num">14.3</span>PM — Performance Management</div>
+    <div class="toc-item"><span class="toc-num">14.4</span>TX — Taxation</div>
+    <div class="toc-item"><span class="toc-num">14.5</span>FR — Financial Reporting</div>
+    <div class="toc-item"><span class="toc-num">14.6</span>AA — Audit & Assurance</div>
+    <div class="toc-item"><span class="toc-num">14.7</span>FM — Financial Management</div>
+    <div class="toc-item"><span class="toc-num">14.8</span>Common Exam Techniques Across All Papers</div>
+    <div class="toc-item"><span class="toc-num">14.9</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">14.10</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Applied Skills is where ACCA gets serious. These six papers transform you from someone who <strong>understands</strong> accounting into someone who can <strong>apply</strong> it under exam pressure — across law, performance management, tax, reporting, audit, and corporate finance. Each paper is 3 hours (except LW at 2 hours), uses constructed-response questions, and requires a pass mark of 50%.</p>
+    <div class="quote">"Applied Skills is the bridge between knowing accounting and doing accounting. This is where most students separate themselves — through practice, not just understanding."</div>
+  </div>
+
+  <!-- 14.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">14.1</div>
+      <div class="section-title">Applied Skills — The Big Picture</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Paper</th><th>Builds On</th><th>Feeds Into</th><th>Difficulty (Student Consensus)</th></tr>
+      <tr><td>LW — Law</td><td>None (standalone)</td><td>SBL (governance context)</td><td>Moderate — memory-heavy</td></tr>
+      <tr><td>PM — Performance Mgmt</td><td>MA</td><td>APM</td><td>Hard — application-heavy</td></tr>
+      <tr><td>TX — Taxation</td><td>FA (basic)</td><td>ATX</td><td>Moderate — practice-heavy</td></tr>
+      <tr><td>FR — Financial Reporting</td><td>FA, IFRS basics</td><td>SBR</td><td>Hard — most content-heavy</td></tr>
+      <tr><td>AA — Audit & Assurance</td><td>FR (financial statements)</td><td>AAA</td><td>Moderate — conceptual</td></tr>
+      <tr><td>FM — Financial Management</td><td>MA (basic finance)</td><td>AFM</td><td>Hard — numerical + theory</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📐 Universal Exam Format</div>
+      All Applied Skills papers (except LW) follow: <strong>Section A — objective test/case questions (worth ~30%)</strong> and <strong>Section B — longer constructed-response scenarios (worth ~70%)</strong>. LW is 100% objective and case-based questions over 2 hours. Pass mark for all = 50%.
+    </div>
+  </div>
+
+  <!-- 14.2 LW -->
+  <div class="paper-profile">
+    <div class="paper-profile-header">
+      <div class="paper-code-big">LW</div>
+      <div class="paper-title-block">
+        <div class="paper-full-name">Corporate & Business Law</div>
+        <div class="paper-old-name">Previously F4</div>
+      </div>
+      <div class="paper-stats">
+        <div class="paper-stat"><div class="paper-stat-num">2hr</div><div class="paper-stat-label">Duration</div></div>
+        <div class="paper-stat"><div class="paper-stat-num">100%</div><div class="paper-stat-label">OT/Case-based</div></div>
+      </div>
+    </div>
+    <div class="paper-body">
+      <div class="paper-section-title">14.2 — What This Paper Covers</div>
+      <div class="syllabus-tags">
+        <span class="syllabus-tag">Legal systems & sources of law</span>
+        <span class="syllabus-tag">Contract law — formation, terms, breach</span>
+        <span class="syllabus-tag">Law of torts / negligence</span>
+        <span class="syllabus-tag">Employment law</span>
+        <span class="syllabus-tag">Company formation & constitution</span>
+        <span class="syllabus-tag">Share capital & financing</span>
+        <span class="syllabus-tag">Directors' duties</span>
+        <span class="syllabus-tag">Insolvency law</span>
+        <span class="syllabus-tag">Corporate governance basics</span>
+        <span class="syllabus-tag">Fraud & criminal law</span>
+      </div>
+
+      <div class="paper-section-title">Exam Tips</div>
+      <ul class="card-items" style="font-size:12px;">
+        <li>Most "memory-friendly" paper — flashcards work extremely well</li>
+        <li>Practice MCQs daily — pattern recognition is key for OT questions</li>
+        <li>Focus heavily on directors' duties and company formation — frequently tested</li>
+        <li>Note: ACCA LW has both English/UK Law and local "Alternative" variants — check which applies to your jurisdiction</li>
+        <li>Good paper to start with — builds confidence early in Applied Skills</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 14.3 PM -->
+  <div class="paper-profile">
+    <div class="paper-profile-header">
+      <div class="paper-code-big">PM</div>
+      <div class="paper-title-block">
+        <div class="paper-full-name">Performance Management</div>
+        <div class="paper-old-name">Previously F5</div>
+      </div>
+      <div class="paper-stats">
+        <div class="paper-stat"><div class="paper-stat-num">3hr</div><div class="paper-stat-label">Duration</div></div>
+        <div class="paper-stat"><div class="paper-stat-num">A+B</div><div class="paper-stat-label">Sections</div></div>
+      </div>
+    </div>
+    <div class="paper-body">
+      <div class="paper-section-title">14.3 — What This Paper Covers</div>
+      <div class="syllabus-tags">
+        <span class="syllabus-tag">Advanced costing methods (ABC, target costing, life-cycle)</span>
+        <span class="syllabus-tag">Budgeting techniques (ZBB, rolling, behavioural)</span>
+        <span class="syllabus-tag">Standard costing & advanced variances (mix & yield)</span>
+        <span class="syllabus-tag">Decision-making — relevant costs, limiting factors, CVP</span>
+        <span class="syllabus-tag">Risk & uncertainty in decision-making</span>
+        <span class="syllabus-tag">Performance measurement & control</span>
+        <span class="syllabus-tag">Divisional performance — transfer pricing</span>
+      </div>
+
+      <div class="paper-section-title">Builds On Bible Chapters</div>
+      <p style="font-size:12px;color:var(--muted);">Directly extends Chapter 5 (Cost Accounting) and Chapter 6 (Management Accounting) — especially the variance analysis, budgeting, and decision-making sections. If those chapters made sense, PM will feel like a natural progression.</p>
+
+      <div class="paper-section-title">Exam Tips</div>
+      <ul class="card-items" style="font-size:12px;">
+        <li>Most students find PM the hardest Applied Skills paper — application over memorisation</li>
+        <li>Master mix & yield variances — frequently tested and often poorly answered</li>
+        <li>Practice writing performance evaluation paragraphs — not just calculations</li>
+        <li>Risk techniques (expected value, decision trees, sensitivity analysis) — practice until automatic</li>
+        <li>Time pressure is real — practice under timed conditions from day one</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 14.4 TX -->
+  <div class="paper-profile">
+    <div class="paper-profile-header">
+      <div class="paper-code-big">TX</div>
+      <div class="paper-title-block">
+        <div class="paper-full-name">Taxation</div>
+        <div class="paper-old-name">Previously F6</div>
+      </div>
+      <div class="paper-stats">
+        <div class="paper-stat"><div class="paper-stat-num">3hr</div><div class="paper-stat-label">Duration</div></div>
+        <div class="paper-stat"><div class="paper-stat-num">A+B</div><div class="paper-stat-label">Sections</div></div>
+      </div>
+    </div>
+    <div class="paper-body">
+      <div class="paper-section-title">14.4 — What This Paper Covers</div>
+      <div class="syllabus-tags">
+        <span class="syllabus-tag">Income tax — individuals</span>
+        <span class="syllabus-tag">Corporate tax — companies</span>
+        <span class="syllabus-tag">Capital gains tax</span>
+        <span class="syllabus-tag">Inheritance tax (UK variant)</span>
+        <span class="syllabus-tag">VAT / GST</span>
+        <span class="syllabus-tag">Tax administration & compliance</span>
+        <span class="syllabus-tag">Tax planning basics</span>
+      </div>
+
+      <div class="paper-section-title">⚠️ Important — Jurisdiction Variants</div>
+      <p style="font-size:12px;color:var(--muted);">ACCA TX is offered in MULTIPLE country-specific variants (UK, Malaysia, Singapore, etc.). For Indian students, check whether your tuition provider offers a relevant variant or guidance on which tax system to study — this paper is highly jurisdiction-specific, unlike most other ACCA papers which are globally standardised.</p>
+
+      <div class="paper-section-title">Exam Tips</div>
+      <ul class="card-items" style="font-size:12px;">
+        <li>Heavily computational — practice calculations repeatedly until automatic</li>
+        <li>Tax rates and allowances change yearly — always study the CURRENT Finance Act</li>
+        <li>Pro-forma layouts for tax computations — memorise the standard format</li>
+        <li>Section A (OTQs) often tests rates/allowances — quick recall matters</li>
+        <li>This paper directly feeds into real Big 4 tax careers — relevance beyond the exam</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 14.5 FR -->
+  <div class="paper-profile">
+    <div class="paper-profile-header">
+      <div class="paper-code-big">FR</div>
+      <div class="paper-title-block">
+        <div class="paper-full-name">Financial Reporting</div>
+        <div class="paper-old-name">Previously F7</div>
+      </div>
+      <div class="paper-stats">
+        <div class="paper-stat"><div class="paper-stat-num">3hr</div><div class="paper-stat-label">Duration</div></div>
+        <div class="paper-stat"><div class="paper-stat-num">A+B</div><div class="paper-stat-label">Sections</div></div>
+      </div>
+    </div>
+    <div class="paper-body">
+      <div class="paper-section-title">14.5 — What This Paper Covers</div>
+      <div class="syllabus-tags">
+        <span class="syllabus-tag">Conceptual Framework</span>
+        <span class="syllabus-tag">All major IAS/IFRS standards in depth</span>
+        <span class="syllabus-tag">Preparation of single entity financial statements</span>
+        <span class="syllabus-tag">Consolidated financial statements (parent + 1-2 subsidiaries)</span>
+        <span class="syllabus-tag">Associates — equity method</span>
+        <span class="syllabus-tag">Statement of cash flows</span>
+        <span class="syllabus-tag">Interpretation & ratio analysis</span>
+      </div>
+
+      <div class="paper-section-title">Builds On Bible Chapters</div>
+      <p style="font-size:12px;color:var(--muted);">THE most directly connected paper to this Bible. Chapters 3 (Financial Statements), 4 (IFRS), 7 (Revenue), 8 (PPE), 9 (Inventory), 10 (Financial Instruments), 11 (Consolidation), and 12 (Interpretation) ALL map directly into FR. If you've understood those chapters, FR is "more of the same, in more depth."</p>
+
+      <div class="paper-section-title">Exam Tips</div>
+      <ul class="card-items" style="font-size:12px;">
+        <li>The single most important Applied Skills paper — foundation for SBR</li>
+        <li>Practice full consolidation questions repeatedly — they're worth significant marks</li>
+        <li>Section A often combines multiple standards in one scenario — practice integration</li>
+        <li>Always show workings — partial marks awarded even for wrong final answers</li>
+        <li>Interpretation question in Section B requires WRITTEN analysis — practice writing, not just calculating</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 14.6 AA -->
+  <div class="paper-profile">
+    <div class="paper-profile-header">
+      <div class="paper-code-big">AA</div>
+      <div class="paper-title-block">
+        <div class="paper-full-name">Audit & Assurance</div>
+        <div class="paper-old-name">Previously F8</div>
+      </div>
+      <div class="paper-stats">
+        <div class="paper-stat"><div class="paper-stat-num">3hr</div><div class="paper-stat-label">Duration</div></div>
+        <div class="paper-stat"><div class="paper-stat-num">A+B</div><div class="paper-stat-label">Sections</div></div>
+      </div>
+    </div>
+    <div class="paper-body">
+      <div class="paper-section-title">14.6 — What This Paper Covers</div>
+      <div class="syllabus-tags">
+        <span class="syllabus-tag">Audit framework & regulation</span>
+        <span class="syllabus-tag">Planning and risk assessment</span>
+        <span class="syllabus-tag">Internal control evaluation</span>
+        <span class="syllabus-tag">Audit evidence — substantive procedures</span>
+        <span class="syllabus-tag">Audit of specific items (PPE, inventory, receivables)</span>
+        <span class="syllabus-tag">Review and reporting — audit opinions</span>
+        <span class="syllabus-tag">Ethics & professional standards</span>
+      </div>
+
+      <div class="paper-section-title">Why This Matters for Your Career</div>
+      <p style="font-size:12px;color:var(--muted);">If your career plan involves the Big 4 (likely, given the roadmap in Chapter 1), AA is the most DIRECTLY practical paper — you will use these exact concepts (risk assessment, substantive procedures, internal controls) in your first weeks on an audit engagement.</p>
+
+      <div class="paper-section-title">Exam Tips</div>
+      <ul class="card-items" style="font-size:12px;">
+        <li>Practice writing audit procedures — use action verbs (inspect, recalculate, confirm, observe)</li>
+        <li>Risk identification questions: link the risk to the financial statement assertion affected</li>
+        <li>Know the audit opinion types: unmodified, qualified, adverse, disclaimer — and when each applies</li>
+        <li>This is a "less numerical, more written" paper compared to PM/FM/TX</li>
+        <li>Real-world relevance is highest here — internships will reinforce this content</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 14.7 FM -->
+  <div class="paper-profile">
+    <div class="paper-profile-header">
+      <div class="paper-code-big">FM</div>
+      <div class="paper-title-block">
+        <div class="paper-full-name">Financial Management</div>
+        <div class="paper-old-name">Previously F9</div>
+      </div>
+      <div class="paper-stats">
+        <div class="paper-stat"><div class="paper-stat-num">3hr</div><div class="paper-stat-label">Duration</div></div>
+        <div class="paper-stat"><div class="paper-stat-num">A+B</div><div class="paper-stat-label">Sections</div></div>
+      </div>
+    </div>
+    <div class="paper-body">
+      <div class="paper-section-title">14.7 — What This Paper Covers</div>
+      <div class="syllabus-tags">
+        <span class="syllabus-tag">Financial management objectives</span>
+        <span class="syllabus-tag">Working capital management</span>
+        <span class="syllabus-tag">Investment appraisal — NPV, IRR, payback</span>
+        <span class="syllabus-tag">Cost of capital — WACC, CAPM</span>
+        <span class="syllabus-tag">Sources of finance — equity, debt</span>
+        <span class="syllabus-tag">Business valuations</span>
+        <span class="syllabus-tag">Risk management — forex, interest rate</span>
+      </div>
+
+      <div class="paper-section-title">Builds On / Feeds Into</div>
+      <p style="font-size:12px;color:var(--muted);">Builds on the investment appraisal concepts touched in Chapter 6 (Management Accounting decisions). FM is the gateway to the entire "Finance & Analysis" section of this Bible — Chapters 18-23 (Financial Analysis, Ratio Analysis, Budgeting, Financial Modeling, Corporate Finance, and Valuation) all expand on FM concepts in much greater depth.</p>
+
+      <div class="paper-section-title">Exam Tips</div>
+      <ul class="card-items" style="font-size:12px;">
+        <li>NPV/IRR calculations — practice until you can do them without thinking</li>
+        <li>WACC calculation appears almost every sitting — know the formula cold</li>
+        <li>Working capital management (CCC from Chapter 12) is heavily tested</li>
+        <li>Discounting tables — understand annuity and perpetuity factors</li>
+        <li>This paper is your gateway into Corporate Finance career content — Chapter 22 of this Bible</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 14.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">14.8</div>
+      <div class="section-title">Common Exam Techniques Across All Papers</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⏱️</div>
+        <div class="card-title">Time Management</div>
+        <ul class="card-items">
+          <li>1.8 minutes per mark — calculate time allocation before starting</li>
+          <li>Don't get stuck on one question — move on and return later</li>
+          <li>Section A first (usually quicker marks) then Section B</li>
+          <li>Leave 5-10 minutes to review answers</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">✍️</div>
+        <div class="card-title">Show Your Workings</div>
+        <ul class="card-items">
+          <li>Constructed response questions award method marks</li>
+          <li>Even if final answer is wrong, workings can earn most marks</li>
+          <li>Label workings clearly — examiners need to follow your logic</li>
+          <li>Never submit just a final number with no workings</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">📖</div>
+        <div class="card-title">Read the Requirement Carefully</div>
+        <ul class="card-items">
+          <li>"Calculate AND explain" needs BOTH — don't just calculate</li>
+          <li>Note the verb: discuss, evaluate, calculate, explain — each needs different depth</li>
+          <li>Check mark allocation — a 10-mark question needs more depth than a 4-mark one</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <div class="card-title">Practice Past Papers</div>
+        <ul class="card-items">
+          <li>ACCA publishes past exams and examiner reports — free on accaglobal.com</li>
+          <li>Examiner reports reveal common student mistakes — read these!</li>
+          <li>Aim for 15-20 full past papers attempted under timed conditions</li>
+          <li>OpenTuition forums — discuss tricky questions with other students</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">14.9</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">FR is THE Cornerstone</div><ul class="card-items"><li>Most connected to this Bible's chapters</li><li>Foundation for SBR (Strategic Professional)</li><li>Invest the most time here</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">LW = Quick Win</div><ul class="card-items"><li>Memory-based, less application</li><li>Good confidence-builder early on</li><li>Check jurisdiction variant first</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">PM & FM = Application Heavy</div><ul class="card-items"><li>Numerical practice is non-negotiable</li><li>Both feed directly into career skills</li><li>Time pressure — practice timed</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">AA = Real-World Mirror</div><ul class="card-items"><li>Most directly applicable to Big 4 work</li><li>Written, not numerical</li><li>Internships reinforce this content</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">TX = Check Your Variant</div><ul class="card-items"><li>Jurisdiction-specific syllabus</li><li>Tax rates change yearly</li><li>Heavily computational</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Universal Techniques Win</div><ul class="card-items"><li>Show workings always</li><li>Read requirements carefully</li><li>Past papers + examiner reports = gold</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 14 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Download the syllabus for all 6 Applied Skills papers from accaglobal.com</span>
+        <span class="tag teal">✅ Check the TX jurisdiction variant available to you</span>
+        <span class="tag teal">✅ Pick your starting paper (LW or PM recommended) and begin tuition</span>
+        <span class="tag teal">✅ Download 2-3 past papers for your starting paper</span>
+        <span class="tag teal">✅ Read one examiner's report — note common mistakes</span>
+        <span class="tag teal">✅ Practice 1 NPV calculation and 1 variance calculation from memory</span>
+        <span class="tag teal">✅ Create a study schedule mapping all 6 papers across your B.Com years</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">14.10</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Studying TX Without Checking the Jurisdiction Variant</strong><br>
+        ACCA offers TX in multiple country-specific variants (UK, Malaysia, and others) — using generic global study material without confirming the correct variant for your registered exam can mean learning entirely wrong tax rates, reliefs, and rules.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Treating FR as "More FA" Without Adjusting Study Approach</strong><br>
+        FR requires deeper conceptual application — consolidation, complex financial instruments, interpretation — not just more computational practice of the same FA-level techniques. Students who simply repeat FA-style rote practice often underperform on FR's application-heavy questions.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Neglecting Written/Discursive Elements in Favour of Calculations</strong><br>
+        Applied Skills papers like PM, AA, and FM include substantial marks for written analysis and evaluation — not just numbers. Students who focus purely on calculation practice and skip written technique leave significant marks on the table.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Underestimating AA's Focus on Judgment Over Memorisation</strong><br>
+        Audit & Assurance heavily tests professional scepticism and judgment applied to specific scenarios — not just recall of audit procedures. Memorising a generic list of "audit procedures" without adapting them to the scenario given rarely scores well.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Leaving Past Paper Practice Too Late</strong><br>
+        Applied Skills papers are heavily technique-driven — time pressure, question interpretation, and answer structure matter as much as technical knowledge. Starting timed past paper practice only in the final week rather than throughout the study period is one of the most common reasons for missing exam technique.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Six Applied Skills Papers</div>
+        <ul class="card-items">
+          <li><strong>Q: Name all 6 Applied Skills papers.</strong></li>
+          <li>A: LW, PM, TX, FR, AA, FM</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">FR's Foundation</div>
+        <ul class="card-items">
+          <li><strong>Q: Which Applied Knowledge paper does FR build directly on?</strong></li>
+          <li>A: FA (Financial Accounting)</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Jurisdiction Variants</div>
+        <ul class="card-items">
+          <li><strong>Q: Which paper commonly has country-specific variants?</strong></li>
+          <li>A: TX (Taxation) — must study the correct jurisdiction variant</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Feeds Into Strategic Professional</div>
+        <ul class="card-items">
+          <li><strong>Q: FR and FM feed into which Strategic Professional papers?</strong></li>
+          <li>A: FR → SBR; FM → AFM</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Which Applied Skills paper did you find most challenging, and how did you approach it?"</td><td>Self-awareness and resilience under difficulty</td><td>A strong answer names a specific paper honestly (e.g. "FR was challenging because of the depth of consolidation adjustments") and describes a concrete strategy used to overcome it — such as focused practice on past paper consolidation questions, seeking a study group, or working through a specific weak area systematically — rather than a vague "I studied harder."</td></tr>
+      <tr><td>"How does the Audit & Assurance paper relate to real audit work you might do at a Big 4 firm?"</td><td>Connecting exam content to practical career relevance</td><td>AA covers the full audit cycle — planning, risk assessment, evidence gathering, and reporting — which mirrors exactly what an audit associate does on an actual engagement. The scenario-based questions specifically train the judgment needed to design audit procedures suited to a client's specific risks, which is directly transferable to real client work.</td></tr>
+      <tr><td>"What's the difference in skill focus between MA (Applied Knowledge) and PM (Applied Skills)?"</td><td>Understanding of syllabus progression and depth</td><td>MA introduces core costing and budgeting techniques computationally. PM builds on this with more complex decision-making scenarios, performance measurement in multi-product/service contexts, and — critically — requires written evaluation and judgment alongside calculations, reflecting the step up in complexity expected at Applied Skills level.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      LW (Law) + PM (Performance)<br>
+      + TX (Tax) + FR (Reporting)<br>
+      + AA (Audit) + FM (Finance)<br>
+      = <strong style="color:var(--accent4);">The Technical Core That Makes You a Real Accountant</strong>
+    </div>
+    <h3>Six papers. Six skills. One complete technical foundation.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 15: Strategic Professional Papers — SBL, SBR, and choosing your specialisation options. 🎯</p>
+  </div>
+
+</div>
+</body>
+</html>

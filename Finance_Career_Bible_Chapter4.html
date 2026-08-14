@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 4: IFRS Fundamentals</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero {
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,217,61,0.09) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent4); border: 1px solid var(--accent4); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent4), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent4); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent4); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent4); padding: 12px 20px; background: rgba(255,217,61,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent4); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent4); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent4); background: rgba(255,217,61,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(255,217,61,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent4); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(255,217,61,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(255,217,61,0.07), rgba(0,212,170,0.05)); border: 1px solid rgba(255,217,61,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent3); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent4); }
+
+  /* IFRS STANDARD PILL */
+  .std-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 12px; margin-top: 14px; }
+  .std-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s; }
+  .std-card:hover { border-color: var(--accent4); }
+  .std-num { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--accent4); margin-bottom: 4px; }
+  .std-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .std-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .std-acca { margin-top: 8px; font-family: var(--mono); font-size: 10px; color: var(--accent2); background: rgba(0,212,170,0.1); padding: 2px 8px; border-radius: 4px; display: inline-block; }
+
+  /* FRAMEWORK BOX */
+  .framework { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 14px; }
+  .framework-header { background: rgba(255,217,61,0.08); padding: 14px 20px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; }
+  .framework-row { display: grid; grid-template-columns: 180px 1fr; gap: 0; border-bottom: 1px solid rgba(42,42,58,0.4); }
+  .framework-row:last-child { border-bottom: none; }
+  .framework-key { padding: 12px 16px; font-size: 12px; font-weight: 600; color: var(--text); background: rgba(255,255,255,0.02); border-right: 1px solid var(--border); }
+  .framework-val { padding: 12px 16px; font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 28px; margin-top: 14px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, var(--accent4), var(--accent2)); border-radius: 2px; }
+  .timeline-item { position: relative; margin-bottom: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .timeline-item::before { content: ''; position: absolute; left: -24px; top: 18px; width: 10px; height: 10px; background: var(--accent4); border-radius: 50%; border: 2px solid var(--bg); }
+  .timeline-year { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .timeline-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .timeline-desc { font-size: 12px; color: var(--muted); }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(255,217,61,0.1); border: 1px solid rgba(255,217,61,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(255,217,61,0.09), rgba(108,99,255,0.07)); border: 1px solid rgba(255,217,61,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent4); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent4), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  @media (max-width: 600px) {
+    .framework-row { grid-template-columns: 1fr; }
+    .framework-key { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 4</div>
+  <h1><span>IFRS</span><br>Fundamentals</h1>
+  <p class="hero-sub">The global accounting rules that govern every financial statement in 140+ countries — and the foundation of your entire ACCA qualification.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">140+</div><div class="stat-label">Countries Using IFRS</div></div>
+    <div class="stat"><div class="stat-num">17</div><div class="stat-label">Core IFRS Standards</div></div>
+    <div class="stat"><div class="stat-num">FR+SBR</div><div class="stat-label">ACCA Papers</div></div>
+    <div class="stat"><div class="stat-num">1904</div><div class="stat-label">ACCA Founded</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 4 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">4.1</span>What is IFRS — and Why It Exists</div>
+    <div class="toc-item"><span class="toc-num">4.2</span>The Conceptual Framework</div>
+    <div class="toc-item"><span class="toc-num">4.3</span>Qualitative Characteristics of Financial Information</div>
+    <div class="toc-item"><span class="toc-num">4.4</span>IFRS vs Indian GAAP vs US GAAP</div>
+    <div class="toc-item"><span class="toc-num">4.5</span>Key IFRS Standards — The Ones You Must Know</div>
+    <div class="toc-item"><span class="toc-num">4.6</span>Recognition, Measurement & Derecognition</div>
+    <div class="toc-item"><span class="toc-num">4.7</span>Fair Value vs Historical Cost</div>
+    <div class="toc-item"><span class="toc-num">4.8</span>IFRS in India — Ind AS Connection</div>
+    <div class="toc-item"><span class="toc-num">4.9</span>IFRS & ACCA — Paper by Paper Mapping</div>
+    <div class="toc-item"><span class="toc-num">4.10</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">4.11</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">In Chapter 3, you learned how to prepare financial statements. But who decides the rules for how those statements must be prepared? The answer is <strong>IFRS — International Financial Reporting Standards</strong>. These are the global accounting rules used by over 140 countries and every major MNC in the world. ACCA is built on IFRS — understanding it is non-negotiable.</p>
+    <div class="quote">"IFRS is the common language of global finance. If you speak IFRS, you can work anywhere in the world."</div>
+  </div>
+
+  <!-- 4.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">4.1</div>
+      <div class="section-title">What is IFRS — and Why It Exists</div>
+    </div>
+    <p class="prose">Before IFRS, every country had its own accounting rules. A company's profit in Germany looked different from the same company's profit in Japan — even if the underlying business was identical. This made global investing, lending, and comparison impossible. <strong>IFRS was created to solve this problem.</strong></p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">What IFRS Is</div>
+        <ul class="card-items">
+          <li>International Financial Reporting Standards</li>
+          <li>Set by the IASB (International Accounting Standards Board)</li>
+          <li>Based in London, UK</li>
+          <li>Used in 140+ countries including India (as Ind AS)</li>
+          <li>Mandatory for listed companies in most countries</li>
+        </ul>
+        <div class="card-tag">Global Standard</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Why IFRS Was Created</div>
+        <ul class="card-items">
+          <li>Allow global comparison of financial statements</li>
+          <li>Increase transparency and reduce fraud</li>
+          <li>Make cross-border investment easier</li>
+          <li>Give investors one common language worldwide</li>
+          <li>Reduce cost of preparing multiple sets of accounts</li>
+        </ul>
+        <div class="card-tag">Standardisation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Who Sets IFRS</div>
+        <ul class="card-items">
+          <li>IASB — writes and issues the standards</li>
+          <li>IFRS Foundation — oversees IASB</li>
+          <li>IFRS Advisory Council — stakeholder input</li>
+          <li>IFRIC — interprets standards in practice</li>
+          <li>Each country's regulator adopts and enforces locally</li>
+        </ul>
+        <div class="card-tag">IASB · London</div>
+      </div>
+    </div>
+
+    <p class="section-label">Brief History of IFRS</p>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-year">1973</div><div class="timeline-title">IASC Founded</div><div class="timeline-desc">International Accounting Standards Committee (IASC) formed — the predecessor to IASB. First international standards called IAS (International Accounting Standards) begin to be issued.</div></div>
+      <div class="timeline-item"><div class="timeline-year">2001</div><div class="timeline-title">IASB Replaces IASC</div><div class="timeline-desc">IASB takes over. New standards issued from here are called IFRS. Old IAS standards are retained and still in use today (e.g. IAS 1, IAS 16, IAS 38).</div></div>
+      <div class="timeline-item"><div class="timeline-year">2005</div><div class="timeline-title">EU Adopts IFRS</div><div class="timeline-desc">All listed companies in the European Union must use IFRS. Major turning point — suddenly 7,000+ companies switch to IFRS simultaneously.</div></div>
+      <div class="timeline-item"><div class="timeline-year">2011</div><div class="timeline-title">India Announces Ind AS</div><div class="timeline-desc">India announces IFRS-converged standards called Indian Accounting Standards (Ind AS). Phased adoption begins from 2016 for large companies.</div></div>
+      <div class="timeline-item"><div class="timeline-year">2024+</div><div class="timeline-title">IFRS S1 & S2 — Sustainability</div><div class="timeline-desc">IASB launches sustainability reporting standards (IFRS S1, S2) — the future of corporate reporting. ESG disclosures becoming mandatory globally.</div></div>
+    </div>
+  </div>
+
+  <!-- 4.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">4.2</div>
+      <div class="section-title">The Conceptual Framework</div>
+      <div class="section-meta">The Constitution of Accounting</div>
+    </div>
+    <p class="prose">Before any specific standard, IFRS has a <strong>Conceptual Framework</strong> — think of it as the constitution of accounting. It sets out the objectives, concepts, and principles that guide all IFRS standards. When there is no specific standard for a situation, accountants fall back on the Framework.</p>
+
+    <div class="framework">
+      <div class="framework-header">The Conceptual Framework — Key Elements</div>
+      <div class="framework-row">
+        <div class="framework-key">Objective</div>
+        <div class="framework-val">To provide financial information that is useful to existing and potential investors, lenders, and creditors in making decisions about providing resources to an entity.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-key">Reporting Entity</div>
+        <div class="framework-val">Any entity (company, group, subsidiary) that is required or chooses to prepare financial statements in accordance with IFRS.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-key">Elements</div>
+        <div class="framework-val">Five elements of financial statements: Assets, Liabilities, Equity, Income (Revenue + Gains), Expenses (including Losses).</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-key">Recognition</div>
+        <div class="framework-val">An element is recognised in financial statements when it meets the definition AND it is probable that future economic benefits will flow AND it can be measured reliably.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-key">Measurement</div>
+        <div class="framework-val">Historical cost, fair value, current cost, or present value — the Framework identifies all bases of measurement used across IFRS standards.</div>
+      </div>
+      <div class="framework-row">
+        <div class="framework-key">Capital Maintenance</div>
+        <div class="framework-val">Profit is earned only after the capital invested has been maintained. Financial capital maintenance vs physical capital maintenance concepts.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">4.3</div>
+      <div class="section-title">Qualitative Characteristics</div>
+      <div class="section-meta">What Makes Good Financial Information</div>
+    </div>
+    <p class="prose">The Framework sets out <strong>qualitative characteristics</strong> that make financial information useful. These are tested heavily in ACCA FA and FR papers. Know them by heart.</p>
+
+    <p class="section-label">Fundamental Qualitative Characteristics</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Relevance</div>
+        <ul class="card-items">
+          <li>Information that makes a difference to decisions</li>
+          <li>Has predictive value (helps forecast future)</li>
+          <li>Has confirmatory value (confirms past decisions)</li>
+          <li>Materiality is part of relevance</li>
+          <li>Immaterial items need not be disclosed</li>
+        </ul>
+        <div class="card-tag">Fundamental</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Faithful Representation</div>
+        <ul class="card-items">
+          <li>Information must be complete — no omissions</li>
+          <li>Must be neutral — no bias</li>
+          <li>Must be free from error — no mistakes</li>
+          <li>Replaces old concept of "reliability"</li>
+          <li>Substance over form — economic reality wins</li>
+        </ul>
+        <div class="card-tag">Fundamental</div>
+      </div>
+    </div>
+
+    <p class="section-label">Enhancing Qualitative Characteristics</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Comparability</div>
+        <ul class="card-items">
+          <li>Same methods used period to period</li>
+          <li>Allows comparison across companies</li>
+          <li>Changes in policy disclosed in notes</li>
+        </ul>
+        <div class="card-tag">Enhancing</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✔️</div>
+        <div class="card-title">Verifiability</div>
+        <ul class="card-items">
+          <li>Independent observers can reach same conclusion</li>
+          <li>Auditors verify financial information</li>
+          <li>Direct or indirect verification</li>
+        </ul>
+        <div class="card-tag">Enhancing</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⏱️</div>
+        <div class="card-title">Timeliness</div>
+        <ul class="card-items">
+          <li>Available in time to influence decisions</li>
+          <li>Old information loses relevance</li>
+          <li>Annual vs quarterly reporting debate</li>
+        </ul>
+        <div class="card-tag">Enhancing</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <div class="card-title">Understandability</div>
+        <ul class="card-items">
+          <li>Clear and concise presentation</li>
+          <li>Assumes a reasonably knowledgeable user</li>
+          <li>Complex information still disclosed</li>
+        </ul>
+        <div class="card-tag">Enhancing</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">⚡ Cost Constraint</div>
+      The Framework recognises one overriding constraint: the <strong>cost of providing information must be justified by the benefits</strong>. If it costs more to report something than the value it provides to users, it need not be reported. Examiners test this in application questions.
+    </div>
+  </div>
+
+  <!-- 4.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">4.4</div>
+      <div class="section-title">IFRS vs Indian GAAP vs US GAAP</div>
+      <div class="section-meta">Know the Differences</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Feature</th><th>IFRS</th><th>Indian GAAP (old)</th><th>US GAAP</th></tr>
+      <tr><td>Set By</td><td>IASB (London)</td><td>ICAI (India)</td><td>FASB (USA)</td></tr>
+      <tr><td>Used In</td><td>140+ countries</td><td>India (pre-Ind AS era)</td><td>USA + some others</td></tr>
+      <tr><td>Principles vs Rules</td><td>Principles-based — judgment required</td><td>Rules-based</td><td>Rules-based — very detailed</td></tr>
+      <tr><td>Inventory Valuation</td><td>FIFO or Weighted Average only</td><td>FIFO, WA, or LIFO allowed</td><td>LIFO also permitted</td></tr>
+      <tr><td>Development Costs</td><td>Capitalised if criteria met (IAS 38)</td><td>Usually expensed</td><td>Mostly expensed</td></tr>
+      <tr><td>Investment Property</td><td>Fair value option available (IAS 40)</td><td>Cost model only</td><td>Cost model only</td></tr>
+      <tr><td>Revaluation of Assets</td><td>Allowed (IAS 16)</td><td>Allowed with restrictions</td><td>Not permitted — cost only</td></tr>
+      <tr><td>India Listed Companies</td><td>Ind AS (IFRS-converged) mandatory</td><td>Phased out for large companies</td><td>Not used in India</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🇮🇳 India's Position — Ind AS</div>
+      India does not use IFRS directly. Instead, India uses <strong>Indian Accounting Standards (Ind AS)</strong> — which are substantially converged with IFRS but with some carve-outs (modifications). For ACCA students: ACCA teaches pure IFRS. When you work in India, you'll apply Ind AS — but since Ind AS is ~95% the same as IFRS, your knowledge transfers directly.
+    </div>
+  </div>
+
+  <!-- 4.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">4.5</div>
+      <div class="section-title">Key IFRS Standards You Must Know</div>
+      <div class="section-meta">The ACCA Essential List</div>
+    </div>
+    <p class="prose">There are 17 active IFRS standards and 28 active IAS standards. You don't need to memorise all of them for now — but the ones below are <strong>essential for ACCA and your MNC career</strong>. Each will be covered in full detail in later chapters.</p>
+
+    <div class="std-grid">
+      <div class="std-card">
+        <div class="std-num">IAS 1</div>
+        <div class="std-name">Presentation of Financial Statements</div>
+        <div class="std-desc">Rules for how the 4 financial statements must be structured and what must be disclosed. The most foundational standard.</div>
+        <div class="std-acca">FA · FR · SBR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IAS 2</div>
+        <div class="std-name">Inventories</div>
+        <div class="std-desc">How to measure and value inventory (stock). FIFO or Weighted Average. Lower of cost and net realisable value.</div>
+        <div class="std-acca">FA · FR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IAS 7</div>
+        <div class="std-name">Statement of Cash Flows</div>
+        <div class="std-desc">Rules for preparing the cash flow statement. Direct and indirect methods. Operating, investing, financing classification.</div>
+        <div class="std-acca">FA · FR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IAS 8</div>
+        <div class="std-name">Accounting Policies, Estimates & Errors</div>
+        <div class="std-desc">How to select and apply accounting policies. How to handle changes in policies and correction of prior period errors.</div>
+        <div class="std-acca">FR · SBR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IAS 10</div>
+        <div class="std-name">Events After the Reporting Period</div>
+        <div class="std-desc">Adjusting vs non-adjusting events after year-end. What gets recorded, what gets disclosed. Dividend declared after year-end.</div>
+        <div class="std-acca">FA · FR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IAS 16</div>
+        <div class="std-name">Property, Plant & Equipment</div>
+        <div class="std-desc">How to recognise, measure, and depreciate tangible fixed assets. Cost model vs revaluation model. A major exam topic.</div>
+        <div class="std-acca">FA · FR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IAS 36</div>
+        <div class="std-name">Impairment of Assets</div>
+        <div class="std-desc">When and how to write down the value of assets. Recoverable amount = higher of fair value less costs and value in use.</div>
+        <div class="std-acca">FR · SBR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IAS 37</div>
+        <div class="std-name">Provisions, Contingent Liabilities & Assets</div>
+        <div class="std-desc">When to recognise a provision. How to disclose contingent liabilities. The recognition criteria and measurement rules.</div>
+        <div class="std-acca">FA · FR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IAS 38</div>
+        <div class="std-name">Intangible Assets</div>
+        <div class="std-desc">Recognition of patents, trademarks, development costs. Research vs development distinction. Internally generated goodwill.</div>
+        <div class="std-acca">FR · SBR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IFRS 15</div>
+        <div class="std-name">Revenue from Contracts with Customers</div>
+        <div class="std-desc">The 5-step model for recognising revenue. When to recognise, how much, and over what period. Critical for all industries.</div>
+        <div class="std-acca">FR · SBR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IFRS 16</div>
+        <div class="std-name">Leases</div>
+        <div class="std-desc">Lessee accounting — all leases on balance sheet as right-of-use assets and lease liabilities. Major change from old IAS 17.</div>
+        <div class="std-acca">FR · SBR</div>
+      </div>
+      <div class="std-card">
+        <div class="std-num">IFRS 9</div>
+        <div class="std-name">Financial Instruments</div>
+        <div class="std-desc">Classification and measurement of financial assets and liabilities. Expected credit loss model for impairment. Complex but important.</div>
+        <div class="std-acca">FR · SBR</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">4.6</div>
+      <div class="section-title">Recognition, Measurement & Derecognition</div>
+      <div class="section-meta">Three Core Concepts Across All Standards</div>
+    </div>
+    <p class="prose">Every IFRS standard addresses three fundamental questions about every item in the financial statements. Understanding these three concepts will help you apply any standard — even ones you have never studied before.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Recognition</div>
+        <ul class="card-items">
+          <li><strong>When</strong> should an item appear in the financial statements?</li>
+          <li>Must meet the definition of an element (asset, liability, etc.)</li>
+          <li>Must provide relevant information</li>
+          <li>Must be faithfully represented</li>
+          <li>Example: Recognise revenue when performance obligation satisfied</li>
+        </ul>
+        <div class="card-tag">When to include</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📏</div>
+        <div class="card-title">Measurement</div>
+        <ul class="card-items">
+          <li><strong>At what amount</strong> should an item be recorded?</li>
+          <li>Historical Cost — original purchase price</li>
+          <li>Fair Value — current market price</li>
+          <li>Net Realisable Value — selling price less costs</li>
+          <li>Present Value — discounted future cash flows</li>
+        </ul>
+        <div class="card-tag">How much</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">❌</div>
+        <div class="card-title">Derecognition</div>
+        <ul class="card-items">
+          <li><strong>When</strong> should an item be removed from the statements?</li>
+          <li>Asset: when no future economic benefits remain</li>
+          <li>Liability: when obligation is discharged or cancelled</li>
+          <li>Example: Sell equipment → derecognise the asset</li>
+          <li>Record gain or loss on derecognition</li>
+        </ul>
+        <div class="card-tag">When to remove</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">4.7</div>
+      <div class="section-title">Fair Value vs Historical Cost</div>
+      <div class="section-meta">The Great Accounting Debate</div>
+    </div>
+    <p class="prose">One of the biggest debates in accounting — and a key exam topic — is whether assets should be recorded at their <strong>original cost (historical cost)</strong> or at their <strong>current market value (fair value)</strong>. IFRS allows both, depending on the standard.</p>
+
+    <table class="data-table">
+      <tr><th>Feature</th><th>Historical Cost</th><th>Fair Value</th></tr>
+      <tr><td>Definition</td><td>Original purchase price — what you paid</td><td>Price you would receive if you sold today</td></tr>
+      <tr><td>Reliability</td><td>Very reliable — based on actual transaction</td><td>Less reliable — based on market estimates</td></tr>
+      <tr><td>Relevance</td><td>Less relevant — old price may not reflect reality</td><td>More relevant — reflects current economic value</td></tr>
+      <tr><td>Verifiability</td><td>Easy — invoice, receipt, contract</td><td>Harder — requires valuation, market data</td></tr>
+      <tr><td>Used For</td><td>PPE (cost model), inventory, most assets</td><td>Investment property, financial instruments, biological assets</td></tr>
+      <tr><td>IFRS Standard</td><td>IAS 16 (cost model), IAS 2</td><td>IFRS 13 (Fair Value Measurement), IAS 40</td></tr>
+      <tr><td>P&L Impact</td><td>Stable — depreciation is predictable</td><td>Volatile — gains/losses when values change</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 IFRS 13 — Fair Value Measurement</div>
+      IFRS 13 defines fair value as <strong>"the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date."</strong> It also introduces the Fair Value Hierarchy — Level 1 (quoted prices), Level 2 (observable inputs), Level 3 (unobservable inputs). This hierarchy determines how reliable a fair value measurement is.
+    </div>
+  </div>
+
+  <!-- 4.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">4.8</div>
+      <div class="section-title">IFRS in India — The Ind AS Connection</div>
+    </div>
+    <p class="prose">As an ACCA professional working in India, you will work with <strong>Ind AS</strong> — Indian Accounting Standards — which are the Indian version of IFRS. Understanding the connection is critical for your career.</p>
+
+    <table class="data-table">
+      <tr><th>Ind AS</th><th>Equivalent IFRS/IAS</th><th>Topic</th></tr>
+      <tr><td>Ind AS 1</td><td>IAS 1</td><td>Presentation of Financial Statements</td></tr>
+      <tr><td>Ind AS 2</td><td>IAS 2</td><td>Inventories</td></tr>
+      <tr><td>Ind AS 7</td><td>IAS 7</td><td>Statement of Cash Flows</td></tr>
+      <tr><td>Ind AS 16</td><td>IAS 16</td><td>Property, Plant & Equipment</td></tr>
+      <tr><td>Ind AS 38</td><td>IAS 38</td><td>Intangible Assets</td></tr>
+      <tr><td>Ind AS 115</td><td>IFRS 15</td><td>Revenue from Contracts with Customers</td></tr>
+      <tr><td>Ind AS 116</td><td>IFRS 16</td><td>Leases</td></tr>
+      <tr><td>Ind AS 109</td><td>IFRS 9</td><td>Financial Instruments</td></tr>
+    </table>
+
+    <div class="wide-card" style="margin-top:16px;">
+      <h4>🇮🇳 Who Must Use Ind AS in India?</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.8;">
+        <strong style="color:var(--text);">Phase 1 (2016–17):</strong> Companies with net worth ≥ ₹500 crore OR listed on stock exchanges<br>
+        <strong style="color:var(--text);">Phase 2 (2017–18):</strong> Companies with net worth ≥ ₹250 crore<br>
+        <strong style="color:var(--text);">Banks & Insurance:</strong> Separate phased timeline set by RBI/IRDAI<br>
+        <strong style="color:var(--text);">Small companies:</strong> Still use older Indian GAAP (AS standards)<br><br>
+        <span style="color:var(--accent4);">Bottom line: If you work at any Big 4 or large MNC in India, you will use Ind AS — which means your ACCA IFRS knowledge applies directly.</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- 4.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">4.9</div>
+      <div class="section-title">IFRS & ACCA — Paper by Paper Mapping</div>
+    </div>
+    <table class="data-table">
+      <tr><th>ACCA Paper</th><th>IFRS Standards Covered</th><th>Depth</th></tr>
+      <tr><td>FA (Financial Accounting)</td><td>IAS 1, IAS 2, IAS 7, IAS 10, IAS 16, IAS 37 basics</td><td>Introduction — apply basic standards</td></tr>
+      <tr><td>FR (Financial Reporting)</td><td>All major IAS + IFRS 15, IFRS 16, IFRS 9, IAS 36, IAS 38</td><td>Deep — prepare full financial statements under IFRS</td></tr>
+      <tr><td>SBR (Strategic Business Reporting)</td><td>All FR standards + sustainability reporting, group accounts</td><td>Expert — advise on complex accounting issues</td></tr>
+      <tr><td>AA (Audit & Assurance)</td><td>IFRS as the framework being audited</td><td>Auditing IFRS financial statements</td></tr>
+      <tr><td>AFM (Advanced Financial Management)</td><td>IFRS 9 (financial instruments), fair value concepts</td><td>Application in treasury and risk management</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🗓️ Your IFRS Learning Journey</div>
+      <strong>Now (Foundation):</strong> Understand what IFRS is, why it exists, the Framework, and the key standards by name<br>
+      <strong>FA Paper:</strong> Apply basic standards — IAS 1, IAS 2, IAS 16 in simple scenarios<br>
+      <strong>FR Paper:</strong> Deep dive into all major standards, prepare complete IFRS financial statements<br>
+      <strong>SBR Paper:</strong> Advise clients on complex IFRS issues, handle group accounting
+    </div>
+  </div>
+
+  <!-- 4.10 TAKEAWAYS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">4.10</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">IFRS = Global Language</div><ul class="card-items"><li>140+ countries, every major MNC</li><li>Set by IASB in London</li><li>ACCA is built entirely on IFRS</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Framework First</div><ul class="card-items"><li>The Conceptual Framework is the constitution</li><li>When no standard applies, use the Framework</li><li>Objective: useful information for decision-makers</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Two Fundamental Characteristics</div><ul class="card-items"><li>Relevance + Faithful Representation</li><li>Four enhancing: Comparability, Verifiability, Timeliness, Understandability</li><li>Cost is the constraint</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Know the Key Standards by Name</div><ul class="card-items"><li>IAS 1, IAS 2, IAS 7, IAS 16, IAS 38</li><li>IFRS 15, IFRS 16, IFRS 9</li><li>Learn what each one covers</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">India Uses Ind AS</div><ul class="card-items"><li>IFRS-converged, ~95% the same</li><li>Your ACCA knowledge transfers directly</li><li>Mandatory for all listed companies</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Fair Value vs Historical Cost</div><ul class="card-items"><li>Both used in IFRS — depends on the standard</li><li>Fair value = relevant but less reliable</li><li>Historical cost = reliable but less relevant</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 4 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Visit ifrs.org — explore the standards library</span>
+        <span class="tag teal">✅ Write down all 12 key standards from memory with their topics</span>
+        <span class="tag teal">✅ Read IAS 1 summary on OpenTuition — 15 minutes</span>
+        <span class="tag teal">✅ List the 2 fundamental + 4 enhancing qualitative characteristics</span>
+        <span class="tag teal">✅ Find Ind AS section on MCA website — see what India uses</span>
+        <span class="tag teal">✅ Explain Fair Value vs Historical Cost to yourself in simple words</span>
+        <span class="tag teal">✅ Download ACCA FR paper syllabus — map standards to topics</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">4.11</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Confusing IAS and IFRS Numbering</strong><br>
+        IAS standards (issued by the old IASC, pre-2001) and IFRS standards (issued by the IASB, post-2001) coexist — both are current and binding. Students often assume "IFRS" replaces all "IAS" standards, but many IAS standards (like IAS 1, IAS 2, IAS 16) remain fully in force today.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Treating the Conceptual Framework as a Standard</strong><br>
+        The Conceptual Framework is NOT an IFRS standard itself — it cannot override a specific standard's requirements. It's a foundational reference used when no standard addresses a particular issue, or to help interpret existing standards. Citing "the Framework" over a specific IAS/IFRS is a common exam error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Assuming Ind AS = IFRS Exactly</strong><br>
+        Ind AS is IFRS-converged but not identical — there are specific carve-outs and modifications (e.g. certain financial instrument classifications, some presentation differences). Assuming 100% equivalence can mislead in a India-specific context.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Mixing Up Relevance and Faithful Representation</strong><br>
+        Relevance is about whether information CAN influence a decision (predictive/confirmatory value, materiality). Faithful representation is about whether information is complete, neutral, and free from error. Students often merge these two fundamental qualitative characteristics into one vague idea.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Believing Fair Value is Always "Better" Than Historical Cost</strong><br>
+        Fair value is more relevant (reflects current market conditions) but less reliable (subjective, can fluctuate). Historical cost is more reliable (objective, verifiable) but less relevant over time. IFRS uses a mix of both depending on the standard — there's no universal "better" measurement basis.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Forgetting US GAAP is Rules-Based, IFRS is Principles-Based</strong><br>
+        This is a frequently tested distinction — US GAAP tends to provide detailed, prescriptive rules for specific scenarios, while IFRS provides broader principles requiring professional judgment. Confusing which system is which is a common exam trap.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">IFRS Standard-Setter</div>
+        <ul class="card-items">
+          <li><strong>Q: Who issues IFRS standards?</strong></li>
+          <li>A: The IASB (International Accounting Standards Board), based in London</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Fundamental Qualitative Characteristics</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 2 fundamental qualitative characteristics.</strong></li>
+          <li>A: Relevance and Faithful Representation</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Enhancing Characteristics</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 4 enhancing qualitative characteristics.</strong></li>
+          <li>A: Comparability, Verifiability, Timeliness, Understandability</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">India's IFRS Equivalent</div>
+        <ul class="card-items">
+          <li><strong>Q: What is India's IFRS-converged standard called?</strong></li>
+          <li>A: Ind AS (Indian Accounting Standards), issued by MCA</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Key Standards Recall</div>
+        <ul class="card-items">
+          <li><strong>Q: Which standard covers Revenue Recognition?</strong></li>
+          <li>A: IFRS 15</li>
+          <li><strong>Q: Which standard covers Leases?</strong></li>
+          <li>A: IFRS 16</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"What is IFRS and why does it matter for a global company?"</td><td>Baseline understanding of the global reporting framework</td><td>IFRS (International Financial Reporting Standards) is a single set of accounting standards used in 140+ countries, issued by the IASB. It matters because it allows investors, lenders, and analysts to compare financial statements across companies and countries on a consistent basis — critical for any MNC raising capital internationally.</td></tr>
+      <tr><td>"What's the difference between IFRS and US GAAP?"</td><td>Understanding of the two dominant global frameworks</td><td>IFRS is principles-based, giving broader guidance and requiring professional judgment; US GAAP is rules-based, with detailed prescriptive requirements for specific scenarios. IFRS is used in 140+ countries; US GAAP is used primarily by US-listed companies (regulated by the SEC and set by FASB).</td></tr>
+      <tr><td>"How does Ind AS relate to IFRS?"</td><td>India-specific context, relevant for Indian finance roles</td><td>Ind AS is India's IFRS-converged accounting framework, issued by the Ministry of Corporate Affairs. It's approximately 95% aligned with IFRS but includes specific carve-outs suited to the Indian regulatory and business environment. It's mandatory for listed companies and large unlisted companies above prescribed thresholds.</td></tr>
+    </table>
+  </div>
+
+  <!-- MANTRA -->
+  <div class="mantra">
+    <div class="mantra-formula">
+      Conceptual Framework<br>
+      + Key Standards (IAS + IFRS)<br>
+      + Recognition, Measurement & Derecognition<br>
+      + Fair Value Understanding<br>
+      = <strong style="color:var(--accent3);">The Ability to Account for Anything, Anywhere in the World</strong>
+    </div>
+    <h3>IFRS is your passport to a global finance career.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 5: Cost Accounting Fundamentals — how businesses track and control their costs internally. 📊</p>
+  </div>
+
+</div>
+</body>
+</html>

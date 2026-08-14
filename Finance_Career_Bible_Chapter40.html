@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 40: Power BI</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #f2c94c; --accent2: #6c63ff; --accent3: #00d4aa; --accent4: #ff6b6b;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(242,201,76,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-yellow { background:rgba(242,201,76,0.2);  color:var(--accent);  border:1px solid rgba(242,201,76,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent2); border:1px solid rgba(108,99,255,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent3); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent4); border:1px solid rgba(255,107,107,0.3); }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent); padding:14px 20px; background:rgba(242,201,76,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent); background:rgba(242,201,76,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(242,201,76,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(242,201,76,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(242,201,76,0.07),rgba(108,99,255,0.05)); border:1px solid rgba(242,201,76,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent); flex-shrink:0; width:80px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(242,201,76,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(242,201,76,0.1); border:1px solid rgba(242,201,76,0.2); color:var(--text); }
+  .tag.yellow { color:var(--accent); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(242,201,76,0.09),rgba(108,99,255,0.06)); border:1px solid rgba(242,201,76,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 40</div>
+  <h1>Power<br><span>BI</span></h1>
+  <p class="hero-sub">Microsoft's business intelligence platform that turns raw data into stunning interactive dashboards. The tool that is rapidly becoming essential for every finance professional — from CFO dashboards to FP&A reporting to audit analytics.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">5M+</div><div class="stat-label">Monthly Users</div></div>
+    <div class="stat"><div class="stat-num">FREE</div><div class="stat-label">Desktop Version</div></div>
+    <div class="stat"><div class="stat-num">DAX</div><div class="stat-label">Power Formula Language</div></div>
+    <div class="stat"><div class="stat-num">#1</div><div class="stat-label">BI Tool (Gartner 2024)</div></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 40 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">40.1</span>What is Power BI & Why Finance Professionals Need It</div>
+    <div class="toc-item"><span class="toc-num">40.2</span>Power BI Ecosystem — Desktop, Service & Mobile</div>
+    <div class="toc-item"><span class="toc-num">40.3</span>The Power BI Workflow — From Data to Dashboard</div>
+    <div class="toc-item"><span class="toc-num">40.4</span>Power Query in Power BI — Connect & Transform Data</div>
+    <div class="toc-item"><span class="toc-num">40.5</span>Data Modelling — Relationships & Star Schema</div>
+    <div class="toc-item"><span class="toc-num">40.6</span>DAX — Data Analysis Expressions (The Power Language)</div>
+    <div class="toc-item"><span class="toc-num">40.7</span>Visualisations — Choosing & Building the Right Charts</div>
+    <div class="toc-item"><span class="toc-num">40.8</span>Building a Finance Dashboard — Step by Step</div>
+    <div class="toc-item"><span class="toc-num">40.9</span>Filters, Slicers & Drill-Through</div>
+    <div class="toc-item"><span class="toc-num">40.10</span>Power BI Service — Share, Collaborate & Schedule</div>
+    <div class="toc-item"><span class="toc-num">40.11</span>Power BI vs Excel — When to Use Which</div>
+    <div class="toc-item"><span class="toc-num">40.12</span>Power BI in Finance — Real Use Cases</div>
+    <div class="toc-item"><span class="toc-num">40.13</span>Key Takeaways, Common Mistakes & Action Steps</div>
+  </div>
+
+  <!-- 40.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">40.1</div>
+      <div class="section-title">What is Power BI & Why Finance Professionals Need It</div>
+    </div>
+    <p class="prose">Power BI is Microsoft's <strong>business intelligence and data visualisation platform</strong>. It connects to virtually any data source, transforms and models data, and creates interactive dashboards and reports that update automatically. It is the fastest growing BI tool in the world — and finance is one of its biggest use cases.</p>
+
+    <div class="quote">"In the old world, you produced a monthly PDF report. In the new world, you build a live dashboard that answers any question instantly. Power BI is what makes that possible." — Every modern CFO</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Why Finance Needs Power BI Now</div>
+        <ul class="card-items">
+          <li><strong>Speed:</strong> Build a dashboard in hours that would take days in Excel. Refresh with new data in one click.</li>
+          <li><strong>Scale:</strong> Handle millions of rows effortlessly — Excel struggles above ~1M rows. Power BI handles 100M+ rows.</li>
+          <li><strong>Interactivity:</strong> Users can slice, filter, drill down — answer their own questions without asking the finance team every time</li>
+          <li><strong>Real-time updates:</strong> Connect to live databases, ERP systems, cloud sources — dashboard updates automatically</li>
+          <li><strong>Sharing:</strong> Publish to Power BI Service — anyone with a browser can view without needing Excel or special software</li>
+          <li><strong>Professional presentation:</strong> Pixel-perfect dashboards that look like products, not spreadsheets — impresses senior management</li>
+          <li><strong>Career value:</strong> Power BI skill is one of the most demanded in finance job postings in 2025 — significant salary premium</li>
+        </ul>
+        <div class="card-tag">Why Learn It</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">What Power BI Can Do That Excel Cannot</div>
+        <ul class="card-items">
+          <li><strong>Live connections:</strong> Connect directly to databases (SQL, Azure, SAP) — data updates in real time without manual refresh</li>
+          <li><strong>Cross-report filtering:</strong> One slicer filters multiple reports and pages simultaneously — impossible in Excel without VBA</li>
+          <li><strong>Mobile optimised:</strong> Dashboards automatically reformat for phones — finance teams access KPIs anywhere</li>
+          <li><strong>Row-level security:</strong> Different users see different data based on their role — regional managers see only their region</li>
+          <li><strong>Natural language Q&A:</strong> Type "show me revenue by region last quarter" in plain English — Power BI generates the visual automatically</li>
+          <li><strong>AI visuals:</strong> Key influencers, decomposition tree, anomaly detection — built-in AI analytics</li>
+          <li><strong>Collaboration:</strong> Multiple people work on same report simultaneously — impossible with Excel files</li>
+        </ul>
+        <div class="card-tag">Power BI Advantages</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Who Uses Power BI in Finance</div>
+        <ul class="card-items">
+          <li><strong>CFO / Finance Director:</strong> Executive KPI dashboard — P&L, cash flow, key ratios at a glance. Updated daily/weekly automatically.</li>
+          <li><strong>FP&A Analyst:</strong> Budget vs actual variance reporting, rolling forecasts, scenario comparison — all in one interactive report</li>
+          <li><strong>Management Accountant:</strong> Monthly management accounts package — replace static PDF with interactive Power BI report</li>
+          <li><strong>Treasury:</strong> Cash position dashboard, FX exposure tracker, liquidity metrics</li>
+          <li><strong>Internal Audit:</strong> Continuous audit monitoring dashboards — flag exceptions in real time</li>
+          <li><strong>Tax:</strong> GST return analysis, TDS monitoring, transfer pricing analytics</li>
+          <li><strong>Big 4 / Advisory:</strong> Client analytics, audit data analysis, risk dashboards delivered as Power BI reports</li>
+        </ul>
+        <div class="card-tag">Finance Use Cases</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">40.2</div>
+      <div class="section-title">Power BI Ecosystem — Desktop, Service & Mobile</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <div class="card-title">Power BI Desktop (Free)</div>
+        <ul class="card-items">
+          <li>Windows application — download free from Microsoft website</li>
+          <li>Where you BUILD reports — connect to data, transform, model, create visuals</li>
+          <li>Produces .pbix files — the Power BI equivalent of an Excel file</li>
+          <li>Full Power Query editor, data model view, DAX formula bar</li>
+          <li>Three views: Report view (build visuals), Data view (see your tables), Model view (see relationships)</li>
+          <li>No subscription needed — completely free to build locally</li>
+          <li>Updated monthly by Microsoft — new features constantly added</li>
+        </ul>
+        <div class="card-tag">Free — Build Here</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">☁️</div>
+        <div class="card-title">Power BI Service (Web — Paid)</div>
+        <ul class="card-items">
+          <li>Cloud platform at app.powerbi.com — where you PUBLISH and SHARE reports</li>
+          <li>Requires Power BI Pro licence (~$10/user/month) or Premium capacity</li>
+          <li>Schedule data refresh — connect to cloud data sources and refresh automatically (daily, hourly)</li>
+          <li>Share dashboards with colleagues — view in browser, no software needed</li>
+          <li>Create dashboards by pinning visuals from multiple reports</li>
+          <li>Workspaces — collaborative environments for teams</li>
+          <li>Row-level security — control who sees what data</li>
+          <li>Included in Microsoft 365 E5 and many enterprise Microsoft plans</li>
+        </ul>
+        <div class="card-tag">Share & Collaborate</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <div class="card-title">Power BI Mobile</div>
+        <ul class="card-items">
+          <li>iOS and Android apps — view published reports on phone or tablet</li>
+          <li>Optimised mobile layouts — reports reformat for small screens</li>
+          <li>Push notifications — alert when a KPI crosses a threshold</li>
+          <li>Offline access — cached data available without internet</li>
+          <li>Touch-optimised — tap to filter, pinch to zoom</li>
+          <li>CFO scenario: check revenue dashboard on phone at 7am before board meeting</li>
+        </ul>
+        <div class="card-tag">View Anywhere</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Power BI vs Power BI Pro vs Power BI Premium</div>
+      <strong>Free (Power BI Desktop):</strong> Build and view locally. Cannot share with others. Perfect for learning and personal analysis.<br><br>
+      <strong>Power BI Pro (~$10/user/month):</strong> Publish to cloud, share with other Pro users, schedule refresh, collaborate in workspaces. Most finance teams use this.<br><br>
+      <strong>Power BI Premium Per User (~$20/user/month):</strong> All Pro features + larger datasets, more frequent refresh, AI features, paginated reports (pixel-perfect for printing).<br><br>
+      <strong>Power BI Premium (Capacity — enterprise):</strong> Dedicated cloud resources for large organisations. Viewers don't need licences. Used by large companies sharing reports with hundreds of users.<br><br>
+      For learning: start with free Desktop. For team use: Pro licences. Check if your company already has Microsoft 365 — Power BI Pro is often included.
+    </div>
+  </div>
+
+  <!-- 40.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">40.3</div>
+      <div class="section-title">The Power BI Workflow — From Data to Dashboard</div>
+      <div class="section-meta">The Complete Process</div>
+    </div>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">STEP 01</div>
+        <div class="step-content"><strong>Connect to Data Sources</strong><br>
+        Home → Get Data → choose your source. Power BI connects to 100+ data sources: Excel files, CSV, SQL databases (SQL Server, MySQL, PostgreSQL), cloud databases (Azure SQL, Snowflake, BigQuery), ERP systems (SAP, Oracle, Dynamics 365), web pages, SharePoint lists, APIs, and more. You can connect to multiple sources in the same report — Power BI joins them in the data model. For finance: connect to your ERP for actuals, Excel for budget, and SQL for transactions — all in one report.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 02</div>
+        <div class="step-content"><strong>Transform Data in Power Query</strong><br>
+        After connecting, Power Query Editor opens. Here you clean and shape your data: remove unwanted columns, rename columns, change data types (text to number, text to date), filter rows, unpivot tables (column headers become row values — essential for financial data), merge queries (like SQL JOIN — combine two tables), append queries (stack tables on top of each other), add calculated columns. Every step is recorded and reapplied automatically on refresh. This is the same Power Query from Chapter 39 — your Excel knowledge transfers directly.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 03</div>
+        <div class="step-content"><strong>Build the Data Model</strong><br>
+        In Model view, create relationships between tables by dragging fields. This is where Power BI's real power lies — you can have a fact table (transactions) related to multiple dimension tables (products, customers, dates, cost centres) and filter across all of them with one slicer. Build a proper Star Schema (one central fact table surrounded by dimension tables) — this is the foundation of a high-performance Power BI model. A good data model makes DAX formulas simple; a bad data model makes everything painful.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 04</div>
+        <div class="step-content"><strong>Write DAX Measures</strong><br>
+        DAX (Data Analysis Expressions) is Power BI's formula language for creating calculations. Create Measures (calculated values like Total Revenue, YoY Growth %, Budget Variance) and Calculated Columns (new columns in your table). DAX is context-aware — the same measure calculates correctly whether you're looking at total revenue, revenue by region, or revenue for a specific month — automatically. Key DAX functions: CALCULATE, SUM, SUMX, FILTER, ALL, RELATED, DIVIDE, IF, SWITCH, SAMEPERIODLASTYEAR. (Full detail in Section 40.6.)</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 05</div>
+        <div class="step-content"><strong>Build Visuals on Report Pages</strong><br>
+        In Report view, drag measures and dimensions onto the canvas to create visuals. Add multiple visual types — bar charts, line charts, cards (KPI numbers), tables, matrices, maps, gauges. Arrange on a page like a dashboard. Add slicers for interactivity — when the user clicks a region in the slicer, all visuals on the page filter to that region simultaneously. Create multiple pages for different audiences (Executive Summary, Detailed P&L, Regional Analysis, YoY Comparison).</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 06</div>
+        <div class="step-content"><strong>Publish & Share</strong><br>
+        Home → Publish → select a workspace in Power BI Service. The .pbix file uploads to the cloud. In Power BI Service: set up scheduled refresh (connect to cloud data sources and auto-refresh daily/hourly), share the report with colleagues (they view in browser), pin key visuals to a dashboard (the executive summary landing page), set up alerts (email notification when revenue drops below ₹X), configure row-level security (regional managers see only their region's data).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">40.4</div>
+      <div class="section-title">Power Query in Power BI — Connect & Transform Data</div>
+    </div>
+    <p class="prose">Power Query in Power BI is identical to Power Query in Excel (Chapter 39) — if you learned it there, it transfers 100%. Here we focus on finance-specific transformation patterns that come up constantly.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Unpivot — The #1 Finance Transformation</div>
+        <ul class="card-items">
+          <li>Financial data is often "wide" — months as column headers (Jan, Feb, Mar...) rather than "tall" (one row per month)</li>
+          <li>Power BI needs tall format — one row per record with a month column</li>
+          <li><strong>Wide (bad for Power BI):</strong> Product | Jan | Feb | Mar | Apr...</li>
+          <li><strong>Tall (good for Power BI):</strong> Product | Month | Revenue</li>
+          <li>Power Query fix: select all month columns → Transform → Unpivot Columns → instantly converts wide to tall</li>
+          <li>This single transformation unlocks time-based analysis (trend charts, YoY comparisons) that is impossible with wide format</li>
+          <li>Apply once → every future refresh automatically unpivots — no manual work</li>
+        </ul>
+        <div class="card-tag">Most Important</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <div class="card-title">Merge & Append Queries</div>
+        <ul class="card-items">
+          <li><strong>Merge (like SQL JOIN):</strong> Combine two tables horizontally based on a matching key. Example: merge transactions table with product master table to bring in product category and cost — eliminates VLOOKUP in reports.</li>
+          <li><strong>Join types:</strong> Left outer (all rows from first table, matching from second), Inner (only matching rows), Full outer (all rows from both). Left outer is most common in finance.</li>
+          <li><strong>Append (like SQL UNION):</strong> Stack multiple tables vertically — same columns, different rows. Example: combine 12 monthly sales files into one table. Append all → one consolidated table automatically.</li>
+          <li>Append is how you consolidate multiple entity/branch files in management reporting — no more copy-pasting between Excel files</li>
+        </ul>
+        <div class="card-tag">Data Combining</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <div class="card-title">Date Table — Essential for Time Intelligence</div>
+        <ul class="card-items">
+          <li>Every Power BI finance model needs a dedicated Date table — a table with one row per day covering all dates in your data</li>
+          <li>Columns: Date, Year, Quarter, Month, Month Name, Week, Day of Week, Financial Year, Financial Quarter, Is Weekday</li>
+          <li>Create in Power Query: = {Number.From(#date(2020,1,1))..Number.From(#date(2030,12,31))} — generates list of all dates</li>
+          <li>OR use DAX: CALENDARAUTO() — generates dates from min to max in your data model automatically</li>
+          <li>Mark as Date Table in Power BI → unlocks all time intelligence DAX functions (SAMEPERIODLASTYEAR, DATESYTD, DATEADD)</li>
+          <li>Without a proper Date table, YoY comparisons and YTD calculations are impossible or very complex</li>
+        </ul>
+        <div class="card-tag">Time Intelligence</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">40.5</div>
+      <div class="section-title">Data Modelling — Relationships & Star Schema</div>
+      <div class="section-meta">Foundation of Great Power BI</div>
+    </div>
+    <p class="prose">The data model is the most important part of a Power BI report. A good model makes everything easy. A poor model causes incorrect calculations, slow performance, and endless DAX complexity. The industry standard model design is the <strong>Star Schema</strong>.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⭐</div>
+        <div class="card-title">Star Schema — The Gold Standard</div>
+        <ul class="card-items">
+          <li><strong>Fact Table (centre of the star):</strong> Contains the measurable events — transactions, journal entries, sales orders. Has foreign keys to dimension tables. Large table (millions of rows). Contains numeric values to aggregate (revenue, quantity, cost).</li>
+          <li><strong>Dimension Tables (points of the star):</strong> Contain descriptive attributes used for filtering and grouping. Small tables. Examples: Date dimension, Customer dimension, Product dimension, Cost Centre dimension, Account dimension.</li>
+          <li><strong>Relationships:</strong> One-to-many from dimension to fact. Date table's Date → Fact table's Transaction Date. Customer table's Customer ID → Fact table's Customer ID.</li>
+          <li>When a user filters by "North Region" in the Customer dimension, Power BI automatically filters the fact table to only North Region transactions — and all measures recalculate accordingly.</li>
+        </ul>
+        <div class="card-tag">Model Design</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Common Modelling Mistakes</div>
+        <ul class="card-items">
+          <li><strong>Many-to-many relationships:</strong> Avoid where possible — causes ambiguous filter paths and incorrect calculations. Redesign the model to use a bridge table instead.</li>
+          <li><strong>Too many tables joined in a chain:</strong> A → B → C → D (snowflake schema) — reduces performance. Flatten dimension tables where possible (star schema is faster).</li>
+          <li><strong>Mixing fact and dimension data:</strong> Having product name, category, and revenue all in the same table — makes filtering complex. Separate into a Product dimension and Revenue fact.</li>
+          <li><strong>No Date table:</strong> Using the transaction date column directly for time intelligence — will not work with DAX time intelligence functions. Always create a separate Date table.</li>
+          <li><strong>Calculated columns instead of measures:</strong> Calculated columns are stored in memory for every row. Measures are calculated on-demand. Use measures for aggregations — calculated columns only for row-level attributes.</li>
+        </ul>
+        <div class="card-tag">Avoid These</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">40.6</div>
+      <div class="section-title">DAX — Data Analysis Expressions (The Power Language)</div>
+      <div class="section-meta">Most Important Skill in Power BI</div>
+    </div>
+    <p class="prose">DAX is the formula language of Power BI (and Power Pivot). It looks similar to Excel formulas but is fundamentally different — DAX is <strong>context-aware</strong>. A single DAX measure automatically calculates correctly at any level of aggregation (total, by region, by month, by product) without rewriting the formula.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Essential DAX Measures for Finance</div>
+      <div class="formula-row">
+        <div class="formula-name">Basic Aggregations</div>
+        <div class="formula-eq">Total Revenue = SUM(Sales[Revenue])<br>
+Total Cost = SUM(Sales[Cost])<br>
+Gross Profit = [Total Revenue] - [Total Cost]<br>
+GP Margin % = DIVIDE([Gross Profit], [Total Revenue], 0)<br><span style="color:var(--muted);">Always use DIVIDE() instead of / to handle division by zero gracefully.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Year-over-Year Comparison</div>
+        <div class="formula-eq">Revenue LY = CALCULATE([Total Revenue], SAMEPERIODLASTYEAR(Dates[Date]))<br>
+YoY Growth = [Total Revenue] - [Revenue LY]<br>
+YoY Growth % = DIVIDE([YoY Growth], [Revenue LY], 0)<br><span style="color:var(--muted);">SAMEPERIODLASTYEAR is a time intelligence function — requires a proper Date table marked as Date Table.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Year-to-Date (YTD)</div>
+        <div class="formula-eq">Revenue YTD = CALCULATE([Total Revenue], DATESYTD(Dates[Date]))<br>
+Revenue YTD LY = CALCULATE([Total Revenue], DATESYTD(SAMEPERIODLASTYEAR(Dates[Date])))<br><span style="color:var(--muted);">For financial year YTD (not calendar year): DATESYTD(Dates[Date], "31-03") — ends March 31 (India financial year).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Budget Variance</div>
+        <div class="formula-eq">Budget = SUM(Budget[BudgetAmount])<br>
+Variance = [Total Revenue] - [Budget]<br>
+Variance % = DIVIDE([Variance], [Budget], 0)<br>
+Variance Flag = IF([Variance %] &lt; -0.05, "⚠️ Below Budget", "✅ On Track")</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">CALCULATE — The Most Important DAX Function</div>
+        <div class="formula-eq">CALCULATE(expression, filter1, filter2, ...)<br><br>
+Revenue North = CALCULATE([Total Revenue], Region[Region] = "North")<br>
+Revenue excl Returns = CALCULATE([Total Revenue], Sales[Type] &lt;&gt; "Return")<br>
+Revenue Last Month = CALCULATE([Total Revenue], PREVIOUSMONTH(Dates[Date]))<br><br>
+<span style="color:var(--muted);">CALCULATE modifies the filter context — it's the engine behind 80% of all advanced DAX. Master this and you can build almost any measure.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">ALL — Remove Filters</div>
+        <div class="formula-eq">% of Total Revenue = DIVIDE([Total Revenue], CALCULATE([Total Revenue], ALL(Sales)))<br><br>
+<span style="color:var(--muted);">ALL() removes ALL filters from a table — giving the grand total regardless of slicers. DIVIDE([Revenue], [Revenue with ALL]) gives % contribution of each row to the total. Essential for % share calculations.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">RANKX — Ranking</div>
+        <div class="formula-eq">Revenue Rank = RANKX(ALL(Products[Product]), [Total Revenue],,DESC)<br><br>
+<span style="color:var(--muted);">Ranks each product by revenue across the entire product table (ALL removes filter). Use to show Top 10 products, rank sales reps by performance, rank cost centres by spend.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">SWITCH — Multiple Conditions</div>
+        <div class="formula-eq">Performance Rating = SWITCH(TRUE(),<br>
+&nbsp;&nbsp;[Variance %] >= 0.1, "🟢 Excellent",<br>
+&nbsp;&nbsp;[Variance %] >= 0, "🟡 On Target",<br>
+&nbsp;&nbsp;[Variance %] >= -0.1, "🟠 Watch",<br>
+&nbsp;&nbsp;"🔴 Critical")<br><br>
+<span style="color:var(--muted);">Cleaner than nested IF statements. SWITCH(TRUE(),...) evaluates each condition in order and returns the first TRUE result.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Moving Average</div>
+        <div class="formula-eq">3-Month Moving Avg Revenue =<br>
+CALCULATE([Total Revenue], DATESINPERIOD(Dates[Date], LASTDATE(Dates[Date]), -3, MONTH)) / 3<br><br>
+<span style="color:var(--muted);">DATESINPERIOD defines a rolling window of 3 months ending at the current date. Dividing by 3 gives the average. Use for smoothing volatile monthly data in dashboards.</span></div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Filter Context vs Row Context — The Most Important DAX Concept</div>
+      <strong>Filter Context:</strong> The set of filters currently applied to the data (from slicers, visual filters, report-level filters). CALCULATE is the tool to modify filter context.<br><br>
+      <strong>Row Context:</strong> When iterating through rows (in SUMX, AVERAGEX, calculated columns), the current row being evaluated. DAX knows which row it's on and can access values from that row.<br><br>
+      <strong>Example:</strong> Total Revenue = SUM(Sales[Revenue]) — this works in filter context. It sums all Revenue values for whatever filters are currently applied.<br><br>
+      SUMX(Sales, Sales[Quantity] * Sales[Price]) — this iterates through each row (row context), multiplies Quantity × Price for that row, then sums all results. Use SUMX when you need row-level calculations before aggregating.<br><br>
+      Understanding this distinction separates beginner DAX from expert DAX. Most "wrong numbers" bugs in Power BI come from confusion between these two contexts.
+    </div>
+  </div>
+
+  <!-- 40.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">40.7</div>
+      <div class="section-title">Visualisations — Choosing & Building the Right Charts</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Visual Type</th><th>Best For</th><th>Finance Use Case</th><th>Avoid When</th></tr>
+      <tr><td>Card / Multi-row Card</td><td>Single KPI numbers — large, prominent display</td><td>Total Revenue ₹500Cr | EBITDA Margin 22% | Cash Position ₹80Cr — the headline numbers at top of every finance dashboard</td><td>Showing trends — a card only shows one number</td></tr>
+      <tr><td>KPI Visual</td><td>Actual vs Target with trend indicator</td><td>Revenue: ₹450Cr Actual vs ₹500Cr Target — shows green/red status and sparkline trend automatically</td><td>When you don't have a target to compare against</td></tr>
+      <tr><td>Clustered Bar / Column</td><td>Comparing categories</td><td>Revenue by Product Line, Cost by Department, EBITDA by Region — side-by-side comparison</td><td>More than 8-10 categories — chart becomes unreadable</td></tr>
+      <tr><td>Stacked Bar / Column</td><td>Composition and comparison simultaneously</td><td>Revenue by product mix over time — see how mix changes each month while tracking total</td><td>When exact values matter more than composition</td></tr>
+      <tr><td>Line Chart</td><td>Trends over time</td><td>Monthly revenue trend, daily cash position, quarterly margin trend — continuous time series</td><td>Categories without natural time order</td></tr>
+      <tr><td>Combo Chart (Line + Column)</td><td>Two metrics with different scales</td><td>Revenue (bars) + EBITDA Margin % (line on secondary axis) — volume and efficiency together</td><td>When metrics have similar scales (use clustered column instead)</td></tr>
+      <tr><td>Waterfall Chart</td><td>Bridge from one value to another</td><td>Budget variance bridge: Starting budget → Volume effect → Price effect → Mix effect → Actual result. P&L waterfall: Revenue → Gross Profit → EBITDA → EBIT → PAT.</td><td>Simple comparisons — overkill if you just need before/after</td></tr>
+      <tr><td>Matrix (Pivot Table Visual)</td><td>Multi-dimensional tabular data</td><td>Revenue by Region (rows) × Month (columns) — with subtotals and conditional formatting. P&L statement layout with dimensions.</td><td>When a chart would communicate better than a table</td></tr>
+      <tr><td>Treemap</td><td>Part-of-whole with hierarchy</td><td>Revenue contribution by business unit — size shows relative contribution at a glance</td><td>More than 15-20 items — small rectangles become unreadable</td></tr>
+      <tr><td>Gauge</td><td>Single metric vs target — speedometer style</td><td>Cash conversion cycle: Actual 45 days vs Target 30 days. Budget utilisation %.</td><td>Multiple metrics — gauges waste space showing one number each</td></tr>
+      <tr><td>Decomposition Tree</td><td>Root cause analysis — drill into drivers of a metric</td><td>Why did revenue miss budget? Drill: Region → Product → Customer → Time Period — AI suggests which branch drives most variance</td><td>Simple reporting — too much complexity for straightforward dashboards</td></tr>
+      <tr><td>AI Key Influencers</td><td>Understanding what drives a metric</td><td>What factors most influence customer churn? What drives high DSO? AI analyses all dimensions and reports the strongest predictors.</td><td>When you need precise calculations — this is exploratory analysis</td></tr>
+    </table>
+  </div>
+
+  <!-- 40.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">40.8</div>
+      <div class="section-title">Building a Finance Dashboard — Step by Step</div>
+      <div class="section-meta">Practical Walkthrough</div>
+    </div>
+    <p class="prose">Let's build a complete CFO Dashboard — the most common Power BI deliverable in finance. This will consolidate everything covered so far into a real-world output.</p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">PAGE 1</div>
+        <div class="step-content"><strong>Executive Summary — The Landing Page</strong><br>
+        Top row: 4 Card visuals — Total Revenue (YTD), EBITDA Margin %, Cash Position, Revenue vs Budget %. These are the 4 numbers every CFO looks at first. Make them large, prominent, with conditional formatting (green if on track, red if below budget). Below: Line chart — Monthly Revenue (current year vs prior year). Bottom row: Clustered column chart — EBITDA by Business Unit. Map visual — Revenue by Geography (if relevant). This one page tells the entire financial story at a glance. Target: viewer understands company performance in 30 seconds.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">PAGE 2</div>
+        <div class="step-content"><strong>P&L Deep Dive</strong><br>
+        Matrix visual: Rows = P&L line items (Revenue, COGS, Gross Profit, Operating Expenses, EBITDA, Depreciation, EBIT, Interest, PAT). Columns = Months. Values = Actual, Budget, Variance, Variance %. Conditional formatting on Variance % — green positive, red negative. Slicers for Business Unit and Period (Q1/Q2/Q3/Q4). Waterfall chart: Budget vs Actual bridge — showing major drivers of variance. This replaces the monthly management accounts PDF — everything in one interactive view.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">PAGE 3</div>
+        <div class="step-content"><strong>Revenue Analytics</strong><br>
+        Top: Revenue by Product/Segment — stacked column with trend line. Middle: Revenue by Customer — top 10 customers by revenue (bar chart), customer concentration risk (% of revenue from top 5). Bottom: Revenue by Geography — map or bar chart. Add a slicer for time period. Add a drill-through — right-click on a customer bar → drill through to a customer detail page showing their transaction history, DSO, payment behaviour. This enables the CFO to go from summary to detail in two clicks.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">PAGE 4</div>
+        <div class="step-content"><strong>Cash Flow & Working Capital</strong><br>
+        Cards: Cash position, Receivable Days (DSO), Payable Days (DPO), Inventory Days, Cash Conversion Cycle. Line chart: 13-week cash forecast vs actual. Bar chart: Aged receivables by bucket (0-30, 31-60, 61-90, 90+ days). Gauge visual: DSO actual vs target. Table: Top overdue customers with amount, days overdue, and contact details. This is the treasury/working capital dashboard — refreshed daily from ERP data.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">DESIGN</div>
+        <div class="step-content"><strong>Dashboard Design Principles</strong><br>
+        Use a consistent colour theme (View → Themes — import company brand colours). Align all visuals to a grid. Use consistent font sizes (title 14px, axis labels 10px, card values 28px+). Add a header band with company logo, report title, and "Last refreshed: [date]". Put navigation buttons between pages (Insert → Buttons → Back/Forward). Apply report-level filters where needed. Test on different screen sizes. Final check: would a non-finance person understand the key message of each page within 30 seconds?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">40.9</div>
+      <div class="section-title">Filters, Slicers & Drill-Through</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎛️</div>
+        <div class="card-title">Slicers — Interactive Filters</div>
+        <ul class="card-items">
+          <li>Slicers are visual filter controls on the report canvas — users click to filter all visuals on the page</li>
+          <li><strong>Types:</strong> List slicer (checkboxes), Dropdown slicer (saves space), Between slicer (date range or number range), Tile slicer (buttons)</li>
+          <li><strong>Sync slicers across pages:</strong> View → Sync Slicers — set the same slicer to filter multiple pages. User selects "North Region" on page 1 → stays filtered on page 2 and 3.</li>
+          <li><strong>Date slicer:</strong> Use relative date filtering ("Last 30 days", "This quarter", "Last 3 months") — automatically updates as time passes</li>
+          <li><strong>Best practice:</strong> Group slicers in a dedicated slicer panel on the left or top. Label them clearly. Limit to 3-5 slicers per page — too many overwhelms users.</li>
+        </ul>
+        <div class="card-tag">User Interactivity</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Drill-Through — From Summary to Detail</div>
+        <ul class="card-items">
+          <li>Right-click on a data point → Drill through → navigate to a detail page filtered to that context</li>
+          <li>Example: Right-click on "North Region" bar → drill through to Customer Detail page showing all North Region customers, their revenue, DSO, payment history</li>
+          <li><strong>Setup:</strong> Create a detail page → drag the field you want to drill by (e.g. Region) into the "Drill through" field well → any visual with Region data now has drill-through to this page</li>
+          <li>Back button automatically added — user can return to summary page</li>
+          <li><strong>Cross-report drill-through:</strong> Drill from one report to another report in the same workspace — powerful for enterprise reporting suites</li>
+        </ul>
+        <div class="card-tag">Deep Dive</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Filters Pane vs Slicers — When to Use</div>
+        <ul class="card-items">
+          <li><strong>Filters Pane (hidden from users):</strong> Apply permanent filters that users should not override — e.g. filter out test data, apply current year filter, remove blank rows. Hidden from end users.</li>
+          <li><strong>Report-level filters:</strong> Apply to all pages in the report</li>
+          <li><strong>Page-level filters:</strong> Apply to all visuals on one page</li>
+          <li><strong>Visual-level filters:</strong> Apply to one specific visual only — e.g. show only Top 10 customers in a table</li>
+          <li><strong>Slicers:</strong> Give to users for self-service filtering. Users can change these.</li>
+          <li>Rule: filters that users should control → slicers. Filters that define the report scope → filters pane.</li>
+        </ul>
+        <div class="card-tag">Filter Strategy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">40.10</div>
+      <div class="section-title">Power BI Service — Share, Collaborate & Schedule</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">☁️</div>
+        <div class="card-title">Publishing & Workspaces</div>
+        <ul class="card-items">
+          <li>Publish from Desktop: Home → Publish → select workspace</li>
+          <li><strong>Workspaces:</strong> Collaborative environments in the cloud — team members with appropriate permissions can view, edit, or publish reports</li>
+          <li>My Workspace: personal space — not for sharing. Create separate workspaces for teams.</li>
+          <li>Finance workspace: all finance reports in one place — CFO Dashboard, Management Accounts, Treasury Report, Budget vs Actual</li>
+          <li>Roles: Admin (full control), Member (publish and edit), Contributor (publish but not delete), Viewer (read only)</li>
+          <li>Apps: Package a workspace as an App — distributes reports to a wider audience with a curated navigation experience</li>
+        </ul>
+        <div class="card-tag">Publishing</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Scheduled Data Refresh</div>
+        <ul class="card-items">
+          <li>In Power BI Service → Datasets → Schedule Refresh</li>
+          <li>Set refresh frequency: daily, multiple times per day (up to 8x/day for Pro, 48x/day for Premium)</li>
+          <li>Requires cloud-accessible data source OR an On-premises Data Gateway for local databases/files</li>
+          <li><strong>On-premises Data Gateway:</strong> Install on a server/PC in your network — acts as bridge between Power BI cloud and your local database or Excel files. Allows automatic refresh from on-premises sources.</li>
+          <li>Refresh failure alerts: email notification if refresh fails — important for production dashboards</li>
+          <li>Finance impact: CFO dashboard refreshes at 7am every morning — leadership team always has overnight data when they arrive</li>
+        </ul>
+        <div class="card-tag">Auto-Refresh</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Row-Level Security (RLS)</div>
+        <ul class="card-items">
+          <li>Restrict what data each user sees based on their identity</li>
+          <li><strong>Example:</strong> Regional managers see only their region's P&L. Country CFOs see all countries. Group CFO sees everything.</li>
+          <li>Setup in Desktop: Modelling → Manage Roles → create role with DAX filter (e.g. [Region] = USERPRINCIPALNAME() — matches region to user's email)</li>
+          <li>Assign users to roles in Power BI Service → Dataset → Security</li>
+          <li><strong>Dynamic RLS:</strong> Create a mapping table (UserEmail | Region) and use USERPRINCIPALNAME() in DAX to dynamically filter based on logged-in user — one role for all users, data automatically filtered per person</li>
+          <li>Critical for enterprise finance dashboards — P&L data is sensitive</li>
+        </ul>
+        <div class="card-tag">Data Security</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">40.11</div>
+      <div class="section-title">Power BI vs Excel — When to Use Which</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Scenario</th><th>Use Excel</th><th>Use Power BI</th></tr>
+      <tr><td>Data volume</td><td>Under 500K rows, manageable dataset</td><td>500K+ rows, multiple large tables, millions of records</td></tr>
+      <tr><td>Calculations</td><td>Complex financial formulas, scenario modelling, what-if analysis with input cells</td><td>Standard aggregations, YoY comparisons, % of total, ranking — repetitive calculations across dimensions</td></tr>
+      <tr><td>Interactivity</td><td>Slicers and basic filtering — sufficient for individual use</td><td>Cross-visual filtering, drill-through, drill-down, Q&A natural language — essential for self-service dashboards</td></tr>
+      <tr><td>Sharing</td><td>Share a file via email — recipient needs Excel. Works for small teams.</td><td>Publish to web — anyone with browser and access sees latest data. No software installation needed.</td></tr>
+      <tr><td>Refresh</td><td>Manual — open file, click refresh. Suitable for monthly reports.</td><td>Scheduled automatic refresh — daily/hourly. Suitable for operational dashboards updated frequently.</td></tr>
+      <tr><td>Financial modelling</td><td>Excel is the standard — investment banking models, DCF, LBO, M&A. Power BI cannot do this.</td><td>Not suitable for financial modelling — use Excel for models, Power BI for reporting on model outputs</td></tr>
+      <tr><td>Collaboration</td><td>Multiple people editing same file causes version conflicts. SharePoint helps but limited.</td><td>Multiple users can view simultaneously. Team can edit report in shared workspace. No version conflicts.</td></tr>
+      <tr><td>Audience</td><td>Finance team internal use. Analysts who understand spreadsheets.</td><td>Business leaders, non-finance users, large audiences — visual, intuitive, no Excel knowledge needed.</td></tr>
+      <tr><td>Audit trail</td><td>Full formula transparency — every calculation visible and auditable</td><td>Less transparent — DAX measures hidden from viewers. Better for security, worse for auditability.</td></tr>
+      <tr><td>Cost</td><td>Included in Microsoft Office — no extra cost</td><td>Power BI Pro ~$10/user/month. Free for building locally (Desktop).</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Professional Finance Workflow — Excel + Power BI Together</div>
+      The best finance professionals use BOTH tools for different purposes — not one or the other.<br><br>
+      <strong>Excel for:</strong> Financial modelling (DCF, budget models, scenario analysis), ad-hoc analysis, formulas-heavy calculations, working papers, anything that needs full formula transparency and flexibility.<br><br>
+      <strong>Power BI for:</strong> Reporting and dashboards (management accounts, CFO dashboard, operational KPIs), large datasets, sharing with non-finance users, real-time data from operational systems.<br><br>
+      <strong>Typical workflow:</strong> Build your financial model in Excel → Extract outputs (actuals, budget, forecasts) → Load into Power BI → Build dashboard → Share with leadership. Excel is the engine; Power BI is the display.
+    </div>
+  </div>
+
+  <!-- 40.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">40.12</div>
+      <div class="section-title">Power BI in Finance — Real Use Cases</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">CFO Dashboard</div>
+        <ul class="card-items">
+          <li>Real-time P&L — Revenue, EBITDA, PAT vs budget and prior year</li>
+          <li>Cash position — daily cash across all bank accounts</li>
+          <li>Key ratios — Current ratio, DSO, DPO, Net Debt/EBITDA</li>
+          <li>Headcount and payroll costs — actual vs budget</li>
+          <li>Capex tracking — committed vs approved vs spent</li>
+          <li>Refreshed daily from ERP (SAP/Oracle/Tally) via gateway</li>
+          <li>Published to Power BI Service — CFO views on phone every morning</li>
+        </ul>
+        <div class="card-tag">Executive Reporting</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Monthly Management Accounts</div>
+        <ul class="card-items">
+          <li>Replace static PDF management accounts with interactive Power BI report</li>
+          <li>P&L by entity, division, product, region — all in one model</li>
+          <li>Drill from consolidated group P&L → entity P&L → cost centre P&L</li>
+          <li>Budget vs actual vs prior year — all three in one view</li>
+          <li>Narrative commentary added via text boxes updated monthly</li>
+          <li>Distributed to 50+ managers — each sees their own P&L (RLS)</li>
+          <li>Preparation time reduced from 3 days to 4 hours</li>
+        </ul>
+        <div class="card-tag">FP&A Reporting</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Audit Analytics Dashboard</div>
+        <ul class="card-items">
+          <li>Connect to 100% of general ledger transactions — no sampling needed</li>
+          <li>Flag unusual journal entries — round numbers, weekend postings, manual entries above threshold</li>
+          <li>Vendor payment analytics — duplicate invoice detection, new vendors, payments to dormant vendors</li>
+          <li>Receivables analytics — aged debtors, credit limit breaches, customers with sudden order volume changes</li>
+          <li>Continuous auditing: dashboard updates daily — internal audit monitors exceptions in real time rather than once a year</li>
+          <li>Big 4 firms use Power BI to deliver client audit analytics — significant differentiator</li>
+        </ul>
+        <div class="card-tag">Internal Audit</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Treasury & Cash Management</div>
+        <ul class="card-items">
+          <li>Real-time cash position across all bank accounts and currencies</li>
+          <li>FX exposure tracker — open positions, hedged vs unhedged, P&L impact of rate movements</li>
+          <li>13-week cash flow forecast vs actual — week-by-week variance</li>
+          <li>Debt maturity profile — when is each debt facility due for renewal?</li>
+          <li>Interest cost tracker — fixed vs floating rate debt, WACC calculation</li>
+          <li>Connected to bank APIs (HSBC, Citi, HDFC treasury management systems) for real-time balances</li>
+        </ul>
+        <div class="card-tag">Treasury</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Sales & Revenue Analytics</div>
+        <ul class="card-items">
+          <li>Revenue by product, customer, region, channel — all sliceable and drillable</li>
+          <li>Customer profitability — revenue minus cost to serve per customer</li>
+          <li>Sales pipeline — conversion rates, deal sizes, win/loss analysis</li>
+          <li>Pricing analytics — average selling price trends, discount tracking</li>
+          <li>Connected to CRM (Salesforce, Dynamics) + ERP for actual billing</li>
+          <li>Finance partnering: finance teams use this to partner with sales leadership on revenue performance</li>
+        </ul>
+        <div class="card-tag">Revenue Analytics</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Supply Chain & Cost Analytics</div>
+        <ul class="card-items">
+          <li>Cost of goods sold breakdown — material, labour, overhead by product</li>
+          <li>Procurement analytics — spend by supplier, category, buyer</li>
+          <li>Inventory analytics — stock levels, turnover, slow-moving items, write-off risk</li>
+          <li>Freight and logistics cost tracker</li>
+          <li>Variance analysis — standard cost vs actual cost, material price variance, usage variance</li>
+          <li>Connected to ERP (SAP MM/PP modules) for real-time supply chain data</li>
+        </ul>
+        <div class="card-tag">Cost Analytics</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">40.13</div>
+      <div class="section-title">Key Takeaways, Common Mistakes & Action Steps</div>
+    </div>
+
+    <p class="section-label">Part A — 10 Core Takeaways</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Power BI Workflow</div><ul class="card-items"><li>Connect → Transform (Power Query) → Model (relationships) → DAX (measures) → Visualise → Publish</li><li>Follow this sequence every time — skipping steps causes problems</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Star Schema is Non-Negotiable</div><ul class="card-items"><li>Fact table (transactions) at centre</li><li>Dimension tables (Date, Customer, Product) around it</li><li>One-to-many relationships: dimension → fact</li><li>Always create a separate Date table</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">CALCULATE is the Most Important DAX Function</div><ul class="card-items"><li>Modifies filter context — enables any conditional calculation</li><li>Revenue LY, YTD, Budget Variance — all use CALCULATE</li><li>Master CALCULATE → master DAX</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Unpivot is the Most Important Transformation</div><ul class="card-items"><li>Financial data is often wide (months as columns)</li><li>Power BI needs tall (one row per record)</li><li>Power Query: select month columns → Unpivot</li><li>Enables all time intelligence features</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Time Intelligence Requires Date Table</div><ul class="card-items"><li>SAMEPERIODLASTYEAR, DATESYTD, DATEADD — all need a proper Date table</li><li>Mark as Date Table in Power BI</li><li>India financial year: DATESYTD(..., "31-03")</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Use DIVIDE, Not /</div><ul class="card-items"><li>DIVIDE([Revenue], [Budget], 0) handles division by zero gracefully</li><li>Revenue / Budget crashes with #DIV/0! equivalent when Budget = 0</li><li>Always use DIVIDE for ratio measures</li></ul></div>
+      <div class="card"><div class="card-icon">7️⃣</div><div class="card-title">Measures vs Calculated Columns</div><ul class="card-items"><li>Measures: aggregations, calculated on demand, no memory storage — use for KPIs</li><li>Calculated columns: row-level, stored in memory — use for attributes and keys</li><li>Beginners overuse calculated columns — prefer measures</li></ul></div>
+      <div class="card"><div class="card-icon">8️⃣</div><div class="card-title">Excel + Power BI Together</div><ul class="card-items"><li>Excel: financial modelling, complex formulas, ad-hoc analysis</li><li>Power BI: reporting, dashboards, sharing with non-finance</li><li>Not competitors — complementary tools in the modern finance stack</li></ul></div>
+      <div class="card"><div class="card-icon">9️⃣</div><div class="card-title">Row-Level Security for Finance</div><ul class="card-items"><li>Finance data is sensitive — implement RLS for shared dashboards</li><li>Dynamic RLS with USERPRINCIPALNAME() — one role for all users</li><li>Test RLS thoroughly before publishing — wrong data access is a serious issue</li></ul></div>
+      <div class="card"><div class="card-icon">🔟</div><div class="card-title">Dashboard Design Principles</div><ul class="card-items"><li>Executive summary page: 4-6 KPIs + trend chart — 30-second story</li><li>Consistent colours, fonts, alignment</li><li>Title = headline, not just description</li><li>Less is more — remove everything that doesn't add insight</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part B — Common Mistakes</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">❌ MISTAKE 1</div><div class="step-content"><strong>Putting All Data in One Big Table (No Proper Model)</strong><br>Beginners dump everything into one flat table — all dimensions and facts together. This causes performance issues, incorrect calculations, and makes DAX extremely complex. Always separate into a proper star schema: fact table + dimension tables with relationships. The data model is the foundation — get it right first.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 2</div><div class="step-content"><strong>No Date Table — Using Transaction Date Directly</strong><br>Using Sales[Date] directly in visuals without a separate Date dimension table. Time intelligence functions (SAMEPERIODLASTYEAR, DATESYTD) will not work or will give wrong results. Always create a dedicated Date table with one row per day, mark it as Date Table, and build a relationship to your fact table.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 3</div><div class="step-content"><strong>Using Calculated Columns Instead of Measures for KPIs</strong><br>Creating a calculated column "Revenue" instead of a measure. Calculated columns are stored for every row in the table — this bloats the model. KPI calculations should always be measures — they are calculated on demand using the current filter context and use no memory when not displayed.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 4</div><div class="step-content"><strong>Too Many Visuals on One Page — Information Overload</strong><br>Finance professionals often want to show everything on one page. Result: 15+ visuals, tiny text, confusing layout — nobody can extract insight. Rule: maximum 6-8 visuals per page. One clear message per page. Use drill-through and drill-down to provide detail on demand rather than showing it all upfront.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 5</div><div class="step-content"><strong>Forgetting to Test Row-Level Security Before Publishing</strong><br>Publishing a finance dashboard with RLS configured but not tested. Result: users see each other's data (RLS misconfigured) or see no data (RLS too restrictive). Always test RLS by using "View as Role" in Power BI Desktop before publishing. Then test again in Service by logging in as a test user with different permissions.</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part C — Key DAX Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Essential DAX Quick Reference</div>
+      <div class="formula-row"><div class="formula-name">Total Revenue</div><div class="formula-eq">= SUM(Sales[Revenue])</div></div>
+      <div class="formula-row"><div class="formula-name">GP Margin %</div><div class="formula-eq">= DIVIDE([Gross Profit], [Total Revenue], 0)</div></div>
+      <div class="formula-row"><div class="formula-name">Revenue Last Year</div><div class="formula-eq">= CALCULATE([Total Revenue], SAMEPERIODLASTYEAR(Dates[Date]))</div></div>
+      <div class="formula-row"><div class="formula-name">Revenue YTD</div><div class="formula-eq">= CALCULATE([Total Revenue], DATESYTD(Dates[Date], "31-03"))</div></div>
+      <div class="formula-row"><div class="formula-name">Budget Variance %</div><div class="formula-eq">= DIVIDE([Total Revenue] - [Budget], [Budget], 0)</div></div>
+      <div class="formula-row"><div class="formula-name">% of Total</div><div class="formula-eq">= DIVIDE([Total Revenue], CALCULATE([Total Revenue], ALL(Sales)), 0)</div></div>
+      <div class="formula-row"><div class="formula-name">Revenue Rank</div><div class="formula-eq">= RANKX(ALL(Products[Product]), [Total Revenue],, DESC)</div></div>
+      <div class="formula-row"><div class="formula-name">3M Moving Average</div><div class="formula-eq">= CALCULATE([Total Revenue], DATESINPERIOD(Dates[Date], LASTDATE(Dates[Date]), -3, MONTH)) / 3</div></div>
+      <div class="formula-row"><div class="formula-name">Revenue Filtered</div><div class="formula-eq">= CALCULATE([Total Revenue], Region[Region] = "North")</div></div>
+      <div class="formula-row"><div class="formula-name">Status Flag</div><div class="formula-eq">= IF([Variance %] >= 0, "✅ On Track", "⚠️ Below Target")</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part D — Action Steps</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 40 Power BI Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag yellow">✅ THIS WEEK: Download Power BI Desktop (free from Microsoft) — takes 5 minutes to install</span>
+        <span class="tag yellow">✅ THIS WEEK: Connect to an Excel file (your Chapter 39 financial model) — practice Power Query transformations (rename columns, change types, unpivot)</span>
+        <span class="tag yellow">✅ THIS WEEK: Create a Date table using CALENDARAUTO() in DAX — mark it as Date Table — build relationship to your fact table</span>
+        <span class="tag yellow">✅ THIS WEEK: Build 5 core DAX measures: Total Revenue, GP Margin %, Revenue LY, Revenue YTD, Budget Variance %</span>
+        <span class="tag yellow">✅ THIS WEEK: Create your first dashboard page: 3 Card visuals (Revenue, EBITDA, Cash) + 1 Line chart (monthly trend) + 1 Bar chart (by segment)</span>
+        <span class="tag yellow">✅ THIS MONTH: Build a complete 4-page CFO dashboard using a fictional P&L dataset (create one in Excel if needed)</span>
+        <span class="tag yellow">✅ THIS MONTH: Learn CALCULATE deeply — practice 10 different CALCULATE use cases (filter by region, by date, remove filters with ALL)</span>
+        <span class="tag yellow">✅ THIS MONTH: Complete Microsoft's free Power BI learning path on learn.microsoft.com — official, comprehensive, free</span>
+        <span class="tag yellow">✅ THIS MONTH: Publish one report to Power BI Service (sign up for free trial) — experience the full workflow end to end</span>
+        <span class="tag yellow">✅ ONGOING: Follow Guy in a Cube (YouTube) — best free Power BI finance content. Chandoo.org also has excellent Power BI tutorials.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Connect the Right Data (GIGO — Garbage In, Garbage Out)<br>
+      + Build a Clean Star Schema (Model First, Visuals Later)<br>
+      + Master CALCULATE (One Function to Rule All DAX)<br>
+      + Design for the Audience (30-Second Story on Page 1)<br>
+      + Schedule Refresh (Live Data = Live Decisions)<br>
+      + Excel + Power BI Together (Each Tool for Its Strength)<br>
+      = <strong style="color:var(--accent4);">Power BI Mastery — Turn Data Into Decisions at the Speed of Business</strong>
+    </div>
+    <h3>Chapter 40: Power BI — Complete 📊✅</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 41: Data Analytics — the science of extracting insights from data to drive better financial decisions. 🔢</p>
+  </div>
+
+</div>
+</body>
+</html>

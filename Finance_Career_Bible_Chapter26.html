@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 26: Advanced Financial Management</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(232,121,249,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent5); border:1px solid var(--accent5); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent5),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent5); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent5); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent5); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent5); padding:14px 20px; background:rgba(232,121,249,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent5); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent5); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent5); background:rgba(232,121,249,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(232,121,249,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent5); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(232,121,249,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(232,121,249,0.07),rgba(108,99,255,0.05)); border:1px solid rgba(232,121,249,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent5); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent5); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(232,121,249,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent5); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent5); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(232,121,249,0.1); border:1px solid rgba(232,121,249,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(232,121,249,0.09),rgba(108,99,255,0.06)); border:1px solid rgba(232,121,249,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent5); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent5),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 26 · ACCA AFM</div>
+  <h1>Advanced Financial<br><span>Management</span></h1>
+  <p class="hero-sub">CFO-level financial strategy — advanced business valuation, M&A structuring, international investment appraisal, and real options thinking. One of the two Strategic Professional option papers, built for corporate finance and treasury careers.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">AFM</div><div class="stat-label">Strategic Professional</div></div>
+    <div class="stat"><div class="stat-num">M&A</div><div class="stat-label">+ Valuation + Real Options</div></div>
+    <div class="stat"><div class="stat-num">APV</div><div class="stat-label">Adjusted Present Value</div></div>
+    <div class="stat"><div class="stat-num">CFO</div><div class="stat-label">Career Track</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 26 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">26.1</span>What AFM Adds Beyond FM</div>
+    <div class="toc-item"><span class="toc-num">26.2</span>Advanced Business Valuation Methods</div>
+    <div class="toc-item"><span class="toc-num">26.3</span>Adjusted Present Value (APV)</div>
+    <div class="toc-item"><span class="toc-num">26.4</span>APV — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">26.5</span>Mergers & Acquisitions — Strategic Rationale</div>
+    <div class="toc-item"><span class="toc-num">26.6</span>M&A Valuation & Synergy Analysis</div>
+    <div class="toc-item"><span class="toc-num">26.7</span>M&A Synergy — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">26.8</span>M&A Financing & Deal Structuring</div>
+    <div class="toc-item"><span class="toc-num">26.9</span>International Investment Appraisal</div>
+    <div class="toc-item"><span class="toc-num">26.10</span>Real Options in Capital Budgeting</div>
+    <div class="toc-item"><span class="toc-num">26.11</span>Real Options — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">26.12</span>Business & Financial Reorganisation</div>
+    <div class="toc-item"><span class="toc-num">26.13</span>Advanced Risk Management — Interest Rate Hedging</div>
+    <div class="toc-item"><span class="toc-num">26.14</span>AFM in Indian Corporate Finance — Real World Context</div>
+    <div class="toc-item"><span class="toc-num">26.15</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">26.16</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Advanced Financial Management is where corporate finance stops being about textbook formulas and starts being about genuine strategic judgment — should we acquire this company, at what price, financed how? Should we invest in this overseas market given currency and political risk? What is the option VALUE of waiting before committing capital? AFM is one of ACCA's two Strategic Professional option papers most directly relevant to corporate finance, investment banking, treasury, and CFO career tracks.</p>
+    <div class="quote">"FM teaches you to evaluate a project. AFM teaches you to evaluate a strategy."</div>
+  </div>
+
+  <!-- 26.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">26.1</div>
+      <div class="section-title">What AFM Adds Beyond FM</div>
+    </div>
+    <table class="data-table">
+      <tr><th>FM (Applied Skills) Covers</th><th>AFM (Strategic Professional) Adds</th></tr>
+      <tr><td>Basic NPV/IRR investment appraisal</td><td>APV, international appraisal with currency/political risk, real options</td></tr>
+      <tr><td>Basic WACC calculation</td><td>WACC adjustments for changing capital structure, project-specific discount rates via CAPM ungearing/regearing</td></tr>
+      <tr><td>Simple dividend and financing decisions</td><td>Complex M&A structuring, business valuations for acquisitions, reorganisation and reconstruction schemes</td></tr>
+      <tr><td>Basic forward/option hedging</td><td>Interest rate derivatives (swaps, FRAs, futures, options), more complex hedging strategies</td></tr>
+    </table>
+  </div>
+
+  <!-- 26.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">26.2</div>
+      <div class="section-title">Advanced Business Valuation Methods</div>
+    </div>
+    <p class="prose">While Chapter 33 (Valuation Basics, from the earlier chapters) covers DCF and multiples fundamentals, AFM-level valuation adds sophistication for acquisition and complex deal contexts.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Free Cash Flow to Equity (FCFE)</div>
+        <ul class="card-items">
+          <li>Values equity DIRECTLY, rather than valuing the whole firm and subtracting debt</li>
+          <li>FCFE = FCFF − Interest(1−T) + Net Borrowing</li>
+          <li>Discounted at the cost of equity (Ke), not WACC, since it's a claim available to equity holders only</li>
+        </ul>
+        <div class="card-tag">Equity-Direct Valuation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Sum-of-the-Parts Valuation</div>
+        <ul class="card-items">
+          <li>Values each business division/segment separately using the most appropriate method for that segment, then sums them</li>
+          <li>Useful for diversified conglomerates where a single blended multiple misrepresents different-risk business lines</li>
+          <li>Often reveals a "conglomerate discount" — sum of parts value exceeding the current combined market value</li>
+        </ul>
+        <div class="card-tag">Diversified Companies</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">26.3</div>
+      <div class="section-title">Adjusted Present Value (APV)</div>
+    </div>
+    <p class="prose">Standard NPV using WACC assumes a CONSTANT capital structure throughout a project's life. When financing changes significantly (e.g. a large acquisition funded predominantly by new debt that's paid down over time), WACC-based NPV becomes unreliable. <strong>APV</strong> solves this by valuing the project's cash flows and its financing side-effects SEPARATELY.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">APV Formula</div>
+      <div class="formula-row"><div class="formula-name">Adjusted Present Value</div><div class="formula-eq">APV = Base Case NPV (all-equity, discounted at ungeared cost of equity) + PV of Financing Side-Effects</div></div>
+      <div class="formula-row"><div class="formula-name">Financing Side-Effects Include</div><div class="formula-eq">PV of Tax Shield on Debt Interest + PV of Issue Costs + PV of Subsidised Loan Benefits (if any) − PV of Financial Distress Costs</div></div>
+      <div class="formula-row"><div class="formula-name">Ungeared Cost of Equity (via CAPM)</div><div class="formula-eq">First "ungear" the observed geared beta to an asset (ungeared) beta, then apply CAPM to get the discount rate for the base-case cash flows</div></div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why APV Is Better Than WACC-Based NPV for M&A</div>
+      Acquisitions are frequently financed with a debt structure that changes significantly over the deal's life (heavy debt initially, paid down as cash flows come in). APV explicitly separates the "pure business value" from the "value created by financing choices" — giving a clearer, more defensible picture of where value actually comes from in the deal, which is exactly the kind of analysis AFM tests.
+    </div>
+  </div>
+
+  <!-- 26.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">26.4</div>
+      <div class="section-title">APV — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Acquisition Partly Funded by a New Loan</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Base case NPV (using ungeared cost of equity) = ₹12 Crore. The acquisition is partly funded by a ₹20 Crore loan at 10% interest, tax rate 25%, loan repaid in equal instalments over 5 years. Issue costs of the loan = ₹40 Lakh (net of tax relief, assume already after-tax for simplicity).<br><br>
+        <strong style="color:var(--text);">Step 1 — PV of Tax Shield on Interest (simplified, assuming average balance approach):</strong><br>
+        Approximate average outstanding loan over 5 years ≈ ₹12 Crore (declining balance)<br>
+        Annual tax shield ≈ ₹12 Crore × 10% × 25% = ₹30 Lakh/year for 5 years<br>
+        PV of tax shield (discounted at pre-tax cost of debt, 10%, 5-year annuity factor ≈ 3.79) = ₹30L × 3.79 ≈ <strong style="color:var(--accent5);">₹1.14 Crore</strong><br><br>
+        <strong style="color:var(--text);">Step 2 — Less Issue Costs:</strong><br>
+        − ₹40 Lakh<br><br>
+        <strong style="color:var(--text);">Step 3 — Total APV:</strong><br>
+        APV = ₹12 Crore (base NPV) + ₹1.14 Crore (tax shield) − ₹0.40 Crore (issue costs)<br>
+        = <strong style="color:var(--accent5);">₹12.74 Crore</strong><br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> The debt financing structure ADDS approximately ₹0.74 Crore of value (net tax shield benefit after issue costs) on top of the pure business value of ₹12 Crore — APV makes this financing contribution explicit and separately visible, which a single blended WACC-based NPV would obscure.
+      </div>
+    </div>
+  </div>
+
+  <!-- 26.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">26.5</div>
+      <div class="section-title">Mergers & Acquisitions — Strategic Rationale</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Value-Creating Motives</div>
+        <ul class="card-items">
+          <li><strong>Synergies:</strong> cost savings (economies of scale, eliminated duplication) or revenue synergies (cross-selling, market access)</li>
+          <li><strong>Vertical Integration:</strong> acquiring a supplier or distributor to control the value chain</li>
+          <li><strong>Market Power:</strong> increased pricing power or barriers to entry through consolidation</li>
+          <li><strong>Diversification:</strong> reducing overall business risk (though shareholders can often diversify more cheaply themselves)</li>
+        </ul>
+        <div class="card-tag">Legitimate Rationale</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Value-Destroying Motives (Agency Problems)</div>
+        <ul class="card-items">
+          <li><strong>Empire Building:</strong> management pursuing size/prestige rather than shareholder value</li>
+          <li><strong>Overconfidence/Hubris:</strong> management overestimating their ability to extract synergies or manage the combined entity</li>
+          <li><strong>Overpayment:</strong> winning a competitive bidding process by paying more than the target's true value ("winner's curse")</li>
+        </ul>
+        <div class="card-tag">Watch for These</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">26.6</div>
+      <div class="section-title">M&A Valuation & Synergy Analysis</div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Key M&A Valuation Formulas</div>
+      <div class="formula-row"><div class="formula-name">Value of Synergy</div><div class="formula-eq">Value of Combined Entity − (Value of Acquirer Standalone + Value of Target Standalone)</div></div>
+      <div class="formula-row"><div class="formula-name">Maximum Justifiable Premium</div><div class="formula-eq">Target's Standalone Value + Value of Synergies − Deal/Integration Costs</div></div>
+      <div class="formula-row"><div class="formula-name">Gain to Target Shareholders</div><div class="formula-eq">Premium Paid Over Standalone Target Value</div></div>
+      <div class="formula-row"><div class="formula-name">Gain to Acquirer Shareholders</div><div class="formula-eq">Total Synergy Value − Premium Paid to Target</div></div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">💡 The Golden Rule of Deal Pricing</div>
+      Never pay a premium that exceeds the value of the synergies you're confident you can actually realise. Paying MORE than the synergy value transfers all the deal value (and more) to the TARGET's shareholders, leaving the ACQUIRER's shareholders worse off — this is precisely how many high-profile M&A deals destroy value despite sound strategic logic.
+    </div>
+  </div>
+
+  <!-- 26.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">26.7</div>
+      <div class="section-title">M&A Synergy — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Calculating the Maximum Justifiable Premium</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Acquirer Co (standalone value ₹500 Crore) is considering acquiring Target Co (standalone value ₹150 Crore). Management estimates the combined entity would be worth ₹720 Crore due to cost synergies (eliminating duplicate back-office functions) and revenue synergies (cross-selling). Estimated integration costs = ₹15 Crore.<br><br>
+        <strong style="color:var(--text);">Step 1 — Calculate total synergy value:</strong><br>
+        Synergy = Combined Value − (Acquirer Standalone + Target Standalone)<br>
+        = ₹720 Cr − (₹500 Cr + ₹150 Cr) = ₹720 Cr − ₹650 Cr = <strong style="color:var(--accent5);">₹70 Crore</strong><br><br>
+        <strong style="color:var(--text);">Step 2 — Calculate maximum justifiable premium:</strong><br>
+        Max Premium = Synergy Value − Integration Costs = ₹70 Cr − ₹15 Cr = <strong style="color:var(--accent5);">₹55 Crore</strong><br><br>
+        <strong style="color:var(--text);">Step 3 — Maximum price Acquirer should pay:</strong><br>
+        Maximum Price = Target Standalone Value + Max Premium = ₹150 Cr + ₹55 Cr = <strong style="color:var(--accent5);">₹205 Crore</strong><br><br>
+        <strong style="color:var(--text);">Step 4 — Testing a specific offer (say Acquirer offers ₹190 Crore):</strong><br>
+        Premium paid = ₹190 Cr − ₹150 Cr = ₹40 Cr<br>
+        Gain to TARGET shareholders = ₹40 Cr (the premium they receive over standalone value)<br>
+        Gain to ACQUIRER shareholders = Total Synergy − Premium Paid − Integration Costs = ₹70 Cr − ₹40 Cr − ₹15 Cr = <strong style="color:var(--accent5);">₹15 Crore</strong><br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> At an offer of ₹190 Crore, BOTH parties gain — target shareholders receive a ₹40 Cr premium, and acquirer shareholders still capture ₹15 Cr of net value. However, if Acquirer had offered anything above ₹205 Crore (the maximum justifiable price), the entire synergy value (and more) would transfer to Target's shareholders, leaving Acquirer's shareholders WORSE off than not doing the deal at all — this is precisely the "winner's curse" dynamic that destroys value in competitive bidding situations.
+      </div>
+    </div>
+  </div>
+
+  <!-- 26.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">26.8</div>
+      <div class="section-title">M&A Financing & Deal Structuring</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Financing Method</th><th>Effect on Target Shareholders</th><th>Effect on Acquirer</th></tr>
+      <tr><td>Cash Consideration</td><td>Certain, immediate value — target shareholders exit entirely</td><td>Uses acquirer's cash/debt capacity; acquirer bears all post-deal risk/upside</td></tr>
+      <tr><td>Share-for-Share Exchange</td><td>Target shareholders become shareholders in the combined entity — share in future upside AND risk</td><td>No cash outlay, but dilutes existing acquirer shareholders</td></tr>
+      <tr><td>Mixed Consideration</td><td>Partial certainty (cash) + partial ongoing exposure (shares)</td><td>Balances cash conservation with dilution concerns</td></tr>
+      <tr><td>Earn-Out Structure</td><td>Deferred, performance-contingent additional payment</td><td>Reduces upfront risk, aligns seller incentives with post-deal performance</td></tr>
+    </table>
+  </div>
+
+  <!-- 26.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">26.9</div>
+      <div class="section-title">International Investment Appraisal</div>
+    </div>
+    <p class="prose">Evaluating an overseas investment requires handling two additional layers of complexity beyond domestic NPV: currency conversion and country-specific risk.</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">METHOD 1</div><div class="step-content"><strong>Forecast in Foreign Currency, Then Convert:</strong> project foreign cash flows in the local currency, discount at the LOCAL cost of capital, then convert the resulting NPV to home currency at the SPOT rate</div></div>
+      <div class="step-item"><div class="step-num">METHOD 2</div><div class="step-content"><strong>Convert Cash Flows First, Then Discount:</strong> convert each year's foreign cash flow to home currency using forecast future exchange rates (via purchasing power parity or interest rate parity), then discount all cash flows at the HOME cost of capital</div></div>
+      <div class="step-item"><div class="step-num">KEY RULE</div><div class="step-content">Both methods should give the SAME answer if done correctly and consistently — a common exam trap is mixing a local discount rate with home-currency cash flows (or vice versa), which double-counts or omits currency risk</div></div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Additional International Risk Factors</div>
+      Beyond currency, international appraisal must consider: <strong>political risk</strong> (expropriation, capital controls restricting repatriation of profits), <strong>country-specific tax rules</strong> (double taxation treaties, withholding taxes on repatriated dividends), and <strong>additional required return</strong> for country risk premium, often added to the discount rate for higher-risk jurisdictions.
+    </div>
+  </div>
+
+  <!-- 26.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">26.10</div>
+      <div class="section-title">Real Options in Capital Budgeting</div>
+    </div>
+    <p class="prose">Standard NPV treats an investment decision as a rigid now-or-never choice. In reality, management often has valuable FLEXIBILITY — the option to expand, delay, or abandon a project as new information emerges. <strong>Real Options</strong> analysis values this flexibility, which basic NPV ignores entirely.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⏸️</div>
+        <div class="card-title">Option to Delay</div>
+        <ul class="card-items">
+          <li>Value of waiting for more information before committing capital (e.g. waiting to see if a new market develops before investing)</li>
+          <li>Most valuable when there's high uncertainty and the investment is at least partially irreversible</li>
+        </ul>
+        <div class="card-tag">Timing Flexibility</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Option to Expand</div>
+        <ul class="card-items">
+          <li>An initial (possibly negative-NPV) investment creates the OPTION to expand significantly later if conditions turn favourable</li>
+          <li>Common in R&D, entering a new market with a small pilot, or building excess capacity</li>
+        </ul>
+        <div class="card-tag">Growth Flexibility</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛑</div>
+        <div class="card-title">Option to Abandon</div>
+        <ul class="card-items">
+          <li>Value of being able to exit a failing project early and recover salvage value, rather than being forced to continue</li>
+          <li>Increases a project's attractiveness by capping the downside</li>
+        </ul>
+        <div class="card-tag">Downside Protection</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">💡 Why This Matters</div>
+      A project with a slightly negative standard NPV might still be worth undertaking if it embeds valuable real options (e.g. the option to expand into a much larger opportunity later). Ignoring real options systematically UNDERVALUES flexible, staged investment strategies — particularly relevant for R&D, natural resources, and technology investments with high uncertainty.
+    </div>
+  </div>
+
+  <!-- 26.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">26.11</div>
+      <div class="section-title">Real Options — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Option to Expand Flips a Negative-NPV Project Positive</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> A company is considering a pilot investment of ₹10 Crore in a new market, with a standalone NPV of −₹2 Crore (slightly negative — the pilot alone doesn't look attractive). However, if the pilot succeeds (60% probability, based on management's assessment), the company would have the OPTION to expand significantly with a follow-on investment that has an NPV of ₹25 Crore at that future point. If the pilot fails (40% probability), the company simply doesn't expand, losing nothing further beyond the initial pilot cost already reflected in the −₹2 Cr NPV.<br><br>
+        <strong style="color:var(--text);">Step 1 — Value of the expansion option (expected value approach):</strong><br>
+        Value of option = Probability of Success × NPV of Expansion (if exercised)<br>
+        = 60% × ₹25 Cr = <strong style="color:var(--accent4);">₹15 Crore</strong><br>
+        (The company only captures this value if it EXERCISES the option — i.e., only in the successful scenario; if the pilot fails, the option is simply not exercised, at no further loss)<br><br>
+        <strong style="color:var(--text);">Step 2 — Total project value (Expanded NPV = Standalone NPV + Option Value):</strong><br>
+        Expanded NPV = −₹2 Cr + ₹15 Cr = <strong style="color:var(--accent4);">₹13 Crore — POSITIVE</strong><br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> Using standard NPV alone, the pilot project would be REJECTED (−₹2 Cr). But once the value of the embedded option to expand is properly accounted for, the TRUE value of undertaking the pilot is strongly positive (+₹13 Cr) — because the pilot isn't just a standalone investment, it's the price of admission to a much larger opportunity that only becomes available if the pilot succeeds. This is exactly the kind of staged, flexible investment that basic NPV analysis systematically undervalues, and why AFM-level analysis explicitly incorporates real options for high-uncertainty, staged investment decisions.
+      </div>
+    </div>
+  </div>
+
+  <!-- 26.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">26.12</div>
+      <div class="section-title">Business & Financial Reorganisation</div>
+    </div>
+    <p class="prose">AFM also covers how struggling or strategically-repositioning companies restructure their business and capital structure.</p>
+    <table class="data-table">
+      <tr><th>Reorganisation Type</th><th>Purpose</th></tr>
+      <tr><td>Financial Reconstruction</td><td>Restructuring the capital structure (debt-for-equity swaps, capital reduction) to make a struggling but viable business financially sustainable</td></tr>
+      <tr><td>Demerger / Spin-off</td><td>Separating a business division into an independent entity — often to unlock value that was hidden within a diversified conglomerate structure</td></tr>
+      <tr><td>Management Buyout (MBO)</td><td>Existing management team acquires the business (or a division) from current owners, typically using significant leverage (LBO)</td></tr>
+      <tr><td>Leveraged Buyout (LBO)</td><td>Acquisition financed predominantly with debt, secured against the target's own assets and cash flows</td></tr>
+    </table>
+  </div>
+
+  <!-- 26.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">26.13</div>
+      <div class="section-title">Advanced Risk Management — Interest Rate Hedging</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Interest Rate Swaps</div>
+        <ul class="card-items">
+          <li>Two parties exchange interest payment obligations — typically fixed-for-floating</li>
+          <li>Allows a company to convert floating-rate debt to effectively fixed-rate (or vice versa) without refinancing the underlying loan</li>
+        </ul>
+        <div class="card-tag">Swap Fixed/Floating</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <div class="card-title">Forward Rate Agreements (FRAs)</div>
+        <ul class="card-items">
+          <li>Locks in an interest rate today for a loan/deposit starting at a future date</li>
+          <li>No exchange of principal — only the interest rate differential is settled in cash</li>
+        </ul>
+        <div class="card-tag">Lock Future Rate</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Interest Rate Futures & Options</div>
+        <ul class="card-items">
+          <li>Exchange-traded standardised contracts hedging interest rate movements</li>
+          <li>Options provide the right (not obligation) to hedge, at the cost of a premium — similar logic to currency options</li>
+        </ul>
+        <div class="card-tag">Standardised Hedges</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">26.14</div>
+      <div class="section-title">AFM in Indian Corporate Finance — Real World Context</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Area</th><th>Indian Context</th></tr>
+      <tr><td>M&A Regulation</td><td>Governed by SEBI (Substantial Acquisition of Shares and Takeovers) Regulations for listed companies, plus Competition Commission of India (CCI) approval for larger deals</td></tr>
+      <tr><td>Cross-Border Investment</td><td>Governed by FEMA — Overseas Direct Investment (ODI) rules for Indian companies investing abroad, and Foreign Direct Investment (FDI) rules for inbound investment</td></tr>
+      <tr><td>LBO/PE Activity</td><td>India's private equity and buyout market has grown significantly, though leverage levels are typically more conservative than US/European LBOs due to differing debt market depth</td></tr>
+      <tr><td>Corporate Restructuring</td><td>Schemes of arrangement (mergers, demergers) require NCLT approval under the Companies Act 2013</td></tr>
+    </table>
+  </div>
+
+  <!-- 26.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">26.15</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">APV Separates Business Value From Financing Value</div><ul class="card-items"><li>Base case NPV + PV of financing side-effects</li><li>Best for deals with changing capital structure</li><li>Makes financing contribution explicit</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Never Overpay Beyond Synergy Value</div><ul class="card-items"><li>Max justifiable premium = synergies − integration costs</li><li>Overpaying transfers value to target shareholders</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Currency & Discount Rate Must Match</div><ul class="card-items"><li>Local cash flows → local discount rate</li><li>Home-currency cash flows → home discount rate</li><li>Never mix the two</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Real Options Add Value NPV Misses</div><ul class="card-items"><li>Option to delay, expand, or abandon</li><li>Most valuable under high uncertainty</li><li>Can flip a negative-NPV project positive</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 26 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Work through a full APV calculation from scratch</span>
+        <span class="tag teal">✅ Identify the value-creating vs value-destroying motives in 2 real M&A deals you know</span>
+        <span class="tag teal">✅ Practice the international investment appraisal method-consistency check</span>
+        <span class="tag teal">✅ Identify a real option embedded in a project/investment you're familiar with</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">26.16</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Discounting Base Case Cash Flows at WACC Instead of Ungeared Cost of Equity</strong><br>
+        APV's entire purpose is separating business risk from financing risk — the base case cash flows must be discounted at the UNGEARED (asset) cost of equity, not WACC. Using WACC for the base case defeats the purpose of doing APV in the first place.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Mixing Local Cash Flows With Home Discount Rates</strong><br>
+        In international investment appraisal, local-currency cash flows must be discounted at the LOCAL cost of capital (or converted to home currency first, then discounted at home rate) — mixing local cash flows with a home discount rate produces a meaningless, inconsistent result.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Paying a Premium Exceeding Realistic Synergy Estimates</strong><br>
+        Getting caught up in competitive bidding and paying more than the value of achievable synergies transfers deal value entirely to the target's shareholders — a classic value-destroying M&A mistake driven by overconfidence or "winner's curse" dynamics.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Ignoring Real Options in High-Uncertainty Projects</strong><br>
+        Rejecting a project purely on a negative standard NPV, without considering embedded real options (like the option to expand or abandon), can lead to rejecting genuinely valuable staged investment opportunities — especially in R&D, exploration, or new market entry scenarios.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Treating Diversification as Automatically Value-Creating for Shareholders</strong><br>
+        A company diversifying purely to reduce risk ignores that shareholders can typically diversify their own portfolios more cheaply than the company can diversify its operations — diversification alone is a weak justification for M&A unless paired with genuine synergies.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Forgetting to Deduct Integration Costs From the Maximum Justifiable Premium</strong><br>
+        As the worked example in 26.7 shows, the maximum price an acquirer should pay isn't just target value plus synergies — integration costs must be deducted too. Ignoring integration costs (often substantial in complex mergers) leads to overpaying even when the synergy estimate itself was reasonable.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Using a Simple Expected Value for Real Options Without Considering It's a Simplification</strong><br>
+        The expected-value approach shown in 26.11 is a useful simplified way to illustrate real option value, but formal real options valuation (using Black-Scholes-style option pricing models) can capture additional nuances like volatility and time value that a simple probability-weighted average misses — the expected value method is a reasonable approximation, not a fully rigorous options-pricing technique.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Assuming Cash and Share Consideration Are Equally Attractive to Target Shareholders</strong><br>
+        Cash consideration gives target shareholders certain, immediate value with no further exposure to the combined entity's performance; share consideration gives them ongoing exposure to both the upside AND the risk of the combined entity. These carry very different tax and risk implications for target shareholders, and the "right" choice depends on their preferences, not just deal mechanics.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">APV Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: State the APV formula.</strong></li>
+          <li>A: Base Case NPV + PV of Financing Side-Effects</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Synergy Value</div>
+        <ul class="card-items">
+          <li><strong>Q: How is synergy value calculated?</strong></li>
+          <li>A: Value of Combined Entity − Sum of Standalone Values</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">3 Types of Real Options</div>
+        <ul class="card-items">
+          <li><strong>Q: Name 3 types of real options in capital budgeting.</strong></li>
+          <li>A: Option to delay, option to expand, option to abandon</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Max Justifiable Premium</div>
+        <ul class="card-items">
+          <li><strong>Q: What's the maximum premium an acquirer should justify paying?</strong></li>
+          <li>A: Synergy value minus integration/deal costs</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">India M&A Regulator</div>
+        <ul class="card-items">
+          <li><strong>Q: Which body approves larger Indian M&A deals for antitrust concerns?</strong></li>
+          <li>A: Competition Commission of India (CCI)</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Maximum Justifiable Price</div>
+        <ul class="card-items">
+          <li><strong>Q: What's the formula for maximum price an acquirer should pay?</strong></li>
+          <li>A: Target Standalone Value + Synergy Value − Integration Costs</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Option to Expand Value</div>
+        <ul class="card-items">
+          <li><strong>Q: How can a simple expected-value approach estimate real option value?</strong></li>
+          <li>A: Probability of Success × NPV of the Follow-On Investment (if exercised)</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Cash vs Share Consideration</div>
+        <ul class="card-items">
+          <li><strong>Q: Which financing method gives target shareholders ongoing exposure to the deal?</strong></li>
+          <li>A: Share-for-share exchange (cash gives certain, immediate exit)</li>
+        </ul>
+        <div class="card-tag">Flashcard 8</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Why do so many M&A deals fail to create shareholder value?"</td><td>Strategic and critical thinking about deal-making pitfalls</td><td>Common causes include overpaying beyond realistic synergy estimates (often driven by competitive bidding or management overconfidence), underestimating integration costs and complexity, cultural mismatches between organisations, and pursuing deals for empire-building rather than genuine value creation. The fundamental discipline is ensuring the premium paid never exceeds the confidently achievable synergy value.</td></tr>
+      <tr><td>"What is a real option, and why would you consider it in investment appraisal?"</td><td>Depth of understanding beyond basic NPV</td><td>A real option is the value of managerial flexibility embedded in an investment decision — such as the option to expand, delay, or abandon a project as new information emerges. Standard NPV treats decisions as rigid and irreversible, which can undervalue staged, flexible investments; incorporating real options can make an initially marginal or negative-NPV project attractive once the value of that flexibility is properly accounted for.</td></tr>
+      <tr><td>"How would you approach appraising an investment in a country with significant political risk?"</td><td>Practical international finance judgment</td><td>I'd start with standard NPV analysis using either method (local cash flows/local rate, or converted cash flows/home rate, applied consistently), then explicitly adjust for political risk — either through a higher discount rate (country risk premium) or by directly adjusting cash flow forecasts for probability-weighted scenarios like restricted profit repatriation or expropriation risk, and I'd examine any available political risk insurance or joint venture structures that could mitigate that specific risk.</td></tr>
+      <tr><td>"How would you calculate the maximum price a company should pay to acquire another company?"</td><td>Applied M&A valuation and negotiation discipline</td><td>The maximum justifiable price is the target's standalone value plus the value of synergies the acquirer is confident it can realistically achieve, minus expected integration costs. Paying anything above this transfers all the deal's value creation — and potentially more — to the target's shareholders, leaving the acquirer's own shareholders worse off, which is why disciplined M&A processes set this ceiling before entering negotiations rather than getting drawn into escalating competitive bidding.</td></tr>
+      <tr><td>"Explain the difference between APV and standard WACC-based NPV, and when you'd use each."</td><td>Technical depth distinguishing AFM from FM-level analysis</td><td>WACC-based NPV assumes a constant capital structure throughout a project's life, discounting all cash flows at one blended rate. APV instead values the project's base-case cash flows separately (at the ungeared cost of equity) from the financing side-effects (like the tax shield on debt), which is more appropriate when the capital structure changes significantly over the project's life — such as an acquisition financed with debt that's progressively paid down, a very common real-world M&A financing pattern that WACC-based NPV struggles to handle accurately.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Advanced Valuation (APV, FCFE, Sum-of-Parts)<br>
+      + M&A Strategy & Deal Structuring<br>
+      + International Appraisal (Currency + Political Risk)<br>
+      + Real Options (Value of Flexibility)<br>
+      = <strong style="color:var(--accent5);">The CFO-Level Strategic Finance Toolkit</strong>
+    </div>
+    <h3>Chapter 26: Advanced Financial Management — Complete 💼🌍</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 27: Advanced Performance Management (APM) — strategic performance measurement, transfer pricing, and behavioural aspects of budgeting. 🚀</p>
+  </div>
+
+</div>
+</body>
+</html>

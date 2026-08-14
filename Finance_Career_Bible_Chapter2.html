@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 2: Accounting From Zero</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── BOOK COVER ── */
+  .book-cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .book-cover::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(108,99,255,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .book-cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,212,170,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    padding: 4px 16px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .cover-title {
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  .cover-title span {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cover-sub {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 540px;
+    margin: 0 auto 40px;
+  }
+
+  .cover-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .cover-stat { text-align: center; }
+
+  .cover-stat-num {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .cover-stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .cover-chapters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-chapter-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .cover-chapter-pill.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(108,99,255,0.1);
+  }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent2);
+    padding: 14px 20px 14px 0;
+    border-right: 1px solid var(--border);
+    margin-right: 4px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 14px 16px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav-link:hover { color: var(--text); }
+  .nav-link.ch1 { border-bottom-color: var(--accent); color: var(--accent); }
+  .nav-link.ch2 { border-bottom-color: var(--accent2); color: var(--accent2); }
+
+  /* ── CHAPTER DIVIDER ── */
+  .chapter-divider {
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .chapter-divider.ch1::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .chapter-divider.ch2::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,212,170,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .chapter-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  .chapter-tag.purple { color: var(--accent); border: 1px solid var(--accent); }
+  .chapter-tag.teal   { color: var(--accent2); border: 1px solid var(--accent2); }
+
+  .chapter-divider h2 {
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .chapter-divider h2 span.purple {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .chapter-divider h2 span.teal {
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .chapter-sub {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 500px;
+    margin: 0 auto 28px;
+  }
+
+  .chapter-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent); }
+  .stat-num.teal { color: var(--accent2); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+
+  .toc-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(42,42,58,0.4);
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+
+  .toc-item:hover { color: var(--accent2); }
+  .toc-item:last-child { border-bottom: none; }
+
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent2); min-width: 36px; }
+
+  /* ── SECTION ── */
+  .section { margin-top: 48px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sec-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2);  color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2);  color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+  /* ── PROSE ── */
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  /* ── QUOTE ── */
+  .quote {
+    border-left: 3px solid var(--accent2);
+    padding: 12px 20px;
+    background: rgba(0,212,170,0.05);
+    border-radius: 0 10px 10px 0;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  /* ── CARDS ── */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+
+  .card-items li {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 3px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .card-items li::before { content: '→'; color: var(--accent2); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+
+  .card-tag {
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    background: rgba(108,99,255,0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* ── WIDE CARD ── */
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent2); }
+
+  /* ── TABLE ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-top: 14px;
+  }
+
+  .data-table th {
+    background: rgba(108,99,255,0.1);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .data-table td {
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(42,42,58,0.5);
+    vertical-align: top;
+  }
+
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(108,99,255,0.03); }
+
+  /* ── EQUATION ── */
+  .equation {
+    background: var(--card);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .equation-text { font-family: var(--mono); font-size: clamp(13px,2.5vw,17px); color: var(--accent2); letter-spacing: 1px; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* ── JOURNAL ── */
+  .journal { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 14px; }
+
+  .journal-header {
+    background: rgba(108,99,255,0.1);
+    padding: 10px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .journal-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(42,42,58,0.4);
+    align-items: center;
+    font-size: 13px;
+  }
+
+  .journal-row:last-child { border-bottom: none; }
+
+  .journal-row.header-row {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(0,0,0,0.2);
+  }
+
+  .journal-row.credit-row .account { padding-left: 20px; color: var(--muted); }
+  .journal-row.debit-row .account { color: var(--text); font-weight: 500; }
+  .dr { color: var(--accent2); font-family: var(--mono); font-weight: 700; }
+  .cr { color: var(--accent3); font-family: var(--mono); font-weight: 700; }
+  .empty { color: var(--muted); }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 28px; margin-top: 14px; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent2), var(--accent));
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px; top: 18px;
+    width: 10px; height: 10px;
+    background: var(--accent2);
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+  }
+
+  .timeline-step { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .timeline-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .timeline-desc { font-size: 12px; color: var(--muted); }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(108,99,255,0.08), rgba(0,212,170,0.06));
+    border: 1px solid rgba(108,99,255,0.25);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 20px 0;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  /* ── TAGS ── */
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .tag {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: rgba(108,99,255,0.1);
+    border: 1px solid rgba(108,99,255,0.2);
+    color: var(--text);
+  }
+
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  /* ── MANTRA ── */
+  .mantra {
+    margin-top: 48px;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+  }
+
+  .mantra.purple { background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(0,212,170,0.08)); border: 1px solid rgba(108,99,255,0.3); }
+  .mantra.teal   { background: linear-gradient(135deg, rgba(0,212,170,0.10), rgba(108,99,255,0.08)); border: 1px solid rgba(0,212,170,0.3); }
+
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent2); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* ── CHAPTER SEPARATOR ── */
+  .chapter-sep {
+    margin: 80px 0 0;
+    border: none;
+    border-top: 2px dashed var(--border);
+    position: relative;
+  }
+
+  .chapter-sep-label {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    padding: 0 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  /* ── INFO BLOCK ── */
+  .info-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+
+  .info-block strong { color: var(--accent2); }
+
+  @media (max-width: 600px) {
+    .section-header { flex-wrap: wrap; gap: 8px; }
+    .section-meta { margin-left: 0; }
+    .chapter-stats { gap: 20px; }
+    .cover-stats { gap: 20px; }
+    .journal-row { grid-template-columns: 2fr 1fr 1fr; font-size: 11px; }
+    .sticky-nav { gap: 0; }
+  }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+
+<body>
+
+══════════════════════════════════════ -->
+<div id="ch2" class="chapter-divider ch2">
+  <div class="chapter-tag teal">Part 1 · Chapter 2</div>
+  <h2><span class="teal">Accounting</span><br>From Zero</h2>
+  <p class="chapter-sub">The complete foundation — debits, credits, journal entries, ledgers, and the logic that drives every financial statement in the world.</p>
+  <div class="chapter-stats">
+    <div class="stat"><div class="stat-num teal">11</div><div class="stat-label">Sections</div></div>
+    <div class="stat"><div class="stat-num teal">4</div><div class="stat-label">Journal Examples</div></div>
+    <div class="stat"><div class="stat-num teal">7</div><div class="stat-label">Cycle Steps</div></div>
+    <div class="stat"><div class="stat-num teal">FA</div><div class="stat-label">ACCA Paper</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 2 — Table of Contents</div>
+    <a href="#s2-1" class="toc-item"><span class="toc-num">2.1</span>What is Accounting? — The Purpose & Power</a>
+    <a href="#s2-2" class="toc-item"><span class="toc-num">2.2</span>The Accounting Equation</a>
+    <a href="#s2-3" class="toc-item"><span class="toc-num">2.3</span>Types of Accounts — The Building Blocks</a>
+    <a href="#s2-4" class="toc-item"><span class="toc-num">2.4</span>Debit & Credit — The Golden Rules</a>
+    <a href="#s2-5" class="toc-item"><span class="toc-num">2.5</span>Journal Entries — Recording Transactions</a>
+    <a href="#s2-6" class="toc-item"><span class="toc-num">2.6</span>The Ledger & Trial Balance</a>
+    <a href="#s2-7" class="toc-item"><span class="toc-num">2.7</span>The Accounting Cycle — End to End</a>
+    <a href="#s2-8" class="toc-item"><span class="toc-num">2.8</span>Accounting Concepts & Principles</a>
+    <a href="#s2-9" class="toc-item"><span class="toc-num">2.9</span>Cash vs Accrual Accounting</a>
+    <a href="#s2-10" class="toc-item"><span class="toc-num">2.10</span>How Accounting Connects to ACCA</a>
+    <a href="#s2-11" class="toc-item"><span class="toc-num">2.11</span>Key Takeaways & Action Steps</a>
+    <a href="#s2-12" class="toc-item"><span class="toc-num">2.12</span>Common Mistakes, Flashcards & Interview Q&A</a>
+  </div>
+
+  <div class="section">
+    <p class="prose">Before you open your first ACCA textbook, before you sit your FA paper, before you build your first financial model — you need to understand <strong>why accounting exists</strong> and how its logic works at the most fundamental level. Accounting is not about memorising rules. It is a <strong>language</strong> — a precise, logical system for recording, classifying, and communicating financial information.</p>
+    <div class="quote">"Accounting is the language of business. And like any language, once you are fluent, you can read the story of any company in the world."</div>
+  </div>
+
+  <!-- 2.1 -->
+  <div id="s2-1" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">2.1</div>
+      <div class="section-title">What is Accounting? — The Purpose & Power</div>
+    </div>
+    <p class="prose">Accounting is the process of <strong>identifying, recording, measuring, classifying, summarising, interpreting, and communicating</strong> financial information. It converts the messy reality of business transactions into clean, structured data that decision-makers can use.</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">📝</div><div class="card-title">Record Keeping</div><ul class="card-items"><li>Track every rupee that comes in and goes out</li><li>Maintain a permanent, organised record</li><li>Legal requirement for all businesses</li></ul><div class="card-tag">Bookkeeping</div></div>
+      <div class="card"><div class="card-icon">📊</div><div class="card-title">Decision Making</div><ul class="card-items"><li>Give managers accurate financial information</li><li>Help decide: invest, cut costs, expand?</li><li>Budget planning and forecasting</li></ul><div class="card-tag">Management Accounting</div></div>
+      <div class="card"><div class="card-icon">🌍</div><div class="card-title">External Reporting</div><ul class="card-items"><li>Report to shareholders, investors, banks</li><li>Comply with tax authorities (Income Tax, GST)</li><li>Meet regulatory requirements (SEBI, RBI, MCA)</li></ul><div class="card-tag">Financial Reporting</div></div>
+    </div>
+  </div>
+
+  <!-- 2.2 -->
+  <div id="s2-2" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">2.2</div>
+      <div class="section-title">The Accounting Equation</div>
+      <div class="section-meta">Foundation of Everything</div>
+    </div>
+    <div class="equation">
+      <div class="equation-text">ASSETS = LIABILITIES + EQUITY</div>
+      <div class="equation-label">The Fundamental Accounting Equation — always in balance, forever.</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🏦</div><div class="card-title">Assets</div><ul class="card-items"><li>Resources <strong>owned</strong> by the business</li><li>Cash, bank, inventory, equipment, land</li><li>Intangibles: patents, goodwill, brand</li></ul><div class="card-tag">What you OWN</div></div>
+      <div class="card"><div class="card-icon">💳</div><div class="card-title">Liabilities</div><ul class="card-items"><li>Obligations <strong>owed</strong> by the business</li><li>Bank loans, creditors, tax payable</li><li>Long-term debt, debentures, bonds</li></ul><div class="card-tag">What you OWE</div></div>
+      <div class="card"><div class="card-icon">👑</div><div class="card-title">Equity (Capital)</div><ul class="card-items"><li>Owner's claim on business assets</li><li>Share capital + retained earnings</li><li>Increases with profit, decreases with loss</li></ul><div class="card-tag">What OWNERS are owed</div></div>
+    </div>
+    <p class="section-label">Equation in Action — Ashish Starts His Business</p>
+    <table class="data-table">
+      <tr><th>Transaction</th><th>Assets</th><th>Liabilities</th><th>Equity</th><th>Balanced?</th></tr>
+      <tr><td>Invests ₹5L cash</td><td>+₹5,00,000 (Cash)</td><td>—</td><td>+₹5,00,000</td><td>✅</td></tr>
+      <tr><td>Buys equipment ₹1L cash</td><td>+₹1L (Equip) −₹1L (Cash)</td><td>—</td><td>—</td><td>✅</td></tr>
+      <tr><td>Takes bank loan ₹2L</td><td>+₹2,00,000 (Cash)</td><td>+₹2,00,000</td><td>—</td><td>✅</td></tr>
+      <tr><td>Sells goods, ₹50K profit</td><td>+₹50,000 (Cash)</td><td>—</td><td>+₹50,000</td><td>✅</td></tr>
+    </table>
+  </div>
+
+  <!-- 2.3 -->
+  <div id="s2-3" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">2.3</div>
+      <div class="section-title">Types of Accounts</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Account Type</th><th>What It Tracks</th><th>Examples</th><th>Statement</th></tr>
+      <tr><td>Asset Accounts</td><td>Things the business owns</td><td>Cash, Inventory, Equipment, Debtors</td><td>Balance Sheet</td></tr>
+      <tr><td>Liability Accounts</td><td>Things the business owes</td><td>Creditors, Loans, Tax Payable</td><td>Balance Sheet</td></tr>
+      <tr><td>Equity Accounts</td><td>Owner's stake</td><td>Share Capital, Retained Earnings</td><td>Balance Sheet</td></tr>
+      <tr><td>Income / Revenue</td><td>Money earned from operations</td><td>Sales, Interest Income, Fees</td><td>Income Statement</td></tr>
+      <tr><td>Expense Accounts</td><td>Costs incurred to earn income</td><td>Rent, Salaries, Depreciation, COGS</td><td>Income Statement</td></tr>
+    </table>
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🔑 The DEAD CLIC Memory Trick</div>
+      <strong>D</strong>rawings · <strong>E</strong>xpenses · <strong>A</strong>ssets · <strong>D</strong>ebtors → <strong>Debit</strong> in nature &nbsp;|&nbsp;
+      <strong>C</strong>apital · <strong>L</strong>iabilities · <strong>I</strong>ncome · <strong>C</strong>reditors → <strong>Credit</strong> in nature
+    </div>
+  </div>
+
+  <!-- 2.4 -->
+  <div id="s2-4" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">2.4</div>
+      <div class="section-title">Debit & Credit — The Golden Rules</div>
+    </div>
+    <div class="equation">
+      <div class="equation-text">Every Transaction = At least one DEBIT + at least one CREDIT<br>Total Debits ALWAYS = Total Credits</div>
+      <div class="equation-label">Double-Entry Bookkeeping — invented by Luca Pacioli in 1494. ACCA still uses it today.</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Account Type</th><th>To INCREASE</th><th>To DECREASE</th></tr>
+      <tr><td>Asset</td><td>DEBIT ↑</td><td>Credit ↓</td></tr>
+      <tr><td>Liability</td><td>CREDIT ↑</td><td>Debit ↓</td></tr>
+      <tr><td>Equity / Capital</td><td>CREDIT ↑</td><td>Debit ↓</td></tr>
+      <tr><td>Income / Revenue</td><td>CREDIT ↑</td><td>Debit ↓</td></tr>
+      <tr><td>Expense</td><td>DEBIT ↑</td><td>Credit ↓</td></tr>
+    </table>
+  </div>
+
+  <!-- 2.5 -->
+  <div id="s2-5" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">2.5</div>
+      <div class="section-title">Journal Entries — Recording Transactions</div>
+    </div>
+
+    <p class="section-label">Example 1 — Starting a Business</p>
+    <div class="journal">
+      <div class="journal-header">Transaction: Ashish invests ₹5,00,000 cash to start his consultancy</div>
+      <div class="journal-row header-row"><div>Account</div><div>Debit (Dr)</div><div>Credit (Cr)</div></div>
+      <div class="journal-row debit-row"><div class="account">Cash / Bank A/c</div><div class="dr">₹5,00,000</div><div class="empty">—</div></div>
+      <div class="journal-row credit-row"><div class="account">Capital A/c (Ashish)</div><div class="empty">—</div><div class="cr">₹5,00,000</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;margin-bottom:20px;">Logic: Cash comes IN → Debit Asset. Ashish gave money → Credit Capital (the Giver).</p>
+
+    <p class="section-label">Example 2 — Buying Equipment on Credit</p>
+    <div class="journal">
+      <div class="journal-header">Transaction: Bought laptop ₹80,000 on credit from TechMart</div>
+      <div class="journal-row header-row"><div>Account</div><div>Debit (Dr)</div><div>Credit (Cr)</div></div>
+      <div class="journal-row debit-row"><div class="account">Equipment A/c (Laptop)</div><div class="dr">₹80,000</div><div class="empty">—</div></div>
+      <div class="journal-row credit-row"><div class="account">TechMart (Creditor) A/c</div><div class="empty">—</div><div class="cr">₹80,000</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;margin-bottom:20px;">Logic: Equipment comes IN → Debit Asset. TechMart gave goods → Credit the Giver (Creditor).</p>
+
+    <p class="section-label">Example 3 — Earning Revenue</p>
+    <div class="journal">
+      <div class="journal-header">Transaction: Provided consulting services, received ₹30,000 cash</div>
+      <div class="journal-row header-row"><div>Account</div><div>Debit (Dr)</div><div>Credit (Cr)</div></div>
+      <div class="journal-row debit-row"><div class="account">Cash / Bank A/c</div><div class="dr">₹30,000</div><div class="empty">—</div></div>
+      <div class="journal-row credit-row"><div class="account">Consulting Revenue A/c</div><div class="empty">—</div><div class="cr">₹30,000</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;margin-bottom:20px;">Logic: Cash comes IN → Debit Asset. Revenue earned → Credit Income.</p>
+
+    <p class="section-label">Example 4 — Paying an Expense</p>
+    <div class="journal">
+      <div class="journal-header">Transaction: Paid office rent ₹15,000 cash</div>
+      <div class="journal-row header-row"><div>Account</div><div>Debit (Dr)</div><div>Credit (Cr)</div></div>
+      <div class="journal-row debit-row"><div class="account">Rent Expense A/c</div><div class="dr">₹15,000</div><div class="empty">—</div></div>
+      <div class="journal-row credit-row"><div class="account">Cash / Bank A/c</div><div class="empty">—</div><div class="cr">₹15,000</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px;">Logic: Expense incurred → Debit Expense. Cash goes OUT → Credit Asset.</p>
+  </div>
+
+  <!-- 2.6 -->
+  <div id="s2-6" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">2.6</div>
+      <div class="section-title">The Ledger & Trial Balance</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">📒</div><div class="card-title">The General Ledger</div><ul class="card-items"><li>Master book of all accounts</li><li>Each account has its own T-account page</li><li>Left side = Debits | Right side = Credits</li><li>Modern firms: SAP, Tally, Xero, QuickBooks</li></ul><div class="card-tag">Book of Secondary Entry</div></div>
+      <div class="card"><div class="card-icon">⚖️</div><div class="card-title">Trial Balance</div><ul class="card-items"><li>List of all ledger account balances</li><li>Two columns: Total Dr | Total Cr</li><li>If balanced → arithmetic is correct</li><li>Prepared at end of accounting period</li></ul><div class="card-tag">Arithmetic Check</div></div>
+      <div class="card"><div class="card-icon">⚠️</div><div class="card-title">Errors TB Won't Catch</div><ul class="card-items"><li>Error of omission (transaction not recorded)</li><li>Error of commission (wrong account, same type)</li><li>Error of principle (wrong account type)</li><li>Compensating errors (two cancel out)</li></ul><div class="card-tag">ACCA FA Exam Topic</div></div>
+    </div>
+  </div>
+
+  <!-- 2.7 -->
+  <div id="s2-7" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">2.7</div>
+      <div class="section-title">The Accounting Cycle — End to End</div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-step">Step 1</div><div class="timeline-title">🧾 Identify & Analyse Transactions</div><div class="timeline-desc">Every business event with financial impact is identified. Source documents: invoices, receipts, bank statements.</div></div>
+      <div class="timeline-item"><div class="timeline-step">Step 2</div><div class="timeline-title">📝 Record in Journal</div><div class="timeline-desc">Each transaction is recorded as a journal entry with debit and credit accounts — the "book of original entry."</div></div>
+      <div class="timeline-item"><div class="timeline-step">Step 3</div><div class="timeline-title">📒 Post to Ledger</div><div class="timeline-desc">Journal entries transferred to individual ledger accounts. Each account now shows its running balance.</div></div>
+      <div class="timeline-item"><div class="timeline-step">Step 4</div><div class="timeline-title">⚖️ Prepare Trial Balance</div><div class="timeline-desc">Extract all ledger balances. Verify total debits = total credits. Find and correct any errors.</div></div>
+      <div class="timeline-item"><div class="timeline-step">Step 5</div><div class="timeline-title">🔧 Adjusting Entries</div><div class="timeline-desc">Record accruals, prepayments, depreciation, and provisions to match revenues and expenses to the correct period.</div></div>
+      <div class="timeline-item"><div class="timeline-step">Step 6</div><div class="timeline-title">📊 Prepare Financial Statements</div><div class="timeline-desc">Income Statement, Balance Sheet, Cash Flow Statement, Statement of Changes in Equity — all from the adjusted trial balance.</div></div>
+      <div class="timeline-item"><div class="timeline-step">Step 7</div><div class="timeline-title">🔄 Closing Entries</div><div class="timeline-desc">Close all temporary accounts (income, expenses) to retained earnings. Income and expense accounts reset to zero for next period.</div></div>
+    </div>
+  </div>
+
+  <!-- 2.8 -->
+  <div id="s2-8" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">2.8</div>
+      <div class="section-title">Accounting Concepts & Principles</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Concept</th><th>What It Means</th><th>Real Example</th></tr>
+      <tr><td>Going Concern</td><td>Business will continue operating for foreseeable future</td><td>Record assets at cost, not liquidation value</td></tr>
+      <tr><td>Accruals (Matching)</td><td>Record income/expense when earned/incurred</td><td>Record salary expense in Dec even if paid in Jan</td></tr>
+      <tr><td>Consistency</td><td>Use the same accounting methods period to period</td><td>Don't change depreciation method every year</td></tr>
+      <tr><td>Prudence</td><td>Don't overstate assets or income; recognise losses early</td><td>Write down inventory if market value falls below cost</td></tr>
+      <tr><td>Materiality</td><td>Only apply strict accounting to items that matter</td><td>Small stapler expensed directly — not depreciated</td></tr>
+      <tr><td>Entity Concept</td><td>Business is separate from its owner(s)</td><td>Owner's personal car is NOT a business asset</td></tr>
+      <tr><td>Historical Cost</td><td>Record assets at original purchase price</td><td>Land bought ₹10L recorded at ₹10L even if worth ₹50L</td></tr>
+      <tr><td>Money Measurement</td><td>Only record what can be expressed in money</td><td>Employee loyalty not in financial accounts</td></tr>
+    </table>
+  </div>
+
+  <!-- 2.9 -->
+  <div id="s2-9" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">2.9</div>
+      <div class="section-title">Cash vs Accrual Accounting</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">💵</div><div class="card-title">Cash Accounting</div><ul class="card-items"><li>Record income only when cash is received</li><li>Record expense only when cash is paid</li><li>Simple — used by small businesses</li><li>Not allowed under IFRS for large entities</li></ul><div class="card-tag">Simple · Incomplete</div></div>
+      <div class="card"><div class="card-icon">📅</div><div class="card-title">Accrual Accounting</div><ul class="card-items"><li>Record income when earned (not when received)</li><li>Record expense when incurred (not when paid)</li><li>Required by IFRS and Companies Act</li><li>Used by all listed companies and MNCs</li></ul><div class="card-tag">IFRS · Required · Accurate</div></div>
+      <div class="card"><div class="card-icon">🔄</div><div class="card-title">Accruals & Prepayments</div><ul class="card-items"><li><strong>Accrued expense:</strong> incurred, not yet paid</li><li><strong>Prepaid expense:</strong> paid, not yet incurred</li><li><strong>Accrued income:</strong> earned, not yet received</li><li><strong>Deferred income:</strong> received, not yet earned</li></ul><div class="card-tag">ACCA FA Core Topic</div></div>
+    </div>
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 Cash vs Accrual — Real Example</div>
+      Ashish completes a project in December, invoices ₹1,00,000. Client pays in January.<br><br>
+      <strong>Cash:</strong> Income in January. &nbsp;|&nbsp; <strong>Accrual (IFRS):</strong> Income in December + ₹1,00,000 debtor on Balance Sheet.
+    </div>
+  </div>
+
+  <!-- 2.10 -->
+  <div id="s2-10" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">2.10</div>
+      <div class="section-title">How Accounting Connects to ACCA</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Concept</th><th>ACCA Paper</th><th>Level</th><th>Depth</th></tr>
+      <tr><td>Accounting Equation & Double Entry</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Core — heavily tested</td></tr>
+      <tr><td>Journal Entries & Ledger</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Core — must master</td></tr>
+      <tr><td>Trial Balance & Errors</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Common exam topic</td></tr>
+      <tr><td>Accounting Concepts</td><td>FA → FR (Financial Reporting)</td><td>Knowledge → Skills</td><td>Appears in both</td></tr>
+      <tr><td>Accruals & Prepayments</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Very commonly tested</td></tr>
+      <tr><td>Cash vs Accrual</td><td>FA → SBR</td><td>Knowledge → Strategic</td><td>Foundation to advanced</td></tr>
+    </table>
+  </div>
+
+  <!-- 2.11 -->
+  <div id="s2-11" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">2.11</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">The Equation is Everything</div><ul class="card-items"><li>Assets = Liabilities + Equity — always</li><li>Every transaction keeps this balanced</li><li>If it doesn't balance, there is an error</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Double Entry is Non-Negotiable</div><ul class="card-items"><li>Every transaction: one debit + one credit</li><li>Total Dr always = Total Cr</li><li>Practice until it becomes automatic</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Accruals — Think Timing</div><ul class="card-items"><li>Record when earned/incurred, not when cash moves</li><li>IFRS requirement — used by all MNCs</li><li>Master accruals = master FA paper</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Learn the Cycle, Not Just Rules</div><ul class="card-items"><li>Journal → Ledger → Trial Balance → Statements</li><li>Understand the flow, not isolated steps</li><li>Big 4 accountants do this every month-end</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Concepts Are the Framework</div><ul class="card-items"><li>Going concern, prudence, matching, materiality</li><li>Examiners test WHY, not just WHAT</li><li>Understanding = marks in the exam</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">This is Your Forever Foundation</div><ul class="card-items"><li>Every ACCA paper builds on this chapter</li><li>Every MNC finance role uses these concepts daily</li><li>Strong foundation = accelerate later</li></ul></div>
+    </div>
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 2 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Write the accounting equation from memory 10 times</span>
+        <span class="tag teal">✅ Practice 20 journal entries from real-life scenarios</span>
+        <span class="tag teal">✅ Open OpenTuition.com → FA paper → Double Entry chapter</span>
+        <span class="tag teal">✅ Download ACCA FA past papers — attempt 1 question today</span>
+        <span class="tag teal">✅ Create a T-account for Cash and post 5 transactions</span>
+        <span class="tag teal">✅ Understand Accrued vs Prepaid — draw a diagram</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2.12 -->
+  <div id="s2-12" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">2.12</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Most Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Confusing Debit/Credit With "Increase/Decrease"</strong><br>
+        Debit and Credit don't inherently mean increase or decrease — their effect depends on the account type. A debit increases assets and expenses but decreases liabilities, equity, and income. Memorising "debit = increase" universally leads to systematic errors.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Forgetting Every Transaction Needs Equal Debits and Credits</strong><br>
+        Students sometimes post only one side of an entry, or unequal amounts. Double-entry bookkeeping requires Total Debits = Total Credits for every single transaction, without exception — this is what keeps the accounting equation balanced.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Mixing Up Cash Basis and Accrual Basis</strong><br>
+        Under accrual accounting (required by IFRS), revenue and expenses are recorded when earned/incurred, not when cash changes hands. A common exam error is recording revenue only when payment is received, which is cash-basis thinking — not IFRS compliant.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Not Distinguishing Capital vs Revenue Expenditure</strong><br>
+        Buying a machine (capital expenditure) should be capitalised on the Balance Sheet and depreciated over time — not expensed immediately like a revenue expense (e.g. repairs, salaries). Treating capital items as revenue expenses distorts both profit and asset values.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Skipping the Trial Balance Check</strong><br>
+        Before preparing financial statements, always extract a Trial Balance to confirm Total Debits = Total Credits. Skipping this step means errors flow directly into the final statements, making them far harder to trace and fix.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Applying the Matching Concept Incorrectly</strong><br>
+        The Matching Concept requires expenses to be recognised in the same period as the revenue they help generate — not simply in the period cash was paid. Misapplying this leads to overstated or understated profit in a given period.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Confusing Prepaid Expenses with Accrued Expenses</strong><br>
+        A prepaid expense is cash paid in advance for a future benefit (an asset). An accrued expense is a cost already incurred but not yet paid (a liability). Mixing these up is one of the most frequent errors in ACCA FA adjustment questions.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">The Accounting Equation</div>
+        <ul class="card-items">
+          <li><strong>Q: State the accounting equation.</strong></li>
+          <li>A: Assets = Liabilities + Equity</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Golden Rules — Debit/Credit</div>
+        <ul class="card-items">
+          <li><strong>Q: What increases with a debit?</strong></li>
+          <li>A: Assets & Expenses (DEAD — Debit Expenses, Assets, Drawings)</li>
+          <li><strong>Q: What increases with a credit?</strong></li>
+          <li>A: Liabilities, Equity, Income (CLIC)</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">The Accounting Cycle</div>
+        <ul class="card-items">
+          <li><strong>Q: What is the correct order of the accounting cycle?</strong></li>
+          <li>A: Transaction → Journal → Ledger → Trial Balance → Adjustments → Financial Statements</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Accruals Concept</div>
+        <ul class="card-items">
+          <li><strong>Q: Under IFRS, when is revenue recognised?</strong></li>
+          <li>A: When earned, not when cash is received (accrual basis)</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Key Accounting Concepts</div>
+        <ul class="card-items">
+          <li><strong>Q: Name 4 core accounting concepts.</strong></li>
+          <li>A: Going Concern, Prudence, Matching, Materiality</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+    </div>
+
+    <!-- FORMULA REFERENCE -->
+    <p class="section-label" style="margin-top:40px;">Part C — Formula Quick Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 2 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Accounting Equation</div><div class="formula-eq">Assets = Liabilities + Equity</div></div>
+      <div class="formula-row"><div class="formula-name">Expanded Equation</div><div class="formula-eq">Assets = Liabilities + Capital + Income − Expenses − Drawings</div></div>
+      <div class="formula-row"><div class="formula-name">Trial Balance Check</div><div class="formula-eq">Total Debits = Total Credits</div></div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Explain double-entry bookkeeping in simple terms."</td><td>Can you explain a technical concept simply?</td><td>Every financial transaction affects at least two accounts — one debited and one credited by equal amounts. For example, buying equipment with cash debits Equipment (asset increases) and credits Cash (asset decreases) — the equation stays balanced because total value hasn't changed, just its form.</td></tr>
+      <tr><td>"What's the difference between cash and accrual accounting?"</td><td>Do you understand the basis IFRS actually requires?</td><td>Cash accounting records transactions only when cash is received or paid. Accrual accounting — required under IFRS — records revenue when earned and expenses when incurred, regardless of when cash moves. This gives a more accurate picture of performance for a given period, which is why virtually all companies of scale use accrual accounting.</td></tr>
+      <tr><td>"Why does the trial balance matter if it doesn't guarantee no errors?"</td><td>Understanding limitations of accounting controls</td><td>The trial balance confirms total debits equal total credits, catching errors like one-sided entries or arithmetic mistakes. However, it won't catch errors of principle (wrong account used correctly on both sides), complete omission of a transaction, or compensating errors — so it's a necessary but not sufficient check.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra teal">
+    <div class="mantra-formula">
+      Accounting Equation + Double Entry + Accruals<br>
+      + Accounting Cycle + Concepts & Principles<br>
+      = <strong style="color:var(--accent4);">Rock-Solid Foundation for All 13 ACCA Papers</strong>
+    </div>
+    <h3>Master the basics — and the advanced becomes easy.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 3: Financial Statements — Income Statement, Balance Sheet & Cash Flow built from everything you just learned. 📊</p>
+  </div>
+
+</div><!-- /container ch2 -->
+
+
+</body>
+</html>

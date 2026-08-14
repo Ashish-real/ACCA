@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 1: Finance Industry Overview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── BOOK COVER ── */
+  .book-cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .book-cover::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(108,99,255,0.13) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .book-cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(0,212,170,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cover-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    border: 1px solid var(--accent2);
+    padding: 4px 16px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .cover-title {
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  .cover-title span {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cover-sub {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 540px;
+    margin: 0 auto 40px;
+  }
+
+  .cover-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .cover-stat { text-align: center; }
+
+  .cover-stat-num {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .cover-stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .cover-chapters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-chapter-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .cover-chapter-pill.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(108,99,255,0.1);
+  }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent2);
+    padding: 14px 20px 14px 0;
+    border-right: 1px solid var(--border);
+    margin-right: 4px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 14px 16px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav-link:hover { color: var(--text); }
+  .nav-link.ch1 { border-bottom-color: var(--accent); color: var(--accent); }
+  .nav-link.ch2 { border-bottom-color: var(--accent2); color: var(--accent2); }
+
+  /* ── CHAPTER DIVIDER ── */
+  .chapter-divider {
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .chapter-divider.ch1::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .chapter-divider.ch2::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,212,170,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .chapter-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  .chapter-tag.purple { color: var(--accent); border: 1px solid var(--accent); }
+  .chapter-tag.teal   { color: var(--accent2); border: 1px solid var(--accent2); }
+
+  .chapter-divider h2 {
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .chapter-divider h2 span.purple {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .chapter-divider h2 span.teal {
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .chapter-sub {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 500px;
+    margin: 0 auto 28px;
+  }
+
+  .chapter-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent); }
+  .stat-num.teal { color: var(--accent2); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+
+  .toc-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(42,42,58,0.4);
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+
+  .toc-item:hover { color: var(--accent2); }
+  .toc-item:last-child { border-bottom: none; }
+
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent2); min-width: 36px; }
+
+  /* ── SECTION ── */
+  .section { margin-top: 48px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sec-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2);  color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2);  color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 32px;
+    margin-bottom: 10px;
+  }
+
+  /* ── PROSE ── */
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  /* ── QUOTE ── */
+  .quote {
+    border-left: 3px solid var(--accent2);
+    padding: 12px 20px;
+    background: rgba(0,212,170,0.05);
+    border-radius: 0 10px 10px 0;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  /* ── CARDS ── */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+
+  .card-items li {
+    font-size: 12px;
+    color: var(--muted);
+    padding: 3px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .card-items li::before { content: '→'; color: var(--accent2); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+
+  .card-tag {
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    background: rgba(108,99,255,0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* ── WIDE CARD ── */
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent2); }
+
+  /* ── TABLE ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-top: 14px;
+  }
+
+  .data-table th {
+    background: rgba(108,99,255,0.1);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .data-table td {
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(42,42,58,0.5);
+    vertical-align: top;
+  }
+
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(108,99,255,0.03); }
+
+  /* ── EQUATION ── */
+  .equation {
+    background: var(--card);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .equation-text { font-family: var(--mono); font-size: clamp(13px,2.5vw,17px); color: var(--accent2); letter-spacing: 1px; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* ── JOURNAL ── */
+  .journal { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 14px; }
+
+  .journal-header {
+    background: rgba(108,99,255,0.1);
+    padding: 10px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .journal-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(42,42,58,0.4);
+    align-items: center;
+    font-size: 13px;
+  }
+
+  .journal-row:last-child { border-bottom: none; }
+
+  .journal-row.header-row {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(0,0,0,0.2);
+  }
+
+  .journal-row.credit-row .account { padding-left: 20px; color: var(--muted); }
+  .journal-row.debit-row .account { color: var(--text); font-weight: 500; }
+  .dr { color: var(--accent2); font-family: var(--mono); font-weight: 700; }
+  .cr { color: var(--accent3); font-family: var(--mono); font-weight: 700; }
+  .empty { color: var(--muted); }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 28px; margin-top: 14px; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent2), var(--accent));
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px; top: 18px;
+    width: 10px; height: 10px;
+    background: var(--accent2);
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+  }
+
+  .timeline-step { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .timeline-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .timeline-desc { font-size: 12px; color: var(--muted); }
+
+  /* ── HIGHLIGHT ── */
+  .highlight {
+    background: linear-gradient(135deg, rgba(108,99,255,0.08), rgba(0,212,170,0.06));
+    border: 1px solid rgba(108,99,255,0.25);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 20px 0;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  /* ── TAGS ── */
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .tag {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: rgba(108,99,255,0.1);
+    border: 1px solid rgba(108,99,255,0.2);
+    color: var(--text);
+  }
+
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  /* ── MANTRA ── */
+  .mantra {
+    margin-top: 48px;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+  }
+
+  .mantra.purple { background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(0,212,170,0.08)); border: 1px solid rgba(108,99,255,0.3); }
+  .mantra.teal   { background: linear-gradient(135deg, rgba(0,212,170,0.10), rgba(108,99,255,0.08)); border: 1px solid rgba(0,212,170,0.3); }
+
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent2); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* ── CHAPTER SEPARATOR ── */
+  .chapter-sep {
+    margin: 80px 0 0;
+    border: none;
+    border-top: 2px dashed var(--border);
+    position: relative;
+  }
+
+  .chapter-sep-label {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    padding: 0 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  /* ── INFO BLOCK ── */
+  .info-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 10px 0;
+    font-size: 13px;
+  }
+
+  .info-block strong { color: var(--accent2); }
+
+  @media (max-width: 600px) {
+    .section-header { flex-wrap: wrap; gap: 8px; }
+    .section-meta { margin-left: 0; }
+    .chapter-stats { gap: 20px; }
+    .cover-stats { gap: 20px; }
+    .journal-row { grid-template-columns: 2fr 1fr 1fr; font-size: 11px; }
+    .sticky-nav { gap: 0; }
+  }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+
+<body>
+
+</nav>
+
+<!-- ══════════════════════════════════════
+     CHAPTER 1
+══════════════════════════════════════ -->
+<div id="ch1" class="chapter-divider ch1">
+  <div class="chapter-tag purple">Part 1 · Chapter 1</div>
+  <h2>Finance Industry<br><span class="purple">Overview</span></h2>
+  <p class="chapter-sub">Understanding the world you are about to enter — the sectors, the players, and where you fit in.</p>
+  <div class="chapter-stats">
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Finance Sectors</div></div>
+    <div class="stat"><div class="stat-num">₹4T</div><div class="stat-label">India GDP</div></div>
+    <div class="stat"><div class="stat-num">180</div><div class="stat-label">ACCA Countries</div></div>
+    <div class="stat"><div class="stat-num">₹1Cr+</div><div class="stat-label">Peak Salary</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 1 — Table of Contents</div>
+    <a href="#s1-1" class="toc-item"><span class="toc-num">1.1</span>The Finance Industry — A Bird's Eye View</a>
+    <a href="#s1-2" class="toc-item"><span class="toc-num">1.2</span>Key Sectors of Finance</a>
+    <a href="#s1-3" class="toc-item"><span class="toc-num">1.3</span>Banking Sector — Deep Dive</a>
+    <a href="#s1-4" class="toc-item"><span class="toc-num">1.4</span>Investment & Capital Markets</a>
+    <a href="#s1-5" class="toc-item"><span class="toc-num">1.5</span>Insurance & Risk</a>
+    <a href="#s1-6" class="toc-item"><span class="toc-num">1.6</span>Accounting & Professional Services</a>
+    <a href="#s1-7" class="toc-item"><span class="toc-num">1.7</span>FinTech — The New Frontier</a>
+    <a href="#s1-8" class="toc-item"><span class="toc-num">1.8</span>Finance in India — Size & Opportunity</a>
+    <a href="#s1-9" class="toc-item"><span class="toc-num">1.9</span>Where Does ACCA Fit?</a>
+    <a href="#s1-10" class="toc-item"><span class="toc-num">1.10</span>Key Players & Organizations</a>
+    <a href="#s1-11" class="toc-item"><span class="toc-num">1.11</span>Career Paths at a Glance</a>
+    <a href="#s1-12" class="toc-item"><span class="toc-num">1.12</span>Common Mistakes, Flashcards & Interview Q&A</a>
+  </div>
+
+  <div class="section">
+    <p class="prose">Before you open your first ACCA textbook, before you sit your first exam, before you write your first resume — you need to understand the world you are walking into. Finance is not just one industry. It is a vast ecosystem — banks, insurers, investment firms, accounting firms, fintechs, corporate finance departments — all interconnected, all creating enormous value, and all needing skilled professionals like you.</p>
+    <div class="quote">"Finance is the language of business. ACCA teaches you to speak it fluently — at every level, in every country."</div>
+  </div>
+
+  <!-- 1.1 -->
+  <div id="s1-1" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">1.1</div>
+      <div class="section-title">The Finance Industry — A Bird's Eye View</div>
+    </div>
+    <p class="prose">When most people hear "finance," they think of banks. But the finance industry is far wider. At its core, finance is about the <strong>management of money, risk, and value</strong>. Every business in the world — whether it sells chai or builds rockets — needs finance professionals to keep it running.</p>
+    <table class="data-table">
+      <tr><th>Pillar</th><th>What It Does</th><th>Examples</th></tr>
+      <tr><td>Financial Services</td><td>Moving, lending, and growing money</td><td>Banks, NBFCs, Microfinance</td></tr>
+      <tr><td>Capital Markets</td><td>Buying/selling financial instruments</td><td>NSE, BSE, Mutual Funds, FIIs</td></tr>
+      <tr><td>Professional Services</td><td>Advising, auditing, taxing, reporting</td><td>Big 4, CA firms, Law firms</td></tr>
+    </table>
+    <p class="prose" style="margin-top:14px;">In India alone, the financial services sector contributes approximately <strong>7.5% of GDP</strong> and is growing faster than almost any other sector.</p>
+  </div>
+
+  <!-- 1.2 -->
+  <div id="s1-2" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">1.2</div>
+      <div class="section-title">Key Sectors of Finance</div>
+    </div>
+    <p class="prose">Think of the finance industry as a city. Each sector is a different neighbourhood — different culture, different work, different career path.</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🏦</div><div class="card-title">Banking</div><ul class="card-items"><li>Backbone of the economy</li><li>Collect deposits, give loans, facilitate payments</li><li>SBI, HDFC, ICICI, Citi, HSBC, Deutsche Bank</li></ul><div class="card-tag">Largest Employer</div></div>
+      <div class="card"><div class="card-icon">📈</div><div class="card-title">Investment & Capital Markets</div><ul class="card-items"><li>Raise money for companies and governments</li><li>Stocks, bonds, and other instruments</li><li>Investment banking, brokerage, mutual funds</li></ul><div class="card-tag">High Pay</div></div>
+      <div class="card"><div class="card-icon">🛡️</div><div class="card-title">Insurance</div><ul class="card-items"><li>Managing risk — life, health, general</li><li>LIC, HDFC Life, AIG, New India Assurance</li><li>Growing sector — massively underpenetrated</li></ul><div class="card-tag">Growth Sector</div></div>
+      <div class="card"><div class="card-icon">🏢</div><div class="card-title">Accounting & Professional Services</div><ul class="card-items"><li>Big 4: Deloitte, PwC, EY, KPMG</li><li>Audit, tax, advisory, and consulting</li><li>Primary destination for ACCA professionals</li></ul><div class="card-tag">ACCA Home Ground</div></div>
+      <div class="card"><div class="card-icon">🏗️</div><div class="card-title">Corporate Finance</div><ul class="card-items"><li>Finance departments inside every large company</li><li>Infosys, Reliance, Tata, Google, Amazon, Microsoft</li><li>CFO, FP&A, treasury, internal audit roles</li></ul><div class="card-tag">MNC Dream</div></div>
+      <div class="card"><div class="card-icon">💻</div><div class="card-title">FinTech</div><ul class="card-items"><li>Technology meets finance</li><li>Paytm, Razorpay, Zerodha, PhonePe, CRED</li><li>Fastest growing sector — combines finance + tech</li></ul><div class="card-tag">Future of Finance</div></div>
+    </div>
+  </div>
+
+  <!-- 1.3 -->
+  <div id="s1-3" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">1.3</div>
+      <div class="section-title">Banking Sector — Deep Dive</div>
+    </div>
+    <p class="prose">Banking is often the first sector young finance professionals encounter. Banks are everywhere, they hire in large numbers, and they offer structured career paths.</p>
+    <table class="data-table">
+      <tr><th>Type</th><th>What They Do</th><th>Indian Examples</th></tr>
+      <tr><td>Commercial Banks</td><td>Accept deposits, give loans, everyday banking</td><td>SBI, HDFC, ICICI, PNB</td></tr>
+      <tr><td>Investment Banks</td><td>IPOs, M&A, bond issuance, capital raising</td><td>Kotak IB, Axis Capital, Goldman Sachs India</td></tr>
+      <tr><td>Central Bank</td><td>Controls money supply, sets interest rates</td><td>Reserve Bank of India (RBI)</td></tr>
+      <tr><td>Development Banks</td><td>Long-term project financing</td><td>NABARD, NHB, SIDBI</td></tr>
+      <tr><td>Foreign Banks</td><td>International operations in India</td><td>Citi, HSBC, Deutsche, Standard Chartered</td></tr>
+      <tr><td>NBFCs</td><td>Non-banking finance — loans, leasing</td><td>Bajaj Finance, Shriram, Muthoot</td></tr>
+    </table>
+    <p class="section-label">Where do ACCA Professionals Work in Banking?</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🔍</div><div class="card-title">Internal Audit</div><ul class="card-items"><li>Review processes, check compliance</li><li>Identify risks before they become problems</li><li>One of the most in-demand roles for ACCA</li></ul></div>
+      <div class="card"><div class="card-icon">⚠️</div><div class="card-title">Risk & Compliance</div><ul class="card-items"><li>Ensure bank follows RBI guidelines, Basel norms</li><li>AML/KYC analysts — high demand post-2020</li><li>Regulatory reporting roles</li></ul></div>
+      <div class="card"><div class="card-icon">📊</div><div class="card-title">Finance & Reporting</div><ul class="card-items"><li>Prepare financial statements</li><li>Management accounts, regulatory reports</li><li>Core ACCA territory</li></ul></div>
+    </div>
+  </div>
+
+  <!-- 1.4 -->
+  <div id="s1-4" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">1.4</div>
+      <div class="section-title">Investment & Capital Markets</div>
+    </div>
+    <p class="prose">Capital markets are where businesses raise money and investors grow wealth. India's capital markets have grown dramatically — <strong>NSE is now one of the world's largest stock exchanges by volume</strong>. The mutual fund industry has crossed ₹50 lakh crore in AUM.</p>
+    <table class="data-table">
+      <tr><th>Segment</th><th>Description</th><th>Key Role for ACCA</th></tr>
+      <tr><td>Equity Markets</td><td>Stocks — companies raise capital, investors buy ownership</td><td>Financial analysis, valuation</td></tr>
+      <tr><td>Debt Markets</td><td>Bonds — companies/govts borrow money from investors</td><td>Credit analysis, risk assessment</td></tr>
+      <tr><td>Mutual Funds</td><td>Pooled investment vehicles managed by fund managers</td><td>Fund accounting, compliance</td></tr>
+      <tr><td>Investment Banking</td><td>Facilitating IPOs, mergers, acquisitions</td><td>Valuation, due diligence, reporting</td></tr>
+      <tr><td>Wealth Management</td><td>Managing high-net-worth individual portfolios</td><td>Financial planning, tax advice</td></tr>
+    </table>
+  </div>
+
+  <!-- 1.5 -->
+  <div id="s1-5" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">1.5</div>
+      <div class="section-title">Insurance & Risk</div>
+    </div>
+    <p class="prose">India is one of the most <strong>underpenetrated insurance markets</strong> in the world — only about 4% of GDP vs 11%+ in advanced economies. This means enormous growth potential over the next 20 years.</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">📋</div><div class="card-title">ACCA Roles in Insurance</div><ul class="card-items"><li>Actuarial support and financial reporting</li><li>Internal audit and compliance (IRDAI regulations)</li><li>Investment management of premium reserves</li><li>Claims analytics and fraud detection</li><li>Finance business partnering for product P&L</li></ul><div class="card-tag">High Growth Sector</div></div>
+      <div class="card"><div class="card-icon">🌱</div><div class="card-title">Why Insurance Now?</div><ul class="card-items"><li>4% penetration vs 11% in developed markets</li><li>15% annual growth expected</li><li>IRDAI pushing digital insurance hard</li><li>InsurTechs like Acko, PolicyBazaar scaling fast</li><li>Thousands of finance roles being created</li></ul><div class="card-tag">Right Time to Enter</div></div>
+    </div>
+  </div>
+
+  <!-- 1.6 -->
+  <div id="s1-6" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">1.6</div>
+      <div class="section-title">Accounting & Professional Services</div>
+      <div class="section-meta">Your Home Ground</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Firm</th><th>Global Revenue</th><th>India Presence</th><th>Key Service Lines</th></tr>
+      <tr><td>Deloitte</td><td>$67B+</td><td>30,000+ staff</td><td>Audit, Tax, Advisory, Consulting</td></tr>
+      <tr><td>PwC</td><td>$53B+</td><td>10,000+ staff</td><td>Audit, Tax, Deals, Consulting</td></tr>
+      <tr><td>EY</td><td>$49B+</td><td>12,000+ staff</td><td>Audit, Tax, Strategy, Transactions</td></tr>
+      <tr><td>KPMG</td><td>$36B+</td><td>15,000+ staff</td><td>Audit, Tax, Advisory, Risk</td></tr>
+    </table>
+    <p class="section-label">Big 4 Career Progression</p>
+    <table class="data-table">
+      <tr><th>Level</th><th>Title</th><th>Key Responsibilities</th><th>Salary Range</th></tr>
+      <tr><td>Year 1–2</td><td>Associate / Analyst</td><td>Learning the ropes. Working under supervision.</td><td>₹7–10 LPA</td></tr>
+      <tr><td>Year 3–4</td><td>Senior Associate</td><td>Leading sections, client interaction begins.</td><td>₹12–18 LPA</td></tr>
+      <tr><td>Year 5–7</td><td>Assistant Manager / Manager</td><td>Managing client relationships, leading teams.</td><td>₹20–35 LPA</td></tr>
+      <tr><td>Year 8–12</td><td>Senior Manager / Director</td><td>Business development, strategic advisory.</td><td>₹40–70 LPA</td></tr>
+      <tr><td>Year 13+</td><td>Partner</td><td>Own a book of clients. Full P&L responsibility.</td><td>₹1 Cr+</td></tr>
+    </table>
+  </div>
+
+  <!-- 1.7 -->
+  <div id="s1-7" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">1.7</div>
+      <div class="section-title">FinTech — The New Frontier</div>
+    </div>
+    <p class="prose">India is one of the world's leading FinTech hubs — <strong>over 10,000 FinTech startups, ranked 3rd globally after US and UK</strong>, with over $30 billion in investment over the last decade.</p>
+    <table class="data-table">
+      <tr><th>FinTech Segment</th><th>What It Does</th><th>Indian Examples</th></tr>
+      <tr><td>Payments</td><td>Digital payments, UPI, wallets</td><td>PhonePe, Paytm, GPay, BHIM</td></tr>
+      <tr><td>Lending</td><td>Digital loans, BNPL, credit scoring</td><td>Bajaj Finserv, KreditBee, Slice</td></tr>
+      <tr><td>WealthTech</td><td>Digital investing, robo-advisory</td><td>Zerodha, Groww, Smallcase</td></tr>
+      <tr><td>InsurTech</td><td>Digital insurance platforms</td><td>Acko, PolicyBazaar, Digit</td></tr>
+      <tr><td>Accounting Tech</td><td>Cloud accounting, invoicing</td><td>Zoho Books, Tally Prime, QuickBooks</td></tr>
+    </table>
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">💡 The FinTech Opportunity for You</div>
+      An ACCA with Power BI, SQL, and AI tool skills is exactly what FinTech companies are looking for — and they pay <strong>premium salaries</strong> to get them. This combination is your most powerful career accelerator.
+    </div>
+  </div>
+
+  <!-- 1.8 -->
+  <div id="s1-8" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">1.8</div>
+      <div class="section-title">Finance in India — Size & Opportunity</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Metric</th><th>Current Figure</th><th>Growth Trend</th></tr>
+      <tr><td>GDP</td><td>~$4 Trillion (2025)</td><td>Target $5T by 2026–27</td></tr>
+      <tr><td>Financial Services % of GDP</td><td>~7.5%</td><td>Growing — was 5% a decade ago</td></tr>
+      <tr><td>NSE Market Cap</td><td>$4.5 Trillion+</td><td>5th largest globally</td></tr>
+      <tr><td>Insurance Premium</td><td>$130 Billion</td><td>15% annual growth expected</td></tr>
+      <tr><td>FinTech Valuation</td><td>$31 Billion+</td><td>Growing 20%+ annually</td></tr>
+      <tr><td>Big 4 India Employees</td><td>80,000+</td><td>Growing every year</td></tr>
+      <tr><td>ACCA Members in India</td><td>8,000+ (100,000+ students)</td><td>Fastest growing ACCA market</td></tr>
+    </table>
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🎯 The Key Insight</div>
+      India's finance sector is at an inflection point. By the time you complete ACCA (age 21–22), the market will be <strong>significantly larger</strong>. You are entering at exactly the right time.
+    </div>
+  </div>
+
+  <!-- 1.9 -->
+  <div id="s1-9" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">1.9</div>
+      <div class="section-title">Where Does ACCA Fit?</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Factor</th><th>ACCA ✅</th><th>CA (ICAI)</th><th>MBA Finance</th></tr>
+      <tr><td>Recognition</td><td>Global (180 countries)</td><td>Primarily India</td><td>Global</td></tr>
+      <tr><td>Duration</td><td>3–4 years</td><td>5–6+ years</td><td>2 years</td></tr>
+      <tr><td>Pass Rate</td><td>Moderate (40–60%)</td><td>Very Low (5–10%)</td><td>Admission based</td></tr>
+      <tr><td>MNC Value</td><td>Very High</td><td>High in India</td><td>High — but expensive</td></tr>
+      <tr><td>Cost</td><td>Moderate (~₹2–3L)</td><td>Low (~₹1L)</td><td>High (₹10–30L+)</td></tr>
+      <tr><td>Global Mobility</td><td>Excellent</td><td>Limited</td><td>Good</td></tr>
+    </table>
+  </div>
+
+  <!-- 1.10 -->
+  <div id="s1-10" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">1.10</div>
+      <div class="section-title">Key Players & Organizations</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🌐</div><div class="card-title">Global Accounting Bodies</div><ul class="card-items"><li>ACCA — your qualification</li><li>ICAEW (England & Wales)</li><li>AICPA (American Institute of CPAs)</li><li>ICAI (India)</li><li>IFAC — global umbrella body</li></ul></div>
+      <div class="card"><div class="card-icon">📏</div><div class="card-title">Standard Setters</div><ul class="card-items"><li>IASB — sets IFRS globally</li><li>FASB — sets US GAAP</li><li>IAASB — sets audit standards</li><li>PCAOB — for US listed companies</li></ul></div>
+      <div class="card"><div class="card-icon">🇮🇳</div><div class="card-title">Indian Regulatory Bodies</div><ul class="card-items"><li>RBI — central bank, banking regulator</li><li>SEBI — capital markets regulator</li><li>IRDAI — insurance regulator</li><li>MCA — company law and governance</li></ul></div>
+    </div>
+  </div>
+
+  <!-- 1.11 -->
+  <div id="s1-11" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">1.11</div>
+      <div class="section-title">Career Paths at a Glance</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Career Path</th><th>Entry Role</th><th>Senior Role</th><th>Peak Role</th><th>Salary at Peak</th></tr>
+      <tr><td>External Audit</td><td>Audit Associate</td><td>Audit Manager</td><td>Audit Partner</td><td>₹1 Cr+</td></tr>
+      <tr><td>Internal Audit</td><td>Internal Auditor</td><td>Audit Manager</td><td>Chief Audit Executive</td><td>₹60–80 LPA</td></tr>
+      <tr><td>Tax</td><td>Tax Analyst</td><td>Tax Manager</td><td>Head of Tax / TP Partner</td><td>₹70 LPA+</td></tr>
+      <tr><td>FP&A</td><td>Financial Analyst</td><td>FP&A Manager</td><td>CFO</td><td>₹1–3 Cr</td></tr>
+      <tr><td>Corporate Finance</td><td>Finance Analyst</td><td>Finance Controller</td><td>CFO / Group CFO</td><td>₹2 Cr+</td></tr>
+      <tr><td>Risk & Compliance</td><td>Risk Analyst</td><td>Risk Manager</td><td>Chief Risk Officer</td><td>₹80 LPA+</td></tr>
+      <tr><td>FinTech Finance</td><td>Finance Analyst</td><td>Finance Lead</td><td>VP Finance / CFO</td><td>₹80 LPA+</td></tr>
+    </table>
+  </div>
+
+  <!-- 1.12 -->
+  <div id="s1-12" class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">1.12</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes Students Make About the Finance Industry</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Thinking "Finance" Means Only Investment Banking</strong><br>
+        Students often equate finance careers with IB or trading, ignoring the huge, stable, and equally lucrative world of Big 4 audit/tax, corporate finance, FP&A, risk, and FinTech. Investment banking is one narrow (and extremely competitive) slice of a massive industry.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Believing ACCA Only Leads to Audit Roles</strong><br>
+        ACCA opens doors far beyond audit — corporate finance, FP&A, treasury, tax advisory, CFO track, and consulting all actively hire ACCA-qualified professionals. Restricting your job search to "audit only" massively limits your options after qualifying.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Underestimating FinTech as "Not Real Finance"</strong><br>
+        FinTech is one of the fastest-growing employers of finance talent in India — payments, lending, wealthtech, and insurtech companies need finance professionals who understand both traditional accounting and technology. Dismissing it means missing a high-growth career avenue.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Not Understanding the Difference Between Banking and Capital Markets</strong><br>
+        Commercial/retail banking (loans, deposits) is a very different career track from investment banking and capital markets (M&A, equity/debt issuance). Students frequently conflate the two, leading to confusion about required skills and entry routes.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Assuming Big 4 is the Only Path to a Strong Finance Career</strong><br>
+        Big 4 firms are an excellent training ground, but industry roles (MNC finance teams, FP&A, corporate finance) can offer faster specialisation and, in many cases, better work-life balance and comparable long-term compensation.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Ignoring the Regulatory/Compliance Career Track</strong><br>
+        Risk and compliance roles are often overlooked in career planning, but with tightening regulations (RBI, SEBI, global standards), this is a growing, well-paid, and relatively less crowded specialisation.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Key Finance Sectors</div>
+        <ul class="card-items">
+          <li><strong>Q: Name 5 major sectors within finance.</strong></li>
+          <li>A: Banking, Capital Markets, Insurance, Big 4/Professional Services, FinTech</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">ACCA's Position</div>
+        <ul class="card-items">
+          <li><strong>Q: What kind of qualification is ACCA?</strong></li>
+          <li>A: A globally recognised professional accounting qualification spanning Knowledge, Skills, and Strategic Professional levels</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Career Path Peaks</div>
+        <ul class="card-items">
+          <li><strong>Q: What is the peak role in Corporate Finance?</strong></li>
+          <li>A: CFO / Group CFO</li>
+          <li><strong>Q: What is the peak role in External Audit?</strong></li>
+          <li>A: Audit Partner</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">India's Finance Landscape</div>
+        <ul class="card-items">
+          <li><strong>Q: Name 2 key regulators of Indian finance.</strong></li>
+          <li>A: SEBI (securities markets), RBI (banking & monetary policy)</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Why did you choose finance as a career?"</td><td>Motivation and self-awareness</td><td>A genuine answer should connect a specific interest (e.g. solving business problems through numbers, understanding how companies create value) to a concrete experience — a project, internship, or self-study that confirmed the interest, rather than a generic "I like numbers" response.</td></tr>
+      <tr><td>"What's the difference between accounting, finance, and financial management?"</td><td>Foundational clarity on the field</td><td>Accounting is the process of recording and reporting financial transactions (the "what happened"). Finance is broader — it includes accounting plus decisions on raising and allocating capital. Financial management specifically focuses on maximising firm value through investment, financing, and dividend decisions.</td></tr>
+      <tr><td>"Why ACCA over other qualifications like CA or CFA?"</td><td>Research depth and career clarity</td><td>ACCA offers global recognition across 180+ countries, a flexible exam structure that can be combined with work experience, and broad coverage spanning financial accounting, audit, tax, and strategic business skills — useful for MNC and international career paths specifically.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra purple">
+    <div class="mantra-formula">
+      Banking + Capital Markets + Insurance<br>
+      + Big 4 + Corporate Finance + FinTech<br>
+      = <strong style="color:var(--accent4);">The World You Are About to Conquer</strong>
+    </div>
+    <h3>The map is drawn. Now learn the language.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Chapter 2 below: Accounting From Zero — the foundation of everything. 📖</p>
+  </div>
+
+</div><!-- /container ch1 -->
+
+<!-- ══════════════════════════════════════
+     CHAPTER SEPARATOR
+══════════════════════════════════════ -->
+
+</body>
+</html>

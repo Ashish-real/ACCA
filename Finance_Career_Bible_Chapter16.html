@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 16: Ethics & Professional Skills</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #60a5fa;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero { padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(96,165,250,0.10) 0%, transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-blue   { background: rgba(96,165,250,0.2); color: var(--accent5); border: 1px solid rgba(96,165,250,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(96,165,250,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(96,165,250,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(96,165,250,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(96,165,250,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(96,165,250,0.07), rgba(0,212,170,0.05)); border: 1px solid rgba(96,165,250,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  /* PRINCIPLE GRID */
+  .principle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 12px; margin-top: 14px; }
+  .principle-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: border-color 0.2s; }
+  .principle-card:hover { border-color: var(--accent5); }
+  .principle-icon { font-size: 24px; margin-bottom: 8px; }
+  .principle-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .principle-desc { font-size: 11px; color: var(--muted); line-height: 1.6; }
+
+  /* THREATS GRID */
+  .threat-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .threat-name { font-size: 13px; font-weight: 600; color: var(--accent5); margin-bottom: 6px; }
+  .threat-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .threat-example { font-family: var(--mono); font-size: 11px; color: var(--accent2); margin-top: 6px; background: rgba(0,212,170,0.08); padding: 4px 8px; border-radius: 4px; display: inline-block; }
+
+  /* FRAMEWORK STEPS */
+  .framework-steps { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+  .fw-step { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+  .fw-num { font-family: var(--mono); font-size: 16px; font-weight: 700; color: var(--accent5); flex-shrink: 0; width: 28px; }
+  .fw-content { font-size: 12px; color: var(--muted); }
+  .fw-content strong { color: var(--text); }
+
+  /* SKILL GRID */
+  .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; transition: border-color 0.2s; }
+  .skill-card:hover { border-color: var(--accent2); }
+  .skill-icon { font-size: 22px; margin-bottom: 8px; }
+  .skill-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .skill-desc { font-size: 11px; color: var(--muted); line-height: 1.6; }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(96,165,250,0.09), rgba(0,212,170,0.06)); border: 1px solid rgba(96,165,250,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 16</div>
+  <h1>Ethics &<br><span>Professional Skills</span></h1>
+  <p class="hero-sub">The EPSM module, the 5 fundamental principles of ethics, and the professional skills — communication, scepticism, and judgment — that separate qualified accountants from great ones.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Ethics Principles</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Threat Categories</div></div>
+    <div class="stat"><div class="stat-num">EPSM</div><div class="stat-label">Mandatory Module</div></div>
+    <div class="stat"><div class="stat-num">All</div><div class="stat-label">ACCA Papers</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 16 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">16.1</span>Why Ethics is Central to ACCA</div>
+    <div class="toc-item"><span class="toc-num">16.2</span>The 5 Fundamental Principles (IESBA Code)</div>
+    <div class="toc-item"><span class="toc-num">16.3</span>The Conceptual Framework — Threats & Safeguards</div>
+    <div class="toc-item"><span class="toc-num">16.4</span>The 5 Categories of Ethical Threats</div>
+    <div class="toc-item"><span class="toc-num">16.5</span>Resolving Ethical Dilemmas — A Step-by-Step Approach</div>
+    <div class="toc-item"><span class="toc-num">16.6</span>The EPSM Module — What to Expect</div>
+    <div class="toc-item"><span class="toc-num">16.7</span>Professional Skills — The Career Differentiators</div>
+    <div class="toc-item"><span class="toc-num">16.8</span>Real-World Ethics Case Studies</div>
+    <div class="toc-item"><span class="toc-num">16.9</span>Ethics & ACCA — Where It's Tested</div>
+    <div class="toc-item"><span class="toc-num">16.10</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">16.11</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Technical knowledge gets you in the door. <strong>Ethics and professional judgment keep you there — and determine how far you go.</strong> Every major accounting scandal — Enron, WorldCom, Satyam, Wirecard — involved qualified, technically competent accountants who made the wrong ethical choice. ACCA embeds ethics into EVERY paper, every level, because it knows technical skill without integrity is dangerous.</p>
+    <div class="quote">"Your technical knowledge tells you WHAT you can do. Your ethics tells you what you SHOULD do. The gap between these two is where careers — and companies — are destroyed."</div>
+  </div>
+
+  <!-- 16.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">16.1</div>
+      <div class="section-title">Why Ethics is Central to ACCA</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">Public Interest</div>
+        <ul class="card-items">
+          <li>Accountants are "gatekeepers" of financial information</li>
+          <li>Investors, employees, governments rely on your integrity</li>
+          <li>A single unethical decision can affect thousands of people</li>
+          <li>This is WHY accounting is a regulated profession</li>
+        </ul>
+        <div class="card-tag">Trust is the Product</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📜</div>
+        <div class="card-title">IESBA Code of Ethics</div>
+        <ul class="card-items">
+          <li>International Ethics Standards Board for Accountants</li>
+          <li>ACCA's ethics framework is based on IESBA's Code</li>
+          <li>Globally recognised — same principles in every country</li>
+          <li>Underpins ALL professional accounting bodies worldwide</li>
+        </ul>
+        <div class="card-tag">Global Standard</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Tested Everywhere</div>
+        <ul class="card-items">
+          <li>Ethics appears in EVERY ACCA exam from AA onwards</li>
+          <li>SBL, SBR, AAA all have dedicated ethics requirements</li>
+          <li>EPSM is mandatory for membership — non-negotiable</li>
+          <li>Real Big 4 firms run mandatory annual ethics training</li>
+        </ul>
+        <div class="card-tag">Examined at Every Level</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">16.2</div>
+      <div class="section-title">The 5 Fundamental Principles</div>
+      <div class="section-meta">IESBA Code of Ethics</div>
+    </div>
+    <p class="prose">Every ACCA member must adhere to <strong>5 fundamental principles</strong>. These are not abstract ideals — they are the practical standard against which every professional decision is judged.</p>
+
+    <div class="principle-grid">
+      <div class="principle-card">
+        <div class="principle-icon">🎯</div>
+        <div class="principle-name">Integrity</div>
+        <div class="principle-desc">Be straightforward and honest in all professional and business relationships. Don't be associated with information you know to be false or misleading.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">⚖️</div>
+        <div class="principle-name">Objectivity</div>
+        <div class="principle-desc">Do not allow bias, conflict of interest, or undue influence of others to override professional judgments.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">📚</div>
+        <div class="principle-name">Professional Competence & Due Care</div>
+        <div class="principle-desc">Maintain professional knowledge and skill at the level required. Act diligently and in accordance with applicable standards.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">🔒</div>
+        <div class="principle-name">Confidentiality</div>
+        <div class="principle-desc">Respect the confidentiality of information acquired through professional relationships. Don't disclose without proper authority, unless legal/professional duty to do so.</div>
+      </div>
+      <div class="principle-card">
+        <div class="principle-icon">👔</div>
+        <div class="principle-name">Professional Behaviour</div>
+        <div class="principle-desc">Comply with relevant laws and regulations. Avoid any conduct that discredits the profession — including on social media.</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🔑 Memory Aid — "I Own Professional Conduct, Carefully"</div>
+      <strong>I</strong>ntegrity · <strong>O</strong>bjectivity · <strong>P</strong>rofessional Competence & Due Care · <strong>C</strong>onfidentiality · <strong>P</strong>rofessional Behaviour. These 5 principles appear in EVERY ethics question — examiners often ask you to identify WHICH principle is threatened in a scenario.
+    </div>
+  </div>
+
+  <!-- 16.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">16.3</div>
+      <div class="section-title">The Conceptual Framework</div>
+      <div class="section-meta">Threats & Safeguards Approach</div>
+    </div>
+    <p class="prose">Rather than providing a rule for every possible situation, IESBA uses a <strong>principles-based "conceptual framework"</strong>. Accountants must identify threats to the 5 principles, evaluate their significance, and apply safeguards to eliminate or reduce them to an acceptable level.</p>
+
+    <div class="framework-steps">
+      <div class="fw-step">
+        <div class="fw-num">1</div>
+        <div class="fw-content"><strong>Identify threats</strong> — What could compromise the 5 fundamental principles in this situation?</div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-num">2</div>
+        <div class="fw-content"><strong>Evaluate significance</strong> — Is the threat at an "acceptable level," or could it compromise compliance with the principles?</div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-num">3</div>
+        <div class="fw-content"><strong>Apply safeguards</strong> — If significant, identify and apply safeguards to eliminate the threat or reduce it to acceptable level</div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-num">4</div>
+        <div class="fw-content"><strong>Reassess</strong> — If safeguards are insufficient, decline or end the specific professional activity, or even resign from the engagement/employment</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">💡 Two Types of Safeguards</div>
+      <strong>Safeguards created by the profession, legislation or regulation:</strong> Continuing education requirements, professional standards, monitoring and disciplinary processes, external review of reports.<br><br>
+      <strong>Safeguards in the work environment:</strong> Quality control policies, conflict resolution processes, second partner review, rotation of senior personnel, disclosure to those charged with governance.
+    </div>
+  </div>
+
+  <!-- 16.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">16.4</div>
+      <div class="section-title">The 5 Categories of Ethical Threats</div>
+    </div>
+    <p class="prose">Every ethical dilemma in ACCA exams (and real life) falls into one or more of these 5 threat categories. Learning to RECOGNISE these categories is the most exam-relevant ethics skill.</p>
+
+    <div class="cards">
+      <div class="threat-card">
+        <div class="threat-name">1. Self-Interest Threat</div>
+        <div class="threat-desc">A financial or other interest will inappropriately influence judgment or behaviour.</div>
+        <div class="threat-example">e.g. Auditor holding shares in the audit client</div>
+      </div>
+      <div class="threat-card">
+        <div class="threat-name">2. Self-Review Threat</div>
+        <div class="threat-desc">Not appropriately evaluating results of a previous judgment or service performed by yourself or your firm.</div>
+        <div class="threat-example">e.g. Auditing financial statements you helped prepare</div>
+      </div>
+      <div class="threat-card">
+        <div class="threat-name">3. Advocacy Threat</div>
+        <div class="threat-desc">Promoting a client's or employer's position to the point that objectivity is compromised.</div>
+        <div class="threat-example">e.g. Representing a client in a legal dispute against tax authority</div>
+      </div>
+      <div class="threat-card">
+        <div class="threat-name">4. Familiarity Threat</div>
+        <div class="threat-desc">A long or close relationship leads to being too sympathetic or accepting of others' work.</div>
+        <div class="threat-example">e.g. Audit partner's close family member is the client's CFO</div>
+      </div>
+      <div class="threat-card">
+        <div class="threat-name">5. Intimidation Threat</div>
+        <div class="threat-desc">Being deterred from acting objectively due to actual or perceived pressure.</div>
+        <div class="threat-example">e.g. Client threatens to switch auditors over a disagreement</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🔑 Memory Aid — "SHAFI"</div>
+      <strong>S</strong>elf-Interest · <strong>H</strong>(Self-Review, think "Have I reviewed myself?") · <strong>A</strong>dvocacy · <strong>F</strong>amiliarity · <strong>I</strong>ntimidation. In exams, scenarios often contain MULTIPLE threats simultaneously — practice spotting all of them, not just the obvious one.
+    </div>
+  </div>
+
+  <!-- 16.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">16.5</div>
+      <div class="section-title">Resolving Ethical Dilemmas</div>
+      <div class="section-meta">Step-by-Step Approach</div>
+    </div>
+    <p class="prose">When facing a real ethical dilemma at work — or answering an exam question — follow this structured approach.</p>
+
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Gather the Facts</div><ul class="card-items"><li>What exactly is the situation?</li><li>Who are the stakeholders involved?</li><li>What information is missing?</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Identify the Ethical Issues</div><ul class="card-items"><li>Which of the 5 principles are at risk?</li><li>Which threat category applies?</li><li>Is this a legal issue too, or purely ethical?</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Consider the Code & Firm Policies</div><ul class="card-items"><li>What does the IESBA Code say?</li><li>What do internal firm policies require?</li><li>Are there relevant laws/regulations?</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Identify Alternative Courses of Action</div><ul class="card-items"><li>What options are available?</li><li>What are the consequences of each?</li><li>Who should be consulted (manager, ethics hotline)?</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Document and Act</div><ul class="card-items"><li>Document the issue and how it was resolved</li><li>Apply safeguards or escalate as needed</li><li>If unresolved — consider resignation as last resort</li></ul></div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 "Acting in the Public Interest" — The Tiebreaker</div>
+      When in doubt, ask: <strong>"What would protect the public interest?"</strong> This includes investors, employees, creditors, and the wider community — not just the immediate employer or client. This principle ultimately overrides loyalty to any single party, including your employer.
+    </div>
+  </div>
+
+  <!-- 16.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">16.6</div>
+      <div class="section-title">The EPSM Module — What to Expect</div>
+    </div>
+    <p class="prose">The Ethics and Professional Skills Module (EPSM) is an <strong>online, interactive, self-paced module</strong> — not a traditional exam. It's typically completed alongside Strategic Professional papers and is mandatory for ACCA membership.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎮</div>
+        <div class="card-title">Format</div>
+        <ul class="card-items">
+          <li>Interactive scenarios — you make choices, see consequences</li>
+          <li>Video content featuring real practitioners</li>
+          <li>Self-assessment quizzes throughout</li>
+          <li>Approximately 20 hours total — can be done in stages</li>
+        </ul>
+        <div class="card-tag">Online & Interactive</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Content Areas</div>
+        <ul class="card-items">
+          <li>Ethical decision-making in realistic scenarios</li>
+          <li>Communication skills — written and verbal</li>
+          <li>Commercial acumen and business awareness</li>
+          <li>Leadership, innovation, and problem-solving</li>
+        </ul>
+        <div class="card-tag">Holistic Coverage</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⏰</div>
+        <div class="card-title">When to Complete</div>
+        <ul class="card-items"></ul>
+        <ul class="card-items">
+          <li>Can be started any time after registration</li>
+          <li>Best done alongside or after Strategic Professional papers</li>
+          <li>Must be completed before applying for membership</li>
+          <li>No exam fee — included in subscription</li>
+        </ul>
+        <div class="card-tag">Flexible Timing</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">16.7</div>
+      <div class="section-title">Professional Skills</div>
+      <div class="section-meta">The Career Differentiators</div>
+    </div>
+    <p class="prose">Beyond ethics, EPSM and Strategic Professional exams test specific professional skills that employers consistently rank as MORE important than technical knowledge for career progression.</p>
+
+    <div class="cards">
+      <div class="skill-card">
+        <div class="skill-icon">💬</div>
+        <div class="skill-name">Communication</div>
+        <div class="skill-desc">Adapting tone, format, and complexity for different audiences — explaining technical accounting issues to a non-finance CEO requires a completely different approach than writing for an audit file.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔍</div>
+        <div class="skill-name">Professional Scepticism</div>
+        <div class="skill-desc">Questioning assumptions, looking for evidence rather than accepting explanations at face value — the core mindset of every great auditor and analyst.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💼</div>
+        <div class="skill-name">Commercial Acumen</div>
+        <div class="skill-desc">Understanding how a business actually makes money, its competitive position, and how accounting decisions affect real business outcomes — not just technical compliance.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🧩</div>
+        <div class="skill-name">Analysis & Evaluation</div>
+        <div class="skill-desc">Breaking down complex problems, weighing evidence, and forming reasoned conclusions — especially when information is incomplete or conflicting.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💡</div>
+        <div class="skill-name">Innovation</div>
+        <div class="skill-desc">Identifying opportunities to use technology, new approaches, or creative solutions to improve processes — increasingly important as AI transforms finance (Chapter 42).</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">👥</div>
+        <div class="skill-name">Leadership</div>
+        <div class="skill-desc">Even in junior roles — taking initiative, managing your own work, supporting team members, and building toward people-management responsibilities.</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🎯 Why This Matters More Than You Think</div>
+      Big 4 promotion criteria from Senior Associate → Manager → Senior Manager weight communication, leadership, and commercial acumen HEAVILY — often more than pure technical knowledge at those levels (technical competence is assumed). Students who treat EPSM as a "tick-box" exercise miss a genuine opportunity to develop the skills that determine whether they reach ₹20 LPA or ₹80 LPA by year 7.
+    </div>
+  </div>
+
+  <!-- 16.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">16.8</div>
+      <div class="section-title">Real-World Ethics Case Studies</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Case</th><th>What Happened</th><th>Ethical Principle(s) Violated</th></tr>
+      <tr><td>Satyam (India, 2009)</td><td>CEO falsified revenue and cash balances for years; auditors failed to detect</td><td>Integrity (management), Professional Competence & Due Care (auditors)</td></tr>
+      <tr><td>Enron (US, 2001)</td><td>Off-balance-sheet entities hid debt; auditor (Arthur Andersen) had consulting relationships</td><td>Objectivity, Self-Interest threat (non-audit fees)</td></tr>
+      <tr><td>Wirecard (Germany, 2020)</td><td>€1.9bn in cash that didn't exist; auditor relied on third-party confirmations without independent verification</td><td>Professional Scepticism, Due Care</td></tr>
+      <tr><td>Theranos (US, ongoing)</td><td>Misrepresented technology capabilities to investors</td><td>Integrity, Confidentiality (whistleblowers silenced)</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📚 The Common Thread</div>
+      In nearly every major accounting scandal, the technical accounting issue was SECONDARY — the root cause was an <strong>ethical failure</strong>: someone knew something was wrong and either participated, stayed silent, or didn't look hard enough. ACCA's emphasis on ethics exists precisely because technical brilliance cannot substitute for integrity.
+    </div>
+  </div>
+
+  <!-- 16.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">16.9</div>
+      <div class="section-title">Ethics & ACCA — Where It's Tested</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Paper/Module</th><th>How Ethics Appears</th></tr>
+      <tr><td>BT (Applied Knowledge)</td><td>Introduction to professional ethics and corporate governance concepts</td></tr>
+      <tr><td>AA (Audit & Assurance)</td><td>Identify threats and safeguards in audit independence scenarios</td></tr>
+      <tr><td>SBL (Strategic Business Leader)</td><td>Ethics integrated into broader governance and leadership scenarios</td></tr>
+      <tr><td>SBR (Strategic Business Reporting)</td><td>Ethics in financial reporting — pressure to manipulate figures</td></tr>
+      <tr><td>AAA (Advanced Audit & Assurance)</td><td>Complex, multi-threat ethical scenarios in audit context</td></tr>
+      <tr><td>EPSM</td><td>Dedicated module — interactive scenarios across all contexts</td></tr>
+    </table>
+  </div>
+
+  <!-- 16.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">16.10</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">5 Fundamental Principles</div><ul class="card-items"><li>Integrity, Objectivity, Competence & Due Care, Confidentiality, Professional Behaviour</li><li>"I Own Professional Conduct, Carefully"</li><li>Every ethics question references these</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">5 Threat Categories — SHAFI</div><ul class="card-items"><li>Self-Interest, Self-Review, Advocacy, Familiarity, Intimidation</li><li>Scenarios often have multiple threats</li><li>Identify ALL of them in exam answers</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Threats → Evaluate → Safeguards</div><ul class="card-items"><li>The conceptual framework approach</li><li>Two types of safeguards: profession-level and firm-level</li><li>Last resort: decline or resign</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">EPSM = 20 Hours, Mandatory</div><ul class="card-items"><li>Online, interactive, self-paced</li><li>Required for membership</li><li>Best alongside Strategic Professional</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Professional Skills = Promotion Currency</div><ul class="card-items"><li>Communication, scepticism, commercial acumen</li><li>Weighted heavily Manager+ level</li><li>Develop these NOW, not just for EPSM</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Public Interest is the Tiebreaker</div><ul class="card-items"><li>Overrides loyalty to employer/client</li><li>Every scandal = ethics failure first</li><li>This is what makes the profession trustworthy</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 16 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Memorise the 5 fundamental principles using "I Own Professional Conduct, Carefully"</span>
+        <span class="tag teal">✅ Memorise the 5 threat categories using "SHAFI"</span>
+        <span class="tag teal">✅ Read the Satyam case study in detail — identify which principles were violated</span>
+        <span class="tag teal">✅ Practice 3 ethics scenario questions from ACCA AA past papers</span>
+        <span class="tag teal">✅ Write a short email explaining a technical concept to a "non-finance" reader</span>
+        <span class="tag teal">✅ Research ACCA's EPSM module structure on accaglobal.com</span>
+        <span class="tag teal">✅ Reflect: write down 1 ethical dilemma you might face in your first finance job</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">16.11</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Identifying Only One Threat When Multiple Exist</strong><br>
+        Exam scenarios frequently contain more than one simultaneous threat (e.g. a self-interest threat AND a familiarity threat in the same situation). Stopping analysis after finding the first, most obvious threat misses marks allocated to identifying all relevant threats.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Jumping Straight to Safeguards Without Naming the Threat First</strong><br>
+        The conceptual framework requires identifying the specific threat (and which fundamental principle it endangers) BEFORE proposing safeguards. Proposing generic safeguards without properly naming the threat category loses structured marks.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Confusing Objectivity and Integrity</strong><br>
+        Integrity is about being honest and not associating with false/misleading information. Objectivity is specifically about not letting bias or undue influence affect judgment. A scenario involving a conflict of interest tests Objectivity primarily, not Integrity — mixing these up is a common exam error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Assuming Confidentiality is Absolute</strong><br>
+        Confidentiality has recognised exceptions — where disclosure is required by law, permitted by law and authorised by the client/employer, or there is a professional duty/right to disclose (e.g. reporting suspected money laundering). Treating confidentiality as an unbreakable rule in every scenario is incorrect.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Treating Ethics as a "Soft," Low-Mark Topic</strong><br>
+        Ethics is embedded across nearly every ACCA paper, including heavily in SBL and SBR at Strategic Professional level, and directly examined in EPSM. Deprioritising ethics revision in favour of purely technical topics is a strategic study mistake — ethics marks are often easier to secure with structured technique.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">5 Fundamental Principles</div>
+        <ul class="card-items">
+          <li><strong>Q: Recall using the mnemonic.</strong></li>
+          <li>A: "I Own Professional Conduct, Carefully" — Integrity, Objectivity, Professional Competence & Due Care, Confidentiality, Professional Behaviour</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">5 Threat Categories</div>
+        <ul class="card-items">
+          <li><strong>Q: Recall using SHAFI.</strong></li>
+          <li>A: Self-Interest, Self-Review, Advocacy, Familiarity, Intimidation</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Conceptual Framework Steps</div>
+        <ul class="card-items">
+          <li><strong>Q: What are the 4 steps of the conceptual framework?</strong></li>
+          <li>A: Identify threats → Evaluate significance → Apply safeguards → Reassess (decline/withdraw if insufficient)</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Standard Setter</div>
+        <ul class="card-items">
+          <li><strong>Q: Which body sets ACCA's ethical code?</strong></li>
+          <li>A: IESBA (International Ethics Standards Board for Accountants)</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Describe an ethical dilemma you've faced (academic, work, or personal) and how you resolved it."</td><td>Practical application of ethical reasoning — a very common Big 4/finance interview question</td><td>A strong answer describes a specific situation, identifies the competing pressures involved (even informally mapping to a "threat"), explains the reasoning process used to reach a decision, and reflects on the outcome — showing structured ethical thinking rather than just describing what happened.</td></tr>
+      <tr><td>"Why do you think ethics is emphasised so heavily in the ACCA qualification?"</td><td>Understanding of the profession's foundational trust requirement</td><td>The entire value of a professional accountant's opinion — whether an audit report, a tax filing, or financial advice — depends on stakeholders trusting that opinion is objective and honest. Without a strong ethical framework, that trust would collapse, undermining the credibility of financial markets that rely on audited, reliable information.</td></tr>
+      <tr><td>"If a client pressured you to overlook a small accounting irregularity, what would you do?"</td><td>Practical judgment and willingness to act on principle under pressure</td><td>I'd first assess the materiality and nature of the irregularity, then apply the conceptual framework — identifying this as an intimidation and/or self-interest threat to objectivity and integrity. I'd document the concern, escalate internally to a senior colleague or ethics function if needed, and if the pressure continued, decline to be associated with the misleading information — even if it meant losing the client relationship.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      5 Principles (Integrity, Objectivity...)<br>
+      + 5 Threats (SHAFI)<br>
+      + Conceptual Framework (Threats → Safeguards)<br>
+      + Professional Skills (Communication, Scepticism...)<br>
+      = <strong style="color:var(--accent4);">The Trust That Makes "ACCA" Mean Something</strong>
+    </div>
+    <h3>Technical skill builds your career. Integrity protects it.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 17: ACCA Exam Strategy — the final chapter of the ACCA Roadmap section. How to plan, study, and pass every paper efficiently. 📅</p>
+  </div>
+
+</div>
+</body>
+</html>

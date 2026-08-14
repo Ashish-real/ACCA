@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 28: Advanced Taxation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(255,217,61,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent4); border:1px solid var(--accent4); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent4),#f97316); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent4); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent4); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent4); padding:14px 20px; background:rgba(255,217,61,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent4); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent4); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent4); background:rgba(255,217,61,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(255,217,61,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent4); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(255,217,61,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(255,217,61,0.07),rgba(249,115,22,0.05)); border:1px solid rgba(255,217,61,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent4); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent4); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(255,217,61,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent4); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(255,217,61,0.1); border:1px solid rgba(255,217,61,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(255,217,61,0.09),rgba(249,115,22,0.06)); border:1px solid rgba(255,217,61,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent4); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent4),#f97316); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 28 · ACCA ATX</div>
+  <h1>Advanced<br><span>Taxation</span></h1>
+  <p class="hero-sub">Beyond basic tax computation — corporate group taxation, international tax structuring, transfer pricing tax rules, GAAR, and the tax planning judgment every senior tax and finance professional needs.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">ATX</div><div class="stat-label">Strategic Professional</div></div>
+    <div class="stat"><div class="stat-num">DTAA</div><div class="stat-label">+ GAAR + TP</div></div>
+    <div class="stat"><div class="stat-num">Groups</div><div class="stat-label">Corporate Tax Planning</div></div>
+    <div class="stat"><div class="stat-num">Ethics</div><div class="stat-label">Tax Avoidance Line</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 28 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">28.1</span>What ATX Adds Beyond TX</div>
+    <div class="toc-item"><span class="toc-num">28.2</span>Personal Income Tax Computation — Full Worked Example</div>
+    <div class="toc-item"><span class="toc-num">28.3</span>Corporate Group Taxation — Reliefs & Structuring</div>
+    <div class="toc-item"><span class="toc-num">28.4</span>Group Relief — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">28.5</span>International Tax — Residence & Double Taxation</div>
+    <div class="toc-item"><span class="toc-num">28.6</span>Double Taxation Avoidance Agreements (DTAA)</div>
+    <div class="toc-item"><span class="toc-num">28.7</span>DTAA Foreign Tax Credit — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">28.8</span>Permanent Establishment — The International Tax Trigger</div>
+    <div class="toc-item"><span class="toc-num">28.9</span>Controlled Foreign Company (CFC) Rules</div>
+    <div class="toc-item"><span class="toc-num">28.10</span>Transfer Pricing — Tax Perspective</div>
+    <div class="toc-item"><span class="toc-num">28.11</span>Transfer Pricing Tax — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">28.12</span>General Anti-Avoidance Rules (GAAR)</div>
+    <div class="toc-item"><span class="toc-num">28.13</span>Tax-Efficient Structuring of Transactions</div>
+    <div class="toc-item"><span class="toc-num">28.14</span>Capital Gains Tax Planning</div>
+    <div class="toc-item"><span class="toc-num">28.15</span>Capital Gains Planning — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">28.16</span>Ethics in Tax Planning — Avoidance vs Evasion</div>
+    <div class="toc-item"><span class="toc-num">28.17</span>Advanced Taxation in India — Real World Context</div>
+    <div class="toc-item"><span class="toc-num">28.18</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">28.19</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Basic taxation (TX) teaches individual and single-company tax computation. <strong>Advanced Taxation</strong> steps up to how sophisticated organisations — corporate groups, multinationals, individuals with complex affairs — legitimately structure their affairs to manage tax efficiently, while staying firmly within legal and ethical boundaries. This is genuinely high-value knowledge: tax efficiency, done properly, is one of the most directly measurable ways a finance professional can add value to a business.</p>
+    <div class="quote">"Tax planning is not about paying less tax than you owe. It's about not paying more than you're legally required to."</div>
+  </div>
+
+  <!-- 28.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">28.1</div>
+      <div class="section-title">What ATX Adds Beyond TX</div>
+    </div>
+    <table class="data-table">
+      <tr><th>TX (Applied Skills) Covers</th><th>ATX (Strategic Professional) Adds</th></tr>
+      <tr><td>Individual and single-company tax computation</td><td>Corporate group taxation, reliefs, and structuring across multiple entities</td></tr>
+      <tr><td>Basic capital gains tax rules</td><td>Sophisticated CGT planning around timing, reliefs, and transaction structuring</td></tr>
+      <tr><td>Domestic tax rules only</td><td>International tax — residence, double taxation, DTAAs, transfer pricing</td></tr>
+      <tr><td>Compliance-focused computation</td><td>Genuine tax PLANNING and advisory — the ethical line between avoidance and evasion</td></tr>
+    </table>
+  </div>
+
+  <!-- 28.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">28.2</div>
+      <div class="section-title">Personal Income Tax Computation — Full Worked Example</div>
+    </div>
+    <p class="prose">Basic TX covers personal income tax, but a genuinely complete worked example — combining salary income, exemptions, deductions, and the choice between tax regimes — is worth walking through in full, since this is exactly the kind of computation ACCA TX/ATX candidates (and any finance professional advising individuals) need to execute confidently.</p>
+
+    <p class="section-label">Part A — The Two-Regime Choice (Illustrative Structure)</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px;">Indian personal taxpayers can choose between two tax regimes each year: the <strong style="color:var(--text);">Old Regime</strong> (higher slab rates, but allows numerous deductions and exemptions like HRA, Section 80C investments, and home loan interest) and the <strong style="color:var(--text);">New Regime</strong> (lower slab rates, but most deductions/exemptions are NOT available). The illustrative slab structure below shows the general SHAPE of how this works — exact rates and thresholds are revised periodically in the Union Budget, so always verify current rates before real-world application.</p>
+
+    <table class="data-table">
+      <tr><th>Income Slab (Illustrative)</th><th>Old Regime Rate</th><th>New Regime Rate</th></tr>
+      <tr><td>Up to ₹2.5L / ₹3L (basic exemption)</td><td>Nil</td><td>Nil</td></tr>
+      <tr><td>Next slab (~₹2.5L-5L / ₹3L-7L)</td><td>5%</td><td>5%</td></tr>
+      <tr><td>Middle slabs</td><td>20%</td><td>10-15% (more slabs, gentler progression)</td></tr>
+      <tr><td>Top slab (above ~₹10L / ₹15L)</td><td>30%</td><td>30%</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Core Trade-Off</div>
+      The Old Regime generally benefits taxpayers with SIGNIFICANT deductions available (large HRA claims, substantial Section 80C investments, home loan interest) — the deductions can outweigh the higher slab rates. The New Regime generally benefits taxpayers with FEW deductions to claim, since the lower rates apply directly without needing to itemise. The right choice is genuinely taxpayer-specific — exactly the kind of computation-then-compare exercise this section walks through.
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Part B — Full Worked Example: Salaried Individual</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: Comparing Old vs New Regime for a Salaried Employee</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given (Annual figures):</strong> Basic Salary ₹9,00,000. HRA received ₹3,60,000. Actual rent paid ₹4,20,000 (metro city). Other taxable allowances ₹1,20,000. Section 80C investments (PF, ELSS, life insurance) ₹1,50,000. Home loan interest paid ₹1,80,000. Standard deduction (both regimes) = ₹50,000.<br><br>
+
+        <strong style="color:var(--text);">Step 1 — Calculate HRA Exemption (Old Regime only — New Regime doesn't allow this):</strong><br>
+        HRA exemption = LOWEST of the following three:<br>
+        (a) Actual HRA received = ₹3,60,000<br>
+        (b) Rent paid − 10% of Basic Salary = ₹4,20,000 − ₹90,000 = ₹3,30,000<br>
+        (c) 50% of Basic Salary (metro city) = ₹4,50,000<br>
+        <strong style="color:var(--accent4);">HRA Exemption = ₹3,30,000</strong> (the lowest of the three)<br>
+        Taxable HRA = ₹3,60,000 − ₹3,30,000 = ₹30,000<br><br>
+
+        <strong style="color:var(--text);">Step 2 — Gross Salary Income:</strong><br>
+        Basic Salary: ₹9,00,000<br>
+        Taxable HRA: ₹30,000<br>
+        Other Allowances: ₹1,20,000<br>
+        Gross Salary = ₹10,50,000<br><br>
+
+        <strong style="color:var(--text);">Step 3a — OLD REGIME Computation:</strong><br>
+        Gross Salary: ₹10,50,000<br>
+        Less: Standard Deduction: (₹50,000)<br>
+        Less: Section 80C: (₹1,50,000)<br>
+        Less: Home Loan Interest (Section 24): (₹1,80,000) [capped at ₹2,00,000, fully allowed here]<br>
+        <strong style="color:var(--accent2);">Taxable Income (Old Regime) = ₹6,70,000</strong><br><br>
+
+        <strong style="color:var(--text);">Step 3b — NEW REGIME Computation:</strong><br>
+        Gross Salary: ₹10,50,000 (HRA exemption NOT available — full ₹3,60,000 HRA is taxable, but our Gross Salary above already only used the OLD regime's HRA treatment — under New Regime, Gross Salary = ₹9,00,000 + ₹3,60,000 + ₹1,20,000 = ₹13,80,000)<br>
+        Less: Standard Deduction: (₹50,000)<br>
+        [80C and home loan interest NOT allowed under New Regime]<br>
+        <strong style="color:var(--accent2);">Taxable Income (New Regime) = ₹13,30,000</strong><br><br>
+
+        <strong style="color:var(--text);">Step 4 — Apply illustrative slab rates and compare final tax liability (including 4% cess on both):</strong><br>
+        Using illustrative progressive rates on the respective taxable incomes above, the Old Regime's much lower taxable income base (₹6,70,000 vs ₹13,30,000) — a direct result of claiming HRA exemption, 80C, and home loan interest — would very likely produce a LOWER final tax liability despite the higher slab rates, because the deductions available here are substantial relative to income.<br><br>
+
+        <strong style="color:var(--text);">Conclusion:</strong> For THIS taxpayer profile (significant HRA claim + full 80C utilisation + home loan), the Old Regime is very likely more tax-efficient. A taxpayer with minimal deductions (no home loan, minimal 80C investment, living in own house with no HRA claim) would typically find the New Regime more favourable instead — confirming there's no universal "better" regime, only a computation-specific answer.
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 The Professional Advisory Point</div>
+      This exact comparison — computing tax liability under BOTH regimes and recommending the lower one — is one of the most common, genuinely valuable pieces of practical tax advice a finance professional gives individual clients or colleagues each year, since most salaried taxpayers don't run this comparison themselves and simply default to whichever regime their employer applies by default.
+    </div>
+  </div>
+
+  <!-- 28.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">28.3</div>
+      <div class="section-title">Corporate Group Taxation — Reliefs & Structuring</div>
+    </div>
+    <p class="prose">When a company operates through multiple subsidiaries, tax law often provides specific reliefs that allow the group to be treated more favourably than if each company were taxed in complete isolation.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Group Loss Relief</div>
+        <ul class="card-items">
+          <li>Losses in one group company can often be surrendered to offset profits in another group company (subject to ownership thresholds, typically 75%+ common ownership)</li>
+          <li>Prevents a group from paying tax on overall profit while one subsidiary sits with unrelieved losses</li>
+        </ul>
+        <div class="card-tag">Loss Surrender</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Intra-Group Asset Transfers</div>
+        <ul class="card-items">
+          <li>Many jurisdictions allow assets to be transferred between group companies without triggering an immediate capital gains tax charge</li>
+          <li>Recognises that no real economic disposal has occurred — the asset remains within the same overall economic group</li>
+        </ul>
+        <div class="card-tag">No-Gain-No-Loss Transfers</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">28.4</div>
+      <div class="section-title">Group Relief — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Surrendering Losses Within a Group</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Parent Co has taxable profit of ₹8 Crore. Subsidiary Co (85% owned by Parent) has a tax loss of ₹3 Crore for the same period. Corporate tax rate = 25%.<br><br>
+        <strong style="color:var(--text);">Without group relief:</strong><br>
+        Parent Co tax = ₹8 Crore × 25% = ₹2 Crore<br>
+        Subsidiary Co tax = ₹0 (loss, no tax due), loss carried forward for future use<br>
+        Total group tax paid NOW = ₹2 Crore<br><br>
+        <strong style="color:var(--text);">With group relief (loss surrendered to Parent):</strong><br>
+        Parent Co taxable profit after relief = ₹8 Crore − ₹3 Crore = ₹5 Crore<br>
+        Parent Co tax = ₹5 Crore × 25% = ₹1.25 Crore<br>
+        Total group tax paid NOW = <strong style="color:var(--accent4);">₹1.25 Crore</strong> (a saving of ₹75 Lakh in current-year cash tax)<br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> Group relief allows the group to access the tax benefit of the loss IMMEDIATELY, rather than waiting for Subsidiary Co to generate enough future profit to use the loss itself — a significant cash flow timing benefit for the group as a whole.
+      </div>
+    </div>
+  </div>
+
+  <!-- 28.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">28.5</div>
+      <div class="section-title">International Tax — Residence & Double Taxation</div>
+    </div>
+    <p class="prose">A company or individual with cross-border activity risks being taxed TWICE on the same income — once by the country where the income arises (source country) and again by the country of residence. International tax rules exist specifically to resolve this.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏠</div>
+        <div class="card-title">Tax Residence — Companies</div>
+        <ul class="card-items">
+          <li>Typically determined by place of incorporation AND/OR place of "central management and control" (where key strategic decisions are actually made)</li>
+          <li>A company can potentially be tax resident in more than one country under different countries' domestic rules — creating direct double tax risk</li>
+        </ul>
+        <div class="card-tag">Corporate Residence</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Source vs Residence Taxation</div>
+        <ul class="card-items">
+          <li><strong>Source-based taxation:</strong> a country taxes income ARISING within its borders, regardless of who earns it</li>
+          <li><strong>Residence-based taxation:</strong> a country taxes its residents on their WORLDWIDE income, regardless of where earned</li>
+          <li>Most countries use a combination, which is exactly why double taxation risk arises</li>
+        </ul>
+        <div class="card-tag">The Root Cause</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">28.6</div>
+      <div class="section-title">Double Taxation Avoidance Agreements (DTAA)</div>
+    </div>
+    <p class="prose">Countries sign bilateral treaties (DTAAs) that allocate taxing rights between the two countries and provide relief mechanisms so the same income isn't fully taxed twice.</p>
+    <div class="formula-block">
+      <div class="formula-header">Double Tax Relief Methods</div>
+      <div class="formula-row"><div class="formula-name">Exemption Method</div><div class="formula-eq">Income taxed in the source country is fully EXEMPTED from tax in the residence country</div></div>
+      <div class="formula-row"><div class="formula-name">Credit Method (Most Common)</div><div class="formula-eq">Residence country taxes worldwide income but gives a CREDIT for tax already paid in the source country, up to the residence country's own tax rate on that income</div></div>
+      <div class="formula-row"><div class="formula-name">Deduction Method (Least Favourable)</div><div class="formula-eq">Foreign tax paid is simply deducted as an EXPENSE before calculating residence-country tax — provides only partial relief</div></div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Foreign Tax Credit — The Key Limitation</div>
+      Under the credit method, the credit given can NEVER exceed the residence country's own tax liability on that same income. If foreign tax paid is HIGHER than what the residence country would have charged, the excess is simply lost (not refunded) — this is why understanding DTAA rates and credit limitations matters for genuine international tax planning.
+    </div>
+  </div>
+
+  <!-- 28.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">28.7</div>
+      <div class="section-title">DTAA Foreign Tax Credit — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Claiming Foreign Tax Credit Under the Credit Method</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> An Indian company earns ₹50,00,000 of interest income from a US-based investment. Under the India-US DTAA, US withholding tax of 15% is deducted at source = ₹7,50,000. India's corporate tax rate = 25%.<br><br>
+        <strong style="color:var(--text);">Step 1 — India's tax liability on this income (before credit):</strong><br>
+        ₹50,00,000 × 25% = <strong style="color:var(--accent4);">₹12,50,000</strong><br><br>
+        <strong style="color:var(--text);">Step 2 — Foreign Tax Credit available:</strong><br>
+        Foreign tax actually paid = ₹7,50,000<br>
+        Credit is capped at India's own tax on that income (₹12,50,000) — since ₹7,50,000 is LESS than the cap, the FULL ₹7,50,000 is creditable<br><br>
+        <strong style="color:var(--text);">Step 3 — Net Indian tax payable:</strong><br>
+        ₹12,50,000 − ₹7,50,000 = <strong style="color:var(--accent4);">₹5,00,000</strong><br><br>
+        <strong style="color:var(--text);">Total tax paid globally on this income:</strong> ₹7,50,000 (US) + ₹5,00,000 (India, net) = ₹12,50,000 — exactly equal to India's domestic tax rate applied once, confirming double taxation has been correctly eliminated.<br><br>
+        <strong style="color:var(--text);">Now consider a HIGHER foreign withholding rate scenario:</strong> If the US withholding tax had instead been 30% (₹15,00,000) due to no treaty benefit being available, the credit would still be CAPPED at ₹12,50,000 (India's own tax on that income) — the excess ₹2,50,000 (₹15,00,000 − ₹12,50,000) would simply be LOST, not refunded, illustrating exactly the credit-cap limitation covered in 28.5.
+      </div>
+    </div>
+  </div>
+
+  <!-- 28.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">28.8</div>
+      <div class="section-title">Permanent Establishment — The International Tax Trigger</div>
+    </div>
+    <p class="prose">A foreign company doesn't automatically become taxable in another country just by having some connection to it — international tax law uses the concept of a <strong>Permanent Establishment (PE)</strong> as the trigger point at which a country gains the right to tax a foreign enterprise's business profits.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Fixed Place of Business PE</div>
+        <ul class="card-items">
+          <li>A physical location through which business is wholly or partly carried on — branch office, factory, workshop, or even a construction site lasting beyond a treaty-specified duration (often 6-12 months)</li>
+          <li>Most DTAAs specifically EXCLUDE purely preparatory or auxiliary activities (e.g. a warehouse used solely for storage) from creating a PE</li>
+        </ul>
+        <div class="card-tag">Physical Presence</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">Dependent Agent PE</div>
+        <ul class="card-items">
+          <li>Arises when a person habitually concludes contracts (or plays the principal role leading to contract conclusion) on behalf of a foreign enterprise in that country</li>
+          <li>An INDEPENDENT agent acting in the ordinary course of their own business generally does NOT create a PE for the foreign principal</li>
+        </ul>
+        <div class="card-tag">Agency Presence</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why PE Matters Enormously in Practice</div>
+      If a foreign company is found to have a PE in a country, that country gains the right to tax the PROFITS ATTRIBUTABLE to that PE — even if the company never intended to establish a formal local presence. This has become especially significant with digital businesses, where traditional PE concepts (requiring physical presence) struggled to capture value created by companies with significant digital/remote engagement but minimal physical footprint — a major driver behind the global push for digital services taxes and the OECD's BEPS (Base Erosion and Profit Shifting) reforms.
+    </div>
+  </div>
+
+  <!-- 28.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">28.9</div>
+      <div class="section-title">Controlled Foreign Company (CFC) Rules</div>
+    </div>
+    <p class="prose">Without anti-avoidance rules, a company could shift profits into a subsidiary based in a low-tax or zero-tax jurisdiction and simply defer (or avoid) home-country tax indefinitely by not repatriating those profits. <strong>CFC rules</strong> prevent this by allowing the parent's home country to tax certain foreign subsidiary profits AS IF they had already been distributed to the parent, even if they haven't been.</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">TRIGGER</div><div class="step-content">CFC rules typically apply when a domestic parent controls a foreign subsidiary (often &gt;50% ownership/control) located in a low-tax jurisdiction</div></div>
+      <div class="step-item"><div class="step-num">TARGET</div><div class="step-content">Usually targets PASSIVE income specifically (interest, royalties, dividends) rather than genuine active trading profits — the concern is shifting easily-movable income to low-tax entities, not penalising genuine overseas business operations</div></div>
+      <div class="step-item"><div class="step-num">EFFECT</div><div class="step-content">The CFC's undistributed passive income is attributed to the parent and taxed in the parent's home jurisdiction NOW, removing the deferral benefit that motivated the low-tax structure in the first place</div></div>
+    </div>
+  </div>
+
+  <!-- 28.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">28.10</div>
+      <div class="section-title">Transfer Pricing — Tax Perspective</div>
+    </div>
+    <p class="prose">Chapter 27 covered transfer pricing from a management accounting / performance measurement angle. From a TAX perspective, transfer pricing takes on much higher stakes — multinationals could otherwise shift profit to low-tax jurisdictions by manipulating prices on cross-border intra-group transactions, so tax authorities worldwide mandate the <strong>Arm's Length Principle</strong>.</p>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Arm's Length Principle</div>
+      Cross-border transactions between related/group entities must be priced as if the parties were UNRELATED, independent third parties negotiating at market terms. Tax authorities can adjust a company's taxable profit if they determine the actual transfer price used was not at arm's length — typically requiring detailed transfer pricing documentation and benchmarking studies to defend the pricing used.
+    </div>
+    <table class="data-table">
+      <tr><th>Arm's Length Method</th><th>Approach</th></tr>
+      <tr><td>Comparable Uncontrolled Price (CUP)</td><td>Compare the price to an identical/similar transaction between unrelated parties</td></tr>
+      <tr><td>Resale Price Method</td><td>Work backward from the resale price to unrelated customers, less an appropriate margin</td></tr>
+      <tr><td>Cost Plus Method</td><td>Cost of the supplying entity plus an appropriate arm's length markup</td></tr>
+      <tr><td>Transactional Net Margin Method (TNMM)</td><td>Compares net profit margins earned on the controlled transaction to comparable independent companies</td></tr>
+      <tr><td>Profit Split Method</td><td>Splits combined profit between related entities based on their relative contribution/value added</td></tr>
+    </table>
+  </div>
+
+  <!-- 28.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">28.11</div>
+      <div class="section-title">Transfer Pricing Tax — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Tax Authority Transfer Pricing Adjustment</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Facts:</strong> An Indian subsidiary sells goods to its parent company in a low-tax jurisdiction at ₹80/unit. Comparable arm's length price (based on similar transactions between unrelated companies, per a TP benchmarking study) = ₹120/unit. Volume = 1,00,000 units. Indian corporate tax rate = 25%.<br><br>
+        <strong style="color:var(--text);">Tax Authority's Adjustment:</strong><br>
+        Price shortfall per unit = ₹120 − ₹80 = ₹40<br>
+        Total understated revenue = 1,00,000 units × ₹40 = ₹40,00,000<br>
+        Additional taxable profit assessed = <strong style="color:var(--accent4);">₹40,00,000</strong><br>
+        Additional tax due = ₹40,00,000 × 25% = <strong style="color:var(--accent4);">₹10,00,000</strong><br><br>
+        <strong style="color:var(--text);">Consequence:</strong> Beyond the additional tax itself, transfer pricing adjustments typically also trigger penalties (often a percentage of the adjustment) and require the company to maintain more robust, defensible TP documentation going forward — which is exactly why multinationals invest heavily in transfer pricing studies and documentation BEFORE tax authorities challenge their pricing, not after.
+      </div>
+    </div>
+  </div>
+
+  <!-- 28.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">28.12</div>
+      <div class="section-title">General Anti-Avoidance Rules (GAAR)</div>
+    </div>
+    <p class="prose">Beyond specific anti-avoidance rules targeting particular known tax-avoidance techniques, many tax systems (including India's) have a broader <strong>General Anti-Avoidance Rule</strong> that allows tax authorities to disregard or recharacterise an "impermissible avoidance arrangement" — even if it technically complies with the letter of the law.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">What GAAR Targets</div>
+        <ul class="card-items">
+          <li>Arrangements whose MAIN purpose (or one of the main purposes) is to obtain a tax benefit</li>
+          <li>Arrangements lacking genuine commercial substance beyond the tax advantage</li>
+          <li>Arrangements creating rights/obligations not typically found between parties dealing at arm's length</li>
+        </ul>
+        <div class="card-tag">Substance Over Form</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">Why It Matters for Tax Planning</div>
+        <ul class="card-items">
+          <li>GAAR means TECHNICAL legal compliance alone is no longer sufficient protection against challenge</li>
+          <li>Genuine commercial rationale — beyond just tax savings — must exist and be documented for any significant restructuring</li>
+          <li>Shifts tax planning from purely "can we do this legally" to "would this survive substance-over-form scrutiny"</li>
+        </ul>
+        <div class="card-tag">Planning Implication</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">28.13</div>
+      <div class="section-title">Tax-Efficient Structuring of Transactions</div>
+    </div>
+    <p class="prose">Genuine tax planning (not avoidance schemes) involves structuring GENUINE commercial transactions in the most tax-efficient legally available way.</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">TIMING</div><div class="step-content"><strong>Timing of Transactions</strong> — legitimately timing a disposal, investment, or income recognition to fall in a more favourable tax year or period, within normal commercial flexibility</div></div>
+      <div class="step-item"><div class="step-num">ENTITY CHOICE</div><div class="step-content"><strong>Choice of Business Vehicle</strong> — selecting between a subsidiary, branch, LLP, or joint venture structure based partly on the differing tax treatment each carries, alongside genuine commercial/legal considerations</div></div>
+      <div class="step-item"><div class="step-num">FINANCING MIX</div><div class="step-content"><strong>Debt vs Equity Financing</strong> — since interest is typically tax-deductible while dividends are not, financing structure genuinely affects the group's overall tax efficiency (subject to thin capitalisation and interest limitation rules that cap this benefit)</div></div>
+      <div class="step-item"><div class="step-num">RELIEF UTILISATION</div><div class="step-content"><strong>Maximising Available Reliefs</strong> — ensuring all legitimately available reliefs, allowances, and exemptions are correctly claimed and optimally sequenced (e.g. using capital losses against the most appropriate gains)</div></div>
+    </div>
+  </div>
+
+  <!-- 28.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">28.14</div>
+      <div class="section-title">Capital Gains Tax Planning</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <div class="card-title">Holding Period Planning</div>
+        <ul class="card-items">
+          <li>Many tax systems (including India) apply lower rates to LONG-TERM capital gains vs short-term — timing a disposal to cross the long-term threshold can be a legitimate, significant tax saving</li>
+          <li>Requires balancing tax timing against genuine commercial/investment considerations — never purely tax-driven</li>
+        </ul>
+        <div class="card-tag">Timing</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Loss Harvesting & Matching</div>
+        <ul class="card-items">
+          <li>Realising capital losses to offset against capital gains in the same period, reducing net taxable gains</li>
+          <li>Must be a genuine economic transaction, not an artificial round-trip designed purely to manufacture a tax loss (which GAAR/specific anti-avoidance rules would likely challenge)</li>
+        </ul>
+        <div class="card-tag">Loss Utilisation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">28.15</div>
+      <div class="section-title">Capital Gains Planning — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: The Tax Value of Waiting for Long-Term Treatment</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> An investor is considering selling listed equity shares currently valued at ₹50,00,000, held for 11 months, with a cost base of ₹30,00,000 (unrealised gain = ₹20,00,000). Short-term capital gains (held &lt;12 months) on listed equity are taxed at 20%; long-term capital gains (held ≥12 months) are taxed at 12.5% (illustrative rates for this example, reflecting the general short-term vs long-term structure).<br><br>
+        <strong style="color:var(--text);">Scenario A — Sell now (short-term):</strong><br>
+        Tax = ₹20,00,000 × 20% = <strong style="color:var(--accent4);">₹4,00,000</strong><br>
+        Net proceeds after tax = ₹50,00,000 − ₹4,00,000 = ₹46,00,000<br><br>
+        <strong style="color:var(--text);">Scenario B — Wait 1 more month, then sell (long-term):</strong><br>
+        Tax = ₹20,00,000 × 12.5% = <strong style="color:var(--accent4);">₹2,50,000</strong><br>
+        Net proceeds after tax = ₹50,00,000 − ₹2,50,000 = ₹47,50,000 (assuming share price unchanged)<br><br>
+        <strong style="color:var(--text);">Value of waiting:</strong> ₹47,50,000 − ₹46,00,000 = <strong style="color:#4ade80;">₹1,50,000 additional after-tax value</strong>, purely from crossing the long-term holding threshold — a genuine, legitimate tax planning consideration (assuming the investor has no urgent liquidity need and the share price is expected to remain broadly stable over that single month).<br><br>
+        <strong style="color:var(--text);">Important caveat:</strong> This analysis assumes the share price doesn't move adversely during the waiting period — the tax saving must always be weighed against the MARKET RISK of continuing to hold the investment. Purely tax-driven timing decisions that ignore genuine investment risk are not sound financial planning, even where the tax arithmetic looks attractive in isolation.
+      </div>
+    </div>
+  </div>
+
+  <!-- 28.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">28.16</div>
+      <div class="section-title">Ethics in Tax Planning — Avoidance vs Evasion</div>
+    </div>
+    <p class="prose">This is the single most important conceptual distinction in advanced tax practice — and one every finance professional must understand precisely.</p>
+    <table class="data-table">
+      <tr><th>Concept</th><th>Definition</th><th>Legal Status</th></tr>
+      <tr><td>Tax Avoidance</td><td>Legally arranging one's affairs to minimise tax, using legitimate reliefs, structures, and timing within the law's actual intent</td><td>Legal, but AGGRESSIVE avoidance risks GAAR challenge if lacking genuine commercial substance</td></tr>
+      <tr><td>Tax Evasion</td><td>Illegally concealing income, falsifying records, or deliberately misreporting to reduce tax owed</td><td>ILLEGAL — a criminal offence in virtually every jurisdiction</td></tr>
+      <tr><td>Tax Mitigation / Planning</td><td>Using reliefs and structures exactly as intended by the legislature (e.g. claiming a genuinely available deduction)</td><td>Fully legal and uncontroversial</td></tr>
+    </table>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Professional Ethics Line</div>
+      A professional accountant's duty of Professional Competence and Due Care, alongside Integrity (Chapter 16), means advising on aggressive avoidance schemes that lack genuine commercial substance carries real professional risk — even if technically "legal" at the time, GAAR and evolving anti-avoidance rules mean such schemes are increasingly challenged retrospectively, and professional bodies increasingly expect members to decline involvement in artificial, contrived arrangements.
+    </div>
+  </div>
+
+  <!-- 28.17 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">28.17</div>
+      <div class="section-title">Advanced Taxation in India — Real World Context</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Area</th><th>Indian Framework</th></tr>
+      <tr><td>GAAR</td><td>Introduced under the Income Tax Act — empowers tax authorities to declare an "impermissible avoidance arrangement" and deny tax benefits</td></tr>
+      <tr><td>Transfer Pricing</td><td>Mandatory TP documentation (Form 3CEB) for specified international/domestic related-party transactions above prescribed thresholds; Advance Pricing Agreements (APAs) available for certainty</td></tr>
+      <tr><td>DTAA Network</td><td>India has an extensive DTAA network (90+ countries) — Form 10F and Tax Residency Certificate required to claim treaty benefits</td></tr>
+      <tr><td>Group Taxation</td><td>India does NOT currently have a formal group loss relief/consolidated tax filing regime like some jurisdictions — each company generally files and is taxed separately, a notable difference from UK/US-style group relief</td></tr>
+      <tr><td>Capital Gains</td><td>Distinct long-term vs short-term capital gains rates, with holding period thresholds varying by asset class (equity, debt, immovable property)</td></tr>
+    </table>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Key India-Specific Point for ACCA Students</div>
+      Unlike the UK-based group relief concept covered in ATX's core syllabus, India taxes each company in a group SEPARATELY — there's no formal mechanism to surrender losses between Indian group companies for tax purposes (unlike the worked example in 28.3, which reflects UK-style group relief). This is an important distinction to note when applying ATX concepts to Indian corporate structures in practice.
+    </div>
+  </div>
+
+  <!-- 28.18 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">28.18</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Group Relief Provides Cash Flow Timing Benefit</div><ul class="card-items"><li>Losses offset against group profits immediately</li><li>Not available in India — company-by-company taxation</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Credit Method Caps at Residence Tax Rate</div><ul class="card-items"><li>Excess foreign tax paid is simply lost</li><li>DTAAs allocate taxing rights between countries</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Transfer Pricing Must Be Arm's Length</div><ul class="card-items"><li>5 methods to establish arm's length pricing</li><li>Adjustments trigger additional tax + penalties</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Avoidance ≠ Evasion — Know the Line</div><ul class="card-items"><li>Avoidance = legal, but GAAR can still challenge it</li><li>Evasion = illegal, always</li><li>Substance over form is the modern standard</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 28 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Work through the group relief worked example and calculate the tax saving yourself</span>
+        <span class="tag teal">✅ Research India's DTAA rate with one major trading partner country</span>
+        <span class="tag teal">✅ Practice explaining the difference between avoidance and evasion in one sentence</span>
+        <span class="tag teal">✅ Identify one arm's length transfer pricing method and where it would be most appropriate</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28.19 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">28.19</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Assuming Group Relief Applies Universally</strong><br>
+        Group loss relief mechanisms vary significantly by jurisdiction — India, for example, does not have a UK-style formal group relief regime; each Indian company is generally taxed separately. Assuming ATX's UK-based group relief concepts apply identically everywhere is a critical error in cross-border tax analysis.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Believing the Foreign Tax Credit Is Always Fully Refundable</strong><br>
+        Under the credit method, the credit is CAPPED at the residence country's own tax on that income — if foreign tax paid exceeds this cap, the excess is simply lost, not refunded or carried forward (in most systems). This limitation is frequently tested and frequently missed.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Treating Technical Legal Compliance as Sufficient Protection</strong><br>
+        Under GAAR, an arrangement can be technically legal under specific rules yet still be challenged and unwound if it lacks genuine commercial substance and its main purpose is tax avoidance. "It's technically legal" is no longer a complete answer in jurisdictions with GAAR.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Confusing Tax Avoidance With Tax Evasion</strong><br>
+        These are fundamentally different — avoidance is legal (though aggressive avoidance can be challenged under GAAR), evasion is a criminal offence involving concealment or falsification. Using these terms interchangeably, especially in an exam or professional context, is a serious conceptual error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Ignoring Transfer Pricing Documentation Requirements</strong><br>
+        Even if a transfer price is genuinely arm's length, failing to maintain proper contemporaneous documentation and benchmarking studies exposes a company to penalty risk during a tax audit — the burden of proof is typically on the taxpayer to demonstrate arm's length pricing, not on the tax authority to disprove it.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Assuming a Company Needs a Formal Branch to Have a Permanent Establishment</strong><br>
+        A PE can arise through a dependent agent habitually concluding contracts on a company's behalf, even without any formal branch or office — assuming PE risk only exists with a physical branch presence misses this equally important "agency PE" trigger, especially relevant for companies using local sales agents or representatives.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Assuming CFC Rules Target All Foreign Subsidiary Income</strong><br>
+        CFC rules typically target PASSIVE income (interest, royalties, dividends) parked in low-tax jurisdictions — genuine active trading profits from a real overseas business operation are generally NOT the target, though the exact scope varies by jurisdiction. Assuming CFC rules automatically tax all foreign subsidiary profits overstates their reach.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Making Purely Tax-Driven Timing Decisions Without Weighing Market Risk</strong><br>
+        As the capital gains worked example (28.14) notes, waiting to cross a long-term holding threshold has genuine tax value — but this must always be weighed against the market risk of continuing to hold the investment during the waiting period. A tax saving that's smaller than a plausible adverse price movement isn't a sound reason to delay a sale.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Double Tax Relief Methods</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 3 methods of double tax relief.</strong></li>
+          <li>A: Exemption, Credit, Deduction</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Arm's Length Principle</div>
+        <ul class="card-items">
+          <li><strong>Q: What is the Arm's Length Principle?</strong></li>
+          <li>A: Related-party transactions must be priced as if between independent, unrelated parties</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Avoidance vs Evasion</div>
+        <ul class="card-items">
+          <li><strong>Q: What's the key difference between tax avoidance and tax evasion?</strong></li>
+          <li>A: Avoidance is legal (though can be GAAR-challenged); evasion is illegal (concealment/falsification)</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">GAAR Trigger</div>
+        <ul class="card-items">
+          <li><strong>Q: What does GAAR target?</strong></li>
+          <li>A: Arrangements whose main purpose is a tax benefit, lacking genuine commercial substance</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">India TP Documentation</div>
+        <ul class="card-items">
+          <li><strong>Q: What form is used for India's transfer pricing documentation?</strong></li>
+          <li>A: Form 3CEB</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Permanent Establishment</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 2 main types of Permanent Establishment.</strong></li>
+          <li>A: Fixed Place of Business PE, Dependent Agent PE</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">CFC Rules Target</div>
+        <ul class="card-items">
+          <li><strong>Q: What type of income do CFC rules typically target?</strong></li>
+          <li>A: Passive income (interest, royalties, dividends) in low-tax jurisdictions</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Foreign Tax Credit Cap</div>
+        <ul class="card-items">
+          <li><strong>Q: What limits the foreign tax credit under the credit method?</strong></li>
+          <li>A: It's capped at the residence country's own tax on that income — excess is lost</li>
+        </ul>
+        <div class="card-tag">Flashcard 8</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">HRA Exemption Rule</div>
+        <ul class="card-items">
+          <li><strong>Q: How is HRA exemption calculated?</strong></li>
+          <li>A: Lowest of: actual HRA received, rent paid minus 10% of basic salary, or 50%/40% of basic salary (metro/non-metro)</li>
+        </ul>
+        <div class="card-tag">Flashcard 9</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"What's the difference between tax avoidance and tax evasion, and why does the distinction matter professionally?"</td><td>Core ethical and technical understanding essential for any tax-adjacent role</td><td>Tax avoidance is legally structuring one's affairs to minimise tax using legitimate reliefs and structures — though aggressive avoidance lacking genuine commercial substance can still be challenged under GAAR. Tax evasion is illegally concealing income or falsifying records — a criminal offence. The distinction matters professionally because a finance professional's ethical duties (integrity, professional competence) mean advising on or facilitating evasion is never acceptable, while legitimate tax planning is a genuine value-adding professional service.</td></tr>
+      <tr><td>"How would a multinational company approach setting a transfer price between two of its subsidiaries in different countries?"</td><td>Practical, applied transfer pricing knowledge</td><td>The starting principle is the arm's length standard — pricing the transaction as if the two entities were unrelated. Depending on the nature of the transaction and available data, they'd choose an appropriate method (CUP if comparable market transactions exist, cost-plus or resale price for simpler distribution arrangements, or TNMM/profit split for more complex value chains), then prepare contemporaneous documentation to defend that pricing in case of a tax authority audit.</td></tr>
+      <tr><td>"Why might a company's transfer pricing be challenged even if it believes the pricing is fair?"</td><td>Awareness of the practical audit/compliance risk dimension</td><td>Tax authorities in different countries have competing interests — the country where profit is shifted OUT of wants to see higher local pricing (more local tax base), while the receiving country's authority might see it differently. Even genuinely reasonable pricing can be challenged if the company lacks robust contemporaneous documentation and benchmarking evidence to defend it, since the burden of proof for justifying transfer prices typically sits with the taxpayer.</td></tr>
+      <tr><td>"What is a Permanent Establishment, and why does it matter for a company expanding internationally?"</td><td>Practical international tax risk awareness relevant to business expansion</td><td>A Permanent Establishment is the threshold at which a foreign country gains the right to tax a company's business profits — triggered either by a fixed physical place of business or by a dependent agent habitually concluding contracts on the company's behalf. It matters hugely for expansion planning because unintentionally creating a PE (e.g. through a local sales team with contract-signing authority) can trigger unexpected local tax filing obligations and liabilities the company hadn't planned for or budgeted.</td></tr>
+      <tr><td>"How would you explain CFC rules to a client planning to set up a subsidiary in a low-tax jurisdiction?"</td><td>Practical tax advisory communication skill</td><td>I'd explain that CFC rules exist specifically to prevent using a low-tax subsidiary purely to defer or avoid home-country tax on passive income like interest, royalties, or dividends — if the rules apply, that undistributed passive income gets taxed in the parent's home country now, as if it had already been repatriated, regardless of whether it actually has been. I'd clarify that genuine active trading operations are typically NOT the target, so a low-tax jurisdiction can still make sense for real business activity, but purely passive income-parking structures are unlikely to achieve the intended deferral benefit.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Group Taxation (Reliefs Across Entities)<br>
+      + International Tax (Residence, DTAA, Credit Relief)<br>
+      + Transfer Pricing (Arm's Length Principle)<br>
+      + GAAR + Ethics (Avoidance vs Evasion)<br>
+      = <strong style="color:var(--accent4);">Sophisticated, Ethical Tax Planning</strong>
+    </div>
+    <h3>Chapter 28: Advanced Taxation — Complete 💰⚖️</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 29: Advanced Audit & Assurance (AAA) — complex audit scenarios, group audits, and professional judgment at the highest level. 🚀</p>
+  </div>
+
+</div>
+</body>
+</html>

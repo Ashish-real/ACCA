@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 32: Organisational Behaviour & HR Depth</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(232,121,249,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent5); border:1px solid var(--accent5); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent5),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent5); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent5); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent5); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent5); padding:14px 20px; background:rgba(232,121,249,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent5); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent5); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent5); background:rgba(232,121,249,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(232,121,249,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent5); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(232,121,249,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(232,121,249,0.07),rgba(108,99,255,0.05)); border:1px solid rgba(232,121,249,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent5); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent5); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(232,121,249,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent5); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent5); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(232,121,249,0.1); border:1px solid rgba(232,121,249,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(232,121,249,0.09),rgba(108,99,255,0.06)); border:1px solid rgba(232,121,249,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent5); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent5),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 32 · ACCA BT Depth</div>
+  <h1>Organisational Behaviour<br><span>& HR Depth</span></h1>
+  <p class="hero-sub">Leadership models, organisational structures, motivation theory, change management, and team dynamics — the "soft" skills frameworks that determine whether a technically sound strategy actually gets executed by real people.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">BT</div><div class="stat-label">Applied Knowledge Depth</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Core OB Frameworks</div></div>
+    <div class="stat"><div class="stat-num">Kotter</div><div class="stat-label">+ Tuckman + Belbin</div></div>
+    <div class="stat"><div class="stat-num">CFO</div><div class="stat-label">People Leadership</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 32 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">32.1</span>Why Finance Professionals Need OB & HR Knowledge</div>
+    <div class="toc-item"><span class="toc-num">32.2</span>Organisational Structures — Types & Trade-offs</div>
+    <div class="toc-item"><span class="toc-num">32.3</span>Choosing a Structure — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">32.4</span>Leadership Theories — From Trait to Situational</div>
+    <div class="toc-item"><span class="toc-num">32.5</span>Transformational vs Transactional Leadership</div>
+    <div class="toc-item"><span class="toc-num">32.6</span>Leadership Style — Worked Scenario</div>
+    <div class="toc-item"><span class="toc-num">32.7</span>Motivation Theories — Content Theories</div>
+    <div class="toc-item"><span class="toc-num">32.8</span>Motivation Theories — Process Theories</div>
+    <div class="toc-item"><span class="toc-num">32.9</span>Motivation — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">32.10</span>Change Management — Lewin's Three-Step Model</div>
+    <div class="toc-item"><span class="toc-num">32.11</span>Change Management — Kotter's 8-Step Model</div>
+    <div class="toc-item"><span class="toc-num">32.12</span>Managing Resistance to Change — Worked Scenario</div>
+    <div class="toc-item"><span class="toc-num">32.13</span>Team Dynamics — Tuckman's Stages</div>
+    <div class="toc-item"><span class="toc-num">32.14</span>Team Roles — Belbin's Model</div>
+    <div class="toc-item"><span class="toc-num">32.15</span>Organisational Culture — Handy's Model</div>
+    <div class="toc-item"><span class="toc-num">32.16</span>HR Strategy & Talent Management</div>
+    <div class="toc-item"><span class="toc-num">32.17</span>OB & HR in Indian Organisations — Real World Context</div>
+    <div class="toc-item"><span class="toc-num">32.18</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">32.19</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Every strategy in Chapter 31 ultimately gets executed — or fails to be executed — by real people, organised into real structures, led by real managers, going through real change. A financially brilliant strategy that ignores how people actually behave, how organisations are actually structured, and how change actually gets resisted or adopted, is a strategy destined to underperform its own paper potential. This chapter covers the Organisational Behaviour and HR frameworks that complete the strategic picture — genuinely useful for any finance professional stepping into people-leadership responsibility.</p>
+    <div class="quote">"Culture eats strategy for breakfast" — a reminder that even the best strategic plan fails if the organisation's people, structure, and culture aren't aligned to deliver it.</div>
+  </div>
+
+  <!-- 32.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">32.1</div>
+      <div class="section-title">Why Finance Professionals Need OB & HR Knowledge</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">👔</div>
+        <div class="card-title">Managing Finance Teams</div>
+        <ul class="card-items">
+          <li>Every finance professional eventually leads a team — understanding motivation, leadership style, and team dynamics directly affects team performance</li>
+          <li>Budgeting and performance measurement (Chapter 27) have a genuinely behavioural dimension — people respond to how they're measured</li>
+        </ul>
+        <div class="card-tag">People Leadership</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Leading Change Initiatives</div>
+        <ul class="card-items">
+          <li>Finance functions constantly undergo change — new ERP systems, process automation, restructuring — understanding change management frameworks improves the odds of successful implementation</li>
+        </ul>
+        <div class="card-tag">Change Leadership</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Understanding Organisational Design</div>
+        <ul class="card-items">
+          <li>M&A integration (Chapter 26) and business restructuring decisions require understanding how organisational structure choices affect coordination, cost, and control</li>
+        </ul>
+        <div class="card-tag">Structural Design</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">32.2</div>
+      <div class="section-title">Organisational Structures — Types & Trade-offs</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Structure Type</th><th>Description</th><th>Key Trade-off</th></tr>
+      <tr><td>Functional</td><td>Organised by specialism (Finance, Marketing, Operations, HR)</td><td>Deep specialist expertise BUT risk of departmental silos and slow cross-functional coordination</td></tr>
+      <tr><td>Divisional</td><td>Organised by product line, geography, or customer segment, each with its own functions</td><td>Fast, focused decision-making per division BUT duplication of functions increases overall cost</td></tr>
+      <tr><td>Matrix</td><td>Employees report to both a functional manager AND a project/product manager simultaneously</td><td>Flexible resource sharing across projects BUT dual reporting lines can create conflict and confusion</td></tr>
+      <tr><td>Network / Virtual</td><td>A core organisation coordinates a network of external partners/contractors rather than employing all functions internally</td><td>Highly flexible and asset-light BUT less direct control over quality and coordination</td></tr>
+    </table>
+    <div class="highlight">
+      <div class="highlight-title">🔑 There's No Universally "Best" Structure</div>
+      Structure choice should follow STRATEGY, not the other way around (a core principle from Alfred Chandler's "structure follows strategy"). A company pursuing rapid diversification into new markets likely needs a divisional structure for focused accountability; a company pursuing deep technical excellence in one core business likely benefits from a functional structure's specialist depth.
+    </div>
+  </div>
+
+  <!-- 32.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">32.3</div>
+      <div class="section-title">Choosing a Structure — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Restructuring After Rapid Geographic Expansion</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Situation:</strong> A company that has operated with a functional structure (single Finance, Marketing, Operations heads) for its India business is now expanding into 4 new countries, each with different regulatory environments, customer preferences, and competitive dynamics.<br><br>
+        <strong style="color:var(--text);">Problem with retaining the functional structure:</strong> A single central Marketing function trying to serve 5 very different countries would struggle to develop genuinely locally-relevant marketing strategies, and decision-making would be slow as every country-specific decision routes through centralised functional heads unfamiliar with local nuances.<br><br>
+        <strong style="color:var(--text);">Recommended structure:</strong> Shift to a DIVISIONAL structure organised by GEOGRAPHY — each country gets its own general manager with dedicated (even if smaller) functional support, enabling fast, locally-relevant decisions.<br><br>
+        <strong style="color:var(--text);">Trade-off to manage:</strong> This will increase overall cost (duplicated functional roles across 5 countries) and risk inconsistent standards/branding across markets — the company should retain some CENTRALISED functions (e.g. treasury, group financial reporting, core brand guidelines) even within an overall divisional structure, which is effectively a hybrid approach many real multinational organisations adopt in practice.
+      </div>
+    </div>
+  </div>
+
+  <!-- 32.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">32.4</div>
+      <div class="section-title">Leadership Theories — From Trait to Situational</div>
+    </div>
+    <p class="prose">Leadership theory has evolved significantly — from early theories assuming leaders are simply "born" with fixed traits, to modern theories recognising that effective leadership depends heavily on the SITUATION.</p>
+    <table class="data-table">
+      <tr><th>Theory</th><th>Core Idea</th></tr>
+      <tr><td>Trait Theory (early)</td><td>Effective leaders share identifiable inherent personal traits (confidence, intelligence, decisiveness) — now considered overly simplistic, since many effective leaders don't share a common trait profile</td></tr>
+      <tr><td>Behavioural Theory</td><td>Focuses on what leaders actually DO (task-oriented vs people-oriented behaviours) rather than who they inherently are</td></tr>
+      <tr><td>Situational Leadership (Hersey-Blanchard)</td><td>The MOST EFFECTIVE leadership style depends on the follower's readiness/maturity level for the specific task — no single "best" style works universally</td></tr>
+      <tr><td>Contingency Theory (Fiedler)</td><td>Leadership effectiveness depends on the FIT between leadership style and the favourableness of the situation (leader-member relations, task structure, positional power)</td></tr>
+    </table>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Situational Leadership Model in Practice</div>
+      Hersey-Blanchard's model suggests: a highly DIRECTIVE style suits followers with low competence/confidence on a task; a COACHING style suits followers with some competence but still developing confidence; a SUPPORTING style suits competent followers who need encouragement rather than direction; and a DELEGATING style suits highly competent, confident followers who need minimal oversight. Effective leaders flex their style based on the specific follower and specific task — not a single fixed personal style.
+    </div>
+  </div>
+
+  <!-- 32.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">32.5</div>
+      <div class="section-title">Transformational vs Transactional Leadership</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔁</div>
+        <div class="card-title">Transactional Leadership</div>
+        <ul class="card-items">
+          <li>Based on a clear exchange — rewards for meeting targets, correction/consequences for falling short</li>
+          <li>Effective for stable environments and routine, clearly-defined tasks</li>
+          <li>Limited ability to inspire genuine commitment beyond the immediate transactional reward</li>
+        </ul>
+        <div class="card-tag">Exchange-Based</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <div class="card-title">Transformational Leadership</div>
+        <ul class="card-items">
+          <li>Inspires followers through a compelling VISION, genuine role-modelling, and individual development/mentorship</li>
+          <li>More effective for driving genuine CHANGE and innovation, since it builds intrinsic commitment rather than just compliance</li>
+          <li>Requires more time/relationship investment; not always necessary for routine operational management</li>
+        </ul>
+        <div class="card-tag">Vision-Based</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">💡 When Each Style Fits Best</div>
+      Transactional leadership works well for maintaining stable, well-understood operations (e.g. a well-established finance function running routine month-end close). Transformational leadership is generally more effective when driving significant CHANGE (e.g. leading a finance transformation programme, or a major strategic pivot) — most effective senior leaders draw on elements of both depending on the specific situation, rather than exclusively using one style.
+    </div>
+  </div>
+
+  <!-- 32.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">32.6</div>
+      <div class="section-title">Leadership Style — Worked Scenario</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Choosing a Leadership Approach for a New Finance Hire</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Situation:</strong> A finance manager has two direct reports — Person A, a newly-qualified analyst with strong technical skills but low confidence handling ambiguous, judgment-based tasks; Person B, a 6-year veteran with deep expertise and a strong track record of independent, high-quality work.<br><br>
+        <strong style="color:var(--text);">Applying Situational Leadership:</strong><br>
+        For Person A (competent but low confidence on ambiguous tasks) → a COACHING approach is appropriate: provide clear guidance and direction, but actively explain the reasoning, invite questions, and build confidence through supportive feedback — over time, transitioning toward more autonomy as confidence grows.<br><br>
+        For Person B (highly competent, proven track record) → a DELEGATING approach is appropriate: assign the outcome/objective clearly, but grant significant autonomy over HOW to achieve it, checking in periodically rather than closely directing — over-managing a highly competent team member with a directive style would likely be demotivating and signal a lack of trust.<br><br>
+        <strong style="color:var(--text);">Key Insight:</strong> The SAME manager should genuinely use two DIFFERENT leadership styles with these two team members simultaneously — this is exactly the practical, situational application Situational Leadership theory recommends, and exactly the kind of nuanced people-management judgment expected of senior finance professionals managing a team.
+      </div>
+    </div>
+  </div>
+
+  <!-- 32.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">32.7</div>
+      <div class="section-title">Motivation Theories — Content Theories</div>
+    </div>
+    <p class="prose"><strong>Content theories</strong> focus on WHAT specifically motivates people — identifying the underlying needs that drive behaviour.</p>
+    <table class="data-table">
+      <tr><th>Theory</th><th>Core Idea</th></tr>
+      <tr><td>Maslow's Hierarchy of Needs</td><td>Needs exist in a hierarchy (Physiological → Safety → Social → Esteem → Self-Actualisation) — lower needs must be broadly satisfied before higher needs become significant motivators</td></tr>
+      <tr><td>Herzberg's Two-Factor Theory</td><td>Distinguishes HYGIENE factors (salary, working conditions — their ABSENCE causes dissatisfaction, but their presence doesn't actively motivate) from MOTIVATORS (achievement, recognition, growth — these actively drive genuine motivation)</td></tr>
+      <tr><td>McClelland's Acquired Needs Theory</td><td>People are driven by varying combinations of 3 acquired needs: Achievement (desire to excel), Affiliation (desire for relationships), Power (desire for influence/control)</td></tr>
+    </table>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Herzberg's Critical Insight for Finance Managers</div>
+      Simply paying people MORE (a hygiene factor) will remove dissatisfaction but won't necessarily create genuine, sustained motivation — that requires investing in MOTIVATORS like meaningful work, recognition, and growth opportunities. A finance team with excellent pay but no sense of achievement or growth potential may still show high turnover and low engagement — a frequently tested, practically important insight.
+    </div>
+  </div>
+
+  <!-- 32.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">32.8</div>
+      <div class="section-title">Motivation Theories — Process Theories</div>
+    </div>
+    <p class="prose"><strong>Process theories</strong> focus on HOW motivation actually happens — the cognitive process by which people decide how much effort to invest.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Vroom's Expectancy Theory</div>
+        <ul class="card-items">
+          <li>Motivation = Expectancy (will effort lead to performance?) × Instrumentality (will performance lead to reward?) × Valence (do I actually value that reward?)</li>
+          <li>If ANY of these three is low/zero, overall motivation collapses — even a highly valued reward won't motivate if the person doesn't believe effort will actually lead to it</li>
+        </ul>
+        <div class="card-tag">Effort-Reward Link</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Adams' Equity Theory</div>
+        <ul class="card-items">
+          <li>People assess motivation by comparing their own input/output ratio to a relevant comparator (colleague, industry peer)</li>
+          <li>PERCEIVED inequity (feeling under-rewarded relative to others' effort/reward ratio) reduces motivation, even if absolute pay is objectively reasonable</li>
+        </ul>
+        <div class="card-tag">Relative Fairness</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">32.9</div>
+      <div class="section-title">Motivation — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Diagnosing a Motivation Problem Using Multiple Theories</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Situation:</strong> A well-paid finance analyst has become visibly disengaged, doing only the minimum required work despite no change in salary or working conditions.<br><br>
+        <strong style="color:var(--text);">Applying Herzberg:</strong> Since HYGIENE factors (pay, conditions) are unchanged and presumably adequate, the disengagement likely stems from missing MOTIVATORS — perhaps the role has become repetitive with no recent recognition, growth opportunity, or sense of meaningful achievement.<br><br>
+        <strong style="color:var(--text);">Applying Equity Theory:</strong> Investigate whether the analyst perceives INEQUITY — perhaps a peer with a similar role and lower perceived effort recently received a promotion or bonus, creating a sense of unfair input/output ratio relative to that comparator, even if the analyst's own absolute pay hasn't changed.<br><br>
+        <strong style="color:var(--text);">Applying Expectancy Theory:</strong> Check whether the analyst still believes extra effort will lead to meaningful reward (Instrumentality) — if recent promotions/rewards have seemed disconnected from actual performance, the analyst may have rationally concluded extra effort isn't worth investing, regardless of how much they'd value the reward itself (Valence).<br><br>
+        <strong style="color:var(--text);">Integrated Diagnosis:</strong> A thorough manager wouldn't rely on just ONE theory — combining these lenses suggests investigating BOTH whether meaningful growth/recognition opportunities have genuinely dried up (Herzberg) AND whether a specific perceived unfairness event has occurred (Equity) AND whether the performance-reward link feels broken (Expectancy) — a genuinely diagnostic conversation with the analyst, informed by all three frameworks, is more likely to identify the real root cause than assuming any single explanation.
+      </div>
+    </div>
+  </div>
+
+  <!-- 32.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">32.10</div>
+      <div class="section-title">Change Management — Lewin's Three-Step Model</div>
+    </div>
+    <p class="prose">Kurt Lewin's classic model remains a foundational way to think about how organisational change actually happens.</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">UNFREEZE</div><div class="step-content">Create the motivation for change by helping people understand WHY the current state is no longer acceptable/sustainable — reducing resistance by building a genuine case for change before attempting to implement it</div></div>
+      <div class="step-item"><div class="step-num">CHANGE (MOVE)</div><div class="step-content">Actually implement the new processes, structures, or behaviours — this is the transition period itself, often the most disruptive and uncertain phase</div></div>
+      <div class="step-item"><div class="step-num">REFREEZE</div><div class="step-content">Embed the change as the new normal — reinforcing it through updated policies, reward systems, and culture, so the organisation doesn't drift back to old habits</div></div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Most Commonly Skipped Step</div>
+      Organisations frequently rush straight to "Change" without adequately "Unfreezing" first (building genuine buy-in and understanding of WHY change is needed) — and just as commonly neglect "Refreezing" (assuming the change is complete once implemented, without reinforcing it), leading to the organisation gradually reverting to old behaviours once initial attention/pressure fades.
+    </div>
+  </div>
+
+  <!-- 32.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">32.11</div>
+      <div class="section-title">Change Management — Kotter's 8-Step Model</div>
+    </div>
+    <p class="prose">John Kotter's more detailed model provides a specific, actionable sequence for leading larger-scale organisational change.</p>
+    <div class="formula-block">
+      <div class="formula-header">Kotter's 8 Steps</div>
+      <div class="formula-row"><div class="formula-name">1-2: Build Urgency & Coalition</div><div class="formula-eq">Create a genuine sense of urgency for change; assemble a powerful enough guiding coalition of influential supporters</div></div>
+      <div class="formula-row"><div class="formula-name">3-4: Vision & Communication</div><div class="formula-eq">Develop a clear change vision and strategy; communicate that vision relentlessly through every available channel</div></div>
+      <div class="formula-row"><div class="formula-name">5-6: Empower & Early Wins</div><div class="formula-eq">Remove obstacles and empower broad-based action; generate visible SHORT-TERM WINS to build momentum and credibility</div></div>
+      <div class="formula-row"><div class="formula-name">7-8: Consolidate & Anchor</div><div class="formula-eq">Consolidate gains and produce more change, rather than declaring victory too early; anchor new approaches firmly in the organisational culture</div></div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">💡 Kotter's Most Frequently Cited Failure Point</div>
+      Kotter specifically identifies "declaring victory too soon" (skipping step 7) as one of the most common reasons change initiatives ultimately fail — celebrating an early win as if the change is complete allows resistance and old habits to creep back before the new approach is genuinely anchored in the culture (step 8).
+    </div>
+  </div>
+
+  <!-- 32.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">32.12</div>
+      <div class="section-title">Managing Resistance to Change — Worked Scenario</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Finance Team Resisting a New ERP System</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Situation:</strong> A finance team is resisting a new ERP system rollout — some team members are skeptical it will actually improve efficiency, others are anxious about their ability to learn the new system, and a few senior team members feel their years of expertise in the old system is being devalued.<br><br>
+        <strong style="color:var(--text);">Applying Lewin — Unfreeze phase gap:</strong> The resistance suggests insufficient "Unfreezing" occurred — the case for WHY change is needed wasn't convincingly made before implementation began, leaving skepticism unaddressed.<br><br>
+        <strong style="color:var(--text);">Root cause diagnosis by resistance TYPE:</strong><br>
+        • Skepticism about benefits → needs clear, credible EVIDENCE and communication (addressing a rational, evidence-based objection)<br>
+        • Anxiety about learning the new system → needs TRAINING and support, addressing a genuine capability concern<br>
+        • Feeling devalued expertise → needs explicit RECOGNITION of past contribution and a clear narrative of how existing expertise transfers/remains valuable in the new system, addressing an emotional/identity concern<br><br>
+        <strong style="color:var(--text);">Recommended approach (applying Kotter):</strong> Go back and strengthen the "Unfreeze"/urgency-building work with clear evidence of the current system's limitations, identify and empower influential team members as change champions (guiding coalition), invest specifically in training (addressing the capability-based resistance), and explicitly recognise the team's existing expertise while framing the new system as an evolution, not a replacement of that expertise — then generate an early visible win (e.g. one clearly improved process) to build momentum before pushing the full rollout.<br><br>
+        <strong style="color:var(--text);">Key Insight:</strong> Different sources of resistance require DIFFERENT interventions — treating all resistance as simple stubbornness and pushing through with authority alone typically increases resentment without resolving the underlying rational, capability, or emotional concerns driving that resistance.
+      </div>
+    </div>
+  </div>
+
+  <!-- 32.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">32.13</div>
+      <div class="section-title">Team Dynamics — Tuckman's Stages</div>
+    </div>
+    <p class="prose">Bruce Tuckman's model describes the predictable stages teams typically go through as they develop.</p>
+    <table class="data-table">
+      <tr><th>Stage</th><th>What Happens</th></tr>
+      <tr><td>Forming</td><td>Team members are polite, cautious, and dependent on the leader for direction — genuine trust hasn't yet developed</td></tr>
+      <tr><td>Storming</td><td>Conflict emerges as personalities, working styles, and views on approach clash — an uncomfortable but NORMAL and often necessary stage</td></tr>
+      <tr><td>Norming</td><td>The team establishes agreed working norms, resolves earlier conflicts, and begins to develop genuine cohesion and trust</td></tr>
+      <tr><td>Performing</td><td>The team operates at high effectiveness with minimal need for direct oversight — genuine collaboration and mutual trust are established</td></tr>
+      <tr><td>Adjourning</td><td>(Added later) The team disbands upon completing its purpose — relevant for project-based or temporary teams</td></tr>
+    </table>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why "Storming" Shouldn't Be Feared</div>
+      Teams (and managers) sometimes try to avoid or suppress the Storming stage, treating any conflict as a bad sign — but Tuckman's model suggests Storming is a NORMAL, often NECESSARY stage for a team to work through genuine differences before reaching true cohesion. Suppressing conflict rather than working through it can prevent a team from ever reaching genuine Norming and Performing stages.
+    </div>
+  </div>
+
+  <!-- 32.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">32.14</div>
+      <div class="section-title">Team Roles — Belbin's Model</div>
+    </div>
+    <p class="prose">Meredith Belbin's model identifies 9 distinct team roles people naturally gravitate toward — a well-balanced team benefits from a genuine MIX of these roles, not everyone playing the same type.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <div class="card-title">Thinking Roles</div>
+        <ul class="card-items">
+          <li><strong>Plant:</strong> creative, generates original ideas</li>
+          <li><strong>Monitor Evaluator:</strong> analyses options critically and objectively</li>
+          <li><strong>Specialist:</strong> brings deep technical expertise</li>
+        </ul>
+        <div class="card-tag">Idea Generation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">People Roles</div>
+        <ul class="card-items">
+          <li><strong>Coordinator:</strong> clarifies goals, delegates effectively</li>
+          <li><strong>Teamworker:</strong> builds cohesion, resolves friction</li>
+          <li><strong>Resource Investigator:</strong> explores external opportunities, networks</li>
+        </ul>
+        <div class="card-tag">Relationship Building</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">Action Roles</div>
+        <ul class="card-items">
+          <li><strong>Shaper:</strong> drives the team forward, challenges the team to improve</li>
+          <li><strong>Implementer:</strong> turns ideas into practical, disciplined action</li>
+          <li><strong>Completer Finisher:</strong> ensures thoroughness, catches errors, meets deadlines</li>
+        </ul>
+        <div class="card-tag">Execution</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">💡 Practical Application for Finance Teams</div>
+      A finance team composed ENTIRELY of Completer Finishers might be extremely accurate and deadline-driven but lack the Plant's creative problem-solving or the Shaper's drive to challenge outdated processes. Understanding Belbin roles helps a manager deliberately build a BALANCED team, or at least recognise and consciously compensate for gaps in an existing team's natural role composition.
+    </div>
+  </div>
+
+  <!-- 32.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">32.15</div>
+      <div class="section-title">Organisational Culture — Handy's Model</div>
+    </div>
+    <p class="prose">Charles Handy's model identifies four distinct organisational culture "types," each with different implications for how decisions get made and how people are expected to behave.</p>
+    <table class="data-table">
+      <tr><th>Culture Type</th><th>Characteristics</th><th>Best Suited To</th></tr>
+      <tr><td>Power Culture</td><td>Centred on a single powerful individual/small group; fast decisions but heavily dependent on that person</td><td>Small, entrepreneurial organisations</td></tr>
+      <tr><td>Role Culture</td><td>Highly structured, rule-based, hierarchical — clear job descriptions and defined authority</td><td>Stable, predictable environments (e.g. regulated industries, government bodies)</td></tr>
+      <tr><td>Task Culture</td><td>Organised flexibly around specific projects/problems, expertise-driven rather than hierarchy-driven</td><td>Innovative, project-based organisations (e.g. consulting, tech)</td></tr>
+      <tr><td>Person Culture</td><td>Individuals are the central focus, with minimal organisational hierarchy — the "organisation" exists mainly to support the individuals within it</td><td>Professional partnerships (e.g. law firms, some consulting/medical practices)</td></tr>
+    </table>
+  </div>
+
+  <!-- 32.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">32.16</div>
+      <div class="section-title">HR Strategy & Talent Management</div>
+    </div>
+    <p class="prose">Beyond individual OB theories, modern HR strategy takes a systematic approach to attracting, developing, and retaining the talent an organisation's strategy requires.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Strategic HR Alignment</div>
+        <ul class="card-items">
+          <li>HR strategy should directly support business strategy — a company pursuing an innovation-led growth strategy needs a very different talent/reward strategy than one pursuing operational cost leadership</li>
+        </ul>
+        <div class="card-tag">Strategy Fit</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Talent Management Cycle</div>
+        <ul class="card-items">
+          <li>Attract → Recruit → Onboard → Develop → Retain → (eventually) Exit — each stage requires deliberate strategy, not just reactive HR administration</li>
+        </ul>
+        <div class="card-tag">Full Employee Lifecycle</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Succession Planning</div>
+        <ul class="card-items">
+          <li>Identifying and developing internal candidates for key future leadership roles, reducing dependency on external hiring for critical positions</li>
+          <li>Particularly important for CFO succession and other senior finance leadership roles</li>
+        </ul>
+        <div class="card-tag">Leadership Pipeline</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32.17 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">32.17</div>
+      <div class="section-title">OB & HR in Indian Organisations — Real World Context</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Concept</th><th>Indian Application</th></tr>
+      <tr><td>Organisational Structure</td><td>Many large Indian conglomerates historically used strong power-culture elements (founder/family influence) even as they scale, gradually professionalising toward role/task cultures</td></tr>
+      <tr><td>Change Management</td><td>India's rapid digital transformation across banking, retail, and manufacturing has made Kotter-style structured change management increasingly central to corporate transformation programmes</td></tr>
+      <tr><td>Talent Management</td><td>India's competitive talent market (especially in tech/finance) has elevated retention strategy and employee experience to a board-level strategic priority, not just an HR administrative function</td></tr>
+      <tr><td>Leadership Style</td><td>Indian corporate leadership has increasingly shifted from traditional hierarchical/directive styles toward more participative and transformational approaches, particularly in startup and tech-sector cultures</td></tr>
+    </table>
+  </div>
+
+  <!-- 32.18 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">32.18</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Structure Follows Strategy</div><ul class="card-items"><li>No universally "best" structure</li><li>Choose based on what the strategy actually needs</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Leadership Style Should Flex Situationally</div><ul class="card-items"><li>Match style to follower competence/confidence</li><li>Same manager, different styles for different people</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Motivation Requires More Than Pay</div><ul class="card-items"><li>Hygiene factors prevent dissatisfaction</li><li>Motivators drive genuine engagement</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Change Needs Unfreeze AND Refreeze</div><ul class="card-items"><li>Don't skip building the case for change</li><li>Don't declare victory too early</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Storming Is Normal, Not a Failure</div><ul class="card-items"><li>Teams need to work through genuine conflict</li><li>Suppressing it prevents true Performing stage</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Different Resistance Needs Different Responses</div><ul class="card-items"><li>Rational, capability, and emotional resistance each need different interventions</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 32 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Identify your own team's/organisation's structure type and one trade-off it creates</span>
+        <span class="tag teal">✅ Practice applying Situational Leadership to 2 different people you work with</span>
+        <span class="tag teal">✅ Diagnose a real motivation issue using Herzberg, Equity, and Expectancy theories together</span>
+        <span class="tag teal">✅ Map a recent organisational change you experienced onto Kotter's 8 steps — identify which steps were skipped</span>
+        <span class="tag teal">✅ Identify your own dominant Belbin team role(s)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32.19 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">32.19</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Assuming One Leadership Style Works for Everyone</strong><br>
+        Situational Leadership specifically rejects a single "best" style — the same manager should genuinely flex between directive, coaching, supporting, and delegating approaches depending on each individual follower's competence and confidence for the specific task at hand.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Believing Higher Pay Alone Will Fix a Motivation Problem</strong><br>
+        Per Herzberg's Two-Factor Theory, pay is a HYGIENE factor — insufficient pay causes dissatisfaction, but MORE pay beyond an adequate level doesn't reliably create sustained motivation. Genuine motivation requires investing in MOTIVATORS like achievement, recognition, and growth.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Skipping Lewin's "Unfreeze" Stage and Jumping Straight to Implementing Change</strong><br>
+        Implementing change without first building genuine understanding of WHY the current state is unsustainable (Unfreeze) typically generates unnecessary resistance — people need to understand and accept the case for change before they'll genuinely embrace it.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Declaring a Change Initiative Complete After an Early Win</strong><br>
+        Kotter specifically warns against declaring victory too soon — an early visible win should be used to build momentum for FURTHER change and to anchor the new approach in culture (steps 7-8), not treated as the finish line, or the organisation risks reverting to old habits.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Treating Team Conflict (Storming) as Something to Avoid at All Costs</strong><br>
+        Tuckman's model treats Storming as a NORMAL, often NECESSARY stage of team development — suppressing legitimate disagreement to avoid discomfort can prevent a team from ever reaching genuine Norming and Performing stages built on real, tested trust.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Treating All Resistance to Change as Simple Stubbornness</strong><br>
+        As the worked scenario in 32.12 shows, resistance can stem from rational skepticism, genuine capability/confidence concerns, or emotional/identity concerns — each requiring a fundamentally different response (evidence, training, or recognition respectively). Applying a single "push through with authority" response to all resistance types is a common and ineffective error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Assuming Equity Theory Is About Absolute Pay Levels</strong><br>
+        Equity Theory is about PERCEIVED RELATIVE fairness compared to a chosen comparator, not absolute pay adequacy — an employee can be well-paid in absolute terms yet still demotivated if they perceive their input/output ratio as unfair relative to a specific peer or reference group.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Building a Team With Only One Belbin Role Type</strong><br>
+        A team composed entirely of similar personality/role types (e.g. all Completer Finishers, or all Shapers) tends to be unbalanced — missing either the creative idea generation, the relationship-building, or the disciplined execution that a genuinely effective team needs across all three role categories.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Situational Leadership Styles</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 4 Situational Leadership styles.</strong></li>
+          <li>A: Directive, Coaching, Supporting, Delegating</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Herzberg's Two Factors</div>
+        <ul class="card-items">
+          <li><strong>Q: What are Herzberg's 2 factor categories?</strong></li>
+          <li>A: Hygiene Factors and Motivators</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Lewin's 3 Steps</div>
+        <ul class="card-items">
+          <li><strong>Q: Name Lewin's 3-step change model.</strong></li>
+          <li>A: Unfreeze, Change (Move), Refreeze</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Tuckman's Stages</div>
+        <ul class="card-items">
+          <li><strong>Q: Name Tuckman's 5 team development stages.</strong></li>
+          <li>A: Forming, Storming, Norming, Performing, Adjourning</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Expectancy Theory</div>
+        <ul class="card-items">
+          <li><strong>Q: What 3 components make up Vroom's Expectancy Theory?</strong></li>
+          <li>A: Expectancy, Instrumentality, Valence</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Handy's Culture Types</div>
+        <ul class="card-items">
+          <li><strong>Q: Name Handy's 4 organisational culture types.</strong></li>
+          <li>A: Power, Role, Task, Person</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Kotter's First 2 Steps</div>
+        <ul class="card-items">
+          <li><strong>Q: What are the first 2 steps of Kotter's 8-step model?</strong></li>
+          <li>A: Build urgency, form a powerful guiding coalition</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Belbin's 3 Role Categories</div>
+        <ul class="card-items">
+          <li><strong>Q: What are Belbin's 3 broad team role categories?</strong></li>
+          <li>A: Thinking Roles, People Roles, Action Roles</li>
+        </ul>
+        <div class="card-tag">Flashcard 8</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Tell me about a time you had to manage a team member with performance or motivation issues."</td><td>Practical people-management experience — extremely common in senior finance interviews</td><td>A strong answer describes a SPECIFIC situation, diagnoses the likely root cause using a framework (e.g. "I suspected it was a Herzberg-style motivator gap rather than a pay issue, since compensation was competitive"), describes the specific intervention taken (e.g. providing more challenging, growth-oriented work, or addressing a perceived equity concern), and reflects on the outcome — showing structured people-management thinking rather than just describing what happened.</td></tr>
+      <tr><td>"How would you lead a significant change initiative in a finance function, like implementing a new ERP system?"</td><td>Structured change leadership thinking</td><td>I'd apply a Kotter-style approach — first building genuine urgency by clearly articulating the current system's limitations and the cost of inaction, forming a coalition of influential team members to champion the change, communicating a clear vision repeatedly through multiple channels, addressing different sources of resistance (skepticism, capability concerns, or feeling devalued) with tailored responses, generating an early visible win to build momentum, and then explicitly avoiding declaring victory too soon — continuing to reinforce and anchor the new system as the genuine new normal well after go-live.</td></tr>
+      <tr><td>"What's your leadership style, and how do you adapt it for different team members?"</td><td>Self-awareness and situational leadership application</td><td>A strong answer avoids claiming a single fixed style and instead describes genuinely flexing approach based on the individual — for example, "I use a more coaching approach with newer team members still building confidence in ambiguous judgment calls, but I delegate significant autonomy to experienced team members with a proven track record, since over-directing someone highly competent can be demotivating and signal a lack of trust" — directly demonstrating Situational Leadership thinking in practice, not just naming the theory.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Structure (Fits Strategy) + Leadership (Flexes to Situation)<br>
+      + Motivation (Beyond Pay — Hygiene vs Motivators)<br>
+      + Change Management (Unfreeze → Change → Refreeze)<br>
+      + Team Dynamics (Forming → Performing) + Culture<br>
+      = <strong style="color:var(--accent5);">The People Leadership Toolkit Every Senior Finance Professional Needs</strong>
+    </div>
+    <h3>Chapter 32: Organisational Behaviour & HR Depth — Complete 👥🎯</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">🎉 The ACCA-Gap Series (Chapters 23-32) is now complete — the full ACCA syllabus foundation, alongside Chapters 1-22's core finance knowledge. Next → Chapter 33: Valuation Basics — how to value a company using DCF, multiples, and precedent transactions, continuing into the Bible's advanced finance and career chapters. 🚀</p>
+  </div>
+
+</div>
+</body>
+</html>

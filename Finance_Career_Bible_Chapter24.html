@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 24: Advanced Management Accounting Tools</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(249,115,22,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#f97316; border:1px solid #f97316; padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,#f97316,var(--accent4)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:#f97316; }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:#f97316; text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:#f97316; min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid #f97316; padding:14px 20px; background:rgba(249,115,22,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:#f97316; transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:#f97316; font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:#f97316; background:rgba(249,115,22,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(249,115,22,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:#f97316; text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(249,115,22,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(249,115,22,0.07),rgba(255,217,61,0.05)); border:1px solid rgba(249,115,22,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:#f97316; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:#f97316; flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(249,115,22,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:#f97316; text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:#f97316; font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(249,115,22,0.09),rgba(255,217,61,0.06)); border:1px solid rgba(249,115,22,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:#f97316; line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,#f97316,var(--accent4)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 24 · ACCA PM Depth</div>
+  <h1>Advanced Management<br><span>Accounting Tools</span></h1>
+  <p class="hero-sub">Beyond basic costing — throughput accounting for bottleneck management, learning curves for labour cost forecasting, and mix/yield variances for multi-product operations. The advanced PM toolkit that separates good management accountants from great ones.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">PM</div><div class="stat-label">ACCA Applied Skills</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Advanced Tools</div></div>
+    <div class="stat"><div class="stat-num">TOC</div><div class="stat-label">Theory of Constraints</div></div>
+    <div class="stat"><div class="stat-num">Real-World</div><div class="stat-label">Manufacturing Focus</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 24 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">24.1</span>Why Basic Costing Isn't Enough</div>
+    <div class="toc-item"><span class="toc-num">24.2</span>Throughput Accounting — The Theory of Constraints</div>
+    <div class="toc-item"><span class="toc-num">24.3</span>Throughput Accounting Ratio & Product Ranking</div>
+    <div class="toc-item"><span class="toc-num">24.4</span>Learning Curve Theory</div>
+    <div class="toc-item"><span class="toc-num">24.5</span>Learning Curve — Worked Calculations</div>
+    <div class="toc-item"><span class="toc-num">24.6</span>Applications & Limitations of the Learning Curve</div>
+    <div class="toc-item"><span class="toc-num">24.7</span>Mix & Yield Variances</div>
+    <div class="toc-item"><span class="toc-num">24.8</span>Mix & Yield — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">24.9</span>Activity-Based Costing (ABC) Deep Dive</div>
+    <div class="toc-item"><span class="toc-num">24.10</span>ABC — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">24.11</span>Cost of Quality Framework</div>
+    <div class="toc-item"><span class="toc-num">24.12</span>Target Costing & Life Cycle Costing</div>
+    <div class="toc-item"><span class="toc-num">24.13</span>Environmental Management Accounting</div>
+    <div class="toc-item"><span class="toc-num">24.14</span>Advanced Tools in Indian Manufacturing — Real World Context</div>
+    <div class="toc-item"><span class="toc-num">24.15</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">24.16</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Basic standard costing and simple variance analysis (covered in Chapter 6) work well for straightforward, single-product manufacturing. But real businesses are messier — they face production bottlenecks, workforce learning curves on new products, multiple products competing for the same limited materials, and complex overhead structures that simple costing can't accurately capture. This chapter covers the <strong>advanced PM toolkit</strong> ACCA expects at Applied Skills level and beyond — the tools that let a management accountant give genuinely sophisticated advice to operations and strategy teams.</p>
+    <div class="quote">"Basic costing tells you what happened. Advanced management accounting tells you what to do about it."</div>
+  </div>
+
+  <!-- 24.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">24.1</div>
+      <div class="section-title">Why Basic Costing Isn't Enough</div>
+    </div>
+    <p class="prose">Chapter 5 and 6 covered absorption costing, marginal costing, and standard variance analysis — the essential foundation. But these tools make simplifying assumptions that break down in more complex, realistic business scenarios.</p>
+    <table class="data-table">
+      <tr><th>Real-World Complexity</th><th>Basic Tool's Limitation</th><th>Advanced Tool Needed</th></tr>
+      <tr><td>A production bottleneck limits total output</td><td>Standard costing treats all resources as equally available</td><td>Throughput Accounting</td></tr>
+      <tr><td>Workers get faster/more efficient as they repeat a task</td><td>Standard costing assumes a fixed, unchanging labour time per unit</td><td>Learning Curve Theory</td></tr>
+      <tr><td>A single material feeds multiple products, and the actual mix used differs from planned</td><td>Simple material variance treats each product's materials independently</td><td>Mix & Yield Variances</td></tr>
+      <tr><td>Overheads are driven by complexity and activity, not just volume</td><td>Traditional absorption costing spreads overheads on a single volume-based basis (e.g. labour hours)</td><td>Activity-Based Costing</td></tr>
+    </table>
+  </div>
+
+  <!-- 24.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">24.2</div>
+      <div class="section-title">Throughput Accounting — The Theory of Constraints</div>
+    </div>
+    <p class="prose">Every production process has at least one <strong>bottleneck</strong> — the resource with the least capacity relative to demand, which limits how much the entire system can produce. The Theory of Constraints (TOC), developed by Eliyahu Goldratt, says the only way to increase overall output is to manage and maximise the bottleneck — improving efficiency anywhere else in the process achieves nothing if the bottleneck itself isn't addressed.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <div class="card-title">The Core TOC Insight</div>
+        <ul class="card-items">
+          <li>A chain is only as strong as its weakest link</li>
+          <li>Speeding up a non-bottleneck process just creates a bigger pile of unfinished work-in-progress in front of the bottleneck</li>
+          <li>Total factory output is capped by the bottleneck's capacity — period</li>
+        </ul>
+        <div class="card-tag">Foundational Principle</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Throughput Accounting's Key Assumption</div>
+        <ul class="card-items">
+          <li>In the SHORT TERM, only direct materials are treated as a truly variable cost</li>
+          <li>Labour and overheads are treated as largely fixed in the short run — "factory costs," not variable per unit</li>
+          <li>This is a deliberately extreme, short-term simplification — useful for bottleneck decisions, not for long-term pricing</li>
+        </ul>
+        <div class="card-tag">TA Philosophy</div>
+      </div>
+    </div>
+
+    <p class="section-label">The 5 Steps of Theory of Constraints</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">STEP 1</div><div class="step-content"><strong>Identify the Bottleneck</strong> — find the resource/process with the least capacity relative to demand placed on it</div></div>
+      <div class="step-item"><div class="step-num">STEP 2</div><div class="step-content"><strong>Exploit the Bottleneck</strong> — get maximum output from the bottleneck resource without any further investment (eliminate downtime, prioritise the most profitable products through it)</div></div>
+      <div class="step-item"><div class="step-num">STEP 3</div><div class="step-content"><strong>Subordinate Everything Else</strong> — pace all other processes to match the bottleneck's rate; don't let non-bottleneck stations overproduce and pile up inventory</div></div>
+      <div class="step-item"><div class="step-num">STEP 4</div><div class="step-content"><strong>Elevate the Bottleneck</strong> — if still insufficient, invest in increasing the bottleneck's actual capacity (new machine, extra shift, outsourcing)</div></div>
+      <div class="step-item"><div class="step-num">STEP 5</div><div class="step-content"><strong>Repeat</strong> — once one bottleneck is resolved, another constraint will emerge elsewhere in the system — the cycle continues</div></div>
+    </div>
+  </div>
+
+  <!-- 24.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">24.3</div>
+      <div class="section-title">Throughput Accounting Ratio & Product Ranking</div>
+    </div>
+    <p class="prose">When a bottleneck constrains total output, the key question becomes: which products should get priority access to the scarce bottleneck resource? Throughput Accounting provides a ranking method specifically for this.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Throughput Accounting Formulas</div>
+      <div class="formula-row"><div class="formula-name">Throughput per Unit</div><div class="formula-eq">Selling Price − Direct Material Cost per Unit</div></div>
+      <div class="formula-row"><div class="formula-name">Throughput per Bottleneck Minute</div><div class="formula-eq">Throughput per Unit ÷ Bottleneck Minutes Required per Unit</div></div>
+      <div class="formula-row"><div class="formula-name">Total Factory Cost per Bottleneck Minute</div><div class="formula-eq">Total Factory Costs (Labour + Overheads) ÷ Total Bottleneck Minutes Available</div></div>
+      <div class="formula-row"><div class="formula-name">Throughput Accounting Ratio (TPAR)</div><div class="formula-eq">Throughput per Bottleneck Minute ÷ Factory Cost per Bottleneck Minute</div></div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Interpreting the TPAR</div>
+      A TPAR above 1.0 means the product generates more throughput per bottleneck minute than it costs the factory to run that minute — it's profitable to prioritise. A TPAR below 1.0 means the product is actually losing money once the true cost of tying up the scarce bottleneck resource is considered — even if it looks profitable on a traditional costing basis.
+    </div>
+
+    <p class="section-label">Worked Example — Ranking Products Through a Bottleneck</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: Two Products, One Bottleneck Machine</h4>
+      <table class="data-table" style="margin-top:8px;">
+        <tr><th>Item</th><th>Product X</th><th>Product Y</th></tr>
+        <tr><td>Selling Price</td><td>₹800</td><td>₹1,200</td></tr>
+        <tr><td>Direct Material Cost</td><td>₹300</td><td>₹500</td></tr>
+        <tr><td>Throughput per Unit</td><td>₹500</td><td>₹700</td></tr>
+        <tr><td>Bottleneck Minutes Required</td><td>10 mins</td><td>20 mins</td></tr>
+        <tr><td>Throughput per Bottleneck Minute</td><td>₹50/min</td><td>₹35/min</td></tr>
+      </table>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;margin-top:14px;">
+        <strong style="color:var(--text);">Factory cost per bottleneck minute (given):</strong> ₹30/min<br>
+        <strong style="color:var(--text);">TPAR — Product X:</strong> ₹50 ÷ ₹30 = 1.67<br>
+        <strong style="color:var(--text);">TPAR — Product Y:</strong> ₹35 ÷ ₹30 = 1.17<br><br>
+        <strong style="color:var(--text);">Conclusion:</strong> Although Product Y has a higher selling price and higher throughput per unit, Product X generates significantly MORE throughput per scarce bottleneck minute (₹50 vs ₹35). With limited bottleneck capacity, Product X should be prioritised first — it's the more efficient user of the constrained resource, even though both products have TPAR above 1.0 and are worth producing.
+      </div>
+    </div>
+  </div>
+
+  <!-- 24.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">24.4</div>
+      <div class="section-title">Learning Curve Theory</div>
+    </div>
+    <p class="prose">When workers repeat a task, they get faster — this is a well-documented, measurable phenomenon, especially for complex, labour-intensive, repetitive tasks (like assembling a new aircraft model or building custom machinery). The <strong>Learning Curve</strong> quantifies this improvement, letting management accountants forecast labour costs more accurately for new products.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📉</div>
+        <div class="card-title">The Core Principle</div>
+        <ul class="card-items">
+          <li>Every time CUMULATIVE OUTPUT doubles, the average time per unit falls to a fixed percentage of the previous average time</li>
+          <li>This fixed percentage is called the "learning rate" (e.g. 80% learning curve)</li>
+          <li>Applies most strongly to new, complex, labour-intensive production — not to automated or simple repetitive tasks</li>
+        </ul>
+        <div class="card-tag">Core Concept</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">When Learning Curves Apply</div>
+        <ul class="card-items">
+          <li>Products/processes are NEW (learning has not yet plateaued)</li>
+          <li>Tasks are complex and predominantly manual/labour-driven</li>
+          <li>No significant breaks in production (learning effect can reset after a long stoppage)</li>
+          <li>The same workforce continues the task (learning is embodied in the people doing it)</li>
+        </ul>
+        <div class="card-tag">Conditions for Use</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">24.5</div>
+      <div class="section-title">Learning Curve — Worked Calculations</div>
+    </div>
+    <p class="prose">The learning curve is calculated using the formula below, then applied to forecast total and incremental labour time/cost for production batches.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Learning Curve Formula</div>
+      <div class="formula-row"><div class="formula-name">Cumulative Average Time Formula</div><div class="formula-eq">Y = a × X^b, where Y = cumulative average time per unit; a = time for the first unit; X = cumulative number of units produced; b = log(learning rate) ÷ log(2)</div></div>
+      <div class="formula-row"><div class="formula-name">For an 80% Learning Curve</div><div class="formula-eq">b = log(0.8) ÷ log(2) = −0.3219</div></div>
+      <div class="formula-row"><div class="formula-name">Total Time for X Units</div><div class="formula-eq">Cumulative Average Time (Y) × X (total units)</div></div>
+      <div class="formula-row"><div class="formula-name">Incremental Time for a New Batch</div><div class="formula-eq">Total Time for New Cumulative Total − Total Time for Previous Cumulative Total</div></div>
+    </div>
+
+    <p class="section-label">Worked Example — 80% Learning Curve</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: New Product, First Unit Takes 100 Hours</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> First unit = 100 hours. Learning rate = 80% (b = −0.3219). Find the average time per unit after 4 units, and the total time for 4 units.<br><br>
+        <strong style="color:var(--text);">Step 1 — Using the doubling shortcut (no logarithms needed for exact doublings):</strong><br>
+        Cumulative average after 1 unit = 100 hours<br>
+        Cumulative average after 2 units = 100 × 80% = 80 hours (doubling from 1→2)<br>
+        Cumulative average after 4 units = 80 × 80% = 64 hours (doubling from 2→4)<br><br>
+        <strong style="color:var(--text);">Step 2 — Total time for 4 units:</strong><br>
+        Total time = Cumulative Average × Units = 64 hours × 4 = 256 hours<br><br>
+        <strong style="color:var(--text);">Step 3 — Incremental time for units 3 and 4 (if units 1-2 already made):</strong><br>
+        Total time for 2 units = 80 × 2 = 160 hours<br>
+        Incremental time for units 3-4 = 256 − 160 = <strong style="color:#f97316;">96 hours</strong>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Exam Shortcut — The Doubling Method</div>
+      When the required output level is an exact doubling of a known point (2, 4, 8, 16, 32 units...), you can skip the logarithm formula entirely and simply multiply the cumulative average time by the learning rate each time output doubles. The full Y = aX^b formula (using logs) is only needed when the output level ISN'T an exact power-of-2 multiple.
+    </div>
+  </div>
+
+  <!-- 24.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">24.6</div>
+      <div class="section-title">Applications & Limitations of the Learning Curve</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Practical Applications</div>
+        <ul class="card-items">
+          <li>Pricing new products — early units cost more to produce, informing early-stage pricing strategy</li>
+          <li>Budgeting and standard-setting for new production lines</li>
+          <li>Make-or-buy decisions — accounting for the fact that in-house production costs will fall as the workforce learns</li>
+          <li>Workforce planning and negotiating labour contracts for new product launches</li>
+        </ul>
+        <div class="card-tag">Where It Helps</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Limitations</div>
+        <ul class="card-items">
+          <li>Assumes conditions remain stable — a strike, break in production, or major process change can reset or distort the learning curve</li>
+          <li>Learning eventually plateaus — the curve doesn't continue indefinitely; a "steady state" labour time is eventually reached</li>
+          <li>Assumes a constant learning rate throughout — reality may show a more variable rate</li>
+          <li>Not applicable to short runs, highly automated processes, or established/mature products</li>
+        </ul>
+        <div class="card-tag">Real-World Caveats</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">24.7</div>
+      <div class="section-title">Mix & Yield Variances</div>
+    </div>
+    <p class="prose">When a single production process uses MULTIPLE materials (or multiple labour grades) that can be substituted for one another to some degree, the standard material usage variance from Chapter 6 can be split further into two more insightful components: <strong>mix variance</strong> (did we use the right proportion of inputs?) and <strong>yield variance</strong> (did the process convert inputs to output efficiently?).</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Mix & Yield Variance Formulas</div>
+      <div class="formula-row"><div class="formula-name">Material Mix Variance</div><div class="formula-eq">(Actual Total Quantity in Standard Mix Proportion − Actual Quantity Used) × Standard Price, for each material — summed</div></div>
+      <div class="formula-row"><div class="formula-name">Material Yield Variance</div><div class="formula-eq">(Standard Output-Based Input Quantity − Actual Total Input Quantity Used, in standard mix proportions) × Standard Weighted Average Cost per unit of input</div></div>
+      <div class="formula-row"><div class="formula-name">Check</div><div class="formula-eq">Mix Variance + Yield Variance = Total Material Usage Variance</div></div>
+    </div>
+  </div>
+
+  <!-- 24.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">24.8</div>
+      <div class="section-title">Mix & Yield — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Chemical Mixing Process — Two Inputs</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Standard mix for 100kg of output:</strong> Material A: 60kg @ ₹40/kg; Material B: 40kg @ ₹25/kg. Standard total input = 100kg for 100kg output (1:1 — no expected loss for simplicity).<br><br>
+        <strong style="color:var(--text);">Actual results:</strong> Material A used: 66kg; Material B used: 44kg. Total actual input = 110kg, producing 105kg of actual output.<br><br>
+        <strong style="color:var(--text);">Step 1 — Standard mix of actual total input (110kg):</strong><br>
+        Material A in standard mix: 110kg × 60% = 66kg<br>
+        Material B in standard mix: 110kg × 40% = 44kg<br><br>
+        <strong style="color:var(--text);">Step 2 — Mix Variance:</strong><br>
+        Material A: (66kg − 66kg) × ₹40 = ₹0<br>
+        Material B: (44kg − 44kg) × ₹25 = ₹0<br>
+        <strong>Total Mix Variance = ₹0</strong> (the actual mix used matched the standard proportion exactly — 60:40 ratio was maintained even though more total material was used)<br><br>
+        <strong style="color:var(--text);">Step 3 — Yield Variance:</strong><br>
+        Standard input for 105kg actual output = 105kg (since standard is 1:1 input:output)<br>
+        Actual total input used = 110kg<br>
+        Standard weighted average cost per kg of input = (60×40 + 40×25)/100 = (2400+1000)/100 = ₹34/kg<br>
+        Yield Variance = (105kg − 110kg) × ₹34 = <strong style="color:#f97316;">₹170 Adverse</strong><br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> The mix was perfectly on-standard (₹0 mix variance) — proportions were correct. But the process used 5kg MORE total input than the output achieved should have required (110kg in for only 105kg out), indicating inefficient conversion — an adverse yield variance of ₹170, pointing to process inefficiency, not a materials-mixing problem.
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why Splitting Mix & Yield Matters Operationally</div>
+      A single "material usage variance" doesn't tell operations WHERE to focus improvement efforts. Splitting it reveals: an adverse MIX variance points to a materials-proportioning problem (wrong recipe followed); an adverse YIELD variance points to a process efficiency problem (waste, spoilage, poor conversion) — completely different root causes requiring completely different corrective actions.
+    </div>
+  </div>
+
+  <!-- 24.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">24.9</div>
+      <div class="section-title">Activity-Based Costing (ABC) Deep Dive</div>
+    </div>
+    <p class="prose">Traditional absorption costing spreads overheads using a single volume-based measure (e.g. labour hours) — which distorts costs when products consume overhead resources very differently. ABC assigns overhead costs based on the actual activities that DRIVE those costs.</p>
+
+    <div class="steps">
+      <div class="step-item"><div class="step-num">STEP 1</div><div class="step-content"><strong>Identify Major Activities</strong> — group overhead costs by the activity that causes them (e.g. machine setups, quality inspections, purchase ordering)</div></div>
+      <div class="step-item"><div class="step-num">STEP 2</div><div class="step-content"><strong>Identify Cost Drivers</strong> — find the factor that causes each activity's cost to change (e.g. number of setups, number of inspections, number of purchase orders)</div></div>
+      <div class="step-item"><div class="step-num">STEP 3</div><div class="step-content"><strong>Calculate Cost Driver Rates</strong> — Total Activity Cost ÷ Total Cost Driver Volume</div></div>
+      <div class="step-item"><div class="step-num">STEP 4</div><div class="step-content"><strong>Assign Costs to Products</strong> — multiply each product's actual consumption of each cost driver by the driver rate</div></div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 When ABC Matters Most</div>
+      ABC provides the most value when a business has high overhead costs relative to direct costs, produces a diverse range of products consuming resources very differently (some high-volume/simple, others low-volume/complex), and where accurate product-level costing genuinely drives pricing and strategic decisions. For a simple, single-product factory, ABC's added complexity may not be worth the effort over traditional absorption costing.
+    </div>
+  </div>
+
+  <!-- 24.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">24.10</div>
+      <div class="section-title">ABC — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Comparing Traditional Costing vs ABC for Two Products</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> A factory produces two products — Product A (high volume, 8,000 units, simple, few setups) and Product B (low volume, 2,000 units, complex, many setups). Total overheads = ₹10,00,000, of which ₹6,00,000 relates to machine setups and ₹4,00,000 relates to general/volume-based overheads. Total labour hours = 20,000 (Product A: 16,000 hrs; Product B: 4,000 hrs). Total setups = 100 (Product A: 20 setups; Product B: 80 setups, since it's complex and made in many small batches).<br><br>
+        <strong style="color:var(--text);">Traditional Costing (absorbed on labour hours only):</strong><br>
+        Overhead rate = ₹10,00,000 ÷ 20,000 hrs = ₹50/labour hour<br>
+        Product A overhead: 16,000 hrs × ₹50 = ₹8,00,000 → ₹100/unit (8,000 units)<br>
+        Product B overhead: 4,000 hrs × ₹50 = ₹2,00,000 → ₹100/unit (2,000 units)<br>
+        <em>Both products absorb the SAME overhead per unit — despite Product B causing 4x more setups per unit produced.</em><br><br>
+        <strong style="color:var(--text);">ABC Costing (two cost pools, two drivers):</strong><br>
+        Setup cost driver rate = ₹6,00,000 ÷ 100 setups = ₹6,000/setup<br>
+        General overhead rate = ₹4,00,000 ÷ 20,000 hrs = ₹20/labour hour<br><br>
+        Product A: (20 setups × ₹6,000) + (16,000 hrs × ₹20) = ₹1,20,000 + ₹3,20,000 = ₹4,40,000 → <strong style="color:#f97316;">₹55/unit</strong><br>
+        Product B: (80 setups × ₹6,000) + (4,000 hrs × ₹20) = ₹4,80,000 + ₹80,000 = ₹5,60,000 → <strong style="color:#f97316;">₹280/unit</strong><br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> Traditional costing significantly UNDERSTATES Product B's true cost (₹100/unit vs the ABC-derived ₹280/unit) because it ignores that Product B drives disproportionately more setup activity. Traditional costing simultaneously OVERSTATES Product A's cost. This is "cost cross-subsidisation" — Product A's high volume was effectively subsidising Product B's true complexity cost, which could lead to Product B being underpriced and Product A being overpriced relative to their true costs.
+      </div>
+    </div>
+  </div>
+
+  <!-- 24.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">24.11</div>
+      <div class="section-title">Cost of Quality Framework</div>
+    </div>
+    <p class="prose">Quality-related costs are often scattered across many accounts and never visible as a single figure to management. The Cost of Quality (COQ) framework groups them into four categories, revealing the true cost of quality (and the cost of poor quality) explicitly.</p>
+    <table class="data-table">
+      <tr><th>Category</th><th>Definition</th><th>Example</th></tr>
+      <tr><td>Prevention Costs</td><td>Costs incurred to PREVENT defects from occurring in the first place</td><td>Quality training, supplier quality audits, process design improvements</td></tr>
+      <tr><td>Appraisal Costs</td><td>Costs of CHECKING/inspecting to identify defects before they reach the customer</td><td>Inspection, testing, quality audits of finished goods</td></tr>
+      <tr><td>Internal Failure Costs</td><td>Costs when a defect is caught BEFORE reaching the customer</td><td>Scrap, rework, re-inspection, downtime from quality issues</td></tr>
+      <tr><td>External Failure Costs</td><td>Costs when a defect reaches the CUSTOMER</td><td>Warranty claims, product recalls, customer complaints handling, lost future sales/reputation damage</td></tr>
+    </table>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Core Insight of Cost of Quality</div>
+      Spending MORE on prevention and appraisal (getting it right the first time) typically REDUCES the much larger, more damaging costs of internal and especially external failure. External failure costs are usually the most expensive category by far — a single product recall or major warranty crisis can dwarf years of accumulated prevention spending — which is why quality-focused organisations deliberately over-invest in prevention relative to what might seem "necessary" on a narrow cost basis.
+    </div>
+  </div>
+
+  <!-- 24.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">24.12</div>
+      <div class="section-title">Target Costing & Life Cycle Costing</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Target Costing</div>
+        <ul class="card-items">
+          <li>Starts with the market price the product must sell at, works BACKWARD to the maximum allowable cost</li>
+          <li>Formula: Target Cost = Target Selling Price − Target (Required) Profit Margin</li>
+          <li>If current estimated cost exceeds target cost, a "cost gap" exists — must be closed through design changes, value engineering, or supplier negotiation BEFORE launch</li>
+        </ul>
+        <div class="card-tag">Price-Led Costing</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Life Cycle Costing</div>
+        <ul class="card-items">
+          <li>Tracks and accumulates ALL costs across a product's entire life — from R&D and design, through production, to eventual withdrawal/disposal</li>
+          <li>Counters the tendency to focus only on production-phase costs, ignoring large upfront R&D/design costs or end-of-life decommissioning costs</li>
+          <li>Reveals the TRUE total profitability of a product over its full life, not just a single accounting period</li>
+        </ul>
+        <div class="card-tag">Whole-of-Life View</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">24.13</div>
+      <div class="section-title">Environmental Management Accounting</div>
+    </div>
+    <p class="prose">As ESG considerations become central to business strategy, management accounting has evolved to specifically track environmental costs — which are traditionally buried in general overheads and hidden from decision-makers.</p>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Key Environmental Cost Categories</div>
+      <strong>Conventional costs</strong> (energy, water, raw materials with environmental impact) are often already tracked but not separately visible. <strong>Contingent costs</strong> (future clean-up, potential fines) are often unrecognised until they occur. <strong>Image/relationship costs</strong> (reputational impact of poor environmental performance) are the hardest to quantify but increasingly material to brand value and access to capital — investors and lenders now often price these into ESG-linked financing terms.
+    </div>
+  </div>
+
+  <!-- 24.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">24.14</div>
+      <div class="section-title">Advanced Tools in Indian Manufacturing — Real World Context</div>
+    </div>
+    <p class="prose">These aren't just exam topics — they're actively used across Indian industry, particularly in manufacturing-heavy sectors.</p>
+    <table class="data-table">
+      <tr><th>Tool</th><th>Indian Industry Application</th></tr>
+      <tr><td>Throughput Accounting</td><td>Widely used in Indian auto component and pharma manufacturing to manage bottleneck machines/lines and prioritise product mix decisions</td></tr>
+      <tr><td>Learning Curve</td><td>Applied in defence manufacturing, aerospace (HAL), and complex engineering projects where early-unit costs are significantly higher than mature production costs</td></tr>
+      <tr><td>ABC</td><td>Used by Indian FMCG and diversified manufacturing conglomerates to accurately cost complex, high-SKU product portfolios</td></tr>
+      <tr><td>Target Costing</td><td>A hallmark of Indian automotive OEMs (following Japanese-influenced practices from JVs like Maruti Suzuki) — designing to a strict target cost from the outset</td></tr>
+    </table>
+  </div>
+
+  <!-- 24.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">24.15</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Throughput Accounting Manages Bottlenecks</div><ul class="card-items"><li>Total output = bottleneck capacity, always</li><li>Rank products by TPAR, not just profit margin</li><li>TPAR > 1.0 = worth producing through the bottleneck</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Learning Curves Forecast Falling Labour Costs</div><ul class="card-items"><li>Time falls to a fixed % every time cumulative output doubles</li><li>Use the doubling shortcut when possible</li><li>Only applies to new, complex, labour-intensive work</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Mix & Yield Split Reveals Root Cause</div><ul class="card-items"><li>Mix variance = wrong proportions used</li><li>Yield variance = process efficiency problem</li><li>Together they equal the total usage variance</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">ABC Fixes Overhead Distortion</div><ul class="card-items"><li>Assigns costs based on actual cost drivers</li><li>Most valuable for high-overhead, diverse product ranges</li><li>Not always worth the complexity for simple operations</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 24 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Calculate TPAR for 2 hypothetical products and rank them</span>
+        <span class="tag teal">✅ Practice the doubling-method learning curve calculation for 3 different scenarios</span>
+        <span class="tag teal">✅ Split a material usage variance into mix and yield components</span>
+        <span class="tag teal">✅ Identify one product in a business you know where ABC would give a materially different cost than traditional absorption costing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">24.16</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Including Labour as Variable in Throughput Accounting</strong><br>
+        Throughput Accounting deliberately treats only direct materials as variable in the short run — labour and overheads are "factory cost," treated as fixed. Calculating throughput per unit by deducting labour cost (in addition to materials) contradicts the entire TA framework.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Ranking Products by Contribution Instead of TPAR When a Bottleneck Exists</strong><br>
+        When a scarce bottleneck resource exists, ranking products by absolute contribution or contribution margin % ignores how much of the SCARCE resource each product consumes. Always rank by contribution/throughput PER UNIT OF THE SCARCE RESOURCE (or TPAR) once a binding constraint is identified.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Applying the Learning Curve Formula When Output Isn't an Exact Doubling</strong><br>
+        The simple doubling shortcut only works for exact powers of 2 (2, 4, 8, 16 units). For any other output level (e.g. 5 units, 10 units), the full logarithmic formula Y = aX^b must be used — applying the doubling shortcut incorrectly to non-doubling output levels gives a wrong answer.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Forgetting the Learning Curve Eventually Plateaus</strong><br>
+        Applying the learning curve formula indefinitely, assuming costs keep falling forever, ignores that a "steady state" is eventually reached where further learning gains become negligible. Using the formula far beyond its valid range overstates efficiency gains.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Confusing Mix Variance Direction With Yield Variance Direction</strong><br>
+        A favourable mix variance (using a cheaper-than-standard combination of materials) can sometimes cause an ADVERSE yield variance (a cheaper mix might produce lower-quality output or more waste) — the two can move in opposite directions, and both should be analysed together, not assumed to always align.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Using a Single Volume-Based Overhead Rate for Genuinely Diverse Products</strong><br>
+        As the ABC worked example (24.10) shows, using one blanket labour-hour-based overhead rate for products with very different complexity/setup profiles systematically miscosts them — high-complexity, low-volume products get undercosted, and simple high-volume products get overcosted, potentially leading to bad pricing decisions on both.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Under-Investing in Prevention Because It's "Not an Emergency"</strong><br>
+        Since prevention and appraisal costs are visible and controllable NOW, while failure costs (especially external failure) are often deferred and less visible until a crisis hits, organisations under pressure to cut costs frequently cut prevention spending first — exactly the opposite of what the Cost of Quality framework recommends, since this typically increases far larger failure costs later.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Treating Target Costing as a One-Time Exercise</strong><br>
+        Target costing is meant to be an ITERATIVE process throughout design and development — continuously value-engineering the product until the cost gap closes — not a single calculation done once at the start and then ignored as the design evolves.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 9</div>
+        <div class="step-content"><strong>Ignoring Life Cycle Costs When Evaluating a New Product's Profitability</strong><br>
+        Evaluating a new product's profitability using only its production-phase costs and revenue ignores potentially significant upfront R&D/design costs and end-of-life decommissioning costs — a product that looks profitable period-by-period during production may be unprofitable across its FULL life cycle once these are included.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">TPAR Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: State the Throughput Accounting Ratio formula.</strong></li>
+          <li>A: Throughput per Bottleneck Minute ÷ Factory Cost per Bottleneck Minute</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">TOC 5 Steps</div>
+        <ul class="card-items">
+          <li><strong>Q: What are the 5 steps of Theory of Constraints?</strong></li>
+          <li>A: Identify → Exploit → Subordinate → Elevate → Repeat</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Learning Curve Doubling</div>
+        <ul class="card-items">
+          <li><strong>Q: In an 80% learning curve, what happens to cumulative average time each time output doubles?</strong></li>
+          <li>A: It falls to 80% of its previous value</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Mix vs Yield</div>
+        <ul class="card-items">
+          <li><strong>Q: What does an adverse yield variance indicate?</strong></li>
+          <li>A: More total input was used than the actual output should have required — a process efficiency problem</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Target Cost Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: State the target costing formula.</strong></li>
+          <li>A: Target Cost = Target Selling Price − Target Profit Margin</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">ABC Cost Drivers</div>
+        <ul class="card-items">
+          <li><strong>Q: What is a "cost driver" in ABC?</strong></li>
+          <li>A: The factor that causes an activity's cost to change (e.g. number of setups, number of purchase orders)</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">4 Cost of Quality Categories</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 4 Cost of Quality categories.</strong></li>
+          <li>A: Prevention, Appraisal, Internal Failure, External Failure</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Most Expensive COQ Category</div>
+        <ul class="card-items">
+          <li><strong>Q: Which Cost of Quality category is usually the most expensive?</strong></li>
+          <li>A: External Failure (recalls, warranty claims, reputational damage)</li>
+        </ul>
+        <div class="card-tag">Flashcard 8</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"How would you decide which products to prioritise if a factory has a production bottleneck?"</td><td>Applied understanding of throughput accounting and constraint management</td><td>I'd first confirm which specific resource is actually the binding constraint, then calculate the Throughput Accounting Ratio for each product — throughput per bottleneck minute divided by factory cost per bottleneck minute — rather than simply ranking by overall profit margin. Products with the highest TPAR generate the most value per unit of the scarce resource and should be prioritised, since maximizing output through the bottleneck maximizes overall factory profit.</td></tr>
+      <tr><td>"Why might a company use the learning curve when pricing a brand-new, complex product?"</td><td>Practical application of learning curve theory to pricing strategy</td><td>Early production units of a complex new product typically take significantly longer (and cost more) than later units, as the workforce becomes more efficient. If pricing is based only on the first unit's cost, the product may be priced too high to be competitive; the learning curve lets a company forecast average costs across a full production run, supporting more realistic and competitive pricing from launch.</td></tr>
+      <tr><td>"What's the difference between mix variance and yield variance, and why split them?"</td><td>Depth of understanding beyond basic variance analysis</td><td>Mix variance isolates whether the actual proportion of different materials used matched the standard recipe; yield variance isolates whether the overall production process converted inputs into output efficiently. Splitting them matters because they point to entirely different root causes and corrective actions — a mix problem means the wrong ratio of ingredients was used, while a yield problem means the process itself is wasteful or inefficient, regardless of whether the mix was correct.</td></tr>
+      <tr><td>"Why might traditional absorption costing lead a company to make bad pricing decisions?"</td><td>Applied understanding of ABC's practical business impact</td><td>Traditional costing spreads overhead using a single volume-based measure like labour hours, which understates the true cost of complex, low-volume products (that consume disproportionate setup/inspection resources) and overstates the cost of simple, high-volume products. This can lead a company to underprice its complex products (thinking they're cheaper to make than they really are) while overpricing its simple products — potentially losing competitiveness on the simple products while unknowingly selling complex ones at a loss.</td></tr>
+      <tr><td>"How would you convince a cost-conscious management team to invest more in quality prevention?"</td><td>Communication and business-case-building skill</td><td>I'd use the Cost of Quality framework to show that failure costs — especially external failure costs like recalls and warranty claims — are typically far larger than prevention costs, even though prevention spending is more visible and immediate. I'd try to quantify the organisation's own historical failure costs to make the case concrete, showing that a relatively modest increase in prevention spending could plausibly avoid a much larger, though less predictable, failure cost down the line.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Throughput Accounting (Manage the Bottleneck)<br>
+      + Learning Curve (Forecast Falling Labour Cost)<br>
+      + Mix & Yield (Isolate Root Cause)<br>
+      + ABC + Target Costing (Accurate, Strategic Costing)<br>
+      = <strong style="color:#f97316;">The Advanced PM Toolkit — Beyond Basic Variance Analysis</strong>
+    </div>
+    <h3>Chapter 24: Advanced Management Accounting Tools — Complete ⚙️📊</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 25: Advanced Working Capital & Treasury (FM depth) — EOQ, Miller-Orr model, and forex hedging. 🚀</p>
+  </div>
+
+</div>
+</body>
+</html>

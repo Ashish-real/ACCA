@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 6: Management Accounting</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #38bdf8;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero {
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(56,189,248,0.09) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-blue   { background: rgba(56,189,248,0.2); color: var(--accent5); border: 1px solid rgba(56,189,248,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(56,189,248,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(56,189,248,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(56,189,248,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(56,189,248,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(56,189,248,0.07), rgba(0,212,170,0.05)); border: 1px solid rgba(56,189,248,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  .equation { background: var(--card); border: 1px solid var(--accent5); border-radius: 12px; padding: 20px 24px; margin: 20px 0; text-align: center; }
+  .equation-text { font-family: var(--mono); font-size: clamp(12px,2.5vw,15px); color: var(--accent2); letter-spacing: 1px; line-height: 2; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* BUDGET TABLE */
+  .budget-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 14px; }
+  .budget-header { background: rgba(56,189,248,0.08); padding: 12px 20px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; }
+  .budget-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; padding: 9px 16px; border-bottom: 1px solid rgba(42,42,58,0.3); font-size: 12px; align-items: center; }
+  .budget-row:last-child { border-bottom: none; }
+  .budget-row.header { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.2); }
+  .budget-row.subtotal { background: rgba(255,255,255,0.02); font-weight: 600; color: var(--text); border-top: 1px solid var(--border); }
+  .budget-row.total { background: rgba(56,189,248,0.08); font-weight: 700; color: var(--accent5); border-top: 2px solid var(--accent5); }
+  .budget-label { color: var(--muted); }
+  .budget-label.bold { color: var(--text); font-weight: 600; }
+  .budget-num { font-family: var(--mono); text-align: right; color: var(--muted); }
+  .budget-num.fav { color: var(--accent2); }
+  .budget-num.adv { color: var(--accent3); }
+  .budget-num.bold { color: var(--text); font-weight: 600; }
+  .budget-num.total { color: var(--accent5); font-weight: 700; }
+
+  /* DECISION TABLE */
+  .decision-block { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .decision-title { font-size: 13px; font-weight: 600; color: var(--accent5); margin-bottom: 14px; }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(56,189,248,0.09), rgba(0,212,170,0.06)); border: 1px solid rgba(56,189,248,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  @media (max-width: 600px) {
+    .budget-row { grid-template-columns: 1.5fr 1fr 1fr 1fr; font-size: 10px; padding: 8px 10px; }
+  }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 6</div>
+  <h1>Management<br><span>Accounting</span></h1>
+  <p class="hero-sub">Budgeting, variance analysis, performance measurement and decision-making tools — the internal intelligence system of every world-class organisation.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Budgeting Types</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Variance Types</div></div>
+    <div class="stat"><div class="stat-num">MA+PM</div><div class="stat-label">ACCA Papers</div></div>
+    <div class="stat"><div class="stat-num">Part 1</div><div class="stat-label">Foundation</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 6 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">6.1</span>What is Management Accounting</div>
+    <div class="toc-item"><span class="toc-num">6.2</span>The Planning & Control Cycle</div>
+    <div class="toc-item"><span class="toc-num">6.3</span>Budgeting — Types & Purpose</div>
+    <div class="toc-item"><span class="toc-num">6.4</span>Preparing a Master Budget</div>
+    <div class="toc-item"><span class="toc-num">6.5</span>Standard Costing & Variance Analysis</div>
+    <div class="toc-item"><span class="toc-num">6.6</span>Key Management Accounting Decisions</div>
+    <div class="toc-item"><span class="toc-num">6.7</span>Performance Measurement — KPIs & Balanced Scorecard</div>
+    <div class="toc-item"><span class="toc-num">6.8</span>Responsibility Centres</div>
+    <div class="toc-item"><span class="toc-num">6.9</span>Management Accounting & ACCA — Paper Mapping</div>
+    <div class="toc-item"><span class="toc-num">6.10</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">6.11</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Cost accounting (Chapter 5) tells you what things cost. <strong>Management accounting takes that information and uses it to plan, control, and make decisions</strong>. It is the intelligence system of every organisation — producing the reports, budgets, and analyses that drive every strategic decision from the boardroom to the shop floor.</p>
+    <div class="quote">"Management accounting is the difference between a business that reacts to problems and one that anticipates and prevents them."</div>
+  </div>
+
+  <!-- 6.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">6.1</div>
+      <div class="section-title">What is Management Accounting</div>
+    </div>
+    <p class="prose">Management accounting is the process of <strong>preparing financial and non-financial information for internal decision-makers</strong>. It combines cost accounting data with strategic thinking to help management plan, control, and improve performance.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">3 Core Purposes</div>
+        <ul class="card-items">
+          <li><strong>Planning:</strong> Setting budgets, targets, and strategies</li>
+          <li><strong>Control:</strong> Comparing actual vs budget, taking corrective action</li>
+          <li><strong>Decision Making:</strong> Make or buy, pricing, product mix, invest or not</li>
+          <li>All three are tested in ACCA MA and PM papers</li>
+        </ul>
+        <div class="card-tag">Plan · Control · Decide</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">MA vs Financial Accounting</div>
+        <ul class="card-items">
+          <li>No legal requirement — flexible format</li>
+          <li>Future-focused (budgets, forecasts)</li>
+          <li>Both financial and non-financial data</li>
+          <li>Weekly/monthly — not just annual</li>
+          <li>Confidential — not published externally</li>
+        </ul>
+        <div class="card-tag">Internal · Flexible</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">MA in Your MNC Career</div>
+        <ul class="card-items">
+          <li>FP&A teams prepare management accounts monthly</li>
+          <li>CFO uses MA reports for board presentations</li>
+          <li>Budget vs actual variance reports — every month</li>
+          <li>Big 4 advisory teams use MA tools for client projects</li>
+          <li>₹30–80 LPA roles built on MA skills</li>
+        </ul>
+        <div class="card-tag">High-Value Career Skill</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">6.2</div>
+      <div class="section-title">The Planning & Control Cycle</div>
+      <div class="section-meta">How Organisations Run</div>
+    </div>
+    <p class="prose">Every well-run organisation — from a Big 4 firm to a FinTech startup — follows a continuous planning and control cycle. Management accounting sits at the heart of this cycle.</p>
+
+    <div class="cards">
+      <div class="card"><div class="card-icon">🏔️</div><div class="card-title">1. Set Objectives</div><ul class="card-items"><li>Define what the organisation wants to achieve</li><li>Profit targets, market share, growth rate</li><li>SMART goals — Specific, Measurable, Achievable, Relevant, Time-bound</li></ul></div>
+      <div class="card"><div class="card-icon">🗺️</div><div class="card-title">2. Plan (Budget)</div><ul class="card-items"><li>Create a financial plan to achieve objectives</li><li>Revenue budget, cost budget, capital expenditure</li><li>Master budget = all budgets combined</li></ul></div>
+      <div class="card"><div class="card-icon">⚙️</div><div class="card-title">3. Execute</div><ul class="card-items"><li>Implement the plan — run operations</li><li>Track actual results as they happen</li><li>Record transactions in accounting systems</li></ul></div>
+      <div class="card"><div class="card-icon">📊</div><div class="card-title">4. Measure & Compare</div><ul class="card-items"><li>Compare actual results to budget</li><li>Calculate variances (differences)</li><li>Prepare management reports for decision-makers</li></ul></div>
+      <div class="card"><div class="card-icon">🔧</div><div class="card-title">5. Investigate & Control</div><ul class="card-items"><li>Investigate significant variances</li><li>Understand root causes — good or bad?</li><li>Take corrective action where needed</li></ul></div>
+      <div class="card"><div class="card-icon">🔄</div><div class="card-title">6. Revise & Repeat</div><ul class="card-items"><li>Update plans based on learnings</li><li>Rolling forecasts replace outdated budgets</li><li>Cycle repeats — monthly, quarterly, annually</li></ul></div>
+    </div>
+  </div>
+
+  <!-- 6.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">6.3</div>
+      <div class="section-title">Budgeting — Types & Purpose</div>
+      <div class="section-meta">The Financial Roadmap</div>
+    </div>
+    <p class="prose">A budget is a <strong>quantified plan expressed in financial terms</strong> for a defined period. It is the most important management accounting tool — used by every organisation to allocate resources, set targets, and measure performance.</p>
+
+    <table class="data-table">
+      <tr><th>Budget Type</th><th>What It Is</th><th>Best Used When</th></tr>
+      <tr><td>Incremental Budget</td><td>Last year's budget + % increase for inflation/growth</td><td>Stable environments, low time pressure</td></tr>
+      <tr><td>Zero-Based Budget (ZBB)</td><td>Start from zero — every cost must be justified fresh</td><td>Cost-cutting drives, new organisations</td></tr>
+      <tr><td>Rolling Budget</td><td>Continuously updated — always 12 months ahead</td><td>Uncertain environments, fast-changing businesses</td></tr>
+      <tr><td>Flexed Budget</td><td>Budget adjusted to actual activity level achieved</td><td>Variance analysis — fair performance comparison</td></tr>
+      <tr><td>Activity-Based Budget</td><td>Budget built around cost drivers and activities</td><td>Complex organisations, service businesses</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">⚡ Incremental vs Zero-Based — Key Exam Debate</div>
+      <strong>Incremental budgeting</strong> is fast and simple but perpetuates waste — inefficiencies from last year are automatically carried forward.<br><br>
+      <strong>Zero-based budgeting</strong> eliminates waste and forces managers to justify every rupee — but is time-consuming and can kill morale.<br><br>
+      ACCA MA and PM examiners love asking you to evaluate which approach suits a given organisation. Always consider: stability, time available, cost of process, and organisational culture.
+    </div>
+  </div>
+
+  <!-- 6.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">6.4</div>
+      <div class="section-title">Preparing a Master Budget</div>
+      <div class="section-meta">Complete Worked Example</div>
+    </div>
+    <p class="prose">The <strong>Master Budget</strong> is the complete financial plan for an organisation — it combines all individual budgets into one integrated document. It typically includes a budgeted Income Statement, Balance Sheet, and Cash Flow.</p>
+
+    <p class="section-label">Budget Hierarchy — How They Link</p>
+    <div class="wide-card">
+      <h4>The Budget Build-Up — Ashish Consulting Ltd (Q1 2026)</h4>
+      <div style="font-size:12px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        <span style="color:var(--accent5);font-weight:600;">Step 1 — Sales Budget:</span> How many units/services can we sell? At what price?<br>
+        <span style="color:var(--accent5);font-weight:600;">Step 2 — Production/Service Budget:</span> What do we need to produce/deliver to meet sales?<br>
+        <span style="color:var(--accent5);font-weight:600;">Step 3 — Materials/Labour Budget:</span> What resources do we need?<br>
+        <span style="color:var(--accent5);font-weight:600;">Step 4 — Overhead Budget:</span> What fixed and variable overheads will we incur?<br>
+        <span style="color:var(--accent5);font-weight:600;">Step 5 — Cash Budget:</span> When will cash come in and go out?<br>
+        <span style="color:var(--accent5);font-weight:600;">Step 6 — Budgeted P&L:</span> What profit will we make?<br>
+        <span style="color:var(--accent5);font-weight:600;">Step 7 — Budgeted Balance Sheet:</span> What will our financial position look like?
+      </div>
+    </div>
+
+    <p class="section-label">Sample Flexed Budget vs Actual — Variance Report</p>
+    <div class="budget-block">
+      <div class="budget-header">Ashish Consulting Ltd — Monthly Management Report (March 2026)</div>
+      <div class="budget-row header">
+        <div>Item</div>
+        <div style="text-align:right;">Budget</div>
+        <div style="text-align:right;">Actual</div>
+        <div style="text-align:right;">Variance</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Revenue (50 clients × ₹10,000)</div>
+        <div class="budget-num">5,00,000</div>
+        <div class="budget-num">5,60,000</div>
+        <div class="budget-num fav">60,000 F</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Direct Staff Costs</div>
+        <div class="budget-num">(1,50,000)</div>
+        <div class="budget-num">(1,68,000)</div>
+        <div class="budget-num adv">18,000 A</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Software & Tools</div>
+        <div class="budget-num">(30,000)</div>
+        <div class="budget-num">(28,000)</div>
+        <div class="budget-num fav">2,000 F</div>
+      </div>
+      <div class="budget-row subtotal">
+        <div class="budget-label bold">Gross Profit</div>
+        <div class="budget-num bold">3,20,000</div>
+        <div class="budget-num bold">3,64,000</div>
+        <div class="budget-num fav">44,000 F</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Office Rent (Fixed)</div>
+        <div class="budget-num">(80,000)</div>
+        <div class="budget-num">(80,000)</div>
+        <div class="budget-num">— NIL</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Salaries (Fixed)</div>
+        <div class="budget-num">(1,20,000)</div>
+        <div class="budget-num">(1,30,000)</div>
+        <div class="budget-num adv">10,000 A</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label">Marketing</div>
+        <div class="budget-num">(40,000)</div>
+        <div class="budget-num">(35,000)</div>
+        <div class="budget-num fav">5,000 F</div>
+      </div>
+      <div class="budget-row total">
+        <div>NET PROFIT</div>
+        <div class="budget-num total">80,000</div>
+        <div class="budget-num total">1,19,000</div>
+        <div class="budget-num fav">39,000 F</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:10px;"><strong style="color:var(--accent2);">F = Favourable</strong> (better than budget) &nbsp;|&nbsp; <strong style="color:var(--accent3);">A = Adverse</strong> (worse than budget)</p>
+  </div>
+
+  <!-- 6.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">6.5</div>
+      <div class="section-title">Standard Costing & Variance Analysis</div>
+      <div class="section-meta">The Deep Dive</div>
+    </div>
+    <p class="prose">Standard costing sets <strong>predetermined costs</strong> for materials, labour, and overheads. Variance analysis then compares actual costs to these standards to identify exactly where and why performance differed from the plan.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Variance = Standard Cost − Actual Cost<br>
+        Positive = Favourable (F) &nbsp;|&nbsp; Negative = Adverse (A)
+      </div>
+      <div class="equation-label">The core variance formula — applies to every type of variance</div>
+    </div>
+
+    <p class="section-label">The Key Variances — ACCA MA Must Know</p>
+    <table class="data-table">
+      <tr><th>Variance</th><th>Formula</th><th>What It Reveals</th></tr>
+      <tr><td>Material Price Variance</td><td>(Standard Price − Actual Price) × Actual Quantity</td><td>Did we pay more or less than planned per kg/unit?</td></tr>
+      <tr><td>Material Usage Variance</td><td>(Standard Qty − Actual Qty) × Standard Price</td><td>Did we use more or less material than planned?</td></tr>
+      <tr><td>Labour Rate Variance</td><td>(Standard Rate − Actual Rate) × Actual Hours</td><td>Did we pay workers more or less per hour?</td></tr>
+      <tr><td>Labour Efficiency Variance</td><td>(Standard Hours − Actual Hours) × Standard Rate</td><td>Did workers take more or fewer hours than planned?</td></tr>
+      <tr><td>Fixed Overhead Volume</td><td>(Actual Output − Budgeted Output) × Std Fixed OH/unit</td><td>Did we produce more or less than planned?</td></tr>
+      <tr><td>Sales Price Variance</td><td>(Actual Price − Standard Price) × Actual Volume</td><td>Did we sell at a higher or lower price than planned?</td></tr>
+      <tr><td>Sales Volume Variance</td><td>(Actual Volume − Budgeted Volume) × Standard Margin</td><td>Did we sell more or fewer units than planned?</td></tr>
+    </table>
+
+    <p class="section-label">Complete Variance Example — Ashish Manufacturing</p>
+    <div class="wide-card">
+      <h4>Material Variances — Product: Finance Study Kit</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        <strong style="color:var(--text);">Standard:</strong> 2 kg per unit at ₹50 per kg<br>
+        <strong style="color:var(--text);">Actual:</strong> Produced 500 units, used 1,050 kg at ₹48 per kg<br><br>
+        <strong style="color:var(--accent5);">Material Price Variance:</strong><br>
+        (₹50 − ₹48) × 1,050 kg = ₹2 × 1,050 = <strong style="color:var(--accent2);">₹2,100 Favourable ✅</strong><br>
+        (We paid less per kg than planned — good!)<br><br>
+        <strong style="color:var(--accent5);">Material Usage Variance:</strong><br>
+        Standard qty for 500 units = 500 × 2 = 1,000 kg<br>
+        (1,000 − 1,050) × ₹50 = −50 × ₹50 = <strong style="color:var(--accent3);">₹2,500 Adverse ❌</strong><br>
+        (We used 50 kg more than planned — bad!)<br><br>
+        <strong style="color:var(--text);">Total Material Cost Variance = ₹2,100 F − ₹2,500 A = ₹400 Adverse</strong><br>
+        <span style="color:var(--muted);font-size:12px;">Investigation needed: Was cheaper material lower quality, causing more wastage?</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">6.6</div>
+      <div class="section-title">Key Management Accounting Decisions</div>
+      <div class="section-meta">When Numbers Drive Strategy</div>
+    </div>
+    <p class="prose">Management accounting provides the analysis behind the most important business decisions. These decision-making scenarios are core ACCA MA and PM exam topics — and real-world skills used in every MNC.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Make or Buy Decision</div>
+        <ul class="card-items">
+          <li>Should we make a component in-house or outsource?</li>
+          <li>Compare: marginal cost of making vs buying price</li>
+          <li>Only relevant (incremental) costs matter</li>
+          <li>Consider: spare capacity, quality, dependency risk</li>
+          <li>Sunk costs and fixed costs ignored (if unavoidable)</li>
+        </ul>
+        <div class="card-tag">Relevant Costing</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⛔</div>
+        <div class="card-title">Shut Down or Continue</div>
+        <ul class="card-items">
+          <li>Should we close a loss-making product/division?</li>
+          <li>If contribution > 0, closing may reduce total profit</li>
+          <li>Fixed costs reallocated — not saved — if shared</li>
+          <li>Consider: long-term strategy, complementary products</li>
+          <li>Short-term vs long-term perspective critical</li>
+        </ul>
+        <div class="card-tag">Contribution Analysis</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏷️</div>
+        <div class="card-title">Pricing Decisions</div>
+        <ul class="card-items">
+          <li>Cost-plus pricing: Total Cost + Mark-up %</li>
+          <li>Marginal cost pricing: Variable Cost + Contribution</li>
+          <li>Target costing: Market price − desired profit = target cost</li>
+          <li>Penetration vs skimming strategy</li>
+          <li>Transfer pricing for intra-group transactions</li>
+        </ul>
+        <div class="card-tag">Pricing Strategy</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Limiting Factor Analysis</div>
+        <ul class="card-icons">
+          <li>When a resource is scarce (machine hours, labour, material)</li>
+          <li>Rank products by contribution per unit of limiting factor</li>
+          <li>Produce in order of ranking until resource exhausted</li>
+          <li>Example: If machine hours are limited → ₹ contribution per machine hour</li>
+          <li>Linear programming for multiple constraints</li>
+        </ul>
+        <div class="card-tag">Scarce Resource</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Relevant Costing</div>
+        <ul class="card-items">
+          <li>Only future, incremental, cash costs are relevant</li>
+          <li>Sunk costs — already spent — always irrelevant</li>
+          <li>Committed costs — future but unavoidable — irrelevant</li>
+          <li>Opportunity cost — always relevant</li>
+          <li>Non-cash costs (depreciation) — irrelevant for decisions</li>
+        </ul>
+        <div class="card-tag">Decision Costing</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Capital Investment Appraisal</div>
+        <ul class="card-items">
+          <li>Should we invest ₹50L in new equipment?</li>
+          <li>Payback Period — how long to recover investment?</li>
+          <li>NPV — Net Present Value (time value of money)</li>
+          <li>IRR — Internal Rate of Return</li>
+          <li>Covered in depth in Corporate Finance chapter</li>
+        </ul>
+        <div class="card-tag">Long-Term Decisions</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">6.7</div>
+      <div class="section-title">Performance Measurement — KPIs & Balanced Scorecard</div>
+    </div>
+    <p class="prose">Management accounting is not just about costs and budgets — it is also about <strong>measuring whether the organisation is achieving its objectives</strong>. Financial KPIs alone are not enough. Modern organisations use the Balanced Scorecard.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Financial Perspective</div>
+        <ul class="card-items">
+          <li>Revenue growth, profit margin</li>
+          <li>Return on Capital Employed (ROCE)</li>
+          <li>EPS growth, cash generation</li>
+          <li>Cost reduction targets</li>
+        </ul>
+        <div class="card-tag">How do we look to shareholders?</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">😊</div>
+        <div class="card-title">Customer Perspective</div>
+        <ul class="card-items">
+          <li>Customer satisfaction scores (NPS)</li>
+          <li>Market share, customer retention</li>
+          <li>On-time delivery rate</li>
+          <li>Product/service quality metrics</li>
+        </ul>
+        <div class="card-tag">How do customers see us?</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">Internal Process Perspective</div>
+        <ul class="card-items">
+          <li>Cycle time, throughput efficiency</li>
+          <li>Defect rates, waste reduction</li>
+          <li>Order processing time</li>
+          <li>Innovation pipeline metrics</li>
+        </ul>
+        <div class="card-tag">What must we excel at?</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <div class="card-title">Learning & Growth Perspective</div>
+        <ul class="card-items">
+          <li>Employee training hours per year</li>
+          <li>Staff satisfaction and retention</li>
+          <li>Technology adoption rates</li>
+          <li>Innovation and R&D investment</li>
+        </ul>
+        <div class="card-tag">Can we continue to improve?</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 Why Balanced Scorecard Matters for Your Career</div>
+      The Balanced Scorecard (BSC) was developed by Kaplan & Norton and is used by virtually every large MNC. As an ACCA professional in FP&A or advisory, you will build and present BSC dashboards to senior management. It is tested in ACCA PM paper — and Power BI skills make you the person who visualises this data beautifully. This is where ₹30–50 LPA roles are created.
+    </div>
+  </div>
+
+  <!-- 6.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">6.8</div>
+      <div class="section-title">Responsibility Centres</div>
+      <div class="section-meta">Who is Accountable for What</div>
+    </div>
+    <p class="prose">Large organisations divide themselves into <strong>responsibility centres</strong> — units where a manager is held accountable for specific financial results. This is the foundation of management control in any MNC.</p>
+
+    <table class="data-table">
+      <tr><th>Centre Type</th><th>Manager Accountable For</th><th>Key Measure</th><th>Example</th></tr>
+      <tr><td>Cost Centre</td><td>Costs only — no revenue control</td><td>Cost variance vs budget</td><td>IT dept, HR dept, factory floor</td></tr>
+      <tr><td>Revenue Centre</td><td>Revenue only — no cost control</td><td>Revenue variance vs budget</td><td>Sales team, regional sales office</td></tr>
+      <tr><td>Profit Centre</td><td>Both revenues and costs</td><td>Profit vs budget</td><td>Business division, product line</td></tr>
+      <tr><td>Investment Centre</td><td>Profit AND capital invested</td><td>ROCE, RI, EVA</td><td>Subsidiary company, SBU</td></tr>
+    </table>
+
+    <p class="section-label">Investment Centre Metrics — Key ACCA PM Topic</p>
+    <div class="wide-card">
+      <h4>Evaluating Investment Centre Performance</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        <strong style="color:var(--accent5);">ROCE (Return on Capital Employed):</strong><br>
+        ROCE = Operating Profit ÷ Capital Employed × 100<br>
+        Example: ₹50L profit ÷ ₹2.5Cr capital = <strong style="color:var(--accent2);">20% ROCE</strong><br><br>
+        <strong style="color:var(--accent5);">RI (Residual Income):</strong><br>
+        RI = Operating Profit − (Capital Employed × Cost of Capital %)<br>
+        Example: ₹50L − (₹2.5Cr × 12%) = ₹50L − ₹30L = <strong style="color:var(--accent2);">₹20L RI</strong><br><br>
+        <strong style="color:var(--text);">RI is preferred over ROCE</strong> because it avoids the problem of managers rejecting positive NPV projects that would dilute their ROCE.
+      </div>
+    </div>
+  </div>
+
+  <!-- 6.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">6.9</div>
+      <div class="section-title">Management Accounting & ACCA — Paper Mapping</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>ACCA Paper</th><th>Level</th><th>What's Tested</th></tr>
+      <tr><td>Budgeting Types, ZBB vs Incremental</td><td>MA (Management Accounting)</td><td>Applied Knowledge</td><td>Evaluate budgeting approaches</td></tr>
+      <tr><td>Flexed Budgets & Variance Reports</td><td>MA (Management Accounting)</td><td>Applied Knowledge</td><td>Prepare flexed budget, calculate variances</td></tr>
+      <tr><td>Standard Costing & All Variances</td><td>MA → PM</td><td>Knowledge → Skills</td><td>Calculate and interpret all variances</td></tr>
+      <tr><td>Make or Buy, Relevant Costing</td><td>MA → PM</td><td>Knowledge → Skills</td><td>Decision scenarios with relevant costs</td></tr>
+      <tr><td>Limiting Factor Analysis</td><td>MA → PM</td><td>Knowledge → Skills</td><td>Rank products, calculate optimal mix</td></tr>
+      <tr><td>Balanced Scorecard, KPIs</td><td>PM (Performance Management)</td><td>Applied Skills</td><td>Design and evaluate performance systems</td></tr>
+      <tr><td>Responsibility Centres, ROCE, RI</td><td>PM (Performance Management)</td><td>Applied Skills</td><td>Evaluate divisional performance</td></tr>
+    </table>
+  </div>
+
+  <!-- 6.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">6.10</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">MA = Plan + Control + Decide</div><ul class="card-items"><li>Three purposes — always link back to these</li><li>Internal tool — flexible, non-prescribed format</li><li>Future-focused, not just historical</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Budget is the Central Tool</div><ul class="card-items"><li>Everything measured against budget</li><li>Flexed budget for fair comparison</li><li>ZBB eliminates waste; incremental is fast</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Variance Analysis = Control</div><ul class="card-items"><li>F = Favourable, A = Adverse</li><li>Price and usage/efficiency for materials and labour</li><li>Always investigate root cause — not just the number</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Only Relevant Costs for Decisions</div><ul class="card-items"><li>Sunk costs — ignore always</li><li>Opportunity costs — always include</li><li>Future incremental cash flows only</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Balanced Scorecard = Modern MA</div><ul class="card-items"><li>4 perspectives: Financial, Customer, Process, Learning</li><li>Non-financial KPIs as important as financial</li><li>Power BI + BSC = your career superpower</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">RI Better Than ROCE</div><ul class="card-items"><li>ROCE discourages good investments (dilution)</li><li>RI aligns divisional decisions with company goals</li><li>EVA is the modern corporate version of RI</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 6 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Prepare a simple monthly budget for your own expenses</span>
+        <span class="tag teal">✅ Calculate all 7 key variances using the formulas above</span>
+        <span class="tag teal">✅ Solve a Make or Buy decision problem from ACCA MA past paper</span>
+        <span class="tag teal">✅ Design a Balanced Scorecard for Ashish Consulting (4 perspectives)</span>
+        <span class="tag teal">✅ Calculate ROCE and RI for a sample investment centre</span>
+        <span class="tag teal">✅ Attempt ACCA MA Section B questions on budgeting and variances</span>
+        <span class="tag teal">✅ Watch OpenTuition MA lectures on Standard Costing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">6.11</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Getting Favourable/Adverse Backwards</strong><br>
+        The convention is Variance = Standard − Actual for costs (positive = favourable, meaning we spent less than planned). For revenue/sales variances, it flips: Actual − Standard (positive = favourable, meaning we earned more than planned). Applying the cost-side rule to a sales variance gives the exact opposite (wrong) sign.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Using Actual Quantity in Usage Variance Instead of Standard Price</strong><br>
+        Material Usage Variance = (Standard Qty − Actual Qty) × STANDARD Price — not actual price. Mixing actual price into the usage variance blends the price effect into the usage number, double-counting and making it impossible to isolate the true cause of the variance.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Not Flexing the Budget Before Comparing to Actual</strong><br>
+        Comparing actual results directly to the original fixed budget is misleading if actual production volume differs from planned. A flexed budget (adjusted to actual activity level) is needed first — otherwise volume differences get mistaken for efficiency or spending problems.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Treating Sunk Costs as Relevant to a Decision</strong><br>
+        Sunk costs (already spent, unrecoverable) should NEVER influence a forward-looking decision — only relevant costs (future, incremental, cash-based) matter. Students frequently include past R&D spend or prior purchase costs in make-or-buy or continue/discontinue analysis, which is a fundamental error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Ignoring Opportunity Cost in Decision-Making</strong><br>
+        When a resource has an alternative use (e.g. machine capacity that could be used for another profitable product), the opportunity cost of using it for the current decision must be included as a relevant cost. Overlooking this understates the true cost of a decision.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Confusing Cost Centres, Profit Centres, and Investment Centres</strong><br>
+        A cost centre is only responsible for costs; a profit centre for both revenue and costs; an investment centre for profit AND the capital invested to generate it (measured via ROI/RI). Evaluating a cost centre manager on profit, or a profit centre manager on ROI, misapplies the responsibility accounting framework.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Variance Direction</div>
+        <ul class="card-items">
+          <li><strong>Q: Cost variance formula and sign convention?</strong></li>
+          <li>A: Standard − Actual; positive = Favourable</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Material Variances</div>
+        <ul class="card-items">
+          <li><strong>Q: Material Price Variance formula?</strong></li>
+          <li>A: (Standard Price − Actual Price) × Actual Quantity</li>
+          <li><strong>Q: Material Usage Variance formula?</strong></li>
+          <li>A: (Standard Qty − Actual Qty) × Standard Price</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Relevant Costing</div>
+        <ul class="card-items">
+          <li><strong>Q: What makes a cost "relevant" to a decision?</strong></li>
+          <li>A: Future, incremental, and cash-based — sunk costs are always irrelevant</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Responsibility Centres</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 3 types of responsibility centre.</strong></li>
+          <li>A: Cost Centre, Profit Centre, Investment Centre</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Balanced Scorecard</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 4 perspectives of the Balanced Scorecard.</strong></li>
+          <li>A: Financial, Customer, Internal Business Process, Learning & Growth</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+    </div>
+
+    <!-- FORMULA REFERENCE -->
+    <p class="section-label" style="margin-top:40px;">Part C — Formula Quick Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 6 — Core Variance Formulas</div>
+      <div class="formula-row"><div class="formula-name">Material Price Variance</div><div class="formula-eq">(Standard Price − Actual Price) × Actual Quantity</div></div>
+      <div class="formula-row"><div class="formula-name">Material Usage Variance</div><div class="formula-eq">(Standard Qty − Actual Qty) × Standard Price</div></div>
+      <div class="formula-row"><div class="formula-name">Labour Rate Variance</div><div class="formula-eq">(Standard Rate − Actual Rate) × Actual Hours</div></div>
+      <div class="formula-row"><div class="formula-name">Labour Efficiency Variance</div><div class="formula-eq">(Standard Hours − Actual Hours) × Standard Rate</div></div>
+      <div class="formula-row"><div class="formula-name">Sales Price Variance</div><div class="formula-eq">(Actual Price − Standard Price) × Actual Volume</div></div>
+      <div class="formula-row"><div class="formula-name">Sales Volume Variance</div><div class="formula-eq">(Actual Volume − Budgeted Volume) × Standard Margin</div></div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"What's the difference between financial accounting and management accounting?"</td><td>Foundational clarity on the two accounting branches</td><td>Financial accounting produces statutory statements for external users (investors, regulators, tax authorities) following IFRS, focused on historical, verified data. Management accounting produces internal reports for managers — budgets, variances, cost analysis — with no mandated format, forward-looking, and designed purely to support decision-making.</td></tr>
+      <tr><td>"How would you investigate an adverse labour efficiency variance?"</td><td>Practical, investigative thinking beyond formula recall</td><td>I'd first confirm the variance calculation, then look for root causes — was there new/undertrained staff, equipment breakdowns causing downtime, poor quality materials requiring rework, or unrealistic standards set in the first place? Variance analysis identifies WHERE a problem occurred; investigation with operations teams identifies WHY.</td></tr>
+      <tr><td>"Why should sunk costs be ignored in decision-making?"</td><td>Core relevant costing principle — frequently tested</td><td>Sunk costs are costs already incurred and unrecoverable regardless of the decision made now — they have no bearing on future cash flows. Including them in a decision analysis (e.g. continuing a failing project because of money already spent) is a classic behavioural bias, not sound financial logic; only future, incremental, relevant costs should drive the decision.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Budgets (Plan) + Variances (Control)<br>
+      + Relevant Costs (Decisions)<br>
+      + Balanced Scorecard (Performance)<br>
+      = <strong style="color:var(--accent4);">The Complete Management Accounting Toolkit for Any MNC CFO</strong>
+    </div>
+    <h3>Plan the work. Work the plan. Measure everything.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 7: Revenue Recognition — IFRS 15 and the 5-step model every MNC finance team must master. 📊</p>
+  </div>
+
+</div>
+</body>
+</html>

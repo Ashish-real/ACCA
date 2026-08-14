@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 27: Advanced Performance Management</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(0,212,170,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent2); border:1px solid var(--accent2); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent2),#38bdf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent2); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent2); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent2); padding:14px 20px; background:rgba(0,212,170,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent2); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent2); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent2); background:rgba(0,212,170,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(0,212,170,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent2); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(0,212,170,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(0,212,170,0.07),rgba(56,189,248,0.05)); border:1px solid rgba(0,212,170,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent2); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(0,212,170,0.1); border:1px solid rgba(0,212,170,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(0,212,170,0.09),rgba(56,189,248,0.06)); border:1px solid rgba(0,212,170,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent2); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent2),#38bdf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 27 · ACCA APM</div>
+  <h1>Advanced Performance<br><span>Management</span></h1>
+  <p class="hero-sub">How large, complex organisations measure and manage performance across divisions — transfer pricing, ROI/RI divisional performance, the behavioural side of budgeting, and modern performance frameworks beyond the balanced scorecard.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">APM</div><div class="stat-label">Strategic Professional</div></div>
+    <div class="stat"><div class="stat-num">ROI/RI</div><div class="stat-label">Divisional Performance</div></div>
+    <div class="stat"><div class="stat-num">TP</div><div class="stat-label">Transfer Pricing</div></div>
+    <div class="stat"><div class="stat-num">Behavioural</div><div class="stat-label">Budgeting Aspects</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 27 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">27.1</span>What APM Adds Beyond PM</div>
+    <div class="toc-item"><span class="toc-num">27.2</span>Divisional Performance — ROI vs RI</div>
+    <div class="toc-item"><span class="toc-num">27.3</span>ROI vs RI — Worked Example & Goal Congruence</div>
+    <div class="toc-item"><span class="toc-num">27.4</span>Economic Value Added (EVA)</div>
+    <div class="toc-item"><span class="toc-num">27.5</span>EVA — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">27.6</span>The Balanced Scorecard — Strategic Application</div>
+    <div class="toc-item"><span class="toc-num">27.7</span>Building Block Model for Service Businesses</div>
+    <div class="toc-item"><span class="toc-num">27.8</span>Transfer Pricing — Why It Matters</div>
+    <div class="toc-item"><span class="toc-num">27.9</span>Transfer Pricing Methods</div>
+    <div class="toc-item"><span class="toc-num">27.10</span>Transfer Pricing — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">27.11</span>Behavioural Aspects of Budgeting</div>
+    <div class="toc-item"><span class="toc-num">27.12</span>Non-Financial Performance Indicators</div>
+    <div class="toc-item"><span class="toc-num">27.13</span>Performance Management in Not-for-Profit & Public Sector</div>
+    <div class="toc-item"><span class="toc-num">27.14</span>Big Data & Performance Management</div>
+    <div class="toc-item"><span class="toc-num">27.15</span>APM in Indian Conglomerates — Real World Context</div>
+    <div class="toc-item"><span class="toc-num">27.16</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">27.17</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">A large organisation with multiple divisions faces a fundamental performance management challenge: how do you measure and reward divisional managers fairly, when their decisions affect (and are affected by) other divisions? Advanced Performance Management builds on PM's foundational tools (Chapter 6 and 24) to tackle the genuinely hard problems of large, complex, multi-divisional organisations — where measurement systems shape BEHAVIOUR, not just report on it.</p>
+    <div class="quote">"What gets measured gets managed — which means a badly designed performance metric doesn't just fail to help. It actively drives the wrong behaviour."</div>
+  </div>
+
+  <!-- 27.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">27.1</div>
+      <div class="section-title">What APM Adds Beyond PM</div>
+    </div>
+    <table class="data-table">
+      <tr><th>PM (Applied Skills) Covers</th><th>APM (Strategic Professional) Adds</th></tr>
+      <tr><td>Standard costing, variance analysis</td><td>Divisional performance measurement (ROI, RI, EVA) and transfer pricing across divisions</td></tr>
+      <tr><td>Basic budgeting</td><td>The behavioural/dysfunctional side of budgeting — how measurement systems distort manager behaviour</td></tr>
+      <tr><td>Balanced Scorecard introduction</td><td>Modern strategic performance frameworks, big data's impact, non-profit performance measurement</td></tr>
+      <tr><td>Basic throughput/learning curve tools</td><td>Strategic-level application of these tools within genuinely complex, multi-division organisations</td></tr>
+    </table>
+  </div>
+
+  <!-- 27.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">27.2</div>
+      <div class="section-title">Divisional Performance — ROI vs RI</div>
+    </div>
+    <p class="prose">When a company is organised into divisions treated as "investment centres" (responsible for profit AND the capital invested to generate it), two competing measures are used to judge divisional performance — each with very different behavioural consequences.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Divisional Performance Formulas</div>
+      <div class="formula-row"><div class="formula-name">Return on Investment (ROI)</div><div class="formula-eq">Divisional Profit ÷ Divisional Capital Employed × 100</div></div>
+      <div class="formula-row"><div class="formula-name">Residual Income (RI)</div><div class="formula-eq">Divisional Profit − (Divisional Capital Employed × Company's Required/Cost of Capital Rate)</div></div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">ROI's Behavioural Problem</div>
+        <ul class="card-items">
+          <li>A % measure — divisional managers may REJECT a genuinely good new investment if its ROI is below their division's CURRENT (high) ROI, even if it's above the company's cost of capital</li>
+          <li>This is a classic case of measurement systems causing dysfunctional decision-making — "goal incongruence"</li>
+        </ul>
+        <div class="card-tag">Percentage Measure</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">RI's Advantage</div>
+        <ul class="card-items">
+          <li>An absolute ₹ measure — any investment earning ABOVE the required cost of capital rate increases RI</li>
+          <li>Encourages managers to accept ALL value-creating investments, regardless of the division's current average return</li>
+          <li>Better aligns divisional manager incentives with overall company (shareholder) value creation</li>
+        </ul>
+        <div class="card-tag">Absolute Measure — Better Aligned</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">27.3</div>
+      <div class="section-title">ROI vs RI — Worked Example & Goal Congruence</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Should Division X Accept a New Project?</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Division X currently has Profit = ₹40 Lakh, Capital Employed = ₹200 Lakh → Current ROI = 20%. Company's required return (cost of capital) = 12%.<br>
+        A new project requires ₹50 Lakh capital and generates ₹8 Lakh profit → Project ROI = 16%.<br><br>
+        <strong style="color:var(--text);">Under ROI (the problem):</strong><br>
+        New combined ROI = (₹40L + ₹8L) ÷ (₹200L + ₹50L) = ₹48L ÷ ₹250L = 19.2%<br>
+        This is LOWER than the division's current 20% ROI — the manager, evaluated on ROI, would likely REJECT this project to protect their reported ROI, even though the project's 16% return is well above the company's 12% required rate.<br><br>
+        <strong style="color:var(--text);">Under RI (the fix):</strong><br>
+        Current RI = ₹40L − (₹200L × 12%) = ₹40L − ₹24L = ₹16L<br>
+        Project's own RI = ₹8L − (₹50L × 12%) = ₹8L − ₹6L = <strong style="color:var(--accent2);">₹2L (positive)</strong><br>
+        New combined RI = ₹16L + ₹2L = ₹18L (an INCREASE from ₹16L)<br><br>
+        <strong style="color:var(--text);">Conclusion:</strong> RI correctly signals this project SHOULD be accepted (it increases residual income), while ROI incorrectly signals it should be REJECTED (it dilutes the division's percentage return) — this is the textbook example of ROI causing goal incongruence, and exactly why RI (and later, EVA) is generally considered the superior divisional performance measure.
+      </div>
+    </div>
+  </div>
+
+  <!-- 27.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">27.4</div>
+      <div class="section-title">Economic Value Added (EVA)</div>
+    </div>
+    <p class="prose">EVA is a refinement of RI, developed to more accurately reflect ECONOMIC (rather than purely accounting) profit and capital, by making specific adjustments to standard accounting figures.</p>
+    <div class="formula-block">
+      <div class="formula-header">EVA Formula</div>
+      <div class="formula-row"><div class="formula-name">EVA</div><div class="formula-eq">NOPAT (Net Operating Profit After Tax, Adjusted) − (WACC × Adjusted Capital Employed)</div></div>
+      <div class="formula-row"><div class="formula-name">Common Adjustments</div><div class="formula-eq">Add back R&D expenditure (capitalise it, since it creates future economic value like an asset); adjust for operating leases; remove non-cash provisions' distorting effects</div></div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why EVA Adjustments Matter</div>
+      Standard accounting expenses R&D immediately, which penalises innovative divisions in a standard RI calculation (heavy R&D spend reduces current profit, even though it builds future value). EVA capitalises R&D and other value-building "investments" that accounting treats as expenses — better reflecting genuine long-term economic performance, though at the cost of more complex calculation.
+    </div>
+  </div>
+
+  <!-- 27.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">27.5</div>
+      <div class="section-title">EVA — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Calculating EVA With R&D Adjustment</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Division reports accounting Net Operating Profit After Tax (NOPAT) = ₹8 Crore. During the year, ₹2 Crore was spent on R&D and fully expensed under normal accounting rules. Capital Employed (accounting basis) = ₹40 Crore. WACC = 12%. For EVA purposes, R&D is capitalised and amortised over 4 years (i.e., added back to profit less one year's amortisation, and added to capital employed).<br><br>
+        <strong style="color:var(--text);">Step 1 — Adjust NOPAT for EVA purposes:</strong><br>
+        Add back full R&D expense: +₹2 Crore<br>
+        Less EVA amortisation of R&D (₹2 Cr ÷ 4 years): −₹0.5 Crore<br>
+        Adjusted NOPAT = ₹8 Cr + ₹2 Cr − ₹0.5 Cr = <strong style="color:#4ade80;">₹9.5 Crore</strong><br><br>
+        <strong style="color:var(--text);">Step 2 — Adjust Capital Employed for EVA purposes:</strong><br>
+        Add back the R&D asset now being "capitalised" (unamortised balance, assumed ₹2 Cr in year of spend): +₹2 Crore<br>
+        Adjusted Capital Employed = ₹40 Cr + ₹2 Cr = <strong style="color:#4ade80;">₹42 Crore</strong><br><br>
+        <strong style="color:var(--text);">Step 3 — Calculate EVA:</strong><br>
+        EVA = Adjusted NOPAT − (WACC × Adjusted Capital Employed)<br>
+        = ₹9.5 Cr − (12% × ₹42 Cr) = ₹9.5 Cr − ₹5.04 Cr = <strong style="color:#4ade80;">₹4.46 Crore</strong><br><br>
+        <strong style="color:var(--text);">Compare to standard RI (no adjustments):</strong><br>
+        RI = ₹8 Cr − (12% × ₹40 Cr) = ₹8 Cr − ₹4.8 Cr = ₹3.2 Crore<br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> EVA (₹4.46 Cr) is HIGHER than standard RI (₹3.2 Cr) here, because capitalising R&D instead of fully expensing it in the current year better reflects that R&D builds long-term value rather than being a pure current-period cost — this prevents penalising an innovative division for its R&D investment in the same period it's spent, giving a truer picture of genuine economic value creation.
+      </div>
+    </div>
+  </div>
+
+  <!-- 27.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">27.6</div>
+      <div class="section-title">The Balanced Scorecard — Strategic Application</div>
+    </div>
+    <p class="prose">The Balanced Scorecard (introduced at foundation level in Chapter 6) becomes a genuinely strategic tool at APM level — used to translate high-level strategy into specific, measurable, cascaded objectives across the organisation.</p>
+    <table class="data-table">
+      <tr><th>Perspective</th><th>Strategic Question</th><th>Example Measures</th></tr>
+      <tr><td>Financial</td><td>How do we look to shareholders?</td><td>ROI, RI, revenue growth, cost efficiency</td></tr>
+      <tr><td>Customer</td><td>How do customers see us?</td><td>Market share, customer satisfaction, retention rate</td></tr>
+      <tr><td>Internal Business Process</td><td>What must we excel at internally?</td><td>Cycle time, defect rate, process innovation</td></tr>
+      <tr><td>Learning & Growth</td><td>Can we continue to improve and create value?</td><td>Employee skills/training, IT capability, innovation pipeline</td></tr>
+    </table>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Strategic Insight — Cause and Effect Linkages</div>
+      At APM level, the Balanced Scorecard is understood as a chain of CAUSE AND EFFECT: investment in Learning & Growth (e.g. staff training) improves Internal Processes (e.g. fewer errors), which improves the Customer perspective (e.g. satisfaction), which ultimately drives the Financial perspective (e.g. revenue growth). This "strategy map" logic — rather than treating the four perspectives as a simple checklist — is what distinguishes sophisticated Balanced Scorecard application from a superficial one, and is specifically what APM exams test.
+    </div>
+  </div>
+
+  <!-- 27.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">27.7</div>
+      <div class="section-title">Building Block Model for Service Businesses</div>
+    </div>
+    <p class="prose">Fitzgerald and Moon's <strong>Building Block Model</strong> was developed specifically to address performance measurement challenges unique to SERVICE businesses (as opposed to manufacturing), where output is intangible, simultaneous with consumption, and harder to standardise.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🧱</div>
+        <div class="card-title">Dimensions (What to Measure)</div>
+        <ul class="card-items">
+          <li><strong>Competitive:</strong> market share, sales growth</li>
+          <li><strong>Financial:</strong> profitability, liquidity, capital structure</li>
+          <li><strong>Quality of Service:</strong> reliability, responsiveness, competence, courtesy</li>
+          <li><strong>Flexibility:</strong> ability to adapt to changing customer needs</li>
+          <li><strong>Resource Utilisation:</strong> efficiency of resource use</li>
+          <li><strong>Innovation:</strong> ability to develop new services/processes</li>
+        </ul>
+        <div class="card-tag">6 Dimensions</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Standards (How to Set Targets)</div>
+        <ul class="card-items">
+          <li>Standards must be: OWNED by those being measured (buy-in), ACHIEVABLE (realistic), and EQUITABLE (fair across different units/individuals)</li>
+        </ul>
+        <div class="card-tag">Target-Setting Principles</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏆</div>
+        <div class="card-title">Rewards (How to Motivate)</div>
+        <ul class="card-items">
+          <li>Reward systems must be CLEAR (understood), MOTIVATING (staff actually care about them), and CONTROLLABLE (staff can genuinely influence the outcome being rewarded)</li>
+        </ul>
+        <div class="card-tag">Motivation Principles</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">💡 Why Service Businesses Need a Different Model</div>
+      Manufacturing performance frameworks often over-emphasise easily quantifiable output measures (units produced, defect rates), which don't translate well to services where quality is often subjective and experienced differently by each customer (e.g. a consulting engagement, a hospital visit, a legal service). The Building Block Model explicitly incorporates service-specific dimensions like flexibility and quality of service that a purely manufacturing-oriented framework would miss entirely.
+    </div>
+  </div>
+
+  <!-- 27.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">27.8</div>
+      <div class="section-title">Transfer Pricing — Why It Matters</div>
+    </div>
+    <p class="prose">When one division of a company sells goods/services to ANOTHER division of the same company, a "transfer price" must be set for that internal transaction. This single price determines the SELLING division's revenue and the BUYING division's cost — meaning it directly reallocates reported profit between divisions, even though no external money changes hands.</p>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Core Tension</div>
+      A transfer price that's fair and motivating for the selling division may be unfair and demotivating for the buying division, and vice versa. The ideal transfer price should: (1) promote goal congruence — the price that's right for divisions should also be right for the company overall, (2) preserve divisional autonomy where possible, and (3) allow fair performance evaluation of each division independently.
+    </div>
+  </div>
+
+  <!-- 27.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">27.9</div>
+      <div class="section-title">Transfer Pricing Methods</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Method</th><th>How It Works</th><th>Key Issue</th></tr>
+      <tr><td>Market Price</td><td>Transfer price = the price the selling division could get selling externally</td><td>Best when a genuine external market exists — gives fair, objective pricing signal</td></tr>
+      <tr><td>Cost-Based (Full Cost)</td><td>Transfer price = full absorption cost of production</td><td>Selling division earns NO profit on internal sales — demotivating, doesn't reflect true value</td></tr>
+      <tr><td>Cost-Plus</td><td>Transfer price = Cost + a profit margin</td><td>Fairer than pure cost, but the margin % is often arbitrarily set and can still cause disputes</td></tr>
+      <tr><td>Marginal Cost</td><td>Transfer price = variable/marginal cost only</td><td>Promotes goal congruence for short-term capacity decisions, but selling division earns zero contribution — poor for performance evaluation</td></tr>
+      <tr><td>Negotiated Price</td><td>Divisions negotiate the price between themselves, like independent businesses</td><td>Preserves autonomy and can find a fair middle ground, but can be time-consuming and result in disputes needing head office arbitration</td></tr>
+    </table>
+  </div>
+
+  <!-- 27.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">27.10</div>
+      <div class="section-title">Transfer Pricing — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Setting a Transfer Price With Spare Capacity</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Division A produces a component at variable cost ₹200/unit, fixed cost ₹50/unit (at full capacity). External market price for the component = ₹320/unit. Division B needs 1,000 units and could buy externally at ₹320, or from Division A internally.<br><br>
+        <strong style="color:var(--text);">Scenario 1 — Division A has NO spare capacity (selling all output externally at ₹320):</strong><br>
+        Transfer price should be the MARKET PRICE (₹320) — this represents Division A's true opportunity cost of diverting units from external sale to internal transfer. Any lower price makes Division A worse off than selling externally, causing goal incongruence.<br><br>
+        <strong style="color:var(--text);">Scenario 2 — Division A HAS spare capacity (not selling all output):</strong><br>
+        Minimum acceptable transfer price = Variable Cost only = ₹200 (no opportunity cost of lost external sales, since the capacity would otherwise sit idle). Any transfer price between ₹200 (A's minimum) and ₹320 (B's maximum, since B could otherwise buy externally at that price) makes BOTH divisions better off than their alternatives — commonly negotiated somewhere in this range, e.g. ₹250-260.
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The General Transfer Pricing Rule</div>
+      Minimum Transfer Price = Marginal (Variable) Cost + Opportunity Cost of Lost Contribution (₹0 if there's spare capacity, or the lost external contribution if operating at full capacity). This single rule underlies most ACCA APM transfer pricing questions.
+    </div>
+  </div>
+
+  <!-- 27.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">27.11</div>
+      <div class="section-title">Behavioural Aspects of Budgeting</div>
+    </div>
+    <p class="prose">Budgets aren't neutral, objective plans — they shape how people behave, and poorly designed budgeting processes can actively encourage dysfunctional behaviour.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎭</div>
+        <div class="card-title">Budgetary Slack</div>
+        <ul class="card-items">
+          <li>Managers deliberately understate revenue forecasts or overstate cost forecasts to make targets easier to hit</li>
+          <li>Rooted in the fear of being punished for missing an aggressive, honestly-set target</li>
+          <li>Reduced by tying rewards to improvement/stretch rather than punishing any miss, and using participative budgeting carefully</li>
+        </ul>
+        <div class="card-tag">Gaming the System</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏃</div>
+        <div class="card-title">Spend-It-Or-Lose-It Behaviour</div>
+        <ul class="card-items">
+          <li>Managers rush to spend remaining budget near year-end to avoid a reduced budget next year — even on low-value spending</li>
+          <li>A direct, predictable consequence of a rigid "use it or lose it" annual budgeting structure</li>
+        </ul>
+        <div class="card-tag">Year-End Distortion</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Target Setting Difficulty (Top-Down vs Bottom-Up)</div>
+        <ul class="card-items">
+          <li>Top-down targets risk being unrealistic/demotivating if set without operational input</li>
+          <li>Bottom-up targets risk embedding slack if managers control their own target-setting entirely</li>
+          <li>Most effective approach: participative budgeting with senior management review/challenge of submitted figures</li>
+        </ul>
+        <div class="card-tag">Process Design</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">27.12</div>
+      <div class="section-title">Non-Financial Performance Indicators</div>
+    </div>
+    <p class="prose">Financial measures alone are inherently backward-looking and can be manipulated short-term (e.g. cutting R&D or maintenance to boost this quarter's profit). Non-financial indicators capture leading, forward-looking performance signals financial measures miss.</p>
+    <table class="data-table">
+      <tr><th>Category</th><th>Example Metrics</th><th>Why It Matters</th></tr>
+      <tr><td>Customer</td><td>Net Promoter Score, customer retention rate, complaint volume</td><td>Predicts future revenue before it shows up in financial results</td></tr>
+      <tr><td>Quality</td><td>Defect rate, first-pass yield, on-time delivery %</td><td>Leading indicator of future rework costs, customer satisfaction, and brand reputation</td></tr>
+      <tr><td>Employee</td><td>Staff turnover, engagement scores, training hours</td><td>High turnover predicts future recruitment cost, knowledge loss, and quality issues</td></tr>
+      <tr><td>Innovation</td><td>% revenue from new products, R&D pipeline metrics</td><td>Signals whether the business is investing in future competitiveness, not just harvesting current products</td></tr>
+    </table>
+  </div>
+
+  <!-- 27.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">27.13</div>
+      <div class="section-title">Performance Management in Not-for-Profit & Public Sector</div>
+    </div>
+    <p class="prose">Without a profit motive, performance measurement in NFP/public sector organisations relies heavily on the "3 Es" framework.</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">ECONOMY</div><div class="step-content">Acquiring resources of the right quality at the lowest cost — "doing things cheaply"</div></div>
+      <div class="step-item"><div class="step-num">EFFICIENCY</div><div class="step-content">Maximising output from a given level of input resources — "doing things right"</div></div>
+      <div class="step-item"><div class="step-num">EFFECTIVENESS</div><div class="step-content">Achieving the actual intended outcomes/objectives — "doing the right things"</div></div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">💡 Why This Matters — VFM (Value For Money)</div>
+      Together, the 3 Es form the "Value For Money" framework central to public sector and NFP performance evaluation. It's entirely possible to be highly economical and efficient while being completely ineffective (e.g. cheaply and quickly delivering a service nobody actually needed) — good VFM analysis requires all three to be genuinely achieved together.
+    </div>
+  </div>
+
+  <!-- 27.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">27.14</div>
+      <div class="section-title">Big Data & Performance Management</div>
+    </div>
+    <p class="prose">Modern performance management increasingly incorporates real-time, high-volume data analytics — moving beyond periodic (monthly/quarterly) reporting toward continuous performance monitoring.</p>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Shift Big Data Enables</div>
+      Traditional performance management relies on structured, periodic financial reports. Big data allows continuous, real-time dashboards drawing on operational data (website traffic, machine sensor data, social media sentiment) alongside financial data — enabling much faster identification of emerging performance issues, but also raising new challenges around data quality, integration complexity, and the risk of information overload without clear analytical focus.
+    </div>
+  </div>
+
+  <!-- 27.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">27.15</div>
+      <div class="section-title">APM in Indian Conglomerates — Real World Context</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Concept</th><th>Indian Application</th></tr>
+      <tr><td>Divisional Performance</td><td>Large Indian conglomerates (Tata Group, Reliance, Aditya Birla Group) manage dozens of operating companies/divisions, using RI/EVA-style metrics to evaluate capital allocation across very different businesses</td></tr>
+      <tr><td>Transfer Pricing</td><td>Beyond internal management accounting, transfer pricing has major TAX implications in India under Income Tax Act transfer pricing regulations for cross-border related-party transactions, requiring arm's length pricing documentation</td></tr>
+      <tr><td>Public Sector VFM</td><td>CAG (Comptroller and Auditor General) audits of government schemes explicitly assess economy, efficiency, and effectiveness of public spending</td></tr>
+    </table>
+  </div>
+
+  <!-- 27.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">27.16</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">RI Beats ROI for Goal Congruence</div><ul class="card-items"><li>ROI can cause rejection of genuinely good projects</li><li>RI (and EVA) correctly signal value-creating investments</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Minimum Transfer Price = Variable Cost + Opportunity Cost</div><ul class="card-items"><li>No spare capacity → use market price</li><li>Spare capacity → variable cost is the floor</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Budgets Shape Behaviour, Not Just Report It</div><ul class="card-items"><li>Budgetary slack and spend-it-or-lose-it are predictable consequences</li><li>Process design matters as much as the numbers</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">3 Es Frame Public Sector Performance</div><ul class="card-items"><li>Economy + Efficiency + Effectiveness = Value For Money</li><li>Being efficient at the wrong thing still fails</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 27 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Work through the ROI vs RI goal congruence example from scratch</span>
+        <span class="tag teal">✅ Practice the minimum transfer price rule for both spare-capacity and full-capacity scenarios</span>
+        <span class="tag teal">✅ Identify 3 non-financial KPIs relevant to a business you know well</span>
+        <span class="tag teal">✅ Apply the 3 Es framework to evaluate a public service or NFP programme you're familiar with</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27.17 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">27.17</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Assuming Managers Always Accept Value-Creating Projects Under ROI</strong><br>
+        A project with a positive NPV/return above the cost of capital can still REDUCE a division's current ROI if that division's existing ROI is unusually high — a manager evaluated purely on ROI has a real incentive to reject it, even though it's genuinely good for the company.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Using Full Cost as the Transfer Price When Spare Capacity Exists</strong><br>
+        When a selling division has spare capacity, the minimum transfer price should be based on VARIABLE cost only (no opportunity cost) — using full absorption cost (including fixed cost) as the floor overstates the true minimum and can cause the buying division to reject internally-beneficial transfers.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Ignoring Opportunity Cost When Setting Transfer Prices at Full Capacity</strong><br>
+        When a selling division is operating at full capacity and could sell everything externally, the transfer price must reflect the LOST external contribution (opportunity cost) — setting it below market price without this consideration undercompensates the selling division and causes goal incongruence.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Treating Budgetary Slack as Simple Dishonesty Rather Than a System Design Issue</strong><br>
+        Blaming individual managers for budgetary slack misses that it's usually a predictable, rational RESPONSE to how the budgeting/reward system is designed — fixing it requires redesigning incentives (e.g. rewarding accuracy and improvement, not just target-hitting), not just moral appeals.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Confusing Efficiency With Effectiveness in VFM Analysis</strong><br>
+        A programme can be highly efficient (low cost per unit of output) while being completely ineffective (the output doesn't achieve the actual intended objective). Both must be assessed — high efficiency alone doesn't demonstrate good Value For Money.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Treating the Balanced Scorecard's Four Perspectives as Independent, Unconnected Measures</strong><br>
+        The real strategic power of the Balanced Scorecard comes from understanding the CAUSE-AND-EFFECT chain linking Learning & Growth → Internal Process → Customer → Financial. Treating each perspective as a standalone checklist of metrics, without understanding how they drive each other, misses the entire strategic logic behind the framework.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Applying a Manufacturing-Oriented Framework Directly to a Service Business</strong><br>
+        Service businesses have fundamentally different performance characteristics (intangibility, simultaneity of production and consumption, harder-to-standardise quality) — the Building Block Model's service-specific dimensions (flexibility, quality of service) address this, and applying purely manufacturing-style output/efficiency metrics to a service context misses what actually matters to service customers.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Setting Reward Systems That Reward Outcomes Staff Cannot Control</strong><br>
+        Per the Building Block Model's "Rewards" component, a reward system must be CONTROLLABLE — rewarding a divisional manager for a company-wide share price movement they have little influence over, for example, demotivates rather than motivates, since it's a poorly designed link between effort and reward.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">ROI vs RI</div>
+        <ul class="card-items">
+          <li><strong>Q: Which measure — ROI or RI — better promotes goal congruence?</strong></li>
+          <li>A: RI (Residual Income) — it's an absolute measure that correctly signals all value-creating investments</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Minimum Transfer Price</div>
+        <ul class="card-items">
+          <li><strong>Q: State the general minimum transfer price rule.</strong></li>
+          <li>A: Marginal Cost + Opportunity Cost of Lost Contribution (₹0 if spare capacity exists)</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">EVA Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: State the EVA formula.</strong></li>
+          <li>A: NOPAT (adjusted) − (WACC × Adjusted Capital Employed)</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">The 3 Es</div>
+        <ul class="card-items">
+          <li><strong>Q: What are the 3 Es of Value For Money?</strong></li>
+          <li>A: Economy, Efficiency, Effectiveness</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Budgetary Slack</div>
+        <ul class="card-items">
+          <li><strong>Q: What is budgetary slack?</strong></li>
+          <li>A: Deliberately underestimating revenue or overestimating costs to make targets easier to hit</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Balanced Scorecard Chain</div>
+        <ul class="card-items">
+          <li><strong>Q: What's the cause-and-effect order of the 4 Balanced Scorecard perspectives?</strong></li>
+          <li>A: Learning & Growth → Internal Process → Customer → Financial</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Building Block Model</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 3 components of the Building Block Model.</strong></li>
+          <li>A: Dimensions, Standards, Rewards</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Standards Criteria</div>
+        <ul class="card-items">
+          <li><strong>Q: What 3 criteria should performance standards meet, per the Building Block Model?</strong></li>
+          <li>A: Owned, Achievable, Equitable</li>
+        </ul>
+        <div class="card-tag">Flashcard 8</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Why might a divisional manager reject a good investment opportunity, and how would you fix it?"</td><td>Understanding of goal congruence and measurement system design</td><td>If evaluated on ROI, a manager might reject a project earning above the company's cost of capital but below their division's current average ROI, since it would dilute their reported percentage return. Switching the performance measure to Residual Income fixes this — RI rewards any project earning above the required rate as an absolute value increase, correctly aligning the manager's incentive with genuine value creation.</td></tr>
+      <tr><td>"How would you set a transfer price between two divisions of the same company?"</td><td>Practical application of transfer pricing principles</td><td>I'd first check whether the selling division has spare capacity. If it does, the minimum acceptable price is the variable cost (no opportunity cost from lost external sales). If it's operating at full capacity, the transfer price should reflect the market price or lost external contribution, since diverting output internally has a genuine opportunity cost. The final negotiated price should sit between the selling division's minimum and the buying division's maximum (what they'd pay externally), and should also consider tax transfer pricing rules if it's a cross-border transaction.</td></tr>
+      <tr><td>"What is budgetary slack, and how would you reduce it in an organisation?"</td><td>Awareness of the behavioural/human side of management accounting</td><td>Budgetary slack is when managers deliberately build in a buffer — understating revenue or overstating costs — to make targets easier to achieve, usually driven by fear of punishment for missing an honest target. Reducing it involves redesigning incentives to reward accuracy and improvement over time rather than simple target-hitting, involving managers genuinely in setting targets (participative budgeting) while having senior management critically review and challenge submissions, and fostering a culture where honest forecasting isn't punished.</td></tr>
+      <tr><td>"How would you use the Balanced Scorecard to translate a company's strategy into day-to-day operations?"</td><td>Strategic application ability beyond rote definition</td><td>I'd start from the Financial perspective's ultimate goal, then work backward asking what Customer outcomes drive that goal, what Internal Processes need to excel to deliver those customer outcomes, and what Learning & Growth investments (skills, systems, culture) are needed to enable those processes — building an explicit "strategy map" of cause-and-effect linkages, then setting specific measurable targets at each level so that day-to-day operational metrics genuinely connect back to the top-level strategic objective, rather than existing in isolation.</td></tr>
+      <tr><td>"Why might standard manufacturing performance metrics be inappropriate for a professional services firm?"</td><td>Applied understanding of service-specific performance measurement</td><td>Manufacturing metrics like units-produced or defect rate assume a tangible, standardised, inventory-able output — but a service (like a consulting engagement or legal advice) is intangible, produced and consumed simultaneously, and quality is often subjectively experienced by each client differently. The Building Block Model's dimensions — particularly flexibility (adapting to each client's specific needs) and quality of service (reliability, responsiveness, courtesy) — capture what actually drives service business performance in a way that manufacturing-oriented output metrics simply cannot.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Divisional Performance (ROI vs RI vs EVA)<br>
+      + Transfer Pricing (Goal Congruence Across Divisions)<br>
+      + Behavioural Budgeting (Measurement Shapes Behaviour)<br>
+      + Non-Financial KPIs + VFM (3 Es)<br>
+      = <strong style="color:var(--accent2);">Performance Management for Genuinely Complex Organisations</strong>
+    </div>
+    <h3>Chapter 27: Advanced Performance Management — Complete 📊🎯</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 28: Advanced Taxation (ATX) — corporate tax planning, international tax, and Indian tax law depth. 🚀</p>
+  </div>
+
+</div>
+</body>
+</html>

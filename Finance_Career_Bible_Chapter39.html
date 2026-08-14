@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 39: Excel Mastery</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #4ade80; --accent2: #6c63ff; --accent3: #00d4aa; --accent4: #ffd93d;
+    --accent5: #ff6b6b; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(74,222,128,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:#e879f9; border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent3); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent5); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent2); border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:var(--accent);  border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent); padding:14px 20px; background:rgba(74,222,128,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent); background:rgba(74,222,128,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(74,222,128,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(74,222,128,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(74,222,128,0.07),rgba(108,99,255,0.05)); border:1px solid rgba(74,222,128,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(74,222,128,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .shortcut-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:10px; margin-top:14px; }
+  .shortcut-item { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:12px 16px; display:flex; justify-content:space-between; align-items:center; }
+  .shortcut-key { font-family:var(--mono); font-size:11px; color:var(--accent); background:rgba(74,222,128,0.1); padding:3px 8px; border-radius:4px; white-space:nowrap; }
+  .shortcut-desc { font-size:12px; color:var(--muted); }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.2); color:var(--text); }
+  .tag.green { color:var(--accent); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(74,222,128,0.09),rgba(108,99,255,0.06)); border:1px solid rgba(74,222,128,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .code { font-family:var(--mono); font-size:12px; color:var(--accent); background:rgba(74,222,128,0.08); border:1px solid rgba(74,222,128,0.2); padding:2px 8px; border-radius:4px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 39</div>
+  <h1>Excel<br><span>Mastery</span></h1>
+  <p class="hero-sub">The single most important technical tool in finance. From basic formulas to advanced financial modelling — master Excel and you become 10x more productive, more accurate, and more valuable in any finance role. This is the chapter that will transform your daily work.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">#1</div><div class="stat-label">Finance Tool Globally</div></div>
+    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Functions Available</div></div>
+    <div class="stat"><div class="stat-num">Big 4</div><div class="stat-label">Uses It Daily</div></div>
+    <div class="stat"><div class="stat-num">10x</div><div class="stat-label">Productivity Multiplier</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 39 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">39.1</span>Why Excel is the #1 Finance Tool — And Always Will Be</div>
+    <div class="toc-item"><span class="toc-num">39.2</span>Excel Fundamentals — Setup, Navigation & Best Practices</div>
+    <div class="toc-item"><span class="toc-num">39.3</span>Essential Keyboard Shortcuts — Speed is Everything</div>
+    <div class="toc-item"><span class="toc-num">39.4</span>Core Formulas Every Finance Professional Must Know</div>
+    <div class="toc-item"><span class="toc-num">39.5</span>Lookup Functions — VLOOKUP, HLOOKUP, INDEX-MATCH, XLOOKUP</div>
+    <div class="toc-item"><span class="toc-num">39.6</span>Logical & Conditional Functions — IF, IFS, SUMIF, COUNTIF, AVERAGEIF</div>
+    <div class="toc-item"><span class="toc-num">39.7</span>Date & Text Functions — Essential for Data Cleaning</div>
+    <div class="toc-item"><span class="toc-num">39.8</span>Financial Functions — NPV, IRR, PMT, FV, PV</div>
+    <div class="toc-item"><span class="toc-num">39.9</span>PivotTables — The Most Powerful Data Analysis Tool</div>
+    <div class="toc-item"><span class="toc-num">39.10</span>Charts & Data Visualisation in Excel</div>
+    <div class="toc-item"><span class="toc-num">39.11</span>Data Validation, Conditional Formatting & Named Ranges</div>
+    <div class="toc-item"><span class="toc-num">39.12</span>What-If Analysis — Goal Seek, Scenario Manager & Data Tables</div>
+    <div class="toc-item"><span class="toc-num">39.13</span>Financial Modelling in Excel — Best Practices & Structure</div>
+    <div class="toc-item"><span class="toc-num">39.14</span>Power Query & Power Pivot — Next Level Data</div>
+    <div class="toc-item"><span class="toc-num">39.15</span>VBA & Macros — Automation Basics</div>
+    <div class="toc-item"><span class="toc-num">39.16</span>Key Takeaways, Common Mistakes & Action Steps</div>
+  </div>
+
+  <!-- 39.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">39.1</div>
+      <div class="section-title">Why Excel is the #1 Finance Tool — And Always Will Be</div>
+    </div>
+    <p class="prose">Despite the rise of Python, Power BI, and AI tools, Excel remains the <strong>universal language of finance</strong>. Every investment banker, Big 4 analyst, CFO, and financial controller uses Excel daily. It is the tool that connects financial theory to real-world practice.</p>
+
+    <div class="quote">"Excel is the most widely used financial modelling tool in the world. If you want to work in finance, you need to master it — not just know it." — Every Big 4 Partner Ever</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">How Excel is Used in Finance Roles</div>
+        <ul class="card-items">
+          <li><strong>Investment Banking:</strong> DCF models, LBO models, M&A merger models, comparables analysis, pitch books — all built in Excel. Analysts spend 60-80% of their time in Excel.</li>
+          <li><strong>FP&A / Corporate Finance:</strong> Annual budgets, rolling forecasts, variance analysis, management reporting — all Excel-based</li>
+          <li><strong>Accounting / Big 4:</strong> Trial balance work, audit working papers, reconciliations, financial statement analysis</li>
+          <li><strong>Equity Research:</strong> Company models, DCF valuations, ratio analysis, earnings models</li>
+          <li><strong>Risk Management:</strong> VaR models, scenario analysis, stress testing, credit models</li>
+          <li><strong>Treasury:</strong> Cash flow forecasting, FX position tracking, hedging calculations</li>
+          <li><strong>Tax:</strong> Tax computation, deferred tax schedules, transfer pricing analysis</li>
+        </ul>
+        <div class="card-tag">Every Finance Role</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Excel Skill Levels — Where Are You?</div>
+        <ul class="card-items">
+          <li><strong>Level 1 — Basic:</strong> SUM, AVERAGE, basic charts, simple formatting. Everyone has this. Not enough for finance.</li>
+          <li><strong>Level 2 — Intermediate:</strong> VLOOKUP, IF statements, PivotTables, conditional formatting, keyboard shortcuts. Minimum for most finance roles.</li>
+          <li><strong>Level 3 — Advanced:</strong> INDEX-MATCH, array formulas, complex nested IFs, dynamic charts, financial functions (NPV/IRR), data tables. Expected at Big 4 / IB analyst level.</li>
+          <li><strong>Level 4 — Expert:</strong> Power Query, Power Pivot, VBA/Macros, advanced financial modelling, dynamic arrays (FILTER/SORT/UNIQUE). Differentiates top performers.</li>
+          <li>Goal of this chapter: take you from wherever you are to Level 3-4.</li>
+        </ul>
+        <div class="card-tag">Skill Levels</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <div class="card-title">Why Excel Still Beats Everything</div>
+        <ul class="card-items">
+          <li><strong>Universal:</strong> Every company has Excel. No compatibility issues. Works everywhere.</li>
+          <li><strong>Flexible:</strong> Can model anything — no rigid structure. Finance needs flexibility.</li>
+          <li><strong>Transparent:</strong> Every formula visible — auditable. Critical for finance where errors can cost millions.</li>
+          <li><strong>Shareable:</strong> Send a .xlsx file to anyone — no special software needed to view.</li>
+          <li><strong>Integrated:</strong> Works with Power BI, Python, SQL, Outlook, Word, PowerPoint — hub of the finance workflow.</li>
+          <li><strong>Constantly Improving:</strong> Microsoft adds powerful new functions every year (XLOOKUP, FILTER, SORT, dynamic arrays, Python in Excel)</li>
+        </ul>
+        <div class="card-tag">Why Excel Wins</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">39.2</div>
+      <div class="section-title">Excel Fundamentals — Setup, Navigation & Best Practices</div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">Essential Excel Settings to Change First</div>
+        <ul class="card-items">
+          <li><strong>Show Formula Bar:</strong> View → Formula Bar → Always ON. See every formula.</li>
+          <li><strong>Show Gridlines:</strong> View → Gridlines → ON for working, OFF for presentations</li>
+          <li><strong>Calculation Mode:</strong> Formulas → Calculation Options → Automatic (always). Manual only for very large models that slow down.</li>
+          <li><strong>AutoRecover:</strong> File → Options → Save → Set to every 5 minutes. Saves you from losing work.</li>
+          <li><strong>Number of Sheets:</strong> File → Options → General → Start with 1 sheet (not 3)</li>
+          <li><strong>R1C1 Reference Style:</strong> Must be OFF (File → Options → Formulas). Keep A1 style.</li>
+          <li><strong>Quick Access Toolbar:</strong> Add your most-used commands — Paste Special, Print Preview, Freeze Panes</li>
+        </ul>
+        <div class="card-tag">Setup First</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <div class="card-title">Workbook Structure Best Practices</div>
+        <ul class="card-items">
+          <li><strong>Separate tabs by purpose:</strong> Inputs/Assumptions → Calculations → Outputs. Never mix raw data with formulas with outputs.</li>
+          <li><strong>Colour code tabs:</strong> Right-click tab → Tab Color. Green = inputs, Blue = calculations, Orange = outputs, Red = instructions</li>
+          <li><strong>Name your sheets clearly:</strong> "Revenue Model" not "Sheet1". "Balance Sheet" not "BS".</li>
+          <li><strong>Inputs in one place:</strong> All assumptions on one dedicated sheet. Formulas reference this sheet. Change one input → everything updates.</li>
+          <li><strong>Documentation:</strong> First tab = Instructions/README — explain what the model does, key assumptions, who built it, when last updated</li>
+          <li><strong>Version control:</strong> Save versions — "Model_v1.0_2024-01-15.xlsx". Never overwrite the only copy.</li>
+        </ul>
+        <div class="card-tag">Structure</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <div class="card-title">Formatting for Finance — The Standard</div>
+        <ul class="card-items">
+          <li><strong>Blue font:</strong> Hard-coded inputs (numbers typed directly). Convention: blue = inputs, black = formulas</li>
+          <li><strong>Black font:</strong> Formulas (should never type a number directly in a formula cell)</li>
+          <li><strong>Red font / brackets:</strong> Negative numbers — standard in finance P&L and cash flow</li>
+          <li><strong>Number formatting:</strong> Thousands separator (1,000), 1-2 decimal places, consistent across model</li>
+          <li><strong>Headers:</strong> Bold, background colour (dark blue or grey), white font — clear visual hierarchy</li>
+          <li><strong>Borders:</strong> Use sparingly — top border for subtotals, double bottom border for totals. Don't over-border.</li>
+          <li><strong>Column widths:</strong> Consistent and readable. Don't use merged cells (breaks formula references).</li>
+        </ul>
+        <div class="card-tag">Finance Standard</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">39.3</div>
+      <div class="section-title">Essential Keyboard Shortcuts — Speed is Everything</div>
+      <div class="section-meta">Memorise These First</div>
+    </div>
+    <p class="prose">Speed in Excel is not about typing faster — it is about using keyboard shortcuts so your hands never leave the keyboard. A skilled Excel user does in 5 minutes what an unskilled one takes 30 minutes to do. These shortcuts are non-negotiable for finance roles.</p>
+
+    <p class="section-label">Navigation Shortcuts</p>
+    <div class="shortcut-grid">
+      <div class="shortcut-item"><span class="shortcut-desc">Move to edge of data region</span><span class="shortcut-key">Ctrl + Arrow</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Select to edge of data region</span><span class="shortcut-key">Ctrl + Shift + Arrow</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Go to cell A1</span><span class="shortcut-key">Ctrl + Home</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Go to last used cell</span><span class="shortcut-key">Ctrl + End</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Move between sheets</span><span class="shortcut-key">Ctrl + PgUp/PgDn</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Go to specific cell</span><span class="shortcut-key">Ctrl + G / F5</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Select entire row</span><span class="shortcut-key">Shift + Spacebar</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Select entire column</span><span class="shortcut-key">Ctrl + Spacebar</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Select entire worksheet</span><span class="shortcut-key">Ctrl + A</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Find & Replace</span><span class="shortcut-key">Ctrl + H</span></div>
+    </div>
+
+    <p class="section-label">Editing Shortcuts</p>
+    <div class="shortcut-grid">
+      <div class="shortcut-item"><span class="shortcut-desc">Copy</span><span class="shortcut-key">Ctrl + C</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Cut</span><span class="shortcut-key">Ctrl + X</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Paste</span><span class="shortcut-key">Ctrl + V</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Paste Special (CRITICAL)</span><span class="shortcut-key">Ctrl + Alt + V</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Undo</span><span class="shortcut-key">Ctrl + Z</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Redo</span><span class="shortcut-key">Ctrl + Y</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Fill Down</span><span class="shortcut-key">Ctrl + D</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Fill Right</span><span class="shortcut-key">Ctrl + R</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Insert row/column</span><span class="shortcut-key">Ctrl + Shift + +</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Delete row/column</span><span class="shortcut-key">Ctrl + -</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Edit cell</span><span class="shortcut-key">F2</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Show all formulas</span><span class="shortcut-key">Ctrl + `</span></div>
+    </div>
+
+    <p class="section-label">Formatting Shortcuts</p>
+    <div class="shortcut-grid">
+      <div class="shortcut-item"><span class="shortcut-desc">Bold</span><span class="shortcut-key">Ctrl + B</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Italic</span><span class="shortcut-key">Ctrl + I</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Underline</span><span class="shortcut-key">Ctrl + U</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Format Cells dialog</span><span class="shortcut-key">Ctrl + 1</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Number format</span><span class="shortcut-key">Ctrl + Shift + 1</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Currency format</span><span class="shortcut-key">Ctrl + Shift + 4</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Percentage format</span><span class="shortcut-key">Ctrl + Shift + 5</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">AutoFit column width</span><span class="shortcut-key">Alt + H + O + I</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Freeze Panes</span><span class="shortcut-key">Alt + W + F + F</span></div>
+      <div class="shortcut-item"><span class="shortcut-desc">Filter toggle</span><span class="shortcut-key">Ctrl + Shift + L</span></div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Most Important Shortcut in Finance — Paste Special</div>
+      <strong>Ctrl + Alt + V</strong> opens Paste Special — one of the most used shortcuts in finance work.<br><br>
+      <strong>Paste Values (V then Enter):</strong> Paste only the values, not the formula. Essential when you want to "lock in" a number — e.g. paste the result of a calculation as a static number to send to someone without revealing your model.<br><br>
+      <strong>Paste Formats (T then Enter):</strong> Paste only the formatting — useful for applying the format of one cell to many others.<br><br>
+      <strong>Paste Transpose (E then Enter):</strong> Flip rows and columns. Row of data becomes a column — extremely useful for restructuring data.<br><br>
+      <strong>Paste Multiply/Divide (M or I):</strong> Multiply all selected cells by a copied value — e.g. convert all numbers from thousands to millions by copying 1000 and paste-dividing.
+    </div>
+  </div>
+
+  <!-- 39.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">39.4</div>
+      <div class="section-title">Core Formulas Every Finance Professional Must Know</div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header">Mathematical & Statistical Functions</div>
+      <div class="formula-row">
+        <div class="formula-name">SUM / SUMPRODUCT</div>
+        <div class="formula-eq">=SUM(A1:A10) — adds a range<br>=SUMPRODUCT(A1:A10,B1:B10) — multiplies arrays and sums. Used for weighted averages, portfolio calculations, WACC.<br><span style="color:var(--muted);">SUMPRODUCT is one of the most powerful functions in finance — replaces many complex array formulas.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">AVERAGE / MEDIAN / MODE</div>
+        <div class="formula-eq">=AVERAGE(A1:A10) — arithmetic mean<br>=MEDIAN(A1:A10) — middle value (more robust than mean for skewed data)<br>=MODE(A1:A10) — most frequent value</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">MIN / MAX / LARGE / SMALL</div>
+        <div class="formula-eq">=MIN(A1:A10) / =MAX(A1:A10) — minimum and maximum<br>=LARGE(A1:A10,2) — 2nd largest value<br>=SMALL(A1:A10,3) — 3rd smallest value</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">ABS / ROUND / ROUNDUP / ROUNDDOWN</div>
+        <div class="formula-eq">=ABS(A1) — absolute value (removes negative sign)<br>=ROUND(A1,2) — rounds to 2 decimal places<br>=ROUNDUP(A1,0) — always rounds up (e.g. for ceiling calculations)<br>=ROUNDDOWN(A1,0) — always rounds down</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">COUNT / COUNTA / COUNTBLANK</div>
+        <div class="formula-eq">=COUNT(A1:A10) — counts numbers only<br>=COUNTA(A1:A10) — counts non-empty cells (numbers and text)<br>=COUNTBLANK(A1:A10) — counts empty cells<br><span style="color:var(--muted);">Essential for data quality checks — verify expected number of rows/columns.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">SUBTOTAL</div>
+        <div class="formula-eq">=SUBTOTAL(9,A1:A100) — SUM that ignores hidden rows (function_num 9=SUM, 1=AVERAGE, 2=COUNT)<br><span style="color:var(--muted);">Critical when working with filtered data — regular SUM counts hidden rows, SUBTOTAL doesn't. Essential for financial reports with filters.</span></div>
+      </div>
+    </div>
+
+    <div class="formula-block" style="margin-top:20px;">
+      <div class="formula-header">Absolute vs Relative References — Critical Concept</div>
+      <div class="formula-row">
+        <div class="formula-name">Relative Reference</div>
+        <div class="formula-eq">=A1 — changes when formula is copied (row and column both move)<br><span style="color:var(--muted);">Example: =B2*C2 copied down becomes =B3*C3 — references move with the formula. Used for row-by-row calculations.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Absolute Reference</div>
+        <div class="formula-eq">=$A$1 — NEVER changes when copied (locked row AND column)<br><span style="color:var(--muted);">Press F4 to cycle through reference types. Use for a fixed input (tax rate in cell B2 used across entire model: =$B$2). Critical for financial models — wrong reference type = cascading errors.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Mixed Reference</div>
+        <div class="formula-eq">=$A1 — column locked, row moves | =A$1 — row locked, column moves<br><span style="color:var(--muted);">Used in data tables and sensitivity analysis. Example: =$A1 in a two-variable data table — column stays on assumption list, row moves across scenarios.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">39.5</div>
+      <div class="section-title">Lookup Functions — VLOOKUP, INDEX-MATCH, XLOOKUP</div>
+      <div class="section-meta">Must Master</div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header">Lookup Functions — Full Reference</div>
+      <div class="formula-row">
+        <div class="formula-name">VLOOKUP (Vertical Lookup)</div>
+        <div class="formula-eq">=VLOOKUP(lookup_value, table_array, col_index, [range_lookup])<br><br>
+        Example: =VLOOKUP(A2, $D$2:$F$100, 3, FALSE)<br>
+        → Find value in A2 in column D of the table, return value from column 3 (column F), exact match (FALSE)<br><br>
+        <span style="color:var(--muted);">Limitations: Only looks RIGHT (cannot look left). col_index breaks if columns are inserted. Use FALSE for exact match always in finance. Slower than INDEX-MATCH on large datasets.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">INDEX-MATCH (The Power Combo)</div>
+        <div class="formula-eq">=INDEX(return_range, MATCH(lookup_value, lookup_range, 0))<br><br>
+        Example: =INDEX($F$2:$F$100, MATCH(A2, $D$2:$D$100, 0))<br>
+        → MATCH finds the row number where A2 appears in column D. INDEX returns the value from column F at that row.<br><br>
+        <span style="color:var(--muted);">Advantages over VLOOKUP: Can look LEFT. Does not break when columns inserted. Faster on large data. More flexible. Industry standard in Big 4 and IB models. Always use this instead of VLOOKUP.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">XLOOKUP (Modern Replacement)</div>
+        <div class="formula-eq">=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])<br><br>
+        Example: =XLOOKUP(A2, $D$2:$D$100, $F$2:$F$100, "Not Found")<br><br>
+        <span style="color:var(--muted);">Available in Excel 365 and Excel 2021+. Combines best of VLOOKUP and INDEX-MATCH. Can look left or right. Built-in error handling (if_not_found). Cleaner syntax. Use XLOOKUP if your Excel version supports it — otherwise use INDEX-MATCH.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">MATCH (Standalone)</div>
+        <div class="formula-eq">=MATCH(lookup_value, lookup_array, [match_type])<br><br>
+        Example: =MATCH("Revenue", A1:A20, 0) → returns row number of "Revenue" in A1:A20<br><br>
+        <span style="color:var(--muted);">Returns the POSITION (row or column number) — not the value itself. match_type 0 = exact match. Used inside INDEX-MATCH and for dynamic chart ranges.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">OFFSET (Dynamic Ranges)</div>
+        <div class="formula-eq">=OFFSET(reference, rows, cols, [height], [width])<br><br>
+        Example: =OFFSET(A1, 5, 2) → cell that is 5 rows down and 2 columns right of A1 (= C6)<br><br>
+        <span style="color:var(--muted);">Creates dynamic ranges — useful for rolling averages, dynamic chart ranges, expanding datasets. Volatile function (recalculates every time) — use INDEX instead where possible for performance.</span></div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 INDEX-MATCH vs VLOOKUP — Always Use INDEX-MATCH in Finance</div>
+      <strong>Scenario:</strong> You have a client database with Client ID in column A and Revenue in column D. Someone inserts a new column B between A and D — now column D is column E.<br><br>
+      <strong>VLOOKUP breaks:</strong> =VLOOKUP(A2, $A$2:$E$100, 4, FALSE) — was looking for column 4 (D), now column 4 is C (wrong!). Every VLOOKUP in your model is now wrong.<br><br>
+      <strong>INDEX-MATCH is fine:</strong> =INDEX($D$2:$D$100, MATCH(A2, $A$2:$A$100, 0)) — references column D directly. Inserting a column doesn't affect it. The formula still works perfectly.<br><br>
+      In a financial model with hundreds of lookups, one inserted column can destroy a VLOOKUP model entirely. This is why professional finance models always use INDEX-MATCH or XLOOKUP.
+    </div>
+  </div>
+
+  <!-- 39.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">39.6</div>
+      <div class="section-title">Logical & Conditional Functions — IF, IFS, SUMIF, COUNTIF</div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header">Logical & Conditional Functions</div>
+      <div class="formula-row">
+        <div class="formula-name">IF</div>
+        <div class="formula-eq">=IF(logical_test, value_if_true, value_if_false)<br><br>
+        Example: =IF(A1>0, "Profit", "Loss")<br>
+        Finance use: =IF(Revenue>Target, BonusRate*Salary, 0)<br><br>
+        <span style="color:var(--muted);">Foundation of all conditional logic. Nest IFs for multiple conditions: =IF(A1>100,"High",IF(A1>50,"Medium","Low")) — but nested IFs get complex fast. Use IFS instead.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">IFS (Multiple Conditions)</div>
+        <div class="formula-eq">=IFS(condition1, value1, condition2, value2, condition3, value3, ...)<br><br>
+        Example: =IFS(Score>=90,"A", Score>=80,"B", Score>=70,"C", TRUE,"F")<br><br>
+        <span style="color:var(--muted);">Cleaner than nested IFs. Last condition TRUE acts as "else". Available Excel 2019+. In older versions, use nested IF or CHOOSE.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">AND / OR / NOT</div>
+        <div class="formula-eq">=AND(condition1, condition2) → TRUE only if ALL conditions true<br>=OR(condition1, condition2) → TRUE if ANY condition true<br>=NOT(condition) → reverses TRUE/FALSE<br><br>
+        Example: =IF(AND(Revenue>1000, Margin>20%), "Star Product", "Review")</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">SUMIF / SUMIFS</div>
+        <div class="formula-eq">=SUMIF(range, criteria, sum_range) — sum where ONE condition met<br>=SUMIFS(sum_range, range1, criteria1, range2, criteria2) — sum where MULTIPLE conditions met<br><br>
+        Finance example: =SUMIFS(Revenue, Region, "North", Product, "Software")<br>→ Sum all revenue where Region="North" AND Product="Software"<br><br>
+        <span style="color:var(--muted);">Extremely powerful for financial analysis. Used constantly in management reporting, budget vs actual analysis, segment reporting.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">COUNTIF / COUNTIFS</div>
+        <div class="formula-eq">=COUNTIF(range, criteria) — count where ONE condition met<br>=COUNTIFS(range1, criteria1, range2, criteria2) — count where MULTIPLE conditions met<br><br>
+        Finance example: =COUNTIFS(Status, "Overdue", Amount, ">"&10000)<br>→ Count invoices that are overdue AND above ₹10,000</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">AVERAGEIF / AVERAGEIFS</div>
+        <div class="formula-eq">=AVERAGEIF(range, criteria, average_range)<br>=AVERAGEIFS(average_range, range1, criteria1, range2, criteria2)<br><br>
+        Finance example: =AVERAGEIF(Region, "South", DaysToCollect)<br>→ Average debtor days for Southern region only</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">IFERROR / IFNA</div>
+        <div class="formula-eq">=IFERROR(formula, value_if_error) — catch ANY error<br>=IFNA(formula, value_if_na) — catch only #N/A errors<br><br>
+        Example: =IFERROR(VLOOKUP(A1,Table,2,FALSE), "Not Found")<br><span style="color:var(--muted);">Essential in financial models — prevents ugly #REF!, #N/A, #DIV/0! errors from showing. But be careful: IFERROR can hide genuine formula errors. Only use when errors are expected (e.g. no match found).</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">39.7</div>
+      <div class="section-title">Date & Text Functions — Essential for Data Cleaning</div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header">Date Functions</div>
+      <div class="formula-row">
+        <div class="formula-name">TODAY / NOW</div>
+        <div class="formula-eq">=TODAY() — current date (updates every day)<br>=NOW() — current date and time<br><span style="color:var(--muted);">Use TODAY() in dashboard headers, age calculations. WARNING: volatile — recalculates on every change. Freeze with Ctrl+; if you want static date.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">DATE / YEAR / MONTH / DAY</div>
+        <div class="formula-eq">=DATE(2025,12,31) — create a date from year/month/day<br>=YEAR(A1) / =MONTH(A1) / =DAY(A1) — extract components<br><span style="color:var(--muted);">=DATE(YEAR(A1),MONTH(A1)+1,0) — last day of current month (very useful for financial period end dates)</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">DATEDIF / DAYS / NETWORKDAYS</div>
+        <div class="formula-eq">=DATEDIF(start_date, end_date, "Y") — years between dates ("M"=months, "D"=days)<br>=DAYS(end_date, start_date) — number of days between dates<br>=NETWORKDAYS(start, end, [holidays]) — working days excluding weekends and holidays<br><span style="color:var(--muted);">NETWORKDAYS critical for payment terms, project deadlines, days outstanding calculations.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">EOMONTH</div>
+        <div class="formula-eq">=EOMONTH(start_date, months) — last day of month, n months away<br>=EOMONTH(A1, 0) — last day of same month as A1<br>=EOMONTH(A1, 1) — last day of next month<br><span style="color:var(--muted);">Invaluable for financial model date structures — building monthly/quarterly timelines automatically.</span></div>
+      </div>
+    </div>
+
+    <div class="formula-block" style="margin-top:20px;">
+      <div class="formula-header">Text Functions — Data Cleaning Essentials</div>
+      <div class="formula-row">
+        <div class="formula-name">LEFT / RIGHT / MID</div>
+        <div class="formula-eq">=LEFT(A1, 3) — first 3 characters from left<br>=RIGHT(A1, 4) — last 4 characters from right<br>=MID(A1, 5, 3) — 3 characters starting from position 5<br><span style="color:var(--muted);">Used for extracting codes, cleaning IDs, parsing structured text fields.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">TRIM / CLEAN / UPPER / LOWER / PROPER</div>
+        <div class="formula-eq">=TRIM(A1) — removes extra spaces (CRITICAL for data cleaning — trailing spaces break lookups)<br>=CLEAN(A1) — removes non-printable characters<br>=UPPER/LOWER/PROPER(A1) — change case<br><span style="color:var(--muted);">Always TRIM data imported from external systems before using VLOOKUP/INDEX-MATCH — most lookup failures are caused by hidden spaces.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">CONCATENATE / CONCAT / TEXTJOIN / &</div>
+        <div class="formula-eq">="Hello"&" "&"World" — join text with & operator (simplest)<br>=CONCAT(A1:A10) — join a range of cells<br>=TEXTJOIN(", ", TRUE, A1:A10) — join with delimiter, ignoring blanks<br><span style="color:var(--muted);">Create unique keys by combining fields: =A1&"_"&B1&"_"&C1. Essential for creating match keys in lookups.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">FIND / SEARCH / LEN / SUBSTITUTE / REPLACE</div>
+        <div class="formula-eq">=FIND("@",A1) — position of "@" in text (case-sensitive)<br>=SEARCH("@",A1) — same but case-insensitive<br>=LEN(A1) — number of characters<br>=SUBSTITUTE(A1,"old","new") — replace text<br>=REPLACE(A1,3,2,"XX") — replace characters at position<br><span style="color:var(--muted);">Used together for complex text parsing: =LEFT(A1,FIND("@",A1)-1) extracts username from email address.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">TEXT / VALUE</div>
+        <div class="formula-eq">=TEXT(A1,"#,##0") — format number as text with formatting<br>=TEXT(A1,"DD-MMM-YYYY") — format date as text<br>=VALUE(A1) — convert text-number to actual number<br><span style="color:var(--muted);">Use TEXT to create formatted labels in charts/reports. Use VALUE to fix numbers stored as text (common data import problem).</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">39.8</div>
+      <div class="section-title">Financial Functions — NPV, IRR, PMT, FV, PV</div>
+      <div class="section-meta">Core for Finance Professionals</div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header">Financial Functions — Full Reference with Finance Context</div>
+      <div class="formula-row">
+        <div class="formula-name">NPV (Net Present Value)</div>
+        <div class="formula-eq">=NPV(rate, value1, value2, ...) + initial_investment<br><br>
+        CRITICAL: Excel's NPV assumes cash flows start at END of period 1 (not period 0). Always add period 0 investment separately.<br><br>
+        Example: Initial investment ₹100Cr (now), cash flows ₹30Cr, ₹40Cr, ₹50Cr, ₹60Cr, discount rate 12%:<br>
+        =NPV(12%, 30, 40, 50, 60) + (-100) → correct NPV<br>
+        NOT: =NPV(12%, -100, 30, 40, 50, 60) → WRONG — this discounts the initial investment which should not be discounted.<br><br>
+        <span style="color:var(--muted);">If NPV > 0 → Accept project. If NPV &lt; 0 → Reject. Links directly to Chapter 22 (Corporate Finance) and Chapter 33 (Valuation).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">XNPV (NPV with Actual Dates)</div>
+        <div class="formula-eq">=XNPV(rate, values, dates)<br><br>
+        Example: =XNPV(12%, B2:B6, A2:A6) where A2:A6 are actual dates and B2:B6 are cash flows<br><br>
+        <span style="color:var(--muted);">More accurate than NPV when cash flows don't occur at exactly equal intervals. Use XNPV in real financial models — NPV assumes equal periods.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">IRR (Internal Rate of Return)</div>
+        <div class="formula-eq">=IRR(values, [guess])<br><br>
+        Example: =IRR({-100, 30, 40, 50, 60}) → rate at which NPV = 0<br><br>
+        <span style="color:var(--muted);">Initial investment must be NEGATIVE. Values must include at least one negative (outflow) and one positive (inflow). If IRR > cost of capital (hurdle rate) → Accept. Multiple IRRs possible if cash flows change sign more than once — be careful.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">XIRR (IRR with Actual Dates)</div>
+        <div class="formula-eq">=XIRR(values, dates, [guess])<br><br>
+        Example: =XIRR(B2:B6, A2:A6) — IRR using actual payment dates<br><br>
+        <span style="color:var(--muted);">Use XIRR instead of IRR in real models — more accurate when cash flows don't occur at exactly annual intervals. Standard in PE/VC investment returns modelling.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">PV (Present Value)</div>
+        <div class="formula-eq">=PV(rate, nper, pmt, [fv], [type])<br><br>
+        Example: PV of ₹10,000 received annually for 5 years at 10%:<br>
+        =PV(10%, 5, -10000) → ₹37,908<br><br>
+        <span style="color:var(--muted);">rate = periodic rate. nper = number of periods. pmt = periodic payment (negative = outflow). fv = future value. type = 0 (end of period, default) or 1 (beginning of period).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">FV (Future Value)</div>
+        <div class="formula-eq">=FV(rate, nper, pmt, [pv], [type])<br><br>
+        Example: FV of ₹10,000 invested annually for 10 years at 8%:<br>
+        =FV(8%, 10, -10000) → ₹1,44,866<br><br>
+        <span style="color:var(--muted);">FV of lump sum: =FV(8%, 10, 0, -100000) → FV of ₹1L invested today for 10 years at 8%. Useful for retirement planning, savings projections.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">PMT (Loan Payment)</div>
+        <div class="formula-eq">=PMT(rate, nper, pv, [fv], [type])<br><br>
+        Example: Monthly EMI for ₹50L home loan at 8.5% for 20 years:<br>
+        =PMT(8.5%/12, 20*12, -5000000) → ₹43,391 per month<br><br>
+        <span style="color:var(--muted);">rate must match period — for monthly payments, divide annual rate by 12. nper = total number of payments (years × 12 for monthly). Used for loan amortisation schedules, lease payment calculations.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">RATE / NPER</div>
+        <div class="formula-eq">=RATE(nper, pmt, pv) — find the interest rate given payments<br>=NPER(rate, pmt, pv) — find number of periods to repay a loan<br><br>
+        Example: =RATE(60, -5000, 200000) → monthly rate on loan of ₹2L, 60 monthly payments of ₹5,000<br>
+        =NPER(8%/12, -10000, 500000) → months to repay ₹5L at 8% with ₹10,000/month payments</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">39.9</div>
+      <div class="section-title">PivotTables — The Most Powerful Data Analysis Tool</div>
+      <div class="section-meta">Non-Negotiable Skill</div>
+    </div>
+    <p class="prose">PivotTables are arguably the most powerful feature in Excel for a finance professional. They allow you to instantly summarise, group, filter, and analyse thousands of rows of data in seconds — without writing a single formula.</p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">STEP 01</div>
+        <div class="step-content"><strong>Prepare Your Data — The Foundation</strong><br>
+        PivotTables work best with well-structured data: one row per record, no merged cells, no blank rows or columns, clear column headers in row 1, consistent data types in each column (all dates as dates, all numbers as numbers). Pro tip: Convert your data to an Excel Table first (Ctrl+T) — PivotTable will automatically expand as new data is added.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 02</div>
+        <div class="step-content"><strong>Insert PivotTable — Alt + N + V</strong><br>
+        Click anywhere in your data range → Insert → PivotTable (or Alt+N+V). Choose where to place it (new sheet recommended). The PivotTable Field List appears on the right — this is where you build your analysis by dragging fields into four areas: Filters (top-level filter), Columns (column headers), Rows (row labels), Values (numbers to aggregate).</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 03</div>
+        <div class="step-content"><strong>Build Your Analysis by Dragging Fields</strong><br>
+        Typical finance PivotTable: Rows = Product/Region/Cost Centre. Columns = Month/Quarter/Year. Values = Revenue, Cost, Profit (SUM). Filters = Business Unit, Geography. Within Values, right-click → Value Field Settings → choose SUM, COUNT, AVERAGE, MAX, MIN, or % of total. Add multiple values to compare Revenue vs Budget vs Variance in one table.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 04</div>
+        <div class="step-content"><strong>Group Data — Dates, Numbers, Text</strong><br>
+        Right-click on a date field in rows/columns → Group → select Days, Months, Quarters, Years. This instantly creates monthly/quarterly/annual summaries from daily transaction data — one of the most powerful features. Also group numbers (e.g. group deal sizes: 0-10Cr, 10-50Cr, 50Cr+). Group text by creating calculated groups.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 05</div>
+        <div class="step-content"><strong>Calculated Fields & Items</strong><br>
+        PivotTable Analyze → Fields, Items & Sets → Calculated Field. Add custom calculations within the PivotTable. Example: Calculated Field "Gross Margin%" = Revenue / Profit (where Revenue and Profit are fields in your data). Result: PivotTable automatically shows margin % for every row/column combination — without any formulas outside the PivotTable.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 06</div>
+        <div class="step-content"><strong>Slicers & Timelines — Interactive Dashboards</strong><br>
+        PivotTable Analyze → Insert Slicer → select dimensions to filter. Creates interactive buttons — click Region button to filter entire PivotTable. Insert Timeline for date fields — drag slider to select time period. Multiple PivotTables and charts can be connected to the same slicer — one click filters everything. This is how professional Excel dashboards are built.</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 PivotTable vs Formulas — When to Use Each</div>
+      <strong>Use PivotTables when:</strong> You need to explore and summarise large datasets quickly. You don't know the exact analysis you want yet. The data structure may change. You want interactive filters and slicers for a dashboard. You need to group dates into months/quarters automatically.<br><br>
+      <strong>Use formulas (SUMIFS, INDEX-MATCH) when:</strong> The layout and analysis is fixed and defined. You need the output to update automatically with other formula-driven calculations. You want the output in a specific location within a larger model. You need more complex conditional logic than PivotTables support natively.
+    </div>
+  </div>
+
+  <!-- 39.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">39.10</div>
+      <div class="section-title">Charts & Data Visualisation in Excel</div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Choosing the Right Chart Type</div>
+        <ul class="card-items">
+          <li><strong>Line Chart:</strong> Trends over time — revenue growth, stock price, monthly sales. Best for continuous data over time periods.</li>
+          <li><strong>Bar/Column Chart:</strong> Comparison between categories — Q1 vs Q2 vs Q3, North vs South vs East vs West. Column = vertical, Bar = horizontal.</li>
+          <li><strong>Stacked Bar/Column:</strong> Show composition AND comparison — revenue by product AND total revenue trend.</li>
+          <li><strong>Pie/Donut Chart:</strong> Part of whole — product mix as % of revenue. Use only when parts add to 100% and you have &lt;6 categories. Often overused.</li>
+          <li><strong>Scatter Plot:</strong> Relationship between two variables — cost vs revenue, risk vs return. Used in financial analysis for correlation.</li>
+          <li><strong>Waterfall Chart:</strong> Bridge from one value to another — shows components of change. Essential for variance analysis (budget vs actual bridge).</li>
+          <li><strong>Combo Chart:</strong> Two chart types overlaid — revenue bars + margin line on secondary axis. Very common in financial dashboards.</li>
+        </ul>
+        <div class="card-tag">Chart Selection</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <div class="card-title">Chart Formatting Best Practices</div>
+        <ul class="card-items">
+          <li><strong>Remove chart borders and gridlines:</strong> Cleaner look. Keep only horizontal gridlines if needed.</li>
+          <li><strong>Consistent colour palette:</strong> Use your company's brand colours. Maximum 4-5 colours per chart. Never use Excel's default colour scheme in professional work.</li>
+          <li><strong>Label directly on chart:</strong> Data labels on bars/lines instead of a separate legend where possible — viewer's eye doesn't need to look back and forth.</li>
+          <li><strong>Title is a headline:</strong> "Revenue grew 23% YoY in Q3" — not just "Revenue by Quarter". Tell the story in the title.</li>
+          <li><strong>Remove chartjunk:</strong> No 3D effects, no shadows, no gradients. Simplicity is professionalism.</li>
+          <li><strong>Source and date:</strong> Always add "Source: Company Financials | As of March 2025" at the bottom of important charts.</li>
+        </ul>
+        <div class="card-tag">Design Principles</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">39.11</div>
+      <div class="section-title">Data Validation, Conditional Formatting & Named Ranges</div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Data Validation — Control Inputs</div>
+        <ul class="card-items">
+          <li>Data → Data Validation → restrict what users can enter in a cell</li>
+          <li><strong>Dropdown list:</strong> Create a list of valid options — user selects from dropdown. Example: product categories, department names, yes/no, currency</li>
+          <li><strong>Number validation:</strong> Only allow numbers between 0 and 100, or dates within a range</li>
+          <li><strong>Custom formula validation:</strong> =AND(A1>0, A1&lt;=100) — only allow values between 0 and 100</li>
+          <li><strong>Input message:</strong> Instructions appear when user clicks the cell</li>
+          <li><strong>Error alert:</strong> Custom error message if invalid data entered</li>
+          <li>Use in financial models to prevent invalid inputs from breaking calculations. Use in shared files to guide non-finance users.</li>
+        </ul>
+        <div class="card-tag">Input Control</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <div class="card-title">Conditional Formatting — Visual Flags</div>
+        <ul class="card-items">
+          <li>Automatically format cells based on their values — highlight what matters without manual checking</li>
+          <li><strong>Highlight rules:</strong> Cells greater/less than threshold (highlight overdue invoices >30 days in red)</li>
+          <li><strong>Colour scales:</strong> Green-yellow-red gradient based on value — heat map for a data table</li>
+          <li><strong>Data bars:</strong> Mini bar chart inside the cell — instant visual comparison</li>
+          <li><strong>Icon sets:</strong> Traffic light icons, arrows — RAG (Red/Amber/Green) status</li>
+          <li><strong>Formula-based:</strong> =AND(A1&lt;Budget, A1&lt;0) — complex custom conditions</li>
+          <li>Finance uses: highlight negative variances in red, cells above/below budget, overdue payments, KPI status in dashboards</li>
+        </ul>
+        <div class="card-tag">Visual Signals</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏷️</div>
+        <div class="card-title">Named Ranges — Make Models Readable</div>
+        <ul class="card-items">
+          <li>Assign a name to a cell or range — use the name in formulas instead of cell references</li>
+          <li>Create: select cell → Name Box (top left, shows A1) → type name → Enter</li>
+          <li>Or: Formulas → Define Name → Name Manager for all names</li>
+          <li><strong>Example:</strong> Name cell B2 as "TaxRate". Formula: =Revenue*TaxRate instead of =Revenue*$B$2</li>
+          <li><strong>Benefits:</strong> Formula reads like English ("=Revenue*TaxRate" vs "=B15*$B$2"). No need to remember cell addresses. Easy to update — change TaxRate cell location without updating every formula.</li>
+          <li>Used extensively in financial models for key assumptions (WACC, Growth Rate, Tax Rate)</li>
+          <li>Dynamic named ranges: =OFFSET(Sheet1!$A$1,0,0,COUNTA(Sheet1!$A:$A)) — expands automatically</li>
+        </ul>
+        <div class="card-tag">Readability</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">39.12</div>
+      <div class="section-title">What-If Analysis — Goal Seek, Scenario Manager & Data Tables</div>
+      <div class="section-meta">Essential for Financial Modelling</div>
+    </div>
+    <p class="prose">What-If Analysis tools allow you to explore how changes in inputs affect outputs — essential for sensitivity analysis in valuations, budgets, and business cases.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Goal Seek — Work Backwards</div>
+        <ul class="card-items">
+          <li>Data → What-If Analysis → Goal Seek</li>
+          <li>Set a specific OUTPUT to a target value by changing one INPUT</li>
+          <li><strong>Finance uses:</strong></li>
+          <li>"What revenue growth rate is needed to achieve ₹100Cr EBITDA?" → Set EBITDA cell = 100, change Revenue Growth Rate cell</li>
+          <li>"What margin do we need to break even?" → Set Profit cell = 0, change Margin % cell</li>
+          <li>"What is the maximum price we can pay for this acquisition and still get 20% IRR?" → Set IRR cell = 20%, change Acquisition Price cell</li>
+          <li>Simple, fast, one-variable. For multiple variables, use Solver (an add-in).</li>
+        </ul>
+        <div class="card-tag">One Variable</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Scenario Manager — Multiple Cases</div>
+        <ul class="card-items">
+          <li>Data → What-If Analysis → Scenario Manager</li>
+          <li>Create named scenarios (Base, Bull, Bear) with different sets of input values</li>
+          <li>Switch between scenarios with one click — entire model updates</li>
+          <li>Create a Scenario Summary — table showing all scenarios and key outputs side by side</li>
+          <li><strong>Finance use:</strong> Model Bull/Base/Bear cases for a business plan or investment — present all three scenarios in a summary table for the board</li>
+          <li>Limitation: No more than 32 changing cells per scenario. Use separate model tabs for very complex scenarios.</li>
+        </ul>
+        <div class="card-tag">Multiple Cases</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Data Tables — Sensitivity Analysis</div>
+        <ul class="card-items">
+          <li>Data → What-If Analysis → Data Table</li>
+          <li><strong>One-variable data table:</strong> Shows how one output changes across a range of one input (e.g. how does NPV change as discount rate changes from 8% to 16%?)</li>
+          <li><strong>Two-variable data table:</strong> Shows how one output changes across two inputs (e.g. how does equity value change across different WACC × terminal growth rate combinations) — this is the sensitivity matrix from Chapter 33!</li>
+          <li>Automatically calculates all combinations — no need to manually change inputs and record results</li>
+          <li>ACCA AFM: the two-variable data table is exactly the sensitivity table you need to build in exam models</li>
+          <li>Creates a read-only array — cannot edit individual cells in the table</li>
+        </ul>
+        <div class="card-tag">Sensitivity Matrix</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">39.13</div>
+      <div class="section-title">Financial Modelling in Excel — Best Practices & Structure</div>
+      <div class="section-meta">Professional Standard</div>
+    </div>
+    <p class="prose">Financial modelling is the art of building a numerical representation of a financial situation in Excel. Good models are not just accurate — they are clear, auditable, flexible, and robust. Bad models have caused billion-dollar errors (the "London Whale" JP Morgan loss was partly attributed to a spreadsheet error).</p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">PRINCIPLE 1</div>
+        <div class="step-content"><strong>Separate Inputs, Calculations, and Outputs</strong><br>
+        The golden rule of financial modelling. Inputs (assumptions) go on a dedicated sheet — colour coded blue. Calculations go on working sheets — formulas only, never hard-coded numbers. Outputs (P&L, balance sheet, dashboards) pull from calculation sheets. If an input changes, only one cell needs updating — the entire model cascades correctly. Never hard-code a number inside a formula: write =Revenue*Tax_Rate not =Revenue*0.25.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">PRINCIPLE 2</div>
+        <div class="step-content"><strong>One Formula Per Row — Then Copy Across</strong><br>
+        In a time-series model (monthly/quarterly/annual), write the formula for the first period correctly, then copy it across all remaining periods. Every cell in the same row should have the same formula structure — only the time reference should change. If a formula in the middle of a row looks different, investigate — it usually means an error was "fixed" by typing a number directly.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">PRINCIPLE 3</div>
+        <div class="step-content"><strong>No Circular References</strong><br>
+        A circular reference is when a formula refers back to itself — directly or indirectly. They cause Excel to use iterative calculations that are unreliable and cause inconsistent results. A classic finance circular: interest on debt → affects net income → affects retained earnings → affects equity → affects leverage → affects interest rate → affects interest on debt. Solution: use a "toggle" approach or calculate interest based on beginning of period debt to break the circle. If Excel says circular reference — fix it, don't enable iterative calculations.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">PRINCIPLE 4</div>
+        <div class="step-content"><strong>Build Checks and Error Flags</strong><br>
+        Every financial model should have a checks dashboard: Balance sheet balances (Assets = Liabilities + Equity), Cash flow statement reconciles to change in cash on balance sheet, Sum of segments equals total, No #REF!, #N/A, #VALUE! errors anywhere. Use conditional formatting to make these checks glow red if they fail. Professional modellers build a "0/1 toggle" check — if any check fails, a large red "ERROR" appears on the cover page. Never send a model without passing all checks.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">PRINCIPLE 5</div>
+        <div class="step-content"><strong>Document Everything</strong><br>
+        Add a Notes/Assumptions sheet — document every key assumption, its source, and the date. Add cell comments (Shift+F2) to complex formulas explaining what they calculate. Include a version log — who changed what and when. The model must be understandable to someone who didn't build it. In Big 4 and IB, models are handed between analysts — undocumented models cause errors and wasted time.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">PRINCIPLE 6</div>
+        <div class="step-content"><strong>Stress Test and Sanity Check</strong><br>
+        Before sharing any model: change key inputs to extreme values and check the model still produces logical results. Set growth rate to 0% — does the model still work? Set costs to zero — does profit equal revenue? Set everything to prior year actuals — does the model reproduce last year's results? Sense-check outputs: does the revenue figure seem reasonable for this type of business? Is the margin in line with the industry? Would a smart person with no finance background find this result believable?</div>
+      </div>
+    </div>
+
+    <div class="wide-card" style="margin-top:20px;">
+      <h4>📊 Standard Financial Model Structure — Sheet Layout</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;font-size:12px;">
+        <div style="background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:6px;">📋 COVER</div>
+          <div style="color:var(--muted);">Title, Version, Date, Author, Instructions, Error Check Status</div>
+        </div>
+        <div style="background:rgba(255,217,61,0.1);border:1px solid rgba(255,217,61,0.3);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent4);margin-bottom:6px;">⚙️ INPUTS</div>
+          <div style="color:var(--muted);">All assumptions, blue font, no formulas — Growth rate, Margins, WACC, Tax rate</div>
+        </div>
+        <div style="background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);margin-bottom:6px;">📊 REVENUE</div>
+          <div style="color:var(--muted);">Revenue build by segment, product, region — formula-driven from inputs</div>
+        </div>
+        <div style="background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);margin-bottom:6px;">💰 P&L</div>
+          <div style="color:var(--muted);">Income Statement — Revenue to EBITDA to EBIT to PAT, all formula-driven</div>
+        </div>
+        <div style="background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);margin-bottom:6px;">🏗️ BS</div>
+          <div style="color:var(--muted);">Balance Sheet — Assets, Liabilities, Equity with check that it balances</div>
+        </div>
+        <div style="background:rgba(108,99,255,0.1);border:1px solid rgba(108,99,255,0.3);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);margin-bottom:6px;">💸 CF</div>
+          <div style="color:var(--muted);">Cash Flow Statement — Operating, Investing, Financing, Free Cash Flow</div>
+        </div>
+        <div style="background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.3);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent3);margin-bottom:6px;">📈 VALUATION</div>
+          <div style="color:var(--muted);">DCF, football field, sensitivity tables, WACC calculation</div>
+        </div>
+        <div style="background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.3);border-radius:8px;padding:12px;text-align:center;">
+          <div style="font-family:var(--mono);font-size:10px;color:var(--accent5);margin-bottom:6px;">📊 OUTPUTS</div>
+          <div style="color:var(--muted);">Summary charts, KPIs, dashboard — everything a reader needs in one place</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">39.14</div>
+      <div class="section-title">Power Query & Power Pivot — Next Level Data</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Power Query — Automate Data Cleaning</div>
+        <ul class="card-items">
+          <li>Data → Get & Transform Data → Power Query. Connect to virtually any data source: Excel files, CSV, databases, web, SharePoint, SharePoint lists, APIs.</li>
+          <li><strong>What Power Query does:</strong> Cleans and transforms messy data automatically — remove duplicates, unpivot tables, split columns, merge queries, change data types, filter rows, group and aggregate</li>
+          <li><strong>The game changer:</strong> Every transformation step is recorded. When new data arrives, click "Refresh" — all transformations reapply automatically in seconds. What used to take 2 hours of manual Excel work now takes 5 seconds.</li>
+          <li><strong>Finance use cases:</strong> Monthly P&L consolidation (merge multiple entity files automatically), Trial balance import and mapping, Bank statement cleaning, ERP data extraction and transformation, GST reconciliation automation</li>
+          <li><strong>M language:</strong> Power Query's underlying language — can write custom M code for advanced transformations. Not required for most use cases but good to know exists.</li>
+        </ul>
+        <div class="card-tag">Data Automation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <div class="card-title">Power Pivot — Handle Millions of Rows</div>
+        <ul class="card-items">
+          <li>Excel's in-memory data model — handles tens of millions of rows that would crash a regular Excel sheet</li>
+          <li>Create relationships between multiple tables — like a database. Join transaction data with a product master, customer master, and cost centre master all in one model.</li>
+          <li><strong>DAX (Data Analysis Expressions):</strong> Formula language for Power Pivot — more powerful than Excel formulas for complex aggregations. CALCULATE, SUMX, RELATED, ALL, FILTER are key functions.</li>
+          <li><strong>Finance use cases:</strong> Multi-entity financial consolidation, Large general ledger analysis, Sales analytics across millions of transactions, Combining multiple data sources into one analytical model</li>
+          <li>Foundation of Power BI — learning Power Pivot makes transitioning to Power BI (Chapter 40) much easier</li>
+        </ul>
+        <div class="card-tag">Big Data in Excel</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">39.15</div>
+      <div class="section-title">VBA & Macros — Automation Basics</div>
+    </div>
+    <p class="prose">VBA (Visual Basic for Applications) allows you to automate repetitive Excel tasks by writing code. You don't need to be a programmer — even basic VBA knowledge can save hours of manual work every week.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Macro Recorder — Start Here</div>
+        <ul class="card-items">
+          <li>Developer tab → Record Macro → perform steps → Stop Recording. Excel records every action as VBA code.</li>
+          <li>Play back the macro to repeat all those steps instantly — no matter how many times</li>
+          <li><strong>Finance uses:</strong> Format a report (apply styles, freeze panes, print settings) with one click. Export data to a template monthly. Send files to specific folders. Run a monthly close checklist automatically.</li>
+          <li>After recording, open VBA Editor (Alt+F11) and edit the code to make it smarter — add loops, conditions, input prompts</li>
+          <li>Assign macros to buttons on the sheet for non-technical users — click "Generate Report" button → everything runs</li>
+        </ul>
+        <div class="card-tag">Start Here</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💻</div>
+        <div class="card-title">Key VBA Concepts for Finance</div>
+        <ul class="card-items">
+          <li><strong>Sub and Function:</strong> Sub = macro (does something). Function = returns a value (like a custom formula).</li>
+          <li><strong>Variables:</strong> Dim x As Long / As String / As Double — store values temporarily</li>
+          <li><strong>Loops (For/For Each):</strong> For i = 1 To 100: Next i — repeat an action 100 times. For Each ws In Worksheets — loop through all sheets.</li>
+          <li><strong>If/Then/Else:</strong> Conditional logic — If cells value > 0 Then format green Else format red</li>
+          <li><strong>Range and Cells:</strong> Range("A1").Value = "Hello" — write to cell. Cells(1,1).Value — same as A1 (useful in loops)</li>
+          <li><strong>With statement:</strong> With Range("A1:D10"): .Font.Bold = True: .Interior.Color = vbBlue: End With — apply multiple properties efficiently</li>
+          <li><strong>Error handling:</strong> On Error Resume Next — prevent macro from crashing on errors</li>
+        </ul>
+        <div class="card-tag">Core Concepts</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 When to Use VBA vs Power Query vs Formula</div>
+      <strong>Use Formulas when:</strong> The logic is static and the output needs to update live as data changes. Someone else needs to audit or understand the calculation.<br><br>
+      <strong>Use Power Query when:</strong> You need to clean, transform, and load data from external sources on a repeatable basis. Refreshing with new data should be one click.<br><br>
+      <strong>Use VBA when:</strong> You need to automate complex multi-step processes that involve user interaction, file system operations, sending emails, or actions that Power Query and formulas cannot do. Also for custom functions that Excel doesn't have natively.<br><br>
+      <strong>The modern approach:</strong> Power Query for data transformation + DAX/Formulas for calculation + VBA for automation workflows. Together they make a near-unbeatable analytics stack within Excel.
+    </div>
+  </div>
+
+  <!-- 39.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">39.16</div>
+      <div class="section-title">Key Takeaways, Common Mistakes & Action Steps</div>
+    </div>
+
+    <p class="section-label">Part A — 10 Core Takeaways</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Shortcuts = Speed = Value</div><ul class="card-items"><li>Ctrl+Arrow: navigate data edges</li><li>Ctrl+D/R: fill down/right</li><li>Ctrl+Alt+V: Paste Special</li><li>F2: edit cell | Ctrl+`: show formulas</li><li>Ctrl+Shift+L: toggle filter</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">References — Get This Right</div><ul class="card-items"><li>A1: relative (moves when copied)</li><li>$A$1: absolute (never moves)</li><li>$A1 or A$1: mixed (one locked)</li><li>F4: cycle through reference types</li><li>Wrong reference = cascading model errors</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Lookup — Always INDEX-MATCH</div><ul class="card-items"><li>VLOOKUP: simple but breaks when columns inserted</li><li>INDEX-MATCH: robust, flexible, industry standard</li><li>XLOOKUP: best (if Excel 365)</li><li>Always TRIM data before lookups</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Financial Functions — Core Four</div><ul class="card-items"><li>NPV: add period 0 separately (outside NPV function)</li><li>IRR: first value must be negative</li><li>PMT: rate must match period (monthly rate for monthly PMT)</li><li>XNPV/XIRR: use when dates are not equal intervals</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">PivotTables — Explore Data Fast</div><ul class="card-items"><li>Start with Excel Table (Ctrl+T) for auto-expansion</li><li>Group dates → monthly/quarterly summaries instantly</li><li>Slicers: interactive filters for dashboards</li><li>Calculated fields: custom metrics without formulas outside PT</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Modelling Best Practices</div><ul class="card-items"><li>Separate inputs, calculations, outputs</li><li>Blue = hard-coded | Black = formulas</li><li>One formula per row, copy across periods</li><li>Build checks (BS balance, CF reconciles)</li><li>No circular references</li></ul></div>
+      <div class="card"><div class="card-icon">7️⃣</div><div class="card-title">Sensitivity Analysis Tools</div><ul class="card-items"><li>Goal Seek: find input that gives target output</li><li>Scenario Manager: compare Bull/Base/Bear</li><li>Data Table: automatic sensitivity matrix (1 or 2 variables)</li><li>Data Table = the sensitivity table in ACCA AFM</li></ul></div>
+      <div class="card"><div class="card-icon">8️⃣</div><div class="card-title">Conditional Functions</div><ul class="card-items"><li>SUMIFS: sum with multiple conditions</li><li>COUNTIFS: count with multiple conditions</li><li>AVERAGEIFS: average with multiple conditions</li><li>IFERROR: handle expected errors gracefully</li></ul></div>
+      <div class="card"><div class="card-icon">9️⃣</div><div class="card-title">Power Tools</div><ul class="card-items"><li>Power Query: automate data cleaning and loading</li><li>Power Pivot: handle millions of rows, multiple tables</li><li>VBA: automate complex multi-step processes</li><li>Learning these = Big 4 / IB analyst advantage</li></ul></div>
+      <div class="card"><div class="card-icon">🔟</div><div class="card-title">Chart & Visualisation</div><ul class="card-items"><li>Match chart type to data story</li><li>Waterfall chart for variance bridges</li><li>Combo chart for two metrics (bar + line)</li><li>Title should be a headline, not just a label</li><li>Remove chartjunk — simplicity is professionalism</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part B — Most Common Excel Mistakes in Finance</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">❌ MISTAKE 1</div><div class="step-content"><strong>Hard-Coding Numbers Inside Formulas</strong><br>Writing =Revenue*0.25 instead of =Revenue*TaxRate (where TaxRate is a named cell). When the tax rate changes, you must find and change every formula. Instead: all assumptions in one input sheet, all formulas reference those inputs. Change one cell, everything updates. This is the #1 financial modelling mistake.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 2</div><div class="step-content"><strong>Using VLOOKUP Instead of INDEX-MATCH</strong><br>VLOOKUP breaks when columns are inserted between the lookup column and return column. In a live financial model used by multiple people, columns get inserted constantly. Always use INDEX-MATCH (or XLOOKUP if available) for robust, production-quality models.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 3</div><div class="step-content"><strong>Wrong NPV Formula — Including Period 0 in NPV Function</strong><br>=NPV(rate, -100, 30, 40, 50, 60) discounts the initial investment — which is WRONG. The initial investment is at time 0 and should NOT be discounted. Correct: =NPV(rate, 30, 40, 50, 60) + (-100). This mistake causes systematic undervaluation in every DCF model it appears in.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 4</div><div class="step-content"><strong>Not Using Absolute References for Fixed Inputs</strong><br>Copying a formula that references a tax rate cell without locking it ($B$2 vs B2) means each copied formula references a different cell — usually returning wrong values or errors. Press F4 after clicking a cell reference to lock it. This is the source of more financial model errors than any other single mistake.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 5</div><div class="step-content"><strong>Not Building Balance Checks</strong><br>Sending a model where the balance sheet doesn't balance, or the cash flow statement doesn't reconcile to the balance sheet movement in cash. Always build explicit checks: =IF(Assets=Liabilities+Equity,"✅ Balanced","❌ ERROR"). These checks should be visible on the cover page — and must all be green before sharing.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 6</div><div class="step-content"><strong>PMT Rate Not Matching Period</strong><br>=PMT(8%, 10*12, -500000) — using annual rate for monthly payments. The rate must match the period. For monthly payments: rate = annual rate ÷ 12. For quarterly: rate = annual rate ÷ 4. This mistake produces completely wrong loan/lease calculations.</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part C — Action Steps</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 39 Excel Mastery Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag green">✅ THIS WEEK: Memorise top 20 keyboard shortcuts — print the list, practice until muscle memory. No more touching the mouse for common actions.</span>
+        <span class="tag green">✅ THIS WEEK: Practice INDEX-MATCH on a real dataset. Download any financial data from NSE/BSE and build a lookup model.</span>
+        <span class="tag green">✅ THIS WEEK: Build a full DCF model from scratch using NPV and IRR functions. Use XYZ Ltd example from Chapter 33.</span>
+        <span class="tag green">✅ THIS WEEK: Create a PivotTable from a 1,000+ row dataset. Add slicers and group dates by month and quarter.</span>
+        <span class="tag green">✅ THIS WEEK: Build a two-variable data table sensitivity analysis — WACC vs growth rate → equity value (the table from Chapter 33 valuation).</span>
+        <span class="tag green">✅ THIS MONTH: Build a complete 3-statement financial model (P&L, Balance Sheet, Cash Flow) for a real listed Indian company. Check: does BS balance? Does CF reconcile?</span>
+        <span class="tag green">✅ THIS MONTH: Learn Power Query — import a messy CSV file, clean it (remove blanks, fix dates, rename columns), load into Excel, and set up refresh.</span>
+        <span class="tag green">✅ THIS MONTH: Record your first macro — automate a 10-step report formatting task. Then edit the VBA to add a message box.</span>
+        <span class="tag green">✅ THIS MONTH: Complete Excel training on Microsoft Learn (free) or Chandoo.org — aim to reach advanced level across all core function categories.</span>
+        <span class="tag green">✅ ONGOING: Every time you do something manually more than 3 times in Excel — ask yourself: can I automate this with a formula, PivotTable, Power Query, or VBA? Then do it.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Know the Shortcuts (Speed is Respect for Your Own Time)<br>
+      + Master INDEX-MATCH (VLOOKUP is a Crutch — Drop It)<br>
+      + Separate Inputs from Formulas (Never Hard-Code a Number in a Formula)<br>
+      + Build Balance Checks (A Model Without Checks is a Lie Waiting to Happen)<br>
+      + Learn Power Query (Stop Cleaning Data Manually — Automate It)<br>
+      + Practice Every Day (Excel Mastery is a Habit, Not a Milestone)<br>
+      = <strong style="color:var(--accent4);">Excel Mastery — The Tool That Turns Financial Knowledge Into Financial Power</strong>
+    </div>
+    <h3>Chapter 39: Excel Mastery — Complete 📊✅</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 40: Power BI — transform your data into stunning interactive dashboards that tell the financial story at a glance. 📊</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 23: Corporate & Business Law</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(56,189,248,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#38bdf8; border:1px solid #38bdf8; padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,#38bdf8,var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:#38bdf8; }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:#38bdf8; text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:#38bdf8; min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid #38bdf8; padding:14px 20px; background:rgba(56,189,248,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:#38bdf8; transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:#38bdf8; font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:#38bdf8; background:rgba(56,189,248,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(56,189,248,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:#38bdf8; text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(56,189,248,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(56,189,248,0.07),rgba(0,212,170,0.05)); border:1px solid rgba(56,189,248,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:#38bdf8; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:#38bdf8; flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(56,189,248,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:#38bdf8; text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:#38bdf8; font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(56,189,248,0.09),rgba(0,212,170,0.06)); border:1px solid rgba(56,189,248,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:#38bdf8; line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,#38bdf8,var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 23 · ACCA LW</div>
+  <h1>Corporate &<br><span>Business Law</span></h1>
+  <p class="hero-sub">The legal foundation every finance professional needs — how contracts are formed and broken, how companies are created and governed, how directors are held accountable, and what happens when a business fails. The ACCA LW syllabus, fully explained.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">LW</div><div class="stat-label">ACCA Applied Skills</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Core Legal Areas</div></div>
+    <div class="stat"><div class="stat-num">2 Hrs</div><div class="stat-label">CBE Exam</div></div>
+    <div class="stat"><div class="stat-num">Every Deal</div><div class="stat-label">Where This Matters</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 23 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">23.1</span>Why Finance Professionals Need Law</div>
+    <div class="toc-item"><span class="toc-num">23.2</span>Legal Systems — Common Law vs Civil Law</div>
+    <div class="toc-item"><span class="toc-num">23.3</span>Sources of Law & Court Structure</div>
+    <div class="toc-item"><span class="toc-num">23.4</span>Formation of Contract — Offer, Acceptance, Consideration</div>
+    <div class="toc-item"><span class="toc-num">23.5</span>Contract Terms — Express, Implied, Conditions & Warranties</div>
+    <div class="toc-item"><span class="toc-num">23.6</span>Vitiating Factors — Misrepresentation, Duress, Mistake</div>
+    <div class="toc-item"><span class="toc-num">23.7</span>Discharge of Contract & Remedies for Breach</div>
+    <div class="toc-item"><span class="toc-num">23.8</span>The Law of Agency</div>
+    <div class="toc-item"><span class="toc-num">23.9</span>Alternative Dispute Resolution (ADR)</div>
+    <div class="toc-item"><span class="toc-num">23.10</span>Company Formation & Types of Business Organisation</div>
+    <div class="toc-item"><span class="toc-num">23.11</span>Partnership Law in Depth</div>
+    <div class="toc-item"><span class="toc-num">23.12</span>Share Capital & Company Financing</div>
+    <div class="toc-item"><span class="toc-num">23.13</span>Directors' Duties & Corporate Governance</div>
+    <div class="toc-item"><span class="toc-num">23.14</span>Corporate Insolvency — When Companies Fail</div>
+    <div class="toc-item"><span class="toc-num">23.15</span>Employment Law Essentials</div>
+    <div class="toc-item"><span class="toc-num">23.16</span>Corporate & Business Law in India — Real World Context</div>
+    <div class="toc-item"><span class="toc-num">23.17</span>ACCA LW Exam Technique</div>
+    <div class="toc-item"><span class="toc-num">23.18</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">23.19</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Every financial transaction — a share issue, a loan agreement, an acquisition, a supplier contract, an employment offer — is built on a legal foundation. A finance professional who understands the numbers but not the law behind them is only doing half the job. <strong>Corporate & Business Law (LW)</strong> is the ACCA Applied Skills paper that builds this foundation — and it's the single biggest content gap in most finance self-study plans, because it feels "less financial" than the other papers. It isn't optional — it's the legal skeleton that everything else hangs on.</p>
+    <div class="quote">"You don't need to think like a lawyer. You need to think like a finance professional who knows enough law to spot the risk before it becomes a problem."</div>
+  </div>
+
+  <!-- 23.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">23.1</div>
+      <div class="section-title">Why Finance Professionals Need Law</div>
+    </div>
+    <p class="prose">It's tempting to think law is "the lawyer's job." In practice, finance professionals encounter legal issues constantly — and knowing the basics prevents costly mistakes and helps you work effectively with legal teams.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📄</div>
+        <div class="card-title">Contracts Are Everywhere</div>
+        <ul class="card-items">
+          <li>Every supplier agreement, customer contract, and loan facility is a legal contract</li>
+          <li>Finance teams draft payment terms, review contract clauses, and assess contractual risk daily</li>
+          <li>Understanding what makes a contract valid — and what breaks it — protects the business</li>
+        </ul>
+        <div class="card-tag">Daily Relevance</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Company Structure Drives Everything</div>
+        <ul class="card-items">
+          <li>Share capital, director duties, and governance rules shape how finance decisions get approved</li>
+          <li>M&A, fundraising, and restructuring are fundamentally legal processes with financial outcomes</li>
+          <li>Corporate finance professionals work hand-in-hand with legal teams on every major deal</li>
+        </ul>
+        <div class="card-tag">Deal-Making</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Insolvency & Risk</div>
+        <ul class="card-items">
+          <li>Credit analysts and lenders assess counterparty legal risk before extending credit</li>
+          <li>Understanding insolvency law explains creditor priority — critical for risk assessment</li>
+          <li>Directors who breach duties can face personal liability — finance professionals in leadership roles must know the lines</li>
+        </ul>
+        <div class="card-tag">Risk Management</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">23.2</div>
+      <div class="section-title">Legal Systems — Common Law vs Civil Law</div>
+    </div>
+    <p class="prose">The world's legal systems fall broadly into two families. Understanding which one governs a jurisdiction changes how contracts, disputes, and company law actually work in practice.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Common Law System</div>
+        <ul class="card-items">
+          <li>Originated in England — used in UK, India, USA, Australia, most Commonwealth countries</li>
+          <li>Based on <strong>case law (precedent)</strong> — judges' past decisions bind future similar cases</li>
+          <li>Doctrine of "stare decisis" — courts follow precedent set by higher courts</li>
+          <li>Legislation (statute) works alongside case law, but judges actively interpret and develop law through rulings</li>
+        </ul>
+        <div class="card-tag">Precedent-Based</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📜</div>
+        <div class="card-title">Civil Law System</div>
+        <ul class="card-items">
+          <li>Originated in continental Europe (Roman law tradition) — used in France, Germany, most of Europe, Japan, Latin America</li>
+          <li>Based on <strong>comprehensive written codes</strong> — a civil code sets out rules systematically in advance</li>
+          <li>Judges apply the code to facts — prior case decisions are persuasive, not strictly binding</li>
+          <li>Legislature (not judges) is the primary source of law-making</li>
+        </ul>
+        <div class="card-tag">Code-Based</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why This Distinction Matters for Finance</div>
+      India follows a <strong>common law system</strong> (inherited from British colonial rule), which is why Indian contract law, company law, and case citations often reference English legal principles. When working with international contracts or cross-border deals, knowing whether the counterparty's jurisdiction is common law or civil law changes how contracts should be drafted and how disputes will likely be resolved.
+    </div>
+  </div>
+
+  <!-- 23.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">23.3</div>
+      <div class="section-title">Sources of Law & Court Structure</div>
+    </div>
+    <p class="prose">Law doesn't come from one place — it's built from multiple sources that interact with each other. Understanding the hierarchy helps you know which rule wins when sources conflict.</p>
+    <table class="data-table">
+      <tr><th>Source</th><th>What It Is</th><th>Example</th></tr>
+      <tr><td>Legislation (Statute)</td><td>Laws passed by parliament/legislature — the highest form of domestic law</td><td>Companies Act 2013 (India), Indian Contract Act 1872</td></tr>
+      <tr><td>Case Law (Precedent)</td><td>Judicial decisions that interpret and apply legislation, and fill gaps where no statute exists</td><td>Supreme Court/High Court rulings interpreting contract or company law provisions</td></tr>
+      <tr><td>Delegated/Subordinate Legislation</td><td>Rules and regulations made by bodies empowered by parliament (e.g. ministries, regulators)</td><td>SEBI Regulations, RBI Circulars</td></tr>
+      <tr><td>Custom & Usage</td><td>Long-established practices recognised as legally binding within a trade or region</td><td>Certain commercial trade customs recognised by courts</td></tr>
+    </table>
+    <p class="section-label">Basic Court Hierarchy (India)</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">TOP</div><div class="step-content"><strong>Supreme Court of India</strong> — final court of appeal, decisions binding on all lower courts nationwide</div></div>
+      <div class="step-item"><div class="step-num">MID</div><div class="step-content"><strong>High Courts</strong> — one per state (or shared), hear appeals from lower courts and have original jurisdiction for certain matters</div></div>
+      <div class="step-item"><div class="step-num">LOWER</div><div class="step-content"><strong>District & Subordinate Courts</strong> — first point of contact for most civil and criminal cases</div></div>
+      <div class="step-item"><div class="step-num">SPECIAL</div><div class="step-content"><strong>Specialised Tribunals</strong> — e.g. NCLT (company/insolvency matters), NCLAT (appeals), SAT (securities disputes)</div></div>
+    </div>
+  </div>
+
+  <!-- 23.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">23.4</div>
+      <div class="section-title">Formation of Contract — Offer, Acceptance, Consideration</div>
+      <div class="section-meta">The Foundation of Business Law</div>
+    </div>
+    <p class="prose">A contract is a legally binding agreement. For a contract to exist, four essential elements must all be present — miss any one and there is no valid contract, regardless of what the parties believe they've agreed.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">The 4 Essential Elements of a Valid Contract</div>
+      <div class="formula-row"><div class="formula-name">1. Offer</div><div class="formula-eq">A clear, definite statement of terms one party is willing to be bound by if accepted. Must be distinguished from an "invitation to treat" (e.g. goods displayed in a shop window are an invitation to treat, not an offer — the customer makes the offer at the till).</div></div>
+      <div class="formula-row"><div class="formula-name">2. Acceptance</div><div class="formula-eq">Unqualified agreement to all terms of the offer, communicated to the offeror. A "counter-offer" (changing any term) destroys the original offer and becomes a new offer itself.</div></div>
+      <div class="formula-row"><div class="formula-name">3. Consideration</div><div class="formula-eq">Something of value given by each party — the "price" of the promise. Must have SOME value (need not be adequate/fair value) and must NOT be past (a promise to pay for something already done is generally not valid consideration).</div></div>
+      <div class="formula-row"><div class="formula-name">4. Intention to Create Legal Relations</div><div class="formula-eq">Both parties must intend the agreement to be legally binding. Commercial agreements are PRESUMED to have this intention; social/domestic agreements are PRESUMED NOT to — either presumption can be rebutted with evidence.</div></div>
+    </div>
+
+    <p class="section-label">Offer vs Invitation to Treat — The Classic Exam Distinction</p>
+    <table class="data-table">
+      <tr><th>Is an Offer</th><th>Is an Invitation to Treat (NOT an offer)</th></tr>
+      <tr><td>A specific quotation sent to a named customer with clear terms</td><td>Goods displayed in a shop window or on a shelf, with price tags</td></tr>
+      <tr><td>A tender submitted in response to a specific request</td><td>An advertisement in a newspaper or catalogue</td></tr>
+      <tr><td>A reward offer to the public ("₹10,000 for return of lost item")</td><td>A request for tenders/quotations</td></tr>
+      <tr><td>—</td><td>An auction — the auctioneer's call for bids is an invitation to treat; the bidder makes the offer</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Why the Offer vs Invitation to Treat Distinction Matters</div>
+      If a shop mis-prices an item on the shelf, it is NOT contractually bound to sell at that price — because the display was only an invitation to treat, and the shop can reject the customer's "offer" to buy at the till. This principle protects businesses from being bound by pricing errors, and is heavily tested in ACCA LW exams.
+    </div>
+
+    <p class="section-label">Worked Example — Offer, Acceptance & Revocation</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: Timing of Contract Formation</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Facts:</strong> On Monday, A offers to sell B a machine for ₹5,00,000, giving B until Friday to respond. On Wednesday, A sells the machine to someone else and does not tell B. On Thursday, B (unaware of the sale) posts a letter of acceptance.<br><br>
+        <strong style="color:var(--text);">Analysis:</strong> An offer can be revoked (withdrawn) any time before acceptance — but the revocation must be COMMUNICATED to the offeree to be effective. A never told B the offer was revoked. Under the "postal rule," acceptance by post is effective the moment the letter is posted (Thursday) — not when received.<br><br>
+        <strong style="color:var(--text);">Conclusion:</strong> A valid contract was formed on Thursday when B posted the acceptance, because A's revocation was never communicated. A is in breach of contract by selling to someone else.
+      </div>
+    </div>
+  </div>
+
+  <!-- 23.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">23.5</div>
+      <div class="section-title">Contract Terms — Express, Implied, Conditions & Warranties</div>
+    </div>
+    <p class="prose">Once a contract exists, its exact obligations are defined by its "terms." Not all terms carry equal weight — and knowing the difference determines what remedy is available if a term is broken.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✍️</div>
+        <div class="card-title">Express Terms</div>
+        <ul class="card-items">
+          <li>Terms actually stated by the parties — written or oral</li>
+          <li>The starting point for interpreting any contract</li>
+          <li>Written contracts generally take priority over informal oral statements made earlier</li>
+        </ul>
+        <div class="card-tag">Explicitly Agreed</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Implied Terms</div>
+        <ul class="card-items">
+          <li>Terms not stated but read into the contract — by statute, by custom, or by courts to give the contract "business efficacy"</li>
+          <li>Example: sale of goods legislation implies terms that goods must be of satisfactory quality and fit for purpose</li>
+          <li>Cannot usually be excluded if implied by consumer protection statute</li>
+        </ul>
+        <div class="card-tag">Read Into Contract</div>
+      </div>
+    </div>
+
+    <p class="section-label">Conditions vs Warranties — The Remedy Determines the Classification</p>
+    <table class="data-table">
+      <tr><th>Term Type</th><th>Definition</th><th>Remedy If Breached</th></tr>
+      <tr><td>Condition</td><td>A fundamental term — goes to the root of the contract</td><td>Innocent party can terminate the contract AND claim damages</td></tr>
+      <tr><td>Warranty</td><td>A minor, subsidiary term — does not go to the root of the contract</td><td>Innocent party can only claim damages — CANNOT terminate the contract</td></tr>
+      <tr><td>Innominate Term</td><td>A term that could be either, depending on the SERIOUSNESS of the actual breach that occurred</td><td>Courts look at the consequences of the breach to decide the remedy available</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 ACCA LW Exam Tip — Classify Before You Answer</div>
+      When a scenario describes a breach, always classify the term FIRST (condition, warranty, or innominate) before deciding what remedy applies. Getting this wrong — for example, allowing termination for breach of a mere warranty — is one of the most common LW exam errors.
+    </div>
+  </div>
+
+  <!-- 23.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">23.6</div>
+      <div class="section-title">Vitiating Factors — Misrepresentation, Duress, Mistake</div>
+      <div class="section-meta">What Can Make a Contract Invalid</div>
+    </div>
+    <p class="prose">Even a contract with all four essential elements present can be challenged if a "vitiating factor" is present — something that undermines genuine consent or fairness in how the agreement was reached.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎭</div>
+        <div class="card-title">Misrepresentation</div>
+        <ul class="card-items">
+          <li>A false statement of FACT (not opinion) made by one party that induces the other to enter the contract</li>
+          <li><strong>Fraudulent:</strong> made knowingly false — remedy: rescission + damages</li>
+          <li><strong>Negligent:</strong> made carelessly without reasonable grounds for belief — remedy: rescission + damages</li>
+          <li><strong>Innocent:</strong> made honestly believing it true — remedy: rescission only (damages at court's discretion)</li>
+        </ul>
+        <div class="card-tag">False Statement</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">😤</div>
+        <div class="card-title">Duress & Undue Influence</div>
+        <ul class="card-items">
+          <li><strong>Duress:</strong> illegitimate pressure (threats of violence, unlawful action) forcing agreement</li>
+          <li><strong>Undue Influence:</strong> abuse of a position of trust/power to secure agreement (e.g. between a company and a dominated director)</li>
+          <li>Contract is voidable at the option of the pressured party</li>
+        </ul>
+        <div class="card-tag">Improper Pressure</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">❓</div>
+        <div class="card-title">Mistake</div>
+        <ul class="card-items">
+          <li><strong>Common Mistake:</strong> both parties share the same fundamental mistaken belief (e.g. the subject matter no longer exists)</li>
+          <li><strong>Mutual Mistake:</strong> parties are at cross-purposes, each with a different understanding</li>
+          <li><strong>Unilateral Mistake:</strong> only one party is mistaken, and the other knows or should have known</li>
+          <li>Genuine, operative mistake can render a contract void from the start</li>
+        </ul>
+        <div class="card-tag">Genuine Error</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">23.7</div>
+      <div class="section-title">Discharge of Contract & Remedies for Breach</div>
+    </div>
+    <p class="prose">A contract can come to an end ("be discharged") in several ways — and when it ends through breach, the law provides specific remedies to the innocent party.</p>
+
+    <p class="section-label">Ways a Contract Is Discharged</p>
+    <table class="data-table">
+      <tr><th>Method</th><th>How It Happens</th></tr>
+      <tr><td>Performance</td><td>Both parties fully and precisely perform their obligations — the normal, intended end of a contract</td></tr>
+      <tr><td>Agreement</td><td>Both parties mutually agree to end or vary the contract</td></tr>
+      <tr><td>Frustration</td><td>An unforeseen event (outside either party's control) makes performance impossible, illegal, or radically different from what was agreed</td></tr>
+      <tr><td>Breach</td><td>One party fails to perform their obligations as agreed — gives rise to remedies for the innocent party</td></tr>
+    </table>
+
+    <p class="section-label">Remedies for Breach of Contract</p>
+    <div class="formula-block">
+      <div class="formula-header">Available Remedies</div>
+      <div class="formula-row"><div class="formula-name">Damages</div><div class="formula-eq">Monetary compensation to put the innocent party in the position they would have been in had the contract been performed. Must be caused by the breach and not too "remote" (unforeseeable). The innocent party has a duty to "mitigate" loss — cannot recover losses that reasonable steps could have avoided.</div></div>
+      <div class="formula-row"><div class="formula-name">Specific Performance</div><div class="formula-eq">A court order requiring the breaching party to actually perform the contract. Discretionary — granted mainly where damages are inadequate (e.g. sale of unique goods or land), not for personal service contracts.</div></div>
+      <div class="formula-row"><div class="formula-name">Injunction</div><div class="formula-eq">A court order preventing a party from doing something that would breach the contract (e.g. preventing breach of a non-compete clause).</div></div>
+      <div class="formula-row"><div class="formula-name">Rescission</div><div class="formula-eq">Cancels the contract, putting parties back in their pre-contract position — typically the remedy for misrepresentation rather than breach.</div></div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Duty to Mitigate — A Key Exam Point</div>
+      An innocent party cannot simply let losses pile up and claim everything back — they must take REASONABLE steps to minimise their loss. For example, if a supplier fails to deliver, the buyer should reasonably attempt to source from an alternative supplier rather than doing nothing and claiming the full extended loss.
+    </div>
+  </div>
+
+  <!-- 23.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">23.8</div>
+      <div class="section-title">The Law of Agency</div>
+    </div>
+    <p class="prose">Agency law governs situations where one person (the <strong>agent</strong>) acts on behalf of another (the <strong>principal</strong>) — creating legal relations between the principal and third parties. This is fundamental to how companies operate, since a company (a legal but not physical person) can only act through human agents — its directors and employees.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">How Agency Is Created</div>
+        <ul class="card-items">
+          <li><strong>Express agreement:</strong> explicitly appointed (written or oral)</li>
+          <li><strong>Implied agreement:</strong> conduct of the parties implies an agency relationship</li>
+          <li><strong>Ratification:</strong> principal later approves an act done without prior authority</li>
+          <li><strong>Necessity:</strong> emergency circumstances justify one party acting for another without prior authority</li>
+        </ul>
+        <div class="card-tag">Formation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Types of Authority</div>
+        <ul class="card-items">
+          <li><strong>Actual Authority:</strong> authority genuinely given by the principal (express or implied from the role)</li>
+          <li><strong>Apparent (Ostensible) Authority:</strong> authority the principal's conduct represents the agent as having, even if not actually granted — third parties can rely on this</li>
+        </ul>
+        <div class="card-tag">Scope of Power</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why This Matters for Company Directors</div>
+      A director acting within their apparent authority (e.g. a Managing Director signing routine contracts) binds the company to third parties — even if the board secretly restricted that authority internally, as long as the third party wasn't aware of the restriction. This principle protects third parties dealing with companies in good faith, and is why company boards must carefully manage and communicate who has authority to sign what.
+    </div>
+  </div>
+
+  <!-- 23.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">23.9</div>
+      <div class="section-title">Alternative Dispute Resolution (ADR)</div>
+    </div>
+    <p class="prose">Not every dispute needs to go to court. <strong>Alternative Dispute Resolution</strong> covers a range of methods for resolving disputes outside traditional litigation — often faster, cheaper, more confidential, and better at preserving business relationships than a public court battle.</p>
+
+    <table class="data-table">
+      <tr><th>Method</th><th>How It Works</th><th>Outcome</th></tr>
+      <tr><td>Negotiation</td><td>Parties discuss directly (often through lawyers) to reach a mutually acceptable resolution</td><td>Non-binding until formalised in a settlement agreement — most flexible, least formal</td></tr>
+      <tr><td>Mediation</td><td>A neutral third party (mediator) facilitates discussion and helps parties find common ground — the mediator does NOT decide the outcome</td><td>Non-binding unless parties agree to a settlement — preserves relationships well</td></tr>
+      <tr><td>Arbitration</td><td>A neutral arbitrator (or panel) hears both sides and makes a decision — similar to a private judge</td><td>BINDING — the arbitrator's award is legally enforceable, similar to a court judgment</td></tr>
+      <tr><td>Conciliation</td><td>Similar to mediation, but the conciliator may actively propose solutions (more directive than a mediator)</td><td>Non-binding unless parties agree — a middle ground between mediation and arbitration</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why Businesses Prefer ADR — Especially Arbitration — Over Litigation</div>
+      Arbitration is particularly common in COMMERCIAL contracts (especially cross-border ones) because it offers: <strong>confidentiality</strong> (court proceedings are public; arbitration typically isn't), <strong>speed</strong> (court backlogs can take years; arbitration is often faster), <strong>expertise</strong> (parties can choose an arbitrator with specific technical/industry knowledge, unlike a randomly-assigned judge), and <strong>enforceability across borders</strong> (arbitral awards are widely enforceable internationally under the New York Convention, often more reliably than a foreign court judgment).
+    </div>
+
+    <p class="section-label">Arbitration Clauses in Commercial Contracts</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">STANDARD</div><div class="step-content">Most significant commercial contracts (supply agreements, JV agreements, cross-border deals) include a dedicated ARBITRATION CLAUSE — specifying the arbitration rules to apply, the seat/location of arbitration, the number of arbitrators, and the governing law</div></div>
+      <div class="step-item"><div class="step-num">EFFECT</div><div class="step-content">Where a valid arbitration clause exists, courts will typically REFER the dispute to arbitration rather than hearing it themselves — parties are generally bound by their agreement to arbitrate</div></div>
+      <div class="step-item"><div class="step-num">FINANCE RELEVANCE</div><div class="step-content">Finance professionals reviewing or negotiating commercial contracts should always check the dispute resolution clause — the choice of arbitration seat and rules can significantly affect cost, speed, and predictability if a dispute later arises</div></div>
+    </div>
+  </div>
+
+  <!-- 23.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">23.10</div>
+      <div class="section-title">Company Formation & Types of Business Organisation</div>
+    </div>
+    <p class="prose">Businesses can be structured in several legal forms — each with different implications for liability, taxation, control, and ability to raise finance.</p>
+
+    <table class="data-table">
+      <tr><th>Structure</th><th>Legal Status</th><th>Owner Liability</th><th>Key Feature</th></tr>
+      <tr><td>Sole Proprietorship</td><td>No separate legal identity from owner</td><td>Unlimited — owner personally liable for all debts</td><td>Simplest, full control, but highest personal risk</td></tr>
+      <tr><td>Partnership</td><td>No separate legal identity (in most jurisdictions)</td><td>Unlimited, and JOINT & SEVERAL — each partner liable for all partnership debts</td><td>Shared decision-making and profits per partnership agreement</td></tr>
+      <tr><td>Limited Liability Partnership (LLP)</td><td>Separate legal entity</td><td>Limited to capital contributed</td><td>Combines partnership flexibility with limited liability protection</td></tr>
+      <tr><td>Private Limited Company</td><td>Separate legal entity ("corporate personality")</td><td>Limited to unpaid share capital</td><td>Cannot offer shares to the public; restricted share transferability</td></tr>
+      <tr><td>Public Limited Company</td><td>Separate legal entity</td><td>Limited to unpaid share capital</td><td>Can offer shares to the public, list on a stock exchange</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Separate Legal Personality — The Most Important Company Law Concept</div>
+      Once incorporated, a company becomes its own legal "person" — distinct from its shareholders and directors. It can own property, enter contracts, sue and be sued in its own name, and its debts belong to IT, not its owners. This is the foundation of limited liability: shareholders can generally only lose what they invested, not their personal assets — a principle established in the landmark case Salomon v Salomon & Co Ltd (1897), which remains foundational to company law across common law jurisdictions.
+    </div>
+
+    <p class="section-label">"Piercing/Lifting the Corporate Veil" — The Exceptions</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">RARE</div><div class="step-content">Courts VERY rarely disregard separate legal personality — but will do so to prevent fraud, where a company is used as a "mere façade" to evade existing legal obligations, or in specific statutory situations (e.g. certain insolvency wrongdoing provisions). This is the exception, not the rule — the starting presumption is always that the corporate veil stays intact.</div></div>
+    </div>
+  </div>
+
+  <!-- 23.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">23.11</div>
+      <div class="section-title">Partnership Law in Depth</div>
+    </div>
+    <p class="prose">Chapter 23.10 introduced partnerships briefly as one of several business structures. Given how common partnerships remain — especially in professional services (law firms, accounting firms, consulting) — the specific legal rules governing them deserve deeper treatment.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">How a Partnership Is Formed</div>
+        <ul class="card-items">
+          <li>Can be formed WITHOUT any written agreement — simply by two or more people carrying on a business together with a view to profit</li>
+          <li>A written PARTNERSHIP AGREEMENT is strongly advisable (though not legally required) to define profit-sharing, decision-making authority, and exit terms</li>
+          <li>In the ABSENCE of an agreement, default statutory rules apply (e.g. equal profit-sharing regardless of capital contributed) — often not what partners actually intended, making a written agreement important</li>
+        </ul>
+        <div class="card-tag">Formation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Joint and Several Liability</div>
+        <ul class="card-items">
+          <li>In a general (traditional) partnership, EACH partner is personally liable for the FULL amount of partnership debts — not just their proportional share</li>
+          <li>A creditor can pursue ANY ONE partner for the entire debt, leaving that partner to seek contribution from the others — significant personal risk exposure</li>
+          <li>This is precisely why many professional partnerships have shifted to LLP structures (Chapter 23.10) for liability protection</li>
+        </ul>
+        <div class="card-tag">Personal Risk</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">👋</div>
+        <div class="card-title">Partner as Agent of the Firm</div>
+        <ul class="card-items">
+          <li>Each partner is generally an AGENT of the partnership (and of the other partners) for business carried out in the ordinary course of the partnership's business (linking directly to the agency principles in Chapter 23.8)</li>
+          <li>This means one partner's actions within the ordinary scope of business can bind the WHOLE partnership — even without the other partners' explicit knowledge or consent</li>
+        </ul>
+        <div class="card-tag">Mutual Agency</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚪</div>
+        <div class="card-title">Dissolution</div>
+        <ul class="card-items">
+          <li>A general partnership can be dissolved by mutual agreement, by a partner giving notice (if the agreement permits), by the death/bankruptcy of a partner, or by court order</li>
+          <li>Without a well-drafted partnership agreement addressing exit/continuation, the departure of even ONE partner can technically dissolve the entire partnership under default rules — a significant practical risk many partnerships address explicitly in their agreement</li>
+        </ul>
+        <div class="card-tag">Ending the Partnership</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why This Matters for Finance Professionals</div>
+      Many ACCA members eventually become PARTNERS themselves (in accounting, audit, or advisory firms) — understanding joint and several liability, mutual agency, and dissolution risk isn't just exam theory, it's directly relevant to a genuinely common senior career outcome. It's also why so many professional partnerships have restructured as LLPs over the past two decades — the liability protection is a major, deliberate legal choice, not an accident of history.
+    </div>
+  </div>
+
+  <!-- 23.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">23.12</div>
+      <div class="section-title">Share Capital & Company Financing</div>
+    </div>
+    <p class="prose">Companies raise finance in two broad ways — equity (shares) and debt (loans/debentures) — each carrying different legal rights and obligations.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Ordinary Shares</div>
+        <ul class="card-items">
+          <li>Carry voting rights at general meetings</li>
+          <li>Entitled to dividends only after preference shareholders, and only if declared</li>
+          <li>Bear the most risk — last to be paid on winding up, but full upside if the company succeeds</li>
+        </ul>
+        <div class="card-tag">Equity — Voting</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💎</div>
+        <div class="card-title">Preference Shares</div>
+        <ul class="card-items">
+          <li>Fixed dividend rate, paid before ordinary shareholders</li>
+          <li>Usually no voting rights (unless dividends are in arrears, depending on terms)</li>
+          <li>May be "cumulative" (unpaid dividends carry forward) or "redeemable" (company can buy back)</li>
+        </ul>
+        <div class="card-tag">Equity — Fixed Return</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📃</div>
+        <div class="card-title">Debentures / Loan Capital</div>
+        <ul class="card-items">
+          <li>Debt, not equity — company is legally obligated to pay interest regardless of profit</li>
+          <li>Debenture holders are CREDITORS, not owners — no voting rights</li>
+          <li>May be secured (backed by a charge over company assets) or unsecured</li>
+          <li>Paid BEFORE any shareholders on winding up</li>
+        </ul>
+        <div class="card-tag">Debt Financing</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Fixed vs Floating Charges — A Key LW Distinction</div>
+      A <strong>fixed charge</strong> attaches to a specific identifiable asset (e.g. a building) which the company cannot deal with freely without lender consent. A <strong>floating charge</strong> hovers over a class of changing assets (e.g. inventory, receivables) which the company can freely trade — until it "crystallises" into a fixed charge upon a defined triggering event (e.g. insolvency). On winding up, fixed charge holders are paid ahead of floating charge holders.
+    </div>
+  </div>
+
+  <!-- 23.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">23.13</div>
+      <div class="section-title">Directors' Duties & Corporate Governance</div>
+    </div>
+    <p class="prose">Directors run the company on behalf of shareholders — and the law imposes specific duties to ensure they act properly, since they control assets that don't belong to them personally.</p>
+
+    <p class="section-label">Core Statutory Directors' Duties</p>
+    <table class="data-table">
+      <tr><th>Duty</th><th>What It Requires</th></tr>
+      <tr><td>Duty to Act Within Powers</td><td>Act in accordance with the company's constitution and only exercise powers for their proper purpose</td></tr>
+      <tr><td>Duty to Promote Success of the Company</td><td>Act in good faith to promote the company's success for the benefit of its members as a whole, considering long-term consequences, employees, suppliers, community, and environment</td></tr>
+      <tr><td>Duty to Exercise Independent Judgment</td><td>Not simply defer to others — form genuinely independent views (subject to authorised delegation)</td></tr>
+      <tr><td>Duty of Reasonable Care, Skill & Diligence</td><td>Act with the care, skill and diligence a reasonably diligent person with the director's knowledge/experience would show</td></tr>
+      <tr><td>Duty to Avoid Conflicts of Interest</td><td>Avoid situations where personal interests conflict (or may conflict) with the company's interests</td></tr>
+      <tr><td>Duty Not to Accept Benefits From Third Parties</td><td>Cannot accept bribes, kickbacks, or benefits from third parties by reason of being a director</td></tr>
+      <tr><td>Duty to Declare Interest in Proposed Transactions</td><td>Must disclose any direct or indirect interest in a proposed transaction to the board before it proceeds</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Consequences of Breaching Director Duties</div>
+      A director who breaches these duties can be held personally liable — required to compensate the company for losses caused, account for any profit improperly made, or have a contract voided. In serious cases (e.g. fraudulent trading, wrongful trading near insolvency), directors can face disqualification from acting as a director for a period, and in extreme cases, personal criminal liability.
+    </div>
+
+    <p class="section-label">Corporate Governance — Beyond Legal Minimums</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <div class="card-title">Board Structure</div>
+        <ul class="card-items">
+          <li>Balance of executive directors (day-to-day management) and non-executive directors (independent oversight)</li>
+          <li>Independent Chairman separate from CEO is widely recommended good governance practice</li>
+          <li>Board committees (Audit, Remuneration, Nomination) provide specialised oversight</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Accountability Mechanisms</div>
+        <ul class="card-items">
+          <li>Annual General Meetings give shareholders a voice and vote</li>
+          <li>External audit provides independent assurance over financial statements</li>
+          <li>Disclosure requirements ensure transparency to the market</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">23.14</div>
+      <div class="section-title">Corporate Insolvency — When Companies Fail</div>
+    </div>
+    <p class="prose">When a company cannot pay its debts, insolvency law determines how the situation is managed, and — critically for finance professionals doing credit analysis — the ORDER in which creditors get paid.</p>
+
+    <p class="section-label">Key Insolvency Procedures</p>
+    <table class="data-table">
+      <tr><th>Procedure</th><th>Purpose</th></tr>
+      <tr><td>Liquidation (Winding Up)</td><td>Company's assets are sold and distributed to creditors in priority order, and the company ceases to exist</td></tr>
+      <tr><td>Administration / Resolution Process</td><td>An independent professional takes control to try to rescue the company as a going concern, or achieve a better outcome for creditors than immediate liquidation (in India: the Corporate Insolvency Resolution Process under the IBC, managed via NCLT)</td></tr>
+      <tr><td>Receivership</td><td>A secured creditor (holding a charge) appoints a receiver to recover what's owed from specific charged assets</td></tr>
+      <tr><td>Voluntary Arrangement / Restructuring</td><td>Company negotiates a formal agreement with creditors to pay a reduced amount or over an extended period, avoiding liquidation</td></tr>
+    </table>
+
+    <p class="section-label">Order of Priority on Liquidation — Critical for Credit Analysis</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">1st</div><div class="step-content"><strong>Fixed Charge Holders</strong> — paid from the specific asset secured against them, before anyone else touches that asset</div></div>
+      <div class="step-item"><div class="step-num">2nd</div><div class="step-content"><strong>Insolvency/Liquidation Expenses</strong> — costs of running the insolvency process itself</div></div>
+      <div class="step-item"><div class="step-num">3rd</div><div class="step-content"><strong>Preferential Creditors</strong> — typically includes certain employee claims (unpaid wages up to a limit) and specific statutory dues</div></div>
+      <div class="step-item"><div class="step-num">4th</div><div class="step-content"><strong>Floating Charge Holders</strong> — paid from remaining assets once fixed charges and preferential claims are settled</div></div>
+      <div class="step-item"><div class="step-num">5th</div><div class="step-content"><strong>Unsecured Creditors</strong> — trade creditors, unsecured lenders — paid pro-rata from whatever remains, often receiving only a fraction of what's owed</div></div>
+      <div class="step-item"><div class="step-num">LAST</div><div class="step-content"><strong>Shareholders</strong> — preference shareholders first (if any capital remains), then ordinary shareholders — usually receive nothing in an insolvent liquidation</div></div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Why This Order Matters for Finance Professionals</div>
+      This priority waterfall is exactly why <strong>unsecured trade credit is riskier than secured lending</strong> — and why credit analysts price risk, structure security, and set credit limits based on where they'd sit in this queue if the counterparty failed. Understanding this order is directly relevant to credit risk assessment, treasury decisions, and structuring lending facilities.
+    </div>
+  </div>
+
+  <!-- 23.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">23.15</div>
+      <div class="section-title">Employment Law Essentials</div>
+    </div>
+    <p class="prose">Every finance professional either manages people or works within an organisation shaped by employment law. Understanding the basics helps in hiring decisions, performance management, and cost planning.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <div class="card-title">Employment Contract</div>
+        <ul class="card-items">
+          <li>Formed like any contract — offer, acceptance, consideration (salary for work), intention to create legal relations</li>
+          <li>Contains express terms (salary, hours, role) and implied terms (mutual trust and confidence, duty of care)</li>
+          <li>Distinguished from a "contract for services" (independent contractor) — this distinction affects tax and statutory protections significantly</li>
+        </ul>
+        <div class="card-tag">Formation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚪</div>
+        <div class="card-title">Termination of Employment</div>
+        <ul class="card-items">
+          <li><strong>Dismissal:</strong> employer ends the contract — must generally have a fair reason and follow fair procedure to avoid being "unfair"</li>
+          <li><strong>Redundancy:</strong> role genuinely no longer needed — a specific, legally distinct type of dismissal, often with statutory compensation</li>
+          <li><strong>Resignation:</strong> employee ends the contract, generally with a notice period</li>
+        </ul>
+        <div class="card-tag">Ending Employment</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Discrimination Protection</div>
+        <ul class="card-items">
+          <li>Employment decisions cannot be based on protected characteristics (varies by jurisdiction — typically includes gender, age, disability, religion, etc.)</li>
+          <li>Applies across recruitment, pay, promotion, and termination decisions</li>
+          <li>Finance teams should understand this when involved in workforce cost decisions or restructuring</li>
+        </ul>
+        <div class="card-tag">Equality</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">23.16</div>
+      <div class="section-title">Corporate & Business Law in India — Real World Context</div>
+    </div>
+    <p class="prose">While ACCA LW principles are largely UK/common-law based, India has its own detailed statutory framework that finance professionals working in India must know.</p>
+
+    <table class="data-table">
+      <tr><th>Area</th><th>Key Indian Legislation</th><th>Regulator/Body</th></tr>
+      <tr><td>Contract Law</td><td>Indian Contract Act, 1872</td><td>Civil courts</td></tr>
+      <tr><td>Company Law</td><td>Companies Act, 2013</td><td>Ministry of Corporate Affairs (MCA), Registrar of Companies (RoC)</td></tr>
+      <tr><td>Securities & Capital Markets</td><td>SEBI Act, 1992 + SEBI Regulations</td><td>Securities and Exchange Board of India (SEBI)</td></tr>
+      <tr><td>Insolvency</td><td>Insolvency and Bankruptcy Code (IBC), 2016</td><td>National Company Law Tribunal (NCLT), IBBI</td></tr>
+      <tr><td>Partnership</td><td>Indian Partnership Act, 1932; LLP Act, 2008</td><td>Registrar of Firms / RoC</td></tr>
+      <tr><td>Employment</td><td>Multiple labour codes consolidating older legislation (Wages, Social Security, Industrial Relations, OSH Codes)</td><td>Ministry of Labour & Employment</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 IBC — India's Modern Insolvency Framework</div>
+      The Insolvency and Bankruptcy Code (2016) dramatically modernised Indian insolvency law, introducing a time-bound Corporate Insolvency Resolution Process (CIRP) managed through the NCLT. Before the IBC, insolvency resolution in India could take years; the IBC framework aims for resolution within a defined timeline, significantly improving creditor recovery rates and India's ease-of-doing-business standing.
+    </div>
+  </div>
+
+  <!-- 23.17 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">23.17</div>
+      <div class="section-title">ACCA LW Exam Technique</div>
+    </div>
+    <p class="prose">LW is a Computer-Based Exam (CBE) — 2 hours, combining objective test questions (MCQs) with longer multi-task questions requiring application to scenarios.</p>
+
+    <div class="wide-card">
+      <h4>📋 The LW Scenario-Answer Method</h4>
+      <div style="font-size:13.5px;color:var(--muted);line-height:2.3;">
+        <span style="color:#38bdf8;font-family:var(--mono);">1. IDENTIFY:</span> What area of law does this scenario involve? (Contract? Company? Employment? Insolvency?)<br>
+        <span style="color:#38bdf8;font-family:var(--mono);">2. STATE THE RULE:</span> What is the relevant legal principle or statutory rule?<br>
+        <span style="color:#38bdf8;font-family:var(--mono);">3. APPLY TO FACTS:</span> Apply that rule specifically to the facts given — don't just restate the rule generically.<br>
+        <span style="color:#38bdf8;font-family:var(--mono);">4. CONCLUDE:</span> State a clear conclusion — who wins, what remedy applies, or what the legal position is.
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Common LW Exam Trap</div>
+      Many candidates state the correct legal rule but fail to APPLY it specifically to the facts given — simply repeating "a contract needs offer, acceptance, and consideration" without explaining whether THIS specific scenario has all three earns minimal marks. Always connect the rule directly to the facts in front of you.
+    </div>
+  </div>
+
+  <!-- 23.18 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">23.18</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Contracts Need All 4 Elements</div><ul class="card-items"><li>Offer + Acceptance + Consideration + Intention</li><li>Miss one — no valid contract exists</li><li>Offer ≠ Invitation to Treat — know the difference</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Conditions vs Warranties Determine Remedy</div><ul class="card-items"><li>Condition breach → terminate + damages</li><li>Warranty breach → damages only</li><li>Classify the term before answering</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Separate Legal Personality Is Foundational</div><ul class="card-items"><li>Company is its own legal person, distinct from owners</li><li>This is WHY limited liability exists</li><li>Corporate veil is rarely pierced</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Directors Have Real, Enforceable Duties</div><ul class="card-items"><li>7 core statutory duties — breach = personal liability</li><li>Duty to promote success considers ALL stakeholders</li><li>Conflicts of interest must be declared</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Insolvency Priority Order Is Critical</div><ul class="card-items"><li>Fixed charges → expenses → preferential → floating charges → unsecured → shareholders</li><li>Shareholders are LAST — often get nothing</li><li>Directly relevant to credit risk assessment</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">India Has Its Own Detailed Framework</div><ul class="card-items"><li>Companies Act 2013, Indian Contract Act 1872, IBC 2016</li><li>NCLT handles company & insolvency matters</li><li>SEBI regulates securities markets</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 23 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Write out the 4 elements of a valid contract from memory</span>
+        <span class="tag teal">✅ Practice classifying 5 sample breach scenarios as condition/warranty/innominate</span>
+        <span class="tag teal">✅ Memorise the 7 director duties and one real-world example of each</span>
+        <span class="tag teal">✅ Draw the insolvency priority waterfall from memory, top to bottom</span>
+        <span class="tag teal">✅ Read one recent Indian NCLT/insolvency case summary in the news</span>
+        <span class="tag teal">✅ Attempt an ACCA LW past paper multi-task question and self-mark using the scenario-answer method</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23.19 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">23.19</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Confusing an Invitation to Treat With an Offer</strong><br>
+        Shop displays, advertisements, and requests for tenders are invitations to treat, not offers — the customer/responder makes the actual offer. Treating a shop's mis-priced shelf tag as a binding offer is a classic exam error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Allowing Termination for a Warranty Breach</strong><br>
+        Only breach of a CONDITION allows the innocent party to terminate the contract. Breach of a warranty (a minor term) only gives a right to damages — never a right to terminate. Confusing these two is one of the most tested LW errors.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Ignoring Separate Legal Personality</strong><br>
+        Treating a company's debts as automatically the shareholders' personal debts misunderstands the entire foundation of limited liability. The corporate veil is only pierced in genuinely exceptional circumstances (fraud, façade) — not simply because a company has failed.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Getting the Insolvency Priority Order Wrong</strong><br>
+        Assuming unsecured creditors or shareholders are paid before secured (fixed charge) creditors is a fundamental misunderstanding. Fixed charge holders are paid first from their specific secured asset; shareholders are paid last, if anything remains at all.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Stating the Legal Rule Without Applying It to the Facts</strong><br>
+        LW exam answers require applying the rule specifically to the given scenario — merely reciting "a contract requires offer, acceptance, and consideration" without analysing whether THIS scenario actually has all three earns minimal application marks.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Assuming All Company Financing Carries the Same Legal Rights</strong><br>
+        Ordinary shares, preference shares, and debentures carry fundamentally different legal rights (voting, dividend priority, and creditor vs owner status). Treating "capital raised" as a single undifferentiated pool ignores these critical legal distinctions.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Confusing Mediation and Arbitration</strong><br>
+        Mediation is NON-BINDING — the mediator only facilitates discussion and cannot impose a decision. Arbitration IS binding — the arbitrator's award is legally enforceable, similar to a court judgment. Treating these as interchangeable, or assuming a mediation outcome is automatically enforceable, is a common error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Assuming Partners Are Only Liable for Their Own Share of Partnership Debts</strong><br>
+        In a general partnership, liability is JOINT AND SEVERAL — each partner can be pursued for the FULL amount of a partnership debt, not just their proportional share. This is precisely why many professional partnerships have restructured as LLPs for liability protection.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">4 Elements of a Contract</div>
+        <ul class="card-items">
+          <li><strong>Q: What are the 4 essential elements of a valid contract?</strong></li>
+          <li>A: Offer, Acceptance, Consideration, Intention to Create Legal Relations</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Condition vs Warranty</div>
+        <ul class="card-items">
+          <li><strong>Q: What remedy is available for breach of a condition vs a warranty?</strong></li>
+          <li>A: Condition = terminate + damages; Warranty = damages only</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Separate Legal Personality</div>
+        <ul class="card-items">
+          <li><strong>Q: What landmark case established separate legal personality?</strong></li>
+          <li>A: Salomon v Salomon & Co Ltd (1897)</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Insolvency Priority</div>
+        <ul class="card-items">
+          <li><strong>Q: Who is paid first on liquidation?</strong></li>
+          <li>A: Fixed charge holders — shareholders are paid last (if anything remains)</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">India's Insolvency Law</div>
+        <ul class="card-items">
+          <li><strong>Q: What is India's modern insolvency framework called?</strong></li>
+          <li>A: Insolvency and Bankruptcy Code (IBC), 2016 — administered via NCLT</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">ADR Methods</div>
+        <ul class="card-items">
+          <li><strong>Q: Which ADR method produces a legally binding outcome?</strong></li>
+          <li>A: Arbitration — mediation and negotiation are non-binding</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Partnership Liability</div>
+        <ul class="card-items">
+          <li><strong>Q: What type of liability do general partners have for partnership debts?</strong></li>
+          <li>A: Joint and several — each partner can be pursued for the full debt</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Why does separate legal personality matter for how investors and lenders assess risk?"</td><td>Practical application of a core company law concept to finance</td><td>Because a company is legally distinct from its shareholders, investors' losses are generally capped at their investment (limited liability), while lenders must assess the COMPANY's ability to repay, not the shareholders' personal wealth — which is why lenders often require additional security (personal guarantees, charges over assets) when lending to smaller or higher-risk companies, precisely because the corporate veil limits their recourse otherwise.</td></tr>
+      <tr><td>"How would understanding the insolvency priority waterfall change how you'd structure a loan to a company?"</td><td>Connecting legal knowledge to real credit/lending decisions</td><td>Knowing that unsecured creditors are paid last (often receiving little to nothing), I'd want to secure the loan with a fixed charge over specific, valuable, identifiable assets wherever possible — placing the lender higher in the priority waterfall — rather than relying on unsecured status or even a floating charge, which ranks behind both fixed charges and certain preferential creditors.</td></tr>
+      <tr><td>"What are a director's key legal duties, and why should a finance professional in a leadership role care?"</td><td>Awareness of personal liability risk in senior finance roles</td><td>Directors owe duties including acting within their powers, promoting the company's success, exercising independent judgment and reasonable care, and avoiding/declaring conflicts of interest. A finance professional who becomes a director — including a CFO — takes on personal exposure to these duties, meaning decisions like approving a risky related-party transaction without proper disclosure could create personal liability, not just a company-level issue.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Contract Formation (Offer + Acceptance + Consideration)<br>
+      + Company Law (Separate Legal Personality + Director Duties)<br>
+      + Insolvency (Priority Waterfall)<br>
+      + Employment Law (Contract + Termination + Discrimination)<br>
+      = <strong style="color:#38bdf8;">The Legal Foundation Every Finance Professional Needs</strong>
+    </div>
+    <h3>Chapter 23: Corporate & Business Law — Complete ⚖️📜</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 24: Advanced Management Accounting Tools (PM depth) — throughput accounting, learning curves, and mix/yield variance. 🚀</p>
+  </div>
+
+</div>
+</body>
+</html>

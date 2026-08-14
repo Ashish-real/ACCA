@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 36: Risk Management</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #ff6b6b; --accent2: #6c63ff; --accent3: #00d4aa; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(255,107,107,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent3); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent);  border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent2); border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent); padding:14px 20px; background:rgba(255,107,107,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent); background:rgba(255,107,107,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(255,107,107,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(255,107,107,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(255,107,107,0.07),rgba(108,99,255,0.05)); border:1px solid rgba(255,107,107,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(255,107,107,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(255,107,107,0.1); border:1px solid rgba(255,107,107,0.2); color:var(--text); }
+  .tag.red { color:var(--accent); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(255,107,107,0.09),rgba(108,99,255,0.06)); border:1px solid rgba(255,107,107,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .risk-matrix { display:grid; grid-template-columns:auto repeat(5,1fr); gap:4px; margin-top:14px; font-size:11px; }
+  .rm-label { display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:10px; color:var(--muted); padding:8px 4px; text-align:center; }
+  .rm-cell { padding:10px 6px; border-radius:6px; text-align:center; font-family:var(--mono); font-size:10px; font-weight:700; }
+  .rm-low    { background:rgba(74,222,128,0.2);  color:#4ade80; }
+  .rm-med    { background:rgba(255,217,61,0.2);  color:var(--accent4); }
+  .rm-high   { background:rgba(255,107,107,0.2); color:var(--accent); }
+  .rm-crit   { background:rgba(255,107,107,0.4); color:#ff3333; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 36</div>
+  <h1>Risk<br><span>Management</span></h1>
+  <p class="hero-sub">How organisations identify, assess, and respond to the risks that could prevent them from achieving their objectives. From strategic risk to financial risk, operational risk to cyber risk — the complete framework every finance professional must master.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">ERM</div><div class="stat-label">Enterprise Risk Mgmt</div></div>
+    <div class="stat"><div class="stat-num">ACCA</div><div class="stat-label">P3 & AFM Core</div></div>
+    <div class="stat"><div class="stat-num">CRO</div><div class="stat-label">Chief Risk Officer</div></div>
+    <div class="stat"><div class="stat-num">₹20L+</div><div class="stat-label">Risk Analyst Salary</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 36 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">36.1</span>What is Risk? — Definition, Types & Why It Matters</div>
+    <div class="toc-item"><span class="toc-num">36.2</span>Enterprise Risk Management (ERM) — The Big Picture</div>
+    <div class="toc-item"><span class="toc-num">36.3</span>The Risk Management Process — Identify, Assess, Respond, Monitor</div>
+    <div class="toc-item"><span class="toc-num">36.4</span>Risk Identification — Types of Business Risk</div>
+    <div class="toc-item"><span class="toc-num">36.5</span>Risk Assessment — Likelihood, Impact & the Risk Matrix</div>
+    <div class="toc-item"><span class="toc-num">36.6</span>Risk Response — The 4Ts (Treat, Transfer, Terminate, Tolerate)</div>
+    <div class="toc-item"><span class="toc-num">36.7</span>Financial Risk Management — Market, Credit & Liquidity Risk</div>
+    <div class="toc-item"><span class="toc-num">36.8</span>Market Risk — Interest Rate, Currency & Commodity Risk</div>
+    <div class="toc-item"><span class="toc-num">36.9</span>Credit Risk — Managing Counterparty Default</div>
+    <div class="toc-item"><span class="toc-num">36.10</span>Liquidity Risk — Staying Solvent Day to Day</div>
+    <div class="toc-item"><span class="toc-num">36.11</span>Operational Risk — People, Processes, Systems & External Events</div>
+    <div class="toc-item"><span class="toc-num">36.12</span>Strategic & Reputational Risk</div>
+    <div class="toc-item"><span class="toc-num">36.13</span>Risk Appetite & Risk Tolerance</div>
+    <div class="toc-item"><span class="toc-num">36.14</span>Risk Reporting & Risk Culture</div>
+    <div class="toc-item"><span class="toc-num">36.15</span>Risk Management in India — Regulatory Framework</div>
+    <div class="toc-item"><span class="toc-num">36.16</span>Key Takeaways, Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+  </div>
+
+  <!-- 36.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">36.1</div>
+      <div class="section-title">What is Risk? — Definition, Types & Why It Matters</div>
+    </div>
+    <p class="prose">Risk is <strong>the possibility that an event will occur and adversely affect the achievement of objectives.</strong> Every organisation faces risk — the question is not whether to face risk, but how to identify, understand, and manage it intelligently. Risk is not inherently bad — without taking risk, there is no reward.</p>
+
+    <div class="quote">"Risk comes from not knowing what you are doing." — Warren Buffett. The solution is not to avoid risk — it is to understand it deeply enough to manage it deliberately.</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Risk vs Uncertainty — Key Distinction</div>
+        <ul class="card-items">
+          <li><strong>Risk:</strong> The probability distribution of outcomes is KNOWN or can be estimated. We know what could happen and can assign likelihoods. Example: credit risk on a loan portfolio — historical data allows probability of default to be modelled.</li>
+          <li><strong>Uncertainty:</strong> The probability distribution is UNKNOWN — we don't even know what might happen. Example: a completely new technology disrupting your industry in a way nobody predicted.</li>
+          <li>Risk can be managed through formal frameworks. Uncertainty requires resilience, adaptability, and scenario planning.</li>
+          <li>Frank Knight (1921) first made this distinction — foundational in finance and economics.</li>
+        </ul>
+        <div class="card-tag">Fundamental Concept</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Upside vs Downside Risk</div>
+        <ul class="card-items">
+          <li><strong>Downside risk (pure risk):</strong> Only negative outcomes possible — e.g. fire destroying a factory. You either have the fire (loss) or you don't (no gain). Managed through insurance and preventive controls.</li>
+          <li><strong>Upside risk (speculative risk):</strong> Both positive AND negative outcomes possible — e.g. entering a new market. You might gain (success) or lose (failure). Managed through strategy and portfolio diversification.</li>
+          <li>Finance focuses primarily on speculative risk — because these involve the risk-return tradeoff that drives all investment and business decisions.</li>
+          <li>Risk management is about optimising the risk-return tradeoff — not eliminating risk entirely.</li>
+        </ul>
+        <div class="card-tag">Risk Types</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Systematic vs Unsystematic Risk</div>
+        <ul class="card-items">
+          <li><strong>Systematic Risk (Market Risk):</strong> Affects all companies simultaneously — cannot be eliminated by diversification. Examples: interest rate changes, inflation, recession, geopolitical events, pandemic. Measured by Beta (β) in CAPM.</li>
+          <li><strong>Unsystematic Risk (Specific Risk):</strong> Affects only one company or industry — CAN be eliminated through diversification. Examples: a company's CEO resigns, a product recall, a factory fire, regulatory action against one company.</li>
+          <li>Investors are only compensated for bearing SYSTEMATIC risk (because unsystematic risk can be diversified away for free).</li>
+          <li>ACCA AFM: This links directly to CAPM, WACC, and project appraisal.</li>
+        </ul>
+        <div class="card-tag">CAPM Link</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why Risk Management is a Core Finance Skill</div>
+      Every major financial decision involves risk: Should we invest in this project? (Investment risk). Should we acquire this company? (M&A risk). Should we raise debt or equity? (Financial risk). Should we expand internationally? (Currency and political risk). Should we launch a new product? (Business risk).<br><br>
+      The CFO and finance team are at the centre of risk management — they quantify risks, advise on risk responses, structure risk mitigation instruments (hedges, insurance, derivatives), and report on risk to the board. Risk management is not just for risk managers — it is embedded in every finance role.
+    </div>
+  </div>
+
+  <!-- 36.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">36.2</div>
+      <div class="section-title">Enterprise Risk Management (ERM) — The Big Picture</div>
+    </div>
+    <p class="prose"><strong>Enterprise Risk Management (ERM)</strong> is the integrated, holistic approach to managing ALL risks across an entire organisation — not just financial risks in isolation. The COSO ERM Framework (2017) is the global standard for ERM.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">What Makes ERM Different from Traditional Risk Management?</div>
+        <ul class="card-items">
+          <li><strong>Traditional (Siloed):</strong> Each department manages its own risks independently — finance manages financial risk, IT manages cyber risk, operations manages operational risk. No integrated view.</li>
+          <li><strong>ERM (Integrated):</strong> All risks managed together at enterprise level — considers how risks interact, compound, and offset each other. The total enterprise risk profile is managed.</li>
+          <li><strong>Why integration matters:</strong> A cyber attack (IT risk) can cause reputational damage (strategic risk), regulatory fines (compliance risk), and customer losses (business risk) — siloed management misses these interactions.</li>
+          <li><strong>ERM links risk to strategy:</strong> Risk appetite is set at the board level — strategy is chosen to achieve objectives within the organisation's risk appetite.</li>
+          <li>ERM is not just about avoiding risk — it is about taking the RIGHT risks to create value for shareholders.</li>
+        </ul>
+        <div class="card-tag">Integrated Approach</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">ERM Governance Structure</div>
+        <ul class="card-items">
+          <li><strong>Board of Directors:</strong> Sets risk appetite and overall risk strategy. Has ultimate accountability for risk governance. Risk Committee of the Board (separate from Audit Committee) oversees ERM at top listed companies.</li>
+          <li><strong>Chief Risk Officer (CRO):</strong> Senior executive responsible for ERM framework — reports to CEO and Board. Relatively new role — became standard after 2008 financial crisis.</li>
+          <li><strong>Risk Management Function:</strong> Team supporting the CRO — develops risk frameworks, maintains risk register, facilitates risk assessments, monitors risk exposures.</li>
+          <li><strong>Business Unit Risk Owners:</strong> Each major business function has a designated risk owner responsible for managing risks in their area.</li>
+          <li>SEBI mandates Risk Management Committee for top 1,000 listed Indian companies.</li>
+        </ul>
+        <div class="card-tag">Governance</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Risk Register — The Central Tool of ERM</div>
+        <ul class="card-items">
+          <li>A risk register is a document that records all identified risks, their assessment, and management actions</li>
+          <li><strong>Key fields:</strong> Risk ID, Risk Description, Risk Category, Risk Owner, Inherent Likelihood (before controls), Inherent Impact, Controls in Place, Residual Likelihood (after controls), Residual Impact, Risk Rating, Action Plan, Review Date</li>
+          <li>Maintained and updated regularly — typically quarterly reviewed by management</li>
+          <li>Presented to Audit Committee / Board Risk Committee for oversight</li>
+          <li>Links risk management to strategy, audit planning, and internal audit focus areas</li>
+          <li>Top risks from risk register often disclosed publicly in Annual Report's risk section</li>
+        </ul>
+        <div class="card-tag">Risk Register</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">36.3</div>
+      <div class="section-title">The Risk Management Process — Identify, Assess, Respond, Monitor</div>
+      <div class="section-meta">The Core Cycle</div>
+    </div>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">STEP 01</div>
+        <div class="step-content"><strong>Risk Identification — What Could Go Wrong?</strong><br>
+        The first step is to identify ALL risks that could prevent the organisation from achieving its objectives. Methods include: Brainstorming sessions with management teams, PESTEL analysis (Political, Economic, Social, Technological, Environmental, Legal risks), SWOT analysis, review of past incidents and near-misses, industry benchmarking (what risks do peers face?), review of contracts and commitments, interviews with key personnel, scenario analysis ("what if" exercises), and review of regulatory and legal landscape.<br><br>
+        Key output: a comprehensive list of potential risk events. Important: cast the net WIDE at this stage — do not filter yet. Include even unlikely risks because the process of identifying them is valuable. Risks that are not identified cannot be managed.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 02</div>
+        <div class="step-content"><strong>Risk Assessment — How Likely and How Severe?</strong><br>
+        For each identified risk, assess: <strong>Likelihood</strong> (probability of the risk event occurring — rated 1–5 or Low/Medium/High/Critical) and <strong>Impact</strong> (severity of consequences if the risk occurs — financial loss, reputational damage, regulatory sanction, operational disruption). Plot on a Risk Matrix (Heat Map) — see Section 36.5.<br><br>
+        Two levels: <strong>Inherent Risk</strong> = exposure BEFORE any controls or mitigations. <strong>Residual Risk</strong> = exposure AFTER controls and mitigations are applied. The gap between inherent and residual risk is what the controls are doing. If residual risk is still above risk appetite → need more mitigation.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 03</div>
+        <div class="step-content"><strong>Risk Response — What Are We Going to Do About It?</strong><br>
+        For each risk, choose an appropriate response based on its likelihood, impact, and the organisation's risk appetite. The four responses are the "4Ts": Treat (reduce the risk), Transfer (shift it to someone else), Terminate (avoid the activity), Tolerate (accept the risk). Full detail in Section 36.6. The chosen response must be proportionate to the risk — over-responding wastes resources; under-responding leaves unacceptable exposure.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 04</div>
+        <div class="step-content"><strong>Risk Monitoring — Are Controls Working?</strong><br>
+        Risk management is not a one-time exercise. Risks change, new risks emerge, controls deteriorate. Monitoring involves: tracking Key Risk Indicators (KRIs) — early warning metrics that signal rising risk, regular review of the risk register (quarterly minimum), internal audit reviews of high-risk areas, management reporting on risk exposures, board/risk committee oversight. KRIs are leading indicators — they signal that a risk is increasing before it actually materialises. Example KRI for credit risk: percentage of receivables overdue by more than 60 days — if this rises, credit risk is increasing.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 05</div>
+        <div class="step-content"><strong>Risk Reporting & Communication</strong><br>
+        Risk information must flow to the right people at the right time. Operational teams: daily/weekly KRI dashboards. Management: monthly risk reports, exception reporting. Board/Risk Committee: quarterly risk register, top risk summary, emerging risks. External stakeholders: risk disclosures in Annual Report, regulatory filings. Poor risk communication was a major factor in most major corporate failures — boards did not know the risks being taken.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">36.4</div>
+      <div class="section-title">Risk Identification — Types of Business Risk</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Risk Category</th><th>Definition</th><th>Examples</th><th>Who Manages</th></tr>
+      <tr><td>Strategic Risk</td><td>Risk that strategy fails to achieve objectives or that external changes make the strategy obsolete</td><td>New disruptive competitor enters market. Technology makes product obsolete. M&A integration fails. Entry into new market unsuccessful. Wrong strategic bet on technology platform.</td><td>CEO, Board, Strategy function</td></tr>
+      <tr><td>Financial Risk</td><td>Risk of financial loss from market movements, credit defaults, or liquidity problems</td><td>Interest rate rise increases debt costs. Customer defaults on large receivable. Rupee depreciates vs USD increasing import costs. Company cannot pay salaries due to cash shortage.</td><td>CFO, Treasury, Risk function</td></tr>
+      <tr><td>Operational Risk</td><td>Risk of loss from failed or inadequate internal processes, people, systems, or external events</td><td>Factory fire destroys production facility. Key employee resigns taking critical knowledge. IT system failure disrupts operations. Flood damages distribution network. Human error in production causes product recall.</td><td>COO, Operations, Internal Audit</td></tr>
+      <tr><td>Compliance / Regulatory Risk</td><td>Risk of legal sanctions, fines, or reputational damage from failure to comply with laws and regulations</td><td>SEBI investigation for disclosure failure. GST penalties for incorrect filing. Environmental violation results in factory closure. Data breach violates PDPB — fines and lawsuits.</td><td>Compliance function, Legal, CFO</td></tr>
+      <tr><td>Reputational Risk</td><td>Risk of damage to the organisation's brand, reputation, and relationships with stakeholders</td><td>Product quality scandal goes viral on social media. CEO caught in corruption scandal. Environmental disaster linked to company. Poor customer service generates mass complaints. Data breach affecting millions of customers.</td><td>CEO, Marketing, Communications, Board</td></tr>
+      <tr><td>Cyber / Technology Risk</td><td>Risk of financial or operational loss from IT system failures, cyber attacks, or technology disruption</td><td>Ransomware attack encrypts all company data. Phishing email leads to funds transfer fraud. DDoS attack takes website offline. Core banking system failure during month-end.</td><td>CTO/CISO, IT function, Risk</td></tr>
+      <tr><td>Environmental / ESG Risk</td><td>Risk from environmental events, climate change, or failure to meet ESG expectations</td><td>Flood damages facilities in climate-vulnerable location. Carbon tax makes operations uneconomical. Investors divest due to poor ESG scores. Supply chain disruption from climate events.</td><td>Sustainability function, Operations, Board</td></tr>
+      <tr><td>Fraud Risk</td><td>Risk of intentional deception for financial gain — by employees, management, or external parties</td><td>Employee embezzlement. Management manipulation of financial statements. Supplier invoice fraud. Customer payment fraud. Cyber fraud (business email compromise).</td><td>Internal Audit, CFO, Fraud Risk function</td></tr>
+    </table>
+
+    <p class="section-label">PESTEL — Framework for External Risk Identification</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🏛️</div><div class="card-title">P — Political</div><ul class="card-items"><li>Government stability and policy changes</li><li>Tax policy changes (GST, corporate tax rates)</li><li>Trade policy (tariffs, import restrictions)</li><li>Nationalisation risk in certain sectors</li><li>India example: demonetisation (2016) — overnight policy change with massive operational impact</li></ul><div class="card-tag">Political</div></div>
+      <div class="card"><div class="card-icon">📈</div><div class="card-title">E — Economic</div><ul class="card-items"><li>GDP growth/recession</li><li>Inflation and interest rate changes</li><li>Exchange rate movements</li><li>Consumer spending power</li><li>India example: Rising RBI rates (2022–23) increased borrowing costs for all businesses — increased financial risk significantly</li></ul><div class="card-tag">Economic</div></div>
+      <div class="card"><div class="card-icon">👥</div><div class="card-title">S — Social</div><ul class="card-items"><li>Demographic changes (aging population, urbanisation)</li><li>Changing consumer preferences and behaviours</li><li>Labour market trends (talent shortage, remote work)</li><li>Social media influence on reputation</li><li>India example: Digital payments shift — risk for cash-heavy business models</li></ul><div class="card-tag">Social</div></div>
+      <div class="card"><div class="card-icon">💻</div><div class="card-title">T — Technological</div><ul class="card-items"><li>Disruptive technology making existing products obsolete</li><li>Cybersecurity threats evolving rapidly</li><li>AI automation reducing need for human labour</li><li>Fintech disrupting traditional banking</li><li>India example: UPI disrupting traditional payment processors and banks</li></ul><div class="card-tag">Technological</div></div>
+      <div class="card"><div class="card-icon">🌍</div><div class="card-title">E — Environmental</div><ul class="card-items"><li>Climate change physical risks (floods, droughts, extreme heat)</li><li>Climate transition risks (carbon taxes, stranded assets)</li><li>Environmental regulations tightening</li><li>Supply chain disruptions from weather events</li><li>India: Monsoon variability affects agriculture-linked businesses severely</li></ul><div class="card-tag">Environmental</div></div>
+      <div class="card"><div class="card-icon">⚖️</div><div class="card-title">L — Legal</div><ul class="card-items"><li>New legislation (Companies Act amendments, SEBI regulations)</li><li>Litigation risk — class action lawsuits, consumer complaints</li><li>Data protection laws (India's PDPB — Digital Personal Data Protection Act 2023)</li><li>Employment law changes</li><li>Competition law (CCI investigations of dominant market players)</li></ul><div class="card-tag">Legal</div></div>
+    </div>
+  </div>
+
+  <!-- 36.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">36.5</div>
+      <div class="section-title">Risk Assessment — Likelihood, Impact & the Risk Matrix</div>
+    </div>
+    <p class="prose">Once risks are identified, they must be assessed — how likely is this risk to occur, and how severe would the impact be? The <strong>Risk Matrix (Heat Map)</strong> is the standard tool for visualising this assessment and prioritising management attention.</p>
+
+    <p class="section-label">Risk Matrix — 5×5 Heat Map</p>
+    <div class="risk-matrix">
+      <div class="rm-label">↑<br>IMPACT</div>
+      <div class="rm-label">Very Low (1)</div>
+      <div class="rm-label">Low (2)</div>
+      <div class="rm-label">Medium (3)</div>
+      <div class="rm-label">High (4)</div>
+      <div class="rm-label">Very High (5)</div>
+      <div class="rm-label">Almost Certain (5)</div>
+      <div class="rm-cell rm-med">5</div>
+      <div class="rm-cell rm-high">10</div>
+      <div class="rm-cell rm-high">15</div>
+      <div class="rm-cell rm-crit">20</div>
+      <div class="rm-cell rm-crit">25</div>
+      <div class="rm-label">Likely (4)</div>
+      <div class="rm-cell rm-low">4</div>
+      <div class="rm-cell rm-med">8</div>
+      <div class="rm-cell rm-high">12</div>
+      <div class="rm-cell rm-high">16</div>
+      <div class="rm-cell rm-crit">20</div>
+      <div class="rm-label">Possible (3)</div>
+      <div class="rm-cell rm-low">3</div>
+      <div class="rm-cell rm-med">6</div>
+      <div class="rm-cell rm-med">9</div>
+      <div class="rm-cell rm-high">12</div>
+      <div class="rm-cell rm-high">15</div>
+      <div class="rm-label">Unlikely (2)</div>
+      <div class="rm-cell rm-low">2</div>
+      <div class="rm-cell rm-low">4</div>
+      <div class="rm-cell rm-med">6</div>
+      <div class="rm-cell rm-med">8</div>
+      <div class="rm-cell rm-high">10</div>
+      <div class="rm-label">Rare (1)</div>
+      <div class="rm-cell rm-low">1</div>
+      <div class="rm-cell rm-low">2</div>
+      <div class="rm-cell rm-low">3</div>
+      <div class="rm-cell rm-low">4</div>
+      <div class="rm-cell rm-med">5</div>
+      <div class="rm-label"></div>
+      <div class="rm-label" style="grid-column:span 5;text-align:center;">← LIKELIHOOD →</div>
+    </div>
+
+    <div class="wide-card" style="margin-top:20px;">
+      <h4>📊 How to Read the Risk Matrix</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2;">
+        <span style="color:#4ade80;font-family:var(--mono);font-weight:700;">GREEN (1–4): LOW RISK</span> — Accept/Monitor. Low priority. Current controls adequate. Review annually.<br>
+        <span style="color:var(--accent4);font-family:var(--mono);font-weight:700;">YELLOW (5–9): MEDIUM RISK</span> — Manage actively. Assign owner. Implement additional controls. Review quarterly.<br>
+        <span style="color:var(--accent);font-family:var(--mono);font-weight:700;">ORANGE (10–16): HIGH RISK</span> — Priority action required. Senior management attention. Monthly monitoring. Risk response plan needed immediately.<br>
+        <span style="color:#ff3333;font-family:var(--mono);font-weight:700;">RED (20–25): CRITICAL RISK</span> — Immediate action. Board-level attention. Cannot be tolerated within current risk appetite. Must be escalated and addressed urgently.
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Inherent vs Residual Risk — Always Plot Both</div>
+      <strong>Inherent Risk:</strong> Where the risk sits on the matrix BEFORE any controls or mitigations are applied. This shows the raw exposure.<br><br>
+      <strong>Residual Risk:</strong> Where the risk sits AFTER controls and mitigations. This shows the actual current exposure the organisation carries.<br><br>
+      <strong>Target Risk:</strong> Where management WANTS the risk to sit — determined by risk appetite.<br><br>
+      If Residual Risk > Target Risk → need more/better controls. If Residual Risk < Target Risk significantly → may be over-controlling (too costly relative to benefit).<br><br>
+      <strong>ACCA exam:</strong> When asked to assess risk, always consider both inherent and residual risk. The difference tells you how effective current controls are.
+    </div>
+  </div>
+
+  <!-- 36.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">36.6</div>
+      <div class="section-title">Risk Response — The 4Ts (Treat, Transfer, Terminate, Tolerate)</div>
+      <div class="section-meta">Core Framework</div>
+    </div>
+    <p class="prose">Once risks are assessed, management must decide how to respond. The four standard responses are known as the <strong>4Ts</strong>. The appropriate response depends on the likelihood, impact, and cost of mitigation relative to the risk's severity.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <div class="card-title">T1 — TREAT (Reduce the Risk)</div>
+        <ul class="card-items">
+          <li>Implement controls and mitigations to REDUCE either the likelihood of the risk occurring OR the impact if it does occur (or both)</li>
+          <li>Most common response — most risks are treated</li>
+          <li><strong>Reduce Likelihood:</strong> Training to prevent errors, preventive maintenance to stop equipment failure, credit checks to avoid bad customers, cybersecurity controls to prevent attacks</li>
+          <li><strong>Reduce Impact:</strong> Business continuity plans, backup systems, fire suppression systems, diversified supplier base, geographic diversification</li>
+          <li>Cost of treatment must be proportionate — spending ₹10Cr to protect against a ₹1Cr risk is not rational</li>
+          <li>After treatment: reassess residual risk — does it now fall within risk appetite?</li>
+        </ul>
+        <div class="card-tag">Reduce the Risk</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">T2 — TRANSFER (Share the Risk)</div>
+        <ul class="card-items">
+          <li>Shift the financial consequence of the risk to another party — typically through insurance or contractual arrangements</li>
+          <li><strong>Insurance:</strong> Property insurance (fire, flood), liability insurance, business interruption insurance, cyber insurance, directors & officers (D&O) insurance. Insurer bears the financial loss if the event occurs.</li>
+          <li><strong>Contractual transfer:</strong> Pass risk to a supplier (penalty clauses for late delivery), customer (fixed-price contracts that pass raw material risk to buyer), or outsourced service provider (SLA with financial penalties for downtime)</li>
+          <li><strong>Hedging:</strong> Transfer financial risk to a counterparty through derivatives (forward contracts, options, swaps) — covered in Section 36.8</li>
+          <li>Transfer does NOT eliminate the risk event — only the financial consequence. Reputational damage from a factory fire, for example, cannot be insured away.</li>
+        </ul>
+        <div class="card-tag">Shift the Risk</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚫</div>
+        <div class="card-title">T3 — TERMINATE (Avoid the Risk)</div>
+        <ul class="card-items">
+          <li>Stop doing the activity that creates the risk — eliminate exposure entirely</li>
+          <li>Used when: the risk is too high to treat or transfer at reasonable cost, or the activity generating the risk is not essential to strategy</li>
+          <li><strong>Examples:</strong> Don't enter a country with unacceptably high political risk. Discontinue a product with unacceptable liability exposure. Exit a business line that generates regulatory risk disproportionate to profit. Stop using a dangerous chemical in production.</li>
+          <li>Important limitation: terminating the activity also means losing the associated returns/opportunities</li>
+          <li>Strategic decision — must be approved at senior level</li>
+          <li>May create other risks (e.g. exiting a market may damage customer relationships)</li>
+        </ul>
+        <div class="card-tag">Avoid the Risk</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">T4 — TOLERATE (Accept the Risk)</div>
+        <ul class="card-items">
+          <li>Accept the risk as it is — no additional action taken beyond current controls</li>
+          <li>Used when: the risk is within risk appetite, the cost of further mitigation exceeds the benefit, or the risk cannot be reduced further</li>
+          <li><strong>Examples:</strong> Accept some level of credit risk on receivables — the cost of zero credit risk would mean no sales. Accept some currency risk below a hedging threshold. Accept reputational risk from being in a controversial but legal industry.</li>
+          <li>Tolerating a risk is a DELIBERATE decision — not ignorance. It must be documented and reviewed regularly.</li>
+          <li>Risk appetite guides which risks can be tolerated — below appetite → tolerate; above appetite → must treat/transfer/terminate</li>
+        </ul>
+        <div class="card-tag">Accept the Risk</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">36.7</div>
+      <div class="section-title">Financial Risk Management — Market, Credit & Liquidity Risk</div>
+    </div>
+    <p class="prose">Financial risks are those arising from the financial markets and financial transactions of the business. For finance professionals, these are the most directly relevant risks — and the ones most extensively tested in ACCA AFM.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Three Main Categories of Financial Risk</div>
+      <div class="formula-row">
+        <div class="formula-name">Market Risk</div>
+        <div class="formula-eq">Risk of loss from adverse movements in market prices — interest rates, exchange rates, commodity prices, equity prices.<br><span style="color:var(--muted);">Examples: Interest rate rise increases debt cost. Dollar strengthens vs Rupee — Indian exporter receives less in Rupee terms. Oil price spike increases production costs.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Credit Risk</div>
+        <div class="formula-eq">Risk that a counterparty (customer, borrower, investment issuer) fails to meet their financial obligations.<br><span style="color:var(--muted);">Examples: Customer defaults on ₹5Cr receivable. Bank's loan portfolio suffers defaults. Bond issuer defaults. Swap counterparty fails to make payment.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Liquidity Risk</div>
+        <div class="formula-eq">Risk that the organisation cannot meet its financial obligations as they fall due — runs out of cash even if technically solvent.<br><span style="color:var(--muted);">Examples: Company has large assets but cannot sell them fast enough to pay creditors. Bank faces sudden deposit withdrawals (bank run). Bond market seizes up — cannot roll over short-term debt.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">36.8</div>
+      <div class="section-title">Market Risk — Interest Rate, Currency & Commodity Risk</div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Interest Rate Risk</div>
+        <ul class="card-items">
+          <li><strong>Definition:</strong> Risk that changes in interest rates adversely affect financial performance — either through increased borrowing costs (for companies with floating-rate debt) or through reduced asset values (bond prices fall when rates rise)</li>
+          <li><strong>Who faces it:</strong> Any company with debt (floating rate loans), banks (lending at one rate, borrowing at another — "net interest margin" risk), investors holding fixed-income bonds</li>
+          <li><strong>Management tools:</strong></li>
+          <li>Interest Rate Swap — swap floating rate payments for fixed rate payments (or vice versa) with a bank counterparty. Most common hedging instrument for corporate interest rate risk.</li>
+          <li>Interest Rate Cap — pay a premium for protection against rate rising above a specified level (like insurance)</li>
+          <li>Interest Rate Collar — buy a cap + sell a floor — limits exposure to a band of rates at lower cost than a cap alone</li>
+          <li>Fixed-rate borrowing — replace floating debt with fixed rate loans</li>
+        </ul>
+        <div class="card-tag">ACCA AFM Core</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💱</div>
+        <div class="card-title">Currency (Foreign Exchange) Risk</div>
+        <ul class="card-items">
+          <li><strong>Three types of currency risk:</strong></li>
+          <li><strong>Transaction Risk:</strong> Risk that exchange rate moves between the date a transaction is agreed and the date it is settled. Example: Indian exporter agrees to sell goods for $1M — if Rupee strengthens before payment received, Rupee value of receipt falls.</li>
+          <li><strong>Translation Risk:</strong> Risk that exchange rate movements change the reported value of overseas subsidiary assets/liabilities when consolidated into group accounts. Accounting risk — may not be a real cash flow impact.</li>
+          <li><strong>Economic Risk:</strong> Long-term risk that exchange rate changes affect competitive position. Example: sustained Rupee depreciation makes imported inputs permanently more expensive.</li>
+          <li><strong>Hedging tools:</strong> Forward contracts (agree exchange rate today for future transaction), Currency options (right but not obligation to exchange at agreed rate), Currency swaps, Natural hedging (match income and costs in same currency)</li>
+        </ul>
+        <div class="card-tag">Export/Import Risk</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛢️</div>
+        <div class="card-title">Commodity Price Risk</div>
+        <ul class="card-items">
+          <li><strong>Definition:</strong> Risk that changes in prices of raw materials or commodities adversely affect costs or revenues</li>
+          <li><strong>Who faces it:</strong> Manufacturers (steel, cotton, chemicals as inputs), airlines (jet fuel), food companies (wheat, sugar, palm oil), oil & gas companies (oil price for revenue), farmers (crop prices)</li>
+          <li><strong>India context:</strong> Indian FMCG companies (HUL, ITC) face palm oil and packaging cost risk. Airlines (IndiGo, Air India) face jet fuel risk. Steel companies (Tata Steel, JSW) face iron ore and coal price risk.</li>
+          <li><strong>Hedging tools:</strong> Commodity futures and forward contracts (lock in price for future purchase/sale), Options on commodities, Long-term supply contracts with fixed prices, Vertical integration (own your raw material source)</li>
+        </ul>
+        <div class="card-tag">Raw Material Risk</div>
+      </div>
+    </div>
+
+    <p class="section-label">Hedging Instruments — Quick Reference</p>
+    <table class="data-table">
+      <tr><th>Instrument</th><th>What It Is</th><th>Obligation?</th><th>Upside Preserved?</th><th>Cost</th><th>Best For</th></tr>
+      <tr><td>Forward Contract</td><td>Agreement to buy/sell at a fixed rate on a future date</td><td>Both parties MUST transact</td><td>No — locked into rate</td><td>No premium (rate built into price)</td><td>Certain exposures — known future cash flow</td></tr>
+      <tr><td>Futures Contract</td><td>Exchange-traded standardised forward contract</td><td>Both parties MUST transact (or close out)</td><td>No — locked in</td><td>Margin deposit required</td><td>Liquid, standardised exposures</td></tr>
+      <tr><td>Options</td><td>Right but NOT obligation to transact at agreed rate</td><td>Buyer has right — NOT obligation</td><td>Yes — if favourable, don't exercise</td><td>Option premium paid upfront</td><td>Uncertain exposures, or when upside preservation needed</td></tr>
+      <tr><td>Interest Rate Swap</td><td>Exchange fixed for floating interest payments (or vice versa)</td><td>Both parties must make payments</td><td>No</td><td>No upfront cost (spread in rate)</td><td>Long-term interest rate risk on debt</td></tr>
+      <tr><td>Currency Swap</td><td>Exchange principal and interest in one currency for another</td><td>Both parties must make payments</td><td>No</td><td>No upfront cost</td><td>Long-term currency exposure, cross-border financing</td></tr>
+      <tr><td>Natural Hedge</td><td>Match costs and revenues in the same currency</td><td>No instrument needed</td><td>Yes — no derivative used</td><td>No financial cost (operational cost of restructuring)</td><td>Reducing transaction risk without derivatives</td></tr>
+    </table>
+  </div>
+
+  <!-- 36.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">36.9</div>
+      <div class="section-title">Credit Risk — Managing Counterparty Default</div>
+    </div>
+    <p class="prose">Credit risk is the risk that a counterparty fails to fulfil their financial obligation. It is one of the most important risks for banks, financial institutions, and any company that sells on credit.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Credit Risk for Corporates — Receivables Management</div>
+        <ul class="card-items">
+          <li><strong>Credit assessment:</strong> Before extending credit, assess customer's creditworthiness — financial statements, credit bureau reports (CIBIL in India), payment history, industry risk</li>
+          <li><strong>Credit limits:</strong> Set maximum exposure per customer — system prevents further sales until existing balance is paid down</li>
+          <li><strong>Credit terms:</strong> Define payment terms clearly — e.g. 30 days net. Shorten terms for riskier customers.</li>
+          <li><strong>Receivables monitoring:</strong> Aged receivables report weekly — chase overdue amounts promptly</li>
+          <li><strong>Bad debt provision:</strong> Under IFRS 9, Expected Credit Loss (ECL) model — provision for expected (not just incurred) losses on receivables</li>
+          <li><strong>Trade credit insurance:</strong> Insurance against customer default — insurer pays if customer fails to pay. Common for export receivables.</li>
+          <li><strong>Factoring:</strong> Sell receivables to a finance company (factor) for immediate cash — credit risk transferred to factor (non-recourse factoring)</li>
+        </ul>
+        <div class="card-tag">Trade Credit</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">Credit Risk for Banks — Loan Portfolio</div>
+        <ul class="card-items">
+          <li>Banks face credit risk on every loan they make — this is their core business risk</li>
+          <li><strong>Credit appraisal:</strong> Assess borrower's ability and willingness to repay — income, assets, collateral, credit history, purpose of loan</li>
+          <li><strong>5 Cs of Credit:</strong> Character (integrity), Capacity (ability to repay), Capital (net worth), Collateral (security), Conditions (economic environment)</li>
+          <li><strong>Credit ratings:</strong> Internal ratings for each borrower — determines interest rate charged and provisioning required</li>
+          <li><strong>Diversification:</strong> Spread loans across sectors, geographies, borrower types — reduces concentration risk</li>
+          <li><strong>Collateral:</strong> Secure loans against assets — reduces loss if borrower defaults</li>
+          <li><strong>Basel III:</strong> RBI's regulatory framework requiring banks to hold minimum capital against credit risk (Risk-Weighted Assets)</li>
+          <li><strong>NPA (Non-Performing Assets):</strong> Loans overdue by 90+ days — Indian banking system's major challenge (NPA crisis 2015–2019)</li>
+        </ul>
+        <div class="card-tag">Banking Credit Risk</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">36.10</div>
+      <div class="section-title">Liquidity Risk — Staying Solvent Day to Day</div>
+    </div>
+    <p class="prose">A company can be profitable on paper but still fail if it runs out of cash. Liquidity risk is the risk of being unable to meet financial obligations as they fall due. <strong>More companies fail from liquidity problems than from lack of profitability.</strong></p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💧</div>
+        <div class="card-title">Sources of Liquidity Risk</div>
+        <ul class="card-items">
+          <li><strong>Working Capital Mismatch:</strong> Paying suppliers faster than collecting from customers — cash gap widens</li>
+          <li><strong>Rapid Growth:</strong> Fast-growing businesses consume cash — more inventory, more receivables, more staff before revenue materialises</li>
+          <li><strong>Debt Maturity Concentration:</strong> All debt maturing at same time — must refinance immediately or default</li>
+          <li><strong>Seasonal Business:</strong> Revenue concentrated in certain months but costs incurred year-round</li>
+          <li><strong>Unexpected Large Payments:</strong> Tax assessment, legal settlement, large capex</li>
+          <li><strong>Market Liquidity:</strong> Cannot sell assets quickly without significant price discount (illiquid assets)</li>
+          <li><strong>Bank Liquidity:</strong> Deposit withdrawals faster than assets can be liquidated — bank run (Silicon Valley Bank 2023)</li>
+        </ul>
+        <div class="card-tag">Causes</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">Managing Liquidity Risk</div>
+        <ul class="card-items">
+          <li><strong>Cash flow forecasting:</strong> 13-week rolling cash flow forecast — know your cash position before the crisis hits</li>
+          <li><strong>Working capital management:</strong> Reduce receivable days, increase payable days, minimise inventory holding — improves cash cycle</li>
+          <li><strong>Credit facilities:</strong> Maintain undrawn revolving credit facilities — liquidity buffer in emergencies</li>
+          <li><strong>Debt maturity diversification:</strong> Spread debt maturities — never have all debt due at same time</li>
+          <li><strong>Cash reserves:</strong> Minimum cash balance policy — always maintain X months of operating costs in liquid form</li>
+          <li><strong>Asset-liability matching (banks):</strong> Match duration of assets and liabilities — prevents funding crisis</li>
+          <li><strong>Liquidity ratios:</strong> Current ratio, Quick ratio, Cash ratio — monitored regularly by treasury and lenders</li>
+        </ul>
+        <div class="card-tag">Management Tools</div>
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header">Key Liquidity Ratios</div>
+      <div class="formula-row">
+        <div class="formula-name">Current Ratio</div>
+        <div class="formula-eq">Current Assets ÷ Current Liabilities<br><span style="color:var(--muted);">Benchmark: &gt;1 (assets exceed short-term obligations). Too high may indicate inefficient use of assets. Industry varies — retail often lower.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Quick Ratio (Acid Test)</div>
+        <div class="formula-eq">(Current Assets − Inventory) ÷ Current Liabilities<br><span style="color:var(--muted);">More conservative — excludes inventory (least liquid current asset). Benchmark: &gt;1 for most industries.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Cash Ratio</div>
+        <div class="formula-eq">(Cash + Short-term Investments) ÷ Current Liabilities<br><span style="color:var(--muted);">Most conservative — only cash and near-cash. Shows ability to meet obligations with immediately available funds.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Cash Conversion Cycle (CCC)</div>
+        <div class="formula-eq">Receivable Days + Inventory Days − Payable Days<br><span style="color:var(--muted);">How long cash is tied up in the operating cycle. Lower = better. Negative CCC (e.g. Amazon, supermarkets) = customers pay before suppliers are paid — excellent liquidity position.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">36.11</div>
+      <div class="section-title">Operational Risk — People, Processes, Systems & External Events</div>
+    </div>
+    <p class="prose">Operational risk is defined by Basel II as <strong>"the risk of loss resulting from inadequate or failed internal processes, people, and systems or from external events."</strong> It is extremely broad — encompassing almost everything that can go wrong in running a business.</p>
+
+    <table class="data-table">
+      <tr><th>Operational Risk Category</th><th>Examples</th><th>Key Controls</th></tr>
+      <tr><td>People Risk</td><td>Key person dependency (business disrupted if one person leaves). Employee fraud. Skills shortage. High attrition. HR violations (harassment, discrimination — legal and reputational risk).</td><td>Succession planning for all key roles. Knowledge documentation. Strong HR policies and culture. Whistleblower mechanisms. Competitive compensation to retain talent.</td></tr>
+      <tr><td>Process Risk</td><td>Incorrect processes leading to errors. Inadequate documentation. Manual processes prone to error. Process failures causing customer harm (e.g. wrong medication dosage in pharma).</td><td>Process documentation and standardisation. Automation of routine processes. Quality management systems (ISO 9001). Regular process audits. Error-proofing (poka-yoke) in manufacturing.</td></tr>
+      <tr><td>Systems / IT Risk</td><td>System downtime causing operational disruption. Data loss. Cyber attacks. Software bugs causing incorrect processing. Technology obsolescence.</td><td>Robust IT infrastructure. Redundancy and failover systems. Regular backups and disaster recovery testing. Cybersecurity controls. Change management for system updates.</td></tr>
+      <tr><td>External Event Risk</td><td>Natural disasters (earthquake, flood, cyclone). Pandemic (COVID-19 — ₹Lakh crore losses globally). Political disruption. Supplier failure. Terrorist attack. Power grid failure.</td><td>Business Continuity Plan (BCP). Disaster Recovery Plan (DRP). Geographic diversification of operations. Multiple suppliers. Insurance. Emergency response plans.</td></tr>
+      <tr><td>Legal & Regulatory Risk</td><td>Non-compliance resulting in fines or sanctions. Litigation from customers, employees, or regulators. Contract disputes. Intellectual property infringement.</td><td>Legal function oversight. Compliance monitoring. Contract review process. Legal expense insurance. Regulatory horizon scanning.</td></tr>
+    </table>
+  </div>
+
+  <!-- 36.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">36.12</div>
+      <div class="section-title">Strategic & Reputational Risk</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">♟️</div>
+        <div class="card-title">Strategic Risk — When the Strategy Itself Fails</div>
+        <ul class="card-items">
+          <li>Risk that the chosen strategy fails to achieve objectives — or that the external environment changes in ways that make the strategy obsolete</li>
+          <li><strong>Types:</strong> Wrong strategic bet (Kodak ignoring digital photography), M&A integration failure (many acquisitions destroy value), competitive disruption (Netflix vs Blockbuster), regulatory change making strategy unviable</li>
+          <li><strong>India examples:</strong> Jet Airways — aggressive expansion strategy was not financially sustainable. Reliance Jio disrupted the telecom industry — strategic risk for Airtel, Vodafone.</li>
+          <li><strong>Management:</strong> Rigorous strategic planning process. Scenario planning (what if our strategy fails?). Board oversight of strategic decisions. Regular strategy review against changing environment. Avoid bet-the-company decisions without thorough analysis.</li>
+        </ul>
+        <div class="card-tag">Strategy Failure</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌟</div>
+        <div class="card-title">Reputational Risk — When Trust is Lost</div>
+        <ul class="card-items">
+          <li>Risk of damage to the organisation's reputation — leading to loss of customers, investors, employees, and regulatory goodwill</li>
+          <li>Reputational damage can be permanent — brands built over decades destroyed in days</li>
+          <li><strong>India examples:</strong> Byju's — reputational collapse from financial irregularities, aggressive sales practices, ED investigations. Adani Group — Hindenburg Report (2023) caused ₹10L+ crore market cap loss in days.</li>
+          <li><strong>Social media amplification:</strong> A single viral tweet/video can damage a brand globally within hours — unprecedented in pre-social media era</li>
+          <li><strong>Management:</strong> Culture of integrity. Proactive crisis management plan. Strong PR and communications. Genuine ESG commitment. Fast, transparent response to crises — cover-ups always worse than the original issue.</li>
+          <li><strong>Key insight:</strong> Reputational risk is an OUTPUT risk — it results from other risks materialising (product failure → reputational damage). Manage the source risks.</li>
+        </ul>
+        <div class="card-tag">Trust & Brand</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">36.13</div>
+      <div class="section-title">Risk Appetite & Risk Tolerance</div>
+    </div>
+    <p class="prose">Risk appetite and risk tolerance are foundational concepts in risk management — they define how much risk an organisation is willing to accept in pursuit of its objectives.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Risk Appetite, Tolerance & Capacity — Defined</div>
+      <div class="formula-row">
+        <div class="formula-name">Risk Appetite</div>
+        <div class="formula-eq">The AMOUNT and TYPE of risk an organisation is WILLING to accept in pursuit of its objectives.<br><span style="color:var(--muted);">Set by the Board. Expressed qualitatively ("we do not accept regulatory compliance risk") or quantitatively ("maximum credit loss of ₹50Cr per year"). Aligns risk-taking with strategy.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Risk Tolerance</div>
+        <div class="formula-eq">The ACCEPTABLE VARIATION around risk appetite — the boundaries within which risk must stay.<br><span style="color:var(--muted);">Example: Appetite = 5% NPL ratio. Tolerance = up to 6% before escalation required. Between 5–6% = monitor closely. Above 6% = breach → immediate action.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Risk Capacity</div>
+        <div class="formula-eq">The MAXIMUM amount of risk the organisation CAN bear — before its survival is threatened.<br><span style="color:var(--muted);">Determined by financial strength, regulatory capital, stakeholder expectations. Risk appetite should always be LESS than risk capacity — there must be a buffer.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Risk Attitude</div>
+        <div class="formula-eq">The overall disposition of the organisation towards risk — Risk Averse, Risk Neutral, or Risk Seeking.<br><span style="color:var(--muted);">A startup is risk-seeking (high growth, accept high risk). A bank is typically risk-averse (depositors' money, regulatory capital). A utility company is risk-neutral to averse.</span></div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Risk Appetite in Practice — How It Guides Decisions</div>
+      A well-defined risk appetite should be specific enough to actually guide daily decisions. Vague statements ("we have moderate risk appetite") are useless.<br><br>
+      <strong>Good risk appetite statements:</strong><br>
+      → "We will not enter any country rated below BB- by S&P without Board approval."<br>
+      → "No single customer will represent more than 15% of total revenue."<br>
+      → "We will maintain a minimum cash reserve of ₹100Cr at all times."<br>
+      → "We will not tolerate any deliberate non-compliance with applicable laws."<br>
+      → "We are willing to accept commodity price risk up to ₹20Cr annual impact without hedging."<br><br>
+      These statements translate risk appetite from boardroom philosophy into actionable operational limits.
+    </div>
+  </div>
+
+  <!-- 36.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">36.14</div>
+      <div class="section-title">Risk Reporting & Risk Culture</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Key Risk Indicators (KRIs) — Early Warning System</div>
+        <ul class="card-items">
+          <li>KRIs are metrics that signal INCREASING RISK before the risk event actually occurs — like a dashboard warning light</li>
+          <li>Effective KRIs: leading (not lagging), measurable, relevant, comparable over time</li>
+          <li><strong>Credit risk KRI:</strong> % of receivables overdue 60+ days — rising trend signals deteriorating credit quality</li>
+          <li><strong>Liquidity risk KRI:</strong> Days of cash runway — falling below 90 days triggers action</li>
+          <li><strong>Operational risk KRI:</strong> Number of IT system incidents per month — rising trend signals IT risk</li>
+          <li><strong>People risk KRI:</strong> Attrition rate — rising attrition signals talent retention risk</li>
+          <li><strong>Fraud risk KRI:</strong> Number of expense claims above policy limits — anomaly may indicate fraud</li>
+          <li>Each KRI should have thresholds: green (normal), amber (watch closely), red (escalate immediately)</li>
+        </ul>
+        <div class="card-tag">Early Warning</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Risk Culture — The Human Element</div>
+        <ul class="card-items">
+          <li>Risk culture is the shared values, beliefs, and behaviours regarding risk across the organisation</li>
+          <li><strong>Strong risk culture:</strong> Everyone understands and manages risk in their daily work. Bad news travels UP fast — people are not afraid to report problems. Risk management is embedded in decision-making, not a separate compliance exercise.</li>
+          <li><strong>Weak risk culture:</strong> "Shoot the messenger" — bad news suppressed. Short-term targets prioritised over risk management. Risk function is a box-ticking exercise. Senior management pressures staff to ignore limits when inconvenient.</li>
+          <li><strong>Building risk culture:</strong> Tone from the top (board and CEO visibly take risk seriously). Training. Incentives aligned with risk management (not just short-term profit). Transparent reporting. Whistleblower protection.</li>
+          <li>Most major risk failures (Enron, Satyam, Wirecard, IL&FS) had one thing in common: toxic risk culture where problems were hidden rather than escalated.</li>
+        </ul>
+        <div class="card-tag">Culture Matters</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">36.15</div>
+      <div class="section-title">Risk Management in India — Regulatory Framework</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">SEBI Requirements — Listed Companies</div>
+        <ul class="card-items">
+          <li>SEBI LODR 2015 — Regulation 21: Risk Management Committee mandatory for top 1,000 listed companies (by market cap)</li>
+          <li>Committee must: formulate risk management policy, review and monitor risk management framework, ensure adequate risk mitigation measures</li>
+          <li>Annual Report must include: risk factors section (detailed disclosure of principal risks and their mitigation), Management Discussion & Analysis — discussion of risks and uncertainties</li>
+          <li>CEO/CFO certification includes confirmation of adequacy of risk management systems</li>
+          <li>SEBI expects risk disclosures to be SPECIFIC and SUBSTANTIVE — not boilerplate language</li>
+        </ul>
+        <div class="card-tag">SEBI LODR</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">RBI — Basel III & Bank Risk Management</div>
+        <ul class="card-items">
+          <li>RBI has implemented Basel III framework for Indian banks — international standard for bank risk management</li>
+          <li><strong>Three Pillars of Basel III:</strong></li>
+          <li>Pillar 1: Minimum Capital Requirements — banks must hold capital against credit risk, market risk, and operational risk</li>
+          <li>Pillar 2: Supervisory Review — RBI reviews each bank's own risk assessment (ICAAP) and may require additional capital</li>
+          <li>Pillar 3: Market Discipline — banks must publicly disclose risk exposures so market can assess their health</li>
+          <li>Capital Adequacy Ratio (CAR): Minimum 9% in India (Basel III requires 8%). Tier 1 capital must be at least 7%. Failure to maintain CAR: RBI regulatory action.</li>
+          <li>Liquidity Coverage Ratio (LCR): Banks must hold sufficient High Quality Liquid Assets (HQLA) to survive 30-day stress scenario</li>
+        </ul>
+        <div class="card-tag">Basel III</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🇮🇳</div>
+        <div class="card-title">India-Specific Risk Landscape</div>
+        <ul class="card-items">
+          <li><strong>Political risk:</strong> Policy changes, land acquisition challenges, subsidy changes in regulated sectors</li>
+          <li><strong>Regulatory risk:</strong> Frequent regulatory changes — GST, Companies Act amendments, SEBI regulations, RBI guidelines — compliance burden is significant</li>
+          <li><strong>Infrastructure risk:</strong> Power cuts, logistics disruptions, monsoon-dependent agriculture links</li>
+          <li><strong>Promoter risk:</strong> Many Indian companies are promoter-controlled — corporate governance risk when promoter interests diverge from minority shareholders</li>
+          <li><strong>Currency risk:</strong> INR volatility vs USD matters enormously for IT exporters (revenue in USD), importers (cost in USD), and external commercial borrowers</li>
+          <li><strong>NPA crisis lessons (2015–2019):</strong> Indian banking system's massive NPA problem — originated from inadequate credit risk management + over-leveraged corporates + economic slowdown + fraud in some cases</li>
+        </ul>
+        <div class="card-tag">India Context</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">36.16</div>
+      <div class="section-title">Key Takeaways, Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+    </div>
+
+    <p class="section-label">Part A — 10 Core Takeaways</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Risk = Uncertainty of Outcomes</div><ul class="card-items"><li>Systematic risk — market-wide, cannot diversify (measured by Beta)</li><li>Unsystematic risk — company-specific, CAN be diversified away</li><li>Investors only compensated for systematic risk (CAPM)</li><li>Downside (pure) vs Upside (speculative) risk</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">4Ts Risk Response Framework</div><ul class="card-items"><li>Treat — implement controls to reduce likelihood/impact</li><li>Transfer — insurance, hedging, contractual transfer</li><li>Terminate — exit the activity generating the risk</li><li>Tolerate — accept the risk (within risk appetite)</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Three Financial Risks</div><ul class="card-items"><li>Market Risk — interest rate, currency, commodity movements</li><li>Credit Risk — counterparty default on financial obligations</li><li>Liquidity Risk — cannot meet obligations as they fall due</li><li>All three interrelated — managed by Treasury/CFO</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Hedging Tools Summary</div><ul class="card-items"><li>Forward contracts — lock in price, no optionality</li><li>Options — right but not obligation, upside preserved, premium cost</li><li>Interest rate swaps — fixed for floating exchange</li><li>Natural hedge — match currency of costs and revenues</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Risk Matrix — Likelihood × Impact</div><ul class="card-items"><li>Inherent risk (before controls) vs Residual risk (after controls)</li><li>Red/Critical → immediate Board action</li><li>High → senior management priority</li><li>Medium → manage actively</li><li>Low → monitor and accept</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Risk Appetite Hierarchy</div><ul class="card-items"><li>Risk Capacity &gt; Risk Appetite &gt; Risk Tolerance</li><li>Appetite set by Board — aligns risk with strategy</li><li>Must be specific and actionable — not vague statements</li><li>Breach of tolerance → escalate immediately</li></ul></div>
+      <div class="card"><div class="card-icon">7️⃣</div><div class="card-title">ERM — Integrated Approach</div><ul class="card-items"><li>All risks managed together — not in silos</li><li>Risk Register: central tool capturing all risks</li><li>CRO reports to CEO and Board Risk Committee</li><li>Risks interact — ERM captures compounding effects</li></ul></div>
+      <div class="card"><div class="card-icon">8️⃣</div><div class="card-title">PESTEL — External Risk Framework</div><ul class="card-items"><li>Political, Economic, Social, Technological, Environmental, Legal</li><li>Use for risk identification — comprehensive scan</li><li>Link to business objectives — which PESTEL factors threaten our goals?</li></ul></div>
+      <div class="card"><div class="card-icon">9️⃣</div><div class="card-title">Liquidity — Cash is King</div><ul class="card-items"><li>More companies fail from liquidity than profitability</li><li>Cash Conversion Cycle — lower/negative = better</li><li>13-week cash flow forecast — essential tool</li><li>Maintain undrawn credit facilities as liquidity buffer</li></ul></div>
+      <div class="card"><div class="card-icon">🔟</div><div class="card-title">Risk Culture — The Human Factor</div><ul class="card-items"><li>Bad news must travel UP fast — no "shoot the messenger"</li><li>Tone from the top — board and CEO set the culture</li><li>KRIs: early warning system — leading, not lagging indicators</li><li>All major failures had weak risk culture in common</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part B — Common Exam Mistakes</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">❌ MISTAKE 1</div><div class="step-content"><strong>Confusing Risk Appetite with Risk Capacity</strong><br>Risk appetite is what the organisation CHOOSES to accept. Risk capacity is the MAXIMUM it CAN bear before survival is threatened. Appetite must always be less than capacity — there must be a safety buffer. Using these terms interchangeably is wrong.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 2</div><div class="step-content"><strong>Only Mentioning One Risk Response Instead of Evaluating All Four</strong><br>When asked to recommend a risk response, evaluate ALL four Ts — explain which is most appropriate and why. Simply saying "the company should take out insurance" ignores whether treating (controlling) or terminating the activity might be better options.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 3</div><div class="step-content"><strong>Forgetting Inherent vs Residual Risk</strong><br>Always distinguish between risk before controls (inherent) and after controls (residual). The whole point of risk management is to reduce inherent risk to an acceptable residual level. Discussing only one level misses the fundamental dynamic.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 4</div><div class="step-content"><strong>Saying "Hedge All Currency Risk"</strong><br>Hedging all risk is rarely optimal — it has costs (premiums, opportunity cost) and may hedge away upside as well as downside. The correct approach: hedge risks ABOVE risk appetite, accept (tolerate) risks within appetite. Also: natural hedging should always be considered before derivative hedging.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 5</div><div class="step-content"><strong>Treating Systematic and Unsystematic Risk the Same</strong><br>Systematic risk cannot be diversified away — it is rewarded with higher expected returns (Beta in CAPM). Unsystematic risk CAN be diversified away — investors receive NO extra return for bearing it (they should diversify instead). This distinction is fundamental to portfolio theory and CAPM.</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part C — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">4Ts of Risk Response</div><ul class="card-items"><li><strong>T</strong>reat — reduce likelihood/impact via controls</li><li><strong>T</strong>ransfer — insurance, hedging, contracts</li><li><strong>T</strong>erminate — exit the risk-generating activity</li><li><strong>T</strong>olerate — accept (within risk appetite)</li></ul><div class="card-tag">Flashcard 1</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Financial Risk Types</div><ul class="card-items"><li><strong>Market:</strong> rates, FX, commodities move against you</li><li><strong>Credit:</strong> counterparty defaults</li><li><strong>Liquidity:</strong> can't meet obligations in cash</li><li>All managed by Treasury/CFO</li></ul><div class="card-tag">Flashcard 2</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Hedging — Forward vs Option</div><ul class="card-items"><li><strong>Forward:</strong> obligation to transact at fixed rate. No premium. Upside locked away.</li><li><strong>Option:</strong> right but not obligation. Premium paid. Upside preserved if favourable.</li><li>Uncertain exposure → option. Certain exposure → forward (cheaper).</li></ul><div class="card-tag">Flashcard 3</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Cash Conversion Cycle</div><ul class="card-items"><li>CCC = Receivable Days + Inventory Days − Payable Days</li><li>Lower = better (cash tied up less time)</li><li>Negative CCC = customers pay before you pay suppliers (ideal)</li><li>Rising CCC = liquidity risk increasing</li></ul><div class="card-tag">Flashcard 4</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Model Answer</th></tr>
+      <tr><td>"What are the four ways a company can respond to risk?"</td><td>The 4Ts: Treat — implement controls to reduce the likelihood or impact of the risk; Transfer — shift financial consequences to another party through insurance, hedging, or contractual arrangements; Terminate — exit the activity that generates the risk altogether; Tolerate — accept the risk within the organisation's defined risk appetite without additional action. The appropriate response depends on the risk's severity, cost of mitigation, and the organisation's risk appetite.</td></tr>
+      <tr><td>"What is the difference between systematic and unsystematic risk?"</td><td>Systematic risk affects all companies simultaneously — it cannot be eliminated through diversification. Examples include interest rate changes, inflation, and economic recessions. It is measured by Beta in CAPM, and investors are compensated for bearing it through higher expected returns. Unsystematic risk is specific to one company or industry and CAN be eliminated through diversification. Examples include a CEO resignation or a product recall. Because it can be diversified away, investors receive no extra return for bearing unsystematic risk — they should simply diversify their portfolio instead.</td></tr>
+      <tr><td>"How would you manage currency risk for an Indian exporter?"</td><td>An Indian exporter receives USD and needs to convert to INR. If the Rupee strengthens before payment, the Rupee receipt falls. Responses: Natural hedge — if the exporter also has USD costs (imported materials), these offset each other automatically. Forward contract — agree today to sell USD at a fixed INR rate on the expected payment date — eliminates currency uncertainty. Currency option — buy the right to sell USD at a minimum rate — protects downside but preserves upside if Rupee weakens further. The choice depends on certainty of the export revenue, cost of the hedge, and the company's risk appetite for currency movements.</td></tr>
+      <tr><td>"What is risk appetite and why does it matter?"</td><td>Risk appetite is the amount and type of risk an organisation is willing to accept in pursuit of its objectives — set by the Board. It matters because it provides the boundary within which managers can make decisions without escalating every risk. It links risk management to strategy — the organisation should only take risks it is willing to accept to achieve its goals. Well-defined risk appetite statements are specific and actionable: for example, "no single customer will represent more than 15% of revenue." Without clear risk appetite, managers either take too much risk or are overly cautious — both destroy value.</td></tr>
+    </table>
+
+    <p class="section-label" style="margin-top:36px;">Part E — Key Formulas Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 36 — Key Formulas & Concepts</div>
+      <div class="formula-row"><div class="formula-name">Risk Score (Matrix)</div><div class="formula-eq">Risk Score = Likelihood (1–5) × Impact (1–5) | Range 1–25 | Higher = more critical</div></div>
+      <div class="formula-row"><div class="formula-name">Current Ratio</div><div class="formula-eq">Current Assets ÷ Current Liabilities | Target: &gt;1</div></div>
+      <div class="formula-row"><div class="formula-name">Quick Ratio</div><div class="formula-eq">(Current Assets − Inventory) ÷ Current Liabilities | More conservative than current ratio</div></div>
+      <div class="formula-row"><div class="formula-name">Cash Conversion Cycle</div><div class="formula-eq">Receivable Days + Inventory Days − Payable Days | Lower = better liquidity</div></div>
+      <div class="formula-row"><div class="formula-name">Capital Adequacy Ratio (Banks)</div><div class="formula-eq">Tier 1 + Tier 2 Capital ÷ Risk-Weighted Assets | Minimum 9% in India (Basel III)</div></div>
+      <div class="formula-row"><div class="formula-name">Expected Loss (Credit Risk)</div><div class="formula-eq">EL = PD × LGD × EAD | PD = Probability of Default | LGD = Loss Given Default | EAD = Exposure at Default</div></div>
+      <div class="formula-row"><div class="formula-name">Beta (Systematic Risk)</div><div class="formula-eq">β = Cov(Ri, Rm) ÷ Var(Rm) | β &gt; 1: more volatile than market | β &lt; 1: less volatile | β = 0: no market risk</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part F — Action Steps</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 36 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag red">✅ THIS WEEK: Pick any Indian listed company — read their Annual Report Risk section — categorise each risk using PESTEL and identify their stated risk responses (4Ts)</span>
+        <span class="tag red">✅ THIS WEEK: Draw a 5×5 Risk Matrix from memory — plot 6 real business risks with their likelihood and impact ratings</span>
+        <span class="tag red">✅ THIS WEEK: Practice explaining the difference between a Forward Contract and an Option for currency hedging — out loud, clearly</span>
+        <span class="tag red">✅ THIS WEEK: Calculate the Cash Conversion Cycle for any listed Indian company using their annual report data</span>
+        <span class="tag red">✅ THIS WEEK: Research the IL&FS crisis — identify every risk management failure (at least 5 specific ones)</span>
+        <span class="tag red">✅ THIS MONTH: Complete a full ERM framework for a hypothetical Indian manufacturing company — identify 10 risks, assess each, and propose responses</span>
+        <span class="tag red">✅ THIS MONTH: Study Basel III framework — understand Pillar 1 (capital requirements for credit, market, operational risk) in detail</span>
+        <span class="tag red">✅ THIS MONTH: Attempt 2 ACCA AFM past paper questions on financial risk management — focus on currency risk and interest rate risk hedging</span>
+        <span class="tag red">✅ THIS MONTH: Learn to write specific risk appetite statements — write 5 for different risk categories for a fictional Indian bank</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Identify (Know Every Risk That Could Hurt You)<br>
+      + Assess (Likelihood × Impact — Inherent AND Residual)<br>
+      + Respond (Treat / Transfer / Terminate / Tolerate)<br>
+      + Monitor (KRIs — Catch Problems Before They Become Crises)<br>
+      + Risk Appetite (Know How Much Risk You're Willing to Take)<br>
+      + Risk Culture (Bad News Must Travel Up — Always)<br>
+      = <strong style="color:var(--accent4);">Risk Management Excellence — The Difference Between Surviving and Thriving</strong>
+    </div>
+    <h3>Chapter 36: Risk Management — Complete ⚠️✅</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 37: Taxation Fundamentals — how governments tax income, profits, and transactions, and how finance professionals navigate the tax landscape. 🏛️</p>
+  </div>
+
+</div>
+</body>
+</html>

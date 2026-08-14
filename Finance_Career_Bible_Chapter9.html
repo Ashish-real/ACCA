@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 9: Inventory Accounting</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #fb7185;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero { padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(251,113,133,0.09) 0%, transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-pink   { background: rgba(251,113,133,0.2); color: var(--accent5); border: 1px solid rgba(251,113,133,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(251,113,133,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(251,113,133,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(251,113,133,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(251,113,133,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(251,113,133,0.07), rgba(255,217,61,0.05)); border: 1px solid rgba(251,113,133,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  .equation { background: var(--card); border: 1px solid var(--accent5); border-radius: 12px; padding: 20px 24px; margin: 20px 0; text-align: center; }
+  .equation-text { font-family: var(--mono); font-size: clamp(12px,2.5vw,15px); color: var(--accent2); letter-spacing: 1px; line-height: 2; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* FLOW TABLE for FIFO/AVCO */
+  .flow-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 14px; }
+  .flow-header { background: rgba(251,113,133,0.08); padding: 12px 20px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; }
+  .flow-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1.3fr; padding: 9px 16px; border-bottom: 1px solid rgba(42,42,58,0.3); font-size: 12px; align-items: center; }
+  .flow-row:last-child { border-bottom: none; }
+  .flow-row.header { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.2); }
+  .flow-row.total { background: rgba(251,113,133,0.08); font-weight: 700; color: var(--accent5); border-top: 2px solid var(--accent5); }
+  .flow-num { font-family: var(--mono); text-align: right; color: var(--muted); }
+  .flow-num.green { color: var(--accent2); font-weight: 600; }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(251,113,133,0.1); border: 1px solid rgba(251,113,133,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(251,113,133,0.09), rgba(255,217,61,0.06)); border: 1px solid rgba(251,113,133,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  @media (max-width: 600px) {
+    .flow-row { grid-template-columns: 1fr 1fr 1fr 1fr 1.3fr; font-size: 10px; padding: 8px 8px; }
+  }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 9</div>
+  <h1>Inventory<br><span>Accounting</span></h1>
+  <p class="hero-sub">IAS 2 — how to value the stock that drives every manufacturing, retail, and FMCG business. FIFO, Weighted Average, NRV, and the rules that protect against overstated profits.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">IAS 2</div><div class="stat-label">The Standard</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Valuation Methods</div></div>
+    <div class="stat"><div class="stat-num">FA+FR</div><div class="stat-label">ACCA Papers</div></div>
+    <div class="stat"><div class="stat-num">LCNRV</div><div class="stat-label">Golden Rule</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 9 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">9.1</span>What is Inventory — and Why It's Tricky</div>
+    <div class="toc-item"><span class="toc-num">9.2</span>The Golden Rule — Lower of Cost and NRV</div>
+    <div class="toc-item"><span class="toc-num">9.3</span>What's Included in the Cost of Inventory</div>
+    <div class="toc-item"><span class="toc-num">9.4</span>Inventory Valuation Methods — FIFO vs Weighted Average</div>
+    <div class="toc-item"><span class="toc-num">9.5</span>Net Realisable Value (NRV) — Calculation & Examples</div>
+    <div class="toc-item"><span class="toc-num">9.6</span>Inventory Counts & Closing Inventory Adjustments</div>
+    <div class="toc-item"><span class="toc-num">9.7</span>Inventory's Impact on Financial Statements</div>
+    <div class="toc-item"><span class="toc-num">9.8</span>Inventory Management in MNCs — Real World</div>
+    <div class="toc-item"><span class="toc-num">9.9</span>Inventory & ACCA — Paper Mapping</div>
+    <div class="toc-item"><span class="toc-num">9.10</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">9.11</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Inventory (stock) is often one of the <strong>largest assets on a company's Balance Sheet</strong> — and one of the easiest to manipulate. The way inventory is valued directly impacts Cost of Goods Sold, Gross Profit, and Net Profit. IAS 2 sets out the rules — and getting it right (or catching when it's wrong) is a core skill for every accountant and auditor.</p>
+    <div class="quote">"Inventory is where profits hide. Overstate closing inventory by ₹1, and profit increases by ₹1 — instantly, without selling anything."</div>
+  </div>
+
+  <!-- 9.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">9.1</div>
+      <div class="section-title">What is Inventory — and Why It's Tricky</div>
+    </div>
+    <p class="prose">Inventory is <strong>assets held for sale in the ordinary course of business</strong>, or in the process of production for such sale, or materials/supplies to be consumed in production.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Three Types of Inventory</div>
+        <ul class="card-items">
+          <li><strong>Raw Materials:</strong> Inputs not yet used in production</li>
+          <li><strong>Work in Progress (WIP):</strong> Partially completed goods</li>
+          <li><strong>Finished Goods:</strong> Completed products ready for sale</li>
+          <li>A manufacturer holds all three; a retailer typically only finished goods</li>
+        </ul>
+        <div class="card-tag">Manufacturing Cycle</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Why Inventory Valuation Matters</div>
+        <ul class="card-items">
+          <li>Closing inventory directly affects COGS and Gross Profit</li>
+          <li>Higher closing inventory → lower COGS → higher profit</li>
+          <li>Inventory is a current asset on the Balance Sheet</li>
+          <li>Overstating inventory = classic fraud technique</li>
+          <li>Auditors physically count and verify inventory</li>
+        </ul>
+        <div class="card-tag">Profit Impact</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">The COGS Connection</div>
+        <ul class="card-items">
+          <li>COGS = Opening Inventory + Purchases − Closing Inventory</li>
+          <li>This connects the Balance Sheet to the Income Statement</li>
+          <li>Closing inventory of this year = Opening of next year</li>
+          <li>An error here distorts TWO years of financial statements</li>
+        </ul>
+        <div class="card-tag">Two-Period Impact</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">9.2</div>
+      <div class="section-title">The Golden Rule — Lower of Cost and NRV</div>
+      <div class="section-meta">IAS 2's Core Principle</div>
+    </div>
+    <p class="prose">IAS 2 requires inventory to be measured at the <strong>lower of cost and net realisable value (NRV)</strong>. This single rule is the foundation of all inventory accounting — and reflects the prudence concept from Chapter 2.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Inventory Value = LOWER OF:<br>
+        Cost &nbsp;&nbsp;OR&nbsp;&nbsp; Net Realisable Value (NRV)<br><br>
+        NRV = Estimated Selling Price − Costs to Complete − Costs to Sell
+      </div>
+      <div class="equation-label">The single most important rule in IAS 2 — applied item by item (or group of similar items)</div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Why "Lower Of"?</div>
+        <ul class="card-items">
+          <li>Reflects the prudence concept — don't overstate assets</li>
+          <li>If inventory cost more to make than it can be sold for, write it down</li>
+          <li>Recognise losses as soon as they're foreseeable</li>
+          <li>Never write inventory UP above cost — even if NRV rises</li>
+        </ul>
+        <div class="card-tag">Prudence in Action</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Applied Item by Item</div>
+        <ul class="card-items">
+          <li>NOT applied to total inventory value as a whole</li>
+          <li>Each item (or group of similar items) compared separately</li>
+          <li>One item can be at cost, another at NRV — in the same inventory</li>
+          <li>Cannot offset a write-down on one item against a gain on another</li>
+        </ul>
+        <div class="card-tag">Item-by-Item Comparison</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">9.3</div>
+      <div class="section-title">What's Included in the Cost of Inventory</div>
+    </div>
+    <p class="prose">"Cost" under IAS 2 is not just the purchase price. It includes <strong>all costs of purchase, costs of conversion, and other costs incurred in bringing inventory to its present location and condition</strong>.</p>
+
+    <table class="data-table">
+      <tr><th>✅ INCLUDED in Cost</th><th>❌ NOT Included — Expensed Immediately</th></tr>
+      <tr><td>Purchase price (net of trade discounts/rebates)</td><td>Abnormal waste of materials, labour, or other resources</td></tr>
+      <tr><td>Import duties and non-refundable taxes</td><td>Storage costs (unless necessary part of production process)</td></tr>
+      <tr><td>Transport and handling costs to bring inventory in</td><td>Administrative overheads not related to production</td></tr>
+      <tr><td>Direct labour (conversion costs)</td><td>Selling costs (marketing, sales commissions)</td></tr>
+      <tr><td>Production overheads (absorbed on normal capacity)</td><td>Interest costs (unless IAS 23 qualifying asset)</td></tr>
+      <tr><td>Other costs to bring to present location/condition</td><td>Foreign exchange differences from foreign currency purchases</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">⚡ Normal vs Abnormal Capacity — Critical Distinction</div>
+      Fixed production overheads are allocated based on <strong>normal capacity</strong> — the expected average production over several periods. If actual production is abnormally low, unabsorbed overheads are <strong>expensed immediately</strong>, not added to inventory cost. This prevents inventory from being inflated during periods of low production (e.g. factory shutdown).
+    </div>
+  </div>
+
+  <!-- 9.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">9.4</div>
+      <div class="section-title">Inventory Valuation Methods</div>
+      <div class="section-meta">FIFO vs Weighted Average</div>
+    </div>
+    <p class="prose">When identical items are purchased at different prices, IAS 2 permits <strong>two cost formulas</strong>: FIFO (First In, First Out) and Weighted Average Cost (AVCO). <strong>LIFO is NOT permitted under IFRS</strong> (unlike US GAAP).</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📥</div>
+        <div class="card-title">FIFO (First In, First Out)</div>
+        <ul class="card-items">
+          <li>Assumes oldest inventory is sold first</li>
+          <li>Closing inventory valued at most recent purchase prices</li>
+          <li>In rising prices: higher closing inventory, lower COGS, higher profit</li>
+          <li>Reflects physical flow for perishables (food, pharma)</li>
+          <li>Closing inventory closer to current replacement cost</li>
+        </ul>
+        <div class="card-tag">Permitted under IFRS</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Weighted Average Cost (AVCO)</div>
+        <ul class="card-items">
+          <li>Average cost recalculated after each purchase</li>
+          <li>Smooths out price fluctuations</li>
+          <li>In rising prices: COGS and profit between FIFO and LIFO</li>
+          <li>Common for commodities and bulk materials (oil, grain, chemicals)</li>
+          <li>Simpler in continuous inventory systems</li>
+        </ul>
+        <div class="card-tag">Permitted under IFRS</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">❌</div>
+        <div class="card-title">LIFO (Last In, First Out)</div>
+        <ul class="card-items">
+          <li><strong>NOT permitted under IFRS / Ind AS</strong></li>
+          <li>Permitted under US GAAP only</li>
+          <li>Assumes newest inventory sold first</li>
+          <li>In rising prices: lower profit, lower tax (popular in US for tax reasons)</li>
+          <li>Important difference for ACCA students working with US subsidiaries</li>
+        </ul>
+        <div class="card-tag">US GAAP Only — Not IFRS</div>
+      </div>
+    </div>
+
+    <p class="section-label">Complete Worked Example — FIFO vs AVCO</p>
+    <div class="flow-block">
+      <div class="flow-header">Ashish Trading Co. — Inventory Movements for "Finance Calculator" Product</div>
+      <div class="flow-row header">
+        <div>Date</div><div>Transaction</div><div style="text-align:right;">Units</div><div style="text-align:right;">Price/Unit</div><div style="text-align:right;">Total Value</div>
+      </div>
+      <div class="flow-row"><div>1 Jan</div><div>Opening Inventory</div><div class="flow-num">100</div><div class="flow-num">₹200</div><div class="flow-num">₹20,000</div></div>
+      <div class="flow-row"><div>10 Jan</div><div>Purchase</div><div class="flow-num">150</div><div class="flow-num">₹220</div><div class="flow-num">₹33,000</div></div>
+      <div class="flow-row"><div>20 Jan</div><div>Sale</div><div class="flow-num">180</div><div class="flow-num">—</div><div class="flow-num">—</div></div>
+      <div class="flow-row"><div>25 Jan</div><div>Purchase</div><div class="flow-num">100</div><div class="flow-num">₹240</div><div class="flow-num">₹24,000</div></div>
+      <div class="flow-row total"><div>31 Jan</div><div>Closing Inventory</div><div class="flow-num green">170 units</div><div></div><div></div></div>
+    </div>
+
+    <div class="wide-card" style="margin-top:14px;">
+      <h4>FIFO Valuation of Closing Inventory (170 units)</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        Sale of 180 units consumes: 100 units (opening) + 80 units (from 10 Jan batch)<br>
+        Remaining from 10 Jan batch: 150 − 80 = 70 units @ ₹220<br>
+        Plus all of 25 Jan batch: 100 units @ ₹240<br><br>
+        <strong style="color:var(--accent5);">Closing Inventory (FIFO) = (70 × ₹220) + (100 × ₹240) = ₹15,400 + ₹24,000 = ₹39,400</strong>
+      </div>
+    </div>
+
+    <div class="wide-card">
+      <h4>AVCO Valuation of Closing Inventory (170 units)</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        <strong style="color:var(--text);">Step 1 — Weighted average after 10 Jan purchase:</strong><br>
+        (₹20,000 + ₹33,000) ÷ (100 + 150) = ₹53,000 ÷ 250 = ₹212 per unit<br><br>
+        <strong style="color:var(--text);">Step 2 — After sale of 180 units:</strong><br>
+        Remaining = 250 − 180 = 70 units @ ₹212 = ₹14,840<br><br>
+        <strong style="color:var(--text);">Step 3 — After 25 Jan purchase:</strong><br>
+        (₹14,840 + ₹24,000) ÷ (70 + 100) = ₹38,840 ÷ 170 = ₹228.47 per unit<br><br>
+        <strong style="color:var(--accent5);">Closing Inventory (AVCO) = 170 × ₹228.47 = ₹38,840</strong>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 Impact on Profit — FIFO vs AVCO</div>
+      FIFO closing inventory (₹39,400) is higher than AVCO (₹38,840) — because FIFO values closing stock at the most recent (higher) prices in a rising price environment. <strong>Higher closing inventory → lower COGS → higher reported profit under FIFO</strong> when prices are rising. This is why the choice of method matters for comparability — and must be disclosed and applied consistently (IAS 8).
+    </div>
+  </div>
+
+  <!-- 9.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">9.5</div>
+      <div class="section-title">Net Realisable Value (NRV)</div>
+      <div class="section-meta">Calculation & Examples</div>
+    </div>
+    <p class="prose">NRV is the <strong>estimated selling price in the ordinary course of business, less estimated costs of completion and costs necessary to make the sale</strong>. When NRV falls below cost, inventory must be written down.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        NRV = Estimated Selling Price<br>
+        − Estimated Costs of Completion<br>
+        − Estimated Selling Costs (commission, transport, marketing)
+      </div>
+      <div class="equation-label">Compare NRV to Cost — record inventory at the lower of the two</div>
+    </div>
+
+    <p class="section-label">NRV Write-Down Example — Multiple Products</p>
+    <div class="flow-block">
+      <div class="flow-header">Ashish Retail — Year End Inventory Valuation (Lower of Cost and NRV)</div>
+      <div class="flow-row header">
+        <div>Product</div><div style="text-align:right;">Cost</div><div style="text-align:right;">Selling Price</div><div style="text-align:right;">Selling Costs</div><div style="text-align:right;">NRV / Value Used</div>
+      </div>
+      <div class="flow-row"><div>Laptop Bags (100 units)</div><div class="flow-num">₹800</div><div class="flow-num">₹1,200</div><div class="flow-num">₹100</div><div class="flow-num green">₹800 (Cost — NRV ₹1,100 higher)</div></div>
+      <div class="flow-row"><div>Old Calculators (50 units)</div><div class="flow-num">₹600</div><div class="flow-num">₹500</div><div class="flow-num">₹50</div><div class="flow-num green">₹450 (NRV — write down ₹150/unit)</div></div>
+      <div class="flow-row"><div>Damaged Stationery (200 units)</div><div class="flow-num">₹50</div><div class="flow-num">₹40</div><div class="flow-num">₹10</div><div class="flow-num green">₹30 (NRV — write down ₹20/unit)</div></div>
+    </div>
+
+    <div class="wide-card" style="margin-top:14px;">
+      <h4>Journal Entry — Inventory Write-Down</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2;margin-top:8px;">
+        Old Calculators: write-down = (₹600 − ₹450) × 50 units = ₹7,500<br>
+        Damaged Stationery: write-down = (₹50 − ₹30) × 200 units = ₹4,000<br>
+        <strong style="color:var(--text);">Total write-down = ₹11,500</strong><br><br>
+        <strong style="color:var(--accent5);">Dr Cost of Sales (P&L) ₹11,500</strong><br>
+        <strong style="color:var(--accent5);">Cr Inventory ₹11,500</strong>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🔄 Reversal of Write-Down</div>
+      If circumstances change and NRV recovers (e.g. selling price increases), the write-down can be <strong>reversed</strong> — but only up to the original cost, never above it. The reversal is recognised as a reduction in Cost of Sales (increases profit) in the period the recovery occurs. This is one of the few areas of IFRS where write-downs CAN be reversed.
+    </div>
+  </div>
+
+  <!-- 9.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">9.6</div>
+      <div class="section-title">Inventory Counts & Closing Inventory Adjustments</div>
+    </div>
+    <p class="prose">At year-end, businesses perform a <strong>physical inventory count</strong> to verify what's actually on the shelves matches the accounting records. Several common adjustments arise.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Goods in Transit</div>
+        <ul class="card-items">
+          <li>Goods sent by supplier but not yet received at year-end</li>
+          <li>Include if title has passed (per contract terms — FOB, etc.)</li>
+          <li>Common exam adjustment — add to closing inventory + payables</li>
+        </ul>
+        <div class="card-tag">Title Transfer Test</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Goods Sold but Not Delivered</div>
+        <ul class="card-items">
+          <li>Sale recorded but goods still in warehouse at count date</li>
+          <li>Exclude from closing inventory if risks/control transferred</li>
+          <li>Check against revenue recognition (IFRS 15)</li>
+        </ul>
+        <div class="card-tag">Revenue Recognition Link</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">↩️</div>
+        <div class="card-title">Goods on Sale or Return</div>
+        <ul class="card-items">
+          <li>Goods sent to customer but customer can return</li>
+          <li>Include in supplier's inventory until sale confirmed</li>
+          <li>Customer should NOT include in their own inventory</li>
+        </ul>
+        <div class="card-tag">Consignment Stock</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔢</div>
+        <div class="card-title">Continuous vs Periodic Inventory</div>
+        <ul class="card-items">
+          <li><strong>Periodic:</strong> Inventory counted at period end only — COGS calculated as balancing figure</li>
+          <li><strong>Continuous (Perpetual):</strong> Inventory updated after every transaction — modern ERP systems (SAP)</li>
+          <li>Most MNCs use continuous systems with periodic physical verification</li>
+        </ul>
+        <div class="card-tag">System Types</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">9.7</div>
+      <div class="section-title">Inventory's Impact on Financial Statements</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Error</th><th>Effect on Income Statement</th><th>Effect on Balance Sheet</th></tr>
+      <tr><td>Closing inventory OVERSTATED</td><td>COGS understated → Profit OVERSTATED</td><td>Current Assets OVERSTATED, Equity OVERSTATED</td></tr>
+      <tr><td>Closing inventory UNDERSTATED</td><td>COGS overstated → Profit UNDERSTATED</td><td>Current Assets UNDERSTATED, Equity UNDERSTATED</td></tr>
+      <tr><td>Opening inventory OVERSTATED</td><td>COGS overstated → Profit UNDERSTATED</td><td>(Affects prior period — already closed)</td></tr>
+      <tr><td>Opening inventory UNDERSTATED</td><td>COGS understated → Profit OVERSTATED</td><td>(Affects prior period — already closed)</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🎯 ACCA Exam Trap — The Two-Period Effect</div>
+      A closing inventory error in Year 1 doesn't just affect Year 1 — it <strong>automatically affects Year 2</strong> too, because Year 1's closing inventory becomes Year 2's opening inventory. If closing inventory is overstated by ₹10,000 in Year 1: Year 1 profit is overstated by ₹10,000, AND Year 2 profit is understated by ₹10,000 (because opening inventory is now overstated, increasing Year 2's COGS). Over the two years combined, total profit is correct — but each individual year is wrong. This is a favourite ACCA FA/FR exam question.
+    </div>
+  </div>
+
+  <!-- 9.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">9.8</div>
+      <div class="section-title">Inventory Management in MNCs — Real World</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Inventory Days / Turnover</div>
+        <ul class="card-items">
+          <li>Inventory Days = (Avg Inventory ÷ COGS) × 365</li>
+          <li>Inventory Turnover = COGS ÷ Average Inventory</li>
+          <li>Lower days = faster moving inventory = efficient</li>
+          <li>Used in ratio analysis — major ACCA FR/FM topic</li>
+        </ul>
+        <div class="card-tag">Working Capital KPI</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Just-In-Time (JIT)</div>
+        <ul class="card-items">
+          <li>Minimise inventory holding — order only when needed</li>
+          <li>Reduces storage costs and obsolescence risk</li>
+          <li>Requires reliable suppliers and forecasting</li>
+          <li>Pioneered by Toyota — used globally now</li>
+        </ul>
+        <div class="card-tag">Lean Management</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Big 4 Audit Focus on Inventory</div>
+        <ul class="card-items">
+          <li>Physical inventory count attendance — mandatory audit procedure</li>
+          <li>Cut-off testing — goods received/shipped near year-end</li>
+          <li>NRV testing — checking for obsolete/slow-moving stock</li>
+          <li>One of the highest-risk audit areas</li>
+        </ul>
+        <div class="card-tag">Audit & Assurance (AA)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">9.9</div>
+      <div class="section-title">Inventory & ACCA — Paper Mapping</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>ACCA Paper</th><th>Level</th><th>What's Tested</th></tr>
+      <tr><td>Lower of Cost and NRV</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Apply rule item by item</td></tr>
+      <tr><td>FIFO and AVCO calculations</td><td>FA → MA</td><td>Applied Knowledge</td><td>Calculate closing inventory under both methods</td></tr>
+      <tr><td>Cost components (what's included)</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Include/exclude items from cost</td></tr>
+      <tr><td>Inventory adjustments (cut-off, GIT)</td><td>FA → AA</td><td>Knowledge → Skills</td><td>Year-end adjustments, journal entries</td></tr>
+      <tr><td>Two-period error effect</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Trace error impact across periods</td></tr>
+      <tr><td>Inventory days / turnover ratios</td><td>FR → FM</td><td>Skills</td><td>Calculate and interpret ratios</td></tr>
+      <tr><td>Audit of inventory</td><td>AA (Audit & Assurance)</td><td>Applied Skills</td><td>Audit procedures for inventory</td></tr>
+    </table>
+  </div>
+
+  <!-- 9.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">9.10</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Lower of Cost and NRV — Always</div><ul class="card-items"><li>The golden rule of IAS 2</li><li>Applied item by item, not in total</li><li>Reflects the prudence concept</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">FIFO and AVCO Only</div><ul class="card-items"><li>LIFO not permitted under IFRS</li><li>FIFO: higher profit in rising prices</li><li>AVCO: smoothed, average-based</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Cost = More Than Purchase Price</div><ul class="card-items"><li>Include conversion costs and overheads</li><li>Exclude abnormal waste, admin, selling costs</li><li>Normal capacity for overhead absorption</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Inventory Errors = Two-Period Impact</div><ul class="card-items"><li>Closing of Year 1 = Opening of Year 2</li><li>An error reverses itself over 2 years</li><li>But each individual year is misstated</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Write-Downs Can Be Reversed</div><ul class="card-items"><li>If NRV recovers — reverse the write-down</li><li>Never above original cost</li><li>Rare exception in IFRS — most write-downs are permanent</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Inventory = High Audit Risk</div><ul class="card-items"><li>Physical count attendance is mandatory</li><li>Cut-off and NRV are key audit areas</li><li>Career path: Big 4 inventory audit specialist</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 9 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Calculate closing inventory using FIFO and AVCO for a sample dataset</span>
+        <span class="tag teal">✅ Apply Lower of Cost and NRV to 5 different products</span>
+        <span class="tag teal">✅ Practice a goods-in-transit adjustment scenario</span>
+        <span class="tag teal">✅ Trace a closing inventory error across 2 years of P&L</span>
+        <span class="tag teal">✅ Calculate Inventory Days for a real company (Infosys/TCS annual report)</span>
+        <span class="tag teal">✅ Attempt ACCA FA past paper questions on inventory valuation</span>
+        <span class="tag teal">✅ Read IAS 2 summary on OpenTuition — 15 minutes</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">9.11</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Using LIFO Under IFRS/Ind AS</strong><br>
+        LIFO is explicitly prohibited under IAS 2 (and Ind AS 2) — only FIFO and Weighted Average Cost are permitted. This is one of the most frequently tested "trick" facts in ACCA FA/FR, especially for students familiar with US GAAP where LIFO is allowed.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Comparing Cost to NRV at a Total Level Instead of Item-by-Item</strong><br>
+        The lower-of-cost-and-NRV rule is generally applied item by item (or group of similar items), not by comparing the total cost of all inventory to total NRV of all inventory. Applying it in aggregate can hide write-downs needed on specific slow-moving or damaged items.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Including Selling Costs in the Cost of Inventory</strong><br>
+        The cost of inventory includes purchase cost, import duties, and costs of conversion (direct labour, production overheads) — but NOT selling costs, storage costs (unless necessary as part of production), or general admin overheads. These are period costs, expensed when incurred.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Reversing a Write-Down Above Original Cost</strong><br>
+        If NRV recovers after a write-down, the reversal is capped at the original cost of the inventory — you can never write inventory back up above what it originally cost, even if NRV has risen significantly higher.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Forgetting the Cut-Off Principle at Year-End</strong><br>
+        Goods in transit, goods on consignment, and goods received but not yet invoiced must be correctly included/excluded from closing inventory based on when legal ownership/risk transfers — not simply based on physical location on the count date. Cut-off errors are a classic audit risk area.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Assuming Higher Closing Inventory Always Means Better Performance</strong><br>
+        A high closing inventory can also signal slow-moving stock, overproduction, or poor demand forecasting — not just strong operations. Analysts always check inventory turnover/days alongside the absolute inventory value to judge whether inventory levels are healthy.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">The Golden Rule</div>
+        <ul class="card-items">
+          <li><strong>Q: How is inventory valued under IAS 2?</strong></li>
+          <li>A: At the lower of cost and net realisable value (NRV)</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Permitted Methods</div>
+        <ul class="card-items">
+          <li><strong>Q: Which cost formulas does IFRS permit?</strong></li>
+          <li>A: FIFO and Weighted Average Cost (AVCO) — LIFO is banned</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">NRV Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: NRV formula?</strong></li>
+          <li>A: Estimated Selling Price − Costs of Completion − Selling Costs</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Write-Down Reversal Cap</div>
+        <ul class="card-items">
+          <li><strong>Q: Can an inventory write-down be reversed above original cost?</strong></li>
+          <li>A: No — reversal is capped at original cost</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">FIFO in Rising Prices</div>
+        <ul class="card-items">
+          <li><strong>Q: In rising prices, does FIFO give higher or lower profit than AVCO?</strong></li>
+          <li>A: Higher — closing inventory valued at more recent (higher) prices, so lower COGS</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+    </div>
+
+    <!-- FORMULA REFERENCE -->
+    <p class="section-label" style="margin-top:40px;">Part C — Formula Quick Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 9 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Inventory Valuation Rule</div><div class="formula-eq">Lower of Cost and Net Realisable Value (NRV)</div></div>
+      <div class="formula-row"><div class="formula-name">Net Realisable Value</div><div class="formula-eq">Estimated Selling Price − Costs of Completion − Selling Costs</div></div>
+      <div class="formula-row"><div class="formula-name">Weighted Average Cost (recalculated)</div><div class="formula-eq">Total Value of Inventory ÷ Total Units Held</div></div>
+      <div class="formula-row"><div class="formula-name">Inventory Write-Down</div><div class="formula-eq">(Cost − NRV) × Units Affected</div></div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Why is LIFO not allowed under IFRS?"</td><td>Awareness of a key IFRS vs US GAAP difference</td><td>The IASB believes LIFO doesn't reflect the actual physical flow of most inventory and can distort the balance sheet by valuing closing inventory at old, potentially outdated costs during periods of changing prices — reducing the relevance and comparability of financial statements. IAS 2 permits only FIFO and Weighted Average Cost.</td></tr>
+      <tr><td>"How would inventory choice (FIFO vs AVCO) affect a company's reported profit during high inflation?"</td><td>Applied understanding of the profit impact of accounting policy choices</td><td>During inflation, FIFO values closing inventory at the most recent, higher prices, resulting in lower COGS and higher reported profit compared to AVCO, which smooths costs across all purchases. This means two otherwise identical companies could report different profits purely due to inventory policy choice — which is why consistent disclosure under IAS 8 matters for comparability.</td></tr>
+      <tr><td>"What controls would you expect to see around a year-end inventory count?"</td><td>Practical audit/controls awareness</td><td>I'd expect a physical count with independent observers (often including auditors), clear cut-off procedures to correctly include/exclude goods in transit based on ownership transfer, reconciliation of the physical count to perpetual inventory records, and review for obsolete or slow-moving stock requiring NRV write-downs.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Lower of Cost and NRV<br>
+      + FIFO or AVCO (never LIFO)<br>
+      + Correct Cost Components<br>
+      + Year-End Adjustments<br>
+      = <strong style="color:var(--accent4);">Inventory Valued Right — Profit Reported Right</strong>
+    </div>
+    <h3>Inventory is where the truth of a business lives — or hides.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 10: Financial Instruments Basics (IFRS 9) — how companies account for investments, loans, and financial assets. 💹</p>
+  </div>
+
+</div>
+</body>
+</html>

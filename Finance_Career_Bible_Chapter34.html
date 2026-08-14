@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 34: Audit Fundamentals</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(108,99,255,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent); padding:14px 20px; background:rgba(108,99,255,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent); background:rgba(108,99,255,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(108,99,255,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(108,99,255,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(108,99,255,0.07),rgba(0,212,170,0.05)); border:1px solid rgba(108,99,255,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(108,99,255,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(108,99,255,0.1); border:1px solid rgba(108,99,255,0.2); color:var(--text); }
+  .tag.purple { background:rgba(108,99,255,0.1); border-color:rgba(108,99,255,0.2); color:var(--accent); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(108,99,255,0.09),rgba(0,212,170,0.06)); border:1px solid rgba(108,99,255,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 34</div>
+  <h1>Audit<br><span>Fundamentals</span></h1>
+  <p class="hero-sub">The complete guide to external auditing — why it exists, how it works, what auditors do, and how to think like one. The foundation for ACCA AA (Audit & Assurance) and essential knowledge for every finance professional working with financial statements.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">ACCA</div><div class="stat-label">AA & AAA Core</div></div>
+    <div class="stat"><div class="stat-num">ISA</div><div class="stat-label">International Standards</div></div>
+    <div class="stat"><div class="stat-num">Big 4</div><div class="stat-label">Primary Employers</div></div>
+    <div class="stat"><div class="stat-num">₹8–25L</div><div class="stat-label">Audit Analyst Salary</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 34 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">34.1</span>Why Audit Exists — The Agency Problem & Need for Assurance</div>
+    <div class="toc-item"><span class="toc-num">34.2</span>What is an Audit? — Definition, Objective & Scope</div>
+    <div class="toc-item"><span class="toc-num">34.3</span>Types of Audit — External, Internal, Forensic, Compliance</div>
+    <div class="toc-item"><span class="toc-num">34.4</span>The Audit Framework — ISAs & Regulatory Structure</div>
+    <div class="toc-item"><span class="toc-num">34.5</span>Audit Process — Step by Step (Planning to Report)</div>
+    <div class="toc-item"><span class="toc-num">34.6</span>Materiality — The Most Important Concept in Audit</div>
+    <div class="toc-item"><span class="toc-num">34.7</span>Audit Risk — Inherent, Control & Detection Risk</div>
+    <div class="toc-item"><span class="toc-num">34.8</span>Audit Evidence — Types, Sources & Sufficiency</div>
+    <div class="toc-item"><span class="toc-num">34.9</span>Audit Procedures — The Toolkit (AEIOU)</div>
+    <div class="toc-item"><span class="toc-num">34.10</span>Internal Controls & Their Role in Audit</div>
+    <div class="toc-item"><span class="toc-num">34.11</span>Audit Sampling — How Auditors Test Without Checking Everything</div>
+    <div class="toc-item"><span class="toc-num">34.12</span>Audit of Key Financial Statement Areas</div>
+    <div class="toc-item"><span class="toc-num">34.13</span>Audit Reports — Types & When Each Is Used</div>
+    <div class="toc-item"><span class="toc-num">34.14</span>Auditor Independence & Ethics</div>
+    <div class="toc-item"><span class="toc-num">34.15</span>Audit in India — Regulatory Context (ICAI, NFRA, Companies Act)</div>
+    <div class="toc-item"><span class="toc-num">34.16</span>Key Takeaways, Common Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+  </div>
+
+  <!-- 34.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">34.1</div>
+      <div class="section-title">Why Audit Exists — The Agency Problem & Need for Assurance</div>
+    </div>
+    <p class="prose">To understand audit, you must first understand <strong>why it is needed</strong>. In a small owner-managed business, the owner runs the company and knows everything — no audit needed. But in a large corporation, <strong>ownership (shareholders) and management (directors/executives) are separated</strong>. This separation creates a fundamental problem called the <strong>Agency Problem</strong>.</p>
+
+    <div class="quote">"An audit is a quality control mechanism that society has developed to address the natural tension between those who prepare financial information and those who rely on it." — IAASB</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">The Agency Problem — Why Audit is Needed</div>
+        <ul class="card-items">
+          <li><strong>Principals</strong> = Shareholders — they own the company but don't run it</li>
+          <li><strong>Agents</strong> = Directors/Management — they run the company on behalf of shareholders</li>
+          <li>Problem: Management prepares the financial statements that shareholders rely on to evaluate management's performance — obvious conflict of interest</li>
+          <li>Without audit: management could manipulate numbers to look better, hide losses, inflate profits, conceal fraud</li>
+          <li>Solution: An independent third party (auditor) examines the financial statements and gives an opinion on whether they are true and fair</li>
+          <li>Audit breaks the self-reporting loop — management reports, auditor verifies</li>
+        </ul>
+        <div class="card-tag">Core Rationale</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <div class="card-title">Who Uses Audited Financial Statements?</div>
+        <ul class="card-items">
+          <li><strong>Shareholders:</strong> assess returns, decide whether to hold or sell shares, evaluate management performance</li>
+          <li><strong>Banks & lenders:</strong> decide whether to lend, at what rate, with what covenants</li>
+          <li><strong>Investors (new):</strong> decide whether to invest in the company</li>
+          <li><strong>Suppliers:</strong> assess whether the company is creditworthy enough to extend trade credit</li>
+          <li><strong>Employees:</strong> assess job security, pension fund viability</li>
+          <li><strong>Government / Tax authorities:</strong> verify tax compliance</li>
+          <li><strong>Regulators:</strong> monitor financial health of regulated industries (banks, insurance)</li>
+        </ul>
+        <div class="card-tag">Stakeholders</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📉</div>
+        <div class="card-title">What Happens Without Audit — Famous Scandals</div>
+        <ul class="card-items">
+          <li><strong>Enron (2001):</strong> Hid billions of debt off-balance sheet, inflated profits. Auditor Arthur Andersen failed to detect/report. Enron collapsed — $74B shareholder loss. Led to Sarbanes-Oxley Act (SOX) in USA.</li>
+          <li><strong>Satyam (2009, India):</strong> Founder Ramalinga Raju confessed to inflating cash and profits by ₹7,000Cr+ over years. Auditor PwC India failed. Led to major audit reforms in India.</li>
+          <li><strong>Wirecard (2020, Germany):</strong> €1.9B of cash that didn't exist. EY failed to verify cash balances for years. Company collapsed, CEO arrested.</li>
+          <li><strong>Lesson:</strong> Without independent, competent, and rigorous audit — investors are flying blind. Billions of losses and destroyed livelihoods follow failed audits.</li>
+        </ul>
+        <div class="card-tag">Real World</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Expectation Gap — Critical ACCA Concept</div>
+      The <strong>Expectation Gap</strong> is the difference between what the public/investors THINK an audit does and what it ACTUALLY does.<br><br>
+      <strong>What people think:</strong> Auditors check every single transaction, guarantee that financial statements are 100% accurate, and will definitely detect all fraud.<br><br>
+      <strong>What auditors actually do:</strong> Provide REASONABLE assurance (not absolute) that financial statements are free from MATERIAL misstatement. They use sampling (not 100% checking), and cannot guarantee detection of all fraud — especially well-concealed collusion.<br><br>
+      <strong>Why this matters:</strong> When a company collapses after a clean audit opinion, the public blames auditors. Understanding the expectation gap helps explain why auditors are not automatically at fault — and also drives ongoing reforms to narrow the gap.
+    </div>
+  </div>
+
+  <!-- 34.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">34.2</div>
+      <div class="section-title">What is an Audit? — Definition, Objective & Scope</div>
+    </div>
+    <p class="prose">ISA 200 (Overall Objectives of the Independent Auditor) defines the audit objective clearly. Understanding this precisely is essential for ACCA AA and AAA exams.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Official Definition — ISA 200</div>
+      <div class="formula-row">
+        <div class="formula-name">Objective of an Audit</div>
+        <div class="formula-eq">To enable the auditor to express an opinion on whether the financial statements are prepared, in all material respects, in accordance with an applicable financial reporting framework (e.g. IFRS or local GAAP).<br><br>
+        <span style="color:var(--muted);">Key phrase: "in all material respects" — not every single detail. Materiality limits the scope.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Level of Assurance</div>
+        <div class="formula-eq">REASONABLE assurance — not absolute assurance.<br><br>
+        <span style="color:var(--muted);">Reasonable = high but not 100%. Absolute assurance is impossible due to: use of sampling, inherent limitations of internal controls, professional judgment involved in estimates, possibility of management override.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">True and Fair View</div>
+        <div class="formula-eq">Financial statements present fairly the financial position, performance, and cash flows of an entity.<br><br>
+        <span style="color:var(--muted);">"True" = factually accurate, supported by evidence. "Fair" = presented without bias, in accordance with GAAP/IFRS. This is the standard the auditor is assessing against.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Free From Material Misstatement</div>
+        <div class="formula-eq">Whether due to fraud OR error.<br><br>
+        <span style="color:var(--muted);">Auditors must consider both. Error = unintentional mistake. Fraud = intentional misrepresentation. Auditors are not primarily fraud investigators but must maintain professional scepticism and respond when fraud risks are identified.</span></div>
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">What Audit IS</div>
+        <ul class="card-items">
+          <li>Independent examination of financial statements</li>
+          <li>Expression of opinion on truth and fairness</li>
+          <li>Reasonable (high) level of assurance</li>
+          <li>Testing on a sample basis (not 100%)</li>
+          <li>Assessment of whether accounting policies are appropriate and consistently applied</li>
+          <li>Assessment of management's key estimates and judgements</li>
+          <li>Evaluation of going concern — will the company survive 12+ months?</li>
+        </ul>
+        <div class="card-tag">Audit IS</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">❌</div>
+        <div class="card-title">What Audit is NOT</div>
+        <ul class="card-items">
+          <li>NOT a guarantee that financial statements are 100% correct</li>
+          <li>NOT a certificate that the company is financially healthy or won't fail</li>
+          <li>NOT designed to detect every fraud (especially well-concealed collusion)</li>
+          <li>NOT a full check of every single transaction</li>
+          <li>NOT the preparation of financial statements (that is management's job)</li>
+          <li>NOT an assessment of management quality or future prospects</li>
+          <li>NOT legal advice or assurance on tax compliance (unless specifically engaged)</li>
+        </ul>
+        <div class="card-tag">Audit is NOT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">34.3</div>
+      <div class="section-title">Types of Audit — External, Internal, Forensic, Compliance</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Type</th><th>Who Performs</th><th>Objective</th><th>Reports To</th><th>Mandatory?</th></tr>
+      <tr><td>External Audit (Statutory)</td><td>Independent external audit firm (Big 4, mid-tier, small firms)</td><td>Express opinion on truth and fairness of financial statements for statutory/legal purposes</td><td>Shareholders (via Annual Report). Regulators.</td><td>Yes — for all public companies and large private companies under Companies Act / SEBI</td></tr>
+      <tr><td>Internal Audit</td><td>Internal audit department (employees) or outsourced to audit firm</td><td>Evaluate and improve effectiveness of risk management, internal controls, and governance processes</td><td>Audit Committee / Board of Directors — management does NOT control internal audit</td><td>Not always mandatory but required for large listed companies under SEBI/Companies Act (India). Best practice for all significant organisations.</td></tr>
+      <tr><td>Forensic Audit</td><td>Specialist forensic accountants (often in law firms or specialist advisory firms)</td><td>Investigate suspected fraud, financial crime, or disputes — produce evidence suitable for legal proceedings</td><td>Management, Board, Courts, Law Enforcement</td><td>No — engaged specifically when fraud or dispute suspected</td></tr>
+      <tr><td>Compliance Audit</td><td>Internal or external specialists</td><td>Verify compliance with specific laws, regulations, contracts, or internal policies</td><td>Regulators, Management, Board</td><td>Depends on sector — e.g. banks must comply with RBI regulations; pharma with drug regulators</td></tr>
+      <tr><td>Tax Audit (India)</td><td>Chartered Accountant (CA) under Income Tax Act</td><td>Verify accuracy of tax returns and compliance with Income Tax Act. Required if turnover exceeds threshold.</td><td>Income Tax Department</td><td>Mandatory if business turnover > ₹1Cr (or ₹10Cr in some cases) or professional receipts > ₹50L</td></tr>
+      <tr><td>Due Diligence (Financial DD)</td><td>Advisory firms, Big 4 transaction services</td><td>Investigate a target company before M&A — verify financial information, identify risks and liabilities</td><td>Buyer / Acquirer</td><td>No — but standard practice in M&A transactions</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Internal vs External Audit — Key Differences (ACCA Favourite Topic)</div>
+      <strong>Independence:</strong> External auditors are completely independent of the company. Internal auditors are employees or report internally — they aim for objectivity but are not legally independent.<br><br>
+      <strong>Purpose:</strong> External audit gives assurance to EXTERNAL stakeholders (shareholders, creditors). Internal audit gives assurance to MANAGEMENT and the BOARD for internal improvement.<br><br>
+      <strong>Scope:</strong> External audit is focused on financial statements. Internal audit covers a broader scope — operations, risk management, controls, efficiency, compliance.<br><br>
+      <strong>Relationship:</strong> External auditors may RELY ON the work of internal auditors (after assessing their competence and objectivity) — but they cannot delegate their own responsibility. The external auditor remains solely responsible for the audit opinion.
+    </div>
+  </div>
+
+  <!-- 34.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">34.4</div>
+      <div class="section-title">The Audit Framework — ISAs & Regulatory Structure</div>
+    </div>
+    <p class="prose">Audits are conducted in accordance with International Standards on Auditing (ISAs) issued by the <strong>International Auditing and Assurance Standards Board (IAASB)</strong>. These are the globally accepted framework for how audits must be planned, performed, and reported.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Key ISAs — Must Know for ACCA</div>
+        <ul class="card-items">
+          <li><strong>ISA 200:</strong> Overall Objectives — defines audit objective, reasonable assurance, professional scepticism</li>
+          <li><strong>ISA 210:</strong> Agreeing Audit Engagement Terms — engagement letter</li>
+          <li><strong>ISA 220:</strong> Quality Control — audit firm quality management</li>
+          <li><strong>ISA 240:</strong> Fraud — auditor's responsibilities regarding fraud</li>
+          <li><strong>ISA 260:</strong> Communication with Those Charged with Governance (Audit Committee)</li>
+          <li><strong>ISA 300:</strong> Planning an Audit — audit strategy and audit plan</li>
+          <li><strong>ISA 315:</strong> Identifying and Assessing Risks — risk assessment procedures</li>
+          <li><strong>ISA 320:</strong> Materiality — setting performance materiality</li>
+          <li><strong>ISA 330:</strong> Auditor's Responses to Assessed Risks — audit procedures</li>
+          <li><strong>ISA 500:</strong> Audit Evidence — what constitutes sufficient appropriate evidence</li>
+          <li><strong>ISA 520:</strong> Analytical Procedures</li>
+          <li><strong>ISA 530:</strong> Audit Sampling</li>
+          <li><strong>ISA 560:</strong> Subsequent Events — events after balance sheet date</li>
+          <li><strong>ISA 570:</strong> Going Concern</li>
+          <li><strong>ISA 700:</strong> Audit Report — forming and expressing opinion</li>
+          <li><strong>ISA 705:</strong> Modifications to the Audit Opinion</li>
+          <li><strong>ISA 706:</strong> Emphasis of Matter and Other Matter paragraphs</li>
+        </ul>
+        <div class="card-tag">ISA Framework</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Regulatory Bodies — Global</div>
+        <ul class="card-items">
+          <li><strong>IAASB:</strong> Issues ISAs — the global standard setter for auditing standards</li>
+          <li><strong>IESBA:</strong> Issues the Code of Ethics for Professional Accountants — independence, objectivity, confidentiality</li>
+          <li><strong>IFAC:</strong> International Federation of Accountants — umbrella body overseeing IAASB and IESBA</li>
+          <li><strong>PCAOB (USA):</strong> Public Company Accounting Oversight Board — sets standards for audits of SEC-registered companies</li>
+          <li><strong>FRC (UK):</strong> Financial Reporting Council — regulates UK auditors and sets UK audit standards (based on ISAs)</li>
+        </ul>
+        <div class="card-tag">Global Regulators</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🇮🇳</div>
+        <div class="card-title">Audit Regulation in India</div>
+        <ul class="card-items">
+          <li><strong>ICAI:</strong> Institute of Chartered Accountants of India — sets Standards on Auditing (SAs) which are based on ISAs. Only CAs can conduct statutory audits in India.</li>
+          <li><strong>NFRA:</strong> National Financial Reporting Authority — independent regulator for audit quality of listed and large public interest entities. Can investigate and penalise auditors. Established 2018 post Satyam/IL&FS scandals.</li>
+          <li><strong>Companies Act 2013:</strong> Governs statutory audit requirements — who must be audited, auditor appointment, rotation rules</li>
+          <li><strong>SEBI:</strong> Regulates audit of listed companies — additional requirements for listed entities</li>
+          <li><strong>Auditor Rotation:</strong> India mandates rotation of audit firms every 5 years for listed companies (to protect independence)</li>
+        </ul>
+        <div class="card-tag">India Specific</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">34.5</div>
+      <div class="section-title">Audit Process — Step by Step (Planning to Report)</div>
+      <div class="section-meta">The Full Audit Lifecycle</div>
+    </div>
+    <p class="prose">The audit follows a structured process from the moment the firm accepts the engagement to issuing the final report. Understanding this process end-to-end is essential for ACCA AA and for any finance professional working alongside auditors.</p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">STAGE 01</div>
+        <div class="step-content"><strong>Client Acceptance & Engagement Letter (ISA 210)</strong><br>
+        Before accepting an audit, the firm must assess: Is the client ethical and honest? Is the firm competent to audit this type/size of business? Is the firm independent (no conflicts of interest)? Are resources available? If yes — send an <strong>Engagement Letter</strong> confirming: scope of audit, responsibilities of management vs auditor, basis of fee, access to records. This is a contract between firm and client. Existing clients: reassess each year — consider any change in circumstances.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STAGE 02</div>
+        <div class="step-content"><strong>Audit Planning (ISA 300) — Strategy & Plan</strong><br>
+        Develop an <strong>Audit Strategy</strong> — high-level decisions: overall approach (controls-based or substantive), timing, staffing, use of experts. Then develop a detailed <strong>Audit Plan</strong> — nature, timing, and extent of specific audit procedures for each financial statement area. Planning is driven by: understanding the entity and its environment (ISA 315), risk assessment, and materiality. Good planning = efficient, effective audit.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STAGE 03</div>
+        <div class="step-content"><strong>Risk Assessment (ISA 315) — Understanding the Entity</strong><br>
+        The auditor must understand: the entity (business model, industry, key products), its environment (economic conditions, competition, regulation), its internal controls (control environment, risk assessment process, control activities, monitoring). From this understanding, identify and assess risks of material misstatement at: (a) financial statement level and (b) assertion level for each account balance and transaction class. Risk assessment is the engine that drives everything else in the audit.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STAGE 04</div>
+        <div class="step-content"><strong>Set Materiality (ISA 320)</strong><br>
+        Calculate overall materiality (typically 5% of PBT, 1% of revenue, or 0.5% of total assets — depending on the entity). Set performance materiality (usually 60–75% of overall materiality) — the threshold used for designing procedures. Set clearly trivial threshold (typically 3–5% of overall materiality) — items below this need not be investigated. Materiality is reassessed throughout the audit.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STAGE 05</div>
+        <div class="step-content"><strong>Responding to Assessed Risks (ISA 330) — Audit Procedures</strong><br>
+        Design and perform audit procedures in response to assessed risks. Two types: <strong>Tests of Controls</strong> — test whether internal controls are operating effectively (if so, can reduce substantive testing). <strong>Substantive Procedures</strong> — directly test financial statement amounts and disclosures (analytical procedures + tests of detail). Higher risk = more extensive, more reliable procedures required. Obtain sufficient appropriate evidence to support conclusions.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STAGE 06</div>
+        <div class="step-content"><strong>Completion Procedures</strong><br>
+        Review for subsequent events (ISA 560) — events after balance sheet date that need adjustment or disclosure. Assess going concern (ISA 570) — is there substantial doubt about the entity's ability to continue as a going concern for 12+ months? Obtain written representations from management (ISA 580) — management confirms key assertions in writing. Perform final analytical review — do the financial statements make sense overall? Evaluate misstatements found — are they material? Request management to correct material misstatements.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STAGE 07</div>
+        <div class="step-content"><strong>Communication & Reporting (ISA 700/705/706/260)</strong><br>
+        Communicate findings to those charged with governance (Audit Committee / Board) — ISA 260: significant audit findings, difficulties encountered, key judgements. Issue the <strong>Audit Report</strong> — the formal public output of the audit. Report contains: opinion paragraph, basis for opinion, key audit matters (for listed entities), going concern assessment, other information. If issues found: modify the opinion (qualified, adverse, or disclaimer — covered in Section 34.13).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">34.6</div>
+      <div class="section-title">Materiality — The Most Important Concept in Audit</div>
+      <div class="section-meta">ISA 320</div>
+    </div>
+    <p class="prose">Materiality is the threshold above which misstatements would influence the decisions of users of financial statements. It is the single most important concept in audit — it defines the audit's scope, drives sample sizes, determines what to investigate, and shapes the final opinion.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Materiality — Benchmarks & Calculation</div>
+      <div class="formula-row">
+        <div class="formula-name">Overall Materiality — Common Benchmarks</div>
+        <div class="formula-eq">5% of Profit Before Tax (PBT) — most common for profitable entities<br>
+        1% of Revenue — for low-margin businesses or where PBT is volatile<br>
+        0.5–1% of Total Assets — for banks, holding companies, or asset-heavy entities<br>
+        1–2% of Equity — for entities where equity is the key metric<br><span style="color:var(--muted);">Choice of benchmark depends on what users focus on most. Professional judgement required.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Performance Materiality</div>
+        <div class="formula-eq">Typically 60–75% of Overall Materiality<br><span style="color:var(--muted);">Lower threshold used when designing procedures — so that the AGGREGATE of uncorrected misstatements does not exceed overall materiality. Acts as a buffer. If multiple small errors are found, their total might still be material.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Clearly Trivial Threshold</div>
+        <div class="formula-eq">Typically 3–5% of Overall Materiality<br><span style="color:var(--muted);">Misstatements below this level are clearly trivial and need not be investigated or accumulated. They cannot — even in aggregate — be material.</span></div>
+      </div>
+    </div>
+
+    <p class="section-label">Worked Example — Setting Materiality for XYZ Ltd</p>
+    <div class="wide-card">
+      <h4>📊 Materiality Calculation — XYZ Manufacturing Ltd (FY25)</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;">
+        <strong style="color:var(--text);">Financial Data:</strong> Revenue = ₹500Cr | PBT = ₹45Cr | Total Assets = ₹380Cr | Equity = ₹210Cr<br><br>
+        <strong style="color:var(--text);">Step 1 — Choose Benchmark:</strong> XYZ is a profitable manufacturing company. Users primarily focus on profitability. Choose PBT as benchmark.<br><br>
+        <strong style="color:var(--text);">Step 2 — Overall Materiality:</strong> 5% × ₹45Cr = <span style="color:var(--accent);font-family:var(--mono);">₹2.25Cr</span><br>
+        Cross-check: 1% of Revenue = ₹5Cr (higher — PBT benchmark seems more conservative and appropriate here)<br><br>
+        <strong style="color:var(--text);">Step 3 — Performance Materiality:</strong> 70% × ₹2.25Cr = <span style="color:var(--accent);font-family:var(--mono);">₹1.58Cr</span><br>
+        This is the threshold used when testing individual account balances and transactions.<br><br>
+        <strong style="color:var(--text);">Step 4 — Clearly Trivial:</strong> 5% × ₹2.25Cr = <span style="color:var(--accent);font-family:var(--mono);">₹11.25L (₹1.125Cr)</span><br>
+        Misstatements below ₹1.125Cr need not be accumulated or investigated.<br><br>
+        <strong style="color:var(--text);">Practical impact:</strong> When auditing inventory (say ₹80Cr on balance sheet), auditor designs procedures to detect misstatements above ₹1.58Cr. If they find ₹50L error → below clearly trivial, ignore. If ₹2Cr error → above overall materiality → must be corrected or qualified opinion.
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">⚠️ Qualitative Materiality — Not Just About Numbers</div>
+      Sometimes a small misstatement is material for NON-FINANCIAL reasons:<br><br>
+      <strong>Examples of qualitatively material items:</strong><br>
+      → A small fraud by a director — even if immaterial in amount, it signals governance failure and breaches laws<br>
+      → A breach of a debt covenant — even a small misstatement that causes a covenant breach is material<br>
+      → A misstatement that converts a reported profit into a loss (or vice versa)<br>
+      → Transactions with related parties — even small amounts can be qualitatively significant due to conflict of interest<br>
+      → Unlawful transactions — even if small, non-compliance with law is always qualitatively material<br><br>
+      ACCA Tip: Always consider BOTH quantitative AND qualitative aspects of materiality in exam answers.
+    </div>
+  </div>
+
+  <!-- 34.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">34.7</div>
+      <div class="section-title">Audit Risk — Inherent, Control & Detection Risk</div>
+      <div class="section-meta">ISA 315 & ISA 200</div>
+    </div>
+    <p class="prose"><strong>Audit Risk</strong> is the risk that the auditor expresses an inappropriate opinion — gives a clean opinion when financial statements are materially misstated. Auditors must keep this risk to an acceptably low level. The Audit Risk Model breaks this into three components.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">The Audit Risk Model</div>
+      <div class="formula-row">
+        <div class="formula-name">Audit Risk (AR)</div>
+        <div class="formula-eq">AR = Inherent Risk (IR) × Control Risk (CR) × Detection Risk (DR)<br><span style="color:var(--muted);">Auditor aims to keep AR at an acceptably low level. IR and CR are assessed — Detection Risk is manipulated by adjusting the nature/timing/extent of audit procedures.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Inherent Risk (IR)</div>
+        <div class="formula-eq">The susceptibility of an assertion to material misstatement BEFORE considering any controls.<br><span style="color:var(--muted);">High IR examples: complex accounting estimates (fair value, provisions), subjective judgements, unusual transactions, high-volume/high-value transactions, industries prone to fraud (cash-heavy businesses, financial services), businesses under financial pressure.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Control Risk (CR)</div>
+        <div class="formula-eq">The risk that a material misstatement will NOT be prevented or detected by the entity's internal controls.<br><span style="color:var(--muted);">High CR: weak internal controls, override of controls by management, no segregation of duties, inadequate IT controls. Low CR: strong, effective controls — allows auditor to reduce substantive testing.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Detection Risk (DR)</div>
+        <div class="formula-eq">The risk that the auditor's OWN PROCEDURES will fail to detect a material misstatement.<br><span style="color:var(--muted);">This is what the AUDITOR CONTROLS. If IR and CR are high → auditor must REDUCE DR by doing more/better procedures. If IR and CR are low → can accept higher DR (do less testing). DR can never be zero — sampling means some items are never examined.</span></div>
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Audit Risk — How to Apply in Practice</div>
+        <ul class="card-items">
+          <li>High IR + High CR → Very Low DR needed → Extensive, rigorous procedures</li>
+          <li>Low IR + Low CR → Higher DR acceptable → Less testing, more reliance on controls</li>
+          <li>Auditor cannot control IR or CR — only assesses them</li>
+          <li>Auditor CONTROLS Detection Risk by choosing: nature (what procedures), timing (when performed), extent (sample size) of audit procedures</li>
+          <li>More reliable, larger-sample, more extensive procedures = lower Detection Risk</li>
+        </ul>
+        <div class="card-tag">Risk Response</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Significant Risks — Special Treatment</div>
+        <ul class="card-items">
+          <li>Some risks are so significant they require special audit attention — called Significant Risks</li>
+          <li>Examples: revenue recognition (fraud risk — ISA 240 presumes this is always significant), management estimates, related party transactions, unusual/complex transactions</li>
+          <li>For Significant Risks: auditor MUST obtain understanding of relevant controls AND perform substantive procedures — cannot rely on controls alone</li>
+          <li>ACCA exam: always identify and justify significant risks separately from other risks</li>
+        </ul>
+        <div class="card-tag">ISA 315</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Fraud Risk — ISA 240</div>
+        <ul class="card-items">
+          <li>Two types: Fraudulent Financial Reporting (management manipulates statements) and Misappropriation of Assets (theft of company assets)</li>
+          <li>Fraud Triangle: Incentive/Pressure + Opportunity + Rationalisation — all three present → high fraud risk</li>
+          <li>ISA 240: Auditor must ALWAYS presume revenue recognition is a fraud risk (significant risk)</li>
+          <li>Auditor must maintain professional scepticism — do not accept management explanations without corroboration</li>
+          <li>If fraud suspected: report to management (unless they are involved), consider reporting to authorities, consider resigning</li>
+        </ul>
+        <div class="card-tag">ISA 240</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">34.8</div>
+      <div class="section-title">Audit Evidence — Types, Sources & Sufficiency</div>
+      <div class="section-meta">ISA 500</div>
+    </div>
+    <p class="prose">Audit evidence is ALL information used by the auditor to reach their conclusions. The auditor must obtain evidence that is <strong>sufficient</strong> (enough of it) and <strong>appropriate</strong> (relevant and reliable). These two concepts drive every evidence decision.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Sufficiency of Evidence</div>
+        <ul class="card-items">
+          <li>Quantity of evidence — how much is enough?</li>
+          <li>Affected by: assessed risk (higher risk → more evidence needed), quality of evidence (better quality → less quantity needed), materiality of the item</li>
+          <li>Sample size drives sufficiency — larger samples = more sufficient</li>
+          <li>No fixed formula — professional judgement determines when "enough" is enough</li>
+          <li>Key principle: more risk = need more evidence</li>
+        </ul>
+        <div class="card-tag">How Much?</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Appropriateness of Evidence — Reliability Hierarchy</div>
+        <ul class="card-items">
+          <li><strong>Most reliable:</strong> Auditor's own direct observation and recalculation</li>
+          <li><strong>Highly reliable:</strong> External confirmations (bank letters, debtor circularisation, legal letters)</li>
+          <li><strong>Reliable:</strong> Documents obtained from third parties (supplier invoices, bank statements)</li>
+          <li><strong>Moderately reliable:</strong> Documents created internally but with strong controls</li>
+          <li><strong>Least reliable:</strong> Verbal representations from management (oral evidence, unwritten)</li>
+          <li>General rule: external &gt; internal; auditor-generated &gt; client-provided; original &gt; copy</li>
+        </ul>
+        <div class="card-tag">Quality of Evidence</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Financial Statement Assertions — What Evidence Must Prove</div>
+        <ul class="card-items">
+          <li><strong>Existence/Occurrence:</strong> Assets exist; transactions occurred</li>
+          <li><strong>Completeness:</strong> All assets and transactions have been recorded — nothing omitted</li>
+          <li><strong>Valuation/Accuracy:</strong> Amounts are correctly valued or measured</li>
+          <li><strong>Rights & Obligations:</strong> Company owns the assets; owes the liabilities</li>
+          <li><strong>Cut-off:</strong> Transactions recorded in the correct period</li>
+          <li><strong>Presentation & Disclosure:</strong> Items correctly classified and disclosed in financial statements</li>
+          <li>Every audit procedure must be designed to address specific assertion(s)</li>
+        </ul>
+        <div class="card-tag">Assertions</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">34.9</div>
+      <div class="section-title">Audit Procedures — The Toolkit (AEIOU)</div>
+    </div>
+    <p class="prose">Audit procedures are the specific actions auditors take to obtain evidence. A useful mnemonic is <strong>AEIOU</strong> (or variations) — covering the main categories. In ACCA exams, you must not only list procedures but describe WHAT you will do and WHAT assertion it addresses.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Audit Procedures — Full Toolkit</div>
+      <div class="formula-row">
+        <div class="formula-name">A — Analytical Procedures (ISA 520)</div>
+        <div class="formula-eq">Compare financial data to: prior year, budget, industry averages, expectations.<br>Calculate ratios and investigate unusual fluctuations.<br><span style="color:var(--muted);">Example: GP margin dropped from 35% to 22% → investigate reason → possible misstatement of revenue or cost of sales.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">E — Enquiry</div>
+        <div class="formula-eq">Ask questions of management, staff, and third parties.<br>Least reliable on its own — must be corroborated by other evidence.<br><span style="color:var(--muted);">Example: Ask the warehouse manager about inventory obsolescence. Do not accept the answer alone — also physically inspect and check slow-moving items.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">I — Inspection (Vouching & Tracing)</div>
+        <div class="formula-eq">Examine documents, records, physical assets.<br>Vouching: start from recorded entry → find supporting document (tests EXISTENCE).<br>Tracing: start from source document → check it is recorded (tests COMPLETENESS).<br><span style="color:var(--muted);">Example: Select 50 sales invoices from the revenue ledger → trace to dispatch notes and customer orders (existence). Select dispatch notes → trace to sales ledger (completeness).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">O — Observation</div>
+        <div class="formula-eq">Watch a process being performed by client staff.<br>Limitation: behaviour may change when being observed.<br><span style="color:var(--muted);">Example: Attend year-end inventory count — observe counting procedures, check for damaged goods, test counts independently. Observe controls operating in real time.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">C — Confirmation (External)</div>
+        <div class="formula-eq">Obtain evidence directly from third parties — highly reliable.<br><span style="color:var(--muted);">Examples: Bank confirmation letter (confirms balances, loans, contingent liabilities). Debtor circularisation (confirms receivable balances). Lawyer letters (confirms litigation, contingencies). Supplier statements (confirms payable balances).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">R — Recalculation & Reperformance</div>
+        <div class="formula-eq">Recalculate: check mathematical accuracy of client's calculations.<br>Reperformance: independently perform a procedure the client performs.<br><span style="color:var(--muted);">Example: Recalculate depreciation charges, interest accruals, tax provisions, foreign currency translations. Reperform bank reconciliation independently.</span></div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 ACCA Exam Tip — How to Write Audit Procedures for Maximum Marks</div>
+      Weak answer: "Inspect invoices to verify revenue." (vague, no marks awarded)<br><br>
+      Strong answer: "Select a sample of sales invoices recorded in the revenue ledger and agree the details (amount, date, customer) back to the original customer purchase order and the goods despatch note, to verify that revenue has been recorded for genuine sales transactions that have actually been delivered (addressing existence and occurrence assertions)."<br><br>
+      <strong>Formula for strong audit procedure:</strong> HOW (what exactly you do) + WHAT (specific document/source) + WHY (what assertion it addresses and what misstatement it would detect).<br><br>
+      Always be specific about the DIRECTION of testing: Vouching (ledger → document) tests existence. Tracing (document → ledger) tests completeness.
+    </div>
+  </div>
+
+  <!-- 34.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">34.10</div>
+      <div class="section-title">Internal Controls & Their Role in Audit</div>
+    </div>
+    <p class="prose">Internal controls are processes designed by management to provide reasonable assurance about achieving objectives — reliable financial reporting, operational efficiency, and regulatory compliance. Auditors evaluate internal controls to assess control risk and decide how much substantive testing is needed.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <div class="card-title">COSO Framework — 5 Components of Internal Control</div>
+        <ul class="card-items">
+          <li><strong>1. Control Environment:</strong> The foundation — tone at the top, management integrity, organisational structure, ethics policies. If the control environment is weak, all other controls are undermined.</li>
+          <li><strong>2. Risk Assessment:</strong> Management's own process to identify and respond to risks that could prevent objectives being achieved</li>
+          <li><strong>3. Control Activities:</strong> The actual controls — authorisations, segregation of duties, reconciliations, physical safeguards, IT controls</li>
+          <li><strong>4. Information & Communication:</strong> Systems to identify, capture, and communicate information needed to run controls</li>
+          <li><strong>5. Monitoring:</strong> Management's ongoing assessment of whether controls are operating effectively — internal audit plays a key role here</li>
+        </ul>
+        <div class="card-tag">COSO</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Key Control Activities — Audit Focus</div>
+        <ul class="card-items">
+          <li><strong>Segregation of Duties:</strong> Different people authorise, record, and handle assets — prevents one person committing and concealing fraud. E.g. person who raises purchase orders ≠ person who approves payment</li>
+          <li><strong>Authorisation:</strong> All significant transactions require approval from appropriate level of management</li>
+          <li><strong>Reconciliations:</strong> Bank reconciliations, supplier statement reconciliations — regularly performed and reviewed by independent person</li>
+          <li><strong>Physical Controls:</strong> Safeguarding assets — locked storage, access controls, security cameras, inventory counts</li>
+          <li><strong>IT General Controls:</strong> Access controls, password policies, change management, backup and recovery</li>
+          <li><strong>Exception Reporting:</strong> System flags unusual transactions for management review</li>
+        </ul>
+        <div class="card-tag">Controls in Practice</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Limitations of Internal Controls</div>
+        <ul class="card-items">
+          <li><strong>Management Override:</strong> Senior management can override controls — most dangerous limitation (Enron, Satyam)</li>
+          <li><strong>Collusion:</strong> Two or more people working together to circumvent segregation of duties</li>
+          <li><strong>Human Error:</strong> Even well-designed controls can fail due to human mistake</li>
+          <li><strong>Cost vs Benefit:</strong> Controls must be proportionate to risk — some controls too expensive to implement for small risks</li>
+          <li><strong>System Changes:</strong> Controls designed for old systems may not work for new ones</li>
+          <li><strong>Conclusion:</strong> Internal controls provide REASONABLE not ABSOLUTE assurance — hence audit cannot rely solely on them</li>
+        </ul>
+        <div class="card-tag">Limitations</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">34.11</div>
+      <div class="section-title">Audit Sampling — How Auditors Test Without Checking Everything</div>
+      <div class="section-meta">ISA 530</div>
+    </div>
+    <p class="prose">It is impractical (and unnecessary) to check every single transaction. Audit sampling applies procedures to less than 100% of a population so that all sampling units have a chance of selection, and the results are used to draw conclusions about the whole population.</p>
+
+    <table class="data-table">
+      <tr><th>Sampling Method</th><th>How It Works</th><th>Best Used For</th><th>Risk</th></tr>
+      <tr><td>Random Sampling</td><td>Every item has an equal probability of selection — use random number generator</td><td>Homogeneous populations where all items are similar in nature and value</td><td>May miss high-value items — no guarantee of representativeness for value</td></tr>
+      <tr><td>Systematic Sampling</td><td>Select every nth item (e.g. every 10th invoice). Starting point chosen randomly.</td><td>Large, sequential populations (numbered invoices, purchase orders)</td><td>If there is a pattern in the population that matches the interval, sample is biased</td></tr>
+      <tr><td>Monetary Unit Sampling (MUS)</td><td>Every ₹ of value has an equal chance of selection — high-value items more likely to be selected</td><td>Balance testing where value matters — receivables, payables, inventory</td><td>Ignores small-value items (which may still be numerous)</td></tr>
+      <tr><td>Haphazard Sampling</td><td>Auditor selects items without any structured method — but avoids conscious bias</td><td>Only when other methods impractical — should not be used normally</td><td>High risk of unconscious bias — human nature tends to select "easy" items</td></tr>
+      <tr><td>Stratified Sampling</td><td>Divide population into strata (e.g. by value: &gt;₹10L, ₹1–10L, &lt;₹1L) and sample each separately</td><td>Heterogeneous populations where risk differs by stratum — e.g. test all items above materiality 100%, sample lower items</td><td>Must correctly identify strata — misclassification corrupts results</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">⚠️ Sampling Risk vs Non-Sampling Risk</div>
+      <strong>Sampling Risk:</strong> The risk that the auditor's conclusion based on a sample differs from the conclusion that would be reached if the ENTIRE population were tested. This is inherent in sampling — managed by choosing appropriate sample size and method.<br><br>
+      <strong>Non-Sampling Risk:</strong> Risks that have NOTHING to do with sampling — e.g. choosing the wrong audit procedure, misinterpreting evidence, failing to recognise a misstatement. Addressed through training, supervision, and quality control — not by increasing sample size.
+    </div>
+  </div>
+
+  <!-- 34.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">34.12</div>
+      <div class="section-title">Audit of Key Financial Statement Areas</div>
+    </div>
+    <p class="prose">Different areas of the financial statements carry different risks and require different audit approaches. Here are the most tested areas in ACCA AA exams.</p>
+
+    <table class="data-table">
+      <tr><th>Area</th><th>Key Risks</th><th>Key Audit Procedures</th><th>Assertions Tested</th></tr>
+      <tr><td>Revenue</td><td>Overstatement (fraud risk — ISA 240). Cut-off errors. Fictitious sales. Incorrect revenue recognition (IFRS 15).</td><td>Analytical review of revenue trends and margins. Select sample of sales invoices → agree to despatch notes, contracts, bank receipts. Test cut-off around year end (sales near year end — before or after?). Review credit notes issued after year end (possible revenue reversal). Confirm significant balances with customers.</td><td>Occurrence, Accuracy, Cut-off</td></tr>
+      <tr><td>Trade Receivables</td><td>Overstatement of debtors. Irrecoverable debts not provided. Bad debt provision inadequate. Fictitious debtors.</td><td>Debtor circularisation (external confirmation). Review aged receivables listing — investigate old items. Review post year-end cash receipts (best evidence of recoverability). Assess adequacy of bad debt provision — compare to write-off history.</td><td>Existence, Valuation, Completeness</td></tr>
+      <tr><td>Inventory</td><td>Overstatement (obsolete, damaged, or fictitious inventory). Incorrect valuation (lower of cost and NRV — IAS 2). Cut-off errors.</td><td>Attend physical inventory count — observe counting procedures, test count items independently, check for damaged/obsolete goods. Review NRV by comparing cost to post year-end selling prices. Review slow-moving inventory reports. Check cost includes all production costs (for WIP/finished goods).</td><td>Existence, Valuation, Completeness</td></tr>
+      <tr><td>Trade Payables</td><td>UNDERSTATEMENT (payables understated to improve apparent financial position). Unrecorded liabilities. Cut-off errors.</td><td>Supplier statement reconciliations. Search for unrecorded liabilities — review invoices received after year end, check GRNs (goods received notes) not yet invoiced. Confirm balances directly with major suppliers. Review cut-off around year end — goods received before year end should be in payables.</td><td>Completeness, Accuracy, Cut-off</td></tr>
+      <tr><td>Property, Plant & Equipment (PPE)</td><td>Incorrect capitalisation vs expensing. Inadequate depreciation. Overstatement of carrying value (impairment). Ownership (rights).</td><td>Verify additions — inspect invoices, agree to asset register. Check capitalisation policy is consistently applied. Recalculate depreciation charges. Review for impairment indicators — compare carrying value to recoverable amount. Verify title documents for major assets (land, buildings). Check that disposals have been correctly removed from asset register.</td><td>Existence, Valuation, Rights, Completeness</td></tr>
+      <tr><td>Cash & Bank</td><td>Misappropriation of cash (theft). Window dressing (moving cash around near year end). Bank balances not agreeing to bank statements.</td><td>Obtain bank confirmation letter directly from bank. Perform/review bank reconciliation independently — investigate reconciling items. Review for unusual near-year-end transactions (round sum transfers). Petty cash count if material. Verify cash cut-off.</td><td>Existence, Accuracy, Completeness</td></tr>
+    </table>
+  </div>
+
+  <!-- 34.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">34.13</div>
+      <div class="section-title">Audit Reports — Types & When Each Is Used</div>
+      <div class="section-meta">ISA 700, 705, 706</div>
+    </div>
+    <p class="prose">The audit report is the final, public output of the audit. It communicates the auditor's opinion to shareholders and other stakeholders. Understanding the different types of opinions and when each is issued is a key ACCA topic.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Unmodified Opinion ("Clean" Opinion)</div>
+        <ul class="card-items">
+          <li>Issued when: financial statements give a true and fair view in all material respects, in accordance with the applicable financial reporting framework</li>
+          <li>No material misstatements found, sufficient appropriate evidence obtained</li>
+          <li>This is what most companies receive — the "green light"</li>
+          <li>Standard wording: "In our opinion, the financial statements give a true and fair view..."</li>
+          <li>Does NOT mean the company is healthy, profitable, or without risk — only that the statements are fairly presented</li>
+        </ul>
+        <div class="card-tag">ISA 700</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Qualified Opinion — "Except For"</div>
+        <ul class="card-items">
+          <li>Issued when: there IS a material misstatement or scope limitation, BUT it is NOT pervasive (does not affect the whole of the financial statements)</li>
+          <li>The opinion is clean EXCEPT FOR the specific matter described</li>
+          <li>Wording: "In our opinion, except for the effects of the matter described in the Basis for Qualified Opinion paragraph, the financial statements give a true and fair view..."</li>
+          <li>Example: Inventory is overstated by ₹15Cr (material but isolated) — qualified on inventory, clean on everything else</li>
+        </ul>
+        <div class="card-tag">Modified — ISA 705</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚫</div>
+        <div class="card-title">Adverse Opinion</div>
+        <ul class="card-items">
+          <li>Issued when: there IS a material misstatement AND it is PERVASIVE — affects so much of the financial statements that the overall picture is misleading</li>
+          <li>The most severe negative opinion — essentially says the financial statements are WRONG</li>
+          <li>Wording: "In our opinion, because of the significance of the matter described... the financial statements do NOT give a true and fair view..."</li>
+          <li>Example: Revenue is fundamentally misstated, affecting almost every line in the financial statements</li>
+          <li>Extremely rare — when it occurs, it is major news</li>
+        </ul>
+        <div class="card-tag">Modified — ISA 705</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">❓</div>
+        <div class="card-title">Disclaimer of Opinion</div>
+        <ul class="card-items">
+          <li>Issued when: there is a SCOPE LIMITATION (auditor could not obtain sufficient evidence) AND the possible effects are PERVASIVE</li>
+          <li>Auditor says: "We cannot form an opinion" — does not express any opinion at all</li>
+          <li>Example: Management refuses to provide access to key records, or the company was set up just before year end with no financial history, or going concern uncertainty is so severe evidence cannot be obtained</li>
+          <li>More serious than qualified opinion for scope — because the unknown effects could be pervasive</li>
+        </ul>
+        <div class="card-tag">Modified — ISA 705</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📌</div>
+        <div class="card-title">Emphasis of Matter Paragraph (EOM)</div>
+        <ul class="card-items">
+          <li>Added to an UNMODIFIED opinion to draw users' attention to a matter that is already properly disclosed in the financial statements</li>
+          <li>Does not modify the opinion — the financial statements are still true and fair</li>
+          <li>Common uses: significant going concern uncertainty (disclosed but not yet fatal), major litigation disclosed in notes, fundamental uncertainty</li>
+          <li>Example: Company has disclosed in notes that it faces a ₹500Cr lawsuit that could be existential — auditor includes EOM to highlight this</li>
+        </ul>
+        <div class="card-tag">ISA 706</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Key Audit Matters (KAMs)</div>
+        <ul class="card-items">
+          <li>Required for listed entities — ISA 701</li>
+          <li>Matters that were most significant in the audit — communicated to give users insight into the audit process</li>
+          <li>Typically: complex estimates (goodwill impairment, provisions), significant judgements, areas of high inherent risk (revenue recognition, going concern)</li>
+          <li>Each KAM describes: why it was significant + how the auditor addressed it</li>
+          <li>Introduced to narrow the expectation gap — helps users understand what the auditor actually focused on</li>
+          <li>Do NOT modify the opinion — they are informational</li>
+        </ul>
+        <div class="card-tag">ISA 701</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Modified Opinions — Decision Framework</div>
+      <strong>Is there a material misstatement OR scope limitation?</strong><br><br>
+      If YES → Is it PERVASIVE?<br><br>
+      Material Misstatement + NOT Pervasive → <strong>QUALIFIED OPINION</strong> ("except for")<br>
+      Material Misstatement + PERVASIVE → <strong>ADVERSE OPINION</strong> ("do not give a true and fair view")<br>
+      Scope Limitation + NOT Pervasive → <strong>QUALIFIED OPINION</strong> ("except for possible effects")<br>
+      Scope Limitation + PERVASIVE → <strong>DISCLAIMER OF OPINION</strong> ("we do not express an opinion")<br><br>
+      <strong>Pervasive</strong> = affects multiple elements, represents a substantial portion of the statements, or fundamental disclosures to users.
+    </div>
+  </div>
+
+  <!-- 34.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">34.14</div>
+      <div class="section-title">Auditor Independence & Ethics</div>
+    </div>
+    <p class="prose">Independence is the cornerstone of auditing. An audit opinion has value only if the auditor is independent — genuinely free from bias and conflicts of interest. IESBA's Code of Ethics for Professional Accountants governs auditor independence.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <div class="card-title">Two Types of Independence</div>
+        <ul class="card-items">
+          <li><strong>Independence of Mind:</strong> The actual state of being free from bias — the auditor genuinely forms their own objective view without being influenced by management</li>
+          <li><strong>Independence in Appearance:</strong> A reasonable, informed third party would conclude that the auditor is independent — the PERCEPTION matters as much as reality</li>
+          <li>Both are required. An auditor can be independent in mind but appear conflicted (e.g. if they own shares in the client) — the appearance destroys credibility</li>
+          <li>IESBA Code: "An auditor shall be independent both in mind and in appearance"</li>
+        </ul>
+        <div class="card-tag">Core Principle</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Threats to Independence — FASSMO</div>
+        <ul class="card-items">
+          <li><strong>F — Financial Interest:</strong> Auditor owns shares in client. Loans between auditor and client.</li>
+          <li><strong>A — Advocacy:</strong> Auditor promotes client's position (e.g. acting as legal advocate in dispute)</li>
+          <li><strong>S — Self-Review:</strong> Auditor reviews their own prior work (e.g. auditor prepared the accounts they now audit)</li>
+          <li><strong>S — Self-Interest:</strong> Auditor has personal financial stake in client outcome (unpaid fees, contingent fees)</li>
+          <li><strong>M — Management/Familiarity:</strong> Long relationship with client — too close, stops questioning management</li>
+          <li><strong>O — Intimidation:</strong> Client threatens to remove auditor unless they agree with management's position</li>
+        </ul>
+        <div class="card-tag">FASSMO Threats</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">Safeguards Against Threats</div>
+        <ul class="card-items">
+          <li>Audit partner rotation — must change lead partner every 5–7 years (India: firm must rotate every 5 years for listed cos)</li>
+          <li>Second partner review — independent partner reviews audit work and opinion</li>
+          <li>Quality control procedures — firm-wide independence checks, ethics policies</li>
+          <li>Separate teams for audit and non-audit services to same client</li>
+          <li>Cooling-off periods — former auditors cannot join client in senior roles immediately after audit</li>
+          <li>Fee cap — fees from one client should not dominate total firm revenue (creates economic dependency)</li>
+          <li>Prohibition on certain non-audit services — e.g. preparing accounts of the company you audit</li>
+        </ul>
+        <div class="card-tag">Safeguards</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Professional Scepticism — The Auditor's Mindset (ISA 200)</div>
+      Professional scepticism is an attitude that includes a questioning mind, being alert to conditions which may indicate possible misstatement due to error or fraud, and a critical assessment of audit evidence.<br><br>
+      <strong>What it means in practice:</strong> Do not simply accept management's explanations — corroborate them. Be alert when evidence seems too perfect or explanations seem too convenient. Challenge assumptions behind estimates. Consider the possibility that management is trying to deceive you.<br><br>
+      <strong>Professional Judgement</strong> — applying relevant training, knowledge, and experience to making decisions during the audit. Different from scepticism: judgement is about making decisions; scepticism is about questioning and challenging.<br><br>
+      <strong>Why both matter:</strong> The biggest audit failures in history (Enron, Satyam, Wirecard) involved auditors who applied too little scepticism and too much trust in management.
+    </div>
+  </div>
+
+  <!-- 34.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">34.15</div>
+      <div class="section-title">Audit in India — Regulatory Context</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🇮🇳</div>
+        <div class="card-title">ICAI — Institute of Chartered Accountants of India</div>
+        <ul class="card-items">
+          <li>Statutory body under The Chartered Accountants Act 1949 — only ICAI members (CAs) can conduct statutory audits in India</li>
+          <li>Issues Standards on Auditing (SAs) — India's equivalent of ISAs, largely converged</li>
+          <li>Issues Guidance Notes on specific areas (e.g. audit of banks, NBFCs, stock brokers)</li>
+          <li>Conducts quality reviews of audit firms through its Quality Review Board</li>
+          <li>Has disciplinary authority over members who violate professional standards</li>
+          <li>CA Final exams are among the toughest professional exams globally — 10–15% pass rates</li>
+        </ul>
+        <div class="card-tag">ICAI</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">NFRA — National Financial Reporting Authority</div>
+        <ul class="card-items">
+          <li>Established 2018 under Companies Act 2013 — independent of ICAI</li>
+          <li>Oversees audit quality of listed companies, large unlisted public companies, banks, insurance companies</li>
+          <li>Can investigate auditors and impose penalties — including debarment from practice</li>
+          <li>Created after IL&FS crisis (2018) and Satyam scandal exposed weaknesses in self-regulation by ICAI</li>
+          <li>Sets Accounting Standards for its covered entities (converged with IFRS as Ind AS)</li>
+          <li>Reports annually on audit quality findings — similar to PCAOB in USA</li>
+        </ul>
+        <div class="card-tag">NFRA</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Companies Act 2013 — Key Audit Provisions</div>
+        <ul class="card-items">
+          <li><strong>Mandatory Audit:</strong> All companies must have their financial statements audited by a qualified CA</li>
+          <li><strong>Auditor Appointment:</strong> Appointed by shareholders at AGM on recommendation of Board/Audit Committee</li>
+          <li><strong>Firm Rotation:</strong> Listed companies must rotate audit firms every 5 years (10 years with shareholder approval) — to protect independence</li>
+          <li><strong>Restrictions on Non-Audit Services:</strong> Auditor cannot provide certain services to audit client (e.g. accounting, internal audit, management consulting) — prevents self-review threat</li>
+          <li><strong>Reporting on Fraud:</strong> If auditor suspects fraud of ₹1Cr+ → must report to Central Government within 60 days</li>
+          <li><strong>Auditor's Report:</strong> Must comply with Companies (Audit & Auditors) Rules 2014 — specific reporting requirements</li>
+        </ul>
+        <div class="card-tag">Companies Act</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📉</div>
+        <div class="card-title">Major Indian Audit Failures — Lessons</div>
+        <ul class="card-items">
+          <li><strong>Satyam (2009):</strong> ₹7,136Cr fraud — fake cash balances, inflated revenues. PwC India was statutory auditor — missed for years. Led to criminal charges against auditors, NFRA creation.</li>
+          <li><strong>IL&FS (2018):</strong> ₹91,000Cr debt default hidden through complex SPV structures. Multiple auditors missed the systemic risk. Triggered NFRA establishment.</li>
+          <li><strong>DHFL (2019):</strong> Massive loan diversion fraud. Auditors criticised for not detecting diversion of funds to promoter-linked entities.</li>
+          <li><strong>Byju's (2023):</strong> Auditor Deloitte resigned — citing inability to obtain sufficient evidence. Later BBBI (parent) faced massive write-downs.</li>
+          <li><strong>Common theme:</strong> Insufficient professional scepticism, over-reliance on management representations, pressure from large/important clients.</li>
+        </ul>
+        <div class="card-tag">India Case Studies</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">34.16</div>
+      <div class="section-title">Key Takeaways, Common Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+    </div>
+
+    <p class="section-label">Part A — 10 Core Takeaways</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Why Audit Exists</div><ul class="card-items"><li>Agency problem — management prepares statements that shareholders rely on</li><li>Audit breaks the self-reporting loop — independent third party verifies</li><li>Without audit: Enron, Satyam, Wirecard-type disasters happen repeatedly</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Audit = Reasonable, Not Absolute Assurance</div><ul class="card-items"><li>Not 100% checking — uses sampling</li><li>Cannot guarantee detection of all fraud</li><li>Cannot guarantee company won't fail</li><li>The Expectation Gap is always relevant to discuss</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Audit Risk Model — AR = IR × CR × DR</div><ul class="card-items"><li>IR and CR assessed — can't control them</li><li>DR is what the auditor controls via procedures</li><li>Higher IR/CR → lower DR needed → more extensive procedures</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Materiality — Quantitative AND Qualitative</div><ul class="card-items"><li>Set at ~5% PBT or 1% revenue or 0.5% assets</li><li>Performance materiality = 60–75% of overall</li><li>Small amounts can still be material — director fraud, covenant breach</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Assertions — The Why Behind Every Procedure</div><ul class="card-items"><li>Existence, Completeness, Valuation, Rights, Cut-off, Presentation</li><li>Every audit procedure must target specific assertions</li><li>Direction matters: vouching (existence) vs tracing (completeness)</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Evidence Reliability Hierarchy</div><ul class="card-items"><li>Auditor-generated &gt; external &gt; internal client documents</li><li>External confirmations = gold standard (bank letters, debtor circularisation)</li><li>Management oral explanations alone = least reliable — always corroborate</li></ul></div>
+      <div class="card"><div class="card-icon">7️⃣</div><div class="card-title">Audit Reports — 4 Types of Opinion</div><ul class="card-items"><li>Unmodified = clean (true and fair)</li><li>Qualified = material issue but not pervasive ("except for")</li><li>Adverse = material AND pervasive misstatement</li><li>Disclaimer = pervasive scope limitation (cannot form opinion)</li></ul></div>
+      <div class="card"><div class="card-icon">8️⃣</div><div class="card-title">Independence — Mind AND Appearance</div><ul class="card-items"><li>FASSMO threats: Financial, Advocacy, Self-review, Self-interest, Management familiarity, Over-familiarity, Intimidation</li><li>Safeguards: rotation, second partner review, prohibitions on non-audit services</li><li>Independence is the foundation — without it the opinion is worthless</li></ul></div>
+      <div class="card"><div class="card-icon">9️⃣</div><div class="card-title">Professional Scepticism — Never Forget This</div><ul class="card-items"><li>Questioning mind — never blindly accept management</li><li>Alert to fraud indicators — pressure, opportunity, rationalisation</li><li>Biggest audit failures: too much trust, too little scepticism</li></ul></div>
+      <div class="card"><div class="card-icon">🔟</div><div class="card-title">India — ICAI + NFRA + Companies Act</div><ul class="card-items"><li>Only CAs can conduct statutory audit in India</li><li>NFRA oversees audit quality of listed and large public interest entities</li><li>Firm rotation every 5 years for listed companies</li><li>Fraud above ₹1Cr must be reported to Central Government</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part B — Common Exam Mistakes</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">❌ MISTAKE 1</div><div class="step-content"><strong>Writing Vague Audit Procedures</strong><br>"Check invoices" or "Review records" earns zero marks. Always specify: which documents, in which direction, for which assertion, to detect which misstatement. Be specific, be detailed, be directional.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 2</div><div class="step-content"><strong>Confusing Inherent Risk with Control Risk</strong><br>Inherent risk = susceptibility BEFORE controls. Control risk = risk that controls FAIL to catch the error. Two completely different concepts. IR is about the nature of the item; CR is about the quality of controls over it.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 3</div><div class="step-content"><strong>Saying Audit Guarantees Accuracy or Fraud Detection</strong><br>Audit provides REASONABLE (not absolute) assurance. It cannot guarantee detection of all fraud — especially well-concealed collusion or management override. Always qualify this in exam answers.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 4</div><div class="step-content"><strong>Ignoring Qualitative Materiality</strong><br>Students focus only on numbers. Exams frequently give scenarios with small amounts that are qualitatively material — director transactions, covenant breaches, fraud indicators. Always consider both dimensions of materiality.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 5</div><div class="step-content"><strong>Selecting Wrong Opinion Type</strong><br>Common error: saying "adverse opinion" when the issue is a scope limitation (correct answer: disclaimer). Or saying "disclaimer" when there is a material misstatement (correct: qualified or adverse depending on pervasiveness). Use the decision tree: misstatement or scope limitation? → pervasive or not?</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part C — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Audit Risk Model</div><ul class="card-items"><li><strong>Formula:</strong> AR = IR × CR × DR</li><li><strong>What auditor controls:</strong> Detection Risk only</li><li><strong>High IR + High CR → </strong>Need very Low DR → more/better procedures</li><li><strong>Significant Risk treatment:</strong> MUST test controls AND do substantive procedures</li></ul><div class="card-tag">Flashcard 1</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Materiality Benchmarks</div><ul class="card-items"><li>Profitable entity: 5% of PBT</li><li>Low-margin/volatile: 1% of Revenue</li><li>Asset-heavy/bank: 0.5–1% of Total Assets</li><li>Performance materiality: 60–75% of overall</li><li>Clearly trivial: 3–5% of overall</li></ul><div class="card-tag">Flashcard 2</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Audit Opinions Decision Tree</div><ul class="card-items"><li>No issues → Unmodified (clean)</li><li>Material misstatement, NOT pervasive → Qualified</li><li>Material misstatement, PERVASIVE → Adverse</li><li>Scope limitation, NOT pervasive → Qualified</li><li>Scope limitation, PERVASIVE → Disclaimer</li></ul><div class="card-tag">Flashcard 3</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Assertions — CEAVCO</div><ul class="card-items"><li><strong>C</strong>ompleteness — nothing omitted</li><li><strong>E</strong>xistence — assets actually exist</li><li><strong>A</strong>ccuracy/Valuation — correctly measured</li><li><strong>V</strong>aluation — at correct amount</li><li><strong>C</strong>ut-off — correct period</li><li><strong>O</strong>bligation/Rights — company owns/owes</li></ul><div class="card-tag">Flashcard 4</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Model Answer</th></tr>
+      <tr><td>"What is the difference between internal and external audit?"</td><td>External audit: independent of the company, provides assurance to external stakeholders (shareholders) on truth and fairness of financial statements — statutory requirement. Internal audit: employees or outsourced, reports to board/audit committee, covers broader scope (risk, operations, controls), aimed at improving internal processes. External auditors may use internal audit work but cannot delegate responsibility for their opinion.</td></tr>
+      <tr><td>"What is materiality and why does it matter in audit?"</td><td>Materiality is the threshold above which a misstatement would influence the decisions of users of financial statements. It limits audit scope — auditors focus effort where misstatements would matter. Set quantitatively (e.g. 5% of PBT) and qualitatively (fraud, covenant breach). Performance materiality (60–75%) is used when designing procedures to ensure aggregate errors don't exceed overall materiality.</td></tr>
+      <tr><td>"Walk me through the audit process from start to finish."</td><td>Client acceptance and engagement letter → Planning (audit strategy, risk assessment, materiality) → Risk assessment (understand entity, identify risks at FS and assertion level) → Respond to risks (tests of controls and substantive procedures) → Completion (subsequent events, going concern, written representations, final analytical review) → Report (audit opinion — unmodified or modified as appropriate, communication to audit committee).</td></tr>
+      <tr><td>"What is professional scepticism and give me an example?"</td><td>Professional scepticism is a questioning mindset — being alert to conditions that may indicate error or fraud, and critically evaluating audit evidence without blindly accepting management's explanations. Example: management says a debtor who hasn't paid in 18 months is "fine and will pay soon." A sceptical auditor would not accept this and would request post-year-end bank statements from the debtor, or a written confirmation, or consider whether full provision is required.</td></tr>
+      <tr><td>"Why might an auditor give a qualified opinion?"</td><td>A qualified opinion is issued when there is a material misstatement OR a scope limitation (the auditor could not obtain sufficient appropriate evidence), but the issue is NOT pervasive — it doesn't affect the whole of the financial statements. Example: inventory is overstated by ₹10Cr (material) but this only affects inventory and cost of sales — all other areas are fine. The opinion would be clean "except for" the inventory misstatement.</td></tr>
+    </table>
+
+    <p class="section-label" style="margin-top:36px;">Part E — All Key Terms Quick Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 34 — Key Concepts Reference</div>
+      <div class="formula-row"><div class="formula-name">Audit Objective</div><div class="formula-eq">Reasonable assurance that FS are free from material misstatement (fraud or error) → express opinion on true and fair view</div></div>
+      <div class="formula-row"><div class="formula-name">Audit Risk Model</div><div class="formula-eq">AR = IR × CR × DR | Only DR is controlled by auditor | Higher IR/CR → Lower DR needed</div></div>
+      <div class="formula-row"><div class="formula-name">Overall Materiality</div><div class="formula-eq">~5% PBT | ~1% Revenue | ~0.5% Assets (choose based on what users focus on)</div></div>
+      <div class="formula-row"><div class="formula-name">Performance Materiality</div><div class="formula-eq">60–75% of Overall Materiality — used when designing procedures</div></div>
+      <div class="formula-row"><div class="formula-name">Clearly Trivial</div><div class="formula-eq">3–5% of Overall Materiality — below this, no need to accumulate</div></div>
+      <div class="formula-row"><div class="formula-name">Assertions</div><div class="formula-eq">Existence | Completeness | Valuation/Accuracy | Rights & Obligations | Cut-off | Presentation & Disclosure</div></div>
+      <div class="formula-row"><div class="formula-name">Evidence Reliability</div><div class="formula-eq">Auditor-generated > External > Internal | Original > Copy | Written > Oral</div></div>
+      <div class="formula-row"><div class="formula-name">FASSMO Threats</div><div class="formula-eq">Financial Interest | Advocacy | Self-Review | Self-Interest | Management Familiarity | Over-familiarity | Intimidation</div></div>
+      <div class="formula-row"><div class="formula-name">Opinion Types</div><div class="formula-eq">Unmodified → Qualified (not pervasive) → Adverse (pervasive misstatement) | Disclaimer (pervasive scope limitation)</div></div>
+      <div class="formula-row"><div class="formula-name">Going Concern</div><div class="formula-eq">ISA 570: Assess whether entity can continue 12+ months. Material uncertainty → EOM para. Doubt entity will continue → adverse/disclaimer depending on disclosure.</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part F — Action Steps</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 34 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag purple">✅ THIS WEEK: Read ISA 200, ISA 315, ISA 320, and ISA 700 — just the objectives and key requirements sections. Build familiarity with the official language.</span>
+        <span class="tag purple">✅ THIS WEEK: Practice writing 5 detailed audit procedures for Revenue — including direction, document, and assertion for each.</span>
+        <span class="tag purple">✅ THIS WEEK: Apply the materiality calculation to any Indian listed company — use their PBT from latest annual report. Calculate overall materiality, performance materiality, and clearly trivial threshold.</span>
+        <span class="tag purple">✅ THIS WEEK: Draw the Audit Risk Model from memory — define each component with an example.</span>
+        <span class="tag purple">✅ THIS WEEK: Practice the opinion decision tree — for 5 different scenarios, identify which opinion type is correct and why.</span>
+        <span class="tag purple">✅ THIS MONTH: Attempt 2 ACCA AA past paper questions — one on audit procedures and one on audit reports. Mark against model answers.</span>
+        <span class="tag purple">✅ THIS MONTH: Research the Satyam or IL&FS scandal in detail — identify what audit failures occurred and what ISAs were violated.</span>
+        <span class="tag purple">✅ THIS MONTH: Memorise all assertions using CEAVCO — test yourself by writing audit procedures for each assertion for Inventory.</span>
+        <span class="tag purple">✅ THIS MONTH: Practise explaining the Expectation Gap, Professional Scepticism, and Independence (mind vs appearance) out loud — as if in a Big 4 interview.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Independence (Free from Bias — MIND and APPEARANCE)<br>
+      + Professional Scepticism (Question Everything — Never Just Accept)<br>
+      + Sufficient Appropriate Evidence (Enough + Reliable)<br>
+      + Materiality (Focus on What Matters — Quantitative AND Qualitative)<br>
+      + Audit Risk Model (AR = IR × CR × DR — Control the Controllable)<br>
+      = <strong style="color:var(--accent4);">Audit Excellence — The Guardian of Financial Integrity</strong>
+    </div>
+    <h3>Chapter 34: Audit Fundamentals — Complete 🔍✅</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 35: Internal Controls — how organisations protect themselves from error, fraud, and operational failure. 🔒</p>
+  </div>
+
+</div>
+</body>
+</html>

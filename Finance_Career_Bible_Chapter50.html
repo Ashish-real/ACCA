@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 50: Practice Questions Bank</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(108,99,255,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent2); border:1px solid var(--accent2); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent2),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent2); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent2); min-width:40px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(0,212,170,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent2); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:12px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.7; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px 24px; margin-top:14px; }
+  .wide-card h4 { font-size:15px; margin-bottom:12px; color:var(--text); }
+  .highlight { background:linear-gradient(135deg,rgba(0,212,170,0.07),rgba(108,99,255,0.05)); border:1px solid rgba(0,212,170,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(0,212,170,0.09),rgba(108,99,255,0.06)); border:1px solid rgba(0,212,170,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent2); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent2),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 50 · Practice &amp; Self-Test</div>
+  <h1>Practice Questions<br><span>Bank</span></h1>
+  <p class="hero-sub">MCQs and scenario questions across all 13 ACCA papers, with full worked answers — test yourself before you sit the real exam.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">44</div><div class="stat-label">MCQs</div></div>
+    <div class="stat"><div class="stat-num">13</div><div class="stat-label">Scenario Questions</div></div>
+    <div class="stat"><div class="stat-num">13</div><div class="stat-label">ACCA Papers</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Answers Included</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 50 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">50.1</span>How to Use This Chapter</div>
+    <div class="toc-item"><span class="toc-num">50.2</span>BT — Business &amp; Technology</div>
+    <div class="toc-item"><span class="toc-num">50.3</span>MA — Management Accounting</div>
+    <div class="toc-item"><span class="toc-num">50.4</span>FA — Financial Accounting</div>
+    <div class="toc-item"><span class="toc-num">50.5</span>LW — Corporate &amp; Business Law</div>
+    <div class="toc-item"><span class="toc-num">50.6</span>PM — Performance Management</div>
+    <div class="toc-item"><span class="toc-num">50.7</span>TX — Taxation</div>
+    <div class="toc-item"><span class="toc-num">50.8</span>FR — Financial Reporting</div>
+    <div class="toc-item"><span class="toc-num">50.9</span>AA — Audit &amp; Assurance</div>
+    <div class="toc-item"><span class="toc-num">50.10</span>FM — Financial Management</div>
+    <div class="toc-item"><span class="toc-num">50.11</span>SBL — Strategic Business Leader</div>
+    <div class="toc-item"><span class="toc-num">50.12</span>SBR — Strategic Business Reporting</div>
+    <div class="toc-item"><span class="toc-num">50.13</span>AFM — Advanced Financial Management</div>
+    <div class="toc-item"><span class="toc-num">50.14</span>APM — Advanced Performance Management</div>
+    <div class="toc-item"><span class="toc-num">50.15</span>ATX — Advanced Taxation</div>
+    <div class="toc-item"><span class="toc-num">50.16</span>AAA — Advanced Audit &amp; Assurance</div>
+  </div>
+
+  <!-- 50.1 -->
+  <div class="section" id="s50.1">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">50.1</div>
+      <div class="section-title">How to Use This Chapter</div>
+    </div>
+    <p class="prose">Each paper below has <strong>Part A — Multiple Choice Questions</strong> (quick recall/application checks) and <strong>Part B — a full Scenario Question</strong> with a complete worked solution, mirroring real exam-style calculation questions.</p>
+    <div class="highlight">
+      <div class="highlight-title">📌 How to Practise Properly</div>
+      Attempt the question BEFORE reading the answer — cover the answer column with your hand or a piece of paper. Get the scenario question's numbers wrong? Go back to Chapter 49 (Formula Cheat-Sheet) or the relevant source chapter to revise the concept, then retry.
+    </div>
+  </div>
+
+  <!-- 50.2 -->
+  <div class="section" id="s50.2">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">50.2</div>
+      <div class="section-title">BT (Business &amp; Technology) — Applied Knowledge</div>
+    </div>
+    <p class="prose">BT tests conceptual understanding of business environment, structures, and technology — no calculations.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>Which analysis tool examines Political, Economic, Social, Technological, Environmental and Legal factors?</td><td>A) SWOT Analysis<br>B) PESTEL Analysis ✅<br>C) Porter's Five Forces<br>D) BCG Matrix</td><td><strong>B</strong> — PESTEL is specifically the macro-environmental scanning tool covering these six factors.</td></tr>
+      <tr><td>A shop window display of goods with price tags is legally classified as:</td><td>A) A binding offer<br>B) An invitation to treat ✅<br>C) A unilateral contract<br>D) A counter-offer</td><td><strong>B</strong> — Displayed goods invite customers to make an offer at the till — the shop is not obligated to sell at the displayed price.</td></tr>
+      <tr><td>Which of the following is NOT one of the 5 core business functions typically covered in BT?</td><td>A) Operations<br>B) Marketing<br>C) Finance<br>D) Astrology ✅</td><td><strong>D</strong> — The core functions are Operations, Marketing, HR, Finance, and IT/Information Systems.</td></tr>
+      <tr><td>A phishing attack primarily exploits which vulnerability?</td><td>A) Weak encryption algorithms<br>B) Human trust and judgement ✅<br>C) Hardware failure<br>D) Network bandwidth limits</td><td><strong>B</strong> — Phishing is a social engineering technique — it tricks people into revealing information rather than exploiting a technical flaw.</td></tr>
+    </table>
+  </div>
+
+  <!-- 50.3 -->
+  <div class="section" id="s50.3">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">50.3</div>
+      <div class="section-title">MA (Management Accounting) — Applied Knowledge</div>
+    </div>
+    <p class="prose">Cost behaviour, break-even, and variance analysis — the calculation core of MA.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>Which of these costs is classified as variable?</td><td>A) Factory rent<br>B) Straight-line depreciation<br>C) Direct material ✅<br>D) Factory manager's salary</td><td><strong>C</strong> — Direct material cost moves in direct proportion to production volume; the other three are typically fixed.</td></tr>
+      <tr><td>A company has selling price ₹80/unit, variable cost ₹50/unit, and fixed costs of ₹1,50,000. What is the break-even point in units?</td><td>A) 3,000 units<br>B) 5,000 units ✅<br>C) 1,875 units<br>D) 2,500 units</td><td><strong>B</strong> — Contribution/unit = ₹80−₹50 = ₹30. BEP = ₹1,50,000 ÷ ₹30 = 5,000 units.</td></tr>
+      <tr><td>Material Price Variance is calculated as:</td><td>A) (Standard Qty − Actual Qty) × Standard Price<br>B) (Standard Price − Actual Price) × Actual Quantity ✅<br>C) (Actual Price − Standard Price) × Standard Quantity<br>D) (Standard Price − Actual Price) × Standard Quantity</td><td><strong>B</strong> — Price variance isolates the price effect — it's always calculated on the ACTUAL quantity purchased/used.</td></tr>
+      <tr><td>If Margin of Safety increases, this means:</td><td>A) The business is closer to break-even and riskier<br>B) The business has more cushion above break-even — lower risk ✅<br>C) Fixed costs have increased<br>D) Contribution per unit has decreased</td><td><strong>B</strong> — A larger Margin of Safety (Actual Sales − Break-Even Sales) means more room before the business starts making a loss.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 Break-Even, Margin of Safety &amp; Profit</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> Product X sells for ₹500/unit. Variable cost is ₹300/unit. Annual fixed costs are ₹8,00,000. Budgeted sales are 5,000 units. Calculate (a) Break-even point in units, (b) Margin of Safety in units and as a %, (c) Budgeted profit.<br><br>
+        <strong style='color:var(--text);'>Step 1 — Contribution per unit:</strong> ₹500 − ₹300 = ₹200<br>
+        <strong style='color:var(--text);'>Step 2 — Break-Even Point:</strong> Fixed Costs ÷ Contribution = ₹8,00,000 ÷ ₹200 = 4,000 units<br>
+        <strong style='color:var(--text);'>Step 3 — Margin of Safety:</strong> 5,000 − 4,000 = 1,000 units → 1,000 ÷ 5,000 × 100 = 20%<br>
+        <strong style='color:var(--text);'>Step 4 — Budgeted Profit:</strong> Total Contribution (5,000 × ₹200 = ₹10,00,000) − Fixed Costs (₹8,00,000) = ₹2,00,000<br>
+        <br><strong style="color:var(--accent2);">Answer: BEP = 4,000 units | Margin of Safety = 1,000 units (20%) | Budgeted Profit = ₹2,00,000</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.4 -->
+  <div class="section" id="s50.4">
+    <div class="section-header">
+      <div class="sec-badge badge-green">50.4</div>
+      <div class="section-title">FA (Financial Accounting) — Applied Knowledge</div>
+    </div>
+    <p class="prose">Double-entry, depreciation, and basic statement preparation.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>Purchasing a delivery van on credit affects the accounting equation by:</td><td>A) Increasing Assets and Increasing Equity<br>B) Increasing Assets and Increasing Liabilities ✅<br>C) Decreasing Assets and Increasing Liabilities<br>D) No effect — it's an off-balance-sheet transaction</td><td><strong>B</strong> — The van (asset) increases, and since it's on credit, a payable (liability) increases by the same amount — the equation stays balanced.</td></tr>
+      <tr><td>A machine costs ₹1,20,000, has an estimated residual value of ₹12,000, and a useful life of 6 years. Annual straight-line depreciation is:</td><td>A) ₹20,000<br>B) ₹18,000 ✅<br>C) ₹22,000<br>D) ₹16,000</td><td><strong>B</strong> — (₹1,20,000 − ₹12,000) ÷ 6 = ₹18,000 per year.</td></tr>
+      <tr><td>Under IAS 2, inventory is valued at:</td><td>A) Historical cost only<br>B) Net Realisable Value only<br>C) Lower of Cost and Net Realisable Value ✅<br>D) Fair value through profit or loss</td><td><strong>C</strong> — IAS 2 requires the LOWER of cost and NRV — this prevents overstating inventory when its value has fallen.</td></tr>
+      <tr><td>In a trial balance, if total debits do not equal total credits, this most likely indicates:</td><td>A) A compensating error<br>B) A one-sided entry or arithmetic error ✅<br>C) An error of principle<br>D) An error of omission</td><td><strong>B</strong> — Errors of principle, omission, and compensating errors do NOT cause a trial balance imbalance since both sides are still equal (just wrong) — only a one-sided or arithmetic error breaks the balance.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 Statement of Profit or Loss — Extract</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> From the following figures, prepare a Statement of Profit or Loss extract down to Operating Profit: Revenue ₹5,00,000; Cost of Goods Sold ₹3,00,000; Operating Expenses ₹80,000; Depreciation ₹20,000.<br><br>
+        <strong style='color:var(--text);'>Step 1 — Gross Profit:</strong> Revenue (₹5,00,000) − COGS (₹3,00,000) = ₹2,00,000<br>
+        <strong style='color:var(--text);'>Step 2 — Deduct Operating Expenses and Depreciation:</strong> ₹2,00,000 − ₹80,000 − ₹20,000 = ₹1,00,000<br>
+        <br><strong style="color:var(--accent2);">Answer: Gross Profit = ₹2,00,000 | Operating Profit (EBIT) = ₹1,00,000</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.5 -->
+  <div class="section" id="s50.5">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">50.5</div>
+      <div class="section-title">LW (Corporate &amp; Business Law) — Applied Skills</div>
+    </div>
+    <p class="prose">Contract formation and remedies for breach.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>A counter-offer (changing any term of the original offer) has the legal effect of:</td><td>A) Automatically becoming a binding contract<br>B) Destroying the original offer and becoming a new offer ✅<br>C) Being ignored — the original offer still stands<br>D) Creating two simultaneous valid offers</td><td><strong>B</strong> — A counter-offer kills the original offer — the offeror is no longer bound by their initial terms.</td></tr>
+      <tr><td>Consideration in a contract must be:</td><td>A) Adequate (i.e. represent fair market value)<br>B) Sufficient, but need not be adequate ✅<br>C) In the form of money only<br>D) Provided before the promise was made</td><td><strong>B</strong> — Courts require consideration to have SOME value (sufficiency) but won't assess whether it's a fair/equal exchange (adequacy).</td></tr>
+      <tr><td>Which remedy is discretionary and typically granted only when damages would be an inadequate remedy (e.g. sale of unique goods)?</td><td>A) Damages<br>B) Specific Performance ✅<br>C) Rescission<br>D) Liquidated Damages</td><td><strong>B</strong> — Specific Performance is an equitable, discretionary remedy — courts grant it sparingly, mainly where money alone can't fairly compensate the innocent party.</td></tr>
+      <tr><td>Social or domestic agreements between family members are presumed to:</td><td>A) Always be legally binding<br>B) Never have intention to create legal relations, though this can be rebutted ✅<br>C) Require written form to be valid<br>D) Automatically require consideration of at least ₹1</td><td><strong>B</strong> — The law presumes no intention to be legally bound in social/domestic settings — but this presumption CAN be rebutted with clear evidence otherwise.</td></tr>
+    </table>
+  </div>
+
+  <!-- 50.6 -->
+  <div class="section" id="s50.6">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">50.6</div>
+      <div class="section-title">PM (Performance Management) — Applied Skills</div>
+    </div>
+    <p class="prose">Learning curves, throughput accounting, and advanced variance analysis.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>A Throughput Accounting Ratio (TPAR) greater than 1 indicates:</td><td>A) The product destroys value and should be dropped<br>B) The product is profitable to produce at the bottleneck ✅<br>C) Fixed costs exceed variable costs<br>D) The learning curve has ended</td><td><strong>B</strong> — TPAR > 1 means throughput per bottleneck minute exceeds factory cost per bottleneck minute — the product generates value faster than it costs.</td></tr>
+      <tr><td>The learning curve effect assumes that as cumulative output doubles, the cumulative average time per unit:</td><td>A) Increases by a fixed percentage<br>B) Falls by a constant percentage ✅<br>C) Remains unchanged<br>D) Falls to zero</td><td><strong>B</strong> — This is the defining property of a learning curve — e.g. an 80% curve means cumulative average time falls to 80% of its previous level each time output doubles.</td></tr>
+      <tr><td>In mix and yield variance analysis, the Mix Variance isolates the effect of:</td><td>A) Using a different total quantity of input than budgeted<br>B) Using a different PROPORTION of materials than the standard mix ✅<br>C) A change in the selling price<br>D) A change in labour efficiency</td><td><strong>B</strong> — Mix variance measures the cost impact of blending materials in a different ratio than standard — separate from the total quantity (yield) effect.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 Learning Curve — Incremental Time Calculation</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> The first unit of a new product takes 100 hours to produce, and an 80% learning curve applies. Calculate the total time for the first 8 units, and the time taken for the 8th unit alone.<br><br>
+        <strong style='color:var(--text);'>Step 1 — b value:</strong> b = log(0.8) ÷ log(2) = −0.3219<br>
+        <strong style='color:var(--text);'>Step 2 — Cumulative average time for 8 units:</strong> Y = 100 × 8^(−0.3219) = 100 × 0.512 = 51.2 hours. Total time for 8 units = 51.2 × 8 = 409.6 hours<br>
+        <strong style='color:var(--text);'>Step 3 — Cumulative average time for 7 units:</strong> Y = 100 × 7^(−0.3219) = 53.45 hours. Total time for 7 units = 53.45 × 7 = 374.14 hours<br>
+        <strong style='color:var(--text);'>Step 4 — Time for the 8th unit:</strong> Total(8) − Total(7) = 409.6 − 374.14 = 35.46 hours<br>
+        <br><strong style="color:var(--accent2);">Answer: Total time for first 8 units = 409.6 hours | Time for the 8th unit alone ≈ 35.46 hours</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.7 -->
+  <div class="section" id="s50.7">
+    <div class="section-header">
+      <div class="sec-badge badge-red">50.7</div>
+      <div class="section-title">TX (Taxation) — Applied Skills</div>
+    </div>
+    <p class="prose">India corporate tax computation under the concessional regime.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>Under Section 115BAA, a domestic company forgoing exemptions/deductions is taxed at a base rate of:</td><td>A) 15%<br>B) 22% ✅<br>C) 25%<br>D) 30%</td><td><strong>B</strong> — Section 115BAA offers a concessional 22% base rate (before surcharge and cess) for domestic companies that opt out of specified exemptions.</td></tr>
+      <tr><td>The Health &amp; Education Cess applied on corporate tax (plus surcharge) in India is:</td><td>A) 2%<br>B) 3%<br>C) 4% ✅<br>D) 5%</td><td><strong>C</strong> — The cess is levied at 4% on the total of tax plus applicable surcharge.</td></tr>
+      <tr><td>Which of these is a DIRECT tax in the Indian tax system?</td><td>A) GST<br>B) Customs Duty<br>C) Corporate Income Tax ✅<br>D) Excise Duty</td><td><strong>C</strong> — Direct taxes (income tax, corporate tax) are levied directly on income/profit; GST, customs, and excise are indirect taxes on transactions/goods.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 Corporate Tax Liability — Section 115BAA</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> A domestic company has taxable income of ₹50,00,000 and opts for the concessional regime under Section 115BAA (22% base rate, 10% surcharge, 4% cess). Calculate the total tax liability and the effective tax rate.<br><br>
+        <strong style='color:var(--text);'>Step 1 — Base Tax:</strong> 22% × ₹50,00,000 = ₹11,00,000<br>
+        <strong style='color:var(--text);'>Step 2 — Surcharge:</strong> 10% × ₹11,00,000 = ₹1,10,000<br>
+        <strong style='color:var(--text);'>Step 3 — Cess:</strong> 4% × (₹11,00,000 + ₹1,10,000) = 4% × ₹12,10,000 = ₹48,400<br>
+        <strong style='color:var(--text);'>Step 4 — Total Tax Liability:</strong> ₹11,00,000 + ₹1,10,000 + ₹48,400 = ₹12,58,400<br>
+        <br><strong style="color:var(--accent2);">Answer: Total Tax Liability = ₹12,58,400 | Effective Tax Rate = ₹12,58,400 ÷ ₹50,00,000 = 25.17%</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.8 -->
+  <div class="section" id="s50.8">
+    <div class="section-header">
+      <div class="sec-badge badge-green">50.8</div>
+      <div class="section-title">FR (Financial Reporting) — Applied Skills</div>
+    </div>
+    <p class="prose">Consolidation, leases, and revenue recognition under IFRS.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>Under IFRS 16, how does a lessee generally account for a lease (with limited exceptions)?</td><td>A) Off-balance-sheet, expensed as incurred<br>B) Recognised on-balance-sheet as a Right-of-Use asset and a Lease Liability ✅<br>C) As a contingent liability only<br>D) Only disclosed in the notes</td><td><strong>B</strong> — IFRS 16 removed the old operating/finance lease distinction for lessees — almost all leases now go on-balance-sheet.</td></tr>
+      <tr><td>The 5-step revenue recognition model under IFRS 15 begins with:</td><td>A) Recognising revenue when performance obligations are satisfied<br>B) Identifying the contract with a customer ✅<br>C) Determining the transaction price<br>D) Allocating the transaction price</td><td><strong>B</strong> — Step 1 is identifying the contract — the other steps (price determination, allocation, obligation identification, recognition) follow in sequence.</td></tr>
+      <tr><td>Diluted EPS differs from Basic EPS because it:</td><td>A) Uses only the current year's profit<br>B) Adjusts for potentially dilutive instruments like convertible bonds and share options ✅<br>C) Ignores preference dividends<br>D) Uses the opening share count only</td><td><strong>B</strong> — Diluted EPS shows the 'worst case' impact on EPS if all dilutive instruments (options, convertibles) were converted to ordinary shares.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 Goodwill on Acquisition</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> A parent acquires 80% of a subsidiary for cash consideration of ₹40,00,000. The fair value of the 20% non-controlling interest at acquisition is ₹9,00,000. The fair value of the subsidiary's identifiable net assets at acquisition is ₹45,00,000. Calculate goodwill on acquisition.<br><br>
+        <strong style='color:var(--text);'>Formula:</strong> Goodwill = Consideration Paid + Fair Value of NCI − Fair Value of Identifiable Net Assets<br>
+        <strong style='color:var(--text);'>Calculation:</strong> ₹40,00,000 + ₹9,00,000 − ₹45,00,000<br>
+        <br><strong style="color:var(--accent2);">Answer: Goodwill = ₹4,00,000</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.9 -->
+  <div class="section" id="s50.9">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">50.9</div>
+      <div class="section-title">AA (Audit &amp; Assurance) — Applied Skills</div>
+    </div>
+    <p class="prose">Audit risk, materiality, and internal control.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>Per the Audit Risk Model, Audit Risk equals:</td><td>A) Inherent Risk + Control Risk + Detection Risk<br>B) Inherent Risk × Control Risk × Detection Risk ✅<br>C) Inherent Risk − Control Risk<br>D) Detection Risk ÷ Control Risk</td><td><strong>B</strong> — The three risk components MULTIPLY together (not add) to give overall Audit Risk.</td></tr>
+      <tr><td>Segregation of duties is a control designed primarily to prevent:</td><td>A) Slow processing of transactions<br>B) One individual having the ability to both commit and conceal an error or fraud ✅<br>C) High audit fees<br>D) Inventory obsolescence</td><td><strong>B</strong> — Splitting authorisation, custody, and recording functions across different people makes it much harder for any single person to commit AND hide fraud.</td></tr>
+      <tr><td>Which of the following is the strongest form of audit evidence?</td><td>A) Verbal representation from management<br>B) Auditor's own physical inspection / third-party confirmation ✅<br>C) Client-prepared internal memo<br>D) Prior year's unaudited figures</td><td><strong>B</strong> — Evidence obtained directly by the auditor or from independent third parties is generally more reliable than evidence from the client itself.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 Audit Risk Model — Solving for Detection Risk</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> An auditor wants to achieve an overall audit risk of 5%. Inherent Risk is assessed at 80% and Control Risk at 50%. What level of Detection Risk should the auditor design substantive procedures to achieve?<br><br>
+        <strong style='color:var(--text);'>Formula:</strong> AR = IR × CR × DR → DR = AR ÷ (IR × CR)<br>
+        <strong style='color:var(--text);'>Calculation:</strong> DR = 0.05 ÷ (0.80 × 0.50) = 0.05 ÷ 0.40<br>
+        <br><strong style="color:var(--accent2);">Answer: Detection Risk = 12.5% — the lower this figure, the MORE extensive substantive testing the auditor must perform.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.10 -->
+  <div class="section" id="s50.10">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">50.10</div>
+      <div class="section-title">FM (Financial Management) — Applied Skills</div>
+    </div>
+    <p class="prose">Investment appraisal, cost of capital, and working capital management.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>In the CAPM formula Ke = Rf + β(Rm − Rf), the term (Rm − Rf) represents:</td><td>A) The risk-free rate<br>B) The Equity Risk Premium ✅<br>C) The company's Beta<br>D) The cost of debt</td><td><strong>B</strong> — (Rm − Rf) is the extra return investors demand for taking on equity market risk over a risk-free investment.</td></tr>
+      <tr><td>Which investment appraisal method is theoretically superior because it directly measures value created in absolute currency terms?</td><td>A) Payback Period<br>B) Accounting Rate of Return<br>C) Net Present Value ✅<br>D) None — they're all equivalent</td><td><strong>C</strong> — NPV directly measures the increase in shareholder wealth in ₹ terms, discounted for time value of money — the theoretical gold standard.</td></tr>
+      <tr><td>A key limitation of the Payback Period method is that it:</td><td>A) Is too complex to calculate<br>B) Ignores the time value of money and cash flows after the payback date ✅<br>C) Cannot be used for capital-intensive projects<br>D) Always gives the same answer as NPV</td><td><strong>B</strong> — Payback is simple and liquidity-focused but ignores discounting and anything that happens after the cutoff point — a real weakness for long-term decisions.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 Net Present Value (NPV)</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> A project requires an initial investment of ₹10,00,000 and is expected to generate cash inflows of ₹3,00,000 per year for 5 years. The company's cost of capital is 10% (5-year annuity factor at 10% = 3.7908). Calculate the NPV and recommend whether to accept the project.<br><br>
+        <strong style='color:var(--text);'>Step 1 — PV of Inflows:</strong> ₹3,00,000 × 3.7908 = ₹11,37,240<br>
+        <strong style='color:var(--text);'>Step 2 — NPV:</strong> PV of Inflows − Initial Investment = ₹11,37,240 − ₹10,00,000 = ₹1,37,240<br>
+        <strong style='color:var(--text);'>Decision Rule:</strong> Accept if NPV &gt; 0<br>
+        <br><strong style="color:var(--accent2);">Answer: NPV = ₹1,37,240 (positive) → Accept the project, as it is expected to increase shareholder wealth.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.11 -->
+  <div class="section" id="s50.11">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">50.11</div>
+      <div class="section-title">SBL (Strategic Business Leader) — Strategic Professional</div>
+    </div>
+    <p class="prose">Strategic analysis frameworks and governance.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>A company launching its EXISTING product into a NEW geographic market is pursuing, per the Ansoff Matrix:</td><td>A) Market Penetration<br>B) Product Development<br>C) Market Development ✅<br>D) Diversification</td><td><strong>C</strong> — Market Development = existing product, new market. (Product Development would be new product, existing market.)</td></tr>
+      <tr><td>The 'Agency Problem' in corporate governance refers to:</td><td>A) Employees being paid through recruitment agencies<br>B) A conflict of interest between managers (agents) and shareholders (principals) ✅<br>C) The cost of running a marketing agency campaign<br>D) A dispute between two competing companies</td><td><strong>B</strong> — Agents (management) may act in their own interest rather than maximising value for principals (shareholders) — the core governance challenge SBL addresses.</td></tr>
+      <tr><td>Which of Kotter's 8 Steps for change management comes FIRST?</td><td>A) Forming a powerful coalition<br>B) Creating a sense of urgency ✅<br>C) Communicating the vision<br>D) Anchoring changes in culture</td><td><strong>B</strong> — Kotter's model begins with establishing urgency — without it, people won't feel motivated to support the change effort.</td></tr>
+    </table>
+  </div>
+
+  <!-- 50.12 -->
+  <div class="section" id="s50.12">
+    <div class="section-header">
+      <div class="sec-badge badge-green">50.12</div>
+      <div class="section-title">SBR (Strategic Business Reporting) — Strategic Professional</div>
+    </div>
+    <p class="prose">Advanced consolidation and foreign currency translation.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>Under IAS 21, monetary items on the Statement of Financial Position are translated at:</td><td>A) The historical rate at the transaction date<br>B) The closing (year-end) rate ✅<br>C) The average rate for the year<br>D) A rate fixed by the parent company</td><td><strong>B</strong> — Monetary items (cash, receivables, payables) are retranslated at closing rate each period, since their settlement value changes with exchange rates.</td></tr>
+      <tr><td>Statement of Profit or Loss items for a foreign subsidiary are typically translated using:</td><td>A) The closing rate<br>B) The average rate for the period ✅<br>C) The opening rate only<br>D) The parent company's functional currency rate, unadjusted</td><td><strong>B</strong> — P&L items are translated at the average rate as a practical approximation of the rates prevailing when the transactions actually occurred.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 Foreign Currency Translation — Revenue</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> A foreign subsidiary reports revenue of $2,00,000 for the year. The average exchange rate for the year was ₹83/$. What is the translated revenue figure for consolidation?<br><br>
+        <strong style='color:var(--text);'>Rule:</strong> P&amp;L items are translated at the average rate for the period.<br>
+        <strong style='color:var(--text);'>Calculation:</strong> $2,00,000 × ₹83 = ₹1,66,00,000<br>
+        <br><strong style="color:var(--accent2);">Answer: Translated Revenue = ₹1,66,00,000</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.13 -->
+  <div class="section" id="s50.13">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">50.13</div>
+      <div class="section-title">AFM (Advanced Financial Management) — Strategic Professional</div>
+    </div>
+    <p class="prose">Adjusted Present Value and valuation multiples.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>The Adjusted Present Value (APV) method is preferred over a standard WACC-based NPV when:</td><td>A) The project is very small<br>B) The capital structure changes significantly over the project's life ✅<br>C) The company has no debt at all<br>D) Tax rates are zero</td><td><strong>B</strong> — APV separates the base-case (all-equity) NPV from financing side-effects, making it more robust when gearing changes materially during the project.</td></tr>
+      <tr><td>EV/EBITDA is generally preferred over P/E for cross-company comparison because it is:</td><td>A) Always a larger number<br>B) Capital-structure neutral — unaffected by differing debt levels between companies ✅<br>C) Based only on historical cost accounting<br>D) Only usable for loss-making companies</td><td><strong>B</strong> — EV/EBITDA sits above the interest line, so it isn't distorted by differences in companies' financing/capital structure the way P/E (which uses post-interest EPS) can be.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 Adjusted Present Value (APV)</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> A project has a base-case (all-equity) NPV of ₹5,00,000. Financing the project with debt creates a PV of tax shield benefit of ₹60,000, but debt issue costs of ₹20,000 are also incurred. Calculate the APV.<br><br>
+        <strong style='color:var(--text);'>Formula:</strong> APV = Base-Case NPV + PV of Financing Side-Effects (Tax Shield) − Issue Costs<br>
+        <strong style='color:var(--text);'>Calculation:</strong> ₹5,00,000 + ₹60,000 − ₹20,000<br>
+        <br><strong style="color:var(--accent2);">Answer: APV = ₹5,40,000</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.14 -->
+  <div class="section" id="s50.14">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">50.14</div>
+      <div class="section-title">APM (Advanced Performance Management) — Strategic Professional</div>
+    </div>
+    <p class="prose">Divisional performance measures and transfer pricing.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>Residual Income (RI), unlike ROI, has the advantage of:</td><td>A) Being expressed as a simple percentage, easy to compare across divisions of different sizes<br>B) Encouraging managers to accept any project that exceeds the cost of capital, avoiding ROI's dilution problem ✅<br>C) Requiring no knowledge of the cost of capital<br>D) Being unaffected by asset valuation policy</td><td><strong>B</strong> — ROI can cause a manager to REJECT a project that's good for the company (because it dilutes their average ROI) — RI avoids this by using an absolute ₹ measure against a required return.</td></tr>
+      <tr><td>The best transfer pricing method to use when a genuine external market for the product exists is:</td><td>A) Full Cost basis<br>B) Cost-Plus basis<br>C) Market Price basis ✅<br>D) Negotiated price with no reference point</td><td><strong>C</strong> — Market price gives an objective, externally-verifiable transfer price and avoids internal disputes over cost allocation or margin fairness.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 ROI and Residual Income</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> A division has annual profit of ₹12,00,000 and capital employed of ₹60,00,000. The company's required rate of return (cost of capital) is 12%. Calculate the division's ROI and Residual Income.<br><br>
+        <strong style='color:var(--text);'>ROI:</strong> Divisional Profit ÷ Capital Employed × 100 = ₹12,00,000 ÷ ₹60,00,000 × 100 = 20%<br>
+        <strong style='color:var(--text);'>Residual Income:</strong> Profit − (Capital Employed × Required Return) = ₹12,00,000 − (₹60,00,000 × 12%) = ₹12,00,000 − ₹7,20,000<br>
+        <br><strong style="color:var(--accent2);">Answer: ROI = 20% | Residual Income = ₹4,80,000</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.15 -->
+  <div class="section" id="s50.15">
+    <div class="section-header">
+      <div class="sec-badge badge-red">50.15</div>
+      <div class="section-title">ATX (Advanced Taxation) — Strategic Professional</div>
+    </div>
+    <p class="prose">Double tax relief for cross-border income.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>The two principal methods of Double Tax Relief are:</td><td>A) Deferral and Deduction<br>B) Exemption Method and Credit Method ✅<br>C) Amnesty and Penalty Waiver<br>D) Withholding and Refund</td><td><strong>B</strong> — Under the Exemption Method, foreign income is simply excluded from home-country tax; under the Credit Method, foreign tax paid is credited against the home-country tax liability.</td></tr>
+    </table>
+    <p class="section-label" style="margin-top:28px;">Part B — Scenario Question</p>
+    <div class="wide-card">
+      <h4>📊 Double Tax Relief — Credit Method</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Question:</strong> An Indian company earns foreign income of ₹10,00,000, on which foreign tax of ₹2,50,000 (25%) has already been paid. India's tax rate on this income is 30%. Under the ordinary credit method, calculate the net additional tax payable in India.<br><br>
+        <strong style='color:var(--text);'>Step 1 — Indian tax on this income:</strong> 30% × ₹10,00,000 = ₹3,00,000<br>
+        <strong style='color:var(--text);'>Step 2 — Relief allowed:</strong> LOWER of foreign tax paid (₹2,50,000) and Indian tax on that income (₹3,00,000) = ₹2,50,000<br>
+        <strong style='color:var(--text);'>Step 3 — Net tax payable in India:</strong> ₹3,00,000 − ₹2,50,000<br>
+        <br><strong style="color:var(--accent2);">Answer: Net Additional Tax Payable in India = ₹50,000</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 50.16 -->
+  <div class="section" id="s50.16">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">50.16</div>
+      <div class="section-title">AAA (Advanced Audit &amp; Assurance) — Strategic Professional</div>
+    </div>
+    <p class="prose">Audit opinion decisions for material misstatements.</p>
+    <p class="section-label">Part A — Multiple Choice Questions</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Options</th><th>Answer &amp; Why</th></tr>
+      <tr><td>An auditor identifies a misstatement that is material but NOT pervasive, and management refuses to correct it. The appropriate opinion is:</td><td>A) Unmodified (Unqualified) Opinion<br>B) Qualified Opinion ("except for") ✅<br>C) Adverse Opinion<br>D) Disclaimer of Opinion</td><td><strong>B</strong> — Material-but-not-pervasive misstatements warrant a Qualified 'except for' opinion — the financial statements are fine EXCEPT for this specific issue.</td></tr>
+      <tr><td>If a misstatement is BOTH material AND pervasive, the auditor should issue:</td><td>A) A Qualified Opinion<br>B) An Adverse Opinion ✅<br>C) An Unmodified Opinion with an Emphasis of Matter<br>D) No opinion is required</td><td><strong>B</strong> — When the impact is so significant and widespread that it undermines the financial statements as a whole, an Adverse Opinion states they do NOT present a true and fair view.</td></tr>
+      <tr><td>If the auditor is unable to obtain sufficient appropriate evidence, and the possible effect is material and pervasive, the auditor issues:</td><td>A) A Qualified Opinion<br>B) An Adverse Opinion<br>C) A Disclaimer of Opinion ✅<br>D) An Unmodified Opinion</td><td><strong>C</strong> — A Disclaimer means the auditor cannot form an opinion at all, because they simply couldn't gather enough evidence to reach a conclusion.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      13 ACCA Papers<br>
+      → 45+ MCQs + 13 Scenario Questions<br>
+      → Every Answer Fully Worked<br>
+      = <strong style="color:var(--accent2);">Exam-Ready Practice, Not Just Theory</strong>
+    </div>
+    <h3>Theory learned. Formulas memorised. Now proven under test conditions.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">That completes the Finance Career Bible — Chapters 1 through 50, plus Appendices. 🎓</p>
+  </div>
+
+</div><!-- /container ch50 -->
+
+</body>
+</html>

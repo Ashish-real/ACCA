@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 22: Corporate Finance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(232,121,249,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent5); border:1px solid var(--accent5); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent5),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent5); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent5); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent5); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent5); padding:14px 20px; background:rgba(232,121,249,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent5); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent5); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent5); background:rgba(232,121,249,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(232,121,249,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent5); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(232,121,249,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(232,121,249,0.07),rgba(0,212,170,0.05)); border:1px solid rgba(232,121,249,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent5); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent5); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(232,121,249,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent5); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent5); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(232,121,249,0.1); border:1px solid rgba(232,121,249,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(232,121,249,0.09),rgba(0,212,170,0.06)); border:1px solid rgba(232,121,249,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent5); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent5),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 22</div>
+  <h1>Corporate<br><span>Finance</span></h1>
+  <p class="hero-sub">How companies make their biggest financial decisions — how much to borrow, how to raise capital, what to pay as dividends, and how to allocate resources to maximise shareholder value. The theory and practice behind every major CFO decision.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">WACC</div><div class="stat-label">Core Concept</div></div>
+    <div class="stat"><div class="stat-num">ACCA</div><div class="stat-label">FM Paper Core</div></div>
+    <div class="stat"><div class="stat-num">CFO</div><div class="stat-label">Level Thinking</div></div>
+    <div class="stat"><div class="stat-num">₹30L+</div><div class="stat-label">Corp Finance Salary</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 22 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">22.1</span>What Is Corporate Finance — The Three Core Decisions</div>
+    <div class="toc-item"><span class="toc-num">22.2</span>The Goal of Corporate Finance — Shareholder Value & Stakeholder Theory</div>
+    <div class="toc-item"><span class="toc-num">22.3</span>Sources of Finance — Debt vs Equity Deep Dive</div>
+    <div class="toc-item"><span class="toc-num">22.4</span>Cost of Equity — CAPM & Dividend Growth Model</div>
+    <div class="toc-item"><span class="toc-num">22.5</span>Cost of Debt — Pre-Tax, Post-Tax & YTM</div>
+    <div class="toc-item"><span class="toc-num">22.6</span>WACC — Weighted Average Cost of Capital</div>
+    <div class="toc-item"><span class="toc-num">22.7</span>Capital Structure — How Much Debt Is Right?</div>
+    <div class="toc-item"><span class="toc-num">22.8</span>Modigliani-Miller Theorems — The Theory Behind Capital Structure</div>
+    <div class="toc-item"><span class="toc-num">22.9</span>Dividend Policy — How Much to Pay Shareholders</div>
+    <div class="toc-item"><span class="toc-num">22.10</span>Working Capital Management — The Day-to-Day Finance</div>
+    <div class="toc-item"><span class="toc-num">22.11</span>Investment Appraisal — NPV, IRR, Payback, ARR</div>
+    <div class="toc-item"><span class="toc-num">22.12</span>Risk in Corporate Finance — Business Risk vs Financial Risk</div>
+    <div class="toc-item"><span class="toc-num">22.13</span>Corporate Finance in India — Real World Context</div>
+    <div class="toc-item"><span class="toc-num">22.14</span>ACCA FM Exam Technique</div>
+    <div class="toc-item"><span class="toc-num">22.15</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">22.16</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Corporate Finance is the field that answers the biggest questions every CFO faces: <strong>Where should we invest? How should we fund it? How much should we return to shareholders?</strong> Everything in Chapters 18–21 was about understanding and projecting financial performance. Corporate Finance is about making the decisions that shape that performance — at the highest level of any organisation.</p>
+    <div class="quote">"Corporate finance is the science of making decisions that maximise the long-term value of a business for its owners — while balancing the interests of every stakeholder who depends on it."</div>
+  </div>
+
+  <!-- 22.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">22.1</div>
+      <div class="section-title">What Is Corporate Finance — The Three Core Decisions</div>
+    </div>
+    <p class="prose">Every corporate finance decision falls into one of three categories. These three decisions collectively determine the financial health, growth trajectory, and value of the company. The CFO owns all three.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Decision 1 — The Investment Decision</div>
+        <ul class="card-items">
+          <li><strong>Question:</strong> Where should we deploy capital to create the most value?</li>
+          <li>Which projects do we invest in? Which do we reject?</li>
+          <li>Should we build a new factory or acquire a competitor?</li>
+          <li>Should we invest in R&D or return cash to shareholders?</li>
+          <li>Tools: NPV, IRR, Payback Period, ARR — covered in Section 22.11</li>
+          <li>Also called Capital Budgeting or Capital Allocation</li>
+          <li>The most value-creating (or value-destroying) decision a company makes</li>
+        </ul>
+        <div class="card-tag">Capital Allocation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">Decision 2 — The Financing Decision</div>
+        <ul class="card-items">
+          <li><strong>Question:</strong> How should we fund our investments and operations?</li>
+          <li>Debt (bonds, loans, debentures) or Equity (shares, retained earnings)?</li>
+          <li>How much debt is too much? What is the optimal capital structure?</li>
+          <li>Should we issue new shares (diluting existing shareholders) or borrow more?</li>
+          <li>What is our cost of capital and how do we minimise it?</li>
+          <li>Tools: WACC, Gearing analysis, Modigliani-Miller — Sections 22.6, 22.7, 22.8</li>
+        </ul>
+        <div class="card-tag">Capital Structure</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Decision 3 — The Dividend Decision</div>
+        <ul class="card-items">
+          <li><strong>Question:</strong> How much profit should we return to shareholders vs retain for growth?</li>
+          <li>Pay a dividend? How much? How often?</li>
+          <li>Buy back shares instead of paying dividends?</li>
+          <li>Retain all earnings and reinvest into high-return projects?</li>
+          <li>What signals does the dividend send to the market?</li>
+          <li>Theories: MM Dividend Irrelevance, Bird-in-Hand, Signalling Theory — Section 22.9</li>
+        </ul>
+        <div class="card-tag">Return of Capital</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔗 How the Three Decisions Interact</div>
+      These three decisions are deeply interconnected — you cannot make one in isolation. If you make a big Investment Decision (build ₹500Cr new plant), you must make a Financing Decision (borrow ₹300Cr + equity ₹200Cr), which affects your Dividend Decision (less free cash flow → lower dividend capacity). Getting all three right simultaneously is the CFO's core challenge — and why Corporate Finance is one of the most intellectually demanding fields in finance.
+    </div>
+  </div>
+
+  <!-- 22.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">22.2</div>
+      <div class="section-title">The Goal of Corporate Finance — Shareholder Value vs Stakeholder Theory</div>
+    </div>
+    <p class="prose">Before making any corporate finance decision, we need to understand: <strong>what is the company trying to achieve?</strong> This sounds obvious but has been one of the most debated questions in business for decades.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Traditional View — Shareholder Wealth Maximisation</div>
+        <ul class="card-items">
+          <li>The primary goal of a company is to <strong>maximise the wealth of its shareholders</strong></li>
+          <li>Shareholders are the owners — they bear residual risk, so they should receive primary focus</li>
+          <li>Measured by: share price appreciation + dividends = Total Shareholder Return (TSR)</li>
+          <li>Driven by: Milton Friedman — "The Social Responsibility of Business Is to Increase Its Profits"</li>
+          <li>All major corporate finance theory (WACC, NPV, capital structure) is built on this premise</li>
+          <li>Criticism: encourages short-termism, ignores social/environmental impact</li>
+        </ul>
+        <div class="card-tag">Traditional</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Modern View — Stakeholder Value Creation</div>
+        <ul class="card-items">
+          <li>A company has responsibilities to ALL stakeholders — shareholders, employees, customers, suppliers, community, environment</li>
+          <li>Long-term shareholder value is best achieved by serving all stakeholders well</li>
+          <li>A company that exploits employees or pollutes its environment creates long-term risks that destroy shareholder value</li>
+          <li>Business Roundtable (2019): 181 US CEOs signed a statement abandoning shareholder primacy in favour of stakeholder capitalism</li>
+          <li>ESG investing reflects this — investors price in stakeholder performance</li>
+          <li>Chapter 46 covers ESG in depth</li>
+        </ul>
+        <div class="card-tag">Modern</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">For ACCA — What to Write</div>
+        <ul class="card-items">
+          <li>ACCA FM: primary objective = shareholder wealth maximisation. This is the exam framework.</li>
+          <li>ACCA SBR / P1: broader stakeholder approach. Discuss agency theory, CSR, ethical considerations.</li>
+          <li>In FM: all investment decisions evaluated by whether they increase NPV / shareholder wealth</li>
+          <li>In SBR: challenge this — should stakeholder interests also be considered? What are the conflicts?</li>
+          <li>Real world: companies increasingly balance both. Know the debate.</li>
+        </ul>
+        <div class="card-tag">Exam Context</div>
+      </div>
+    </div>
+
+    <p class="section-label">Agency Theory — The Problem Between Owners and Managers</p>
+    <div class="wide-card">
+      <h4>🔍 Agency Theory — Critical for ACCA FM & SBR</h4>
+      <div style="font-size:13.5px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">The Problem:</strong> Shareholders (principals) own the company but managers (agents) run it. Managers may make decisions that benefit themselves (higher salaries, empire building, risk aversion) rather than maximising shareholder wealth.<br><br>
+        <strong style="color:var(--text);">Agency Costs:</strong> Costs incurred to align manager behaviour with shareholder interests — monitoring costs (audits, board oversight), bonding costs (management contracts, covenants), residual loss (value lost despite controls).<br><br>
+        <strong style="color:var(--text);">Solutions:</strong> Performance-related pay (bonuses, stock options), executive share schemes (managers become shareholders), strong board oversight and independent directors, transparent reporting and audit, threat of takeover (managers performing poorly risk company being acquired and themselves being replaced).<br><br>
+        <strong style="color:var(--accent2);">ACCA Exam:</strong> Agency theory is tested in both FM (financial decisions context) and SBR (corporate governance context). Know the problem, the costs, and the solutions thoroughly.
+      </div>
+    </div>
+  </div>
+
+  <!-- 22.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">22.3</div>
+      <div class="section-title">Sources of Finance — Debt vs Equity Deep Dive</div>
+    </div>
+    <p class="prose">Every company needs finance — to fund operations, invest in growth, and manage working capital. The two fundamental sources are <strong>Debt</strong> (borrowed money that must be repaid with interest) and <strong>Equity</strong> (ownership capital that shares in profits and losses). Understanding the characteristics, costs, and trade-offs of each is the foundation of capital structure theory.</p>
+
+    <table class="data-table">
+      <tr><th>Feature</th><th>Debt Financing</th><th>Equity Financing</th></tr>
+      <tr><td>Repayment Obligation</td><td>Must be repaid — principal + interest. Legal obligation regardless of profitability.</td><td>No repayment obligation. Equity is permanent capital unless shares bought back.</td></tr>
+      <tr><td>Cost</td><td>Interest — tax-deductible (reduces tax bill). Lower nominal cost than equity.</td><td>Dividends (not tax-deductible) + capital gain expectation. Higher required return than debt.</td></tr>
+      <tr><td>Risk to Company</td><td>High — failure to pay interest triggers default, potential insolvency. Increases financial risk.</td><td>Low — no mandatory payment. If company makes no profit, no dividend needs to be paid.</td></tr>
+      <tr><td>Risk to Investor</td><td>Lower — debt holders paid before equity in liquidation. Secured lenders first priority.</td><td>Higher — equity holders last in line in liquidation. Residual claim only.</td></tr>
+      <tr><td>Control Impact</td><td>Lenders have no voting rights but impose covenants (restrictions on behaviour).</td><td>New share issue dilutes existing shareholders' ownership % and voting power.</td></tr>
+      <tr><td>Tax Impact</td><td>Interest is tax-deductible — creates a "tax shield." Actual cost of debt = rate × (1−tax rate).</td><td>Dividends paid from post-tax profits — no tax shield. More expensive after-tax.</td></tr>
+      <tr><td>Flexibility</td><td>Less flexible — covenants restrict financial freedom. Cannot easily defer interest payment.</td><td>More flexible — dividends can be cut in difficult times without triggering default.</td></tr>
+      <tr><td>Signals to Market</td><td>Moderate debt signals confidence in stable cash flows. Excessive debt signals desperation or over-leverage.</td><td>New share issue sometimes seen as negative signal — management thinks shares are overvalued. Rights issue may signal balance sheet stress.</td></tr>
+    </table>
+
+    <p class="section-label">Types of Debt Finance</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">Bank Loans & Term Loans</div>
+        <ul class="card-items">
+          <li>Fixed amount borrowed at agreed interest rate for defined period</li>
+          <li>Repaid in instalments (amortising) or bullet (lump sum at end)</li>
+          <li>Secured (collateral required) or unsecured (based on creditworthiness)</li>
+          <li>Typically has covenants: minimum ICR, maximum gearing, minimum liquidity</li>
+          <li>Most common form of debt for Indian companies</li>
+        </ul>
+        <div class="card-tag">Most Common</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📜</div>
+        <div class="card-title">Bonds / Debentures</div>
+        <ul class="card-items">
+          <li>Debt securities issued to public capital markets — traded on exchanges</li>
+          <li>Fixed coupon rate + face value repaid at maturity</li>
+          <li>Cheaper than bank loans for large companies (wider investor base)</li>
+          <li>In India: NCDs (Non-Convertible Debentures) common for large corporates</li>
+          <li>Credit rating (CRISIL, ICRA) determines pricing — AAA rated bonds cheapest</li>
+        </ul>
+        <div class="card-tag">Capital Markets</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Convertible Debt</div>
+        <ul class="card-items">
+          <li>Debt that can be converted into equity at a predetermined price</li>
+          <li>Lower interest rate than straight debt — conversion option is valuable to holder</li>
+          <li>Popular with startups — allows debt financing without immediate dilution</li>
+          <li>If company performs well, debt converts to equity — no repayment needed</li>
+          <li>If company underperforms, debt remains as debt — must be repaid</li>
+        </ul>
+        <div class="card-tag">Hybrid</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💳</div>
+        <div class="card-title">Short-Term Debt (Working Capital)</div>
+        <ul class="card-items">
+          <li>Overdraft — flexible borrowing up to a limit. Interest only on amount drawn.</li>
+          <li>Cash Credit — similar to overdraft, common in India for working capital</li>
+          <li>Commercial Paper — short-term (up to 1 year) debt securities for large corporates</li>
+          <li>Invoice Discounting / Factoring — sell receivables to raise immediate cash</li>
+          <li>Used for day-to-day working capital needs — not long-term investment</li>
+        </ul>
+        <div class="card-tag">Working Capital</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Equity Finance — Types</div>
+        <ul class="card-items">
+          <li><strong>Retained Earnings:</strong> Most important and cheapest equity source — reinvesting profits. No transaction costs, no dilution.</li>
+          <li><strong>Rights Issue:</strong> Offering new shares to existing shareholders at discount. Maintains proportional ownership.</li>
+          <li><strong>IPO (Initial Public Offering):</strong> First-time listing on stock exchange. Raises large equity capital but expensive (legal, underwriting costs) and requires ongoing disclosure.</li>
+          <li><strong>Private Equity / VC:</strong> Institutional investors take equity stake in private companies.</li>
+          <li><strong>Preference Shares:</strong> Hybrid — fixed dividend like debt but no repayment obligation. No voting rights.</li>
+        </ul>
+        <div class="card-tag">5 Types</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">22.4</div>
+      <div class="section-title">Cost of Equity — CAPM & Dividend Growth Model</div>
+      <div class="section-meta">ACCA FM Core — Always Examined</div>
+    </div>
+    <p class="prose">The <strong>Cost of Equity (Ke)</strong> is the minimum return shareholders require to invest in the company — it is the opportunity cost of their capital. Unlike debt, equity has no contractual payment — but shareholders have an implicit required return based on risk. Two models calculate this: <strong>CAPM</strong> and the <strong>Dividend Growth Model.</strong></p>
+
+    <div class="formula-block">
+      <div class="formula-header">Cost of Equity — Two Models</div>
+      <div class="formula-row">
+        <div class="formula-name">CAPM (Capital Asset Pricing Model)</div>
+        <div class="formula-eq">Ke = Rf + β(Rm − Rf)<br><br>
+          <span style="color:var(--muted);">Rf = Risk-free rate (Government bond yield — typically 10-yr G-Sec rate in India)<br>
+          β (Beta) = Systematic risk of the share vs the market. β=1 moves with market. β&gt;1 more volatile. β&lt;1 less volatile.<br>
+          Rm = Expected market return (historical average stock market return)<br>
+          (Rm − Rf) = Equity Risk Premium (ERP) — extra return for taking equity risk vs risk-free</span>
+        </div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Dividend Growth Model (Gordon Growth Model)</div>
+        <div class="formula-eq">Ke = D1/P0 + g<br><br>
+          <span style="color:var(--muted);">D1 = Expected next dividend (D0 × (1+g))<br>
+          P0 = Current share price (ex-dividend)<br>
+          g = Constant dividend growth rate (sustainable long-term growth)<br>
+          Used when: company pays regular dividends with stable growth rate</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label">CAPM — Worked Example</p>
+    <div class="wide-card">
+      <h4>📊 Calculate Cost of Equity Using CAPM</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;">
+        <strong style="color:var(--text);">Given:</strong> Risk-free rate (Rf) = 7% (India 10-yr G-Sec yield). Beta (β) = 1.3 (company is 30% more volatile than market). Market Return (Rm) = 14%.<br><br>
+        <strong style="color:var(--text);">Calculation:</strong><br>
+        Ke = Rf + β(Rm − Rf)<br>
+        Ke = 7% + 1.3 × (14% − 7%)<br>
+        Ke = 7% + 1.3 × 7%<br>
+        Ke = 7% + 9.1%<br>
+        <span style="color:var(--accent5);font-family:var(--mono);">Ke = 16.1%</span><br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> Shareholders of this company require a minimum return of 16.1% per year to compensate them for the level of systematic risk they are taking. Any investment the company makes must generate at least this return — otherwise it is destroying shareholder value.
+      </div>
+    </div>
+
+    <p class="section-label">Dividend Growth Model — Worked Example</p>
+    <div class="wide-card">
+      <h4>📊 Calculate Cost of Equity Using Dividend Growth Model</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;">
+        <strong style="color:var(--text);">Given:</strong> Current share price P0 = ₹250. Most recent dividend D0 = ₹12. Dividend has grown at 6% per year consistently.<br><br>
+        <strong style="color:var(--text);">Calculation:</strong><br>
+        D1 = D0 × (1+g) = 12 × 1.06 = ₹12.72<br>
+        Ke = D1/P0 + g = 12.72/250 + 0.06 = 5.09% + 6% = <span style="color:var(--accent5);font-family:var(--mono);">11.09%</span><br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> Shareholders require 11.09% return — 5.09% as dividend yield and 6% as expected capital growth. If the company earns less than 11.09% on its equity, the share price will fall as shareholders sell and invest elsewhere.
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Beta — Understanding Systematic Risk</div>
+        <ul class="card-items">
+          <li><strong>β = 1.0:</strong> Moves exactly with market. Average market risk.</li>
+          <li><strong>β > 1.0:</strong> More volatile than market. Higher risk → higher required return. Example: cyclical stocks (steel, autos), tech growth stocks.</li>
+          <li><strong>β < 1.0:</strong> Less volatile than market. Lower risk → lower required return. Example: utilities, FMCG, pharmaceuticals — defensive stocks.</li>
+          <li><strong>β = 0:</strong> No correlation with market (risk-free asset theoretically)</li>
+          <li>In India: Beta published by NSE, BSE for all listed companies</li>
+          <li>Beta reflects only SYSTEMATIC risk (market-wide) — not company-specific risk (which can be diversified away)</li>
+        </ul>
+        <div class="card-tag">Systematic Risk</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Limitations of Each Model</div>
+        <ul class="card-items">
+          <li><strong>CAPM limitations:</strong> Assumes single-period model. Beta based on historical data — may not reflect future risk. Assumes perfect capital markets. Difficult to estimate Rf and Rm precisely. Ignores company-specific factors.</li>
+          <li><strong>DGM limitations:</strong> Only applicable to dividend-paying companies with stable growth. Very sensitive to growth rate assumption — small change in g dramatically changes Ke. Cannot be used for zero-dividend or high-growth companies where g > Ke.</li>
+          <li><strong>In practice:</strong> Both models are calculated and judgment applied to reach a final Ke estimate</li>
+        </ul>
+        <div class="card-tag">ACCA Exam Points</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">22.5</div>
+      <div class="section-title">Cost of Debt — Pre-Tax, Post-Tax & Yield to Maturity</div>
+    </div>
+    <p class="prose">The <strong>Cost of Debt (Kd)</strong> is the effective interest rate the company pays on its debt financing. Unlike equity, debt interest is tax-deductible — so the true after-tax cost of debt is lower than the stated interest rate. This tax shield is one of the key reasons companies use debt.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Cost of Debt — Formulas</div>
+      <div class="formula-row">
+        <div class="formula-name">Post-Tax Cost of Debt (Simple)</div>
+        <div class="formula-eq">Kd (post-tax) = Interest Rate × (1 − Tax Rate)<br><span style="color:var(--muted);">Example: 10% loan, 25% tax rate → Kd = 10% × (1−0.25) = 7.5%<br>The tax deductibility of interest reduces the effective cost by the tax rate.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Yield to Maturity (YTM) — For Bonds/Debentures</div>
+        <div class="formula-eq">YTM = approximate IRR of bond cash flows<br>YTM ≈ [Annual Coupon + (Redemption Value − Market Price)/n] ÷ [(Redemption Value + Market Price)/2]<br><span style="color:var(--muted);">Used when bond trades at a discount or premium to face value. Market price reflects current required return, not the coupon rate. Post-tax YTM = YTM × (1−tax rate).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Irredeemable Debt (Perpetual)</div>
+        <div class="formula-eq">Kd = Annual Interest / Market Price of Debt × (1 − Tax Rate)<br><span style="color:var(--muted);">For perpetual bonds or irredeemable debentures — no redemption date.</span></div>
+      </div>
+    </div>
+
+    <p class="section-label">YTM Worked Example</p>
+    <div class="wide-card">
+      <h4>📊 Calculate Post-Tax Cost of Redeemable Debt</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;">
+        <strong style="color:var(--text);">Given:</strong> ₹100 face value bond, 9% annual coupon, redeemable at par (₹100) in 5 years, current market price ₹94. Tax rate 25%.<br><br>
+        <strong style="color:var(--text);">Step 1 — Approximate YTM:</strong><br>
+        Annual Coupon = ₹9. Discount on redemption = (100−94)/5 = ₹1.2 per year.<br>
+        Average investment = (100+94)/2 = ₹97.<br>
+        Pre-tax YTM ≈ (9 + 1.2) / 97 = 10.2/97 = <strong>10.5%</strong><br><br>
+        <strong style="color:var(--text);">Step 2 — Post-Tax Cost:</strong><br>
+        Kd = 10.5% × (1 − 0.25) = <span style="color:var(--accent5);font-family:var(--mono);">7.9%</span><br><br>
+        <strong style="color:var(--text);">Why is the YTM higher than the 9% coupon?</strong> Because the bond trades at ₹94 (below par) — the investor gets ₹9 coupon + ₹6 capital gain on redemption. Total return is higher than the coupon alone. From the company's perspective, this is its true cost of this debt.
+      </div>
+    </div>
+  </div>
+
+  <!-- 22.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">22.6</div>
+      <div class="section-title">WACC — Weighted Average Cost of Capital</div>
+      <div class="section-meta">The Most Important Single Number in Corporate Finance</div>
+    </div>
+    <p class="prose"><strong>WACC</strong> is the blended cost of all capital a company uses — weighted by the proportion of each source in the total capital structure. It represents the <strong>minimum rate of return a company must earn on its investments</strong> to satisfy all capital providers (both debt and equity). Investments that earn above WACC create value; investments that earn below WACC destroy value.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">WACC Formula</div>
+      <div class="formula-row">
+        <div class="formula-name">WACC</div>
+        <div class="formula-eq">WACC = Ke × [E/(E+D)] + Kd(1−T) × [D/(E+D)]<br><br>
+          <span style="color:var(--muted);">Ke = Cost of Equity (from CAPM or DGM)<br>
+          Kd(1−T) = Post-tax Cost of Debt<br>
+          E = Market Value of Equity (shares outstanding × current share price)<br>
+          D = Market Value of Debt (market price of all debt instruments)<br>
+          E/(E+D) = Equity weight as proportion of total capital<br>
+          D/(E+D) = Debt weight as proportion of total capital<br>
+          <strong style="color:var(--accent4);">Note: Always use MARKET values for weights — not book values</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label">Full WACC Calculation — Worked Example</p>
+    <div class="wide-card">
+      <h4>📊 WACC Calculation for XYZ Ltd</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong><br>
+        Shares: 500 million shares at market price ₹120 each → Market Value of Equity = ₹6,000Cr<br>
+        Debt: ₹2,000Cr bonds at market value (trading at par)<br>
+        Cost of Equity (CAPM): 15.5%<br>
+        Cost of Debt (post-tax): 8.25% (12% coupon × (1−0.3125) where tax rate = 31.25%)<br>
+        Tax Rate: 31.25%
+      </div>
+      <table class="data-table" style="margin-top:14px;">
+        <tr><th>Source</th><th>Market Value (₹Cr)</th><th>Weight</th><th>Cost</th><th>Weighted Cost</th></tr>
+        <tr><td>Equity</td><td>6,000</td><td>6,000/8,000 = 75%</td><td>15.5%</td><td>75% × 15.5% = 11.63%</td></tr>
+        <tr><td>Debt (post-tax)</td><td>2,000</td><td>2,000/8,000 = 25%</td><td>8.25%</td><td>25% × 8.25% = 2.06%</td></tr>
+        <tr><td><strong>Total / WACC</strong></td><td>8,000</td><td>100%</td><td>—</td><td><strong>13.69%</strong></td></tr>
+      </table>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8;margin-top:14px;">
+        <strong style="color:var(--text);">Interpretation:</strong> XYZ Ltd's WACC is 13.69%. Any investment it makes must generate at least 13.69% return to create value for shareholders and satisfy debt holders. An investment earning 10% would destroy value. An investment earning 18% would create significant value (EVA of 4.31% above WACC).
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 WACC — Critical Rules for ACCA FM</div>
+      <strong>1. Always use MARKET values, not book values, for weights.</strong> Book value of equity (from Balance Sheet) is historical cost of share capital + retained earnings — it bears no relation to what the market values the company at today.<br><br>
+      <strong>2. Cost of debt is POST-TAX.</strong> Interest is tax-deductible — always multiply pre-tax Kd by (1−tax rate) before using in WACC.<br><br>
+      <strong>3. WACC is company-specific.</strong> A company's WACC reflects its specific risk profile and capital structure. Using another company's WACC for investment appraisal is only valid if the investment has the same risk profile as the whole company.<br><br>
+      <strong>4. WACC is used as the discount rate in NPV calculations</strong> — covered in Section 22.11.
+    </div>
+  </div>
+
+  <!-- 22.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">22.7</div>
+      <div class="section-title">Capital Structure — How Much Debt Is Right?</div>
+    </div>
+    <p class="prose">Capital structure is the mix of debt and equity a company uses to finance its assets. The central question: <strong>is there an optimal capital structure that minimises WACC and maximises firm value?</strong> This has been one of the most debated questions in finance since the 1950s.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📉</div>
+        <div class="card-title">Why Adding Debt Can Reduce WACC</div>
+        <ul class="card-items">
+          <li>Debt is cheaper than equity (lower required return, tax shield)</li>
+          <li>Replacing some equity with debt reduces the blended WACC initially</li>
+          <li>Tax shield on interest is real economic value — reduces the company's tax burden</li>
+          <li>At low leverage levels, adding debt reduces overall cost of capital</li>
+          <li>This is the "benefit" side of the debt decision</li>
+        </ul>
+        <div class="card-tag">Benefit of Debt</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Why Too Much Debt Increases WACC</div>
+        <ul class="card-items">
+          <li>As debt increases, financial risk increases — higher chance of default</li>
+          <li>Equity holders demand higher return to compensate for increased risk → Ke rises</li>
+          <li>Debt holders also demand higher interest rate at high leverage → Kd rises</li>
+          <li>Financial distress costs emerge — legal costs, management distraction, customer/supplier concerns</li>
+          <li>Agency costs of debt increase — lenders impose restrictive covenants</li>
+          <li>Beyond a certain point, WACC rises as these costs outweigh the tax shield</li>
+        </ul>
+        <div class="card-tag">Cost of Debt</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">The Optimal Capital Structure</div>
+        <ul class="card-items">
+          <li>Exists at the point where WACC is minimised</li>
+          <li>Beyond this point, adding more debt increases WACC and reduces firm value</li>
+          <li>In practice: no precise formula — judgment required</li>
+          <li>Each industry has different "normal" gearing levels based on cash flow stability</li>
+          <li>Stable cash flow businesses (utilities, FMCG) can support more debt safely</li>
+          <li>Cyclical, volatile businesses (commodities, airlines) should maintain lower gearing</li>
+          <li>The Trade-Off Theory formalises this — tax shield vs financial distress costs</li>
+        </ul>
+        <div class="card-tag">The Sweet Spot</div>
+      </div>
+    </div>
+
+    <p class="section-label">Factors Affecting Optimal Capital Structure</p>
+    <table class="data-table">
+      <tr><th>Factor</th><th>Effect on Optimal Debt Level</th><th>Example</th></tr>
+      <tr><td>Cash Flow Stability</td><td>More stable cash flows → can support higher debt (interest easily covered)</td><td>Utilities, toll roads, subscription businesses → high debt capacity</td></tr>
+      <tr><td>Asset Tangibility</td><td>More tangible assets → better collateral → lenders willing to lend more</td><td>Real estate, manufacturing → high tangible assets → higher debt capacity</td></tr>
+      <tr><td>Tax Rate</td><td>Higher tax rate → interest tax shield more valuable → higher optimal debt</td><td>Indian corporate tax 22–25.17% — meaningful tax shield</td></tr>
+      <tr><td>Growth Opportunities</td><td>High-growth companies → prefer equity (don't want debt constraining investment flexibility)</td><td>Startups, tech companies → low debt, high equity</td></tr>
+      <tr><td>Profitability</td><td>More profitable → more retained earnings available → less need for external debt</td><td>TCS, Infosys — virtually debt-free because high profitability funds all investment needs</td></tr>
+      <tr><td>Industry Norms</td><td>Companies tend to match peer capital structures — deviation raises questions</td><td>Indian banks: high leverage (by design). IT companies: minimal debt.</td></tr>
+    </table>
+  </div>
+
+  <!-- 22.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">22.8</div>
+      <div class="section-title">Modigliani-Miller Theorems — The Theory Behind Capital Structure</div>
+      <div class="section-meta">ACCA FM — Always Examined</div>
+    </div>
+    <p class="prose">Franco Modigliani and Merton Miller (both Nobel Prize winners) developed the theoretical foundation of capital structure in 1958–1963. Their theorems are essential for ACCA FM — examiners love testing whether students understand the logic, not just the conclusion.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">MM Without Tax (1958) — Proposition I</div>
+        <ul class="card-items">
+          <li><strong>Conclusion:</strong> In a perfect capital market with no taxes, the value of a firm is independent of its capital structure</li>
+          <li>"It doesn't matter whether you use debt or equity — firm value is determined by operating cash flows, not financing"</li>
+          <li>Intuition: investors can create personal leverage (borrow themselves to invest in unlevered firms) — so corporate leverage adds no value</li>
+          <li><strong>Key assumption:</strong> No taxes. No transaction costs. No bankruptcy risk. Perfect information. Rational investors.</li>
+          <li>These assumptions don't exist in reality — but the theorem shows WHAT makes capital structure matter: imperfections (taxes, bankruptcy costs, information asymmetry)</li>
+        </ul>
+        <div class="card-tag">No Tax World</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💸</div>
+        <div class="card-title">MM With Tax (1963) — Proposition I Revised</div>
+        <ul class="card-items">
+          <li><strong>Conclusion:</strong> With corporate taxes, firm value INCREASES with leverage — because interest is tax-deductible</li>
+          <li>Value of Levered Firm = Value of Unlevered Firm + PV of Tax Shield</li>
+          <li>Tax Shield = Tax Rate × Amount of Debt (if permanent debt)</li>
+          <li>Implication: companies should use as much debt as possible to maximise tax shield</li>
+          <li><strong>Problem with this conclusion:</strong> If debt is always better, all firms should be 100% debt-funded — clearly not the case. MM with tax ignores financial distress costs.</li>
+          <li>The Trade-Off Theory adds financial distress costs to MM with tax to get to a realistic optimal capital structure</li>
+        </ul>
+        <div class="card-tag">Tax World</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">MM Proposition II — Cost of Equity</div>
+        <ul class="card-items">
+          <li><strong>Conclusion:</strong> As a firm increases leverage, the cost of equity (Ke) rises to exactly offset the benefit of cheaper debt — leaving WACC unchanged (in no-tax world)</li>
+          <li>Intuition: shareholders see increased financial risk as leverage rises → demand higher return → Ke rises</li>
+          <li>Formula: Ke (levered) = Ke (unlevered) + (Ke(unlevered) − Kd) × D/E</li>
+          <li>With tax: WACC declines as leverage increases (tax shield benefit)</li>
+          <li>The rising Ke partially offsets the tax shield benefit — but not fully (unlike no-tax world)</li>
+        </ul>
+        <div class="card-tag">Prop II</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <div class="card-title">Assumptions of MM & Real-World Limitations</div>
+        <ul class="card-items">
+          <li><strong>Perfect capital markets:</strong> No transaction costs, no taxes — doesn't exist</li>
+          <li><strong>No bankruptcy costs:</strong> Financial distress is costly in reality — legal fees, management distraction, customer/supplier concerns</li>
+          <li><strong>Symmetric information:</strong> In reality, managers know more than investors (information asymmetry) → Pecking Order Theory</li>
+          <li><strong>ACCA exam:</strong> Always state MM assumptions when discussing, then explain how real-world violations make capital structure matter</li>
+        </ul>
+        <div class="card-tag">Reality Check</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 How to Answer ACCA FM Questions on MM</div>
+      ACCA FM questions on Modigliani-Miller typically ask you to: (1) explain MM's conclusions in a specific scenario, (2) calculate the change in firm value from a change in capital structure, or (3) critically evaluate MM's assumptions and explain why real-world capital structure decisions differ from MM predictions.<br><br>
+      Always structure your answer: State the relevant MM proposition → State the key assumption → Apply to the scenario → Then challenge the assumption with real-world factors (taxes, bankruptcy costs, agency costs, signalling). This structure reliably scores 70%+ marks.
+    </div>
+  </div>
+
+  <!-- 22.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">22.9</div>
+      <div class="section-title">Dividend Policy — How Much to Pay Shareholders</div>
+    </div>
+    <p class="prose">The dividend decision is the third core corporate finance decision — how much of the company's profit should be paid out to shareholders as dividends, and how much should be retained for reinvestment? This seemingly simple question has generated decades of theoretical debate.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">MM Dividend Irrelevance Theory</div>
+        <ul class="card-items">
+          <li>Modigliani-Miller (1961): in perfect capital markets, dividend policy is irrelevant to firm value</li>
+          <li>Investors don't need dividends — they can create "homemade dividends" by selling shares</li>
+          <li>What matters is investment policy (NPV of projects), not how profits are distributed</li>
+          <li>Assumptions: no taxes, no transaction costs, perfect information — don't hold in reality</li>
+          <li>Real-world taxes and transaction costs make dividend policy matter</li>
+        </ul>
+        <div class="card-tag">Theoretical</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🐦</div>
+        <div class="card-title">Bird-in-Hand Theory</div>
+        <ul class="card-items">
+          <li>Gordon and Lintner: investors prefer dividends (certain) to capital gains (uncertain)</li>
+          <li>"A bird in the hand is worth two in the bush" — dividend now vs capital gain later</li>
+          <li>Investors will pay a premium for dividend-paying stocks — reducing the company's cost of equity</li>
+          <li>Implication: companies should pay dividends to maximise share price and minimise Ke</li>
+          <li>MM counter-argument: the certainty of dividends is an illusion — risk depends on operating cash flows, not payment method</li>
+        </ul>
+        <div class="card-tag">Pay Dividends</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📣</div>
+        <div class="card-title">Signalling Theory</div>
+        <ul class="card-items">
+          <li>Dividends convey information to the market about management's confidence in future earnings</li>
+          <li><strong>Dividend increase:</strong> Management signals confidence — expects earnings to be sustainably higher. Share price typically rises.</li>
+          <li><strong>Dividend cut:</strong> Powerful negative signal — management signals earnings struggle. Share price often falls significantly.</li>
+          <li>This is why companies are reluctant to cut dividends even in bad times — the signalling cost is high</li>
+          <li>Lintner (1956) study: managers smooth dividends and resist cutting them</li>
+        </ul>
+        <div class="card-tag">Market Signal</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <div class="card-title">Clientele Effect</div>
+        <ul class="card-items">
+          <li>Different investors have different dividend preferences based on their tax position and income needs</li>
+          <li><strong>High dividend preference:</strong> Retired investors needing income, pension funds (often tax-exempt on dividends)</li>
+          <li><strong>Low dividend preference:</strong> High-tax-bracket investors who prefer capital gains (taxed at lower rate), growth investors who want company to reinvest</li>
+          <li>Companies attract a "clientele" of shareholders who match their dividend policy</li>
+          <li>Implication: changing dividend policy may cause a clientele shift — disrupting the investor base</li>
+        </ul>
+        <div class="card-tag">Investor Types</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Share Buybacks vs Dividends</div>
+        <ul class="card-items">
+          <li>Alternative to dividends — company buys back its own shares from the market</li>
+          <li><strong>Buyback advantages:</strong> Flexible (no ongoing commitment), signals shares are undervalued, increases EPS (fewer shares outstanding), more tax-efficient in some jurisdictions</li>
+          <li><strong>Dividend advantages:</strong> Regular income for investors, stronger commitment signal, preferred by income-focused investor clientele</li>
+          <li>Indian context: SEBI allows buybacks. TCS, Infosys both use buybacks actively to return excess cash</li>
+          <li>Global trend: US companies increasingly prefer buybacks over dividends (Apple, Microsoft, Google)</li>
+        </ul>
+        <div class="card-tag">Modern Alternative</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">22.10</div>
+      <div class="section-title">Working Capital Management — The Day-to-Day Finance</div>
+    </div>
+    <p class="prose">While long-term capital structure decisions are made rarely, <strong>working capital management is ongoing — every day.</strong> Working capital is the difference between current assets and current liabilities — it represents the day-to-day funding needed to run the business. Poor working capital management is one of the most common causes of business failure, even for profitable companies.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">The Operating Cycle</div>
+        <ul class="card-items">
+          <li>Cash → Buy Raw Materials → Store as Inventory → Convert to WIP → Finished Goods → Sell on Credit → Receive Cash</li>
+          <li>The time this cycle takes determines how much working capital is needed</li>
+          <li>Longer cycle = more cash tied up = more working capital finance needed</li>
+          <li>CCC (Cash Conversion Cycle) = Inventory Days + Receivable Days − Payable Days</li>
+          <li>Shorter CCC = less cash tied up = more efficient working capital management</li>
+        </ul>
+        <div class="card-tag">CCC</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📤</div>
+        <div class="card-title">Receivables Management</div>
+        <ul class="card-items">
+          <li>Objective: collect cash from customers as quickly as possible without damaging relationships</li>
+          <li>Credit policy: who gets credit? How much? For how long? What terms?</li>
+          <li>Early payment discounts — offer 2% discount for payment within 10 days. Evaluate using annualised discount cost.</li>
+          <li>Invoice factoring: sell receivables to a third party for immediate cash (at a discount)</li>
+          <li>Invoice discounting: use receivables as collateral for a loan — maintain customer relationship</li>
+          <li>Dunning process: systematic follow-up for overdue invoices — reminders, phone calls, legal action</li>
+        </ul>
+        <div class="card-tag">Collect Faster</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Inventory Management</div>
+        <ul class="card-items">
+          <li>Hold too much: cash tied up, storage costs, risk of obsolescence</li>
+          <li>Hold too little: stockouts, lost sales, production disruptions</li>
+          <li><strong>EOQ Model:</strong> Economic Order Quantity — optimal order size that minimises total ordering + holding costs. Formula: EOQ = √(2 × Annual Demand × Order Cost ÷ Holding Cost per unit)</li>
+          <li><strong>JIT (Just-in-Time):</strong> Order materials to arrive exactly when needed — zero inventory. Requires reliable suppliers. Used by Toyota, major manufacturers.</li>
+          <li>Buffer stock: minimum safety stock level to prevent stockouts</li>
+        </ul>
+        <div class="card-tag">EOQ & JIT</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📥</div>
+        <div class="card-title">Payables Management</div>
+        <ul class="card-items">
+          <li>Objective: maximise time to pay suppliers (use their credit) without damaging relationships or incurring late penalties</li>
+          <li>Taking full credit terms is legitimate working capital management — paying on day 30 when terms are 30 days</li>
+          <li>Stretching payables beyond terms damages supplier relationships and may result in worse terms or supply disruption</li>
+          <li>Evaluate early payment discounts: "2/10 net 30" = 2% discount if paid in 10 days, otherwise full amount due in 30 days. Annualised cost = substantial — often worth taking.</li>
+          <li>Supply chain finance (reverse factoring): large companies help suppliers get early payment via bank at a small cost</li>
+        </ul>
+        <div class="card-tag">Pay Slower</div>
+      </div>
+    </div>
+
+    <p class="section-label">EOQ Worked Example</p>
+    <div class="wide-card">
+      <h4>📊 Economic Order Quantity Calculation</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;">
+        <strong style="color:var(--text);">Given:</strong> Annual demand = 12,000 units. Order cost = ₹500 per order. Holding cost = ₹2 per unit per year.<br><br>
+        EOQ = √(2 × Annual Demand × Order Cost ÷ Holding Cost)<br>
+        EOQ = √(2 × 12,000 × 500 ÷ 2)<br>
+        EOQ = √(60,00,000)<br>
+        <span style="color:var(--accent5);font-family:var(--mono);">EOQ = 2,449 units per order</span><br><br>
+        Number of orders per year = 12,000 ÷ 2,449 = <strong>4.9 orders ≈ 5 orders per year</strong><br>
+        Reorder interval = 365 ÷ 5 = <strong>every 73 days</strong><br><br>
+        This is the quantity that minimises total inventory costs. Ordering more means fewer orders but higher holding costs. Ordering less means more orders but lower holding costs. EOQ is the exact balance point.
+      </div>
+    </div>
+  </div>
+
+  <!-- 22.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">22.11</div>
+      <div class="section-title">Investment Appraisal — NPV, IRR, Payback, ARR</div>
+      <div class="section-meta">The Investment Decision in Practice</div>
+    </div>
+    <p class="prose">Investment appraisal is the set of techniques used to evaluate whether a proposed capital investment creates value. Should we build the new factory? Buy the new machine? Launch the new product line? These techniques answer the question quantitatively — and ACCA FM tests them extensively.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Investment Appraisal Methods — Formulas & Interpretation</div>
+      <div class="formula-row">
+        <div class="formula-name">Net Present Value (NPV)</div>
+        <div class="formula-eq">NPV = Σ [Cash Flow_t / (1+r)^t] − Initial Investment<br>
+          <span style="color:var(--muted);">r = discount rate (WACC). t = time period. Sum all discounted cash flows and deduct initial outlay.<br>
+          <strong style="color:var(--accent2);">Decision rule: Accept if NPV > 0. Maximise NPV when choosing between projects.</strong><br>
+          NPV is the gold standard — directly measures value created in absolute ₹ terms. Theoretically superior to all other methods.</span>
+        </div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Internal Rate of Return (IRR)</div>
+        <div class="formula-eq">IRR = discount rate that makes NPV = 0<br>
+          Calculated by trial and error or interpolation: IRR ≈ a + [NPVa/(NPVa−NPVb)] × (b−a)<br>
+          <span style="color:var(--muted);"><strong style="color:var(--accent2);">Decision rule: Accept if IRR > Cost of Capital (WACC).</strong><br>
+          Expresses return as a %, easy to compare to cost of capital. Limitation: may give multiple IRRs for non-conventional cash flows. Does not rank mutually exclusive projects correctly (use NPV instead).</span>
+        </div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Payback Period</div>
+        <div class="formula-eq">Payback = Year before full recovery + (Remaining cost ÷ Cash flow in recovery year)<br>
+          <span style="color:var(--muted);"><strong style="color:var(--accent2);">Decision rule: Accept if Payback < target period. Shorter payback = better.</strong><br>
+          Simple, intuitive, focuses on liquidity and risk. Major limitation: ignores time value of money and cash flows after payback. Not theoretically sound but widely used in practice for quick screening.</span>
+        </div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Discounted Payback Period</div>
+        <div class="formula-eq">Same as payback but uses discounted cash flows (PV of each year's CF)<br>
+          <span style="color:var(--muted);">Improvement on simple payback — accounts for time value of money. Still ignores cash flows after payback date. Better than simple payback but inferior to NPV.</span>
+        </div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Accounting Rate of Return (ARR)</div>
+        <div class="formula-eq">ARR = Average Annual Profit (after depreciation) ÷ Average Investment × 100<br>
+          Average Investment = (Initial Investment + Scrap Value) ÷ 2<br>
+          <span style="color:var(--muted);"><strong style="color:var(--accent2);">Decision rule: Accept if ARR > target rate. Higher ARR = better.</strong><br>
+          Uses accounting profit, not cash flow. Ignores time value of money. Easy to calculate. Widely used by non-finance managers but theoretically weak. ACCA FM: know its limitations.</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label">Full NPV Worked Example</p>
+    <div class="wide-card">
+      <h4>📊 Investment Appraisal — ABC Ltd New Machine</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Project:</strong> New machine costs ₹50,00,000. Generates annual cash flows of ₹18,00,000 for 4 years. Scrap value ₹5,00,000 at end of Year 4. WACC = 12%.
+      </div>
+      <table class="data-table" style="margin-top:14px;">
+        <tr><th>Year</th><th>Cash Flow (₹)</th><th>Discount Factor (12%)</th><th>PV (₹)</th></tr>
+        <tr><td>0 (Investment)</td><td>(50,00,000)</td><td>1.000</td><td>(50,00,000)</td></tr>
+        <tr><td>1</td><td>18,00,000</td><td>0.893</td><td>16,07,400</td></tr>
+        <tr><td>2</td><td>18,00,000</td><td>0.797</td><td>14,34,600</td></tr>
+        <tr><td>3</td><td>18,00,000</td><td>0.712</td><td>12,81,600</td></tr>
+        <tr><td>4</td><td>18,00,000 + 5,00,000 = 23,00,000</td><td>0.636</td><td>14,62,800</td></tr>
+        <tr><td><strong>NPV</strong></td><td>—</td><td>—</td><td><strong>+7,86,400</strong></td></tr>
+      </table>
+      <div style="font-size:13px;color:var(--muted);line-height:1.8;margin-top:14px;">
+        <strong style="color:var(--accent2);">Decision: NPV = +₹7,86,400 > 0 → ACCEPT the investment.</strong><br>
+        The project creates ₹7,86,400 of value above the minimum required return (WACC). Payback: ₹50L ÷ ₹18L p.a. = 2.78 years. ARR = (₹18L − ₹11.25L depreciation) ÷ ₹27.5L average investment = 24.5%.
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 NPV vs IRR — When They Conflict, Use NPV</div>
+      For independent projects (accept/reject decision): NPV and IRR give the same answer — both say accept if NPV>0 and IRR>WACC.<br><br>
+      For mutually exclusive projects (which ONE to choose): NPV and IRR sometimes give conflicting rankings. <strong>Always use NPV.</strong><br><br>
+      Why NPV wins: IRR assumes all intermediate cash flows are reinvested at the IRR rate — an unrealistic assumption when IRR is very high. NPV assumes reinvestment at WACC — a realistic assumption. NPV also measures absolute value creation, while IRR measures a % return that ignores project scale (a 50% IRR on ₹1L investment is less valuable than a 20% IRR on ₹100L investment).
+    </div>
+  </div>
+
+  <!-- 22.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">22.12</div>
+      <div class="section-title">Risk in Corporate Finance — Business Risk vs Financial Risk</div>
+    </div>
+    <p class="prose">All corporate finance decisions involve risk. Understanding the distinction between different types of risk — and how they affect the cost of capital — is essential for ACCA FM and real-world decision-making.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Business Risk (Operating Risk)</div>
+        <ul class="card-items">
+          <li><strong>Definition:</strong> The risk inherent in the company's operating activities — uncertainty in EBIT arising from the nature of the business</li>
+          <li>Driven by: revenue volatility, operating leverage (fixed vs variable cost mix), industry cyclicality, competition</li>
+          <li>High operating leverage = high fixed costs = small revenue change → large EBIT change = high business risk</li>
+          <li>Examples: Airlines (high fixed costs — planes, routes) have high business risk. Service businesses (variable costs) have lower business risk.</li>
+          <li>Cannot be reduced by changing capital structure — it is driven by the business model</li>
+          <li>Reflected in the company's asset beta (ungeared beta)</li>
+        </ul>
+        <div class="card-tag">Operating Risk</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💳</div>
+        <div class="card-title">Financial Risk (Leverage Risk)</div>
+        <ul class="card-items">
+          <li><strong>Definition:</strong> Additional risk imposed on shareholders by the use of debt financing</li>
+          <li>Debt creates fixed interest obligations — if EBIT falls, interest still must be paid → PAT is more volatile than EBIT</li>
+          <li>Higher gearing = higher financial risk = higher required return by equity shareholders (Ke rises)</li>
+          <li>Financial risk can be controlled by management through capital structure decisions</li>
+          <li>Reflected in the difference between equity beta (geared) and asset beta (ungeared)</li>
+          <li>Formula: Equity Beta = Asset Beta × [1 + (1−T) × D/E]</li>
+        </ul>
+        <div class="card-tag">Leverage Risk</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Systematic vs Unsystematic Risk</div>
+        <ul class="card-items">
+          <li><strong>Systematic (Market) Risk:</strong> Risk that affects all companies — recessions, interest rate changes, inflation, geopolitical events. Cannot be diversified away. Measured by Beta. Compensated by the market (built into required returns).</li>
+          <li><strong>Unsystematic (Specific) Risk:</strong> Risk unique to one company or industry — management failure, product recall, factory fire, key client loss. CAN be diversified away by holding a portfolio of stocks. Not compensated by the market — investors should diversify rather than being paid for avoidable risk.</li>
+          <li>CAPM only compensates for systematic risk — which is why Beta (systematic risk) is used, not total volatility.</li>
+        </ul>
+        <div class="card-tag">CAPM Foundation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Adjusting Beta for Capital Structure — Ungearing & Regearing</div>
+        <ul class="card-items">
+          <li>When appraising a project in a new industry, use the beta of comparable companies in that industry — not the company's own beta</li>
+          <li><strong>Step 1 — Ungear (remove financial risk):</strong> Convert equity (geared) beta to asset (ungeared) beta using MM formula: βa = βe × E/(E + D(1−T))</li>
+          <li><strong>Step 2 — Regear (add company's financial risk):</strong> Adjust the proxy asset beta to reflect the appraising company's own capital structure: βe = βa × [1 + (1−T) × D/E]</li>
+          <li>This gives a project-specific WACC — more appropriate than company WACC for cross-industry investments</li>
+        </ul>
+        <div class="card-tag">ACCA FM Advanced</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">22.13</div>
+      <div class="section-title">Corporate Finance in India — Real World Context</div>
+    </div>
+    <p class="prose">Corporate finance theory is developed largely in a Western (US/UK) context. India has a unique corporate finance landscape — driven by promoter-dominated ownership, RBI regulation, SEBI oversight, and the specific characteristics of Indian capital markets.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Promoter-Dominated Capital Structure</div>
+        <ul class="card-items">
+          <li>Most large Indian companies are promoter-controlled (founding family retains majority stake)</li>
+          <li>Promoters are reluctant to dilute equity — prefer debt to fund growth</li>
+          <li>This creates higher leverage than theoretically optimal in some cases</li>
+          <li>Promoter share pledging is a uniquely Indian risk — pledged shares create a vicious cycle in market downturns</li>
+          <li>SEBI mandates disclosure of promoter pledging — always check this for Indian company analysis</li>
+        </ul>
+        <div class="card-tag">India Specific</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Indian Capital Markets — Key Features</div>
+        <ul class="card-items">
+          <li>BSE (Bombay Stock Exchange) and NSE (National Stock Exchange) — primary equity markets</li>
+          <li>SEBI (Securities and Exchange Board of India) — regulates capital markets</li>
+          <li>RBI — regulates banking and monetary policy, directly affects cost of debt</li>
+          <li>High retail investor participation (growing post-COVID) — SIP investments driving equity markets</li>
+          <li>Indian bond market relatively underdeveloped vs equity market — most corporate debt through bank loans</li>
+          <li>External Commercial Borrowings (ECBs) — large companies borrow in foreign currency for cheaper rates</li>
+        </ul>
+        <div class="card-tag">Market Structure</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Indian Dividend Tax Context</div>
+        <ul class="card-items">
+          <li>Pre-2020: Dividend Distribution Tax (DDT) paid by company — investors received dividends tax-free</li>
+          <li>Post-2020: DDT abolished. Dividends taxed in hands of investors at their slab rate.</li>
+          <li>High-income investors (30% slab) now prefer share buybacks over dividends for tax efficiency</li>
+          <li>This has driven the surge in Indian company buybacks post-2020 (TCS, Infosys, HCL Tech)</li>
+          <li>Understanding this context is important for Indian corporate finance analysis</li>
+        </ul>
+        <div class="card-tag">Tax Context</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <div class="card-title">Indian Infrastructure Finance</div>
+        <ul class="card-items">
+          <li>Government-driven investment in roads, railways, ports, power — ₹10+ lakh crore annual capex</li>
+          <li>Special purpose vehicles (SPVs) used for project finance — ring-fenced debt</li>
+          <li>InvITs (Infrastructure Investment Trusts) — listed vehicles that hold infrastructure assets and distribute income to unitholders</li>
+          <li>NaBFID (National Bank for Financing Infrastructure and Development) — new DFI for infrastructure lending</li>
+          <li>High leverage in infrastructure — projects generate stable, long-term cash flows to service debt</li>
+        </ul>
+        <div class="card-tag">Infra Finance</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">22.14</div>
+      <div class="section-title">ACCA FM Exam Technique</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>Typical Question Format</th><th>Marks</th><th>Key Technique</th></tr>
+      <tr><td>WACC Calculation</td><td>Given capital structure data, calculate WACC. Often includes bond with YTM and CAPM for equity.</td><td>10–15</td><td>Always use market values. Post-tax Kd. Show workings clearly for each component.</td></tr>
+      <tr><td>NPV / Investment Appraisal</td><td>Evaluate a project using NPV. May include inflation adjustments, tax, working capital. Compare to IRR or payback.</td><td>15–25</td><td>Set up a clear cash flow timeline. Include all relevant cash flows. Use annuity factors where applicable. State decision clearly.</td></tr>
+      <tr><td>Capital Structure</td><td>Discuss optimal gearing. Apply MM theorems. Calculate effect of changing debt level on WACC and firm value.</td><td>10–15</td><td>State MM assumptions. Apply relevant proposition. Then challenge with real-world factors (financial distress, signalling).</td></tr>
+      <tr><td>Dividend Policy</td><td>Evaluate dividend policy options. Apply MM dividend irrelevance. Discuss signalling, clientele, bird-in-hand.</td><td>8–12</td><td>Balance theoretical (MM) vs practical (signalling, clientele, tax). Apply to the specific company scenario given.</td></tr>
+      <tr><td>Working Capital</td><td>Calculate CCC, evaluate receivables/payables policy, assess early payment discount, EOQ calculation.</td><td>10–15</td><td>EOQ formula: √(2×D×Co/Ch). Early payment discount cost: [d/(1-d)] × [365/(N-discount period)]. Compare to cost of finance.</td></tr>
+      <tr><td>Beta & Risk</td><td>Ungear and regear beta for project appraisal in different industry. Calculate project-specific WACC.</td><td>10–15</td><td>Two-step process: ungear proxy company beta → regear to own capital structure. Use MM beta formula. Then use in CAPM for project Ke.</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 ACCA FM Golden Rule — Show Every Step of Every Calculation</div>
+      ACCA FM is a calculation-heavy paper. Even if your final answer is wrong, you can still score 60–70% of the marks if your workings are clear and your method is correct. The examiner awards marks for each correct step — not just the final number.<br><br>
+      Structure every calculation answer: State the formula → Substitute values clearly → Show intermediate calculations → State the final answer with units and a one-sentence decision/interpretation. This approach, applied consistently, reliably scores 65%+ in FM.
+    </div>
+  </div>
+
+  <!-- 22.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">22.15</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">3 Core Decisions</div><ul class="card-items"><li>Investment (where to deploy capital)</li><li>Financing (debt vs equity, WACC)</li><li>Dividend (how much to return to shareholders)</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">WACC — Always Market Values, Post-Tax Kd</div><ul class="card-items"><li>Ke from CAPM or DGM</li><li>Kd = pre-tax rate × (1−tax rate)</li><li>Weights = market values only</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">NPV = Gold Standard for Investment</div><ul class="card-items"><li>Accept if NPV > 0</li><li>Maximise NPV for mutually exclusive projects</li><li>If NPV and IRR conflict — use NPV always</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">MM — Know Assumptions + Real World</div><ul class="card-items"><li>Without tax: capital structure irrelevant</li><li>With tax: debt adds value via tax shield</li><li>Reality: trade-off between tax shield and financial distress costs</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Dividend Policy — Theory vs Reality</div><ul class="card-items"><li>MM: irrelevant in perfect markets</li><li>Signalling: dividend changes send powerful signals</li><li>Clientele: match policy to investor base</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Working Capital = Daily Finance</div><ul class="card-items"><li>CCC = Inventory + Receivables − Payables Days</li><li>Shorter CCC = less cash tied up</li><li>EOQ minimises inventory costs</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 22 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Calculate WACC for any listed Indian company using CAPM (find Beta on NSE/BSE) and their debt data</span>
+        <span class="tag teal">✅ Do the NPV worked example from scratch without looking at the solution — check your answer</span>
+        <span class="tag teal">✅ Explain MM with and without tax in your own words — then explain what real-world factors MM ignores</span>
+        <span class="tag teal">✅ Calculate the IRR for the ABC machine project using interpolation — check it exceeds WACC</span>
+        <span class="tag teal">✅ Look up TCS or Infosys dividend history — identify any years with unusual dividend changes and explain the signal</span>
+        <span class="tag teal">✅ Calculate EOQ for a made-up company with your own numbers — verify the formula</span>
+        <span class="tag teal">✅ Attempt 2 ACCA FM past paper questions — one NPV, one WACC — time yourself at 1.8 min per mark</span>
+        <span class="tag teal">✅ Read one real Indian company's CFO letter in their annual report — identify their capital allocation priorities</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">22.16</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Using Book Values Instead of Market Values in WACC</strong><br>
+        WACC weights must use the MARKET value of equity (shares outstanding × current share price) and market value of debt — never book values from the Balance Sheet. Book value of equity reflects historical cost, not what the market currently values the company at.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Forgetting to Tax-Adjust the Cost of Debt</strong><br>
+        Interest is tax-deductible, so Kd must always be multiplied by (1 − Tax Rate) before being used in the WACC formula. Using the pre-tax cost of debt overstates WACC and understates the true benefit of debt financing.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Using a Company-Wide WACC for a Project With a Different Risk Profile</strong><br>
+        WACC reflects the risk of the company's EXISTING operations. Using it to appraise a project in a completely different industry/risk category (e.g. a stable FMCG company evaluating a high-risk tech venture) is a classic ACCA FM trap — a project-specific discount rate should be used instead.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Choosing IRR Over NPV for Mutually Exclusive Projects</strong><br>
+        When choosing between mutually exclusive projects (only one can be selected), NPV and IRR can rank them differently — always follow NPV, since IRR ignores project scale and assumes unrealistic reinvestment at the IRR rate itself.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Including Depreciation as a Cash Flow in NPV Calculations</strong><br>
+        NPV appraisal uses CASH flows, not accounting profit — depreciation is a non-cash accounting allocation and must be excluded from the cash flow figures used in NPV. It's only relevant for calculating the tax cash flow (tax savings from the depreciation tax shield) or for ARR, which uses accounting profit deliberately.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Confusing Modigliani-Miller's "No-Tax World" Conclusion With Reality</strong><br>
+        MM's original theorem (no taxes) states capital structure is irrelevant to firm value. But MM's theorem WITH taxes concludes the opposite — debt increases firm value due to the tax shield, up to the point where financial distress costs offset the benefit. Quoting the no-tax conclusion in a real-world (taxed) context is a common exam error.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">CAPM Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: State the CAPM formula.</strong></li>
+          <li>A: Ke = Rf + β(Rm − Rf)</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">WACC Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: State the WACC formula.</strong></li>
+          <li>A: WACC = Ke × [E/(E+D)] + Kd(1−T) × [D/(E+D)]</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">NPV Decision Rule</div>
+        <ul class="card-items">
+          <li><strong>Q: When should a project be accepted under NPV?</strong></li>
+          <li>A: When NPV > 0 — for mutually exclusive projects, choose the one with the highest NPV</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">MM Theorem (With Tax)</div>
+        <ul class="card-items">
+          <li><strong>Q: What does MM's theorem WITH tax conclude?</strong></li>
+          <li>A: Firm value increases with debt due to the tax shield, up to the point financial distress costs offset it</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">NPV vs IRR Conflict</div>
+        <ul class="card-items">
+          <li><strong>Q: For mutually exclusive projects, which method should always be followed?</strong></li>
+          <li>A: NPV — it measures absolute value creation and uses a realistic reinvestment assumption</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"What is WACC and why does it matter for investment decisions?"</td><td>Foundational corporate finance concept — near-universal in finance interviews</td><td>WACC is the blended cost of a company's debt and equity financing, weighted by their proportion in the capital structure. It represents the minimum return a company must earn on any investment to satisfy both shareholders and lenders — used as the discount rate in NPV analysis, where projects earning above WACC create shareholder value and projects earning below it destroy value.</td></tr>
+      <tr><td>"Why would a company prefer debt over equity financing, and what's the risk?"</td><td>Understanding of capital structure trade-offs</td><td>Debt is generally cheaper than equity — interest is tax-deductible (creating a tax shield) and debt holders require lower returns than equity holders since they have priority in a liquidation. However, excessive debt increases fixed interest obligations regardless of performance, raising the risk of financial distress or bankruptcy in a downturn — which is why companies target an optimal capital structure balancing the tax benefit against distress risk.</td></tr>
+      <tr><td>"Walk me through how you'd decide whether to approve a capital investment proposal."</td><td>Practical application of investment appraisal techniques</td><td>I'd project the incremental cash flows the investment generates (not accounting profit), discount them at the appropriate cost of capital, and calculate NPV — accepting if positive. I'd also calculate IRR and payback period as supporting metrics, and run sensitivity analysis on key assumptions (volume, price, cost of capital) to understand how robust the decision is to forecast errors, since real-world investment decisions rarely rely on a single point estimate.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Investment Decision (NPV > 0 = Invest)<br>
+      + Financing Decision (WACC Minimised)<br>
+      + Dividend Decision (Signal + Clientele)<br>
+      + Working Capital (CCC Minimised)<br>
+      + Risk Management (Systematic + Financial)<br>
+      = <strong style="color:var(--accent4);">Corporate Finance Mastery — CFO-Level Thinking</strong>
+    </div>
+    <h3>Chapter 22: Corporate Finance — Complete 💼🏦</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 23: Corporate & Business Law — the legal foundation behind every contract, company structure, and transaction finance professionals work with. ⚖️</p>
+  </div>
+
+</div>
+</body>
+</html>

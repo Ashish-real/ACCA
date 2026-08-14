@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 5: Cost Accounting Fundamentals</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #a78bfa;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero {
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(167,139,250,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-purple { background: rgba(167,139,250,0.2); color: var(--accent5); border: 1px solid rgba(167,139,250,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(167,139,250,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(167,139,250,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(167,139,250,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(167,139,250,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(167,139,250,0.07), rgba(0,212,170,0.05)); border: 1px solid rgba(167,139,250,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  .equation { background: var(--card); border: 1px solid var(--accent5); border-radius: 12px; padding: 20px 24px; margin: 20px 0; text-align: center; }
+  .equation-text { font-family: var(--mono); font-size: clamp(12px,2.5vw,15px); color: var(--accent2); letter-spacing: 1px; line-height: 2; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* COST CALC BOX */
+  .calc-box { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 14px; }
+  .calc-header { background: rgba(167,139,250,0.08); padding: 12px 20px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; }
+  .calc-row { display: grid; grid-template-columns: 1fr auto; padding: 9px 20px; border-bottom: 1px solid rgba(42,42,58,0.3); font-size: 13px; align-items: center; }
+  .calc-row:last-child { border-bottom: none; }
+  .calc-row.indent { padding-left: 36px; }
+  .calc-row.subtotal { background: rgba(255,255,255,0.02); font-weight: 600; color: var(--text); border-top: 1px solid var(--border); }
+  .calc-row.total { background: rgba(167,139,250,0.08); font-weight: 700; color: var(--accent5); border-top: 2px solid var(--accent5); }
+  .calc-label { color: var(--muted); }
+  .calc-label.bold { color: var(--text); font-weight: 600; }
+  .calc-amount { font-family: var(--mono); font-size: 12px; color: var(--muted); text-align: right; }
+  .calc-amount.bold { color: var(--text); font-weight: 600; }
+  .calc-amount.highlight-val { color: var(--accent2); font-weight: 700; }
+  .calc-amount.total { color: var(--accent5); font-weight: 700; font-size: 14px; }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(167,139,250,0.09), rgba(0,212,170,0.06)); border: 1px solid rgba(167,139,250,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  @media (max-width: 600px) {
+    .calc-row { font-size: 11px; }
+    .calc-row.indent { padding-left: 24px; }
+  }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 5</div>
+  <h1>Cost Accounting<br><span>Fundamentals</span></h1>
+  <p class="hero-sub">How businesses track, classify, and control every rupee of cost — the foundation of management decisions, pricing, and profitability analysis.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Cost Types</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Costing Methods</div></div>
+    <div class="stat"><div class="stat-num">MA</div><div class="stat-label">ACCA Paper</div></div>
+    <div class="stat"><div class="stat-num">Part 1</div><div class="stat-label">Foundation</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 5 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">5.1</span>What is Cost Accounting — and Why It Matters</div>
+    <div class="toc-item"><span class="toc-num">5.2</span>Classification of Costs</div>
+    <div class="toc-item"><span class="toc-num">5.3</span>Fixed vs Variable Costs</div>
+    <div class="toc-item"><span class="toc-num">5.4</span>Direct vs Indirect Costs (Overheads)</div>
+    <div class="toc-item"><span class="toc-num">5.5</span>Product Costs vs Period Costs</div>
+    <div class="toc-item"><span class="toc-num">5.6</span>Cost of Production — The Full Build-Up</div>
+    <div class="toc-item"><span class="toc-num">5.7</span>Absorption Costing vs Marginal Costing</div>
+    <div class="toc-item"><span class="toc-num">5.8</span>Break-Even Analysis</div>
+    <div class="toc-item"><span class="toc-num">5.9</span>Job, Batch & Process Costing</div>
+    <div class="toc-item"><span class="toc-num">5.10</span>Cost Accounting & ACCA — Paper Mapping</div>
+    <div class="toc-item"><span class="toc-num">5.11</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">5.12</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Financial accounting tells the world what happened. <strong>Cost accounting tells management why it happened — and what to do about it.</strong> It is the internal language of business — used by CFOs, FP&A teams, and operations managers to understand where money is being spent, which products are profitable, and how to price goods and services.</p>
+    <div class="quote">"You cannot manage what you cannot measure. Cost accounting gives you the measurements that drive every management decision."</div>
+  </div>
+
+  <!-- 5.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">5.1</div>
+      <div class="section-title">What is Cost Accounting — and Why It Matters</div>
+    </div>
+    <p class="prose">Cost accounting is the branch of accounting that <strong>records, classifies, analyses, and controls costs</strong> within a business. Unlike financial accounting (which reports to outsiders), cost accounting is primarily for <strong>internal management use</strong>.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">What Cost Accounting Does</div>
+        <ul class="card-items">
+          <li>Tracks the cost of every product, service, or department</li>
+          <li>Helps set selling prices correctly</li>
+          <li>Identifies wastage and inefficiency</li>
+          <li>Supports budgeting and forecasting</li>
+          <li>Helps decide: make or buy? continue or stop?</li>
+        </ul>
+        <div class="card-tag">Internal Decision Tool</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🆚</div>
+        <div class="card-title">Cost Accounting vs Financial Accounting</div>
+        <ul class="card-items">
+          <li>Financial A/C: for external users (investors, banks)</li>
+          <li>Cost A/C: for internal users (management, CFO)</li>
+          <li>Financial A/C: follows IFRS — mandatory</li>
+          <li>Cost A/C: no fixed rules — flexible for each business</li>
+          <li>Both feed into ACCA MA and PM papers</li>
+        </ul>
+        <div class="card-tag">Internal vs External</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Who Uses Cost Accounting in MNCs</div>
+        <ul class="card-items">
+          <li>CFO — overall cost structure and margins</li>
+          <li>FP&A team — budgets, variance analysis</li>
+          <li>Operations — efficiency and waste reduction</li>
+          <li>Sales — pricing decisions</li>
+          <li>Supply chain — procurement cost control</li>
+        </ul>
+        <div class="card-tag">Every MNC Department</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">5.2</div>
+      <div class="section-title">Classification of Costs</div>
+      <div class="section-meta">The Building Blocks</div>
+    </div>
+    <p class="prose">Before you can manage costs, you must be able to <strong>classify them correctly</strong>. The same cost can be classified in multiple ways depending on what question you are trying to answer. This is one of the most important skills in management accounting.</p>
+
+    <table class="data-table">
+      <tr><th>Classification Basis</th><th>Categories</th><th>Purpose</th></tr>
+      <tr><td>Behaviour (how cost changes with output)</td><td>Fixed, Variable, Semi-Variable</td><td>CVP analysis, Break-even, Budgeting</td></tr>
+      <tr><td>Traceability (can we link to product?)</td><td>Direct, Indirect (Overhead)</td><td>Product costing, pricing decisions</td></tr>
+      <tr><td>Function (what is the cost for?)</td><td>Production, Admin, Selling, Distribution</td><td>Departmental cost control</td></tr>
+      <tr><td>Timing (when does it hit P&L?)</td><td>Product Cost, Period Cost</td><td>Inventory valuation, profit calculation</td></tr>
+      <tr><td>Relevance (does it affect the decision?)</td><td>Relevant, Irrelevant, Sunk, Opportunity</td><td>Decision making — make or buy, etc.</td></tr>
+      <tr><td>Controllability (can manager influence it?)</td><td>Controllable, Uncontrollable</td><td>Performance management, KPIs</td></tr>
+    </table>
+  </div>
+
+  <!-- 5.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">5.3</div>
+      <div class="section-title">Fixed vs Variable Costs</div>
+      <div class="section-meta">The Most Important Cost Behaviour</div>
+    </div>
+    <p class="prose">Understanding how costs <strong>behave as output changes</strong> is the most fundamental concept in cost accounting. It drives pricing, budgeting, and break-even analysis.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📌</div>
+        <div class="card-title">Fixed Costs</div>
+        <ul class="card-items">
+          <li>Do NOT change with level of output/activity</li>
+          <li>Remain constant over a relevant range</li>
+          <li>Examples: rent, insurance, senior salaries, depreciation</li>
+          <li>Per unit cost DECREASES as output increases</li>
+          <li>Key insight: spreading fixed costs = economies of scale</li>
+        </ul>
+        <div class="card-tag">Constant Total</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Variable Costs</div>
+        <ul class="card-items">
+          <li>Change directly with level of output</li>
+          <li>Double output → double variable cost</li>
+          <li>Examples: raw materials, direct labour (piece rate), packaging</li>
+          <li>Per unit cost stays CONSTANT</li>
+          <li>Key insight: contribution = Revenue − Variable Costs</li>
+        </ul>
+        <div class="card-tag">Changes with Output</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">〰️</div>
+        <div class="card-title">Semi-Variable (Mixed) Costs</div>
+        <ul class="card-items">
+          <li>Has both a fixed and a variable component</li>
+          <li>Examples: electricity bill (fixed standing charge + usage)</li>
+          <li>Phone bill, machine maintenance costs</li>
+          <li>Separated using High-Low method</li>
+          <li>Important for budgeting accuracy</li>
+        </ul>
+        <div class="card-tag">Fixed + Variable</div>
+      </div>
+    </div>
+
+    <p class="section-label">High-Low Method — Separating Semi-Variable Costs</p>
+    <div class="wide-card">
+      <h4>Example: Electricity Bill for Ashish Manufacturing</h4>
+      <table class="data-table" style="margin-top:8px;">
+        <tr><th>Month</th><th>Units Produced</th><th>Electricity Cost (₹)</th></tr>
+        <tr><td>Highest activity (March)</td><td>10,000 units</td><td>₹85,000</td></tr>
+        <tr><td>Lowest activity (July)</td><td>4,000 units</td><td>₹49,000</td></tr>
+      </table>
+      <div style="margin-top:14px;font-size:13px;color:var(--muted);line-height:2;">
+        <strong style="color:var(--accent2);">Step 1 — Variable cost per unit:</strong><br>
+        (₹85,000 − ₹49,000) ÷ (10,000 − 4,000) = ₹36,000 ÷ 6,000 = <strong style="color:var(--accent2);">₹6 per unit</strong><br><br>
+        <strong style="color:var(--accent2);">Step 2 — Fixed cost:</strong><br>
+        ₹85,000 − (₹6 × 10,000) = ₹85,000 − ₹60,000 = <strong style="color:var(--accent2);">₹25,000 fixed</strong><br><br>
+        <strong style="color:var(--text);">Formula: Total Cost = ₹25,000 + (₹6 × units produced)</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">5.4</div>
+      <div class="section-title">Direct vs Indirect Costs (Overheads)</div>
+    </div>
+    <p class="prose">This classification answers: <strong>can we directly trace this cost to a specific product or service?</strong> This is critical for accurate product costing and pricing.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Direct Costs</div>
+        <ul class="card-items">
+          <li>Can be directly traced to a specific product/job</li>
+          <li>Direct Materials — raw materials in the product</li>
+          <li>Direct Labour — workers who make the product</li>
+          <li>Direct Expenses — specific costs for that product</li>
+          <li>Together = Prime Cost</li>
+        </ul>
+        <div class="card-tag">Traceable to Product</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">Indirect Costs (Overheads)</div>
+        <ul class="card-items">
+          <li>Cannot be directly traced — shared across products</li>
+          <li>Factory rent, supervisor salaries, machine depreciation</li>
+          <li>Must be allocated or absorbed into products</li>
+          <li>Three types: Production, Admin, Selling overheads</li>
+          <li>Major source of complexity in product costing</li>
+        </ul>
+        <div class="card-tag">Shared — Must Allocate</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📐</div>
+        <div class="card-title">Overhead Absorption Rate (OAR)</div>
+        <ul class="card-items">
+          <li>Method to share overheads across products</li>
+          <li>OAR = Budgeted Overhead ÷ Budgeted Activity</li>
+          <li>Activity base: labour hours, machine hours, units</li>
+          <li>Over/under absorption arises when actual ≠ budget</li>
+          <li>Major topic in ACCA MA paper</li>
+        </ul>
+        <div class="card-tag">OAR Formula</div>
+      </div>
+    </div>
+
+    <div class="equation">
+      <div class="equation-text">
+        Prime Cost = Direct Materials + Direct Labour + Direct Expenses<br>
+        Production Cost = Prime Cost + Production Overheads<br>
+        Total Cost = Production Cost + Admin + Selling + Distribution Overheads
+      </div>
+      <div class="equation-label">The cost build-up — from raw materials to total cost of a product</div>
+    </div>
+  </div>
+
+  <!-- 5.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">5.5</div>
+      <div class="section-title">Product Costs vs Period Costs</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Product Costs</div>
+        <ul class="card-items">
+          <li>Costs attached to units of inventory</li>
+          <li>Remain on Balance Sheet until product is sold</li>
+          <li>Hit P&L only when inventory is sold (as COGS)</li>
+          <li>Includes: Direct Materials, Direct Labour, Production Overhead</li>
+          <li>Also called "inventoriable costs"</li>
+        </ul>
+        <div class="card-tag">Balance Sheet First</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <div class="card-title">Period Costs</div>
+        <ul class="card-items">
+          <li>Costs expensed in the period they are incurred</li>
+          <li>Not attached to inventory — hit P&L immediately</li>
+          <li>Includes: Admin expenses, selling costs, finance costs</li>
+          <li>Even if nothing is sold, period costs are still expensed</li>
+          <li>Cannot be deferred to future periods</li>
+        </ul>
+        <div class="card-tag">P&L Immediately</div>
+      </div>
+    </div>
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">💡 Why This Distinction Matters</div>
+      Under <strong>Absorption Costing</strong> (IFRS requirement for inventory under IAS 2), production overheads are product costs — they stay in inventory until sold. Under <strong>Marginal Costing</strong> (used internally for decisions), all fixed costs are period costs. This causes profit differences between the two methods — a key ACCA MA exam topic.
+    </div>
+  </div>
+
+  <!-- 5.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">5.6</div>
+      <div class="section-title">Cost of Production — The Full Build-Up</div>
+      <div class="section-meta">Real Worked Example</div>
+    </div>
+    <p class="section-label">Ashish Manufacturing — Cost Statement for 1,000 units</p>
+    <div class="calc-box">
+      <div class="calc-header">Cost of Production Statement — Ashish Manufacturing Ltd</div>
+      <div class="calc-row" style="background:rgba(0,0,0,0.15);font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;">
+        <div>Cost Element</div><div style="text-align:right;">Amount (₹)</div>
+      </div>
+      <div class="calc-row" style="background:rgba(167,139,250,0.05);"><div style="font-family:var(--mono);font-size:10px;color:var(--accent5);letter-spacing:2px;text-transform:uppercase;">DIRECT COSTS (PRIME COST)</div><div></div></div>
+      <div class="calc-row indent"><div class="calc-label">Direct Materials (raw materials used)</div><div class="calc-amount">2,50,000</div></div>
+      <div class="calc-row indent"><div class="calc-label">Direct Labour (factory workers)</div><div class="calc-amount">1,80,000</div></div>
+      <div class="calc-row indent"><div class="calc-label">Direct Expenses (specific tooling)</div><div class="calc-amount">20,000</div></div>
+      <div class="calc-row subtotal"><div class="calc-label bold">PRIME COST</div><div class="calc-amount bold">4,50,000</div></div>
+      <div class="calc-row" style="background:rgba(167,139,250,0.05);"><div style="font-family:var(--mono);font-size:10px;color:var(--accent5);letter-spacing:2px;text-transform:uppercase;">PRODUCTION OVERHEADS</div><div></div></div>
+      <div class="calc-row indent"><div class="calc-label">Factory Rent (allocated)</div><div class="calc-amount">60,000</div></div>
+      <div class="calc-row indent"><div class="calc-label">Supervisor Salaries (allocated)</div><div class="calc-amount">90,000</div></div>
+      <div class="calc-row indent"><div class="calc-label">Machine Depreciation (allocated)</div><div class="calc-amount">40,000</div></div>
+      <div class="calc-row indent"><div class="calc-label">Factory Power & Utilities</div><div class="calc-amount">35,000</div></div>
+      <div class="calc-row subtotal"><div class="calc-label bold">Total Production Overheads</div><div class="calc-amount bold">2,25,000</div></div>
+      <div class="calc-row total"><div>TOTAL PRODUCTION COST (1,000 units)</div><div class="calc-amount total">6,75,000</div></div>
+      <div class="calc-row subtotal"><div class="calc-label bold">Cost per unit (÷1,000)</div><div class="calc-amount highlight-val">₹675 per unit</div></div>
+      <div class="calc-row" style="background:rgba(167,139,250,0.05);"><div style="font-family:var(--mono);font-size:10px;color:var(--accent5);letter-spacing:2px;text-transform:uppercase;">PERIOD COSTS (not in inventory)</div><div></div></div>
+      <div class="calc-row indent"><div class="calc-label">Admin & Office Expenses</div><div class="calc-amount">80,000</div></div>
+      <div class="calc-row indent"><div class="calc-label">Selling & Marketing</div><div class="calc-amount">1,20,000</div></div>
+      <div class="calc-row subtotal"><div class="calc-label bold">Total Period Costs</div><div class="calc-amount bold">2,00,000</div></div>
+      <div class="calc-row total"><div>TOTAL COST OF BUSINESS</div><div class="calc-amount total">8,75,000</div></div>
+    </div>
+  </div>
+
+  <!-- 5.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">5.7</div>
+      <div class="section-title">Absorption Costing vs Marginal Costing</div>
+      <div class="section-meta">The Big Debate in Cost Accounting</div>
+    </div>
+    <p class="prose">These are the two main approaches to product costing. They give different profit figures — and understanding why is a classic ACCA exam question.</p>
+
+    <table class="data-table">
+      <tr><th>Feature</th><th>Absorption Costing</th><th>Marginal Costing</th></tr>
+      <tr><td>Fixed Production Overheads</td><td>Included in product cost (absorbed)</td><td>Treated as period cost — expensed immediately</td></tr>
+      <tr><td>Inventory Valuation</td><td>Higher — includes fixed overhead per unit</td><td>Lower — only variable costs in inventory</td></tr>
+      <tr><td>Profit when production > sales</td><td>Higher profit (some fixed cost in inventory)</td><td>Lower profit (all fixed cost expensed)</td></tr>
+      <tr><td>Profit when production = sales</td><td>Same profit as marginal costing</td><td>Same profit as absorption costing</td></tr>
+      <tr><td>IFRS Requirement (IAS 2)</td><td>Required for external reporting</td><td>Not allowed for external reporting</td></tr>
+      <tr><td>Best Used For</td><td>Financial statements, inventory valuation</td><td>Internal decisions — pricing, CVP analysis</td></tr>
+      <tr><td>Key Metric</td><td>Profit per unit</td><td>Contribution per unit</td></tr>
+    </table>
+
+    <div class="equation">
+      <div class="equation-text">
+        Contribution = Revenue − Variable Costs<br>
+        Profit (Marginal) = Contribution − Fixed Costs<br>
+        Profit (Absorption) = Revenue − Total Absorbed Cost
+      </div>
+      <div class="equation-label">Contribution is the key concept in marginal costing — used for break-even, pricing, and decision-making</div>
+    </div>
+  </div>
+
+  <!-- 5.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">5.8</div>
+      <div class="section-title">Break-Even Analysis</div>
+      <div class="section-meta">When Does the Business Start Making Profit?</div>
+    </div>
+    <p class="prose">Break-even analysis answers: <strong>how many units must we sell before we start making a profit?</strong> It is one of the most practical tools in management accounting — used in every business from a street chai stall to a multinational corporation.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Contribution per unit = Selling Price − Variable Cost per unit<br><br>
+        Break-Even Point (units) = Fixed Costs ÷ Contribution per unit<br><br>
+        Margin of Safety = Actual Sales − Break-Even Sales
+      </div>
+      <div class="equation-label">The three core break-even formulas — memorise these for ACCA MA</div>
+    </div>
+
+    <p class="section-label">Complete Break-Even Example — Ashish's Consulting Product</p>
+    <div class="calc-box">
+      <div class="calc-header">Break-Even Analysis — Ashish's Online Finance Course</div>
+      <div class="calc-row indent"><div class="calc-label">Selling Price per course</div><div class="calc-amount">₹5,000</div></div>
+      <div class="calc-row indent"><div class="calc-label">Variable Cost per course (platform fees, materials)</div><div class="calc-amount">₹1,500</div></div>
+      <div class="calc-row subtotal"><div class="calc-label bold">Contribution per unit</div><div class="calc-amount highlight-val">₹3,500</div></div>
+      <div class="calc-row indent"><div class="calc-label">Total Fixed Costs (rent, salaries, software)</div><div class="calc-amount">₹3,50,000</div></div>
+      <div class="calc-row total"><div>Break-Even Point</div><div class="calc-amount total">100 courses</div></div>
+      <div class="calc-row subtotal"><div class="calc-label bold">Break-Even Revenue (100 × ₹5,000)</div><div class="calc-amount highlight-val">₹5,00,000</div></div>
+      <div class="calc-row indent"><div class="calc-label">Actual Sales (150 courses)</div><div class="calc-amount">₹7,50,000</div></div>
+      <div class="calc-row subtotal"><div class="calc-label bold">Margin of Safety (150 − 100 = 50 courses)</div><div class="calc-amount highlight-val">₹2,50,000</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:10px;">Margin of Safety shows how much sales can fall before the business makes a loss. Higher margin of safety = lower risk.</p>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 C/S Ratio (Contribution to Sales Ratio)</div>
+      C/S Ratio = Contribution ÷ Revenue × 100 = ₹3,500 ÷ ₹5,000 × 100 = <strong>70%</strong><br><br>
+      This means for every ₹100 of revenue, ₹70 goes towards covering fixed costs and then profit. Used to quickly calculate break-even revenue: Fixed Costs ÷ C/S Ratio = ₹3,50,000 ÷ 0.70 = ₹5,00,000 ✅
+    </div>
+  </div>
+
+  <!-- 5.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">5.9</div>
+      <div class="section-title">Job, Batch & Process Costing</div>
+      <div class="section-meta">Costing Systems for Different Industries</div>
+    </div>
+    <p class="prose">Different industries use different costing systems. The choice depends on <strong>how the product or service is produced</strong>. As a finance professional in any MNC, you will encounter one or more of these systems.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔧</div>
+        <div class="card-title">Job Costing</div>
+        <ul class="card-items">
+          <li>Each job/order is unique — costed separately</li>
+          <li>Costs tracked per individual job using a Job Card</li>
+          <li>Examples: construction projects, custom furniture, legal cases</li>
+          <li>Direct costs easily traced; overheads absorbed via OAR</li>
+          <li>Big 4 audit — each client engagement is a "job"</li>
+        </ul>
+        <div class="card-tag">Unique Products/Services</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Batch Costing</div>
+        <ul class="card-items">
+          <li>Similar to job costing but for a batch of identical items</li>
+          <li>Total batch cost calculated, then ÷ units in batch</li>
+          <li>Examples: printing, bakeries, clothing manufacturers</li>
+          <li>Cost per unit = Total Batch Cost ÷ Batch Size</li>
+          <li>Efficient for repetitive production in groups</li>
+        </ul>
+        <div class="card-tag">Identical Batches</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Process Costing</div>
+        <ul class="card-items">
+          <li>Used for continuous mass production processes</li>
+          <li>Costs averaged across all units produced</li>
+          <li>Examples: oil refining, chemicals, food processing, cement</li>
+          <li>Concept of equivalent units for WIP valuation</li>
+          <li>Normal loss vs abnormal loss/gain — key exam topic</li>
+        </ul>
+        <div class="card-tag">Mass Production</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Activity-Based Costing (ABC)</div>
+        <ul class="card-items">
+          <li>Modern approach — overheads assigned by activities</li>
+          <li>Different products use resources differently</li>
+          <li>Identifies true cost drivers (not just labour hours)</li>
+          <li>More accurate than traditional absorption costing</li>
+          <li>Used in Big 4 advisory and MNC finance teams</li>
+        </ul>
+        <div class="card-tag">Modern · Accurate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">5.10</div>
+      <div class="section-title">Cost Accounting & ACCA — Paper Mapping</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>ACCA Paper</th><th>Level</th><th>What's Tested</th></tr>
+      <tr><td>Cost Classification, Fixed vs Variable</td><td>MA (Management Accounting)</td><td>Applied Knowledge</td><td>Classify costs, High-Low method</td></tr>
+      <tr><td>Overhead Absorption Rate (OAR)</td><td>MA (Management Accounting)</td><td>Applied Knowledge</td><td>Calculate OAR, over/under absorption</td></tr>
+      <tr><td>Absorption vs Marginal Costing</td><td>MA (Management Accounting)</td><td>Applied Knowledge</td><td>Profit reconciliation, inventory valuation</td></tr>
+      <tr><td>Break-Even Analysis (CVP)</td><td>MA → PM</td><td>Knowledge → Skills</td><td>BEP, MoS, C/S ratio, target profit</td></tr>
+      <tr><td>Job, Batch & Process Costing</td><td>MA (Management Accounting)</td><td>Applied Knowledge</td><td>Cost per unit, normal/abnormal loss</td></tr>
+      <tr><td>Activity-Based Costing</td><td>PM (Performance Management)</td><td>Applied Skills</td><td>Cost driver rates, product profitability</td></tr>
+    </table>
+  </div>
+
+  <!-- 5.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">5.11</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Cost Accounting = Internal Tool</div><ul class="card-items"><li>For management decisions, not external reporting</li><li>No fixed rules — flexible and practical</li><li>Every MNC CFO team uses it daily</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Fixed vs Variable is Everything</div><ul class="card-items"><li>Fixed costs don't change with output</li><li>Variable costs change proportionally</li><li>This drives break-even and pricing decisions</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Contribution is King</div><ul class="card-items"><li>Contribution = Revenue − Variable Costs</li><li>Used in every marginal costing decision</li><li>Must be positive for a product to be worth making</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Absorption for IFRS, Marginal for Decisions</div><ul class="card-items"><li>IAS 2 requires absorption for inventory</li><li>Marginal costing better for internal decisions</li><li>Know both and when to use each</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Break-Even is Practical Gold</div><ul class="card-items"><li>Every business owner needs to know their BEP</li><li>Margin of Safety shows risk level</li><li>C/S ratio links contribution to revenue</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Different Industries, Different Systems</div><ul class="card-items"><li>Job: unique projects (audit, construction)</li><li>Batch: identical groups (printing, bakery)</li><li>Process: continuous mass production (oil, chemicals)</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 5 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Classify 10 business costs as Fixed/Variable/Semi-Variable</span>
+        <span class="tag teal">✅ Calculate Break-Even for your own hypothetical business idea</span>
+        <span class="tag teal">✅ Work through one Absorption vs Marginal Costing profit reconciliation</span>
+        <span class="tag teal">✅ Practice the High-Low method with 3 different examples</span>
+        <span class="tag teal">✅ Attempt ACCA MA past paper Section A MCQs on costing</span>
+        <span class="tag teal">✅ Draw the cost build-up: Prime Cost → Production Cost → Total Cost</span>
+        <span class="tag teal">✅ Calculate C/S ratio and target profit for a sample product</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">5.12</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Confusing Fixed Costs "in Total" vs "Per Unit"</strong><br>
+        Fixed costs are fixed in TOTAL, not per unit — fixed cost per unit actually falls as volume rises (same fixed cost spread over more units). Students often wrongly treat fixed cost per unit as a constant, breaking break-even and costing calculations.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Using Absorption Costing Profit for Break-Even Analysis</strong><br>
+        Break-even and CVP (cost-volume-profit) analysis rely on CONTRIBUTION (marginal costing), not absorption costing profit. Fixed overheads absorbed into inventory distort the true break-even point — always use marginal costing logic for break-even questions.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Mixing Up Product Costs and Period Costs</strong><br>
+        Product costs (direct materials, direct labour, production overheads) attach to inventory and hit the P&L only when sold. Period costs (admin, selling, distribution) are expensed immediately in the period incurred, regardless of sales. Misclassifying a period cost as a product cost distorts both inventory value and profit timing.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Forgetting Absorption and Marginal Costing Give the Same Profit When Production = Sales</strong><br>
+        The two methods only diverge when opening/closing inventory levels change. When production equals sales (no inventory movement), both methods produce identical profit — a frequently tested reconciliation point.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Wrong Formula Direction for Break-Even Point</strong><br>
+        Break-Even Point = Fixed Costs ÷ Contribution per unit — NOT Fixed Costs ÷ Selling Price, and not Contribution ÷ Fixed Costs. Getting the ratio inverted is one of the most common calculation slip-ups under exam time pressure.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Ignoring Semi-Variable Costs</strong><br>
+        Some costs (e.g. electricity with a fixed line-rent plus per-unit charge) have both a fixed and variable component. Treating them as purely fixed or purely variable understates the accuracy of cost-volume-profit analysis — the High-Low method is used to split these.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Contribution</div>
+        <ul class="card-items">
+          <li><strong>Q: What is Contribution?</strong></li>
+          <li>A: Selling Price − Variable Cost per unit; the amount left to cover fixed costs and generate profit</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Break-Even Point</div>
+        <ul class="card-items">
+          <li><strong>Q: State the break-even formula.</strong></li>
+          <li>A: BEP (units) = Fixed Costs ÷ Contribution per unit</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Margin of Safety</div>
+        <ul class="card-items">
+          <li><strong>Q: What does Margin of Safety measure?</strong></li>
+          <li>A: Actual Sales − Break-Even Sales; how far sales can drop before a loss occurs</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Absorption vs Marginal</div>
+        <ul class="card-items">
+          <li><strong>Q: Which method is required for external IFRS reporting?</strong></li>
+          <li>A: Absorption costing (under IAS 2)</li>
+          <li><strong>Q: Which method is better for internal decisions?</strong></li>
+          <li>A: Marginal costing (uses contribution)</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">C/S Ratio</div>
+        <ul class="card-items">
+          <li><strong>Q: What is the Contribution/Sales ratio used for?</strong></li>
+          <li>A: Quickly calculating break-even revenue = Fixed Costs ÷ C/S Ratio</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+    </div>
+
+    <!-- FORMULA REFERENCE -->
+    <p class="section-label" style="margin-top:40px;">Part C — Formula Quick Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 5 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Contribution per unit</div><div class="formula-eq">Selling Price − Variable Cost per unit</div></div>
+      <div class="formula-row"><div class="formula-name">Break-Even Point (units)</div><div class="formula-eq">Fixed Costs ÷ Contribution per unit</div></div>
+      <div class="formula-row"><div class="formula-name">Break-Even Revenue</div><div class="formula-eq">Fixed Costs ÷ C/S Ratio</div></div>
+      <div class="formula-row"><div class="formula-name">C/S Ratio</div><div class="formula-eq">Contribution ÷ Revenue × 100</div></div>
+      <div class="formula-row"><div class="formula-name">Margin of Safety</div><div class="formula-eq">Actual Sales − Break-Even Sales</div></div>
+      <div class="formula-row"><div class="formula-name">Marginal Costing Profit</div><div class="formula-eq">Contribution − Fixed Costs</div></div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"What's the difference between fixed and variable costs, and why does it matter?"</td><td>Foundational cost behaviour understanding</td><td>Fixed costs remain constant in total regardless of activity level (e.g. rent), while variable costs change directly with volume (e.g. raw materials). This distinction matters because it drives break-even analysis, pricing decisions, and understanding how profit changes as sales volume changes — a core input for budgeting and forecasting.</td></tr>
+      <tr><td>"Explain break-even analysis and why a business would use it."</td><td>Practical application of cost accounting</td><td>Break-even analysis identifies the sales volume at which total revenue equals total costs — the point of zero profit or loss. Businesses use it to set minimum sales targets, evaluate the risk of new products, and understand how sensitive profit is to volume changes, especially useful before launching a new product or service.</td></tr>
+      <tr><td>"When would you use marginal costing instead of absorption costing?"</td><td>Depth of understanding — not just definitions but application</td><td>Marginal costing is better for short-term internal decisions — pricing special orders, make-or-buy decisions, break-even analysis — because it isolates contribution and avoids fixed cost allocation distortions. Absorption costing is required for external financial reporting under IAS 2, as it matches all production costs to the units they relate to.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Fixed + Variable + Direct + Indirect<br>
+      + Absorption vs Marginal<br>
+      + Break-Even Analysis<br>
+      = <strong style="color:var(--accent4);">The Tools to Understand, Control & Optimise Any Business Cost</strong>
+    </div>
+    <h3>Control costs — and you control the business.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 6: Management Accounting — budgeting, variance analysis, and decision-making tools for the modern CFO. 📊</p>
+  </div>
+
+</div>
+</body>
+</html>

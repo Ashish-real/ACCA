@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 12: Interpretation of Financial Statements</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #c084fc;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero { padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(192,132,252,0.10) 0%, transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-violet { background: rgba(192,132,252,0.2); color: var(--accent5); border: 1px solid rgba(192,132,252,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(192,132,252,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(192,132,252,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(192,132,252,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(192,132,252,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(192,132,252,0.07), rgba(0,212,170,0.05)); border: 1px solid rgba(192,132,252,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  .equation { background: var(--card); border: 1px solid var(--accent5); border-radius: 12px; padding: 20px 24px; margin: 20px 0; text-align: center; }
+  .equation-text { font-family: var(--mono); font-size: clamp(12px,2.5vw,15px); color: var(--accent2); letter-spacing: 1px; line-height: 2; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* RATIO CARD */
+  .ratio-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; transition: border-color 0.2s; }
+  .ratio-card:hover { border-color: var(--accent5); }
+  .ratio-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .ratio-formula { font-family: var(--mono); font-size: 11px; color: var(--accent2); background: rgba(0,212,170,0.08); padding: 6px 10px; border-radius: 6px; margin-bottom: 8px; }
+  .ratio-desc { font-size: 11px; color: var(--muted); line-height: 1.6; }
+  .ratio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 12px; margin-top: 14px; }
+
+  /* COMPANY COMPARISON */
+  .comp-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 14px; }
+  .comp-header { background: rgba(192,132,252,0.08); padding: 12px 20px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; }
+  .comp-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr; padding: 9px 16px; border-bottom: 1px solid rgba(42,42,58,0.3); font-size: 12px; align-items: center; }
+  .comp-row:last-child { border-bottom: none; }
+  .comp-row.header { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.2); }
+  .comp-num { font-family: var(--mono); text-align: right; color: var(--muted); }
+  .comp-num.good { color: var(--accent2); font-weight: 600; }
+  .comp-num.bad { color: var(--accent3); }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(192,132,252,0.1); border: 1px solid rgba(192,132,252,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(192,132,252,0.09), rgba(0,212,170,0.06)); border: 1px solid rgba(192,132,252,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 12</div>
+  <h1>Interpretation of<br><span>Financial Statements</span></h1>
+  <p class="hero-sub">Ratio analysis — the skill that turns raw numbers into insight. How investors, lenders, and analysts read between the lines of any company's accounts.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Ratio Categories</div></div>
+    <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Key Ratios</div></div>
+    <div class="stat"><div class="stat-num">FA+FR+FM</div><div class="stat-label">ACCA Papers</div></div>
+    <div class="stat"><div class="stat-num">Part 1</div><div class="stat-label">Foundation Finale</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 12 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">12.1</span>Why Interpretation Matters</div>
+    <div class="toc-item"><span class="toc-num">12.2</span>Profitability Ratios</div>
+    <div class="toc-item"><span class="toc-num">12.3</span>Liquidity Ratios</div>
+    <div class="toc-item"><span class="toc-num">12.4</span>Efficiency (Activity) Ratios</div>
+    <div class="toc-item"><span class="toc-num">12.5</span>Gearing (Leverage) Ratios</div>
+    <div class="toc-item"><span class="toc-num">12.6</span>Investor Ratios</div>
+    <div class="toc-item"><span class="toc-num">12.7</span>Complete Ratio Analysis — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">12.8</span>Limitations of Ratio Analysis</div>
+    <div class="toc-item"><span class="toc-num">12.9</span>Beyond Ratios — Trend, Common-Size & Industry Analysis</div>
+    <div class="toc-item"><span class="toc-num">12.10</span>Interpretation & ACCA — Paper Mapping</div>
+    <div class="toc-item"><span class="toc-num">12.11</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">12.12</span>Earnings Per Share (IAS 33)</div>
+    <div class="toc-item"><span class="toc-num">12.13</span>Non-Current Assets Held for Sale & Discontinued Operations (IFRS 5)</div>
+    <div class="toc-item"><span class="toc-num">12.14</span>Related Party Disclosures (IAS 24)</div>
+    <div class="toc-item"><span class="toc-num">12.15</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">You now know how to prepare financial statements (Ch 3), apply IFRS (Ch 4), account for costs (Ch 5-6), and consolidate groups (Ch 11). This final chapter of the Foundation section teaches the skill that ties it all together: <strong>interpretation</strong>. Anyone can read a number. The real skill — the one that gets you promoted — is understanding what that number MEANS.</p>
+    <div class="quote">"A balance sheet is a photograph. Ratio analysis is the X-ray that shows you what's really going on underneath."</div>
+  </div>
+
+  <!-- 12.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-violet">12.1</div>
+      <div class="section-title">Why Interpretation Matters</div>
+    </div>
+    <p class="prose">A single number — "Profit: ₹50 lakh" — tells you almost nothing on its own. Is it good? Bad? Better than last year? Better than competitors? <strong>Ratio analysis converts absolute numbers into relative, comparable insights.</strong></p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Three Types of Comparison</div>
+        <ul class="card-items">
+          <li><strong>Trend analysis:</strong> Compare to the same company's prior years</li>
+          <li><strong>Cross-sectional:</strong> Compare to competitors / industry average</li>
+          <li><strong>Target comparison:</strong> Compare to budget or benchmark</li>
+          <li>A ratio alone means nothing — context is everything</li>
+        </ul>
+        <div class="card-tag">Context is Everything</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Who Uses This Skill</div>
+        <ul class="card-items">
+          <li>Equity analysts — stock recommendations</li>
+          <li>Credit analysts — loan approval decisions</li>
+          <li>FP&A teams — internal performance reviews</li>
+          <li>Big 4 — analytical procedures in every audit</li>
+          <li>M&A teams — due diligence on target companies</li>
+        </ul>
+        <div class="card-tag">Universal Finance Skill</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">The 5 Ratio Categories</div>
+        <ul class="card-items">
+          <li><strong>Profitability:</strong> How much profit is made?</li>
+          <li><strong>Liquidity:</strong> Can debts be paid short-term?</li>
+          <li><strong>Efficiency:</strong> How well are assets used?</li>
+          <li><strong>Gearing:</strong> How much debt vs equity?</li>
+          <li><strong>Investor:</strong> What return for shareholders?</li>
+        </ul>
+        <div class="card-tag">The Big 5</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">12.2</div>
+      <div class="section-title">Profitability Ratios</div>
+      <div class="section-meta">How Much Profit is Made?</div>
+    </div>
+    <p class="prose">Profitability ratios measure how effectively a company converts revenue into profit at different levels of the Income Statement.</p>
+
+    <div class="ratio-grid">
+      <div class="ratio-card">
+        <div class="ratio-name">Gross Profit Margin</div>
+        <div class="ratio-formula">Gross Profit ÷ Revenue × 100</div>
+        <div class="ratio-desc">Measures pricing power and production efficiency. A falling margin may indicate rising costs or pricing pressure from competition.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Operating Profit Margin</div>
+        <div class="ratio-formula">Operating Profit (EBIT) ÷ Revenue × 100</div>
+        <div class="ratio-desc">Shows profitability from core operations before financing and tax. Useful for comparing companies with different capital structures.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Net Profit Margin</div>
+        <div class="ratio-formula">Profit After Tax ÷ Revenue × 100</div>
+        <div class="ratio-desc">The "bottom line" margin — what shareholders ultimately get to keep per rupee of revenue.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Return on Capital Employed (ROCE)</div>
+        <div class="ratio-formula">Operating Profit ÷ Capital Employed × 100</div>
+        <div class="ratio-desc">Capital Employed = Total Equity + Non-Current Liabilities. The single most important ratio — shows how efficiently capital generates profit.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Return on Equity (ROE)</div>
+        <div class="ratio-formula">Profit After Tax ÷ Shareholders' Equity × 100</div>
+        <div class="ratio-desc">Return generated specifically for ordinary shareholders. Higher gearing can artificially boost ROE — always check alongside ROCE.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Asset Turnover</div>
+        <div class="ratio-formula">Revenue ÷ Net Assets (Capital Employed)</div>
+        <div class="ratio-desc">How many rupees of revenue generated per rupee of capital employed. Links profitability to efficiency — the DuPont decomposition.</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🎯 The DuPont Decomposition — ROCE Breakdown</div>
+      ROCE = Operating Profit Margin × Asset Turnover<br><br>
+      This shows ROCE can improve in TWO ways: (1) increase margins — better pricing or cost control, or (2) increase asset turnover — generate more revenue per rupee of assets. A company with falling ROCE — examiners want you to identify WHICH of these two drivers caused it.
+    </div>
+  </div>
+
+  <!-- 12.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">12.3</div>
+      <div class="section-title">Liquidity Ratios</div>
+      <div class="section-meta">Can Debts Be Paid Short-Term?</div>
+    </div>
+    <p class="prose">Liquidity ratios measure a company's ability to meet its <strong>short-term obligations</strong>. A profitable company can still fail if it runs out of cash (remember Chapter 3 — Profit vs Cash).</p>
+
+    <div class="ratio-grid">
+      <div class="ratio-card">
+        <div class="ratio-name">Current Ratio</div>
+        <div class="ratio-formula">Current Assets ÷ Current Liabilities</div>
+        <div class="ratio-desc">A ratio above 1 means current assets cover current liabilities. Too high may mean inefficient use of resources; too low signals liquidity risk.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Quick Ratio (Acid Test)</div>
+        <div class="ratio-formula">(Current Assets − Inventory) ÷ Current Liabilities</div>
+        <div class="ratio-desc">Stricter test — excludes inventory (least liquid current asset). Better measure of immediate liquidity, especially for businesses with slow-moving stock.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Cash Ratio</div>
+        <div class="ratio-formula">Cash & Equivalents ÷ Current Liabilities</div>
+        <div class="ratio-desc">The most conservative liquidity measure — only counts actual cash. Used by lenders assessing immediate default risk.</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">💡 "Too High" Can Also Be Bad</div>
+      A current ratio of 5:1 might look safe — but it could mean cash is sitting idle, inventory is excessive, or receivables aren't being collected. <strong>Capital tied up in working capital earns no return</strong>. ACCA examiners reward candidates who can argue BOTH sides — too low is risky, too high may signal inefficiency.
+    </div>
+  </div>
+
+  <!-- 12.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">12.4</div>
+      <div class="section-title">Efficiency (Activity) Ratios</div>
+      <div class="section-meta">How Well Are Assets Used?</div>
+    </div>
+    <p class="prose">Efficiency ratios — also called "working capital ratios" — measure how well a company manages inventory, receivables, and payables. Together they reveal the <strong>cash conversion cycle</strong>.</p>
+
+    <div class="ratio-grid">
+      <div class="ratio-card">
+        <div class="ratio-name">Inventory Days (Holding Period)</div>
+        <div class="ratio-formula">(Inventory ÷ COGS) × 365</div>
+        <div class="ratio-desc">Average days inventory is held before sale. Lower = faster moving stock = less capital tied up.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Receivables Days</div>
+        <div class="ratio-formula">(Trade Receivables ÷ Revenue) × 365</div>
+        <div class="ratio-desc">Average days taken to collect from customers. Rising receivables days may indicate collection problems or overly generous credit terms.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Payables Days</div>
+        <div class="ratio-formula">(Trade Payables ÷ Purchases or COGS) × 365</div>
+        <div class="ratio-desc">Average days taken to pay suppliers. Higher can mean better cash management — but too high may signal inability to pay or strained supplier relationships.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Cash Conversion Cycle (CCC)</div>
+        <div class="ratio-formula">Inventory Days + Receivables Days − Payables Days</div>
+        <div class="ratio-desc">Total time cash is tied up in working capital. A NEGATIVE CCC (e.g. Amazon model) means suppliers fund the business — extremely powerful.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Asset Turnover (Net Assets)</div>
+        <div class="ratio-formula">Revenue ÷ Total Assets (or Net Assets)</div>
+        <div class="ratio-desc">Overall measure of how efficiently total assets generate sales revenue.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Non-Current Asset Turnover</div>
+        <div class="ratio-formula">Revenue ÷ Non-Current Assets</div>
+        <div class="ratio-desc">Specifically measures how efficiently PPE and other long-term assets generate revenue — useful for capital-intensive industries.</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 The Cash Conversion Cycle — Real Power</div>
+      Imagine: Inventory Days = 30, Receivables Days = 45, Payables Days = 90<br>
+      CCC = 30 + 45 − 90 = <strong style="color:var(--accent2);">−15 days</strong><br><br>
+      This means the company collects cash from customers and sells inventory <strong>15 days BEFORE</strong> it has to pay its suppliers. Effectively, suppliers are financing the business interest-free. This is the model behind companies like Amazon, Zara, and many FMCG giants — a key topic for ACCA FM and corporate finance interviews.
+    </div>
+  </div>
+
+  <!-- 12.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">12.5</div>
+      <div class="section-title">Gearing (Leverage) Ratios</div>
+      <div class="section-meta">How Much Debt vs Equity?</div>
+    </div>
+    <p class="prose">Gearing ratios measure the proportion of debt in a company's capital structure — and the risk that comes with it. High gearing amplifies both returns and losses.</p>
+
+    <div class="ratio-grid">
+      <div class="ratio-card">
+        <div class="ratio-name">Gearing Ratio (Debt to Equity)</div>
+        <div class="ratio-formula">Total Debt ÷ Total Equity × 100</div>
+        <div class="ratio-desc">Shows reliance on debt financing relative to shareholder funds. Higher gearing = higher financial risk but potentially higher ROE.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Debt to Capital</div>
+        <div class="ratio-formula">Total Debt ÷ (Total Debt + Total Equity) × 100</div>
+        <div class="ratio-desc">Alternative gearing measure showing debt as a proportion of total long-term capital — used in different jurisdictions/contexts.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Interest Cover</div>
+        <div class="ratio-formula">Operating Profit (EBIT) ÷ Interest Expense</div>
+        <div class="ratio-desc">How many times operating profit covers interest payments. Below 2x is often a red flag for lenders — a key covenant metric.</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">⚖️ The Gearing Trade-Off</div>
+      Debt is usually cheaper than equity (tax-deductible interest, lower required return). High gearing can boost ROE in good years through <strong>financial leverage</strong>. But in bad years, fixed interest payments must still be made — increasing the risk of financial distress. ACCA FM tests both the WACC impact and the risk implications of capital structure decisions.
+    </div>
+  </div>
+
+  <!-- 12.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-violet">12.6</div>
+      <div class="section-title">Investor Ratios</div>
+      <div class="section-meta">What Return for Shareholders?</div>
+    </div>
+    <div class="ratio-grid">
+      <div class="ratio-card">
+        <div class="ratio-name">Earnings Per Share (EPS)</div>
+        <div class="ratio-formula">Profit Attributable to Ordinary Shareholders ÷ Weighted Avg No. of Shares</div>
+        <div class="ratio-desc">The most widely quoted investor metric. EPS growth is a primary driver of share price movements.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Price/Earnings (P/E) Ratio</div>
+        <div class="ratio-formula">Share Price ÷ EPS</div>
+        <div class="ratio-desc">How much investors are willing to pay per rupee of earnings. High P/E suggests high growth expectations (or overvaluation).</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Dividend Yield</div>
+        <div class="ratio-formula">Dividend Per Share ÷ Share Price × 100</div>
+        <div class="ratio-desc">Cash return relative to share price — important for income-focused investors.</div>
+      </div>
+      <div class="ratio-card">
+        <div class="ratio-name">Dividend Cover</div>
+        <div class="ratio-formula">EPS ÷ Dividend Per Share</div>
+        <div class="ratio-desc">How many times earnings cover the dividend paid. Low cover may signal an unsustainable dividend.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">12.7</div>
+      <div class="section-title">Complete Ratio Analysis</div>
+      <div class="section-meta">Worked Example — Ashish Consulting vs Industry</div>
+    </div>
+    <p class="prose">Let's apply everything to Ashish Consulting Ltd's financial statements from Chapter 3, comparing to an industry benchmark.</p>
+
+    <div class="comp-block">
+      <div class="comp-header">Ashish Consulting Ltd — Ratio Analysis (Year ended 31 March 2026)</div>
+      <div class="comp-row header"><div>Ratio</div><div style="text-align:right;">Ashish Ltd</div><div style="text-align:right;">Industry Avg</div></div>
+      <div class="comp-row"><div>Gross Profit Margin</div><div class="comp-num good">61.6%</div><div class="comp-num">55%</div></div>
+      <div class="comp-row"><div>Operating Profit Margin (EBIT)</div><div class="comp-num good">26.4%</div><div class="comp-num">20%</div></div>
+      <div class="comp-row"><div>Net Profit Margin</div><div class="comp-num good">18.4%</div><div class="comp-num">14%</div></div>
+      <div class="comp-row"><div>ROCE</div><div class="comp-num good">43.4%</div><div class="comp-num">25%</div></div>
+      <div class="comp-row"><div>Current Ratio</div><div class="comp-num good">4.4 : 1</div><div class="comp-num">1.8 : 1</div></div>
+      <div class="comp-row"><div>Quick Ratio</div><div class="comp-num good">4.4 : 1</div><div class="comp-num">1.2 : 1</div></div>
+      <div class="comp-row"><div>Receivables Days</div><div class="comp-num bad">52.6 days</div><div class="comp-num">35 days</div></div>
+      <div class="comp-row"><div>Gearing (Debt/Equity)</div><div class="comp-num good">19.1%</div><div class="comp-num">45%</div></div>
+      <div class="comp-row"><div>Interest Cover</div><div class="comp-num good">12.75x</div><div class="comp-num">6x</div></div>
+    </div>
+
+    <div class="wide-card" style="margin-top:14px;">
+      <h4>📝 Interpretation — Writing the Analysis (ACCA Exam Style)</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.9;margin-top:8px;">
+        Ashish Consulting Ltd significantly outperforms the industry on profitability — gross margin (61.6% vs 55%) and ROCE (43.4% vs 25%) indicate strong pricing power and highly efficient use of capital, likely reflecting the asset-light nature of a consulting business.<br><br>
+        Liquidity is exceptionally strong — a current ratio of 4.4:1 is well above the industry's 1.8:1, suggesting the company holds significant cash reserves. While this provides safety, it may also indicate <strong style="color:var(--text);">underutilised capital</strong> that could be deployed for growth or returned to shareholders.<br><br>
+        One area of concern: receivables days (52.6) exceed the industry average (35), suggesting either generous credit terms or potential collection issues — worth investigating further.<br><br>
+        Gearing is low (19.1% vs 45%) with very high interest cover (12.75x), indicating significant <strong style="color:var(--accent2);">unused debt capacity</strong> — the company could raise debt financing for expansion at low risk.
+      </p>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🎯 The ACCA Interpretation Formula</div>
+      For every ratio: (1) State the number and direction of change/comparison, (2) Explain what it MEANS in business terms, (3) Suggest a possible REASON, (4) Where relevant, link to OTHER ratios for a complete picture. Never just state numbers — examiners reward INSIGHT, not calculation alone.
+    </div>
+  </div>
+
+  <!-- 12.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">12.8</div>
+      <div class="section-title">Limitations of Ratio Analysis</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Limitation</th><th>Why It Matters</th></tr>
+      <tr><td>Historical data</td><td>Ratios based on past performance — may not predict future</td></tr>
+      <tr><td>Different accounting policies</td><td>Companies using different depreciation methods, inventory valuation aren't directly comparable</td></tr>
+      <tr><td>Seasonal businesses</td><td>Year-end snapshot may not reflect typical operations (e.g. retailer's inventory at peak season)</td></tr>
+      <tr><td>Inflation effects</td><td>Historical cost accounting distorts comparisons over time</td></tr>
+      <tr><td>One-off items</td><td>Exceptional gains/losses can distort ratios for a single year</td></tr>
+      <tr><td>Industry differences</td><td>Comparing a tech company to a manufacturer using the same benchmarks is meaningless</td></tr>
+      <tr><td>Creative accounting</td><td>Companies may structure transactions to improve specific ratios (window dressing)</td></tr>
+      <tr><td>Non-financial factors ignored</td><td>Brand value, employee morale, market position not captured in ratios</td></tr>
+    </table>
+  </div>
+
+  <!-- 12.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">12.9</div>
+      <div class="section-title">Beyond Ratios</div>
+      <div class="section-meta">Trend, Common-Size & Industry Analysis</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Trend Analysis (Horizontal)</div>
+        <ul class="card-items">
+          <li>Compare each line item across multiple years</li>
+          <li>Express as % change year-on-year</li>
+          <li>Identify growth patterns, seasonal trends, anomalies</li>
+          <li>Usually 3-5 years of data for meaningful trends</li>
+        </ul>
+        <div class="card-tag">Time-Based View</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Common-Size Analysis (Vertical)</div>
+        <ul class="card-items">
+          <li>Express each line item as % of a base figure</li>
+          <li>Income Statement: % of revenue</li>
+          <li>Balance Sheet: % of total assets</li>
+          <li>Enables comparison between companies of different sizes</li>
+        </ul>
+        <div class="card-tag">Size-Neutral Comparison</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Industry & Peer Benchmarking</div>
+        <ul class="card-items">
+          <li>Compare ratios to direct competitors</li>
+          <li>Industry databases: CMIE Prowess, Bloomberg, Capital IQ</li>
+          <li>Big 4 analysts build comparable company sets</li>
+          <li>Essential for valuation and credit decisions</li>
+        </ul>
+        <div class="card-tag">Relative Performance</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-violet">12.10</div>
+      <div class="section-title">Interpretation & ACCA — Paper Mapping</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>ACCA Paper</th><th>Level</th><th>What's Tested</th></tr>
+      <tr><td>Basic ratio calculations</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Calculate ratios from simple financial statements</td></tr>
+      <tr><td>Ratio interpretation & analysis</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Calculate AND write analysis — full marks need both</td></tr>
+      <tr><td>Working capital management</td><td>FM (Financial Management)</td><td>Applied Skills</td><td>Cash conversion cycle, working capital policy</td></tr>
+      <tr><td>Gearing & capital structure</td><td>FM → AFM</td><td>Skills → Strategic</td><td>WACC, optimal gearing, financial risk</td></tr>
+      <tr><td>Limitations & qualitative factors</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Critically evaluate ratio analysis</td></tr>
+      <tr><td>Comprehensive performance analysis</td><td>SBR (Strategic Business Reporting)</td><td>Strategic Professional</td><td>Full report-style analysis for stakeholders</td></tr>
+    </table>
+  </div>
+
+  <!-- 12.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">12.11</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">5 Ratio Categories</div><ul class="card-items"><li>Profitability, Liquidity, Efficiency, Gearing, Investor</li><li>Each answers a different stakeholder question</li><li>Memorise formulas — calculation speed matters</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Numbers Without Context = Useless</div><ul class="card-items"><li>Always compare: trend, industry, or target</li><li>A ratio of "15%" means nothing alone</li><li>Context transforms data into insight</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">ROCE = Margin × Asset Turnover</div><ul class="card-items"><li>DuPont decomposition — most powerful framework</li><li>Identify WHICH driver changed</li><li>Links profitability to efficiency</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Cash Conversion Cycle is Gold</div><ul class="card-items"><li>Negative CCC = suppliers fund the business</li><li>Combines 3 efficiency ratios into one story</li><li>Major working capital management concept</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">State → Explain → Reason → Link</div><ul class="card-items"><li>The ACCA interpretation formula</li><li>Never just calculate — always interpret</li><li>This is where exam marks really live</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Always Acknowledge Limitations</div><ul class="card-items"><li>Accounting policy differences</li><li>One-off items, seasonality, inflation</li><li>Shows examiner-level critical thinking</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 12 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Calculate all 20 ratios from this chapter for one company's annual report</span>
+        <span class="tag teal">✅ Compare Infosys vs TCS using profitability and gearing ratios</span>
+        <span class="tag teal">✅ Calculate Cash Conversion Cycle for 2 companies — compare</span>
+        <span class="tag teal">✅ Write a full ACCA-style interpretation paragraph (State-Explain-Reason-Link)</span>
+        <span class="tag teal">✅ Practice common-size analysis on a sample Income Statement</span>
+        <span class="tag teal">✅ Attempt ACCA FR past paper interpretation questions</span>
+        <span class="tag teal">✅ List 5 limitations of ratio analysis from memory</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">12.12</div>
+      <div class="section-title">Earnings Per Share (IAS 33)</div>
+    </div>
+    <p class="section-label">Part A — Why EPS Matters More Than Almost Any Other Single Number</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px;">EPS is one of the most widely-quoted, most heavily scrutinised figures in financial reporting — it directly feeds the P/E ratio, drives analyst forecasts, and (rightly or wrongly) is often the single number investors fixate on most. IAS 33 standardises exactly how it must be calculated.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">EPS Formulas</div>
+      <div class="formula-row"><div class="formula-name">Basic EPS</div><div class="formula-eq">Profit Attributable to Ordinary Shareholders ÷ Weighted Average Number of Ordinary Shares Outstanding During the Period</div></div>
+      <div class="formula-row"><div class="formula-name">Diluted EPS</div><div class="formula-eq">Adjusted Profit ÷ (Weighted Average Shares + All Potentially Dilutive Shares — from convertible bonds, share options, convertible preference shares)</div></div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why Diluted EPS Matters</div>
+      Diluted EPS answers: "What would EPS look like if every convertible instrument (bonds, options, convertible preference shares) were actually converted into ordinary shares?" It's ALWAYS lower than or equal to basic EPS (since dilution only ever adds shares, never reduces them) — giving investors a more conservative, "worst-case" view of per-share earnings that accounts for the company's full potential share count.
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Part B — Worked Example</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: Basic and Diluted EPS With a Mid-Year Share Issue</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Profit attributable to ordinary shareholders = ₹4,50,00,000. Shares outstanding at 1 Jan = 1,00,00,000. On 1 July, the company issued 20,00,000 new shares at full market price (no bonus element). The company also has ₹2 Crore of 8% convertible bonds outstanding, convertible into 5,00,000 shares; tax rate = 25%.<br><br>
+        <strong style="color:var(--text);">Step 1 — Weighted average shares (Basic EPS):</strong><br>
+        Jan-Jun (6 months): 1,00,00,000 shares<br>
+        Jul-Dec (6 months): 1,20,00,000 shares (after the issue)<br>
+        Weighted average = (1,00,00,000 × 6/12) + (1,20,00,000 × 6/12) = 50,00,000 + 60,00,000 = <strong style="color:var(--accent2);">1,10,00,000 shares</strong><br><br>
+        <strong style="color:var(--text);">Step 2 — Basic EPS:</strong><br>
+        Basic EPS = ₹4,50,00,000 ÷ 1,10,00,000 = <strong style="color:var(--accent2);">₹4.09 per share</strong><br><br>
+        <strong style="color:var(--text);">Step 3 — Adjust profit for diluted EPS (add back after-tax interest saved if bonds convert):</strong><br>
+        Interest on bonds = ₹2,00,00,000 × 8% = ₹16,00,000<br>
+        After-tax interest saved = ₹16,00,000 × (1 − 25%) = ₹12,00,000<br>
+        Adjusted profit = ₹4,50,00,000 + ₹12,00,000 = ₹4,62,00,000<br><br>
+        <strong style="color:var(--text);">Step 4 — Diluted shares:</strong><br>
+        1,10,00,000 + 5,00,000 (from bond conversion) = 1,15,00,000 shares<br><br>
+        <strong style="color:var(--text);">Step 5 — Diluted EPS:</strong><br>
+        Diluted EPS = ₹4,62,00,000 ÷ 1,15,00,000 = <strong style="color:var(--accent2);">₹4.02 per share</strong><br><br>
+        <strong style="color:var(--text);">Confirms the rule:</strong> Diluted EPS (₹4.02) is LOWER than Basic EPS (₹4.09) — exactly as IAS 33 requires, since including potential future shares can only dilute, never enhance, the per-share figure.
+      </div>
+    </div>
+  </div>
+
+  <!-- 12.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">12.13</div>
+      <div class="section-title">Non-Current Assets Held for Sale & Discontinued Operations (IFRS 5)</div>
+    </div>
+    <p class="section-label">Part A — Two Related But Distinct Concepts</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏷️</div>
+        <div class="card-title">Held for Sale (Balance Sheet)</div>
+        <ul class="card-items">
+          <li>A non-current asset (or disposal group) qualifies if it's available for IMMEDIATE sale in its present condition, and the sale is HIGHLY PROBABLE (management committed to a plan, actively marketing at a reasonable price, expected to complete within 12 months)</li>
+          <li>Measured at the LOWER of carrying amount and fair value less costs to sell — and depreciation STOPS once classified as held for sale</li>
+          <li>Presented SEPARATELY on the Balance Sheet, distinct from other non-current assets</li>
+        </ul>
+        <div class="card-tag">Balance Sheet Classification</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚪</div>
+        <div class="card-title">Discontinued Operations (Income Statement)</div>
+        <ul class="card-items">
+          <li>A component of the entity that has EITHER been disposed of, OR is classified as held for sale, AND represents a SEPARATE MAJOR LINE of business or geographical area</li>
+          <li>Its results are presented as a SINGLE LINE on the face of the Income Statement (post-tax profit/loss from discontinued operations), separate from continuing operations, with detail in the notes</li>
+        </ul>
+        <div class="card-tag">Income Statement Presentation</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why This Distinction Matters for Analysis</div>
+      Separating discontinued operations from continuing operations gives analysts a CLEANER view of ongoing, sustainable business performance — mixing in the results of a business segment that's being sold or shut down would distort trend analysis and make it harder to forecast future performance based on the CONTINUING business alone. This directly connects to Chapter 12's core interpretation skills (trend analysis, ratio comparability across periods).
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Part B — Worked Example</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: Presenting a Discontinued Division</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> A company's continuing operations generated Profit Before Tax of ₹8 Crore (tax 25% = ₹2 Crore, PAT ₹6 Crore). Its retail division — a genuinely separate major line of business — was formally classified as held for sale on 1 October, generating a loss of ₹1.5 Crore for the period it was owned, plus an additional ₹0.5 Crore impairment loss on writing the division down to fair value less costs to sell. No tax effect assumed on the division's loss for simplicity.<br><br>
+        <strong style="color:var(--text);">Income Statement Presentation:</strong><br>
+        Profit from Continuing Operations (after tax): ₹6,00,00,000<br>
+        Loss from Discontinued Operations (after tax): (₹2,00,00,000) — combining the ₹1.5 Cr operating loss + ₹0.5 Cr impairment<br>
+        <strong style="color:var(--accent5);">Total Profit for the Year: ₹4,00,00,000</strong><br><br>
+        <strong style="color:var(--text);">Key Point:</strong> An analyst looking ONLY at "Total Profit" (₹4 Crore) would understate how well the CONTINUING business is actually performing (₹6 Crore) — the separate discontinued operations line lets them correctly identify that the ₹4 Crore figure is depressed by a division being exited, not a genuine decline in the core, ongoing business.
+      </div>
+    </div>
+  </div>
+
+  <!-- 12.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">12.14</div>
+      <div class="section-title">Related Party Disclosures (IAS 24)</div>
+    </div>
+    <p class="section-label">Part A — Why Related Party Transactions Need Special Scrutiny</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px;">A transaction with a related party (a parent company, a subsidiary, key management personnel, or a close family member of a director, for example) might NOT be conducted on the same arm's-length terms as a transaction with an unrelated third party — even if the transaction is entirely legal, it could still distort the reported financial position or be used to manipulate results.</p>
+
+    <table class="data-table">
+      <tr><th>Related Party Category</th><th>Example</th></tr>
+      <tr><td>Parent / Subsidiary / Fellow Subsidiary</td><td>Any entity within the same corporate group</td></tr>
+      <tr><td>Associates & Joint Ventures</td><td>Entities where the reporting company has significant influence or joint control</td></tr>
+      <tr><td>Key Management Personnel (KMP)</td><td>Directors and senior executives with authority/responsibility for planning and controlling the entity's activities</td></tr>
+      <tr><td>Close Family Members of KMP</td><td>Spouses, children, and others who might influence or be influenced by the KMP in dealings with the entity</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 What Must Be Disclosed</div>
+      For material related party transactions, IAS 24 requires disclosure of: the NATURE of the relationship, the AMOUNT of the transactions, OUTSTANDING balances (including terms and whether secured), and any PROVISIONS for doubtful debts related to those balances — specifically so that users of the financial statements can assess whether the entity's reported position might have been affected by dealings that weren't conducted purely at arm's length.
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Part B — Worked Example</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: Identifying and Disclosing Related Party Transactions</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Scenario:</strong> During the year, a company (a) sold goods worth ₹50,00,000 to its 40%-owned associate at normal market prices, (b) paid ₹2,00,00,000 in total remuneration to its 5 key management personnel, and (c) purchased raw materials worth ₹30,00,000 from a supplier — a company owned by the CFO's brother — at prices 15% above the market rate charged to other customers.<br><br>
+        <strong style="color:var(--text);">Analysis:</strong><br>
+        (a) The associate IS a related party (significant influence exists at 40% ownership) — DISCLOSE the ₹50,00,000 transaction, even though it was at normal market prices (disclosure is required regardless of whether terms were fair, precisely so users can judge that for themselves).<br>
+        (b) KMP remuneration IS specifically required disclosure under IAS 24 — DISCLOSE the ₹2,00,00,000, typically broken down by category (short-term benefits, post-employment benefits, etc.).<br>
+        (c) The CFO's brother's company IS a related party (close family member of KMP) — DISCLOSE the ₹30,00,000 transaction, and the fact that pricing was 15% above market rate is a significant, specifically noteworthy detail that should be highlighted, since it suggests the transaction was NOT conducted at arm's length and may warrant further governance scrutiny (linking to Chapter 38's Corporate Governance content on conflicts of interest).
+      </div>
+    </div>
+  </div>
+
+  <!-- 12.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">12.15</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Calculating a Ratio Without Interpreting It</strong><br>
+        ACCA exams (and interviews) award marks primarily for INTERPRETATION, not calculation. A ratio number alone means nothing without context — is it improving or worsening, above or below industry average, and what does it suggest about the business? Always follow every calculated ratio with a "so what."</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Using Closing Balance Sheet Figures Where Average Would Be More Accurate</strong><br>
+        For ratios like ROCE or Asset Turnover, using an average of opening and closing capital employed (where data is available) gives a more accurate picture than just the closing figure, especially if there were major changes during the year (e.g. a large acquisition near year-end). Many exam answers accept closing figures for simplicity, but the concept should be understood.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Comparing Ratios Across Companies With Different Accounting Policies</strong><br>
+        A company using FIFO vs one using AVCO, or one that capitalises R&D vs one that expenses it, will show different ratios even with identical underlying economics. Always check accounting policy notes before comparing ratios across companies.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Treating High Gearing as Automatically Bad</strong><br>
+        Gearing amplifies both good and bad outcomes — high gearing isn't inherently negative if the company generates stable, predictable cash flows to service the debt (e.g. utility companies). The interpretation depends on the industry, cash flow stability, and interest cover — not gearing level in isolation.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Ignoring Seasonality When Interpreting a Single Period's Ratios</strong><br>
+        A retailer's liquidity ratios at year-end just after the festive season will look very different from mid-year. Ratios should ideally be compared to the same period in prior years, not just the immediately preceding period, to avoid drawing conclusions from seasonal noise.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Using Revenue Instead of COGS/Purchases in Payables Days</strong><br>
+        Payables Days should ideally use Purchases (or COGS as a proxy) in the denominator — using Revenue mismatches a balance sheet figure related to purchases with an income statement figure related to sales, distorting the ratio's meaning.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">ROCE</div>
+        <ul class="card-items">
+          <li><strong>Q: ROCE formula?</strong></li>
+          <li>A: Operating Profit ÷ Capital Employed × 100 (Capital Employed = Equity + Non-Current Liabilities)</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">DuPont Decomposition</div>
+        <ul class="card-items">
+          <li><strong>Q: How does DuPont break down ROCE?</strong></li>
+          <li>A: ROCE = Operating Profit Margin × Asset Turnover</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Cash Conversion Cycle</div>
+        <ul class="card-items">
+          <li><strong>Q: CCC formula?</strong></li>
+          <li>A: Inventory Days + Receivables Days − Payables Days</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Quick Ratio</div>
+        <ul class="card-items">
+          <li><strong>Q: Why is inventory excluded from the Quick Ratio?</strong></li>
+          <li>A: Inventory is the least liquid current asset — quick ratio tests immediate liquidity</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Interest Cover</div>
+        <ul class="card-items">
+          <li><strong>Q: Interest Cover formula and red flag level?</strong></li>
+          <li>A: EBIT ÷ Interest Expense; below 2x is often a red flag for lenders</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Diluted EPS Rule</div>
+        <ul class="card-items">
+          <li><strong>Q: Can diluted EPS ever be higher than basic EPS?</strong></li>
+          <li>A: No — dilution only adds potential shares, so diluted EPS is always ≤ basic EPS</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Held for Sale Measurement</div>
+        <ul class="card-items">
+          <li><strong>Q: How is an asset held for sale measured?</strong></li>
+          <li>A: Lower of carrying amount and fair value less costs to sell; depreciation stops</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Related Party Disclosure Trigger</div>
+        <ul class="card-items">
+          <li><strong>Q: Must a related party transaction be disclosed even at fair market terms?</strong></li>
+          <li>A: Yes — disclosure is required regardless of whether terms were at arm's length</li>
+        </ul>
+        <div class="card-tag">Flashcard 8</div>
+      </div>
+    </div>
+
+    <!-- FORMULA REFERENCE -->
+    <p class="section-label" style="margin-top:40px;">Part C — Formula Quick Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 12 — Complete Ratio Reference</div>
+      <div class="formula-row"><div class="formula-name">Gross Profit Margin</div><div class="formula-eq">Gross Profit ÷ Revenue × 100</div></div>
+      <div class="formula-row"><div class="formula-name">ROCE</div><div class="formula-eq">Operating Profit ÷ Capital Employed × 100</div></div>
+      <div class="formula-row"><div class="formula-name">ROE</div><div class="formula-eq">Profit After Tax ÷ Shareholders' Equity × 100</div></div>
+      <div class="formula-row"><div class="formula-name">Current Ratio</div><div class="formula-eq">Current Assets ÷ Current Liabilities</div></div>
+      <div class="formula-row"><div class="formula-name">Quick Ratio</div><div class="formula-eq">(Current Assets − Inventory) ÷ Current Liabilities</div></div>
+      <div class="formula-row"><div class="formula-name">Cash Conversion Cycle</div><div class="formula-eq">Inventory Days + Receivables Days − Payables Days</div></div>
+      <div class="formula-row"><div class="formula-name">Gearing Ratio</div><div class="formula-eq">Total Debt ÷ Total Equity × 100</div></div>
+      <div class="formula-row"><div class="formula-name">Interest Cover</div><div class="formula-eq">EBIT ÷ Interest Expense</div></div>
+      <div class="formula-row"><div class="formula-name">EPS</div><div class="formula-eq">Profit Attributable to Ordinary Shareholders ÷ Weighted Avg No. of Shares</div></div>
+      <div class="formula-row"><div class="formula-name">P/E Ratio</div><div class="formula-eq">Share Price ÷ EPS</div></div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"If you could only look at one ratio to assess a company, which would you pick and why?"</td><td>Prioritisation and depth of understanding</td><td>There isn't a single perfect ratio, but ROCE is a strong choice because it links profitability to how efficiently capital is used — combining margin and asset turnover through the DuPont decomposition. That said, I'd want interest cover alongside it to check the company can service its obligations, since a high ROCE built on unsustainable debt is a red flag.</td></tr>
+      <tr><td>"A company's current ratio has improved from 1.2 to 2.5 over two years — is this necessarily good news?"</td><td>Testing for nuanced, non-default interpretation</td><td>Not necessarily — while it suggests improved short-term liquidity, it could also mean the company is accumulating excess inventory or struggling to collect receivables, both of which tie up cash inefficiently rather than reflecting genuinely improved financial health. I'd want to see the quick ratio and inventory/receivables days trends before concluding it's positive.</td></tr>
+      <tr><td>"How would you explain the Cash Conversion Cycle to a non-finance person?"</td><td>Communication skill — explaining technical concepts simply</td><td>It's the number of days between when a company pays cash out for inventory and when it collects cash in from customers. A shorter (or negative) cycle means the business needs less of its own cash to fund operations — suppliers effectively finance the working capital gap, which is why companies like Amazon, with negative CCCs, can grow rapidly without needing as much external capital.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Profitability + Liquidity + Efficiency<br>
+      + Gearing + Investor Ratios<br>
+      + Context (Trend / Industry / Target)<br>
+      = <strong style="color:var(--accent4);">The Ability to Read Any Company's Story From Its Numbers</strong>
+    </div>
+    <h3>🎉 PART 1: FINANCE FOUNDATION — COMPLETE! 🎉</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Chapters 1-12 give you the complete foundation — finance industry knowledge, accounting fundamentals, IFRS, costing, management accounting, and interpretation. Next → Part 2: ACCA Roadmap — Chapter 13: ACCA Qualification Structure. 🎓</p>
+  </div>
+
+</div>
+</body>
+</html>

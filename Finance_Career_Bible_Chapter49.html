@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 49: Master Formula Cheat-Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(0,212,170,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent2); border:1px solid var(--accent2); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent2),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent2); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent2); min-width:40px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent2); padding:14px 20px; background:rgba(0,212,170,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(0,212,170,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent2); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .highlight { background:linear-gradient(135deg,rgba(0,212,170,0.07),rgba(108,99,255,0.05)); border:1px solid rgba(0,212,170,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(0,212,170,0.09),rgba(108,99,255,0.06)); border:1px solid rgba(0,212,170,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent2); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent2),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 49 · Exam Revision Tool</div>
+  <h1>Master Formula<br><span>Cheat-Sheet</span></h1>
+  <p class="hero-sub">Every core formula from Chapters 1–41, pulled out of the book and organised by ACCA paper — one place to revise the night before an exam, instead of flipping through 41 chapters.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">365+</div><div class="stat-label">Formulas &amp; Frameworks</div></div>
+    <div class="stat"><div class="stat-num">13</div><div class="stat-label">ACCA Papers Covered</div></div>
+    <div class="stat"><div class="stat-num">17</div><div class="stat-label">Organised Sections</div></div>
+    <div class="stat"><div class="stat-num">1</div><div class="stat-label">Page to Revise From</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 49 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">49.1</span>How to Use This Cheat-Sheet</div>
+    <div class="toc-item"><span class="toc-num">49.2</span>BT — Business &amp; Technology (Applied Knowledge)</div>
+    <div class="toc-item"><span class="toc-num">49.3</span>MA — Management Accounting (Applied Knowledge)</div>
+    <div class="toc-item"><span class="toc-num">49.4</span>FA — Financial Accounting (Applied Knowledge)</div>
+    <div class="toc-item"><span class="toc-num">49.5</span>LW — Corporate &amp; Business Law (Applied Skills)</div>
+    <div class="toc-item"><span class="toc-num">49.6</span>PM — Performance Management (Applied Skills)</div>
+    <div class="toc-item"><span class="toc-num">49.7</span>TX — Taxation (Applied Skills)</div>
+    <div class="toc-item"><span class="toc-num">49.8</span>FR — Financial Reporting (Applied Skills)</div>
+    <div class="toc-item"><span class="toc-num">49.9</span>AA — Audit &amp; Assurance (Applied Skills)</div>
+    <div class="toc-item"><span class="toc-num">49.10</span>FM — Financial Management (Applied Skills)</div>
+    <div class="toc-item"><span class="toc-num">49.11</span>SBL — Strategic Business Leader (Strategic Professional)</div>
+    <div class="toc-item"><span class="toc-num">49.12</span>SBR — Strategic Business Reporting (Strategic Professional)</div>
+    <div class="toc-item"><span class="toc-num">49.13</span>AFM — Advanced Financial Management (Option)</div>
+    <div class="toc-item"><span class="toc-num">49.14</span>APM — Advanced Performance Management (Option)</div>
+    <div class="toc-item"><span class="toc-num">49.15</span>ATX — Advanced Taxation (Option)</div>
+    <div class="toc-item"><span class="toc-num">49.16</span>AAA — Advanced Audit &amp; Assurance (Option)</div>
+    <div class="toc-item"><span class="toc-num">49.17</span>Bonus — Excel, Power BI &amp; SQL Toolkit</div>
+  </div>
+
+  <!-- 49.1 -->
+  <div class="section" id="s49.1">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">49.1</div>
+      <div class="section-title">How to Use This Cheat-Sheet</div>
+    </div>
+    <p class="prose">This chapter does not teach anything new — every formula here already exists somewhere in Chapters 1–41, explained in full with worked examples and context. This is purely a <strong>compression tool</strong>: the night before an exam, or in the last 20 minutes of revision, this is the single page to scan instead of hunting through chapters.</p>
+    <div class="quote">"If you don't understand WHY a formula works, go back to its source chapter first. This cheat-sheet is for recall, not for first-time learning."</div>
+    <div class="highlight">
+      <div class="highlight-title">📌 A Note on Overlaps</div>
+      Some formula sets appear in more than one section deliberately — e.g. variance analysis appears under both MA (49.3) and PM (49.6), because both papers examine it. This is intentional so each paper's section is self-contained for revision, even if it means a small amount of repetition.
+    </div>
+  </div>
+
+  <!-- 49.2 -->
+  <div class="section" id="s49.2">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">49.2</div>
+      <div class="section-title">BT (Business &amp; Technology) — Applied Knowledge</div>
+    </div>
+    <p class="prose">BT is largely conceptual (business structures, governance, IT systems, control frameworks) — it has no significant calculation formulas. Focus revision here on definitions: PESTEL, the 5 core business functions, corporate governance principles, and IT/cybersecurity terminology (Chapter 1, Chapter 35.7).</p>
+  </div>
+
+  <!-- 49.3 -->
+  <div class="section" id="s49.3">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">49.3</div>
+      <div class="section-title">MA (Management Accounting) — Applied Knowledge</div>
+    </div>
+    <p class="prose">Cost behaviour, break-even, and standard costing variances — the numeric backbone of MA.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch5 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Contribution per unit</div><div class="formula-eq">Selling Price − Variable Cost per unit</div></div>
+      <div class="formula-row"><div class="formula-name">Break-Even Point (units)</div><div class="formula-eq">Fixed Costs ÷ Contribution per unit</div></div>
+      <div class="formula-row"><div class="formula-name">Break-Even Revenue</div><div class="formula-eq">Fixed Costs ÷ C/S Ratio</div></div>
+      <div class="formula-row"><div class="formula-name">C/S Ratio</div><div class="formula-eq">Contribution ÷ Revenue × 100</div></div>
+      <div class="formula-row"><div class="formula-name">Margin of Safety</div><div class="formula-eq">Actual Sales − Break-Even Sales</div></div>
+      <div class="formula-row"><div class="formula-name">Marginal Costing Profit</div><div class="formula-eq">Contribution − Fixed Costs</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch6 — Core Variance Formulas</div>
+      <div class="formula-row"><div class="formula-name">Material Price Variance</div><div class="formula-eq">(Standard Price − Actual Price) × Actual Quantity</div></div>
+      <div class="formula-row"><div class="formula-name">Material Usage Variance</div><div class="formula-eq">(Standard Qty − Actual Qty) × Standard Price</div></div>
+      <div class="formula-row"><div class="formula-name">Labour Rate Variance</div><div class="formula-eq">(Standard Rate − Actual Rate) × Actual Hours</div></div>
+      <div class="formula-row"><div class="formula-name">Labour Efficiency Variance</div><div class="formula-eq">(Standard Hours − Actual Hours) × Standard Rate</div></div>
+      <div class="formula-row"><div class="formula-name">Sales Price Variance</div><div class="formula-eq">(Actual Price − Standard Price) × Actual Volume</div></div>
+      <div class="formula-row"><div class="formula-name">Sales Volume Variance</div><div class="formula-eq">(Actual Volume − Budgeted Volume) × Standard Margin</div></div>
+    </div>
+  </div>
+
+  <!-- 49.4 -->
+  <div class="section" id="s49.4">
+    <div class="section-header">
+      <div class="sec-badge badge-green">49.4</div>
+      <div class="section-title">FA (Financial Accounting) — Applied Knowledge</div>
+    </div>
+    <p class="prose">Double-entry foundations through to consolidation basics and EPS — shared core with FR (see 49.8).</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch2 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Accounting Equation</div><div class="formula-eq">Assets = Liabilities + Equity</div></div>
+      <div class="formula-row"><div class="formula-name">Expanded Equation</div><div class="formula-eq">Assets = Liabilities + Capital + Income − Expenses − Drawings</div></div>
+      <div class="formula-row"><div class="formula-name">Trial Balance Check</div><div class="formula-eq">Total Debits = Total Credits</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch7 — Core Formula</div>
+      <div class="formula-row"><div class="formula-name">Price Allocation to an Obligation</div><div class="formula-eq">(SSP of Obligation ÷ Total SSP of All Obligations) × Total Transaction Price</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch8 — IFRS 16 — Initial Recognition</div>
+      <div class="formula-row"><div class="formula-name">Lease Liability (Initial)</div><div class="formula-eq">Present Value of Future Lease Payments, discounted at the interest rate implicit in the lease (or the lessee's incremental borrowing rate if that rate isn't readily determinable)</div></div>
+      <div class="formula-row"><div class="formula-name">Right-of-Use (ROU) Asset (Initial)</div><div class="formula-eq">Lease Liability + Initial Direct Costs + Payments Made Before Commencement − Lease Incentives Received</div></div>
+      <div class="formula-row"><div class="formula-name">Subsequent Measurement — Liability</div><div class="formula-eq">Increases by interest charged (unwinding the discount) each period, decreases by actual lease payments made — same logic as a loan amortisation schedule</div></div>
+      <div class="formula-row"><div class="formula-name">Subsequent Measurement — ROU Asset</div><div class="formula-eq">Depreciated on a straight-line basis (usually) over the shorter of the lease term or the asset's useful life</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch8 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Depreciable Amount</div><div class="formula-eq">Cost (or Revalued Amount) − Residual Value</div></div>
+      <div class="formula-row"><div class="formula-name">Straight-Line Depreciation</div><div class="formula-eq">(Cost − Residual Value) ÷ Useful Life</div></div>
+      <div class="formula-row"><div class="formula-name">Reducing Balance Depreciation</div><div class="formula-eq">Carrying Amount × Depreciation Rate %</div></div>
+      <div class="formula-row"><div class="formula-name">Units of Production Depreciation</div><div class="formula-eq">(Cost − Residual Value) ÷ Total Units × Units This Period</div></div>
+      <div class="formula-row"><div class="formula-name">Carrying Amount</div><div class="formula-eq">Cost − Accumulated Depreciation (− Impairment, if any)</div></div>
+      <div class="formula-row"><div class="formula-name">Revaluation Surplus/Deficit</div><div class="formula-eq">Fair Value − Carrying Amount (before revaluation)</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch9 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Inventory Valuation Rule</div><div class="formula-eq">Lower of Cost and Net Realisable Value (NRV)</div></div>
+      <div class="formula-row"><div class="formula-name">Net Realisable Value</div><div class="formula-eq">Estimated Selling Price − Costs of Completion − Selling Costs</div></div>
+      <div class="formula-row"><div class="formula-name">Weighted Average Cost (recalculated)</div><div class="formula-eq">Total Value of Inventory ÷ Total Units Held</div></div>
+      <div class="formula-row"><div class="formula-name">Inventory Write-Down</div><div class="formula-eq">(Cost − NRV) × Units Affected</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch10 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Expected Credit Loss (ECL)</div><div class="formula-eq">Probability of Default × Loss Given Default × Exposure at Default</div></div>
+      <div class="formula-row"><div class="formula-name">Amortised Cost Interest Income</div><div class="formula-eq">Opening Carrying Amount × Effective Interest Rate</div></div>
+      <div class="formula-row"><div class="formula-name">Compound Instrument — Equity Component</div><div class="formula-eq">Total Proceeds − Liability Component (PV at market rate)</div></div>
+      <div class="formula-row"><div class="formula-name">FVTPL Gain/Loss</div><div class="formula-eq">Fair Value at Reporting Date − Carrying Amount</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch11 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Goodwill</div><div class="formula-eq">Consideration Paid + Fair Value of NCI − Fair Value of Identifiable Net Assets</div></div>
+      <div class="formula-row"><div class="formula-name">NCI at Acquisition (Proportionate Method)</div><div class="formula-eq">NCI % × Fair Value of Identifiable Net Assets</div></div>
+      <div class="formula-row"><div class="formula-name">Group Retained Earnings</div><div class="formula-eq">Parent's RE + (Parent's % × Subsidiary's Post-Acquisition Profit) − PUP (Parent's share)</div></div>
+      <div class="formula-row"><div class="formula-name">Unrealised Profit in Inventory (PUP)</div><div class="formula-eq">Closing Inventory (at transfer price) × Profit Margin %</div></div>
+      <div class="formula-row"><div class="formula-name">Profit Attributable to NCI</div><div class="formula-eq">NCI % × Subsidiary's Adjusted Profit for the Year</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch12 — EPS Formulas</div>
+      <div class="formula-row"><div class="formula-name">Basic EPS</div><div class="formula-eq">Profit Attributable to Ordinary Shareholders ÷ Weighted Average Number of Ordinary Shares Outstanding During the Period</div></div>
+      <div class="formula-row"><div class="formula-name">Diluted EPS</div><div class="formula-eq">Adjusted Profit ÷ (Weighted Average Shares + All Potentially Dilutive Shares — from convertible bonds, share options, convertible preference shares)</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch12 — Complete Ratio Reference</div>
+      <div class="formula-row"><div class="formula-name">Gross Profit Margin</div><div class="formula-eq">Gross Profit ÷ Revenue × 100</div></div>
+      <div class="formula-row"><div class="formula-name">ROCE</div><div class="formula-eq">Operating Profit ÷ Capital Employed × 100</div></div>
+      <div class="formula-row"><div class="formula-name">ROE</div><div class="formula-eq">Profit After Tax ÷ Shareholders' Equity × 100</div></div>
+      <div class="formula-row"><div class="formula-name">Current Ratio</div><div class="formula-eq">Current Assets ÷ Current Liabilities</div></div>
+      <div class="formula-row"><div class="formula-name">Quick Ratio</div><div class="formula-eq">(Current Assets − Inventory) ÷ Current Liabilities</div></div>
+      <div class="formula-row"><div class="formula-name">Cash Conversion Cycle</div><div class="formula-eq">Inventory Days + Receivables Days − Payables Days</div></div>
+      <div class="formula-row"><div class="formula-name">Gearing Ratio</div><div class="formula-eq">Total Debt ÷ Total Equity × 100</div></div>
+      <div class="formula-row"><div class="formula-name">Interest Cover</div><div class="formula-eq">EBIT ÷ Interest Expense</div></div>
+      <div class="formula-row"><div class="formula-name">EPS</div><div class="formula-eq">Profit Attributable to Ordinary Shareholders ÷ Weighted Avg No. of Shares</div></div>
+      <div class="formula-row"><div class="formula-name">P/E Ratio</div><div class="formula-eq">Share Price ÷ EPS</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch4 — IAS 36 Impairment</div>
+      <div class="formula-row"><div class="formula-name">Recoverable Amount</div><div class="formula-eq">Higher of Fair Value Less Costs of Disposal, and Value in Use — if Carrying Amount exceeds this, the asset is impaired and written down</div></div>
+    </div>
+  </div>
+
+  <!-- 49.5 -->
+  <div class="section" id="s49.5">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">49.5</div>
+      <div class="section-title">LW (Corporate &amp; Business Law) — Applied Skills</div>
+    </div>
+    <p class="prose">Contract law fundamentals — the 4 elements every valid contract needs, and the remedies available on breach.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch23 — The 4 Essential Elements of a Valid Contract</div>
+      <div class="formula-row"><div class="formula-name">1. Offer</div><div class="formula-eq">A clear, definite statement of terms one party is willing to be bound by if accepted. Must be distinguished from an "invitation to treat" (e.g. goods displayed in a shop window are an invitation to treat, not an offer — the customer makes the offer at the till).</div></div>
+      <div class="formula-row"><div class="formula-name">2. Acceptance</div><div class="formula-eq">Unqualified agreement to all terms of the offer, communicated to the offeror. A "counter-offer" (changing any term) destroys the original offer and becomes a new offer itself.</div></div>
+      <div class="formula-row"><div class="formula-name">3. Consideration</div><div class="formula-eq">Something of value given by each party — the "price" of the promise. Must have SOME value (need not be adequate/fair value) and must NOT be past (a promise to pay for something already done is generally not valid consideration).</div></div>
+      <div class="formula-row"><div class="formula-name">4. Intention to Create Legal Relations</div><div class="formula-eq">Both parties must intend the agreement to be legally binding. Commercial agreements are PRESUMED to have this intention; social/domestic agreements are PRESUMED NOT to — either presumption can be rebutted with evidence.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch23 — Available Remedies</div>
+      <div class="formula-row"><div class="formula-name">Damages</div><div class="formula-eq">Monetary compensation to put the innocent party in the position they would have been in had the contract been performed. Must be caused by the breach and not too "remote" (unforeseeable). The innocent party has a duty to "mitigate" loss — cannot recover losses that reasonable steps could have avoided.</div></div>
+      <div class="formula-row"><div class="formula-name">Specific Performance</div><div class="formula-eq">A court order requiring the breaching party to actually perform the contract. Discretionary — granted mainly where damages are inadequate (e.g. sale of unique goods or land), not for personal service contracts.</div></div>
+      <div class="formula-row"><div class="formula-name">Injunction</div><div class="formula-eq">A court order preventing a party from doing something that would breach the contract (e.g. preventing breach of a non-compete clause).</div></div>
+      <div class="formula-row"><div class="formula-name">Rescission</div><div class="formula-eq">Cancels the contract, putting parties back in their pre-contract position — typically the remedy for misrepresentation rather than breach.</div></div>
+    </div>
+  </div>
+
+  <!-- 49.6 -->
+  <div class="section" id="s49.6">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">49.6</div>
+      <div class="section-title">PM (Performance Management) — Applied Skills</div>
+    </div>
+    <p class="prose">Builds directly on MA's variance analysis, then adds throughput accounting, learning curves, and mix/yield variances.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch6 — Core Variance Formulas</div>
+      <div class="formula-row"><div class="formula-name">Material Price Variance</div><div class="formula-eq">(Standard Price − Actual Price) × Actual Quantity</div></div>
+      <div class="formula-row"><div class="formula-name">Material Usage Variance</div><div class="formula-eq">(Standard Qty − Actual Qty) × Standard Price</div></div>
+      <div class="formula-row"><div class="formula-name">Labour Rate Variance</div><div class="formula-eq">(Standard Rate − Actual Rate) × Actual Hours</div></div>
+      <div class="formula-row"><div class="formula-name">Labour Efficiency Variance</div><div class="formula-eq">(Standard Hours − Actual Hours) × Standard Rate</div></div>
+      <div class="formula-row"><div class="formula-name">Sales Price Variance</div><div class="formula-eq">(Actual Price − Standard Price) × Actual Volume</div></div>
+      <div class="formula-row"><div class="formula-name">Sales Volume Variance</div><div class="formula-eq">(Actual Volume − Budgeted Volume) × Standard Margin</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch24 — Throughput Accounting Formulas</div>
+      <div class="formula-row"><div class="formula-name">Throughput per Unit</div><div class="formula-eq">Selling Price − Direct Material Cost per Unit</div></div>
+      <div class="formula-row"><div class="formula-name">Throughput per Bottleneck Minute</div><div class="formula-eq">Throughput per Unit ÷ Bottleneck Minutes Required per Unit</div></div>
+      <div class="formula-row"><div class="formula-name">Total Factory Cost per Bottleneck Minute</div><div class="formula-eq">Total Factory Costs (Labour + Overheads) ÷ Total Bottleneck Minutes Available</div></div>
+      <div class="formula-row"><div class="formula-name">Throughput Accounting Ratio (TPAR)</div><div class="formula-eq">Throughput per Bottleneck Minute ÷ Factory Cost per Bottleneck Minute</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch24 — Learning Curve Formula</div>
+      <div class="formula-row"><div class="formula-name">Cumulative Average Time Formula</div><div class="formula-eq">Y = a × X^b, where Y = cumulative average time per unit; a = time for the first unit; X = cumulative number of units produced; b = log(learning rate) ÷ log(2)</div></div>
+      <div class="formula-row"><div class="formula-name">For an 80% Learning Curve</div><div class="formula-eq">b = log(0.8) ÷ log(2) = −0.3219</div></div>
+      <div class="formula-row"><div class="formula-name">Total Time for X Units</div><div class="formula-eq">Cumulative Average Time (Y) × X (total units)</div></div>
+      <div class="formula-row"><div class="formula-name">Incremental Time for a New Batch</div><div class="formula-eq">Total Time for New Cumulative Total − Total Time for Previous Cumulative Total</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch24 — Mix & Yield Variance Formulas</div>
+      <div class="formula-row"><div class="formula-name">Material Mix Variance</div><div class="formula-eq">(Actual Total Quantity in Standard Mix Proportion − Actual Quantity Used) × Standard Price, for each material — summed</div></div>
+      <div class="formula-row"><div class="formula-name">Material Yield Variance</div><div class="formula-eq">(Standard Output-Based Input Quantity − Actual Total Input Quantity Used, in standard mix proportions) × Standard Weighted Average Cost per unit of input</div></div>
+      <div class="formula-row"><div class="formula-name">Check</div><div class="formula-eq">Mix Variance + Yield Variance = Total Material Usage Variance</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch20 — Budgeting Formulas (FP&amp;A)</div>
+      <div class="formula-row"><div class="formula-name">Sales Budget</div><div class="formula-eq">Expected Units Sold × Selling Price = Budgeted Revenue — the starting point of the entire budget process</div></div>
+      <div class="formula-row"><div class="formula-name">Production Budget (units)</div><div class="formula-eq">Sales Units + Closing Inventory Target − Opening Inventory</div></div>
+      <div class="formula-row"><div class="formula-name">Direct Materials Budget</div><div class="formula-eq">Materials Needed for Planned Production × Standard Cost per Unit of Material</div></div>
+      <div class="formula-row"><div class="formula-name">Direct Labour Budget</div><div class="formula-eq">Standard Labour Hours per Unit × Planned Production × Wage Rate per Hour</div></div>
+    </div>
+    <div class="highlight"><div class="highlight-title">🔗 Cross-Reference</div>Standard variance formulas (material, labour, sales) are identical to MA — see 49.3 if you need the base set again.</div>
+  </div>
+
+  <!-- 49.7 -->
+  <div class="section" id="s49.7">
+    <div class="section-header">
+      <div class="sec-badge badge-red">49.7</div>
+      <div class="section-title">TX (Taxation) — Applied Skills</div>
+    </div>
+    <p class="prose">India-specific corporate tax rates and deferred tax mechanics, plus the personal tax / double tax relief methods.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch37 — Corporate Tax Rates — India (AY 2024-25)</div>
+      <div class="formula-row"><div class="formula-name">Domestic Company (General Rate)</div><div class="formula-eq">30% + Surcharge + Health & Education Cess 4% Surcharge: 7% if income ₹1–10Cr; 12% if income above ₹10Cr Effective rate for large companies: ~34.94%</div></div>
+      <div class="formula-row"><div class="formula-name">Concessional Rate — Section 115BAA</div><div class="formula-eq">22% + Surcharge 10% + Cess 4% = Effective ~25.17% Available to all existing domestic companies — cannot claim certain deductions (80IC, 80IE etc.). Most large companies have opted for this. Announced in September 2019 — major corporate tax cut.</div></div>
+      <div class="formula-row"><div class="formula-name">New Manufacturing Companies — Section 115BAB</div><div class="formula-eq">15% + Surcharge 10% + Cess 4% = Effective ~17.16% For new domestic manufacturing companies incorporated after 1 Oct 2019 and commencing production before 31 Mar 2024 (extended). India's lowest corporate tax rate — designed to attract manufacturing investment (Make in India). Cannot claim most deductions.</div></div>
+      <div class="formula-row"><div class="formula-name">Foreign Companies</div><div class="formula-eq">40% + Surcharge + Cess 4% On income arising in India. May be reduced by DTAA (Double Tax Avoidance Agreements) with the country of the foreign company's residence.</div></div>
+      <div class="formula-row"><div class="formula-name">Minimum Alternate Tax (MAT)</div><div class="formula-eq">15% of Book Profit (if tax payable under normal provisions is less) Ensures companies with high book profits but low taxable income (due to deductions) still pay minimum tax. MAT credit can be carried forward 15 years. Companies opting for 115BAA/BAB are exempt from MAT.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch37 — Deferred Tax — Core Concepts</div>
+      <div class="formula-row"><div class="formula-name">Temporary Difference</div><div class="formula-eq">Carrying Amount (per IFRS balance sheet) − Tax Base (per tax rules) Carrying amount = IFRS book value of asset or liability. Tax base = amount attributed to asset/liability for tax purposes (i.e. what tax law says it's worth).</div></div>
+      <div class="formula-row"><div class="formula-name">Deferred Tax Liability (DTL)</div><div class="formula-eq">When carrying amount of ASSET > tax base → TAXABLE temporary difference → DTL Will result in more tax in the future. Example: Accelerated tax depreciation — asset depreciated faster for tax than for accounting. Book value > tax base → DTL recognised.</div></div>
+      <div class="formula-row"><div class="formula-name">Deferred Tax Asset (DTA)</div><div class="formula-eq">When carrying amount of ASSET &lt; tax base → DEDUCTIBLE temporary difference → DTA Will result in less tax in the future. Example: Provision for bad debts — not deductible until debt actually written off. Provision reduces book value of receivable below tax base → DTA. Also: tax losses carried forward → DTA (if probable future profits to use them against).</div></div>
+      <div class="formula-row"><div class="formula-name">Deferred Tax Calculation</div><div class="formula-eq">Deferred Tax = Temporary Difference × Applicable Tax Rate Use the tax rate expected to apply when the difference reverses — typically the enacted or substantively enacted future tax rate, not current year's rate.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch37 — Tax in the P&L and Balance Sheet — Full Picture</div>
+      <div class="formula-row"><div class="formula-name">Tax Expense in P&L (IAS 12)</div><div class="formula-eq">Tax Expense = Current Tax + Deferred Tax Expense (or − Deferred Tax Income) Current Tax = Tax payable on this year's taxable profit per tax return. Deferred Tax = Change in deferred tax liability/asset during the year. Both components separately disclosed in notes.</div></div>
+      <div class="formula-row"><div class="formula-name">Current Tax</div><div class="formula-eq">Taxable Profit × Current Tax Rate Taxable profit ≠ accounting profit. Adjust for: disallowed expenses (add back), non-taxable income (deduct), timing differences. Recognised as a liability (tax payable) until paid.</div></div>
+      <div class="formula-row"><div class="formula-name">Effective Tax Rate</div><div class="formula-eq">Tax Expense ÷ Profit Before Tax × 100% Shows the true % of accounting profit paid as tax. Differs from statutory rate due to: deferred tax, permanent differences (exempt income, disallowed expenses), prior year adjustments. Important metric for financial analysis — compare to statutory rate to understand tax efficiency.</div></div>
+      <div class="formula-row"><div class="formula-name">Balance Sheet Presentation</div><div class="formula-eq">Current Tax Liability: tax payable for current and prior years (current liability) Deferred Tax Liability: non-current liability (usually) Deferred Tax Asset: non-current asset (if recognition criteria met) DTA and DTL for same tax jurisdiction may be offset if legally enforceable right to offset exists.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch37 — Key Formulas & Rates</div>
+      <div class="formula-row"><div class="formula-name">Deferred Tax</div><div class="formula-eq">DT = (Carrying Amount − Tax Base) × Future Tax Rate | Positive = DTL | Negative = DTA</div></div>
+      <div class="formula-row"><div class="formula-name">Effective Tax Rate</div><div class="formula-eq">ETR = Tax Expense ÷ Profit Before Tax × 100%</div></div>
+      <div class="formula-row"><div class="formula-name">Interest Tax Shield</div><div class="formula-eq">Tax Shield = Interest Paid × Tax Rate | After-tax cost of debt = Kd × (1 − tax rate)</div></div>
+      <div class="formula-row"><div class="formula-name">GST Payable</div><div class="formula-eq">GST Payable = Output Tax (on sales) − Input Tax Credit (on purchases)</div></div>
+      <div class="formula-row"><div class="formula-name">Advance Tax Schedule</div><div class="formula-eq">15% by 15 June | 45% by 15 Sep | 75% by 15 Dec | 100% by 15 Mar</div></div>
+      <div class="formula-row"><div class="formula-name">Section 115BAA Rate</div><div class="formula-eq">22% + 10% surcharge + 4% cess = Effective 25.17%</div></div>
+      <div class="formula-row"><div class="formula-name">Section 115BAB Rate</div><div class="formula-eq">15% + 10% surcharge + 4% cess = Effective 17.16%</div></div>
+      <div class="formula-row"><div class="formula-name">HRA Exemption (Minimum of 3)</div><div class="formula-eq">Min of: (1) Actual HRA received | (2) 50%/40% of salary (metro/non-metro) | (3) Actual rent − 10% of salary</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch28 — Double Tax Relief Methods</div>
+      <div class="formula-row"><div class="formula-name">Exemption Method</div><div class="formula-eq">Income taxed in the source country is fully EXEMPTED from tax in the residence country</div></div>
+      <div class="formula-row"><div class="formula-name">Credit Method (Most Common)</div><div class="formula-eq">Residence country taxes worldwide income but gives a CREDIT for tax already paid in the source country, up to the residence country's own tax rate on that income</div></div>
+      <div class="formula-row"><div class="formula-name">Deduction Method (Least Favourable)</div><div class="formula-eq">Foreign tax paid is simply deducted as an EXPENSE before calculating residence-country tax — provides only partial relief</div></div>
+    </div>
+  </div>
+
+  <!-- 49.8 -->
+  <div class="section" id="s49.8">
+    <div class="section-header">
+      <div class="sec-badge badge-green">49.8</div>
+      <div class="section-title">FR (Financial Reporting) — Applied Skills</div>
+    </div>
+    <p class="prose">Same core standards as FA (revenue, PPE/leases, inventory, financial instruments, consolidation, EPS) applied at greater depth and complexity.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch7 — Core Formula</div>
+      <div class="formula-row"><div class="formula-name">Price Allocation to an Obligation</div><div class="formula-eq">(SSP of Obligation ÷ Total SSP of All Obligations) × Total Transaction Price</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch8 — IFRS 16 — Initial Recognition</div>
+      <div class="formula-row"><div class="formula-name">Lease Liability (Initial)</div><div class="formula-eq">Present Value of Future Lease Payments, discounted at the interest rate implicit in the lease (or the lessee's incremental borrowing rate if that rate isn't readily determinable)</div></div>
+      <div class="formula-row"><div class="formula-name">Right-of-Use (ROU) Asset (Initial)</div><div class="formula-eq">Lease Liability + Initial Direct Costs + Payments Made Before Commencement − Lease Incentives Received</div></div>
+      <div class="formula-row"><div class="formula-name">Subsequent Measurement — Liability</div><div class="formula-eq">Increases by interest charged (unwinding the discount) each period, decreases by actual lease payments made — same logic as a loan amortisation schedule</div></div>
+      <div class="formula-row"><div class="formula-name">Subsequent Measurement — ROU Asset</div><div class="formula-eq">Depreciated on a straight-line basis (usually) over the shorter of the lease term or the asset's useful life</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch8 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Depreciable Amount</div><div class="formula-eq">Cost (or Revalued Amount) − Residual Value</div></div>
+      <div class="formula-row"><div class="formula-name">Straight-Line Depreciation</div><div class="formula-eq">(Cost − Residual Value) ÷ Useful Life</div></div>
+      <div class="formula-row"><div class="formula-name">Reducing Balance Depreciation</div><div class="formula-eq">Carrying Amount × Depreciation Rate %</div></div>
+      <div class="formula-row"><div class="formula-name">Units of Production Depreciation</div><div class="formula-eq">(Cost − Residual Value) ÷ Total Units × Units This Period</div></div>
+      <div class="formula-row"><div class="formula-name">Carrying Amount</div><div class="formula-eq">Cost − Accumulated Depreciation (− Impairment, if any)</div></div>
+      <div class="formula-row"><div class="formula-name">Revaluation Surplus/Deficit</div><div class="formula-eq">Fair Value − Carrying Amount (before revaluation)</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch9 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Inventory Valuation Rule</div><div class="formula-eq">Lower of Cost and Net Realisable Value (NRV)</div></div>
+      <div class="formula-row"><div class="formula-name">Net Realisable Value</div><div class="formula-eq">Estimated Selling Price − Costs of Completion − Selling Costs</div></div>
+      <div class="formula-row"><div class="formula-name">Weighted Average Cost (recalculated)</div><div class="formula-eq">Total Value of Inventory ÷ Total Units Held</div></div>
+      <div class="formula-row"><div class="formula-name">Inventory Write-Down</div><div class="formula-eq">(Cost − NRV) × Units Affected</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch10 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Expected Credit Loss (ECL)</div><div class="formula-eq">Probability of Default × Loss Given Default × Exposure at Default</div></div>
+      <div class="formula-row"><div class="formula-name">Amortised Cost Interest Income</div><div class="formula-eq">Opening Carrying Amount × Effective Interest Rate</div></div>
+      <div class="formula-row"><div class="formula-name">Compound Instrument — Equity Component</div><div class="formula-eq">Total Proceeds − Liability Component (PV at market rate)</div></div>
+      <div class="formula-row"><div class="formula-name">FVTPL Gain/Loss</div><div class="formula-eq">Fair Value at Reporting Date − Carrying Amount</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch11 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Goodwill</div><div class="formula-eq">Consideration Paid + Fair Value of NCI − Fair Value of Identifiable Net Assets</div></div>
+      <div class="formula-row"><div class="formula-name">NCI at Acquisition (Proportionate Method)</div><div class="formula-eq">NCI % × Fair Value of Identifiable Net Assets</div></div>
+      <div class="formula-row"><div class="formula-name">Group Retained Earnings</div><div class="formula-eq">Parent's RE + (Parent's % × Subsidiary's Post-Acquisition Profit) − PUP (Parent's share)</div></div>
+      <div class="formula-row"><div class="formula-name">Unrealised Profit in Inventory (PUP)</div><div class="formula-eq">Closing Inventory (at transfer price) × Profit Margin %</div></div>
+      <div class="formula-row"><div class="formula-name">Profit Attributable to NCI</div><div class="formula-eq">NCI % × Subsidiary's Adjusted Profit for the Year</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch12 — EPS Formulas</div>
+      <div class="formula-row"><div class="formula-name">Basic EPS</div><div class="formula-eq">Profit Attributable to Ordinary Shareholders ÷ Weighted Average Number of Ordinary Shares Outstanding During the Period</div></div>
+      <div class="formula-row"><div class="formula-name">Diluted EPS</div><div class="formula-eq">Adjusted Profit ÷ (Weighted Average Shares + All Potentially Dilutive Shares — from convertible bonds, share options, convertible preference shares)</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch12 — Complete Ratio Reference</div>
+      <div class="formula-row"><div class="formula-name">Gross Profit Margin</div><div class="formula-eq">Gross Profit ÷ Revenue × 100</div></div>
+      <div class="formula-row"><div class="formula-name">ROCE</div><div class="formula-eq">Operating Profit ÷ Capital Employed × 100</div></div>
+      <div class="formula-row"><div class="formula-name">ROE</div><div class="formula-eq">Profit After Tax ÷ Shareholders' Equity × 100</div></div>
+      <div class="formula-row"><div class="formula-name">Current Ratio</div><div class="formula-eq">Current Assets ÷ Current Liabilities</div></div>
+      <div class="formula-row"><div class="formula-name">Quick Ratio</div><div class="formula-eq">(Current Assets − Inventory) ÷ Current Liabilities</div></div>
+      <div class="formula-row"><div class="formula-name">Cash Conversion Cycle</div><div class="formula-eq">Inventory Days + Receivables Days − Payables Days</div></div>
+      <div class="formula-row"><div class="formula-name">Gearing Ratio</div><div class="formula-eq">Total Debt ÷ Total Equity × 100</div></div>
+      <div class="formula-row"><div class="formula-name">Interest Cover</div><div class="formula-eq">EBIT ÷ Interest Expense</div></div>
+      <div class="formula-row"><div class="formula-name">EPS</div><div class="formula-eq">Profit Attributable to Ordinary Shareholders ÷ Weighted Avg No. of Shares</div></div>
+      <div class="formula-row"><div class="formula-name">P/E Ratio</div><div class="formula-eq">Share Price ÷ EPS</div></div>
+    </div>
+    <div class="highlight"><div class="highlight-title">🔗 Cross-Reference</div>These formulas are identical to the FA set in 49.4 — FR tests them in more complex, multi-element scenarios rather than introducing new formulas.</div>
+  </div>
+
+  <!-- 49.9 -->
+  <div class="section" id="s49.9">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">49.9</div>
+      <div class="section-title">AA (Audit &amp; Assurance) — Applied Skills</div>
+    </div>
+    <p class="prose">Materiality, the audit risk model, and the segregation-of-duties principle that underpins internal control testing.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch34 — Official Definition — ISA 200</div>
+      <div class="formula-row"><div class="formula-name">Objective of an Audit</div><div class="formula-eq">To enable the auditor to express an opinion on whether the financial statements are prepared, in all material respects, in accordance with an applicable financial reporting framework (e.g. IFRS or local GAAP). Key phrase: "in all material respects" — not every single detail. Materiality limits the scope.</div></div>
+      <div class="formula-row"><div class="formula-name">Level of Assurance</div><div class="formula-eq">REASONABLE assurance — not absolute assurance. Reasonable = high but not 100%. Absolute assurance is impossible due to: use of sampling, inherent limitations of internal controls, professional judgment involved in estimates, possibility of management override.</div></div>
+      <div class="formula-row"><div class="formula-name">True and Fair View</div><div class="formula-eq">Financial statements present fairly the financial position, performance, and cash flows of an entity. "True" = factually accurate, supported by evidence. "Fair" = presented without bias, in accordance with GAAP/IFRS. This is the standard the auditor is assessing against.</div></div>
+      <div class="formula-row"><div class="formula-name">Free From Material Misstatement</div><div class="formula-eq">Whether due to fraud OR error. Auditors must consider both. Error = unintentional mistake. Fraud = intentional misrepresentation. Auditors are not primarily fraud investigators but must maintain professional scepticism and respond when fraud risks are identified.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch34 — Materiality — Benchmarks & Calculation</div>
+      <div class="formula-row"><div class="formula-name">Overall Materiality — Common Benchmarks</div><div class="formula-eq">5% of Profit Before Tax (PBT) — most common for profitable entities 1% of Revenue — for low-margin businesses or where PBT is volatile 0.5–1% of Total Assets — for banks, holding companies, or asset-heavy entities 1–2% of Equity — for entities where equity is the key metric Choice of benchmark depends on what users focus on most. Professional judgement required.</div></div>
+      <div class="formula-row"><div class="formula-name">Performance Materiality</div><div class="formula-eq">Typically 60–75% of Overall Materiality Lower threshold used when designing procedures — so that the AGGREGATE of uncorrected misstatements does not exceed overall materiality. Acts as a buffer. If multiple small errors are found, their total might still be material.</div></div>
+      <div class="formula-row"><div class="formula-name">Clearly Trivial Threshold</div><div class="formula-eq">Typically 3–5% of Overall Materiality Misstatements below this level are clearly trivial and need not be investigated or accumulated. They cannot — even in aggregate — be material.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch34 — The Audit Risk Model</div>
+      <div class="formula-row"><div class="formula-name">Audit Risk (AR)</div><div class="formula-eq">AR = Inherent Risk (IR) × Control Risk (CR) × Detection Risk (DR) Auditor aims to keep AR at an acceptably low level. IR and CR are assessed — Detection Risk is manipulated by adjusting the nature/timing/extent of audit procedures.</div></div>
+      <div class="formula-row"><div class="formula-name">Inherent Risk (IR)</div><div class="formula-eq">The susceptibility of an assertion to material misstatement BEFORE considering any controls. High IR examples: complex accounting estimates (fair value, provisions), subjective judgements, unusual transactions, high-volume/high-value transactions, industries prone to fraud (cash-heavy businesses, financial services), businesses under financial pressure.</div></div>
+      <div class="formula-row"><div class="formula-name">Control Risk (CR)</div><div class="formula-eq">The risk that a material misstatement will NOT be prevented or detected by the entity's internal controls. High CR: weak internal controls, override of controls by management, no segregation of duties, inadequate IT controls. Low CR: strong, effective controls — allows auditor to reduce substantive testing.</div></div>
+      <div class="formula-row"><div class="formula-name">Detection Risk (DR)</div><div class="formula-eq">The risk that the auditor's OWN PROCEDURES will fail to detect a material misstatement. This is what the AUDITOR CONTROLS. If IR and CR are high → auditor must REDUCE DR by doing more/better procedures. If IR and CR are low → can accept higher DR (do less testing). DR can never be zero — sampling means some items are never examined.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch34 — Audit Procedures — Full Toolkit</div>
+      <div class="formula-row"><div class="formula-name">A — Analytical Procedures (ISA 520)</div><div class="formula-eq">Compare financial data to: prior year, budget, industry averages, expectations. Calculate ratios and investigate unusual fluctuations. Example: GP margin dropped from 35% to 22% → investigate reason → possible misstatement of revenue or cost of sales.</div></div>
+      <div class="formula-row"><div class="formula-name">E — Enquiry</div><div class="formula-eq">Ask questions of management, staff, and third parties. Least reliable on its own — must be corroborated by other evidence. Example: Ask the warehouse manager about inventory obsolescence. Do not accept the answer alone — also physically inspect and check slow-moving items.</div></div>
+      <div class="formula-row"><div class="formula-name">I — Inspection (Vouching & Tracing)</div><div class="formula-eq">Examine documents, records, physical assets. Vouching: start from recorded entry → find supporting document (tests EXISTENCE). Tracing: start from source document → check it is recorded (tests COMPLETENESS). Example: Select 50 sales invoices from the revenue ledger → trace to dispatch notes and customer orders (existence). Select dispatch notes → trace to sales ledger (completeness).</div></div>
+      <div class="formula-row"><div class="formula-name">O — Observation</div><div class="formula-eq">Watch a process being performed by client staff. Limitation: behaviour may change when being observed. Example: Attend year-end inventory count — observe counting procedures, check for damaged goods, test counts independently. Observe controls operating in real time.</div></div>
+      <div class="formula-row"><div class="formula-name">C — Confirmation (External)</div><div class="formula-eq">Obtain evidence directly from third parties — highly reliable. Examples: Bank confirmation letter (confirms balances, loans, contingent liabilities). Debtor circularisation (confirms receivable balances). Lawyer letters (confirms litigation, contingencies). Supplier statements (confirms payable balances).</div></div>
+      <div class="formula-row"><div class="formula-name">R — Recalculation & Reperformance</div><div class="formula-eq">Recalculate: check mathematical accuracy of client's calculations. Reperformance: independently perform a procedure the client performs. Example: Recalculate depreciation charges, interest accruals, tax provisions, foreign currency translations. Reperform bank reconciliation independently.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch34 — Key Concepts Reference</div>
+      <div class="formula-row"><div class="formula-name">Audit Objective</div><div class="formula-eq">Reasonable assurance that FS are free from material misstatement (fraud or error) → express opinion on true and fair view</div></div>
+      <div class="formula-row"><div class="formula-name">Audit Risk Model</div><div class="formula-eq">AR = IR × CR × DR | Only DR is controlled by auditor | Higher IR/CR → Lower DR needed</div></div>
+      <div class="formula-row"><div class="formula-name">Overall Materiality</div><div class="formula-eq">~5% PBT | ~1% Revenue | ~0.5% Assets (choose based on what users focus on)</div></div>
+      <div class="formula-row"><div class="formula-name">Performance Materiality</div><div class="formula-eq">60–75% of Overall Materiality — used when designing procedures</div></div>
+      <div class="formula-row"><div class="formula-name">Clearly Trivial</div><div class="formula-eq">3–5% of Overall Materiality — below this, no need to accumulate</div></div>
+      <div class="formula-row"><div class="formula-name">Assertions</div><div class="formula-eq">Existence | Completeness | Valuation/Accuracy | Rights & Obligations | Cut-off | Presentation & Disclosure</div></div>
+      <div class="formula-row"><div class="formula-name">Evidence Reliability</div><div class="formula-eq">Auditor-generated > External > Internal | Original > Copy | Written > Oral</div></div>
+      <div class="formula-row"><div class="formula-name">FASSMO Threats</div><div class="formula-eq">Financial Interest | Advocacy | Self-Review | Self-Interest | Management Familiarity | Over-familiarity | Intimidation</div></div>
+      <div class="formula-row"><div class="formula-name">Opinion Types</div><div class="formula-eq">Unmodified → Qualified (not pervasive) → Adverse (pervasive misstatement) | Disclaimer (pervasive scope limitation)</div></div>
+      <div class="formula-row"><div class="formula-name">Going Concern</div><div class="formula-eq">ISA 570: Assess whether entity can continue 12+ months. Material uncertainty → EOM para. Doubt entity will continue → adverse/disclaimer depending on disclosure.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch35 — The Four Functions That Must Be Separated</div>
+      <div class="formula-row"><div class="formula-name">1. Authorisation</div><div class="formula-eq">The person who APPROVES a transaction e.g. Manager who approves a purchase order or payment</div></div>
+      <div class="formula-row"><div class="formula-name">2. Custody</div><div class="formula-eq">The person who has PHYSICAL CONTROL of the asset e.g. Cashier who handles cash; warehouse staff who control inventory</div></div>
+      <div class="formula-row"><div class="formula-name">3. Recording</div><div class="formula-eq">The person who RECORDS the transaction in the books e.g. Accounts payable clerk who posts invoices to the ledger</div></div>
+      <div class="formula-row"><div class="formula-name">4. Reconciliation</div><div class="formula-eq">The person who CHECKS and RECONCILES the records e.g. Finance manager who reviews bank reconciliations</div></div>
+    </div>
+  </div>
+
+  <!-- 49.10 -->
+  <div class="section" id="s49.10">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">49.10</div>
+      <div class="section-title">FM (Financial Management) — Applied Skills</div>
+    </div>
+    <p class="prose">Cost of capital (CAPM, WACC), investment appraisal, working capital management (EOQ, Miller-Orr), and risk fundamentals.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch22 — Cost of Equity — Two Models</div>
+      <div class="formula-row"><div class="formula-name">CAPM (Capital Asset Pricing Model)</div><div class="formula-eq">Ke = Rf + β(Rm − Rf) Rf = Risk-free rate (Government bond yield — typically 10-yr G-Sec rate in India) β (Beta) = Systematic risk of the share vs the market. β=1 moves with market. β&gt;1 more volatile. β&lt;1 less volatile. Rm = Expected market return (historical average stock market return) (Rm − Rf) = Equity Risk Premium (ERP) — extra return for taking equity risk vs risk-free</div></div>
+      <div class="formula-row"><div class="formula-name">Dividend Growth Model (Gordon Growth Model)</div><div class="formula-eq">Ke = D1/P0 + g D1 = Expected next dividend (D0 × (1+g)) P0 = Current share price (ex-dividend) g = Constant dividend growth rate (sustainable long-term growth) Used when: company pays regular dividends with stable growth rate</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch22 — Cost of Debt — Formulas</div>
+      <div class="formula-row"><div class="formula-name">Post-Tax Cost of Debt (Simple)</div><div class="formula-eq">Kd (post-tax) = Interest Rate × (1 − Tax Rate) Example: 10% loan, 25% tax rate → Kd = 10% × (1−0.25) = 7.5% The tax deductibility of interest reduces the effective cost by the tax rate.</div></div>
+      <div class="formula-row"><div class="formula-name">Yield to Maturity (YTM) — For Bonds/Debentures</div><div class="formula-eq">YTM = approximate IRR of bond cash flows YTM ≈ [Annual Coupon + (Redemption Value − Market Price)/n] ÷ [(Redemption Value + Market Price)/2] Used when bond trades at a discount or premium to face value. Market price reflects current required return, not the coupon rate. Post-tax YTM = YTM × (1−tax rate).</div></div>
+      <div class="formula-row"><div class="formula-name">Irredeemable Debt (Perpetual)</div><div class="formula-eq">Kd = Annual Interest / Market Price of Debt × (1 − Tax Rate) For perpetual bonds or irredeemable debentures — no redemption date.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch22 — WACC Formula</div>
+      <div class="formula-row"><div class="formula-name">WACC</div><div class="formula-eq">WACC = Ke × [E/(E+D)] + Kd(1−T) × [D/(E+D)] Ke = Cost of Equity (from CAPM or DGM) Kd(1−T) = Post-tax Cost of Debt E = Market Value of Equity (shares outstanding × current share price) D = Market Value of Debt (market price of all debt instruments) E/(E+D) = Equity weight as proportion of total capital D/(E+D) = Debt weight as proportion of total capital Note: Always use MARKET values for weights — not book values</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch22 — Investment Appraisal Methods — Formulas & Interpretation</div>
+      <div class="formula-row"><div class="formula-name">Net Present Value (NPV)</div><div class="formula-eq">NPV = Σ [Cash Flow_t / (1+r)^t] − Initial Investment r = discount rate (WACC). t = time period. Sum all discounted cash flows and deduct initial outlay. Decision rule: Accept if NPV > 0. Maximise NPV when choosing between projects. NPV is the gold standard — directly measures value created in absolute ₹ terms. Theoretically superior to all other methods.</div></div>
+      <div class="formula-row"><div class="formula-name">Internal Rate of Return (IRR)</div><div class="formula-eq">IRR = discount rate that makes NPV = 0 Calculated by trial and error or interpolation: IRR ≈ a + [NPVa/(NPVa−NPVb)] × (b−a) Decision rule: Accept if IRR > Cost of Capital (WACC). Expresses return as a %, easy to compare to cost of capital. Limitation: may give multiple IRRs for non-conventional cash flows. Does not rank mutually exclusive projects correctly (use NPV instead).</div></div>
+      <div class="formula-row"><div class="formula-name">Payback Period</div><div class="formula-eq">Payback = Year before full recovery + (Remaining cost ÷ Cash flow in recovery year) Decision rule: Accept if Payback Simple, intuitive, focuses on liquidity and risk. Major limitation: ignores time value of money and cash flows after payback. Not theoretically sound but widely used in practice for quick screening.</div></div>
+      <div class="formula-row"><div class="formula-name">Discounted Payback Period</div><div class="formula-eq">Same as payback but uses discounted cash flows (PV of each year's CF) Improvement on simple payback — accounts for time value of money. Still ignores cash flows after payback date. Better than simple payback but inferior to NPV.</div></div>
+      <div class="formula-row"><div class="formula-name">Accounting Rate of Return (ARR)</div><div class="formula-eq">ARR = Average Annual Profit (after depreciation) ÷ Average Investment × 100 Average Investment = (Initial Investment + Scrap Value) ÷ 2 Decision rule: Accept if ARR > target rate. Higher ARR = better. Uses accounting profit, not cash flow. Ignores time value of money. Easy to calculate. Widely used by non-finance managers but theoretically weak. ACCA FM: know its limitations.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch25 — EOQ Formula</div>
+      <div class="formula-row"><div class="formula-name">Economic Order Quantity</div><div class="formula-eq">EOQ = √[(2 × D × Co) ÷ Ch] D = Annual Demand (units); Co = Cost per Order; Ch = Holding Cost per unit per year</div></div>
+      <div class="formula-row"><div class="formula-name">Total Annual Ordering Cost</div><div class="formula-eq">(D ÷ EOQ) × Co</div></div>
+      <div class="formula-row"><div class="formula-name">Total Annual Holding Cost</div><div class="formula-eq">(EOQ ÷ 2) × Ch</div></div>
+      <div class="formula-row"><div class="formula-name">Key Insight at EOQ</div><div class="formula-eq">At the EOQ point, Total Ordering Cost EXACTLY EQUALS Total Holding Cost — this is the mathematical minimum of total inventory cost</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch25 — Reorder & Safety Stock Formulas</div>
+      <div class="formula-row"><div class="formula-name">Reorder Level (no uncertainty)</div><div class="formula-eq">Average Daily Usage × Lead Time (days)</div></div>
+      <div class="formula-row"><div class="formula-name">Reorder Level (with safety stock)</div><div class="formula-eq">(Average Daily Usage × Lead Time) + Safety Stock</div></div>
+      <div class="formula-row"><div class="formula-name">Maximum Stock Level</div><div class="formula-eq">Reorder Level + Reorder Quantity − (Minimum Usage × Minimum Lead Time)</div></div>
+      <div class="formula-row"><div class="formula-name">Minimum Stock Level</div><div class="formula-eq">Reorder Level − (Average Usage × Average Lead Time)</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch25 — Miller-Orr Model Formulas</div>
+      <div class="formula-row"><div class="formula-name">Spread (Upper − Lower Limit)</div><div class="formula-eq">3 × [(0.75 × Transaction Cost × Variance of Daily Cash Flows) ÷ Interest Rate]^(1/3)</div></div>
+      <div class="formula-row"><div class="formula-name">Return Point</div><div class="formula-eq">Lower Limit + (Spread ÷ 3)</div></div>
+      <div class="formula-row"><div class="formula-name">Upper Limit</div><div class="formula-eq">Lower Limit + Spread</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch36 — Three Main Categories of Financial Risk</div>
+      <div class="formula-row"><div class="formula-name">Market Risk</div><div class="formula-eq">Risk of loss from adverse movements in market prices — interest rates, exchange rates, commodity prices, equity prices. Examples: Interest rate rise increases debt cost. Dollar strengthens vs Rupee — Indian exporter receives less in Rupee terms. Oil price spike increases production costs.</div></div>
+      <div class="formula-row"><div class="formula-name">Credit Risk</div><div class="formula-eq">Risk that a counterparty (customer, borrower, investment issuer) fails to meet their financial obligations. Examples: Customer defaults on ₹5Cr receivable. Bank's loan portfolio suffers defaults. Bond issuer defaults. Swap counterparty fails to make payment.</div></div>
+      <div class="formula-row"><div class="formula-name">Liquidity Risk</div><div class="formula-eq">Risk that the organisation cannot meet its financial obligations as they fall due — runs out of cash even if technically solvent. Examples: Company has large assets but cannot sell them fast enough to pay creditors. Bank faces sudden deposit withdrawals (bank run). Bond market seizes up — cannot roll over short-term debt.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch36 — Key Liquidity Ratios</div>
+      <div class="formula-row"><div class="formula-name">Current Ratio</div><div class="formula-eq">Current Assets ÷ Current Liabilities Benchmark: &gt;1 (assets exceed short-term obligations). Too high may indicate inefficient use of assets. Industry varies — retail often lower.</div></div>
+      <div class="formula-row"><div class="formula-name">Quick Ratio (Acid Test)</div><div class="formula-eq">(Current Assets − Inventory) ÷ Current Liabilities More conservative — excludes inventory (least liquid current asset). Benchmark: &gt;1 for most industries.</div></div>
+      <div class="formula-row"><div class="formula-name">Cash Ratio</div><div class="formula-eq">(Cash + Short-term Investments) ÷ Current Liabilities Most conservative — only cash and near-cash. Shows ability to meet obligations with immediately available funds.</div></div>
+      <div class="formula-row"><div class="formula-name">Cash Conversion Cycle (CCC)</div><div class="formula-eq">Receivable Days + Inventory Days − Payable Days How long cash is tied up in the operating cycle. Lower = better. Negative CCC (e.g. Amazon, supermarkets) = customers pay before suppliers are paid — excellent liquidity position.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch36 — Risk Appetite, Tolerance & Capacity — Defined</div>
+      <div class="formula-row"><div class="formula-name">Risk Appetite</div><div class="formula-eq">The AMOUNT and TYPE of risk an organisation is WILLING to accept in pursuit of its objectives. Set by the Board. Expressed qualitatively ("we do not accept regulatory compliance risk") or quantitatively ("maximum credit loss of ₹50Cr per year"). Aligns risk-taking with strategy.</div></div>
+      <div class="formula-row"><div class="formula-name">Risk Tolerance</div><div class="formula-eq">The ACCEPTABLE VARIATION around risk appetite — the boundaries within which risk must stay. Example: Appetite = 5% NPL ratio. Tolerance = up to 6% before escalation required. Between 5–6% = monitor closely. Above 6% = breach → immediate action.</div></div>
+      <div class="formula-row"><div class="formula-name">Risk Capacity</div><div class="formula-eq">The MAXIMUM amount of risk the organisation CAN bear — before its survival is threatened. Determined by financial strength, regulatory capital, stakeholder expectations. Risk appetite should always be LESS than risk capacity — there must be a buffer.</div></div>
+      <div class="formula-row"><div class="formula-name">Risk Attitude</div><div class="formula-eq">The overall disposition of the organisation towards risk — Risk Averse, Risk Neutral, or Risk Seeking. A startup is risk-seeking (high growth, accept high risk). A bank is typically risk-averse (depositors' money, regulatory capital). A utility company is risk-neutral to averse.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch36 — Key Formulas & Concepts</div>
+      <div class="formula-row"><div class="formula-name">Risk Score (Matrix)</div><div class="formula-eq">Risk Score = Likelihood (1–5) × Impact (1–5) | Range 1–25 | Higher = more critical</div></div>
+      <div class="formula-row"><div class="formula-name">Current Ratio</div><div class="formula-eq">Current Assets ÷ Current Liabilities | Target: &gt;1</div></div>
+      <div class="formula-row"><div class="formula-name">Quick Ratio</div><div class="formula-eq">(Current Assets − Inventory) ÷ Current Liabilities | More conservative than current ratio</div></div>
+      <div class="formula-row"><div class="formula-name">Cash Conversion Cycle</div><div class="formula-eq">Receivable Days + Inventory Days − Payable Days | Lower = better liquidity</div></div>
+      <div class="formula-row"><div class="formula-name">Capital Adequacy Ratio (Banks)</div><div class="formula-eq">Tier 1 + Tier 2 Capital ÷ Risk-Weighted Assets | Minimum 9% in India (Basel III)</div></div>
+      <div class="formula-row"><div class="formula-name">Expected Loss (Credit Risk)</div><div class="formula-eq">EL = PD × LGD × EAD | PD = Probability of Default | LGD = Loss Given Default | EAD = Exposure at Default</div></div>
+      <div class="formula-row"><div class="formula-name">Beta (Systematic Risk)</div><div class="formula-eq">β = Cov(Ri, Rm) ÷ Var(Rm) | β &gt; 1: more volatile than market | β &lt; 1: less volatile | β = 0: no market risk</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch21 — Financial Modelling Build Logic</div>
+      <div class="formula-row"><div class="formula-name">Depreciation (SLM)</div><div class="formula-eq">Opening Gross PP&amp;E ÷ Useful Life — feeds the P&amp;L D&amp;A line</div></div>
+      <div class="formula-row"><div class="formula-name">Average Balance (for interest calcs)</div><div class="formula-eq">(Opening + Closing) ÷ 2 — or use Opening only to avoid circularity in the model</div></div>
+      <div class="formula-row"><div class="formula-name">Interest Expense</div><div class="formula-eq">Average Debt × Interest Rate — feeds the P&amp;L Finance Costs line</div></div>
+      <div class="formula-row"><div class="formula-name">Receivables Balance (from Days)</div><div class="formula-eq">(Receivable Days ÷ 365) × Revenue</div></div>
+      <div class="formula-row"><div class="formula-name">Inventory Balance (from Days)</div><div class="formula-eq">(Inventory Days ÷ 365) × COGS</div></div>
+      <div class="formula-row"><div class="formula-name">Payables Balance (from Days)</div><div class="formula-eq">(Payable Days ÷ 365) × COGS</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch22 — Early Payment Discount Evaluation</div>
+      <div class="formula-row"><div class="formula-name">Annualised Cost of Discount NOT Taken</div><div class="formula-eq">[d ÷ (1−d)] × [365 ÷ (N − discount period)] — where d = discount %, N = normal credit period. Compare this to the cost of finance to decide whether taking the discount is worthwhile.</div></div>
+    </div>
+    <div class="highlight"><div class="highlight-title">🔗 Cross-Reference</div>Break-even and variance formulas from MA (49.3) are also examinable within FM's cost/short-term decision-making questions.</div>
+  </div>
+
+  <!-- 49.11 -->
+  <div class="section" id="s49.11">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">49.11</div>
+      <div class="section-title">SBL (Strategic Business Leader) — Strategic Professional</div>
+    </div>
+    <p class="prose">Strategic analysis models (Ansoff, SAF), the agency problem, and Kotter's change management framework.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch31 — The Four Ansoff Quadrants</div>
+      <div class="formula-row"><div class="formula-name">Market Penetration</div><div class="formula-eq">Existing Products + Existing Markets — LOWEST risk. Grow through increased market share, more frequent purchase, or winning customers from competitors within a familiar market.</div></div>
+      <div class="formula-row"><div class="formula-name">Market Development</div><div class="formula-eq">Existing Products + New Markets — MODERATE risk. Take a proven product into new geographies, new customer segments, or new use cases.</div></div>
+      <div class="formula-row"><div class="formula-name">Product Development</div><div class="formula-eq">New Products + Existing Markets — MODERATE risk. Leverage existing customer relationships and market knowledge to launch new products.</div></div>
+      <div class="formula-row"><div class="formula-name">Diversification</div><div class="formula-eq">New Products + New Markets — HIGHEST risk. Can be RELATED (leveraging some existing capability/synergy) or UNRELATED (a completely new business area, highest risk of all).</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch31 — The SAF Evaluation Criteria</div>
+      <div class="formula-row"><div class="formula-name">Suitability</div><div class="formula-eq">Does the strategy actually address the strategic issues identified (from SWOT/PESTEL/Five Forces analysis)? Does it fit the organisation's overall objectives and capabilities?</div></div>
+      <div class="formula-row"><div class="formula-name">Acceptability</div><div class="formula-eq">Will the strategy deliver acceptable RETURNS (financial appraisal — NPV, ROI), acceptable RISK levels, and be acceptable to key STAKEHOLDERS (shareholders, employees, regulators)?</div></div>
+      <div class="formula-row"><div class="formula-name">Feasibility</div><div class="formula-eq">Does the organisation actually have (or can it obtain) the RESOURCES and CAPABILITIES needed to execute the strategy — finance, people, technology, time?</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch38 — The Agency Problem — Core Framework</div>
+      <div class="formula-row"><div class="formula-name">Principals</div><div class="formula-eq">Shareholders — they OWN the company but don't manage it day-to-day Want: maximum long-term shareholder value, sustainable returns, transparency, dividends. Risk-tolerant (diversified portfolio). Long-term view.</div></div>
+      <div class="formula-row"><div class="formula-name">Agents</div><div class="formula-eq">Directors and Management — they RUN the company on behalf of shareholders May want: personal wealth maximisation, job security, prestige, empire building. Risk-averse (concentrated human capital in one company). Potentially short-term view (linked to bonus cycle).</div></div>
+      <div class="formula-row"><div class="formula-name">Agency Costs</div><div class="formula-eq">Costs arising from the separation of ownership and control Monitoring costs (audit, board oversight, shareholder meetings), Bonding costs (management incentive schemes, employment contracts), Residual loss (value destroyed by management self-interest even after monitoring).</div></div>
+      <div class="formula-row"><div class="formula-name">Governance Solution</div><div class="formula-eq">Mechanisms to align agent behaviour with principal interests Independent board oversight, performance-linked remuneration, shareholder voting rights, audit and disclosure requirements, regulatory enforcement. Goal: minimise residual agency loss.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch32 — Kotter's 8 Steps</div>
+      <div class="formula-row"><div class="formula-name">1-2: Build Urgency & Coalition</div><div class="formula-eq">Create a genuine sense of urgency for change; assemble a powerful enough guiding coalition of influential supporters</div></div>
+      <div class="formula-row"><div class="formula-name">3-4: Vision & Communication</div><div class="formula-eq">Develop a clear change vision and strategy; communicate that vision relentlessly through every available channel</div></div>
+      <div class="formula-row"><div class="formula-name">5-6: Empower & Early Wins</div><div class="formula-eq">Remove obstacles and empower broad-based action; generate visible SHORT-TERM WINS to build momentum and credibility</div></div>
+      <div class="formula-row"><div class="formula-name">7-8: Consolidate & Anchor</div><div class="formula-eq">Consolidate gains and produce more change, rather than declaring victory too early; anchor new approaches firmly in the organisational culture</div></div>
+    </div>
+  </div>
+
+  <!-- 49.12 -->
+  <div class="section" id="s49.12">
+    <div class="section-header">
+      <div class="sec-badge badge-green">49.12</div>
+      <div class="section-title">SBR (Strategic Business Reporting) — Strategic Professional</div>
+    </div>
+    <p class="prose">Consolidation mechanics from FA/FR (see 49.4) extended with share-based payment and foreign currency translation.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch30 — Equity-Settled SBP Formula</div>
+      <div class="formula-row"><div class="formula-name">Cumulative Expense to Date</div><div class="formula-eq">(Number of Options Expected to Vest × Fair Value at Grant Date) × (Years Elapsed ÷ Total Vesting Period)</div></div>
+      <div class="formula-row"><div class="formula-name">Expense for the Current Year</div><div class="formula-eq">Cumulative Expense to Date (this year) − Cumulative Expense Recognised (prior years)</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch30 — Translation Rules (IAS 21)</div>
+      <div class="formula-row"><div class="formula-name">Assets & Liabilities (Balance Sheet)</div><div class="formula-eq">Translated at the CLOSING rate (rate at the reporting date)</div></div>
+      <div class="formula-row"><div class="formula-name">Income & Expenses (P&L)</div><div class="formula-eq">Translated at the rate ruling AT THE DATE OF THE TRANSACTION — in practice, often an average rate for the period is used as a reasonable approximation</div></div>
+      <div class="formula-row"><div class="formula-name">Resulting Exchange Difference</div><div class="formula-eq">Goes to OTHER COMPREHENSIVE INCOME (a separate "Foreign Currency Translation Reserve" within equity) — NOT through profit or loss</div></div>
+    </div>
+    <div class="highlight"><div class="highlight-title">🔗 Cross-Reference</div>Goodwill, NCI, and group retained earnings formulas from Chapter 11 (49.4) are core SBR content — revisit them alongside this section.</div>
+  </div>
+
+  <!-- 49.13 -->
+  <div class="section" id="s49.13">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">49.13</div>
+      <div class="section-title">AFM (Advanced Financial Management) — Strategic Professional</div>
+    </div>
+    <p class="prose">Advanced M&A valuation (APV) plus the complete business valuation toolkit — FCFF, terminal value, NAV, and the EV↔Equity bridge.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch26 — APV Formula</div>
+      <div class="formula-row"><div class="formula-name">Adjusted Present Value</div><div class="formula-eq">APV = Base Case NPV (all-equity, discounted at ungeared cost of equity) + PV of Financing Side-Effects</div></div>
+      <div class="formula-row"><div class="formula-name">Financing Side-Effects Include</div><div class="formula-eq">PV of Tax Shield on Debt Interest + PV of Issue Costs + PV of Subsidised Loan Benefits (if any) − PV of Financial Distress Costs</div></div>
+      <div class="formula-row"><div class="formula-name">Ungeared Cost of Equity (via CAPM)</div><div class="formula-eq">First "ungear" the observed geared beta to an asset (ungeared) beta, then apply CAPM to get the discount rate for the base-case cash flows</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch26 — Key M&A Valuation Formulas</div>
+      <div class="formula-row"><div class="formula-name">Value of Synergy</div><div class="formula-eq">Value of Combined Entity − (Value of Acquirer Standalone + Value of Target Standalone)</div></div>
+      <div class="formula-row"><div class="formula-name">Maximum Justifiable Premium</div><div class="formula-eq">Target's Standalone Value + Value of Synergies − Deal/Integration Costs</div></div>
+      <div class="formula-row"><div class="formula-name">Gain to Target Shareholders</div><div class="formula-eq">Premium Paid Over Standalone Target Value</div></div>
+      <div class="formula-row"><div class="formula-name">Gain to Acquirer Shareholders</div><div class="formula-eq">Total Synergy Value − Premium Paid to Target</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch33 — FCFF Build — From P&L and Balance Sheet</div>
+      <div class="formula-row"><div class="formula-name">EBIT (Earnings Before Interest & Tax)</div><div class="formula-eq">Revenue − COGS − Operating Expenses − D&A This is operating profit — the return generated by the business before financing costs and tax.</div></div>
+      <div class="formula-row"><div class="formula-name">NOPAT (Net Operating Profit After Tax)</div><div class="formula-eq">EBIT × (1 − Tax Rate) Tax-adjusted operating profit. Removes the tax benefit of debt interest — treats firm as if all equity financed (tax effect captured in WACC separately).</div></div>
+      <div class="formula-row"><div class="formula-name">+ Depreciation & Amortisation</div><div class="formula-eq">Add back D&A (non-cash charge) D&A reduced EBIT but did not consume cash — we add it back to get to cash earnings.</div></div>
+      <div class="formula-row"><div class="formula-name">− Capital Expenditure (Capex)</div><div class="formula-eq">Subtract investment in PP&E and other long-term assets Cash actually spent on maintaining and growing the asset base. From cash flow statement or capex schedule.</div></div>
+      <div class="formula-row"><div class="formula-name">− / + Change in Working Capital</div><div class="formula-eq">−ΔInventory − ΔReceivables + ΔPayables Growing businesses often need more working capital — this consumes cash. Shrinking WC (e.g. reducing receivables) releases cash.</div></div>
+      <div class="formula-row"><div class="formula-name">= Free Cash Flow to Firm (FCFF)</div><div class="formula-eq">NOPAT + D&A − Capex − ΔNWC The cash the business generates after all operating investments. Available to be distributed to both debt and equity holders — hence "to firm."</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch33 — WACC Formula — Recap</div>
+      <div class="formula-row"><div class="formula-name">WACC</div><div class="formula-eq">WACC = Ke × [E/(E+D)] + Kd(1−t) × [D/(E+D)] Ke = Cost of Equity (from CAPM: Rf + β(Rm−Rf)) Kd = Pre-tax cost of debt (interest rate or YTM on debt) t = Corporate tax rate E = Market value of equity | D = Market value of debt Always use MARKET values for weights, never book values.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch33 — Terminal Value — Two Methods</div>
+      <div class="formula-row"><div class="formula-name">Method 1 — Gordon Growth Model (GGM)</div><div class="formula-eq">TV = FCFFn × (1 + g) ÷ (WACC − g) FCFFn = Free Cash Flow in final forecast year g = Long-term sustainable growth rate (usually GDP growth or inflation rate — 3–5% typically) WACC − g = the "spread" — must be positive (WACC must exceed g or formula breaks) Key rule: g should never exceed long-run GDP growth — no company can grow faster than the economy forever</div></div>
+      <div class="formula-row"><div class="formula-name">Method 2 — Exit Multiple</div><div class="formula-eq">TV = Final Year EBITDA × EV/EBITDA Multiple Multiple = current trading multiple of comparable companies (EV/EBITDA, EV/EBIT, P/E) More pragmatic — anchored to real market pricing But introduces circular logic: if multiples compress (as in a bear market), TV falls dramatically Commonly used by investment bankers and PE analysts in LBO models</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch33 — Net Asset Value (NAV) Calculation</div>
+      <div class="formula-row"><div class="formula-name">Book NAV (Accounting)</div><div class="formula-eq">Total Equity on Balance Sheet = Total Assets − Total Liabilities At historical cost. Quick but not meaningful for valuation purposes — ignores fair value changes in assets.</div></div>
+      <div class="formula-row"><div class="formula-name">Adjusted NAV (Fair Value)</div><div class="formula-eq">Fair Value of All Assets − Fair Value of All Liabilities Revalue each asset class to current market/fair value (PP&E, investments, real estate, intangibles). Adjust liabilities for current market value of debt. This gives the true economic net asset value per share.</div></div>
+      <div class="formula-row"><div class="formula-name">NAV Per Share</div><div class="formula-eq">Adjusted NAV ÷ Shares Outstanding Compare to current share price. P/B = Share Price ÷ NAV per share. P/B &lt; 1 means market prices company below its net assets — unusual for profitable companies, common for distressed or capital-destroying businesses.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch33 — The EV ↔ Equity Value Bridge</div>
+      <div class="formula-row"><div class="formula-name">Enterprise Value (EV)</div><div class="formula-eq">EV = Market Cap + Total Debt + Preference Shares + Minority Interest − Cash & Cash Equivalents EV is the TOTAL value of the business — what you would pay to buy the whole company (all equity + all debt) and then receive the cash sitting in it. Capital structure neutral.</div></div>
+      <div class="formula-row"><div class="formula-name">From EV → Equity Value</div><div class="formula-eq">Equity Value = EV − Total Debt − Preference Shares − Minority Interest + Cash Alternatively: EV − Net Debt (where Net Debt = Total Debt − Cash). This is what is left for equity shareholders after all debt obligations are accounted for.</div></div>
+      <div class="formula-row"><div class="formula-name">From Equity Value → Share Price</div><div class="formula-eq">Intrinsic Share Price = Equity Value ÷ Diluted Shares Outstanding Use DILUTED shares — include options, warrants, convertibles that could dilute equity. This is what the stock is worth per share — compare to market price.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch33 — Complete Formula Sheet</div>
+      <div class="formula-row"><div class="formula-name">Free Cash Flow to Firm (FCFF)</div><div class="formula-eq">FCFF = EBIT × (1−t) + D&A − Capex − ΔNWC Or: NOPAT + D&A − Capex − ΔNWC</div></div>
+      <div class="formula-row"><div class="formula-name">WACC</div><div class="formula-eq">WACC = Ke × [E/(E+D)] + Kd(1−t) × [D/(E+D)] Always: market value weights, post-tax cost of debt</div></div>
+      <div class="formula-row"><div class="formula-name">Cost of Equity (CAPM)</div><div class="formula-eq">Ke = Rf + β(Rm − Rf)</div></div>
+      <div class="formula-row"><div class="formula-name">Terminal Value — Gordon Growth Model</div><div class="formula-eq">TV = FCFFn × (1+g) ÷ (WACC − g) Condition: g &lt; WACC always</div></div>
+      <div class="formula-row"><div class="formula-name">Terminal Value — Exit Multiple</div><div class="formula-eq">TV = Final Year EBITDA × EV/EBITDA Multiple</div></div>
+      <div class="formula-row"><div class="formula-name">PV of any Cash Flow</div><div class="formula-eq">PV = Cash Flow ÷ (1 + WACC)^n n = number of years from today</div></div>
+      <div class="formula-row"><div class="formula-name">Enterprise Value (from market)</div><div class="formula-eq">EV = Market Cap + Total Debt + Pref Shares + Minority Interest − Cash</div></div>
+      <div class="formula-row"><div class="formula-name">Equity Value (from EV)</div><div class="formula-eq">Equity Value = EV − Net Debt Net Debt = Total Debt − Cash</div></div>
+      <div class="formula-row"><div class="formula-name">Intrinsic Share Price</div><div class="formula-eq">Share Price = Equity Value ÷ Diluted Shares Outstanding</div></div>
+      <div class="formula-row"><div class="formula-name">P/E Ratio</div><div class="formula-eq">P/E = Share Price ÷ Earnings Per Share (EPS)</div></div>
+      <div class="formula-row"><div class="formula-name">EV/EBITDA Multiple</div><div class="formula-eq">EV/EBITDA = Enterprise Value ÷ EBITDA</div></div>
+      <div class="formula-row"><div class="formula-name">Price to Book (P/B)</div><div class="formula-eq">P/B = Market Cap ÷ Book Value of Equity Or: Share Price ÷ Book Value Per Share</div></div>
+      <div class="formula-row"><div class="formula-name">Implied P/B from Fundamentals</div><div class="formula-eq">P/B = (ROE − g) ÷ (Ke − g) Higher ROE → deserves higher P/B. If ROE = Ke → P/B = 1</div></div>
+      <div class="formula-row"><div class="formula-name">NAV Per Share</div><div class="formula-eq">NAV/Share = (Fair Value of Assets − Fair Value of Liabilities) ÷ Shares Outstanding</div></div>
+      <div class="formula-row"><div class="formula-name">Margin of Safety</div><div class="formula-eq">Margin of Safety = (Intrinsic Value − Market Price) ÷ Intrinsic Value × 100%</div></div>
+      <div class="formula-row"><div class="formula-name">EV/Revenue Multiple</div><div class="formula-eq">EV/Revenue = Enterprise Value ÷ Revenue — useful for early-stage or loss-making companies where EBITDA/EBIT multiples aren't meaningful</div></div>
+      <div class="formula-row"><div class="formula-name">EV/EBIT Multiple</div><div class="formula-eq">EV/EBIT = Enterprise Value ÷ EBIT — captures depreciation/capex differences that EV/EBITDA ignores, useful for capital-intensive businesses</div></div>
+    </div>
+  </div>
+
+  <!-- 49.14 -->
+  <div class="section" id="s49.14">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">49.14</div>
+      <div class="section-title">APM (Advanced Performance Management) — Strategic Professional</div>
+    </div>
+    <p class="prose">Divisional performance measurement and Economic Value Added — the two pillars of APM's performance evaluation content.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch27 — Divisional Performance Formulas</div>
+      <div class="formula-row"><div class="formula-name">Return on Investment (ROI)</div><div class="formula-eq">Divisional Profit ÷ Divisional Capital Employed × 100</div></div>
+      <div class="formula-row"><div class="formula-name">Residual Income (RI)</div><div class="formula-eq">Divisional Profit − (Divisional Capital Employed × Company's Required/Cost of Capital Rate)</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch27 — EVA Formula</div>
+      <div class="formula-row"><div class="formula-name">EVA</div><div class="formula-eq">NOPAT (Net Operating Profit After Tax, Adjusted) − (WACC × Adjusted Capital Employed)</div></div>
+      <div class="formula-row"><div class="formula-name">Common Adjustments</div><div class="formula-eq">Add back R&D expenditure (capitalise it, since it creates future economic value like an asset); adjust for operating leases; remove non-cash provisions' distorting effects</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch27 — Transfer Pricing Methods</div>
+      <div class="formula-row"><div class="formula-name">Market Price Basis</div><div class="formula-eq">Transfer Price = the price the selling division could get selling externally — best when a genuine external market exists</div></div>
+      <div class="formula-row"><div class="formula-name">Full Cost Basis</div><div class="formula-eq">Transfer Price = Full Absorption Cost of Production — selling division earns NO profit on internal sales, which can be demotivating</div></div>
+      <div class="formula-row"><div class="formula-name">Cost-Plus Basis</div><div class="formula-eq">Transfer Price = Cost + a Profit Margin — fairer than pure cost, but the margin % itself is often contested between divisions</div></div>
+    </div>
+  </div>
+
+  <!-- 49.15 -->
+  <div class="section" id="s49.15">
+    <div class="section-header">
+      <div class="sec-badge badge-red">49.15</div>
+      <div class="section-title">ATX (Advanced Taxation) — Strategic Professional</div>
+    </div>
+    <p class="prose">Double tax relief methods — the same core formulas as TX (49.7), tested here in more complex cross-border scenarios.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch28 — Double Tax Relief Methods</div>
+      <div class="formula-row"><div class="formula-name">Exemption Method</div><div class="formula-eq">Income taxed in the source country is fully EXEMPTED from tax in the residence country</div></div>
+      <div class="formula-row"><div class="formula-name">Credit Method (Most Common)</div><div class="formula-eq">Residence country taxes worldwide income but gives a CREDIT for tax already paid in the source country, up to the residence country's own tax rate on that income</div></div>
+      <div class="formula-row"><div class="formula-name">Deduction Method (Least Favourable)</div><div class="formula-eq">Foreign tax paid is simply deducted as an EXPENSE before calculating residence-country tax — provides only partial relief</div></div>
+    </div>
+    <div class="highlight"><div class="highlight-title">🔗 Cross-Reference</div>This is the identical formula set from 49.7 TX — ATX applies it to more complex, multi-jurisdiction cases.</div>
+  </div>
+
+  <!-- 49.16 -->
+  <div class="section" id="s49.16">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">49.16</div>
+      <div class="section-title">AAA (Advanced Audit &amp; Assurance) — Strategic Professional</div>
+    </div>
+    <p class="prose">Builds on AA's materiality and audit risk model (49.9) with the complete audit opinion decision framework.</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch29 — Materiality Concepts</div>
+      <div class="formula-row"><div class="formula-name">Overall Materiality</div><div class="formula-eq">The threshold above which misstatements, individually or in aggregate, could reasonably influence users' economic decisions — typically set as a % of a benchmark (revenue, profit, or total assets, depending on the entity's nature)</div></div>
+      <div class="formula-row"><div class="formula-name">Performance Materiality</div><div class="formula-eq">Set LOWER than overall materiality — a buffer that reduces the risk that the sum of many individually immaterial misstatements could aggregate to a material amount</div></div>
+      <div class="formula-row"><div class="formula-name">Specific Materiality</div><div class="formula-eq">A LOWER materiality level applied to particular classes of transactions/balances where even smaller misstatements could reasonably influence users (e.g. related party transactions, director remuneration)</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch29 — The Complete Opinion Decision Framework</div>
+      <div class="formula-row"><div class="formula-name">Unmodified (Unqualified)</div><div class="formula-eq">Financial statements give a true and fair view in all material respects — no significant issues found</div></div>
+      <div class="formula-row"><div class="formula-name">Qualified ("Except For")</div><div class="formula-eq">Used when a misstatement or scope limitation is MATERIAL but NOT PERVASIVE — the issue is significant but contained/isolated</div></div>
+      <div class="formula-row"><div class="formula-name">Adverse</div><div class="formula-eq">Used when a misstatement is BOTH MATERIAL AND PERVASIVE — the financial statements as a whole are misleading, not just one isolated area</div></div>
+      <div class="formula-row"><div class="formula-name">Disclaimer of Opinion</div><div class="formula-eq">Used when a SCOPE LIMITATION is both material and pervasive — the auditor simply cannot obtain enough evidence to form ANY opinion</div></div>
+    </div>
+    <div class="highlight"><div class="highlight-title">🔗 Cross-Reference</div>ISA 200 definitions and the audit risk model from Chapter 34 (49.9) are foundational for AAA — revisit them alongside this section.</div>
+  </div>
+
+  <!-- 49.17 -->
+  <div class="section" id="s49.17">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">49.17</div>
+      <div class="section-title">Bonus — Excel, Power BI &amp; SQL Toolkit</div>
+    </div>
+    <p class="prose">Not examinable in ACCA papers directly, but essential practical tools referenced throughout this book's career chapters (33–48).</p>
+    <div class="formula-block">
+      <div class="formula-header">Ch21 — Must-Know Excel Functions — With Modelling Context</div>
+      <div class="formula-row"><div class="formula-name">IF / IFS / IFERROR</div><div class="formula-eq">=IF(year&gt;=start_year, revenue*margin, 0) =IFERROR(EBIT/Interest, "N/A") Conditional logic throughout models. IF for business rules (tax only when PBT positive). IFERROR to handle divide-by-zero in early years or loss years — keeps model clean.</div></div>
+      <div class="formula-row"><div class="formula-name">XLOOKUP</div><div class="formula-eq">=XLOOKUP(year, years_header_row, values_row, "N/A") Pull specific year's assumption or output. Used in Scenario Manager to pull the right assumption set. Replaced VLOOKUP — use XLOOKUP in all new models.</div></div>
+      <div class="formula-row"><div class="formula-name">INDEX / MATCH</div><div class="formula-eq">=INDEX(data_range, MATCH(lookup_value, lookup_range, 0)) More flexible than XLOOKUP for two-dimensional lookups. Used when pulling data from comparable company tables or historical data with both row and column references.</div></div>
+      <div class="formula-row"><div class="formula-name">SUMIF / SUMIFS</div><div class="formula-eq">=SUMIFS(amount_col, category_col, "Revenue", year_col, 2025) Aggregate financial data by multiple criteria. Used in revenue build (sum revenue by product line and year), cost aggregation by department. Essential for models pulling from large data tables.</div></div>
+      <div class="formula-row"><div class="formula-name">CHOOSE</div><div class="formula-eq">=CHOOSE(Assumptions!$B$2, base_value, bull_value, bear_value) The scenario selector function. Cell B2 contains 1/2/3 from dropdown. CHOOSE returns the right scenario's assumption. Cleaner than nested IFs for 3-scenario models.</div></div>
+      <div class="formula-row"><div class="formula-name">OFFSET</div><div class="formula-eq">=OFFSET(start_cell, rows_down, cols_right) Dynamic range reference that shifts based on inputs. Used in rolling forecast models where the "current month" reference moves forward each month. Also used for dynamic chart ranges.</div></div>
+      <div class="formula-row"><div class="formula-name">NPV</div><div class="formula-eq">=NPV(discount_rate, cashflow_year1:cashflow_year5) + initial_investment Net Present Value of future cash flows. Core formula in DCF valuation (Chapter 33). Note: NPV() in Excel discounts from period 1 — add Year 0 investment separately (it is already at present value).</div></div>
+      <div class="formula-row"><div class="formula-name">IRR / XIRR</div><div class="formula-eq">=IRR(cashflow_range) =XIRR(cashflow_range, dates_range) Internal Rate of Return. Used in investment appraisal, LBO return calculations, project finance models. XIRR is more accurate — uses actual dates rather than assuming equal periods.</div></div>
+      <div class="formula-row"><div class="formula-name">MAX / MIN</div><div class="formula-eq">=MAX(0, EBIT) — floor at zero =MIN(cash_balance, debt_repayment) — can't repay more than cash available Critical for model logic constraints. Tax cannot be negative (use MAX(0, PBT × tax_rate)). Debt cannot go below zero. Cash surplus cannot exceed revolving credit limit. These prevent model from showing impossible outputs.</div></div>
+      <div class="formula-row"><div class="formula-name">Data Validation (Dropdowns)</div><div class="formula-eq">Data → Data Validation → List → "Base,Bull,Bear" Creates scenario selector dropdown. Links to CHOOSE function. Makes model user-friendly for non-modellers — CFO selects scenario from dropdown, all outputs update automatically without touching formulas.</div></div>
+      <div class="formula-row"><div class="formula-name">Conditional Formatting</div><div class="formula-eq">Home → Conditional Formatting → Highlight Rules Format Checks tab: green when balanced, red when not. Highlight negative cash balances in red. Highlight cells exceeding thresholds (e.g. gearing &gt; 70% turns red). Makes model self-annotating — errors and risks are visually obvious.</div></div>
+      <div class="formula-row"><div class="formula-name">What-If Data Table</div><div class="formula-eq">Data → What-If Analysis → Data Table (1 or 2 variable) Builds sensitivity grids automatically. Row input = Revenue Growth %. Column input = EBITDA Margin %. Output = EBITDA for every combination. Essential for sensitivity analysis section of any model.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch39 — Mathematical & Statistical Functions</div>
+      <div class="formula-row"><div class="formula-name">SUM / SUMPRODUCT</div><div class="formula-eq">=SUM(A1:A10) — adds a range =SUMPRODUCT(A1:A10,B1:B10) — multiplies arrays and sums. Used for weighted averages, portfolio calculations, WACC. SUMPRODUCT is one of the most powerful functions in finance — replaces many complex array formulas.</div></div>
+      <div class="formula-row"><div class="formula-name">AVERAGE / MEDIAN / MODE</div><div class="formula-eq">=AVERAGE(A1:A10) — arithmetic mean =MEDIAN(A1:A10) — middle value (more robust than mean for skewed data) =MODE(A1:A10) — most frequent value</div></div>
+      <div class="formula-row"><div class="formula-name">MIN / MAX / LARGE / SMALL</div><div class="formula-eq">=MIN(A1:A10) / =MAX(A1:A10) — minimum and maximum =LARGE(A1:A10,2) — 2nd largest value =SMALL(A1:A10,3) — 3rd smallest value</div></div>
+      <div class="formula-row"><div class="formula-name">ABS / ROUND / ROUNDUP / ROUNDDOWN</div><div class="formula-eq">=ABS(A1) — absolute value (removes negative sign) =ROUND(A1,2) — rounds to 2 decimal places =ROUNDUP(A1,0) — always rounds up (e.g. for ceiling calculations) =ROUNDDOWN(A1,0) — always rounds down</div></div>
+      <div class="formula-row"><div class="formula-name">COUNT / COUNTA / COUNTBLANK</div><div class="formula-eq">=COUNT(A1:A10) — counts numbers only =COUNTA(A1:A10) — counts non-empty cells (numbers and text) =COUNTBLANK(A1:A10) — counts empty cells Essential for data quality checks — verify expected number of rows/columns.</div></div>
+      <div class="formula-row"><div class="formula-name">SUBTOTAL</div><div class="formula-eq">=SUBTOTAL(9,A1:A100) — SUM that ignores hidden rows (function_num 9=SUM, 1=AVERAGE, 2=COUNT) Critical when working with filtered data — regular SUM counts hidden rows, SUBTOTAL doesn't. Essential for financial reports with filters.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch39 — Lookup Functions — Full Reference</div>
+      <div class="formula-row"><div class="formula-name">VLOOKUP (Vertical Lookup)</div><div class="formula-eq">=VLOOKUP(lookup_value, table_array, col_index, [range_lookup]) Example: =VLOOKUP(A2, $D$2:$F$100, 3, FALSE) → Find value in A2 in column D of the table, return value from column 3 (column F), exact match (FALSE) Limitations: Only looks RIGHT (cannot look left). col_index breaks if columns are inserted. Use FALSE for exact match always in finance. Slower than INDEX-MATCH on large datasets.</div></div>
+      <div class="formula-row"><div class="formula-name">INDEX-MATCH (The Power Combo)</div><div class="formula-eq">=INDEX(return_range, MATCH(lookup_value, lookup_range, 0)) Example: =INDEX($F$2:$F$100, MATCH(A2, $D$2:$D$100, 0)) → MATCH finds the row number where A2 appears in column D. INDEX returns the value from column F at that row. Advantages over VLOOKUP: Can look LEFT. Does not break when columns inserted. Faster on large data. More flexible. Industry standard in Big 4 and IB models. Always use this instead of VLOOKUP.</div></div>
+      <div class="formula-row"><div class="formula-name">XLOOKUP (Modern Replacement)</div><div class="formula-eq">=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode]) Example: =XLOOKUP(A2, $D$2:$D$100, $F$2:$F$100, "Not Found") Available in Excel 365 and Excel 2021+. Combines best of VLOOKUP and INDEX-MATCH. Can look left or right. Built-in error handling (if_not_found). Cleaner syntax. Use XLOOKUP if your Excel version supports it — otherwise use INDEX-MATCH.</div></div>
+      <div class="formula-row"><div class="formula-name">MATCH (Standalone)</div><div class="formula-eq">=MATCH(lookup_value, lookup_array, [match_type]) Example: =MATCH("Revenue", A1:A20, 0) → returns row number of "Revenue" in A1:A20 Returns the POSITION (row or column number) — not the value itself. match_type 0 = exact match. Used inside INDEX-MATCH and for dynamic chart ranges.</div></div>
+      <div class="formula-row"><div class="formula-name">OFFSET (Dynamic Ranges)</div><div class="formula-eq">=OFFSET(reference, rows, cols, [height], [width]) Example: =OFFSET(A1, 5, 2) → cell that is 5 rows down and 2 columns right of A1 (= C6) Creates dynamic ranges — useful for rolling averages, dynamic chart ranges, expanding datasets. Volatile function (recalculates every time) — use INDEX instead where possible for performance.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch39 — Logical & Conditional Functions</div>
+      <div class="formula-row"><div class="formula-name">IF</div><div class="formula-eq">=IF(logical_test, value_if_true, value_if_false) Example: =IF(A1>0, "Profit", "Loss") Finance use: =IF(Revenue>Target, BonusRate*Salary, 0) Foundation of all conditional logic. Nest IFs for multiple conditions: =IF(A1>100,"High",IF(A1>50,"Medium","Low")) — but nested IFs get complex fast. Use IFS instead.</div></div>
+      <div class="formula-row"><div class="formula-name">IFS (Multiple Conditions)</div><div class="formula-eq">=IFS(condition1, value1, condition2, value2, condition3, value3, ...) Example: =IFS(Score>=90,"A", Score>=80,"B", Score>=70,"C", TRUE,"F") Cleaner than nested IFs. Last condition TRUE acts as "else". Available Excel 2019+. In older versions, use nested IF or CHOOSE.</div></div>
+      <div class="formula-row"><div class="formula-name">AND / OR / NOT</div><div class="formula-eq">=AND(condition1, condition2) → TRUE only if ALL conditions true =OR(condition1, condition2) → TRUE if ANY condition true =NOT(condition) → reverses TRUE/FALSE Example: =IF(AND(Revenue>1000, Margin>20%), "Star Product", "Review")</div></div>
+      <div class="formula-row"><div class="formula-name">SUMIF / SUMIFS</div><div class="formula-eq">=SUMIF(range, criteria, sum_range) — sum where ONE condition met =SUMIFS(sum_range, range1, criteria1, range2, criteria2) — sum where MULTIPLE conditions met Finance example: =SUMIFS(Revenue, Region, "North", Product, "Software") → Sum all revenue where Region="North" AND Product="Software" Extremely powerful for financial analysis. Used constantly in management reporting, budget vs actual analysis, segment reporting.</div></div>
+      <div class="formula-row"><div class="formula-name">COUNTIF / COUNTIFS</div><div class="formula-eq">=COUNTIF(range, criteria) — count where ONE condition met =COUNTIFS(range1, criteria1, range2, criteria2) — count where MULTIPLE conditions met Finance example: =COUNTIFS(Status, "Overdue", Amount, ">"&10000) → Count invoices that are overdue AND above ₹10,000</div></div>
+      <div class="formula-row"><div class="formula-name">AVERAGEIF / AVERAGEIFS</div><div class="formula-eq">=AVERAGEIF(range, criteria, average_range) =AVERAGEIFS(average_range, range1, criteria1, range2, criteria2) Finance example: =AVERAGEIF(Region, "South", DaysToCollect) → Average debtor days for Southern region only</div></div>
+      <div class="formula-row"><div class="formula-name">IFERROR / IFNA</div><div class="formula-eq">=IFERROR(formula, value_if_error) — catch ANY error =IFNA(formula, value_if_na) — catch only #N/A errors Example: =IFERROR(VLOOKUP(A1,Table,2,FALSE), "Not Found") Essential in financial models — prevents ugly #REF!, #N/A, #DIV/0! errors from showing. But be careful: IFERROR can hide genuine formula errors. Only use when errors are expected (e.g. no match found).</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch39 — Date Functions</div>
+      <div class="formula-row"><div class="formula-name">TODAY / NOW</div><div class="formula-eq">=TODAY() — current date (updates every day) =NOW() — current date and time Use TODAY() in dashboard headers, age calculations. WARNING: volatile — recalculates on every change. Freeze with Ctrl+; if you want static date.</div></div>
+      <div class="formula-row"><div class="formula-name">DATE / YEAR / MONTH / DAY</div><div class="formula-eq">=DATE(2025,12,31) — create a date from year/month/day =YEAR(A1) / =MONTH(A1) / =DAY(A1) — extract components =DATE(YEAR(A1),MONTH(A1)+1,0) — last day of current month (very useful for financial period end dates)</div></div>
+      <div class="formula-row"><div class="formula-name">DATEDIF / DAYS / NETWORKDAYS</div><div class="formula-eq">=DATEDIF(start_date, end_date, "Y") — years between dates ("M"=months, "D"=days) =DAYS(end_date, start_date) — number of days between dates =NETWORKDAYS(start, end, [holidays]) — working days excluding weekends and holidays NETWORKDAYS critical for payment terms, project deadlines, days outstanding calculations.</div></div>
+      <div class="formula-row"><div class="formula-name">EOMONTH</div><div class="formula-eq">=EOMONTH(start_date, months) — last day of month, n months away =EOMONTH(A1, 0) — last day of same month as A1 =EOMONTH(A1, 1) — last day of next month Invaluable for financial model date structures — building monthly/quarterly timelines automatically.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch39 — Financial Functions — Full Reference with Finance Context</div>
+      <div class="formula-row"><div class="formula-name">NPV (Net Present Value)</div><div class="formula-eq">=NPV(rate, value1, value2, ...) + initial_investment CRITICAL: Excel's NPV assumes cash flows start at END of period 1 (not period 0). Always add period 0 investment separately. Example: Initial investment ₹100Cr (now), cash flows ₹30Cr, ₹40Cr, ₹50Cr, ₹60Cr, discount rate 12%: =NPV(12%, 30, 40, 50, 60) + (-100) → correct NPV NOT: =NPV(12%, -100, 30, 40, 50, 60) → WRONG — this discounts the initial investment which should not be discounted. If NPV > 0 → Accept project. If NPV &lt; 0 → Reject. Links directly to Chapter 22 (Corporate Finance) and Chapter 33 (Valuation).</div></div>
+      <div class="formula-row"><div class="formula-name">XNPV (NPV with Actual Dates)</div><div class="formula-eq">=XNPV(rate, values, dates) Example: =XNPV(12%, B2:B6, A2:A6) where A2:A6 are actual dates and B2:B6 are cash flows More accurate than NPV when cash flows don't occur at exactly equal intervals. Use XNPV in real financial models — NPV assumes equal periods.</div></div>
+      <div class="formula-row"><div class="formula-name">IRR (Internal Rate of Return)</div><div class="formula-eq">=IRR(values, [guess]) Example: =IRR({-100, 30, 40, 50, 60}) → rate at which NPV = 0 Initial investment must be NEGATIVE. Values must include at least one negative (outflow) and one positive (inflow). If IRR > cost of capital (hurdle rate) → Accept. Multiple IRRs possible if cash flows change sign more than once — be careful.</div></div>
+      <div class="formula-row"><div class="formula-name">XIRR (IRR with Actual Dates)</div><div class="formula-eq">=XIRR(values, dates, [guess]) Example: =XIRR(B2:B6, A2:A6) — IRR using actual payment dates Use XIRR instead of IRR in real models — more accurate when cash flows don't occur at exactly annual intervals. Standard in PE/VC investment returns modelling.</div></div>
+      <div class="formula-row"><div class="formula-name">PV (Present Value)</div><div class="formula-eq">=PV(rate, nper, pmt, [fv], [type]) Example: PV of ₹10,000 received annually for 5 years at 10%: =PV(10%, 5, -10000) → ₹37,908 rate = periodic rate. nper = number of periods. pmt = periodic payment (negative = outflow). fv = future value. type = 0 (end of period, default) or 1 (beginning of period).</div></div>
+      <div class="formula-row"><div class="formula-name">FV (Future Value)</div><div class="formula-eq">=FV(rate, nper, pmt, [pv], [type]) Example: FV of ₹10,000 invested annually for 10 years at 8%: =FV(8%, 10, -10000) → ₹1,44,866 FV of lump sum: =FV(8%, 10, 0, -100000) → FV of ₹1L invested today for 10 years at 8%. Useful for retirement planning, savings projections.</div></div>
+      <div class="formula-row"><div class="formula-name">PMT (Loan Payment)</div><div class="formula-eq">=PMT(rate, nper, pv, [fv], [type]) Example: Monthly EMI for ₹50L home loan at 8.5% for 20 years: =PMT(8.5%/12, 20*12, -5000000) → ₹43,391 per month rate must match period — for monthly payments, divide annual rate by 12. nper = total number of payments (years × 12 for monthly). Used for loan amortisation schedules, lease payment calculations.</div></div>
+      <div class="formula-row"><div class="formula-name">RATE / NPER</div><div class="formula-eq">=RATE(nper, pmt, pv) — find the interest rate given payments =NPER(rate, pmt, pv) — find number of periods to repay a loan Example: =RATE(60, -5000, 200000) → monthly rate on loan of ₹2L, 60 monthly payments of ₹5,000 =NPER(8%/12, -10000, 500000) → months to repay ₹5L at 8% with ₹10,000/month payments</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch40 — Essential DAX Measures for Finance</div>
+      <div class="formula-row"><div class="formula-name">Basic Aggregations</div><div class="formula-eq">Total Revenue = SUM(Sales[Revenue]) Total Cost = SUM(Sales[Cost]) Gross Profit = [Total Revenue] - [Total Cost] GP Margin % = DIVIDE([Gross Profit], [Total Revenue], 0) Always use DIVIDE() instead of / to handle division by zero gracefully.</div></div>
+      <div class="formula-row"><div class="formula-name">Year-over-Year Comparison</div><div class="formula-eq">Revenue LY = CALCULATE([Total Revenue], SAMEPERIODLASTYEAR(Dates[Date])) YoY Growth = [Total Revenue] - [Revenue LY] YoY Growth % = DIVIDE([YoY Growth], [Revenue LY], 0) SAMEPERIODLASTYEAR is a time intelligence function — requires a proper Date table marked as Date Table.</div></div>
+      <div class="formula-row"><div class="formula-name">Year-to-Date (YTD)</div><div class="formula-eq">Revenue YTD = CALCULATE([Total Revenue], DATESYTD(Dates[Date])) Revenue YTD LY = CALCULATE([Total Revenue], DATESYTD(SAMEPERIODLASTYEAR(Dates[Date]))) For financial year YTD (not calendar year): DATESYTD(Dates[Date], "31-03") — ends March 31 (India financial year).</div></div>
+      <div class="formula-row"><div class="formula-name">Budget Variance</div><div class="formula-eq">Budget = SUM(Budget[BudgetAmount]) Variance = [Total Revenue] - [Budget] Variance % = DIVIDE([Variance], [Budget], 0) Variance Flag = IF([Variance %] &lt; -0.05, "⚠️ Below Budget", "✅ On Track")</div></div>
+      <div class="formula-row"><div class="formula-name">CALCULATE — The Most Important DAX Function</div><div class="formula-eq">CALCULATE(expression, filter1, filter2, ...) Revenue North = CALCULATE([Total Revenue], Region[Region] = "North") Revenue excl Returns = CALCULATE([Total Revenue], Sales[Type] &lt;&gt; "Return") Revenue Last Month = CALCULATE([Total Revenue], PREVIOUSMONTH(Dates[Date])) CALCULATE modifies the filter context — it's the engine behind 80% of all advanced DAX. Master this and you can build almost any measure.</div></div>
+      <div class="formula-row"><div class="formula-name">ALL — Remove Filters</div><div class="formula-eq">% of Total Revenue = DIVIDE([Total Revenue], CALCULATE([Total Revenue], ALL(Sales))) ALL() removes ALL filters from a table — giving the grand total regardless of slicers. DIVIDE([Revenue], [Revenue with ALL]) gives % contribution of each row to the total. Essential for % share calculations.</div></div>
+      <div class="formula-row"><div class="formula-name">RANKX — Ranking</div><div class="formula-eq">Revenue Rank = RANKX(ALL(Products[Product]), [Total Revenue],,DESC) Ranks each product by revenue across the entire product table (ALL removes filter). Use to show Top 10 products, rank sales reps by performance, rank cost centres by spend.</div></div>
+      <div class="formula-row"><div class="formula-name">SWITCH — Multiple Conditions</div><div class="formula-eq">Performance Rating = SWITCH(TRUE(), &nbsp;&nbsp;[Variance %] >= 0.1, "🟢 Excellent", &nbsp;&nbsp;[Variance %] >= 0, "🟡 On Target", &nbsp;&nbsp;[Variance %] >= -0.1, "🟠 Watch", &nbsp;&nbsp;"🔴 Critical") Cleaner than nested IF statements. SWITCH(TRUE(),...) evaluates each condition in order and returns the first TRUE result.</div></div>
+      <div class="formula-row"><div class="formula-name">Moving Average</div><div class="formula-eq">3-Month Moving Avg Revenue = CALCULATE([Total Revenue], DATESINPERIOD(Dates[Date], LASTDATE(Dates[Date]), -3, MONTH)) / 3 DATESINPERIOD defines a rolling window of 3 months ending at the current date. Dividing by 3 gives the average. Use for smoothing volatile monthly data in dashboards.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch40 — Essential DAX Quick Reference</div>
+      <div class="formula-row"><div class="formula-name">Total Revenue</div><div class="formula-eq">= SUM(Sales[Revenue])</div></div>
+      <div class="formula-row"><div class="formula-name">GP Margin %</div><div class="formula-eq">= DIVIDE([Gross Profit], [Total Revenue], 0)</div></div>
+      <div class="formula-row"><div class="formula-name">Revenue Last Year</div><div class="formula-eq">= CALCULATE([Total Revenue], SAMEPERIODLASTYEAR(Dates[Date]))</div></div>
+      <div class="formula-row"><div class="formula-name">Revenue YTD</div><div class="formula-eq">= CALCULATE([Total Revenue], DATESYTD(Dates[Date], "31-03"))</div></div>
+      <div class="formula-row"><div class="formula-name">Budget Variance %</div><div class="formula-eq">= DIVIDE([Total Revenue] - [Budget], [Budget], 0)</div></div>
+      <div class="formula-row"><div class="formula-name">% of Total</div><div class="formula-eq">= DIVIDE([Total Revenue], CALCULATE([Total Revenue], ALL(Sales)), 0)</div></div>
+      <div class="formula-row"><div class="formula-name">Revenue Rank</div><div class="formula-eq">= RANKX(ALL(Products[Product]), [Total Revenue],, DESC)</div></div>
+      <div class="formula-row"><div class="formula-name">3M Moving Average</div><div class="formula-eq">= CALCULATE([Total Revenue], DATESINPERIOD(Dates[Date], LASTDATE(Dates[Date]), -3, MONTH)) / 3</div></div>
+      <div class="formula-row"><div class="formula-name">Revenue Filtered</div><div class="formula-eq">= CALCULATE([Total Revenue], Region[Region] = "North")</div></div>
+      <div class="formula-row"><div class="formula-name">Status Flag</div><div class="formula-eq">= IF([Variance %] >= 0, "✅ On Track", "⚠️ Below Target")</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch41 — Core SQL Commands — Finance Reference</div>
+      <div class="formula-row"><div class="formula-name">SELECT — Retrieve Data</div><div class="formula-eq">SELECT Revenue, Cost, Region, Month FROM Sales WHERE Year = 2024 AND Region = 'North' ORDER BY Revenue DESC; The most fundamental SQL statement. SELECT what columns, FROM which table, WHERE conditions, ORDER BY for sorting. Like a filtered, sorted PivotTable — but running directly on the database.</div></div>
+      <div class="formula-row"><div class="formula-name">GROUP BY + Aggregate Functions</div><div class="formula-eq">SELECT Region, SUM(Revenue) AS Total_Revenue, &nbsp;&nbsp;&nbsp;&nbsp;AVG(Margin) AS Avg_Margin, &nbsp;&nbsp;&nbsp;&nbsp;COUNT(*) AS Transaction_Count FROM Sales WHERE Year = 2024 GROUP BY Region HAVING SUM(Revenue) > 1000000 ORDER BY Total_Revenue DESC; GROUP BY aggregates rows — like a PivotTable. SUM, AVG, COUNT, MIN, MAX are aggregate functions. HAVING filters AFTER grouping (WHERE filters before). Essential for financial summaries by dimension.</div></div>
+      <div class="formula-row"><div class="formula-name">JOIN — Combine Tables</div><div class="formula-eq">SELECT s.Invoice_No, s.Revenue, c.Customer_Name, c.Region, p.Product_Name FROM Sales s INNER JOIN Customers c ON s.Customer_ID = c.Customer_ID INNER JOIN Products p ON s.Product_ID = p.Product_ID WHERE s.Date >= '2024-01-01'; JOIN combines data from multiple tables using a matching key — like VLOOKUP but for entire tables simultaneously. INNER JOIN: only matching rows. LEFT JOIN: all rows from left table + matches from right. This is the SQL equivalent of building a data model.</div></div>
+      <div class="formula-row"><div class="formula-name">CASE WHEN — Conditional Logic</div><div class="formula-eq">SELECT Invoice_No, Amount, CASE &nbsp;&nbsp;WHEN Days_Overdue = 0 THEN 'Current' &nbsp;&nbsp;WHEN Days_Overdue &nbsp;&nbsp;WHEN Days_Overdue &nbsp;&nbsp;ELSE '60+ Days' END AS Aging_Bucket FROM Receivables; CASE WHEN is SQL's IF statement — creates conditional categories. Essential for aged receivables analysis, risk banding, performance rating. Same logic as Excel's IFS function.</div></div>
+      <div class="formula-row"><div class="formula-name">Window Functions — Running Totals & Rankings</div><div class="formula-eq">SELECT Month, Revenue, SUM(Revenue) OVER (ORDER BY Month) AS Running_Total, LAG(Revenue, 1) OVER (ORDER BY Month) AS Prev_Month_Revenue, Revenue - LAG(Revenue,1) OVER (ORDER BY Month) AS MoM_Change, RANK() OVER (PARTITION BY Region ORDER BY Revenue DESC) AS Revenue_Rank FROM Sales; Window functions perform calculations across rows related to current row — without collapsing to summary. Running totals, month-over-month changes, ranking within partitions — all in one query. OVER() defines the window. Essential for time-series financial analysis in SQL.</div></div>
+      <div class="formula-row"><div class="formula-name">CTEs — Readable Complex Queries</div><div class="formula-eq">WITH Monthly_Revenue AS ( &nbsp;&nbsp;SELECT Month, SUM(Revenue) AS Revenue &nbsp;&nbsp;FROM Sales GROUP BY Month ), Revenue_with_Growth AS ( &nbsp;&nbsp;SELECT Month, Revenue, &nbsp;&nbsp;LAG(Revenue) OVER (ORDER BY Month) AS Prev_Revenue &nbsp;&nbsp;FROM Monthly_Revenue ) SELECT Month, Revenue, ROUND((Revenue - Prev_Revenue) / Prev_Revenue * 100, 2) AS Growth_Pct FROM Revenue_with_Growth; CTEs (Common Table Expressions) create temporary named result sets — like named ranges in Excel. Break complex queries into readable, manageable steps. Much cleaner than deeply nested subqueries.</div></div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Ch41 — Key Statistical Concepts for Finance</div>
+      <div class="formula-row"><div class="formula-name">Descriptive Statistics</div><div class="formula-eq">Mean (Average): Sum ÷ Count — central tendency Median: Middle value — better than mean for skewed data (e.g. income distribution) Standard Deviation: Average distance from mean — measures spread/volatility Variance: Standard Deviation² — used in portfolio theory Skewness: Asymmetry of distribution — positive skew (tail right), negative skew (tail left) Finance use: Mean and StDev of returns for investment analysis. Median for customer spend (not mean — one large customer skews mean dramatically).</div></div>
+      <div class="formula-row"><div class="formula-name">Correlation</div><div class="formula-eq">Correlation coefficient (r): -1 to +1 +1 = perfect positive correlation (both move together) 0 = no linear relationship -1 = perfect negative correlation (one goes up, other goes down) Finance uses: Portfolio diversification (combine negatively correlated assets). Regression (identify key revenue drivers). Fraud detection (transactions that don't correlate with normal patterns). WARNING: Correlation ≠ Causation. Always ask WHY two things correlate before concluding one causes the other.</div></div>
+      <div class="formula-row"><div class="formula-name">Linear Regression</div><div class="formula-eq">Y = a + bX (+ error) Y = dependent variable (what we want to predict) X = independent variable (the driver/predictor) b = slope (how much Y changes for one unit increase in X) a = intercept (value of Y when X = 0) R² = goodness of fit (0–1, higher = model explains more variance) Finance uses: Revenue forecasting (Y=Revenue, X=GDP growth or advertising spend). Cost modelling (Y=total cost, X=production volume). Risk modelling (Y=default probability, X=leverage ratio). In Excel: Data → Data Analysis → Regression. In Python: sklearn LinearRegression.</div></div>
+      <div class="formula-row"><div class="formula-name">Time Series Analysis</div><div class="formula-eq">Components of time series: Trend: Long-term direction (revenue growing at 10% CAGR) Seasonality: Regular pattern (retail revenue peaks in December every year) Cyclicality: Longer irregular cycles (economic cycle, 5-10 years) Irregular/Noise: Random variation not explained by above Finance use: Isolate seasonality to understand true underlying trend. Compare this December to last December (same seasonal position) rather than to November. Moving averages smooth out noise to reveal trend.</div></div>
+      <div class="formula-row"><div class="formula-name">Probability & Expected Value</div><div class="formula-eq">Expected Value = Σ (Probability × Outcome) Example: New product launch Success (40% probability) → ₹200Cr NPV Failure (60% probability) → -₹50Cr NPV Expected Value = (0.4 × 200) + (0.6 × -50) = ₹50Cr Foundation of scenario analysis, risk management, and decision trees. ACCA AFM: expected values in project appraisal questions. Risk management: expected loss = Probability of Default × Loss Given Default (credit risk).</div></div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      41 Chapters of Theory<br>
+      → Compressed into 350+ Formulas<br>
+      → Organised by 13 ACCA Papers<br>
+      = <strong style="color:var(--accent2);">One Page to Rule Your Revision</strong>
+    </div>
+    <h3>Formulas memorised. Now go apply them.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Chapter 50 next: Practice Questions Bank — MCQs and scenario questions for every ACCA paper, with full answers. 📝</p>
+  </div>
+
+</div><!-- /container ch49 -->
+
+</body>
+</html>

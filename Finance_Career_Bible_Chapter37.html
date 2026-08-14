@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 37: Taxation Fundamentals</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #ffd93d; --accent2: #6c63ff; --accent3: #00d4aa; --accent4: #ff6b6b;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(255,217,61,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent3); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent4); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent);  border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent2); border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent); padding:14px 20px; background:rgba(255,217,61,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent); background:rgba(255,217,61,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(255,217,61,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(255,217,61,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(255,217,61,0.07),rgba(108,99,255,0.05)); border:1px solid rgba(255,217,61,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(255,217,61,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(255,217,61,0.1); border:1px solid rgba(255,217,61,0.2); color:var(--text); }
+  .tag.yellow { color:var(--accent); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(255,217,61,0.09),rgba(108,99,255,0.06)); border:1px solid rgba(255,217,61,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 37</div>
+  <h1>Taxation<br><span>Fundamentals</span></h1>
+  <p class="hero-sub">How governments tax income, profits, and transactions — and how finance professionals navigate the tax landscape. From Income Tax and GST in India to deferred tax under IFRS, this chapter gives you the tax knowledge every finance professional must have.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">30%</div><div class="stat-label">Corporate Tax Rate</div></div>
+    <div class="stat"><div class="stat-num">GST</div><div class="stat-label">India's Biggest Reform</div></div>
+    <div class="stat"><div class="stat-num">IAS 12</div><div class="stat-label">Deferred Tax Standard</div></div>
+    <div class="stat"><div class="stat-num">ACCA</div><div class="stat-label">TX & ATX Papers</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 37 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">37.1</span>Why Taxation Matters — The Finance Professional's Perspective</div>
+    <div class="toc-item"><span class="toc-num">37.2</span>Types of Taxes — Direct vs Indirect</div>
+    <div class="toc-item"><span class="toc-num">37.3</span>Income Tax in India — Structure & Key Concepts</div>
+    <div class="toc-item"><span class="toc-num">37.4</span>Corporate Tax in India — Rates, Deductions & Computation</div>
+    <div class="toc-item"><span class="toc-num">37.5</span>GST — Goods and Services Tax (India's Biggest Tax Reform)</div>
+    <div class="toc-item"><span class="toc-num">37.6</span>Tax Deducted at Source (TDS) — Mechanism & Key Rates</div>
+    <div class="toc-item"><span class="toc-num">37.7</span>Deferred Tax — IAS 12 (ACCA & IFRS Core Topic)</div>
+    <div class="toc-item"><span class="toc-num">37.8</span>Tax Avoidance vs Tax Evasion — Legal & Ethical Distinction</div>
+    <div class="toc-item"><span class="toc-num">37.9</span>Transfer Pricing — Tax on Intercompany Transactions</div>
+    <div class="toc-item"><span class="toc-num">37.10</span>International Taxation — DTAA & BEPS</div>
+    <div class="toc-item"><span class="toc-num">37.11</span>Tax in Financial Statements — Accounting Treatment</div>
+    <div class="toc-item"><span class="toc-num">37.12</span>Tax Planning Strategies for Corporates</div>
+    <div class="toc-item"><span class="toc-num">37.13</span>Tax Compliance Calendar — India</div>
+    <div class="toc-item"><span class="toc-num">37.14</span>Key Takeaways, Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+  </div>
+
+  <!-- 37.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">37.1</div>
+      <div class="section-title">Why Taxation Matters — The Finance Professional's Perspective</div>
+    </div>
+    <p class="prose">Tax is one of the largest cash outflows for any profitable business. Understanding how taxes work — and how to manage them legally and efficiently — is a core competency for every finance professional, from a junior accountant to a CFO.</p>
+
+    <div class="quote">"In this world, nothing is certain except death and taxes." — Benjamin Franklin. The job of a finance professional is not to avoid taxes (illegal) but to manage them efficiently (legal and smart).</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Why Every Finance Professional Needs Tax Knowledge</div>
+        <ul class="card-items">
+          <li><strong>Financial Statements:</strong> Tax expense and deferred tax are on every P&L and balance sheet — you must understand them to read financials correctly</li>
+          <li><strong>Cash Flow Planning:</strong> Tax payments are major cash outflows — advance tax, TDS, GST — all must be planned and budgeted</li>
+          <li><strong>Business Decisions:</strong> Tax implications affect every major decision — M&A structuring, investment location, financing choice (debt is tax-deductible)</li>
+          <li><strong>Compliance:</strong> Tax filings — ITR, GST returns, TDS returns — are legal obligations with penalties for non-compliance</li>
+          <li><strong>Valuation:</strong> Post-tax cash flows are what matter in DCF — understanding effective tax rates is essential</li>
+          <li><strong>ACCA:</strong> Taxation is a dedicated paper (TX) and advanced paper (ATX) — essential for the qualification</li>
+        </ul>
+        <div class="card-tag">Why It Matters</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Tax as Government Revenue — The Big Picture</div>
+        <ul class="card-items">
+          <li>Tax is the primary source of government revenue — funds public services (healthcare, education, infrastructure, defence)</li>
+          <li>India's Tax-to-GDP ratio: ~11% (significantly below global average of ~15%) — room for improvement</li>
+          <li>India's tax revenue FY24: ~₹34 lakh crore — split between direct taxes (income, corporate) and indirect taxes (GST, customs)</li>
+          <li>GST alone: ~₹20 lakh crore annually — India's single largest tax</li>
+          <li>Direct taxes (IT + Corporate): ~₹19 lakh crore — growing strongly with formalisation of economy</li>
+          <li>Tax policy is a key driver of investment decisions — lower corporate tax rates attract FDI</li>
+        </ul>
+        <div class="card-tag">Macro Context</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Key Tax Principles — The Foundations</div>
+        <ul class="card-items">
+          <li><strong>Equity (Fairness):</strong> Those with higher ability to pay should pay more — progressive taxation</li>
+          <li><strong>Certainty:</strong> Tax rules should be clear and predictable — taxpayers should know what they owe</li>
+          <li><strong>Convenience:</strong> Tax should be collected in a way that is convenient for the taxpayer (TDS achieves this — tax deducted at source)</li>
+          <li><strong>Efficiency:</strong> Tax collection should be cost-effective — cost of collection should be low relative to revenue</li>
+          <li><strong>Neutrality:</strong> Tax should not distort economic decisions — though in practice, tax incentives often deliberately do so (e.g. R&D deductions to encourage innovation)</li>
+          <li>These principles (Adam Smith's "Canons of Taxation") are tested in ACCA TX paper</li>
+        </ul>
+        <div class="card-tag">Adam Smith's Canons</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">37.2</div>
+      <div class="section-title">Types of Taxes — Direct vs Indirect</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Feature</th><th>Direct Tax</th><th>Indirect Tax</th></tr>
+      <tr><td>Definition</td><td>Tax levied directly on income or wealth of the taxpayer — cannot be shifted to another person</td><td>Tax levied on goods and services — the burden can be passed on to the end consumer</td></tr>
+      <tr><td>Who Bears It</td><td>The taxpayer bears the burden directly — individual or company paying the tax</td><td>Ultimately borne by the final consumer — businesses collect and remit on behalf of government</td></tr>
+      <tr><td>Examples in India</td><td>Income Tax (individuals), Corporate Tax, Capital Gains Tax, Securities Transaction Tax (STT)</td><td>GST (Goods & Services Tax), Customs Duty, Excise Duty (now largely subsumed in GST)</td></tr>
+      <tr><td>Administration</td><td>Central Board of Direct Taxes (CBDT) under Ministry of Finance</td><td>Central Board of Indirect Taxes & Customs (CBIC) for GST and Customs</td></tr>
+      <tr><td>Progressivity</td><td>Usually progressive — higher income = higher tax rate (income tax slabs)</td><td>Usually regressive — same rate regardless of income; poorer people spend higher % of income on consumption</td></tr>
+      <tr><td>Evasion Risk</td><td>Higher evasion risk — income can be hidden. India has only ~9Cr individual taxpayers vs 140Cr population.</td><td>Lower evasion risk — tax collected at point of transaction. GST's invoice matching makes evasion harder.</td></tr>
+      <tr><td>Impact on Business</td><td>Reduces after-tax profit directly. Corporate tax rate affects investment decisions.</td><td>Affects cost of inputs (GST on purchases) and pricing of outputs (GST collected on sales)</td></tr>
+    </table>
+  </div>
+
+  <!-- 37.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">37.3</div>
+      <div class="section-title">Income Tax in India — Structure & Key Concepts</div>
+    </div>
+    <p class="prose">India's personal income tax is governed by the <strong>Income Tax Act, 1961</strong>. It is administered by the Income Tax Department under CBDT. Understanding the structure is essential for any finance professional — both for personal tax planning and for advising others.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Five Heads of Income</div>
+        <ul class="card-items">
+          <li><strong>1. Salaries:</strong> Income from employment — basic salary, HRA, allowances, perquisites. Most employees fall primarily here.</li>
+          <li><strong>2. Income from House Property:</strong> Rental income from property owned. Standard deduction of 30% allowed on net annual value. Interest on home loan deductible up to limits.</li>
+          <li><strong>3. Profits & Gains from Business/Profession:</strong> Business income after deducting allowable expenses. Most complex head — significant scope for planning.</li>
+          <li><strong>4. Capital Gains:</strong> Profit from sale of capital assets (shares, property, mutual funds, gold). Split into STCG (Short Term) and LTCG (Long Term) with different tax rates.</li>
+          <li><strong>5. Income from Other Sources:</strong> Interest income, dividend income (above ₹10L), lottery winnings, gifts above ₹50,000 from non-relatives.</li>
+          <li>Total of all five heads = Gross Total Income → apply deductions (Chapter VI-A) → Taxable Income</li>
+        </ul>
+        <div class="card-tag">5 Heads</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">New Tax Regime vs Old Tax Regime (FY2024-25)</div>
+        <ul class="card-items">
+          <li><strong>New Regime (Default from FY2024-25):</strong></li>
+          <li>Up to ₹3L: NIL | ₹3L–7L: 5% | ₹7L–10L: 10% | ₹10L–12L: 15% | ₹12L–15L: 20% | Above ₹15L: 30%</li>
+          <li>Rebate u/s 87A: No tax if income up to ₹7L (new regime)</li>
+          <li>Simpler — fewer deductions/exemptions available</li>
+          <li><strong>Old Regime (Optional):</strong></li>
+          <li>Up to ₹2.5L: NIL | ₹2.5L–5L: 5% | ₹5L–10L: 20% | Above ₹10L: 30%</li>
+          <li>Complex — allows HRA, 80C, 80D, home loan interest deductions</li>
+          <li>Better if deductions are large (HRA + 80C + home loan = can save ₹1.5–2L+ in tax)</li>
+        </ul>
+        <div class="card-tag">FY2024-25 Rates</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Key Deductions — Old Regime (Chapter VI-A)</div>
+        <ul class="card-items">
+          <li><strong>Section 80C (₹1.5L limit):</strong> PPF, ELSS mutual funds, LIC premium, home loan principal, NSC, 5-year FD, tuition fees for children, EPF contribution</li>
+          <li><strong>Section 80D:</strong> Health insurance premium — ₹25,000 self+family, additional ₹25,000 for parents (₹50,000 if senior citizen)</li>
+          <li><strong>Section 24(b):</strong> Home loan interest deduction up to ₹2L for self-occupied property</li>
+          <li><strong>Section 80E:</strong> Education loan interest (no limit) for higher education</li>
+          <li><strong>Section 80G:</strong> Donations to approved charities (50% or 100% deduction)</li>
+          <li><strong>HRA Exemption:</strong> House Rent Allowance — exempt up to minimum of: actual HRA received, 50%/40% of salary (metro/non-metro), actual rent paid minus 10% of salary</li>
+        </ul>
+        <div class="card-tag">Tax Saving</div>
+      </div>
+    </div>
+
+    <p class="section-label">Capital Gains Tax — Key Rates (FY2024-25)</p>
+    <table class="data-table">
+      <tr><th>Asset Type</th><th>Short Term (STCG)</th><th>Holding Period</th><th>Long Term (LTCG)</th><th>Holding Period</th></tr>
+      <tr><td>Listed Equity Shares / Equity MFs</td><td>20% (increased from 15% in Budget 2024)</td><td>&lt;12 months</td><td>12.5% above ₹1.25L (increased from 10% above ₹1L in Budget 2024)</td><td>≥12 months</td></tr>
+      <tr><td>Debt Mutual Funds (post Apr 2023)</td><td>As per income tax slab rate</td><td>All periods</td><td>As per slab rate (indexation removed)</td><td>Slab rate only</td></tr>
+      <tr><td>Property (Real Estate)</td><td>As per income tax slab rate</td><td>&lt;24 months</td><td>12.5% without indexation (Budget 2024 change — indexation removed)</td><td>≥24 months</td></tr>
+      <tr><td>Unlisted Shares</td><td>As per slab rate</td><td>&lt;24 months</td><td>12.5% without indexation</td><td>≥24 months</td></tr>
+      <tr><td>Gold / Physical Assets</td><td>As per slab rate</td><td>&lt;24 months</td><td>12.5% without indexation</td><td>≥24 months</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">⚠️ Budget 2024 Key Changes — Must Know</div>
+      The Union Budget 2024 made significant changes to capital gains tax:<br><br>
+      <strong>1. STCG on equity raised:</strong> 15% → 20% for listed equity/equity MFs<br>
+      <strong>2. LTCG on equity raised:</strong> 10% → 12.5% (exemption limit raised from ₹1L to ₹1.25L)<br>
+      <strong>3. LTCG on property:</strong> Indexation benefit REMOVED — now 12.5% without indexation (was 20% with indexation). This significantly increased effective tax on property sales in many cases.<br>
+      <strong>4. STT increased</strong> on futures and options trading.<br><br>
+      These are highly topical — expect questions on these changes in ACCA and CA exams and interviews. Always use latest rates.
+    </div>
+  </div>
+
+  <!-- 37.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">37.4</div>
+      <div class="section-title">Corporate Tax in India — Rates, Deductions & Computation</div>
+    </div>
+    <p class="prose">Corporate tax (also called company tax) is levied on the profits of companies. In India, it is governed by the Income Tax Act, 1961. Understanding corporate tax computation is essential for every finance professional working in or with Indian companies.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Corporate Tax Rates — India (AY 2024-25)</div>
+      <div class="formula-row">
+        <div class="formula-name">Domestic Company (General Rate)</div>
+        <div class="formula-eq">30% + Surcharge + Health & Education Cess 4%<br><span style="color:var(--muted);">Surcharge: 7% if income ₹1–10Cr; 12% if income above ₹10Cr<br>Effective rate for large companies: ~34.94%</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Concessional Rate — Section 115BAA</div>
+        <div class="formula-eq">22% + Surcharge 10% + Cess 4% = Effective ~25.17%<br><span style="color:var(--muted);">Available to all existing domestic companies — cannot claim certain deductions (80IC, 80IE etc.). Most large companies have opted for this. Announced in September 2019 — major corporate tax cut.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">New Manufacturing Companies — Section 115BAB</div>
+        <div class="formula-eq">15% + Surcharge 10% + Cess 4% = Effective ~17.16%<br><span style="color:var(--muted);">For new domestic manufacturing companies incorporated after 1 Oct 2019 and commencing production before 31 Mar 2024 (extended). India's lowest corporate tax rate — designed to attract manufacturing investment (Make in India). Cannot claim most deductions.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Foreign Companies</div>
+        <div class="formula-eq">40% + Surcharge + Cess 4%<br><span style="color:var(--muted);">On income arising in India. May be reduced by DTAA (Double Tax Avoidance Agreements) with the country of the foreign company's residence.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Minimum Alternate Tax (MAT)</div>
+        <div class="formula-eq">15% of Book Profit (if tax payable under normal provisions is less)<br><span style="color:var(--muted);">Ensures companies with high book profits but low taxable income (due to deductions) still pay minimum tax. MAT credit can be carried forward 15 years. Companies opting for 115BAA/BAB are exempt from MAT.</span></div>
+      </div>
+    </div>
+
+    <p class="section-label">Corporate Tax Computation — Step by Step</p>
+    <div class="wide-card">
+      <h4>📊 Corporate Tax Computation — XYZ Ltd (AY 2024-25)</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.4;">
+        <strong style="color:var(--text);">Net Profit as per Books (P&L)</strong> → ₹100 Cr<br>
+        <strong style="color:var(--accent);">ADD: Amounts Disallowed (added back to profit)</strong><br>
+        + Depreciation as per books (add back — will replace with IT depreciation) → ₹20 Cr<br>
+        + Expenses not allowable (personal expenses, fines, provisions) → ₹5 Cr<br>
+        + Capital expenditure wrongly charged to P&L → ₹3 Cr<br>
+        <strong style="color:var(--accent);">LESS: Amounts Allowable (deducted from profit)</strong><br>
+        − Depreciation as per Income Tax Act (WDV method, prescribed rates) → (₹25 Cr)<br>
+        − Additional allowances (Section 35 — R&D, Section 32AC — new plant) → (₹8 Cr)<br>
+        − Income not chargeable to tax (exempt dividends, etc.) → (₹2 Cr)<br>
+        <strong style="color:var(--text);">= Gross Total Income</strong> → ₹93 Cr<br>
+        − Deductions under Chapter VI-A (80IC, 80IE if applicable) → (₹10 Cr)<br>
+        <strong style="color:var(--text);">= Total Income (Taxable Income)</strong> → ₹83 Cr<br>
+        <strong style="color:var(--text);">Tax @ 25.17% (Section 115BAA rate)</strong> → ₹20.89 Cr<br>
+        − TDS credit (already deducted at source on income received) → (₹3 Cr)<br>
+        − Advance Tax paid → (₹15 Cr)<br>
+        <strong style="color:var(--accent);font-family:var(--mono);">= Tax Payable with return → ₹2.89 Cr</strong>
+      </div>
+    </div>
+
+    <p class="section-label">Key Allowable Deductions for Companies</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Depreciation (Section 32)</div>
+        <ul class="card-items">
+          <li>Written Down Value (WDV) method — depreciation on reducing balance</li>
+          <li>Prescribed rates: Plant & Machinery 15%, Buildings 10%, Computers 40%, Furniture 10%, Intangibles 25%</li>
+          <li>Additional depreciation (Section 32): extra 20% in first year for new P&M in manufacturing (not available under 115BAA)</li>
+          <li>Accelerated depreciation for renewable energy assets — 40%</li>
+          <li>Note: Tax depreciation ≠ accounting depreciation — creates deferred tax (Section 37.7)</li>
+        </ul>
+        <div class="card-tag">Section 32</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <div class="card-title">R&D Deduction (Section 35)</div>
+        <ul class="card-items">
+          <li>Weighted deduction for research & development expenditure</li>
+          <li>In-house R&D (approved facility): 150% deduction on revenue expenditure</li>
+          <li>Contribution to approved research association: 100% deduction</li>
+          <li>Encourages companies to invest in innovation — tax cost of R&D effectively reduced</li>
+          <li>This is a deliberate government policy to promote India's innovation economy</li>
+        </ul>
+        <div class="card-tag">Section 35</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💸</div>
+        <div class="card-title">Business Expenses — Allowability</div>
+        <ul class="card-items">
+          <li><strong>Allowable:</strong> Salaries, rent, interest on business loans, repairs, insurance, professional fees, bad debts written off, statutory contributions (PF, ESIC)</li>
+          <li><strong>NOT Allowable:</strong> Personal expenses of directors/owners, capital expenditure (must be depreciated), fines and penalties, income tax itself, dividends, contributions to unapproved funds</li>
+          <li><strong>Section 40A(3):</strong> Cash payments above ₹10,000 in a day to single party — disallowed. Forces digital transactions.</li>
+          <li><strong>Section 40(a)(ia):</strong> TDS not deducted on payments — 30% disallowance of the payment amount</li>
+        </ul>
+        <div class="card-tag">Allowable Expenses</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">37.5</div>
+      <div class="section-title">GST — Goods and Services Tax (India's Biggest Tax Reform)</div>
+      <div class="section-meta">Implemented July 1, 2017</div>
+    </div>
+    <p class="prose">GST replaced a complex web of central and state indirect taxes (VAT, Service Tax, Excise, CST, octroi) with a single, unified indirect tax. It is the most significant tax reform in India since Independence — and every finance professional must understand it thoroughly.</p>
+
+    <div class="quote">"One Nation, One Tax, One Market." — The vision behind GST. India finally achieved this on July 1, 2017, after years of political negotiation.</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <div class="card-title">GST Structure — Dual System</div>
+        <ul class="card-items">
+          <li>India uses a DUAL GST system — both Centre and States levy GST simultaneously</li>
+          <li><strong>CGST:</strong> Central GST — collected by Central Government on intra-state supplies</li>
+          <li><strong>SGST:</strong> State GST — collected by State Government on intra-state supplies</li>
+          <li><strong>IGST:</strong> Integrated GST — collected by Central Government on inter-state supplies and imports. Shared between Centre and States.</li>
+          <li><strong>UTGST:</strong> Union Territory GST — for supplies in Union Territories without legislature</li>
+          <li>For intra-state supply: CGST + SGST (each half of total rate). For inter-state: IGST (full rate)</li>
+          <li>Example: 18% GST on software services in Delhi → 9% CGST + 9% SGST</li>
+        </ul>
+        <div class="card-tag">Dual Structure</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">GST Rate Structure</div>
+        <ul class="card-items">
+          <li><strong>0% (Exempt):</strong> Essential items — fresh vegetables, milk, eggs, bread, salt, books, newspapers, educational services, healthcare services</li>
+          <li><strong>5%:</strong> Essential goods — edible oils, sugar, tea, coffee, coal, medicines, economy class air travel</li>
+          <li><strong>12%:</strong> Standard goods — processed food, computers, mobile phones, business class air travel</li>
+          <li><strong>18%:</strong> Most services and goods — software, financial services, restaurants (AC), consumer durables, cement</li>
+          <li><strong>28%:</strong> Luxury and sin goods — cars, motorcycles, tobacco, aerated drinks, casinos, online gaming, pan masala</li>
+          <li>Plus: Compensation Cess on sin goods (cigarettes, luxury cars, coal) — additional levy</li>
+        </ul>
+        <div class="card-tag">GST Rate Slabs</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Input Tax Credit (ITC) — The Key Mechanism</div>
+        <ul class="card-items">
+          <li>ITC is the most important concept in GST — it prevents "tax on tax" (cascading effect)</li>
+          <li><strong>How it works:</strong> GST paid on purchases (input tax) can be offset against GST collected on sales (output tax). Only the NET amount is paid to government.</li>
+          <li><strong>Example:</strong> Manufacturer buys steel with ₹18 GST → sells machinery with ₹36 GST collected → pays only ₹18 to government (₹36 − ₹18 ITC)</li>
+          <li><strong>ITC conditions:</strong> Must have valid tax invoice, goods/services must be received, tax must be paid by supplier, return must be filed</li>
+          <li><strong>ITC NOT available on:</strong> Personal consumption, motor vehicles (unless specific business use), food & beverages (unless hotel/restaurant), club memberships</li>
+          <li>ITC matching on GSTN portal — buyer's ITC claim matched against supplier's return. If supplier doesn't file → buyer's ITC blocked. Creates strong incentive for supplier compliance.</li>
+        </ul>
+        <div class="card-tag">No Cascading</div>
+      </div>
+    </div>
+
+    <p class="section-label">GST Compliance — Key Returns</p>
+    <table class="data-table">
+      <tr><th>Return</th><th>Who Files</th><th>Content</th><th>Due Date</th></tr>
+      <tr><td>GSTR-1</td><td>All registered taxpayers (outward supplies)</td><td>Details of all sales/outward supplies made during the month. Basis for buyer's ITC claim.</td><td>11th of following month (monthly filers) | Quarterly for QRMP scheme</td></tr>
+      <tr><td>GSTR-3B</td><td>All registered taxpayers</td><td>Summary return — total outward supplies, ITC claimed, net tax payable. Main compliance return.</td><td>20th of following month (large taxpayers) | 22nd/24th for smaller states</td></tr>
+      <tr><td>GSTR-2B</td><td>Auto-generated (no filing)</td><td>Auto-populated ITC statement — shows ITC available based on suppliers' GSTR-1 filings. Taxpayer reconciles this with purchase register.</td><td>Available 14th of following month</td></tr>
+      <tr><td>GSTR-9</td><td>All registered taxpayers (annual)</td><td>Annual return — reconciliation of all monthly returns for the financial year. Must match with books of accounts.</td><td>31st December of next financial year</td></tr>
+      <tr><td>GSTR-9C</td><td>Turnover above ₹5Cr</td><td>GST Audit/Reconciliation statement — certified by CA/CMA. Reconciles GST returns with audited financial statements.</td><td>31st December of next financial year</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 GST Registration Thresholds</div>
+      <strong>Mandatory Registration:</strong> Aggregate turnover exceeds ₹40L (goods) or ₹20L (services) in a financial year. Some states (hilly/northeastern): ₹20L for goods, ₹10L for services.<br><br>
+      <strong>Composition Scheme:</strong> Small taxpayers with turnover up to ₹1.5Cr (goods) or ₹50L (services) can opt for composition — pay fixed % of turnover instead of normal GST. Cannot claim ITC. Simpler compliance — quarterly filing.<br><br>
+      <strong>Voluntary Registration:</strong> Even below threshold, businesses can voluntarily register — useful if they want to claim ITC on purchases.<br><br>
+      <strong>Mandatory regardless of turnover:</strong> Inter-state suppliers, e-commerce operators/sellers, casual taxable persons, reverse charge suppliers.
+    </div>
+  </div>
+
+  <!-- 37.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">37.6</div>
+      <div class="section-title">Tax Deducted at Source (TDS) — Mechanism & Key Rates</div>
+    </div>
+    <p class="prose">TDS is one of the most important tax compliance requirements for businesses in India. The payer deducts tax at source when making certain payments and deposits it with the government. The recipient gets credit for TDS deducted against their final tax liability.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">How TDS Works</div>
+        <ul class="card-items">
+          <li>When a business makes certain payments (salary, rent, professional fees, interest, contractor payments), it must DEDUCT tax at prescribed rates before making the payment</li>
+          <li>The deducted amount is deposited with the government by 7th of the following month</li>
+          <li>TDS return (Form 26Q / 24Q) filed quarterly</li>
+          <li>TDS certificate (Form 16 for salary, Form 16A for others) issued to the deductee</li>
+          <li>Deductee claims TDS credit against their final income tax liability</li>
+          <li><strong>Consequences of non-deduction:</strong> 30% disallowance of the expense (Section 40(a)(ia)), interest @1.5%/month, penalty up to the TDS amount, prosecution in serious cases</li>
+          <li>TDS is collected in advance — ensures government receives tax on cash basis, reduces evasion risk</li>
+        </ul>
+        <div class="card-tag">Mechanism</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Key TDS Sections & Rates</div>
+        <ul class="card-items">
+          <li><strong>Section 192 — Salary:</strong> As per applicable income tax slab of employee. Employer deducts monthly.</li>
+          <li><strong>Section 194C — Contractors:</strong> 1% (individual/HUF) or 2% (others). Threshold: ₹30,000 per payment or ₹1L per year to same party.</li>
+          <li><strong>Section 194J — Professional/Technical fees:</strong> 10% (professionals), 2% (technical services). Threshold ₹30,000.</li>
+          <li><strong>Section 194I — Rent:</strong> 2% (plant/machinery), 10% (land/building). Threshold ₹2.4L per year.</li>
+          <li><strong>Section 194A — Interest (bank):</strong> 10%. Threshold ₹40,000 (₹50,000 for senior citizens) per year per bank.</li>
+          <li><strong>Section 194H — Commission/Brokerage:</strong> 5%. Threshold ₹15,000.</li>
+          <li><strong>Section 194Q — Purchase of Goods:</strong> 0.1% on purchases above ₹50L per year from same seller (buyer's TDS obligation)</li>
+        </ul>
+        <div class="card-tag">Key Rates</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">⚠️ TDS vs TCS — Don't Confuse</div>
+      <strong>TDS (Tax Deducted at Source):</strong> Deducted by the PAYER at the time of payment. The payer's obligation — they deduct and deposit on behalf of the payee.<br><br>
+      <strong>TCS (Tax Collected at Source):</strong> Collected by the SELLER from the buyer at the time of receipt of sale consideration. The seller's obligation — they collect and deposit on behalf of the buyer.<br><br>
+      <strong>Key TCS rates:</strong> Sale of goods (Section 206C) — 0.1% on sales above ₹50L per buyer per year. Foreign remittance under LRS — 20% TCS (Budget 2023 major change). Purchase of overseas tour packages — 20% TCS. Sale of motor vehicle above ₹10L — 1% TCS.<br><br>
+      Both TDS and TCS credits are reflected in Form 26AS and Annual Information Statement (AIS) — annual tax statement available on income tax portal.
+    </div>
+  </div>
+
+  <!-- 37.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">37.7</div>
+      <div class="section-title">Deferred Tax — IAS 12 (ACCA & IFRS Core Topic)</div>
+      <div class="section-meta">Most Tested in ACCA SBR & FR</div>
+    </div>
+    <p class="prose">Deferred tax arises because <strong>accounting profit (per IFRS/Ind AS) and taxable profit (per tax law) differ</strong>. These differences are often temporary — they reverse in future periods. IAS 12 (Income Taxes) requires companies to recognise the future tax consequences of these temporary differences on the balance sheet.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Deferred Tax — Core Concepts</div>
+      <div class="formula-row">
+        <div class="formula-name">Temporary Difference</div>
+        <div class="formula-eq">Carrying Amount (per IFRS balance sheet) − Tax Base (per tax rules)<br><span style="color:var(--muted);">Carrying amount = IFRS book value of asset or liability. Tax base = amount attributed to asset/liability for tax purposes (i.e. what tax law says it's worth).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Deferred Tax Liability (DTL)</div>
+        <div class="formula-eq">When carrying amount of ASSET > tax base → TAXABLE temporary difference → DTL<br><span style="color:var(--muted);">Will result in more tax in the future. Example: Accelerated tax depreciation — asset depreciated faster for tax than for accounting. Book value > tax base → DTL recognised.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Deferred Tax Asset (DTA)</div>
+        <div class="formula-eq">When carrying amount of ASSET &lt; tax base → DEDUCTIBLE temporary difference → DTA<br><span style="color:var(--muted);">Will result in less tax in the future. Example: Provision for bad debts — not deductible until debt actually written off. Provision reduces book value of receivable below tax base → DTA. Also: tax losses carried forward → DTA (if probable future profits to use them against).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Deferred Tax Calculation</div>
+        <div class="formula-eq">Deferred Tax = Temporary Difference × Applicable Tax Rate<br><span style="color:var(--muted);">Use the tax rate expected to apply when the difference reverses — typically the enacted or substantively enacted future tax rate, not current year's rate.</span></div>
+      </div>
+    </div>
+
+    <p class="section-label">Deferred Tax — Worked Example</p>
+    <div class="wide-card">
+      <h4>📊 Deferred Tax Liability — Accelerated Tax Depreciation</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.4;">
+        <strong style="color:var(--text);">Machine purchased for ₹100Cr on 1 April 2024</strong><br>
+        <strong style="color:var(--text);">Accounting:</strong> Straight-line, 10 years → Annual depreciation = ₹10Cr → Carrying amount at 31 March 2025 = ₹90Cr<br>
+        <strong style="color:var(--text);">Tax:</strong> WDV method, 15% rate → Tax depreciation Year 1 = ₹15Cr → Tax base at 31 March 2025 = ₹85Cr<br><br>
+        <strong style="color:var(--accent);">Temporary Difference = ₹90Cr (carrying amount) − ₹85Cr (tax base) = ₹5Cr (taxable)</strong><br>
+        <strong style="color:var(--accent);">Deferred Tax Liability = ₹5Cr × 25.17% = ₹1.26Cr</strong><br><br>
+        <strong style="color:var(--text);">Journal Entry:</strong><br>
+        Dr. Income Tax Expense ₹1.26Cr<br>
+        Cr. Deferred Tax Liability ₹1.26Cr<br><br>
+        <strong style="color:var(--text);">Meaning:</strong> The company has paid less tax this year (because tax depreciation > accounting depreciation). But this difference will reverse in future years — higher tax will be paid then. The DTL on the balance sheet represents this future obligation. It is NOT a tax currently owed — it is a timing difference.
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Common Sources of DTL</div>
+        <ul class="card-items">
+          <li>Accelerated tax depreciation (tax > accounting depreciation in early years)</li>
+          <li>Development costs capitalised for accounting but expensed for tax</li>
+          <li>Revaluation of assets (carrying amount increases but tax base stays at cost)</li>
+          <li>Fair value gains on investments (recognised in P&L but not yet taxed)</li>
+          <li>Instalment sales — revenue recognised in full for accounting but taxed as cash received</li>
+        </ul>
+        <div class="card-tag">DTL Sources</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Common Sources of DTA</div>
+        <ul class="card-items">
+          <li>Provisions (bad debts, warranties, restructuring) — deductible when actually paid/written off</li>
+          <li>Tax losses carried forward — will reduce future tax if sufficient future profits</li>
+          <li>Pension liability — recognised for accounting before deductible for tax</li>
+          <li>Share-based payments — expensed for accounting before deductible for tax</li>
+          <li>Unearned revenue — taxed when received but recognised as liability in accounts</li>
+        </ul>
+        <div class="card-tag">DTA Sources</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">DTA — Recognition Test</div>
+        <ul class="card-items">
+          <li>A DTA is only recognised if it is PROBABLE that sufficient future taxable profit will be available to utilise the deductible temporary difference or tax loss</li>
+          <li>If a company is consistently loss-making — DTA from losses may NOT be recognised (because future profits are not probable)</li>
+          <li>Requires professional judgement — management must assess future profitability</li>
+          <li>If DTA is recognised but future profits become uncertain — may need to be derecognised (expense to P&L)</li>
+          <li>ACCA exam: always explain the probability condition when recognising/not recognising a DTA</li>
+        </ul>
+        <div class="card-tag">Recognition</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">37.8</div>
+      <div class="section-title">Tax Avoidance vs Tax Evasion — Legal & Ethical Distinction</div>
+    </div>
+    <p class="prose">One of the most important distinctions in taxation — both for professional ethics and for legal compliance. Getting this wrong can result in criminal prosecution, massive penalties, and reputational destruction.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Tax Planning — Fully Legal</div>
+        <ul class="card-items">
+          <li>Using legally available provisions to LEGITIMATELY reduce tax liability — within the spirit and letter of the law</li>
+          <li>Using tax deductions the government has explicitly created (80C investments, R&D deductions, depreciation benefits)</li>
+          <li>Choosing the most tax-efficient business structure (e.g. LLP vs Pvt Ltd)</li>
+          <li>Timing income and expenses to optimise tax across years</li>
+          <li>Utilising loss carry-forward provisions</li>
+          <li>Choosing tax-advantaged locations (SEZ, GIFT City) for eligible activities</li>
+          <li>The government ENCOURAGES tax planning through these provisions — they are incentives to drive desired behaviour</li>
+        </ul>
+        <div class="card-tag">Legal & Ethical</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Tax Avoidance — Grey Area</div>
+        <ul class="card-items">
+          <li>Using legal mechanisms but in a way that is CONTRARY TO THE SPIRIT of the law — exploiting loopholes</li>
+          <li>Technically legal — but aggressive and potentially challengeable by tax authorities</li>
+          <li>India's GAAR (General Anti-Avoidance Rules) since 2017 — tax authorities can disregard arrangements that have no commercial substance and are entered primarily for tax avoidance</li>
+          <li>Example: Vodafone-Hutchison deal (2007) — structured through Cayman Islands to avoid Indian capital gains tax. India tried to tax it — Supreme Court ruled in Vodafone's favour initially, then retrospective amendment (controversial).</li>
+          <li>Reputational risk — even if legal, aggressive avoidance damages brand (Starbucks, Apple, Amazon in UK/EU)</li>
+          <li>BEPS (Base Erosion and Profit Shifting) — OECD initiative to close multinational tax avoidance loopholes globally</li>
+        </ul>
+        <div class="card-tag">Grey Area</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚫</div>
+        <div class="card-title">Tax Evasion — Illegal & Criminal</div>
+        <ul class="card-items">
+          <li>ILLEGALLY reducing tax by concealing income, fabricating expenses, or misrepresenting facts</li>
+          <li>Criminal offence — prosecution, imprisonment, heavy penalties</li>
+          <li><strong>Common forms:</strong> Not reporting income (cash transactions, undisclosed bank accounts), claiming false deductions (fake invoices — "bogus billing"), underreporting sales (GST fraud — collecting GST but not depositing), smuggling to evade customs, not filing returns despite obligation</li>
+          <li><strong>Consequences:</strong> Tax demand + interest + penalty up to 300% of tax + prosecution + imprisonment up to 7 years (serious cases)</li>
+          <li><strong>Detection:</strong> GST invoice matching, AIR (Annual Information Return) reporting by banks/registrars, faceless assessment, data analytics by IT department</li>
+          <li>As a CA/CMA/finance professional: assisting in tax evasion → professional misconduct → loss of licence, criminal liability</li>
+        </ul>
+        <div class="card-tag">ILLEGAL — Never Do This</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 GAAR — General Anti-Avoidance Rules (India)</div>
+      Introduced in Finance Act 2017 (effective AY 2018-19), GAAR allows tax authorities to disregard or recharacterise any arrangement if:<br><br>
+      1. The arrangement is an "impermissible avoidance arrangement" — the main purpose is to obtain a tax benefit, AND<br>
+      2. It lacks commercial substance (no real business purpose beyond tax saving)<br><br>
+      <strong>Conditions for invoking GAAR:</strong> Tax benefit exceeds ₹3Cr in a year AND lacks commercial substance.<br><br>
+      <strong>Implications:</strong> GAAR can override treaty benefits (DTAA). It can look through complex structures. It requires disclosure of aggressive tax positions in tax return.<br><br>
+      <strong>Finance professional's duty:</strong> Ensure all tax planning has genuine commercial substance — cannot advise structures that exist purely for tax avoidance without business purpose.
+    </div>
+  </div>
+
+  <!-- 37.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">37.9</div>
+      <div class="section-title">Transfer Pricing — Tax on Intercompany Transactions</div>
+    </div>
+    <p class="prose">Transfer pricing is one of the most important and complex areas of international tax. When companies in the same group (parent-subsidiary, sister companies) transact with each other, they must use <strong>"arm's length prices"</strong> — the same price that would be charged between independent, unrelated parties.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">Why Transfer Pricing Matters</div>
+        <ul class="card-items">
+          <li>Multinational groups can shift profits from high-tax countries to low-tax countries by manipulating prices on intercompany transactions</li>
+          <li>Example: Indian subsidiary sells software to US parent at ₹1Cr (below market). Parent sells to end customer at ₹10Cr. Profit shifted to USA — India loses tax revenue.</li>
+          <li>Tax authorities (CBDT in India) closely monitor intercompany transactions — adjustment if not at arm's length can result in massive tax demands + interest + penalties</li>
+          <li>India is one of the most aggressive countries in the world in transfer pricing enforcement — significant source of tax disputes for multinationals</li>
+          <li>Section 92 to 92F of Income Tax Act — India's transfer pricing provisions</li>
+        </ul>
+        <div class="card-tag">Profit Shifting</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Transfer Pricing Methods</div>
+        <ul class="card-items">
+          <li><strong>Comparable Uncontrolled Price (CUP):</strong> Compare price of intercompany transaction to price of same/similar transaction between unrelated parties. Most direct method but comparable data hard to find.</li>
+          <li><strong>Resale Price Method (RPM):</strong> Start from resale price to end customer, subtract appropriate gross margin → transfer price. Used for distributors.</li>
+          <li><strong>Cost Plus Method:</strong> Start from cost of production, add appropriate markup → transfer price. Used for manufacturers.</li>
+          <li><strong>Transactional Net Margin Method (TNMM):</strong> Compare net profit margin of related party transaction to margins of comparable independent companies. Most commonly used in India.</li>
+          <li><strong>Profit Split Method:</strong> Split combined profit of related parties using a formula reflecting relative contributions. Used for unique intangibles.</li>
+        </ul>
+        <div class="card-tag">Pricing Methods</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Transfer Pricing Compliance in India</div>
+        <ul class="card-items">
+          <li><strong>International Transactions:</strong> Any transaction between associated enterprises (AEs) where one is non-resident → transfer pricing rules apply</li>
+          <li><strong>Specified Domestic Transactions:</strong> Intercompany transactions above ₹20Cr between Indian entities claiming tax holidays/deductions → transfer pricing also applies</li>
+          <li><strong>Accountant's Report (Form 3CEB):</strong> Chartered Accountant must certify transfer pricing details annually — filed with tax return</li>
+          <li><strong>Master File & CbCR:</strong> India adopted OECD 3-tier documentation — Master File (group-level), Local File (entity-level), Country-by-Country Report (CbCR) — for large groups (consolidated revenue ₹5,500Cr+)</li>
+          <li><strong>APA (Advance Pricing Agreement):</strong> Company and CBDT agree in advance on transfer pricing methodology — provides certainty, reduces disputes</li>
+        </ul>
+        <div class="card-tag">India TP Rules</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">37.10</div>
+      <div class="section-title">International Taxation — DTAA & BEPS</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Double Tax Avoidance Agreements (DTAA)</div>
+        <ul class="card-items">
+          <li>Treaties between two countries to prevent the same income from being taxed twice — once in source country (where income arises) and again in residence country (where taxpayer lives)</li>
+          <li>India has DTAAs with 90+ countries — major ones: USA, UK, UAE, Singapore, Mauritius, Netherlands, Germany, Japan</li>
+          <li><strong>Mauritius DTAA (historically significant):</strong> Was heavily used by FIIs to route investments into India — capital gains were exempt in India if gains were routed through Mauritius. Amended in 2016 — India now has right to tax capital gains from April 2017.</li>
+          <li><strong>UAE DTAA:</strong> No capital gains tax in UAE → Indians residing in UAE can potentially save tax on capital gains</li>
+          <li><strong>Singapore DTAA:</strong> Grandfathered clause — investments made before April 2017 through Singapore still enjoy exemption</li>
+          <li>DTAA rates override domestic rates (when lower) — provides tax certainty for cross-border investors</li>
+        </ul>
+        <div class="card-tag">Treaty Benefits</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">BEPS — Base Erosion and Profit Shifting</div>
+        <ul class="card-items">
+          <li>OECD/G20 initiative (since 2013) to close the tax loopholes used by multinationals to shift profits to low-tax jurisdictions</li>
+          <li>15 Action Plans addressing: hybrid mismatches, treaty shopping, permanent establishment avoidance, transfer pricing, digital economy taxation, country-by-country reporting</li>
+          <li><strong>Pillar Two — Global Minimum Tax (GMT):</strong> 15% minimum effective corporate tax rate for large multinationals (revenue &gt;€750M). India implementing from AY 2025-26. Ensures no company pays less than 15% anywhere in the world.</li>
+          <li><strong>India's BEPS measures:</strong> MLI (Multilateral Instrument — amends all DTAAs simultaneously), CbCR, Master File, GAAR, Significant Economic Presence rules</li>
+          <li>Significant Economic Presence: foreign companies doing business in India digitally (no physical presence) → deemed to have a "taxable nexus" in India</li>
+        </ul>
+        <div class="card-tag">Global Tax Reform</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">37.11</div>
+      <div class="section-title">Tax in Financial Statements — Accounting Treatment</div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Tax in the P&L and Balance Sheet — Full Picture</div>
+      <div class="formula-row">
+        <div class="formula-name">Tax Expense in P&L (IAS 12)</div>
+        <div class="formula-eq">Tax Expense = Current Tax + Deferred Tax Expense (or − Deferred Tax Income)<br><span style="color:var(--muted);">Current Tax = Tax payable on this year's taxable profit per tax return. Deferred Tax = Change in deferred tax liability/asset during the year. Both components separately disclosed in notes.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Current Tax</div>
+        <div class="formula-eq">Taxable Profit × Current Tax Rate<br><span style="color:var(--muted);">Taxable profit ≠ accounting profit. Adjust for: disallowed expenses (add back), non-taxable income (deduct), timing differences. Recognised as a liability (tax payable) until paid.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Effective Tax Rate</div>
+        <div class="formula-eq">Tax Expense ÷ Profit Before Tax × 100%<br><span style="color:var(--muted);">Shows the true % of accounting profit paid as tax. Differs from statutory rate due to: deferred tax, permanent differences (exempt income, disallowed expenses), prior year adjustments. Important metric for financial analysis — compare to statutory rate to understand tax efficiency.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Balance Sheet Presentation</div>
+        <div class="formula-eq">Current Tax Liability: tax payable for current and prior years (current liability)<br>Deferred Tax Liability: non-current liability (usually)<br>Deferred Tax Asset: non-current asset (if recognition criteria met)<br><span style="color:var(--muted);">DTA and DTL for same tax jurisdiction may be offset if legally enforceable right to offset exists.</span></div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Permanent vs Temporary Differences — Key Distinction</div>
+      <strong>Temporary Differences:</strong> Differences between accounting and tax treatment that WILL reverse in the future. Create deferred tax. Examples: accelerated depreciation, provisions not yet tax-deductible, tax losses carried forward.<br><br>
+      <strong>Permanent Differences:</strong> Differences that will NEVER reverse — no deferred tax created. Examples: fines and penalties (never tax-deductible), exempt dividend income (never taxable), entertainment expenditure disallowed permanently.<br><br>
+      <strong>Why this matters:</strong> Only temporary differences create deferred tax. Permanent differences affect the effective tax rate but do NOT create a balance sheet asset or liability. ACCA exam: correctly identifying which type of difference has arisen is the first step in any deferred tax question.
+    </div>
+  </div>
+
+  <!-- 37.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">37.12</div>
+      <div class="section-title">Tax Planning Strategies for Corporates</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Manufacturing — 15% Tax Rate (Section 115BAB)</div>
+        <ul class="card-items">
+          <li>New manufacturing companies incorporated after Oct 2019 can pay just 15% corporate tax (effective ~17%)</li>
+          <li>Massive incentive for setting up manufacturing in India</li>
+          <li>Cannot claim most deductions/exemptions — but rate so low that the net benefit is still significant</li>
+          <li>India's "Make in India" push — this rate is explicitly designed to compete with Vietnam, Thailand, China for manufacturing investment</li>
+          <li>Companies like Apple suppliers (Foxconn, Tata Electronics) benefit from this</li>
+        </ul>
+        <div class="card-tag">Manufacturing</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏙️</div>
+        <div class="card-title">SEZ & GIFT City Benefits</div>
+        <ul class="card-items">
+          <li><strong>Special Economic Zones (SEZ):</strong> Companies in SEZs get 100% tax exemption on export profits for first 5 years, 50% for next 5 years. Major benefit for IT/ITES exporters (many large IT companies set up in SEZs)</li>
+          <li><strong>GIFT City (Gujarat International Finance Tec-City):</strong> India's first International Financial Services Centre (IFSC). Tax benefits: concessional 9% corporate tax for fund management, 10-year tax holiday for banking/insurance/broking units, no STT/CTT on exchange transactions. Designed to bring offshore financial activity back to India.</li>
+          <li>Both have specific conditions — only certain activities qualify. Professional advice essential.</li>
+        </ul>
+        <div class="card-tag">Location Incentives</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📉</div>
+        <div class="card-title">Loss Harvesting & Carry Forward</div>
+        <ul class="card-items">
+          <li><strong>Business Loss Carry Forward:</strong> Business losses can be carried forward and set off against future profits for 8 assessment years. Must file return on time to carry forward.</li>
+          <li><strong>Unabsorbed Depreciation:</strong> Can be carried forward indefinitely (no 8-year limit). Very valuable for capital-intensive businesses.</li>
+          <li><strong>Capital Loss:</strong> Long-term capital loss can only be set off against long-term capital gains. Short-term capital loss can be set off against both STCG and LTCG.</li>
+          <li><strong>Tax Loss Utilisation in M&A:</strong> Acquiring companies may value targets' tax losses — but Section 79 restricts use of losses if shareholding changes by more than 49% (for closely held companies)</li>
+        </ul>
+        <div class="card-tag">Loss Utilisation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Debt Financing — Interest Tax Shield</div>
+        <ul class="card-items">
+          <li>Interest on business borrowings is fully deductible as a business expense — reduces taxable income</li>
+          <li>Tax Shield = Interest Paid × Tax Rate. At 25.17% tax rate: ₹100 of interest saves ₹25.17 in tax — net cost of debt = ₹74.83</li>
+          <li>This is why debt is "cheaper" than equity in terms of after-tax cost — the tax deductibility subsidises debt</li>
+          <li>Links directly to WACC: Kd (post-tax) = Kd (pre-tax) × (1 − tax rate) — the tax shield is captured here</li>
+          <li><strong>Limitation — Section 94B:</strong> Thin capitalisation rules: interest deduction on debt from associated enterprises limited to 30% of EBITDA. Prevents multinationals from loading Indian subsidiaries with excessive intercompany debt to shift profits out.</li>
+        </ul>
+        <div class="card-tag">Interest Tax Shield</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">37.13</div>
+      <div class="section-title">Tax Compliance Calendar — India</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Due Date</th><th>Compliance</th><th>Who</th><th>Penalty for Non-Compliance</th></tr>
+      <tr><td>7th of every month</td><td>TDS/TCS deposit for previous month</td><td>All TDS/TCS deductors</td><td>Interest 1.5%/month from date of deduction. Penalty u/s 271C equal to TDS amount.</td></tr>
+      <tr><td>15th June, Sep, Dec, Mar</td><td>Advance Tax payment (15%, 45%, 75%, 100% of liability)</td><td>Taxpayers with liability &gt;₹10,000</td><td>Interest u/s 234B & 234C: 1%/month on shortfall</td></tr>
+      <tr><td>31st July</td><td>ITR filing — Individuals, HUF (non-audit cases)</td><td>Individual taxpayers not requiring audit</td><td>Late filing fee: ₹5,000 (₹1,000 if income ≤₹5L). Interest u/s 234A.</td></tr>
+      <tr><td>31st October</td><td>ITR filing — Companies, audit required cases, partners of audited firms</td><td>All companies + individuals/firms requiring tax audit</td><td>Same as above + interest on tax payable</td></tr>
+      <tr><td>30th November</td><td>ITR filing — Transfer Pricing cases</td><td>Companies with international/specified domestic transactions</td><td>Same as above</td></tr>
+      <tr><td>31st October</td><td>Tax Audit Report (Form 3CA/3CB + 3CD) — Section 44AB</td><td>Business turnover &gt;₹10Cr (or ₹1Cr if cash transactions &gt;5%), professional receipts &gt;₹50L</td><td>Penalty 0.5% of turnover, max ₹1.5L</td></tr>
+      <tr><td>20th of every month</td><td>GSTR-3B filing + GST payment</td><td>All GST registered taxpayers (monthly)</td><td>Interest 18%/annum on unpaid GST. Late fee ₹50/day (₹20 for NIL return).</td></tr>
+      <tr><td>11th of every month</td><td>GSTR-1 filing (outward supplies)</td><td>All GST registered taxpayers (monthly)</td><td>Late fee ₹50/day (₹20 for NIL return)</td></tr>
+      <tr><td>31st December</td><td>GSTR-9 (Annual GST Return) + GSTR-9C</td><td>All GST registrants; 9C for turnover &gt;₹5Cr</td><td>Late fee ₹200/day (₹100 CGST + ₹100 SGST), max 0.5% of turnover</td></tr>
+      <tr><td>Quarterly (15th of month after quarter)</td><td>TDS Returns — Form 24Q (salary), 26Q (non-salary), 27Q (NRI), 27EQ (TCS)</td><td>All TDS/TCS deductors</td><td>Late fee ₹200/day u/s 234E + penalty u/s 271H up to ₹1L</td></tr>
+    </table>
+  </div>
+
+  <!-- 37.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">37.14</div>
+      <div class="section-title">Key Takeaways, Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+    </div>
+
+    <p class="section-label">Part A — 12 Core Takeaways</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Direct vs Indirect Tax</div><ul class="card-items"><li>Direct: cannot shift burden (income tax, corporate tax)</li><li>Indirect: can shift to consumer (GST, customs)</li><li>CBDT: administers direct taxes | CBIC: administers indirect taxes</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">5 Heads of Income</div><ul class="card-items"><li>Salaries | House Property | Business/Profession | Capital Gains | Other Sources</li><li>All five added → Gross Total Income → deductions → Taxable Income</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Corporate Tax Rates (Key)</div><ul class="card-items"><li>General rate: 30% + surcharge + cess (~34.94%)</li><li>Section 115BAA (existing companies): ~25.17%</li><li>Section 115BAB (new manufacturing): ~17.16%</li><li>MAT: 15% of book profit</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">GST — Dual Structure + ITC</div><ul class="card-items"><li>CGST + SGST (intra-state) | IGST (inter-state)</li><li>Rates: 0%, 5%, 12%, 18%, 28%</li><li>ITC prevents cascading — key mechanism</li><li>GSTR-1, GSTR-3B, GSTR-9 — key returns</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">TDS — Payer Deducts Tax</div><ul class="card-items"><li>Deduct at source → deposit by 7th of next month → file quarterly returns</li><li>Non-deduction: 30% expense disallowance + interest + penalty</li><li>TDS ≠ TCS (TCS collected by seller from buyer)</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Deferred Tax — IAS 12</div><ul class="card-items"><li>Temporary difference = Carrying Amount − Tax Base</li><li>Taxable difference → DTL | Deductible difference → DTA</li><li>DTA only recognised if future profits probable</li><li>Deferred Tax = Temporary Difference × Tax Rate</li></ul></div>
+      <div class="card"><div class="card-icon">7️⃣</div><div class="card-title">Capital Gains — Key Rates</div><ul class="card-items"><li>Listed equity STCG: 20% | LTCG: 12.5% (above ₹1.25L)</li><li>Property LTCG: 12.5% (no indexation — Budget 2024)</li><li>Debt MF: slab rate (all periods, post Apr 2023)</li></ul></div>
+      <div class="card"><div class="card-icon">8️⃣</div><div class="card-title">Tax Planning vs Avoidance vs Evasion</div><ul class="card-items"><li>Planning: legal, uses available provisions ✅</li><li>Avoidance: legal but against spirit, GAAR risk ⚠️</li><li>Evasion: illegal, criminal, never do this 🚫</li></ul></div>
+      <div class="card"><div class="card-icon">9️⃣</div><div class="card-title">Transfer Pricing</div><ul class="card-items"><li>Intercompany transactions at arm's length prices</li><li>Methods: CUP, RPM, Cost Plus, TNMM, Profit Split</li><li>Form 3CEB: CA certificate required annually</li><li>India: one of world's most aggressive TP enforcers</li></ul></div>
+      <div class="card"><div class="card-icon">🔟</div><div class="card-title">DTAA & BEPS</div><ul class="card-items"><li>DTAA: prevents double taxation of cross-border income</li><li>India has 90+ DTAAs — Mauritius, Singapore, UAE important</li><li>BEPS: closes multinational profit shifting loopholes</li><li>Pillar Two: 15% global minimum tax rate</li></ul></div>
+      <div class="card"><div class="card-icon">1️⃣1️⃣</div><div class="card-title">Interest Tax Shield</div><ul class="card-items"><li>Interest deductible → reduces taxable income → reduces tax</li><li>Tax Shield = Interest × Tax Rate</li><li>This is why Kd in WACC is post-tax: Kd(1−t)</li><li>Section 94B: thin cap rules limit excessive interest deduction</li></ul></div>
+      <div class="card"><div class="card-icon">1️⃣2️⃣</div><div class="card-title">Effective Tax Rate</div><ul class="card-items"><li>ETR = Tax Expense ÷ PBT × 100%</li><li>Differs from statutory rate due to permanent differences, deferred tax, prior year adjustments</li><li>Key metric in financial analysis — shows true tax burden</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part B — Common Mistakes</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">❌ MISTAKE 1</div><div class="step-content"><strong>Confusing Temporary and Permanent Differences for Deferred Tax</strong><br>Only TEMPORARY differences create deferred tax. Permanent differences (fines, exempt income) affect the effective tax rate but create NO balance sheet deferred tax. Always classify the difference first before attempting to calculate deferred tax.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 2</div><div class="step-content"><strong>Using Wrong Tax Rate for Deferred Tax Calculation</strong><br>IAS 12 requires using the tax rate expected to apply when the difference REVERSES — not necessarily the current year's rate. If a future tax rate change has been enacted or substantively enacted, use the future rate. This is commonly tested in ACCA exams.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 3</div><div class="step-content"><strong>Recognising a DTA Without Checking Probability of Future Profits</strong><br>A deferred tax asset can only be recognised if it is PROBABLE that sufficient future taxable profit will exist to utilise it. For a loss-making company, recognising a large DTA without justification is wrong. Always state and evaluate this condition.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 4</div><div class="step-content"><strong>Saying Tax Avoidance and Tax Evasion Are the Same</strong><br>Tax avoidance is legal (but potentially aggressive). Tax evasion is illegal and criminal. This is a fundamental distinction in professional ethics. A finance professional can advise on legitimate tax planning and avoidance — but must never assist in evasion.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 5</div><div class="step-content"><strong>Forgetting ITC Restrictions in GST</strong><br>Not all GST paid can be claimed as ITC. ITC is blocked on: motor vehicles (unless used for transportation business), food and beverages (unless restaurant), personal consumption, goods/services for construction of immovable property. Always check ITC eligibility before assuming full offset.</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part C — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Deferred Tax Formula</div><ul class="card-items"><li>Temporary Diff = Carrying Amount − Tax Base</li><li>Taxable temp diff → DTL (more tax in future)</li><li>Deductible temp diff → DTA (less tax in future)</li><li>DT = Temp Diff × Tax Rate (future rate)</li></ul><div class="card-tag">Flashcard 1</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Corporate Tax Rates — India</div><ul class="card-items"><li>General: ~34.94%</li><li>115BAA (existing): ~25.17%</li><li>115BAB (new mfg): ~17.16%</li><li>Foreign company: ~43.68%</li><li>MAT: 15% of book profit</li></ul><div class="card-tag">Flashcard 2</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">GST Rates Quick Ref</div><ul class="card-items"><li>0%: essential food, books, healthcare</li><li>5%: edible oils, coal, economy travel</li><li>12%: computers, processed food</li><li>18%: software, most services</li><li>28%: luxury goods, tobacco, cars</li></ul><div class="card-tag">Flashcard 3</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Capital Gains Quick Ref</div><ul class="card-items"><li>Listed equity STCG (&lt;12m): 20%</li><li>Listed equity LTCG (≥12m): 12.5% above ₹1.25L</li><li>Property LTCG (≥24m): 12.5% no indexation</li><li>Debt MF: always slab rate</li></ul><div class="card-tag">Flashcard 4</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part D — Interview Q&A</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Model Answer</th></tr>
+      <tr><td>"What is deferred tax and why does it arise?"</td><td>Deferred tax arises because accounting profit (per IFRS/Ind AS) and taxable profit (per tax law) differ due to temporary differences in the timing of recognising income and expenses. For example, accelerated tax depreciation means a company pays less tax now but will pay more in future — this future obligation is recorded as a Deferred Tax Liability. Per IAS 12, all temporary differences create deferred tax, measured using the tax rate expected when the difference reverses. A Deferred Tax Asset arises when a company has paid more tax now than required by accounting — for example, provisions not yet deductible for tax — and can only be recognised if future taxable profits are probable.</td></tr>
+      <tr><td>"What is the difference between tax avoidance and tax evasion?"</td><td>Tax evasion is illegal — deliberately concealing income, falsifying records, or misrepresenting facts to reduce tax. It is a criminal offence punishable by imprisonment and penalties. Tax avoidance is technically legal — using provisions of tax law to reduce liability, but often in ways contrary to the spirit of the law. India's GAAR provisions address aggressive avoidance. Tax planning, on the other hand, is fully legal and ethical — using explicitly provided deductions and incentives (80C, R&D deductions, SEZ benefits) as intended by the government. As a finance professional, we can advise on tax planning and within ethical boundaries of avoidance, but never on evasion.</td></tr>
+      <tr><td>"How does GST's Input Tax Credit mechanism work?"</td><td>Under GST, a business collects GST on its sales (output tax) and pays GST on its purchases (input tax). Input Tax Credit allows the business to offset GST paid on purchases against GST collected on sales — only the net difference is remitted to the government. This prevents the cascading effect ("tax on tax") that existed under the pre-GST regime. For example, a manufacturer paying 18% GST on raw materials and charging 18% GST on finished goods only pays the difference. The credit flows up the supply chain — ultimately the final consumer bears the full tax, and no intermediate business bears the cumulative burden.</td></tr>
+      <tr><td>"What is transfer pricing and why is it important?"</td><td>Transfer pricing refers to the prices set for transactions between related parties — subsidiaries, parent companies, sister entities. Tax authorities require these to be at arm's length prices — the same as those that would be charged between independent parties. This prevents multinationals from artificially shifting profits to low-tax jurisdictions. In India, Section 92-92F governs transfer pricing, requiring annual Chartered Accountant certification (Form 3CEB) and documentation. India is one of the most aggressive countries globally in transfer pricing enforcement. Incorrect transfer pricing can result in significant tax adjustments, interest, and penalties.</td></tr>
+    </table>
+
+    <p class="section-label" style="margin-top:36px;">Part E — Key Formulas Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 37 — Key Formulas & Rates</div>
+      <div class="formula-row"><div class="formula-name">Deferred Tax</div><div class="formula-eq">DT = (Carrying Amount − Tax Base) × Future Tax Rate | Positive = DTL | Negative = DTA</div></div>
+      <div class="formula-row"><div class="formula-name">Effective Tax Rate</div><div class="formula-eq">ETR = Tax Expense ÷ Profit Before Tax × 100%</div></div>
+      <div class="formula-row"><div class="formula-name">Interest Tax Shield</div><div class="formula-eq">Tax Shield = Interest Paid × Tax Rate | After-tax cost of debt = Kd × (1 − tax rate)</div></div>
+      <div class="formula-row"><div class="formula-name">GST Payable</div><div class="formula-eq">GST Payable = Output Tax (on sales) − Input Tax Credit (on purchases)</div></div>
+      <div class="formula-row"><div class="formula-name">Advance Tax Schedule</div><div class="formula-eq">15% by 15 June | 45% by 15 Sep | 75% by 15 Dec | 100% by 15 Mar</div></div>
+      <div class="formula-row"><div class="formula-name">Section 115BAA Rate</div><div class="formula-eq">22% + 10% surcharge + 4% cess = Effective 25.17%</div></div>
+      <div class="formula-row"><div class="formula-name">Section 115BAB Rate</div><div class="formula-eq">15% + 10% surcharge + 4% cess = Effective 17.16%</div></div>
+      <div class="formula-row"><div class="formula-name">HRA Exemption (Minimum of 3)</div><div class="formula-eq">Min of: (1) Actual HRA received | (2) 50%/40% of salary (metro/non-metro) | (3) Actual rent − 10% of salary</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part F — Action Steps</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 37 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag yellow">✅ THIS WEEK: Calculate your own income tax under both old and new regime — which is better for you?</span>
+        <span class="tag yellow">✅ THIS WEEK: For any listed company — find their deferred tax note in the annual report and identify the main temporary differences causing DTL and DTA</span>
+        <span class="tag yellow">✅ THIS WEEK: Practice a full deferred tax calculation from scratch — machine purchase, WDV tax depreciation vs SLM accounting depreciation, 5 years</span>
+        <span class="tag yellow">✅ THIS WEEK: Map out the GST compliance for a fictional manufacturing company — what registrations, returns, and ITC claims apply?</span>
+        <span class="tag yellow">✅ THIS WEEK: Review Budget 2024 capital gains tax changes — understand the practical impact on property and equity investors</span>
+        <span class="tag yellow">✅ THIS MONTH: Attempt 2 ACCA TX past paper questions — one on deferred tax (IAS 12) and one on tax computation</span>
+        <span class="tag yellow">✅ THIS MONTH: Read about the Vodafone tax case — understand what happened, the retrospective amendment, and why GAAR was subsequently introduced</span>
+        <span class="tag yellow">✅ THIS MONTH: Learn all TDS sections (192, 194C, 194J, 194I, 194A, 194H, 194Q) with rates and thresholds — memorise these</span>
+        <span class="tag yellow">✅ THIS MONTH: Create a tax compliance calendar for a fictional Indian Pvt Ltd company — list every due date, return, and penalty for non-compliance</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Understand the Tax (Know the Law — ITA, GST, IAS 12)<br>
+      + Plan Efficiently (Use Every Legal Deduction Available)<br>
+      + Comply Religiously (Every Due Date, Every Return, Every Payment)<br>
+      + Account Correctly (Deferred Tax, Current Tax, Effective Rate)<br>
+      + Never Evade (Illegal, Criminal, Career-Ending)<br>
+      + Stay Updated (Budget Changes Every Year — Keep Learning)<br>
+      = <strong style="color:var(--accent4);">Tax Mastery — Turn India's Most Complex Subject into Your Biggest Advantage</strong>
+    </div>
+    <h3>Chapter 37: Taxation Fundamentals — Complete 🏛️✅</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 38: Corporate Governance — how boards, shareholders, and regulators ensure companies are run in the best interests of all stakeholders. 🏛️</p>
+  </div>
+
+</div>
+</body>
+</html>

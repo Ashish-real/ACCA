@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 11: Consolidation Basics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #22d3ee;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero { padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(34,211,238,0.09) 0%, transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-cyan   { background: rgba(34,211,238,0.2); color: var(--accent5); border: 1px solid rgba(34,211,238,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(34,211,238,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(34,211,238,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(34,211,238,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(34,211,238,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(34,211,238,0.07), rgba(0,212,170,0.05)); border: 1px solid rgba(34,211,238,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  .equation { background: var(--card); border: 1px solid var(--accent5); border-radius: 12px; padding: 20px 24px; margin: 20px 0; text-align: center; }
+  .equation-text { font-family: var(--mono); font-size: clamp(12px,2.5vw,15px); color: var(--accent2); letter-spacing: 1px; line-height: 2; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* GROUP STRUCTURE DIAGRAM */
+  .group-diagram { display: flex; flex-direction: column; align-items: center; gap: 0; margin-top: 16px; }
+  .group-box { background: var(--card); border: 2px solid var(--border); border-radius: 12px; padding: 16px 24px; text-align: center; min-width: 200px; }
+  .group-box.parent { border-color: var(--accent5); background: rgba(34,211,238,0.08); }
+  .group-box.sub { border-color: var(--accent2); }
+  .group-box-title { font-size: 14px; font-weight: 700; color: var(--text); }
+  .group-box-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .group-line { width: 2px; height: 30px; background: var(--border); }
+  .group-row { display: flex; gap: 24px; }
+  .group-pct { font-family: var(--mono); font-size: 11px; color: var(--accent4); margin-top: 4px; }
+
+  /* CALC BLOCK */
+  .calc-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 14px; }
+  .calc-header { background: rgba(34,211,238,0.08); padding: 12px 20px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; }
+  .calc-row { display: grid; grid-template-columns: 1fr auto; padding: 9px 20px; border-bottom: 1px solid rgba(42,42,58,0.3); font-size: 13px; align-items: center; }
+  .calc-row:last-child { border-bottom: none; }
+  .calc-row.indent { padding-left: 36px; }
+  .calc-row.subtotal { background: rgba(255,255,255,0.02); font-weight: 600; color: var(--text); border-top: 1px solid var(--border); }
+  .calc-row.total { background: rgba(34,211,238,0.08); font-weight: 700; color: var(--accent5); border-top: 2px solid var(--accent5); }
+  .calc-label { color: var(--muted); }
+  .calc-label.bold { color: var(--text); font-weight: 600; }
+  .calc-amount { font-family: var(--mono); font-size: 12px; color: var(--muted); text-align: right; }
+  .calc-amount.bold { color: var(--text); font-weight: 600; }
+  .calc-amount.highlight-val { color: var(--accent2); font-weight: 700; }
+  .calc-amount.total { color: var(--accent5); font-weight: 700; font-size: 14px; }
+  .calc-amount.negative { color: var(--accent3); }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(34,211,238,0.09), rgba(0,212,170,0.06)); border: 1px solid rgba(34,211,238,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 11</div>
+  <h1>Consolidation<br><span>Basics</span></h1>
+  <p class="hero-sub">How group financial statements combine parent and subsidiary companies into one — goodwill, non-controlling interests, and the elimination entries every MNC finance team prepares.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">IFRS 3</div><div class="stat-label">Business Combinations</div></div>
+    <div class="stat"><div class="stat-num">IFRS 10</div><div class="stat-label">Consolidated FS</div></div>
+    <div class="stat"><div class="stat-num">SBR</div><div class="stat-label">ACCA Paper</div></div>
+    <div class="stat"><div class="stat-num">NCI</div><div class="stat-label">Key Concept</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 11 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">11.1</span>What is a Group — and Why Consolidate?</div>
+    <div class="toc-item"><span class="toc-num">11.2</span>Control — The Key to Consolidation (IFRS 10)</div>
+    <div class="toc-item"><span class="toc-num">11.3</span>Goodwill on Acquisition (IFRS 3)</div>
+    <div class="toc-item"><span class="toc-num">11.4</span>Non-Controlling Interest (NCI)</div>
+    <div class="toc-item"><span class="toc-num">11.5</span>Consolidated Statement of Financial Position</div>
+    <div class="toc-item"><span class="toc-num">11.6</span>Consolidated Income Statement</div>
+    <div class="toc-item"><span class="toc-num">11.7</span>Intra-Group Transactions & Eliminations</div>
+    <div class="toc-item"><span class="toc-num">11.8</span>Associates & Joint Ventures (IAS 28)</div>
+    <div class="toc-item"><span class="toc-num">11.9</span>Consolidation in MNCs — Real World</div>
+    <div class="toc-item"><span class="toc-num">11.10</span>Consolidation & ACCA — Paper Mapping</div>
+    <div class="toc-item"><span class="toc-num">11.11</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">11.12</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Large companies rarely operate as a single legal entity. Tata, Reliance, Infosys, Google, Amazon — all are <strong>groups</strong> made up of a parent company and many subsidiaries. Consolidated financial statements present the group as if it were <strong>one single economic entity</strong> — combining all the subsidiaries' assets, liabilities, income, and expenses with the parent's. This is one of the most technical — and most career-relevant — areas of ACCA.</p>
+    <div class="quote">"A group's financial statements tell the story of the whole empire — not just the head office. Consolidation is how that story gets told accurately."</div>
+  </div>
+
+  <!-- 11.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-cyan">11.1</div>
+      <div class="section-title">What is a Group — and Why Consolidate?</div>
+    </div>
+    <p class="prose">A <strong>group</strong> consists of a parent company and one or more subsidiaries that it controls. Each company is a separate legal entity — but together they operate as one economic unit.</p>
+
+    <div class="group-diagram">
+      <div class="group-box parent">
+        <div class="group-box-title">Ashish Holdings Ltd (Parent)</div>
+        <div class="group-box-sub">Prepares Consolidated Financial Statements</div>
+      </div>
+      <div class="group-line"></div>
+      <div class="group-row">
+        <div>
+          <div class="group-box sub">
+            <div class="group-box-title">Ashish Consulting Ltd</div>
+            <div class="group-box-sub">Subsidiary — 80% owned</div>
+          </div>
+          <div class="group-pct" style="text-align:center;">Controlled — Consolidate 100%</div>
+        </div>
+        <div>
+          <div class="group-box sub">
+            <div class="group-box-title">Ashish FinTech Ltd</div>
+            <div class="group-box-sub">Subsidiary — 100% owned</div>
+          </div>
+          <div class="group-pct" style="text-align:center;">Controlled — Consolidate 100%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Why Consolidate?</div>
+        <ul class="card-items">
+          <li>Show the group's TOTAL economic resources and performance</li>
+          <li>Individual company accounts would understate the group's size</li>
+          <li>Investors need to see the whole picture, not just the parent</li>
+          <li>Required by IFRS 10 for all entities with subsidiaries</li>
+          <li>Listed companies MUST present consolidated accounts</li>
+        </ul>
+        <div class="card-tag">Single Economic Entity View</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📑</div>
+        <div class="card-title">Parent vs Subsidiary vs Associate</div>
+        <ul class="card-items">
+          <li><strong>Parent:</strong> entity that controls one or more entities</li>
+          <li><strong>Subsidiary:</strong> entity controlled by another (the parent)</li>
+          <li><strong>Associate:</strong> significant influence but not control (IAS 28)</li>
+          <li>Different accounting treatment for each relationship type</li>
+        </ul>
+        <div class="card-tag">Relationship Types</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">11.2</div>
+      <div class="section-title">Control — The Key to Consolidation</div>
+      <div class="section-meta">IFRS 10</div>
+    </div>
+    <p class="prose">Under IFRS 10, an investor <strong>controls</strong> an investee if and only if it has ALL THREE of the following elements.</p>
+
+    <table class="data-table">
+      <tr><th>Element</th><th>What It Means</th><th>Example</th></tr>
+      <tr><td>1. Power over the investee</td><td>Existing rights that give current ability to direct relevant activities</td><td>Voting rights, board appointment rights</td></tr>
+      <tr><td>2. Exposure to variable returns</td><td>Returns that vary based on investee's performance</td><td>Dividends, changes in value of investment</td></tr>
+      <tr><td>3. Ability to use power to affect returns</td><td>Link between power and the variability of returns</td><td>Can use power to influence the amount of returns</td></tr>
+    </table>
+
+    <div class="cards" style="margin-top:14px;">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Usually = Control</div>
+        <ul class="card-items">
+          <li>Owning more than 50% of voting rights</li>
+          <li>Majority of board of directors appointed by parent</li>
+          <li>Power to govern financial and operating policies</li>
+        </ul>
+        <div class="card-tag">Majority Ownership</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Control WITHOUT Majority Ownership</div>
+        <ul class="card-items">
+          <li>De facto control — large shareholding, rest widely dispersed</li>
+          <li>Potential voting rights (options, convertibles) currently exercisable</li>
+          <li>Contractual arrangements giving decision-making power</li>
+        </ul>
+        <div class="card-tag">Substance over Form</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚫</div>
+        <div class="card-title">Majority Ownership WITHOUT Control</div>
+        <ul class="card-items">
+          <li>Government or court-imposed restrictions on power</li>
+          <li>Entity in liquidation/administration — controlled by administrator</li>
+          <li>Rare but tested in SBR exam scenarios</li>
+        </ul>
+        <div class="card-tag">Exception Cases</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">11.3</div>
+      <div class="section-title">Goodwill on Acquisition</div>
+      <div class="section-meta">IFRS 3 — Business Combinations</div>
+    </div>
+    <p class="prose">When a parent acquires a subsidiary, it usually pays <strong>more than the fair value of the identifiable net assets</strong> acquired. This excess is <strong>Goodwill</strong> — representing reputation, customer relationships, synergies, and future growth potential.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Goodwill = Consideration Paid + Fair Value of NCI<br>
+        − Fair Value of Identifiable Net Assets Acquired
+      </div>
+      <div class="equation-label">The Goodwill Calculation — performed at acquisition date</div>
+    </div>
+
+    <p class="section-label">Complete Goodwill Calculation Example</p>
+    <div class="calc-block">
+      <div class="calc-header">Ashish Holdings acquires 80% of Ashish Consulting Ltd</div>
+      <div class="calc-row"><div class="calc-label">Consideration paid by parent (cash + shares)</div><div class="calc-amount">45,00,000</div></div>
+      <div class="calc-row"><div class="calc-label">Fair value of NCI (20%) at acquisition</div><div class="calc-amount">10,00,000</div></div>
+      <div class="calc-row subtotal"><div class="calc-label bold">Total Consideration + NCI</div><div class="calc-amount bold">55,00,000</div></div>
+      <div class="calc-row" style="background:rgba(34,211,238,0.05);"><div style="font-family:var(--mono);font-size:10px;color:var(--accent5);letter-spacing:2px;text-transform:uppercase;">LESS: Fair Value of Identifiable Net Assets</div><div></div></div>
+      <div class="calc-row indent"><div class="calc-label">Share Capital</div><div class="calc-amount">20,00,000</div></div>
+      <div class="calc-row indent"><div class="calc-label">Retained Earnings at acquisition</div><div class="calc-amount">15,00,000</div></div>
+      <div class="calc-row indent"><div class="calc-label">Fair value adjustment — land (uplift)</div><div class="calc-amount">8,00,000</div></div>
+      <div class="calc-row subtotal"><div class="calc-label bold">Total Identifiable Net Assets (FV)</div><div class="calc-amount bold">43,00,000</div></div>
+      <div class="calc-row total"><div>GOODWILL</div><div class="calc-amount total">12,00,000</div></div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 What Happens to Goodwill After Recognition?</div>
+      Goodwill is <strong>NOT amortised</strong> under IFRS. Instead, it is tested for <strong>impairment at least annually</strong> (IAS 36). If the recoverable amount of the cash-generating unit falls below carrying amount, goodwill is written down first — and impairment is never reversed. This is different from the old approach of amortising goodwill over its useful life.
+    </div>
+  </div>
+
+  <!-- 11.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">11.4</div>
+      <div class="section-title">Non-Controlling Interest (NCI)</div>
+    </div>
+    <p class="prose">When a parent owns less than 100% of a subsidiary, the remaining ownership belongs to outside shareholders — the <strong>Non-Controlling Interest (NCI)</strong>. Even though the parent doesn't own 100%, consolidation includes 100% of the subsidiary's assets, liabilities, income, and expenses — with NCI's share shown separately.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">NCI at Acquisition — 2 Methods</div>
+        <ul class="card-items">
+          <li><strong>Fair Value Method (Full Goodwill):</strong> NCI measured at fair value — goodwill includes NCI's share</li>
+          <li><strong>Proportionate Method (Partial Goodwill):</strong> NCI = % of identifiable net assets — goodwill excludes NCI's share</li>
+          <li>Choice made on an acquisition-by-acquisition basis</li>
+          <li>Fair value method is more common in practice</li>
+        </ul>
+        <div class="card-tag">IFRS 3 Choice</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">NCI in the Balance Sheet</div>
+        <ul class="card-items">
+          <li>Shown within Equity — but separately from parent's equity</li>
+          <li>NCI at acquisition + NCI's share of post-acquisition reserves</li>
+          <li>Represents the outside shareholders' stake in the group</li>
+          <li>Updated every year for the subsidiary's profit/loss</li>
+        </ul>
+        <div class="card-tag">Part of Equity</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">NCI in the Income Statement</div>
+        <ul class="card-items">
+          <li>Profit for the year is split: Parent's share + NCI's share</li>
+          <li>Shown as "Profit attributable to NCI" below the total profit line</li>
+          <li>NCI % × Subsidiary's profit for the year</li>
+          <li>Adjust for fair value depreciation and intra-group items first</li>
+        </ul>
+        <div class="card-tag">Profit Allocation</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-cyan">11.5</div>
+      <div class="section-title">Consolidated Statement of Financial Position</div>
+      <div class="section-meta">Step-by-Step Approach</div>
+    </div>
+    <p class="prose">Preparing a consolidated SFP follows a consistent step-by-step process. ACCA exams test this heavily — memorise this sequence.</p>
+
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Add Across</div><ul class="card-items"><li>Add 100% of parent's and subsidiary's assets/liabilities</li><li>Line by line — Cash + Cash, PPE + PPE, etc.</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Calculate Goodwill</div><ul class="card-items"><li>As shown in section 11.3</li><li>Include as a separate non-current asset</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Fair Value Adjustments</div><ul class="card-items"><li>Adjust subsidiary's assets to fair value at acquisition</li><li>Additional depreciation on the uplift each year</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Eliminate Investment in Subsidiary</div><ul class="card-items"><li>Parent's "Investment in Subsidiary" asset is cancelled</li><li>It's replaced by the subsidiary's actual net assets + goodwill</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Calculate Retained Earnings</div><ul class="card-items"><li>Parent's RE + Parent's share of subsidiary's POST-acquisition profits</li><li>Adjust for unrealised profits in intra-group transactions</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Calculate NCI</div><ul class="card-items"><li>NCI at acquisition + NCI's share of post-acquisition reserves</li><li>Shown separately within equity</li></ul></div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">💡 The Golden Rule of Consolidation</div>
+      <strong>Pre-acquisition profits are NOT consolidated</strong> — they were already accounted for in goodwill. <strong>Only post-acquisition profits</strong> of the subsidiary are added to group retained earnings (parent's share) and NCI (NCI's share). This single rule explains most of the adjustments in a consolidation question.
+    </div>
+  </div>
+
+  <!-- 11.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">11.6</div>
+      <div class="section-title">Consolidated Income Statement</div>
+    </div>
+    <p class="prose">The consolidated Income Statement combines the parent's and subsidiary's results — but with key adjustments.</p>
+
+    <table class="data-table">
+      <tr><th>Item</th><th>How It's Consolidated</th></tr>
+      <tr><td>Revenue, Cost of Sales, Expenses</td><td>Add 100% of parent + 100% of subsidiary (line by line)</td></tr>
+      <tr><td>Subsidiary acquired mid-year</td><td>Only include subsidiary's results from acquisition date onwards (time-apportion)</td></tr>
+      <tr><td>Intra-group sales</td><td>Eliminate from both revenue and cost of sales — group can't sell to itself</td></tr>
+      <tr><td>Unrealised profit in closing inventory</td><td>Remove the profit margin on goods still in group inventory</td></tr>
+      <tr><td>Fair value depreciation adjustment</td><td>Additional depreciation charge on the fair value uplift</td></tr>
+      <tr><td>Profit attributable to NCI</td><td>NCI % × subsidiary's adjusted profit for the year</td></tr>
+      <tr><td>Profit attributable to owners of parent</td><td>Total group profit − NCI's share</td></tr>
+    </table>
+  </div>
+
+  <!-- 11.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">11.7</div>
+      <div class="section-title">Intra-Group Transactions & Eliminations</div>
+      <div class="section-meta">The Adjustments That Make or Break a Question</div>
+    </div>
+    <p class="prose">When companies within a group trade with each other, these transactions must be <strong>eliminated</strong> on consolidation — because from the group's perspective, no sale to an outsider occurred.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💸</div>
+        <div class="card-title">Intra-Group Sales</div>
+        <ul class="card-items">
+          <li>Parent sells goods to subsidiary (or vice versa)</li>
+          <li>Eliminate the full sales/purchases amount from both Revenue and COGS</li>
+          <li>No impact on group profit if all goods are sold externally by year-end</li>
+        </ul>
+        <div class="card-tag">Eliminate Both Sides</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Unrealised Profit in Inventory (PUP)</div>
+        <ul class="card-items">
+          <li>If goods sold within group remain in closing inventory</li>
+          <li>The profit margin on those goods is "unrealised" from group view</li>
+          <li>Reduce inventory value AND reduce group profit by the unrealised margin</li>
+          <li>Classic exam adjustment — Provision for Unrealised Profit (PUP)</li>
+        </ul>
+        <div class="card-tag">PUP Adjustment</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Intra-Group Balances</div>
+        <ul class="card-items">
+          <li>Receivable in one company's books = Payable in the other's</li>
+          <li>Both must be eliminated — cancel out on consolidation</li>
+          <li>Watch for cash/goods in transit causing mismatches</li>
+        </ul>
+        <div class="card-tag">Cancel Out</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Intra-Group Dividends</div>
+        <ul class="card-items">
+          <li>Dividend paid by subsidiary to parent</li>
+          <li>Eliminate from parent's investment income</li>
+          <li>Eliminate from subsidiary's dividend paid (in retained earnings)</li>
+        </ul>
+        <div class="card-tag">Eliminate Income & Expense</div>
+      </div>
+    </div>
+
+    <p class="section-label">PUP Calculation Example</p>
+    <div class="wide-card">
+      <h4>Unrealised Profit in Inventory — Worked Example</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        Parent sells goods to Subsidiary for ₹2,00,000 (cost to Parent ₹1,50,000) — markup = ₹50,000 (33.33% on cost, or 25% on selling price)<br>
+        At year-end, Subsidiary still holds ₹80,000 of these goods (at transfer price) in closing inventory<br><br>
+        <strong style="color:var(--text);">Unrealised profit = ₹80,000 × 25% (margin on selling price) = ₹20,000</strong><br><br>
+        <strong style="color:var(--accent5);">Adjustment:</strong><br>
+        Reduce Group Inventory by ₹20,000<br>
+        Reduce Group Retained Earnings (Cost of Sales ↑) by ₹20,000<br>
+        <span style="color:var(--muted);font-size:12px;">If Parent sold the goods, the PUP reduces Parent's RE (100%). If Subsidiary sold to Parent, PUP is split between Parent's RE and NCI based on ownership %.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">11.8</div>
+      <div class="section-title">Associates & Joint Ventures</div>
+      <div class="section-meta">IAS 28 — Equity Method</div>
+    </div>
+    <p class="prose">When an investor has <strong>significant influence</strong> (but not control) — typically 20-50% ownership — the investee is an <strong>Associate</strong>, accounted for using the <strong>Equity Method</strong> (not full consolidation).</p>
+
+    <table class="data-table">
+      <tr><th>Relationship</th><th>Ownership %</th><th>Accounting Method</th><th>Balance Sheet Treatment</th></tr>
+      <tr><td>Subsidiary</td><td>Usually &gt;50% (control)</td><td>Full Consolidation</td><td>100% of assets/liabilities + NCI</td></tr>
+      <tr><td>Associate</td><td>Usually 20-50% (significant influence)</td><td>Equity Method</td><td>Single line: "Investment in Associate"</td></tr>
+      <tr><td>Joint Venture</td><td>Shared control (contractual)</td><td>Equity Method</td><td>Single line: "Investment in JV"</td></tr>
+      <tr><td>Simple Investment</td><td>Usually &lt;20% (no influence)</td><td>IFRS 9 (FVOCI/FVTPL)</td><td>Fair value of investment</td></tr>
+    </table>
+
+    <div class="equation">
+      <div class="equation-text">
+        Investment in Associate = Cost of Investment<br>
+        + Share of Post-Acquisition Profits<br>
+        − Share of Post-Acquisition Losses/Dividends Received
+      </div>
+      <div class="equation-label">The Equity Method — one line on the Balance Sheet, one line on the Income Statement</div>
+    </div>
+  </div>
+
+  <!-- 11.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">11.9</div>
+      <div class="section-title">Consolidation in MNCs — Real World</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Group Finance Teams</div>
+        <ul class="card-items">
+          <li>Every MNC has a "Group Reporting" or "Group Consolidation" team</li>
+          <li>Monthly/quarterly consolidation cycles using SAP, HFM, OneStream</li>
+          <li>Intercompany reconciliations — a major monthly task</li>
+          <li>Currency translation for foreign subsidiaries (IAS 21)</li>
+        </ul>
+        <div class="card-tag">Group Reporting Career Path</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Big 4 — Group Audit</div>
+        <ul class="card-items">
+          <li>Group audit teams coordinate audits across multiple countries</li>
+          <li>Component auditors audit individual subsidiaries</li>
+          <li>Group auditor consolidates and signs the group opinion</li>
+          <li>Complex international engagements — premium fees</li>
+        </ul>
+        <div class="card-tag">Group Audit Specialist</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">M&A Advisory</div>
+        <ul class="card-items">
+          <li>Goodwill calculations are central to deal accounting</li>
+          <li>Purchase Price Allocation (PPA) — identifying fair values of acquired assets</li>
+          <li>Big 4 deals teams specialise in this</li>
+          <li>Direct link to Chapter on Valuation (later chapter)</li>
+        </ul>
+        <div class="card-tag">M&A / Deals Career Path</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-cyan">11.10</div>
+      <div class="section-title">Consolidation & ACCA — Paper Mapping</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>ACCA Paper</th><th>Level</th><th>What's Tested</th></tr>
+      <tr><td>Group structures — parent/subsidiary/associate</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Identify relationships and classify</td></tr>
+      <tr><td>Goodwill calculation</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Calculate goodwill, FV adjustments</td></tr>
+      <tr><td>Consolidated SFP — full preparation</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Prepare full consolidated balance sheet</td></tr>
+      <tr><td>Consolidated Income Statement</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Prepare with mid-year acquisitions, NCI</td></tr>
+      <tr><td>Intra-group eliminations & PUP</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Calculate and adjust for PUP, balances</td></tr>
+      <tr><td>Associates — equity method</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Calculate investment in associate</td></tr>
+      <tr><td>Complex group structures (sub-subsidiaries)</td><td>SBR (Strategic Business Reporting)</td><td>Strategic Professional</td><td>Multi-level groups, disposals, step acquisitions</td></tr>
+    </table>
+  </div>
+
+  <!-- 11.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">11.11</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Control = Consolidate 100%</div><ul class="card-items"><li>Three elements of control (IFRS 10)</li><li>Even at 51% — consolidate 100%, show NCI separately</li><li>Substance over legal ownership %</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Goodwill = Excess Paid</div><ul class="card-items"><li>Consideration + NCI FV − Net Assets FV</li><li>Not amortised — tested for impairment annually</li><li>Impairment never reversed</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Only Post-Acquisition Profits Count</div><ul class="card-items"><li>Pre-acquisition = part of goodwill calculation</li><li>Post-acquisition = added to group RE and NCI</li><li>This single rule drives most adjustments</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Eliminate Intra-Group Everything</div><ul class="card-items"><li>Sales, purchases, balances, dividends</li><li>PUP for unsold inventory at year-end</li><li>Group can't profit from trading with itself</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Associates ≠ Subsidiaries</div><ul class="card-items"><li>20-50% = significant influence = equity method</li><li>One line, not full consolidation</li><li>Different from joint ventures (shared control)</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Career Gateway</div><ul class="card-items"><li>Group reporting roles — high demand in MNCs</li><li>Group audit — Big 4 international exposure</li><li>M&A — goodwill and PPA expertise</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 11 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Calculate goodwill for a sample acquisition scenario</span>
+        <span class="tag teal">✅ Practice a basic consolidated SFP (parent + 1 subsidiary)</span>
+        <span class="tag teal">✅ Calculate NCI at acquisition and at year-end</span>
+        <span class="tag teal">✅ Work through a PUP adjustment example</span>
+        <span class="tag teal">✅ Distinguish subsidiary vs associate vs JV for 5 ownership scenarios</span>
+        <span class="tag teal">✅ Read about a real Indian acquisition (e.g. Tata-Air India) and identify goodwill</span>
+        <span class="tag teal">✅ Attempt ACCA FR past paper consolidation questions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">11.12</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Consolidating Only the Parent's % of Subsidiary Assets/Liabilities</strong><br>
+        Consolidation includes 100% of the subsidiary's assets, liabilities, revenue, and expenses — regardless of the parent's ownership percentage. The ownership % only affects the SPLIT of equity/profit between the parent and NCI, not the line-by-line addition of the subsidiary's figures.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Including Pre-Acquisition Profits in Group Retained Earnings</strong><br>
+        Only POST-acquisition profits of the subsidiary are added to group retained earnings — pre-acquisition profits were already captured in the goodwill calculation (as part of net assets acquired). Adding pre-acquisition profits again double-counts them.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Forgetting to Eliminate Both Sides of Intra-Group Transactions</strong><br>
+        Intra-group sales must be eliminated from BOTH revenue (seller's side) and cost of sales (buyer's side) — eliminating only one side leaves the consolidated figures unbalanced and overstates total group revenue.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Calculating PUP on the Full Intra-Group Sale Instead of Only Unsold Closing Inventory</strong><br>
+        The unrealised profit adjustment only applies to the portion of intra-group goods still held in closing inventory at year-end — goods already sold externally by year-end have "realised" the profit from the group's perspective and need no adjustment.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Amortising Goodwill</strong><br>
+        Under current IFRS 3, goodwill is NOT amortised — it is tested for impairment at least annually. Applying a systematic amortisation charge (an older accounting practice, still used in some other GAAPs) is incorrect under IFRS.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Confusing Subsidiaries, Associates, and Joint Ventures</strong><br>
+        Subsidiaries (control, typically >50%) are fully consolidated line-by-line. Associates (significant influence, typically 20-50%) use the equity method — showing only the investor's share of profit as a single line. Joint ventures (joint control) also use the equity method under IFRS 11. Applying full consolidation to an associate is a common exam error.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Goodwill Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: State the goodwill formula.</strong></li>
+          <li>A: Consideration Paid + Fair Value of NCI − Fair Value of Identifiable Net Assets Acquired</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Control Threshold</div>
+        <ul class="card-items">
+          <li><strong>Q: What generally indicates control under IFRS 10?</strong></li>
+          <li>A: Typically ownership of >50% of voting rights, though control can exist even below 50% (de facto control)</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Goodwill Treatment</div>
+        <ul class="card-items">
+          <li><strong>Q: How is goodwill treated after initial recognition?</strong></li>
+          <li>A: Not amortised — tested for impairment at least annually (IAS 36)</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Golden Rule</div>
+        <ul class="card-items">
+          <li><strong>Q: What's the golden rule about pre vs post-acquisition profits?</strong></li>
+          <li>A: Only post-acquisition profits are added to group RE and NCI; pre-acquisition profits are already in goodwill</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Associate vs Subsidiary</div>
+        <ul class="card-items">
+          <li><strong>Q: How is an associate accounted for, vs a subsidiary?</strong></li>
+          <li>A: Associate = equity method (one-line share of profit); Subsidiary = full line-by-line consolidation</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+    </div>
+
+    <!-- FORMULA REFERENCE -->
+    <p class="section-label" style="margin-top:40px;">Part C — Formula Quick Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 11 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Goodwill</div><div class="formula-eq">Consideration Paid + Fair Value of NCI − Fair Value of Identifiable Net Assets</div></div>
+      <div class="formula-row"><div class="formula-name">NCI at Acquisition (Proportionate Method)</div><div class="formula-eq">NCI % × Fair Value of Identifiable Net Assets</div></div>
+      <div class="formula-row"><div class="formula-name">Group Retained Earnings</div><div class="formula-eq">Parent's RE + (Parent's % × Subsidiary's Post-Acquisition Profit) − PUP (Parent's share)</div></div>
+      <div class="formula-row"><div class="formula-name">Unrealised Profit in Inventory (PUP)</div><div class="formula-eq">Closing Inventory (at transfer price) × Profit Margin %</div></div>
+      <div class="formula-row"><div class="formula-name">Profit Attributable to NCI</div><div class="formula-eq">NCI % × Subsidiary's Adjusted Profit for the Year</div></div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Why do companies prepare consolidated financial statements?"</td><td>Foundational purpose of consolidation</td><td>A group operates through multiple legal entities, but investors and lenders need to evaluate the group as a single economic entity to understand its true financial position and performance. Consolidated statements combine the parent and all controlled subsidiaries into one set of accounts, eliminating intra-group transactions that would otherwise double-count revenue and distort the group's real economic activity.</td></tr>
+      <tr><td>"What is goodwill, and why isn't it amortised?"</td><td>Depth of understanding on IFRS 3 treatment</td><td>Goodwill represents the premium paid over the fair value of identifiable net assets — reflecting synergies, brand value, and future growth potential that can't be separately identified. The IASB moved away from amortisation because it's difficult to estimate a meaningful useful life for goodwill; instead, it's tested for impairment annually, so any decline in value is recognised when it actually occurs rather than through an arbitrary systematic charge.</td></tr>
+      <tr><td>"What's the difference between a subsidiary and an associate, and how does the accounting differ?"</td><td>Practical classification and treatment knowledge</td><td>A subsidiary is controlled by the parent (typically >50% ownership) and is fully consolidated — 100% of its assets, liabilities, revenue and expenses are combined line-by-line with NCI shown separately. An associate is one where the investor has significant influence but not control (typically 20-50% ownership) and is accounted for using the equity method — only the investor's share of the associate's profit appears as a single line in the income statement, and the investment is carried at cost plus share of post-acquisition profits on the balance sheet.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Control (IFRS 10) → Goodwill (IFRS 3)<br>
+      → NCI → Eliminate Intra-Group<br>
+      → Consolidated Financial Statements<br>
+      = <strong style="color:var(--accent4);">One Group, One Story, One Set of Accounts</strong>
+    </div>
+    <h3>The whole is greater than the sum of its legal entities.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 12: Interpretation of Financial Statements — ratio analysis and how to read between the lines of any company's accounts. 📈</p>
+  </div>
+
+</div>
+</body>
+</html>

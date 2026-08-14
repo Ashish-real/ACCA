@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 13: ACCA Qualification Structure</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #2dd4bf;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  /* PART DIVIDER HERO */
+  .part-hero {
+    padding: 50px 24px 30px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .part-hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(45,212,191,0.10) 0%, transparent 70%); pointer-events: none; }
+  .part-badge { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--accent4); border: 1px solid var(--accent4); padding: 5px 18px; border-radius: 100px; margin-bottom: 14px; }
+  .part-title { font-size: clamp(20px,4vw,32px); font-weight: 700; color: var(--text); }
+
+  .hero { padding: 40px 24px 48px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-mint   { background: rgba(45,212,191,0.2); color: var(--accent5); border: 1px solid rgba(45,212,191,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(45,212,191,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(45,212,191,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(45,212,191,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(45,212,191,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(45,212,191,0.07), rgba(0,212,170,0.05)); border: 1px solid rgba(45,212,191,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  /* PAPER GRID */
+  .paper-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 10px; margin-top: 14px; }
+  .paper-box { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px; text-align: center; transition: border-color 0.2s; }
+  .paper-box:hover { border-color: var(--accent5); }
+  .paper-code { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--accent5); }
+  .paper-name { font-size: 11px; color: var(--text); margin-top: 4px; font-weight: 500; }
+  .paper-old { font-family: var(--mono); font-size: 9px; color: var(--muted); margin-top: 4px; }
+
+  /* LEVEL BLOCK */
+  .level-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 14px; }
+  .level-header { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .level-header.aw { background: rgba(0,212,170,0.08); }
+  .level-header.as { background: rgba(45,212,191,0.08); }
+  .level-header.sp { background: rgba(255,217,61,0.08); }
+  .level-title { font-size: 14px; font-weight: 700; color: var(--text); }
+  .level-meta { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  .level-body { padding: 16px 20px; }
+
+  .timeline { position: relative; padding-left: 28px; margin-top: 14px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, var(--accent5), var(--accent2)); border-radius: 2px; }
+  .timeline-item { position: relative; margin-bottom: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .timeline-item::before { content: ''; position: absolute; left: -24px; top: 18px; width: 10px; height: 10px; background: var(--accent5); border-radius: 50%; border: 2px solid var(--bg); }
+  .timeline-step { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .timeline-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .timeline-desc { font-size: 12px; color: var(--muted); }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(45,212,191,0.09), rgba(0,212,170,0.06)); border: 1px solid rgba(45,212,191,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<!-- PART DIVIDER -->
+<div class="part-hero">
+  <div class="part-badge">Part 2 · Begins Here</div>
+  <div class="part-title">🎓 The ACCA Roadmap</div>
+</div>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 13</div>
+  <h1>ACCA Qualification<br><span>Structure</span></h1>
+  <p class="hero-sub">The complete map of all 13 ACCA papers — from Applied Knowledge to Strategic Professional. Your exact path from where you are now to "ACCA" after your name.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">13</div><div class="stat-label">Total Papers</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Levels</div></div>
+    <div class="stat"><div class="stat-num">3-4</div><div class="stat-label">Years Typical</div></div>
+    <div class="stat"><div class="stat-num">180</div><div class="stat-label">Countries Recognised</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 13 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">13.1</span>ACCA at a Glance — The Big Picture</div>
+    <div class="toc-item"><span class="toc-num">13.2</span>Applied Knowledge Level (3 Papers)</div>
+    <div class="toc-item"><span class="toc-num">13.3</span>Applied Skills Level (6 Papers)</div>
+    <div class="toc-item"><span class="toc-num">13.4</span>Strategic Professional Level (4 Papers — 2 Compulsory + 2 Options)</div>
+    <div class="toc-item"><span class="toc-num">13.5</span>Ethics and Professional Skills Module (EPSM)</div>
+    <div class="toc-item"><span class="toc-num">13.6</span>Practical Experience Requirement (PER)</div>
+    <div class="toc-item"><span class="toc-num">13.7</span>Exemptions — How Your Degree Helps</div>
+    <div class="toc-item"><span class="toc-num">13.8</span>Ashish's Personalised Timeline</div>
+    <div class="toc-item"><span class="toc-num">13.9</span>Registration, Fees & Exam Logistics</div>
+    <div class="toc-item"><span class="toc-num">13.10</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">13.11</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">You've spent 12 chapters building the conceptual foundation — finance industry knowledge, accounting, IFRS, costing, and interpretation. Now it's time to map this knowledge onto the <strong>actual ACCA qualification</strong> — paper by paper, level by level. This chapter is your GPS for the entire ACCA journey.</p>
+    <div class="quote">"ACCA is not 13 separate hurdles. It's one connected story — each paper builds on the last, and by the end, you can think like a CFO."</div>
+  </div>
+
+  <!-- 13.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-mint">13.1</div>
+      <div class="section-title">ACCA at a Glance — The Big Picture</div>
+    </div>
+    <p class="prose">ACCA's qualification is structured in <strong>three progressive levels</strong>, each building technical depth and strategic thinking. As of the 2023+ syllabus, the papers were renamed and renumbered — here's the complete current structure.</p>
+
+    <div class="level-block">
+      <div class="level-header aw">
+        <div class="level-title">🟢 Applied Knowledge (AK)</div>
+        <div class="level-meta">3 papers · Foundation level</div>
+      </div>
+      <div class="level-body">
+        <div class="paper-grid">
+          <div class="paper-box"><div class="paper-code">BT</div><div class="paper-name">Business & Technology</div><div class="paper-old">(was AB/F1)</div></div>
+          <div class="paper-box"><div class="paper-code">MA</div><div class="paper-name">Management Accounting</div><div class="paper-old">(was F2)</div></div>
+          <div class="paper-box"><div class="paper-code">FA</div><div class="paper-name">Financial Accounting</div><div class="paper-old">(was F3)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="level-block">
+      <div class="level-header as">
+        <div class="level-title">🔵 Applied Skills (AS)</div>
+        <div class="level-meta">6 papers · Build technical expertise</div>
+      </div>
+      <div class="level-body">
+        <div class="paper-grid">
+          <div class="paper-box"><div class="paper-code">LW</div><div class="paper-name">Corporate & Business Law</div><div class="paper-old">(was F4)</div></div>
+          <div class="paper-box"><div class="paper-code">PM</div><div class="paper-name">Performance Management</div><div class="paper-old">(was F5)</div></div>
+          <div class="paper-box"><div class="paper-code">TX</div><div class="paper-name">Taxation</div><div class="paper-old">(was F6)</div></div>
+          <div class="paper-box"><div class="paper-code">FR</div><div class="paper-name">Financial Reporting</div><div class="paper-old">(was F7)</div></div>
+          <div class="paper-box"><div class="paper-code">AA</div><div class="paper-name">Audit & Assurance</div><div class="paper-old">(was F8)</div></div>
+          <div class="paper-box"><div class="paper-code">FM</div><div class="paper-name">Financial Management</div><div class="paper-old">(was F9)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="level-block">
+      <div class="level-header sp">
+        <div class="level-title">🟡 Strategic Professional (SP)</div>
+        <div class="level-meta">4 papers · 2 Compulsory + 2 from Options</div>
+      </div>
+      <div class="level-body">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px;"><strong style="color:var(--text);">Compulsory (both required):</strong></p>
+        <div class="paper-grid">
+          <div class="paper-box"><div class="paper-code">SBL</div><div class="paper-name">Strategic Business Leader</div><div class="paper-old">(was P1+P3)</div></div>
+          <div class="paper-box"><div class="paper-code">SBR</div><div class="paper-name">Strategic Business Reporting</div><div class="paper-old">(was P2)</div></div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin:14px 0 10px;"><strong style="color:var(--text);">Options (choose any 2 of 4):</strong></p>
+        <div class="paper-grid">
+          <div class="paper-box"><div class="paper-code">AFM</div><div class="paper-name">Advanced Financial Mgmt</div><div class="paper-old">(was P4)</div></div>
+          <div class="paper-box"><div class="paper-code">APM</div><div class="paper-name">Advanced Performance Mgmt</div><div class="paper-old">(was P5)</div></div>
+          <div class="paper-box"><div class="paper-code">ATX</div><div class="paper-name">Advanced Taxation</div><div class="paper-old">(was P6)</div></div>
+          <div class="paper-box"><div class="paper-code">AAA</div><div class="paper-name">Advanced Audit & Assurance</div><div class="paper-old">(was P7)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🧮 The Maths — Total Papers</div>
+      3 (Applied Knowledge) + 6 (Applied Skills) + 2 (Strategic Compulsory) + 2 (Strategic Options) = <strong style="color:var(--accent5);">13 exams total</strong>. Plus the Ethics and Professional Skills Module (not an exam, but mandatory) and the Practical Experience Requirement (PER) — both covered later in this chapter.
+    </div>
+  </div>
+
+  <!-- 13.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">13.2</div>
+      <div class="section-title">Applied Knowledge Level</div>
+      <div class="section-meta">3 Papers — Your Starting Point</div>
+    </div>
+    <p class="prose">These three papers build the fundamental knowledge base — you've already covered the conceptual basis for all three in Chapters 1-12 of this Bible!</p>
+
+    <table class="data-table">
+      <tr><th>Paper</th><th>Focus</th><th>Connects to Bible Chapter</th><th>Exam Format</th></tr>
+      <tr><td>BT — Business & Technology</td><td>Business structures, governance, organisational behaviour, technology in business</td><td>Ch 1 (Finance Industry Overview)</td><td>CBE, 2 hours, MCQs + multi-task</td></tr>
+      <tr><td>MA — Management Accounting</td><td>Costing, budgeting, variance analysis, decision-making</td><td>Ch 5-6 (Cost & Management Accounting)</td><td>CBE, 2 hours, MCQs + multi-task</td></tr>
+      <tr><td>FA — Financial Accounting</td><td>Double entry, financial statements, basic IFRS</td><td>Ch 2-4 (Accounting Basics, Financial Statements, IFRS)</td><td>CBE, 2 hours, MCQs + multi-task</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">✅ You're Already Ahead</div>
+      Because this Bible covered the FOUNDATIONAL CONCEPTS behind BT, MA, and FA in Chapters 1-6, you have a significant head start. The exams test the same concepts in more depth, with exam-specific question formats — but the underlying logic is identical to what you've already learned.
+    </div>
+  </div>
+
+  <!-- 13.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">13.3</div>
+      <div class="section-title">Applied Skills Level</div>
+      <div class="section-meta">6 Papers — The Technical Core</div>
+    </div>
+    <p class="prose">This is the heart of ACCA — six papers covering law, performance management, tax, financial reporting, audit, and financial management. Most students find this the most demanding level.</p>
+
+    <table class="data-table">
+      <tr><th>Paper</th><th>Focus</th><th>Connects to Bible Chapter</th><th>Exam Format</th></tr>
+      <tr><td>LW — Corporate & Business Law</td><td>Legal systems, company law, contract law, employment law</td><td>New topic — covered later in Bible</td><td>CBE, 2 hours, MCQs + scenarios</td></tr>
+      <tr><td>PM — Performance Management</td><td>Advanced costing, variance analysis, decision-making, performance measurement</td><td>Ch 6 (Management Accounting — advanced)</td><td>CBE, 3 hours, constructed response</td></tr>
+      <tr><td>TX — Taxation</td><td>Income tax, corporation tax, VAT/GST, capital gains</td><td>Taxation Fundamentals chapter (later)</td><td>CBE, 3 hours, constructed response</td></tr>
+      <tr><td>FR — Financial Reporting</td><td>Full IFRS application, consolidation, interpretation</td><td>Ch 3-4, 7-12 (Financial Statements through Interpretation)</td><td>CBE, 3 hours, constructed response</td></tr>
+      <tr><td>AA — Audit & Assurance</td><td>Audit planning, procedures, evidence, reporting</td><td>Audit Fundamentals chapter (later)</td><td>CBE, 3 hours, constructed response</td></tr>
+      <tr><td>FM — Financial Management</td><td>Investment appraisal, working capital, cost of capital, risk management</td><td>Corporate Finance chapter (later)</td><td>CBE, 3 hours, constructed response</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🎯 Recommended Order — Applied Skills</div>
+      Most students follow: <strong>LW → PM → TX → FR → FM → AA</strong> (or FR before TX/FM, depending on local guidance). FR is the cornerstone — it builds directly on FA and feeds into SBR. PM builds on MA. Many ACCA tuition providers recommend grouping FR + FM together as they share corporate finance concepts.
+    </div>
+  </div>
+
+  <!-- 13.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">13.4</div>
+      <div class="section-title">Strategic Professional Level</div>
+      <div class="section-meta">4 Papers — Think Like a CFO</div>
+    </div>
+    <p class="prose">The final level transforms you from a technically competent accountant into a <strong>strategic business advisor</strong>. Both compulsory papers are essential — and your choice of 2 options should align with your career direction.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🧭</div>
+        <div class="card-title">SBL — Strategic Business Leader</div>
+        <ul class="card-items">
+          <li>Combines old P1 (Governance, Risk, Ethics) + P3 (Business Analysis)</li>
+          <li>Case study format — analyse a fictional organisation</li>
+          <li>Tests strategy, leadership, governance, risk, technology</li>
+          <li>4-hour exam — the longest ACCA paper</li>
+        </ul>
+        <div class="card-tag">Compulsory</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">SBR — Strategic Business Reporting</div>
+        <ul class="card-items">
+          <li>Advanced IFRS — group accounts, complex transactions</li>
+          <li>Builds directly on FR and Chapters 7-11 of this Bible</li>
+          <li>Ethics in financial reporting</li>
+          <li>Current issues in corporate reporting</li>
+        </ul>
+        <div class="card-tag">Compulsory</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">AFM — Advanced Financial Management</div>
+        <ul class="card-items">
+          <li>For: Investment banking, treasury, corporate finance career paths</li>
+          <li>Advanced valuation, M&A, risk management, treasury</li>
+          <li>Builds on FM</li>
+          <li>Most quantitative of the options</li>
+        </ul>
+        <div class="card-tag">Option — Recommended for Finance Track</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">APM — Advanced Performance Management</div>
+        <ul class="card-items">
+          <li>For: FP&A, strategy, consulting career paths</li>
+          <li>Advanced management accounting, strategic performance systems</li>
+          <li>Builds on PM</li>
+          <li>Heavy on Balanced Scorecard, performance frameworks</li>
+        </ul>
+        <div class="card-tag">Option — Recommended for FP&A Track</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧾</div>
+        <div class="card-title">ATX — Advanced Taxation</div>
+        <ul class="card-items">
+          <li>For: Tax advisory, Big 4 tax practice career paths</li>
+          <li>Complex tax planning, international tax</li>
+          <li>Builds on TX</li>
+          <li>Highly specialised — Big 4 tax teams value this</li>
+        </ul>
+        <div class="card-tag">Option — Recommended for Tax Track</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">AAA — Advanced Audit & Assurance</div>
+        <ul class="card-items">
+          <li>For: External audit, Big 4 audit partner track</li>
+          <li>Complex audit scenarios, group audits, ethics</li>
+          <li>Builds on AA</li>
+          <li>Essential for audit career progression</li>
+        </ul>
+        <div class="card-tag">Option — Recommended for Audit Track</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">🎯 Choosing Your Options — Career Alignment</div>
+      <strong>Want Big 4 Audit Partner track?</strong> → AAA + APM or AFM<br>
+      <strong>Want Investment Banking / Treasury?</strong> → AFM + APM<br>
+      <strong>Want FP&A / CFO track?</strong> → APM + AFM<br>
+      <strong>Want Tax Specialist (Big 4 Tax)?</strong> → ATX + AAA or APM<br><br>
+      Most students choose AFM + APM for maximum flexibility — these are the most broadly applicable to corporate finance and FP&A roles, which align well with the MNC career path covered in Chapter 1.
+    </div>
+  </div>
+
+  <!-- 13.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-mint">13.5</div>
+      <div class="section-title">Ethics and Professional Skills Module (EPSM)</div>
+    </div>
+    <p class="prose">EPSM is a mandatory online module — <strong>not a written exam</strong> — that must be completed before applying for ACCA membership. It develops the professional skills employers value most.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Ethics Component</div>
+        <ul class="card-items">
+          <li>Interactive scenarios on ethical dilemmas</li>
+          <li>Based on ACCA's Code of Ethics and Conduct</li>
+          <li>Links to real workplace situations</li>
+          <li>Builds on the fundamental principles: Integrity, Objectivity, Competence, Confidentiality, Professional Behaviour</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <div class="card-title">Professional Skills Component</div>
+        <ul class="card-items">
+          <li>Communication, commercial acumen, analysis</li>
+          <li>Innovation, problem-solving, leadership</li>
+          <li>Self-paced, interactive online learning</li>
+          <li>Best taken alongside Strategic Professional papers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">13.6</div>
+      <div class="section-title">Practical Experience Requirement (PER)</div>
+    </div>
+    <p class="prose">ACCA is not just about exams. To become a <strong>member</strong> (not just qualified), you need 36 months of relevant practical experience, achieving specific performance objectives.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <div class="card-title">36 Months Requirement</div>
+        <ul class="card-items">
+          <li>Can be completed before, during, or after exams</li>
+          <li>Must be in an accounting/finance-related role</li>
+          <li>Recorded via ACCA's online "My Experience" tool</li>
+          <li>Internships and articleship can count</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Performance Objectives</div>
+        <ul class="card-items">
+          <li>9 Essentials (all candidates must achieve)</li>
+          <li>Plus Technical objectives matching your role</li>
+          <li>Signed off by a workplace mentor</li>
+          <li>Demonstrates real-world application of skills</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Big 4 Articleship Advantage</div>
+        <ul class="card-items">
+          <li>Big 4 firms structure roles to map directly to PER objectives</li>
+          <li>Most students complete PER during their first job</li>
+          <li>Starting early (internships during studies) accelerates this</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">13.7</div>
+      <div class="section-title">Exemptions — How Your Degree Helps</div>
+    </div>
+    <p class="prose">ACCA grants exemptions for certain papers based on prior qualifications — most relevantly, your <strong>B.Com degree</strong> (as planned in your roadmap).</p>
+
+    <table class="data-table">
+      <tr><th>Prior Qualification</th><th>Typical Exemptions</th><th>Papers Still Required</th></tr>
+      <tr><td>B.Com (Indian universities — varies)</td><td>Often BT, MA, FA (up to 3 papers)</td><td>Remaining 9-10 papers</td></tr>
+      <tr><td>B.Com + Specific accredited programs</td><td>Up to 9 papers in some cases (rare)</td><td>4 papers</td></tr>
+      <tr><td>No prior qualification (after Class 12)</td><td>None</td><td>All 13 papers</td></tr>
+      <tr><td>CA / CMA (India)</td><td>Significant exemptions — varies by qualification level</td><td>Varies — often just SBL, SBR + 1 option</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">⚠️ Important — Exemptions Are a Trade-Off</div>
+      Exemptions save TIME and MONEY — but you skip the structured learning for those papers. Since this Bible covers BT, MA, and FA concepts in depth (Chapters 1-6), even if you claim exemptions, you'll still have the underlying knowledge. <strong>Many top performers choose NOT to claim exemptions</strong> for foundational papers — building strong fundamentals pays off at Strategic Professional level. This is a personal decision — discuss with your ACCA tuition provider.
+    </div>
+  </div>
+
+  <!-- 13.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">13.8</div>
+      <div class="section-title">Ashish's Personalised Timeline</div>
+      <div class="section-meta">Age 17 → Age 21</div>
+    </div>
+    <p class="prose">Based on your original roadmap (starting at age 17, alongside B.Com), here's a realistic 4-year mapping of all 13 papers.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-step">Year 1 (Age 17-18)</div>
+        <div class="timeline-title">Applied Knowledge — BT, MA, FA</div>
+        <div class="timeline-desc">3 papers alongside Class 12 / early B.Com. Foundation concepts already covered in Bible Ch 1-6.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-step">Year 2 (Age 18-19)</div>
+        <div class="timeline-title">Applied Skills — LW, PM, TX</div>
+        <div class="timeline-desc">Begin Applied Skills alongside B.Com Year 2. LW is a good starting point — distinct topic, builds confidence.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-step">Year 3 (Age 19-20)</div>
+        <div class="timeline-title">Applied Skills — FR, FM, AA</div>
+        <div class="timeline-desc">The toughest trio — FR is the cornerstone. Complete alongside B.Com Year 3. First internship (Phase 2 of original roadmap) ideally during this year.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-step">Year 4 (Age 20-21)</div>
+        <div class="timeline-title">Strategic Professional — SBL, SBR + 2 Options</div>
+        <div class="timeline-desc">Final 4 papers + EPSM. Begin PER through articleship/internship. By end of this year — ACCA exams complete.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-step">Year 4-5 (Age 21-23)</div>
+        <div class="timeline-title">Complete PER (36 months) → ACCA Member</div>
+        <div class="timeline-desc">PER often overlaps with final exam years through internships/first job. By age 22-23, achieve full ACCA membership while working at Big 4 or MNC.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">13.9</div>
+      <div class="section-title">Registration, Fees & Exam Logistics</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <div class="card-title">Registration</div>
+        <ul class="card-items">
+          <li>Register at accaglobal.com — create MyACCA account</li>
+          <li>Initial registration fee (one-time)</li>
+          <li>Annual subscription fee (recurring)</li>
+          <li>Exam fees per paper — vary by level and booking window</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">💻</div>
+        <div class="card-title">Computer-Based Exams (CBE)</div>
+        <ul class="card-items">
+          <li>Applied Knowledge — on-demand, any time</li>
+          <li>Applied Skills + Strategic Professional — 4 exam sessions per year (March, June, Sept, Dec)</li>
+          <li>Taken at Pearson VUE test centres</li>
+          <li>Early booking = lower fees</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Total Cost Estimate (India)</div>
+        <ul class="card-items">
+          <li>Registration + subscription: ~₹15,000-20,000 total over course</li>
+          <li>Exam fees: ~₹8,000-15,000 per paper (varies by booking time)</li>
+          <li>Total exam fees for 13 papers: ~₹1.5-2.5 lakh</li>
+          <li>Tuition (BPP/Kaplan/local): ~₹50,000-1,50,000 per level</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-mint">13.10</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">13 Papers, 3 Levels</div><ul class="card-items"><li>3 Applied Knowledge + 6 Applied Skills + 4 Strategic</li><li>Plus EPSM + PER (36 months)</li><li>This Bible already covers AK concepts</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">FR is the Cornerstone</div><ul class="card-items"><li>Builds on FA, feeds into SBR</li><li>Most directly connected to Bible Ch 3-12</li><li>Master this paper — everything else flows from it</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Choose Options Strategically</div><ul class="card-items"><li>AFM + APM for corporate finance/FP&A</li><li>Align with your target career path</li><li>Decide by Applied Skills level — not too late</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Start PER Early</div><ul class="card-items"><li>36 months — overlap with exams via internships</li><li>Big 4 articleships map directly to PER</li><li>Don't wait until exams finish</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Exemptions = Trade-Off</div><ul class="card-items"><li>B.Com may exempt up to 3 papers</li><li>Saves time/money but skips structured learning</li><li>Discuss with tuition provider</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">4-Year Realistic Timeline</div><ul class="card-items"><li>Age 17-21: all 13 papers alongside B.Com</li><li>Age 21-23: complete PER → ACCA Member</li><li>Matches your original 10-year roadmap perfectly</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 13 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Visit accaglobal.com and create your MyACCA account</span>
+        <span class="tag teal">✅ Check your B.Com exemption eligibility (use ACCA's exemption calculator)</span>
+        <span class="tag teal">✅ Print the 13-paper structure and stick it on your wall</span>
+        <span class="tag teal">✅ Decide your tentative Strategic Professional options (AFM/APM recommended)</span>
+        <span class="tag teal">✅ Research local ACCA tuition providers (BPP, Kaplan, or Indian institutes)</span>
+        <span class="tag teal">✅ Set a target date for your first paper (BT, MA, or FA)</span>
+        <span class="tag teal">✅ Read about the PER "My Experience" tool on ACCA's website</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-mint">13.11</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Ignoring the Recommended Paper Order</strong><br>
+        While ACCA allows flexibility in exam order (within level constraints), skipping the logical progression (e.g. attempting SBR before FR, or FM before understanding basic accounting) makes each paper significantly harder, since later papers build directly on earlier ones.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Choosing Strategic Professional Options Without Career Alignment</strong><br>
+        Picking AFM and ATX together, for example, sends mixed signals about career direction (corporate finance vs tax specialism). Options should align with your intended career path — audit, tax, corporate finance, or FP&A — as recruiters do notice this combination.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Leaving EPSM and PER Until the Very End</strong><br>
+        EPSM (Ethics and Professional Skills Module) can be started as soon as you reach Applied Skills level, and PER (Practical Experience Requirement) hours can be logged as you gain relevant work experience — both can run in parallel with exams rather than being left as a bottleneck after your last paper.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Not Checking Exemptions Before Registering</strong><br>
+        Many students with relevant degrees are eligible for exemptions from some Applied Knowledge or even Applied Skills papers. Registering and simply attempting all 13 papers without checking exemption eligibility wastes both time and exam fees.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Underestimating the Jump from Applied Skills to Strategic Professional</strong><br>
+        Strategic Professional papers, especially SBL, require a fundamentally different skill — applying technical knowledge to unstructured, real-world case studies with time pressure — not just recalling and calculating. Students who only revised technical content without practising case-study technique often underperform at this level.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Three Levels</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 3 levels of ACCA.</strong></li>
+          <li>A: Applied Knowledge (3 papers), Applied Skills (6 papers), Strategic Professional (4 papers)</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Compulsory Strategic Papers</div>
+        <ul class="card-items">
+          <li><strong>Q: Which 2 Strategic Professional papers are compulsory?</strong></li>
+          <li>A: SBL (Strategic Business Leader) and SBR (Strategic Business Reporting)</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">EPSM</div>
+        <ul class="card-items">
+          <li><strong>Q: What is EPSM?</strong></li>
+          <li>A: Ethics and Professional Skills Module — a mandatory online module, not a written exam</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">PER</div>
+        <ul class="card-items">
+          <li><strong>Q: What is PER and how many months required?</strong></li>
+          <li>A: Practical Experience Requirement — 36 months of relevant work experience</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Why did you choose ACCA over other qualifications, and what stage are you at?"</td><td>Career planning clarity and self-awareness</td><td>ACCA offers global recognition, flexibility to combine exams with work experience, and a syllabus that covers both technical accounting and strategic business skills — well suited to an international finance career. I'd state my current level clearly (e.g. "I've completed Applied Knowledge and am progressing through Applied Skills") and connect it to a concrete timeline for completion.</td></tr>
+      <tr><td>"Which Strategic Professional options are you planning to take, and why?"</td><td>Career direction and forward planning</td><td>A strong answer names specific options (e.g. AFM and APM) and explicitly ties them to a career goal — for example, "I'm choosing AFM because I'm interested in corporate finance and treasury roles, where advanced valuation and risk management skills are directly applicable."</td></tr>
+      <tr><td>"How do you manage studying for ACCA while working / studying full-time?"</td><td>Time management and commitment</td><td>A credible answer describes a concrete system — a fixed weekly study schedule, spaced revision using past papers, and realistic pacing (e.g. one paper per exam session) — rather than vague claims of "working hard." Mentioning specific resources (OpenTuition, ACCA's own study hub, past paper banks) adds credibility.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Applied Knowledge (3)<br>
+      + Applied Skills (6)<br>
+      + Strategic Professional (4)<br>
+      + EPSM + PER (36 months)<br>
+      = <strong style="color:var(--accent4);">ACCA — Letters After Your Name, Doors Open Worldwide</strong>
+    </div>
+    <h3>13 papers. One qualification. A global career.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 14: Skills Level Papers — a deep dive into LW, PM, TX, FR, AA, and FM with exam tips for each. 📝</p>
+  </div>
+
+</div>
+</body>
+</html>

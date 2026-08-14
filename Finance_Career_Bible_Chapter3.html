@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 3: Financial Statements</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  /* HERO */
+  .hero {
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(255,107,107,0.09) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent3);
+    border: 1px solid var(--accent3);
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent3), var(--accent4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent3); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* CONTAINER */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* TOC */
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent3); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent3); min-width: 36px; }
+
+  /* SECTION */
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  /* PROSE */
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  /* QUOTE */
+  .quote { border-left: 3px solid var(--accent3); padding: 12px 20px; background: rgba(255,107,107,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  /* CARDS */
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent3); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent3); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent3); background: rgba(255,107,107,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  /* TABLE */
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(255,107,107,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent3); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(255,107,107,0.03); }
+
+  /* FINANCIAL STATEMENT BLOCK */
+  .fs-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 16px; }
+  .fs-header { padding: 14px 20px; border-bottom: 1px solid var(--border); }
+  .fs-company { font-size: 15px; font-weight: 700; color: var(--text); }
+  .fs-title { font-family: var(--mono); font-size: 11px; color: var(--accent3); text-transform: uppercase; letter-spacing: 2px; margin-top: 2px; }
+  .fs-period { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .fs-row { display: grid; grid-template-columns: 1fr auto; padding: 9px 20px; border-bottom: 1px solid rgba(42,42,58,0.3); font-size: 13px; align-items: center; }
+  .fs-row:last-child { border-bottom: none; }
+  .fs-row.indent { padding-left: 36px; }
+  .fs-row.indent2 { padding-left: 52px; }
+  .fs-row.subtotal { background: rgba(255,255,255,0.02); font-weight: 600; color: var(--text); border-top: 1px solid var(--border); }
+  .fs-row.total { background: rgba(255,107,107,0.08); font-weight: 700; color: var(--accent3); border-top: 2px solid var(--accent3); font-size: 14px; }
+  .fs-row.total2 { background: rgba(0,212,170,0.08); font-weight: 700; color: var(--accent2); border-top: 2px solid var(--accent2); font-size: 14px; }
+  .fs-row.section-head { background: rgba(108,99,255,0.08); font-family: var(--mono); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; padding: 8px 20px; }
+  .fs-label { color: var(--muted); }
+  .fs-label.bold { color: var(--text); font-weight: 600; }
+  .fs-amount { font-family: var(--mono); font-size: 12px; color: var(--muted); text-align: right; }
+  .fs-amount.positive { color: var(--accent2); }
+  .fs-amount.negative { color: var(--accent3); }
+  .fs-amount.total { color: var(--accent3); font-size: 14px; font-weight: 700; }
+  .fs-amount.total2 { color: var(--accent2); font-size: 14px; font-weight: 700; }
+  .fs-amount.bold { color: var(--text); font-weight: 600; }
+
+  /* HIGHLIGHT */
+  .highlight { background: linear-gradient(135deg, rgba(255,107,107,0.07), rgba(255,217,61,0.05)); border: 1px solid rgba(255,107,107,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  /* WIDE CARD */
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent3); }
+
+  /* FLOW DIAGRAM */
+  .flow { display: flex; flex-direction: column; gap: 0; margin-top: 16px; }
+  .flow-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; position: relative; }
+  .flow-arrow { text-align: center; font-size: 18px; color: var(--accent3); padding: 4px 0; }
+  .flow-num { font-family: var(--mono); font-size: 10px; color: var(--accent3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .flow-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .flow-desc { font-size: 12px; color: var(--muted); }
+
+  /* TAG WRAP */
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(255,107,107,0.1); border: 1px solid rgba(255,107,107,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  /* EQUATION */
+  .equation { background: var(--card); border: 1px solid var(--accent3); border-radius: 12px; padding: 20px 24px; margin: 20px 0; text-align: center; }
+  .equation-text { font-family: var(--mono); font-size: clamp(12px,2.5vw,16px); color: var(--accent3); letter-spacing: 1px; line-height: 1.8; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* MANTRA */
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(255,107,107,0.09), rgba(255,217,61,0.06)); border: 1px solid rgba(255,107,107,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent3); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent3), var(--accent4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  /* LINK PILL */
+  .connections { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .conn-pill { font-size: 12px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--muted); }
+  .conn-pill span { color: var(--accent3); font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .fs-row { font-size: 11px; }
+    .fs-row.indent { padding-left: 24px; }
+    .fs-row.indent2 { padding-left: 36px; }
+  }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 3</div>
+  <h1><span>Financial</span><br>Statements</h1>
+  <p class="hero-sub">The Income Statement, Balance Sheet, Cash Flow Statement and Statement of Changes in Equity — how to read, build, and interpret the four documents every MNC lives by.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Core Statements</div></div>
+    <div class="stat"><div class="stat-num">38</div><div class="stat-label">Total Chapters</div></div>
+    <div class="stat"><div class="stat-num">FA+FR</div><div class="stat-label">ACCA Papers</div></div>
+    <div class="stat"><div class="stat-num">Part 1</div><div class="stat-label">Foundation</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TOC -->
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 3 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">3.1</span>What Are Financial Statements — and Why They Matter</div>
+    <div class="toc-item"><span class="toc-num">3.2</span>The Income Statement (P&L) — Measuring Profit</div>
+    <div class="toc-item"><span class="toc-num">3.3</span>The Balance Sheet — Measuring Worth</div>
+    <div class="toc-item"><span class="toc-num">3.4</span>The Cash Flow Statement — Measuring Cash</div>
+    <div class="toc-item"><span class="toc-num">3.5</span>Statement of Changes in Equity</div>
+    <div class="toc-item"><span class="toc-num">3.6</span>How the Four Statements Connect</div>
+    <div class="toc-item"><span class="toc-num">3.7</span>Profit vs Cash — The Critical Difference</div>
+    <div class="toc-item"><span class="toc-num">3.8</span>Notes to Financial Statements</div>
+    <div class="toc-item"><span class="toc-num">3.9</span>Who Uses Financial Statements and Why</div>
+    <div class="toc-item"><span class="toc-num">3.10</span>Financial Statements & ACCA — Paper Mapping</div>
+    <div class="toc-item"><span class="toc-num">3.11</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">3.12</span>Events After the Reporting Period (IAS 10)</div>
+    <div class="toc-item"><span class="toc-num">3.13</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="section">
+    <p class="prose">In Chapter 2, you learned how every business transaction is recorded through double-entry bookkeeping. At the end of every accounting period, all those entries flow into four powerful documents — the <strong>Financial Statements</strong>. These are the scorecards of business. They tell the story of what a company earned, what it owns, what it owes, and how much cash it actually generated.</p>
+    <div class="quote">"Anyone can tell you their business is doing well. Financial statements prove it — or expose the lie."</div>
+    <p class="prose">Every Big 4 audit, every MNC CFO role, every investment decision in the world starts with reading these four documents. Master them and you can evaluate any company on earth.</p>
+  </div>
+
+  <!-- 3.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">3.1</div>
+      <div class="section-title">What Are Financial Statements?</div>
+      <div class="section-meta">The Scorecards of Business</div>
+    </div>
+    <p class="prose">Financial Statements are <strong>formal records of a business's financial activities</strong> prepared at the end of an accounting period. Under IFRS (which ACCA follows), every company must prepare a complete set of financial statements.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Income Statement (P&L)</div>
+        <ul class="card-items">
+          <li>Shows revenues earned and expenses incurred</li>
+          <li>Tells you: did the business make a profit or loss?</li>
+          <li>Covers a period of time (e.g. year ended 31 March)</li>
+          <li>Also called: Profit & Loss Account, P&L</li>
+        </ul>
+        <div class="card-tag">Performance</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Balance Sheet (SFP)</div>
+        <ul class="card-items">
+          <li>Shows assets, liabilities, and equity</li>
+          <li>Tells you: what does the business own and owe?</li>
+          <li>A snapshot at one point in time</li>
+          <li>IFRS name: Statement of Financial Position</li>
+        </ul>
+        <div class="card-tag">Position</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💵</div>
+        <div class="card-title">Cash Flow Statement</div>
+        <ul class="card-items">
+          <li>Shows actual cash coming in and going out</li>
+          <li>Tells you: is the business generating real cash?</li>
+          <li>3 sections: Operating, Investing, Financing</li>
+          <li>Profit ≠ Cash — this statement shows why</li>
+        </ul>
+        <div class="card-tag">Cash</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Statement of Changes in Equity</div>
+        <ul class="card-items">
+          <li>Shows how equity changed during the period</li>
+          <li>Tracks: share capital, retained earnings, dividends</li>
+          <li>Connects the P&L to the Balance Sheet</li>
+          <li>Often called SOCE or SOCOE</li>
+        </ul>
+        <div class="card-tag">Equity Movement</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🎯 ACCA Exam Tip</div>
+      Under <strong>IAS 1 (Presentation of Financial Statements)</strong> — the IFRS standard that governs this — every entity must present all four statements plus notes. IAS 1 is tested in ACCA FA and FR papers. Know this standard by name.
+    </div>
+  </div>
+
+  <!-- 3.2 INCOME STATEMENT -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">3.2</div>
+      <div class="section-title">The Income Statement (P&L)</div>
+      <div class="section-meta">Measuring Profit</div>
+    </div>
+    <p class="prose">The Income Statement answers the most important question in business: <strong>did we make money?</strong> It shows all revenues earned and all expenses incurred during the accounting period, resulting in either a profit or a loss.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Revenue<br>
+        − Cost of Goods Sold (COGS)<br>
+        = GROSS PROFIT<br>
+        − Operating Expenses<br>
+        = OPERATING PROFIT (EBIT)<br>
+        − Finance Costs (Interest)<br>
+        + Other Income<br>
+        = PROFIT BEFORE TAX (PBT)<br>
+        − Income Tax Expense<br>
+        = PROFIT FOR THE YEAR (PAT)
+      </div>
+      <div class="equation-label">The structure of every Income Statement — from Revenue to Net Profit</div>
+    </div>
+
+    <p class="section-label">Complete Example — Ashish Consulting Ltd (Year ended 31 March 2026)</p>
+    <div class="fs-block">
+      <div class="fs-header">
+        <div class="fs-company">Ashish Consulting Ltd</div>
+        <div class="fs-title">Statement of Profit or Loss</div>
+        <div class="fs-period">For the year ended 31 March 2026 &nbsp;|&nbsp; All figures in ₹</div>
+      </div>
+      <div class="fs-row section-head"><div>Revenue</div><div></div></div>
+      <div class="fs-row"><div class="fs-label">Consulting Revenue</div><div class="fs-amount positive">12,00,000</div></div>
+      <div class="fs-row"><div class="fs-label">Other Operating Income</div><div class="fs-amount positive">50,000</div></div>
+      <div class="fs-row subtotal"><div class="fs-label bold">Total Revenue</div><div class="fs-amount bold">12,50,000</div></div>
+
+      <div class="fs-row section-head"><div>Cost of Sales</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Direct Staff Costs</div><div class="fs-amount negative">(4,00,000)</div></div>
+      <div class="fs-row indent"><div class="fs-label">Software & Tools</div><div class="fs-amount negative">(80,000)</div></div>
+      <div class="fs-row subtotal"><div class="fs-label bold">Cost of Goods Sold (COGS)</div><div class="fs-amount negative">(4,80,000)</div></div>
+      <div class="fs-row total"><div>GROSS PROFIT</div><div class="fs-amount total">7,70,000</div></div>
+
+      <div class="fs-row section-head"><div>Operating Expenses</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Salaries & Admin</div><div class="fs-amount negative">(2,40,000)</div></div>
+      <div class="fs-row indent"><div class="fs-label">Rent & Utilities</div><div class="fs-amount negative">(1,20,000)</div></div>
+      <div class="fs-row indent"><div class="fs-label">Depreciation</div><div class="fs-amount negative">(30,000)</div></div>
+      <div class="fs-row indent"><div class="fs-label">Marketing</div><div class="fs-amount negative">(50,000)</div></div>
+      <div class="fs-row subtotal"><div class="fs-label bold">Total Operating Expenses</div><div class="fs-amount negative">(4,40,000)</div></div>
+      <div class="fs-row total"><div>OPERATING PROFIT (EBIT)</div><div class="fs-amount total">3,30,000</div></div>
+
+      <div class="fs-row section-head"><div>Below Operating Line</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Finance Costs (Interest on Loan)</div><div class="fs-amount negative">(24,000)</div></div>
+      <div class="fs-row subtotal"><div class="fs-label bold">Profit Before Tax (PBT)</div><div class="fs-amount bold">3,06,000</div></div>
+      <div class="fs-row indent"><div class="fs-label">Income Tax Expense (25%)</div><div class="fs-amount negative">(76,500)</div></div>
+      <div class="fs-row total"><div>PROFIT FOR THE YEAR</div><div class="fs-amount total">2,29,500</div></div>
+    </div>
+
+    <p class="section-label">Key Terms You Must Know</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Gross Profit & Gross Margin</div>
+        <ul class="card-items">
+          <li>Gross Profit = Revenue − COGS</li>
+          <li>Gross Margin % = Gross Profit ÷ Revenue × 100</li>
+          <li>Measures efficiency of core operations</li>
+          <li>Higher = better pricing or lower production cost</li>
+        </ul>
+        <div class="card-tag">Profitability Signal</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">EBIT & EBITDA</div>
+        <ul class="card-items">
+          <li>EBIT = Earnings Before Interest & Tax</li>
+          <li>EBITDA = EBIT + Depreciation + Amortisation</li>
+          <li>Used to compare companies across different tax regimes</li>
+          <li>Common in valuation and investment banking</li>
+        </ul>
+        <div class="card-tag">Valuation Metric</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">PAT & Net Margin</div>
+        <ul class="card-items">
+          <li>PAT = Profit After Tax = bottom line</li>
+          <li>Net Margin % = PAT ÷ Revenue × 100</li>
+          <li>What actually remains for shareholders</li>
+          <li>Goes to retained earnings or paid as dividend</li>
+        </ul>
+        <div class="card-tag">Bottom Line</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3.3 BALANCE SHEET -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">3.3</div>
+      <div class="section-title">The Balance Sheet (Statement of Financial Position)</div>
+      <div class="section-meta">Measuring Worth</div>
+    </div>
+    <p class="prose">The Balance Sheet is a <strong>snapshot of a company's financial position at a single point in time</strong>. It shows everything the company owns (assets), everything it owes (liabilities), and what belongs to the owners (equity). It always balances — because of the accounting equation.</p>
+
+    <div class="equation">
+      <div class="equation-text">ASSETS = LIABILITIES + EQUITY<br><br>Non-Current Assets + Current Assets = Non-Current Liabilities + Current Liabilities + Equity</div>
+      <div class="equation-label">The Balance Sheet is just the Accounting Equation in full detail</div>
+    </div>
+
+    <p class="section-label">Complete Example — Ashish Consulting Ltd (as at 31 March 2026)</p>
+    <div class="fs-block">
+      <div class="fs-header">
+        <div class="fs-company">Ashish Consulting Ltd</div>
+        <div class="fs-title">Statement of Financial Position (Balance Sheet)</div>
+        <div class="fs-period">As at 31 March 2026 &nbsp;|&nbsp; All figures in ₹</div>
+      </div>
+
+      <div class="fs-row section-head"><div>NON-CURRENT ASSETS</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Property, Plant & Equipment (net)</div><div class="fs-amount">3,50,000</div></div>
+      <div class="fs-row indent"><div class="fs-label">Intangible Assets (Software licenses)</div><div class="fs-amount">60,000</div></div>
+      <div class="fs-row subtotal"><div class="fs-label bold">Total Non-Current Assets</div><div class="fs-amount bold">4,10,000</div></div>
+
+      <div class="fs-row section-head"><div>CURRENT ASSETS</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Trade Receivables (Debtors)</div><div class="fs-amount">1,80,000</div></div>
+      <div class="fs-row indent"><div class="fs-label">Cash & Cash Equivalents</div><div class="fs-amount">2,40,000</div></div>
+      <div class="fs-row indent"><div class="fs-label">Prepaid Expenses</div><div class="fs-amount">20,000</div></div>
+      <div class="fs-row subtotal"><div class="fs-label bold">Total Current Assets</div><div class="fs-amount bold">4,40,000</div></div>
+      <div class="fs-row total"><div>TOTAL ASSETS</div><div class="fs-amount total">8,50,000</div></div>
+
+      <div class="fs-row section-head"><div>EQUITY</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Share Capital</div><div class="fs-amount">5,00,000</div></div>
+      <div class="fs-row indent"><div class="fs-label">Retained Earnings</div><div class="fs-amount">1,29,500</div></div>
+      <div class="fs-row subtotal"><div class="fs-label bold">Total Equity</div><div class="fs-amount bold">6,29,500</div></div>
+
+      <div class="fs-row section-head"><div>NON-CURRENT LIABILITIES</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Bank Loan (due after 1 year)</div><div class="fs-amount">1,20,000</div></div>
+      <div class="fs-row subtotal"><div class="fs-label bold">Total Non-Current Liabilities</div><div class="fs-amount bold">1,20,000</div></div>
+
+      <div class="fs-row section-head"><div>CURRENT LIABILITIES</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Trade Payables (Creditors)</div><div class="fs-amount">60,000</div></div>
+      <div class="fs-row indent"><div class="fs-label">Tax Payable</div><div class="fs-amount">40,500</div></div>
+      <div class="fs-row subtotal"><div class="fs-label bold">Total Current Liabilities</div><div class="fs-amount bold">1,00,500</div></div>
+      <div class="fs-row total2"><div>TOTAL EQUITY & LIABILITIES</div><div class="fs-amount total2">8,50,000</div></div>
+    </div>
+
+    <p class="section-label">Non-Current vs Current — What's the Difference?</p>
+    <table class="data-table">
+      <tr><th>Category</th><th>Definition</th><th>Examples</th></tr>
+      <tr><td>Non-Current Assets</td><td>Used for more than 1 year — long-term resources</td><td>Land, buildings, machinery, vehicles, patents</td></tr>
+      <tr><td>Current Assets</td><td>Converted to cash within 1 year — short-term</td><td>Cash, debtors, inventory, prepayments</td></tr>
+      <tr><td>Non-Current Liabilities</td><td>Due after more than 1 year — long-term obligations</td><td>Long-term bank loans, debentures, bonds</td></tr>
+      <tr><td>Current Liabilities</td><td>Due within 1 year — short-term obligations</td><td>Creditors, tax payable, overdraft, accruals</td></tr>
+    </table>
+  </div>
+
+  <!-- 3.4 CASH FLOW -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">3.4</div>
+      <div class="section-title">The Cash Flow Statement</div>
+      <div class="section-meta">Measuring Real Cash</div>
+    </div>
+    <p class="prose">A company can show a profit on the P&L and still run out of cash. The Cash Flow Statement shows where cash <strong>actually came from and where it went</strong>. It is divided into three sections — Operating, Investing, and Financing activities.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">Operating Activities</div>
+        <ul class="card-items">
+          <li>Cash from core business operations</li>
+          <li>Start with Profit Before Tax</li>
+          <li>Adjust for non-cash items (depreciation)</li>
+          <li>Adjust for working capital changes</li>
+          <li>Most important section — shows business health</li>
+        </ul>
+        <div class="card-tag">Day-to-Day Business</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <div class="card-title">Investing Activities</div>
+        <ul class="card-items">
+          <li>Cash spent on or received from long-term assets</li>
+          <li>Purchase of equipment, property, vehicles</li>
+          <li>Sale of investments or subsidiary companies</li>
+          <li>Usually negative (outflow) in growing businesses</li>
+        </ul>
+        <div class="card-tag">Long-term Investment</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">Financing Activities</div>
+        <ul class="card-items">
+          <li>Cash from or repaid to investors and lenders</li>
+          <li>Issue of shares, repayment of loans</li>
+          <li>Payment of dividends to shareholders</li>
+          <li>Shows how business funds itself</li>
+        </ul>
+        <div class="card-tag">Funding the Business</div>
+      </div>
+    </div>
+
+    <p class="section-label">Cash Flow Statement — Ashish Consulting Ltd</p>
+    <div class="fs-block">
+      <div class="fs-header">
+        <div class="fs-company">Ashish Consulting Ltd</div>
+        <div class="fs-title">Statement of Cash Flows</div>
+        <div class="fs-period">For the year ended 31 March 2026 &nbsp;|&nbsp; All figures in ₹</div>
+      </div>
+      <div class="fs-row section-head"><div>OPERATING ACTIVITIES</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Profit Before Tax</div><div class="fs-amount positive">3,06,000</div></div>
+      <div class="fs-row indent"><div class="fs-label">Add: Depreciation (non-cash)</div><div class="fs-amount positive">30,000</div></div>
+      <div class="fs-row indent"><div class="fs-label">Increase in Trade Receivables</div><div class="fs-amount negative">(40,000)</div></div>
+      <div class="fs-row indent"><div class="fs-label">Increase in Trade Payables</div><div class="fs-amount positive">20,000</div></div>
+      <div class="fs-row indent"><div class="fs-label">Tax Paid</div><div class="fs-amount negative">(36,000)</div></div>
+      <div class="fs-row total"><div>Net Cash from Operating Activities</div><div class="fs-amount total">2,80,000</div></div>
+
+      <div class="fs-row section-head"><div>INVESTING ACTIVITIES</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Purchase of Equipment</div><div class="fs-amount negative">(1,50,000)</div></div>
+      <div class="fs-row total"><div>Net Cash from Investing Activities</div><div class="fs-amount negative">(1,50,000)</div></div>
+
+      <div class="fs-row section-head"><div>FINANCING ACTIVITIES</div><div></div></div>
+      <div class="fs-row indent"><div class="fs-label">Repayment of Bank Loan</div><div class="fs-amount negative">(30,000)</div></div>
+      <div class="fs-row indent"><div class="fs-label">Dividends Paid</div><div class="fs-amount negative">(1,00,000)</div></div>
+      <div class="fs-row total"><div>Net Cash from Financing Activities</div><div class="fs-amount negative">(1,30,000)</div></div>
+
+      <div class="fs-row total2"><div>NET INCREASE IN CASH</div><div class="fs-amount total2">0</div></div>
+      <div class="fs-row indent"><div class="fs-label">Opening Cash Balance</div><div class="fs-amount">2,40,000</div></div>
+      <div class="fs-row subtotal"><div class="fs-label bold">Closing Cash Balance</div><div class="fs-amount bold">2,40,000</div></div>
+    </div>
+  </div>
+
+  <!-- 3.5 SOCE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">3.5</div>
+      <div class="section-title">Statement of Changes in Equity (SOCE)</div>
+    </div>
+    <p class="prose">This statement shows how the <strong>equity section of the Balance Sheet changed</strong> during the period. It tracks share capital, retained earnings, dividends paid, and other reserves.</p>
+
+    <div class="fs-block">
+      <div class="fs-header">
+        <div class="fs-company">Ashish Consulting Ltd</div>
+        <div class="fs-title">Statement of Changes in Equity</div>
+        <div class="fs-period">For the year ended 31 March 2026 &nbsp;|&nbsp; All figures in ₹</div>
+      </div>
+      <div class="fs-row header-row" style="background:rgba(0,0,0,0.2);font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">
+        <div></div><div style="text-align:right;">Share Capital</div><div style="text-align:right;">Retained Earnings</div>
+      </div>
+      <div class="fs-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+        <div class="fs-label">Balance at 1 April 2025</div>
+        <div class="fs-amount" style="text-align:right;">5,00,000</div>
+        <div class="fs-amount" style="text-align:right;">0</div>
+      </div>
+      <div class="fs-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+        <div class="fs-label indent">Profit for the year</div>
+        <div class="fs-amount" style="text-align:right;">—</div>
+        <div class="fs-amount positive" style="text-align:right;">2,29,500</div>
+      </div>
+      <div class="fs-row" style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+        <div class="fs-label indent">Dividends paid</div>
+        <div class="fs-amount" style="text-align:right;">—</div>
+        <div class="fs-amount negative" style="text-align:right;">(1,00,000)</div>
+      </div>
+      <div class="fs-row total" style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+        <div>Balance at 31 March 2026</div>
+        <div class="fs-amount total" style="text-align:right;">5,00,000</div>
+        <div class="fs-amount total" style="text-align:right;">1,29,500</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:10px;">Notice: The Retained Earnings of ₹1,29,500 flows directly into the Balance Sheet equity section — this is how the statements connect.</p>
+  </div>
+
+  <!-- 3.6 HOW THEY CONNECT -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">3.6</div>
+      <div class="section-title">How the Four Statements Connect</div>
+      <div class="section-meta">The Big Picture</div>
+    </div>
+    <p class="prose">The four financial statements are not separate documents — they are <strong>deeply interconnected</strong>. Understanding how they link is one of the most important skills in financial accounting.</p>
+
+    <div class="flow">
+      <div class="flow-item">
+        <div class="flow-num">Step 1</div>
+        <div class="flow-title">📊 Income Statement → produces Net Profit</div>
+        <div class="flow-desc">Revenue − Expenses = Profit for the year (₹2,29,500 in our example)</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-num">Step 2</div>
+        <div class="flow-title">📈 Profit → flows into Statement of Changes in Equity</div>
+        <div class="flow-desc">Net profit increases retained earnings. Dividends reduce it. Closing retained earnings = ₹1,29,500</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-num">Step 3</div>
+        <div class="flow-title">⚖️ Closing Equity → flows into the Balance Sheet</div>
+        <div class="flow-desc">Retained earnings of ₹1,29,500 appears in the equity section of the Balance Sheet</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="flow-num">Step 4</div>
+        <div class="flow-title">💵 Cash Flow Statement → explains the Cash balance on Balance Sheet</div>
+        <div class="flow-desc">The closing cash of ₹2,40,000 on the Cash Flow Statement = Cash & Cash Equivalents on the Balance Sheet</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:20px;">
+      <div class="highlight-title">🔗 The Golden Links</div>
+      <strong>P&L → SOCE:</strong> Net profit adds to retained earnings<br>
+      <strong>SOCE → Balance Sheet:</strong> Closing equity goes into SFP<br>
+      <strong>Cash Flow → Balance Sheet:</strong> Closing cash = cash on SFP<br>
+      <strong>All 4 → Notes:</strong> Every number is explained in the notes to accounts
+    </div>
+  </div>
+
+  <!-- 3.7 PROFIT VS CASH -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">3.7</div>
+      <div class="section-title">Profit vs Cash — The Critical Difference</div>
+      <div class="section-meta">Most Misunderstood Concept</div>
+    </div>
+    <p class="prose">This is one of the most important — and most misunderstood — concepts in finance. <strong>A profitable company can run out of cash. A loss-making company can have lots of cash.</strong> Understanding why this happens will make you a better accountant, analyst, and advisor.</p>
+
+    <table class="data-table">
+      <tr><th>Reason</th><th>Effect on Profit</th><th>Effect on Cash</th></tr>
+      <tr><td>Depreciation</td><td>Reduces profit (expense)</td><td>No cash impact — non-cash charge</td></tr>
+      <tr><td>Credit Sales (Debtors)</td><td>Increases revenue/profit</td><td>No cash yet — client hasn't paid</td></tr>
+      <tr><td>Buying Equipment</td><td>No immediate P&L impact</td><td>Large cash outflow immediately</td></tr>
+      <tr><td>Accrued Expenses</td><td>Reduces profit now</td><td>Cash paid later (next period)</td></tr>
+      <tr><td>Prepaid Expenses</td><td>No P&L impact yet</td><td>Cash already paid out</td></tr>
+      <tr><td>Receiving Advance (Deferred Income)</td><td>No revenue yet</td><td>Cash received immediately</td></tr>
+    </table>
+
+    <div class="wide-card" style="margin-top:20px;">
+      <h4>🔥 Real World Example — Why Companies Go Bankrupt Despite Being "Profitable"</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.8;">
+        Imagine Ashish's consulting firm has ₹50L in revenue on the P&L — looks profitable. But ₹40L is owed by clients who haven't paid yet (debtors). Meanwhile, Ashish must pay salaries, rent, and suppliers every month. The firm shows a profit but has no cash to pay bills. This is called a <strong style="color:var(--accent3);">liquidity crisis</strong> — and it kills profitable businesses every day.<br><br>
+        <strong style="color:var(--text);">This is exactly why the Cash Flow Statement exists</strong> — to show the real cash picture, not just the accounting profit.
+      </p>
+    </div>
+  </div>
+
+  <!-- 3.8 NOTES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">3.8</div>
+      <div class="section-title">Notes to Financial Statements</div>
+    </div>
+    <p class="prose">The Notes are the <strong>fifth and often most important part</strong> of a complete set of financial statements. They explain and expand on every number in the four main statements. Under IAS 1, notes are mandatory.</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">📋</div><div class="card-title">What Notes Include</div><ul class="card-items"><li>Accounting policies used (depreciation method, revenue recognition)</li><li>Detailed breakdown of each line item</li><li>Contingent liabilities and commitments</li><li>Related party transactions</li><li>Events after the reporting date</li></ul><div class="card-tag">IAS 1 Required</div></div>
+      <div class="card"><div class="card-icon">🔍</div><div class="card-title">Why Auditors Love Notes</div><ul class="card-items"><li>Notes reveal what numbers hide</li><li>Accounting policy changes can manipulate profit</li><li>Off-balance sheet items disclosed in notes</li><li>Big 4 audit teams read notes first</li><li>Fraud often hidden in note disclosures</li></ul><div class="card-tag">Audit Focus</div></div>
+      <div class="card"><div class="card-icon">💼</div><div class="card-title">Why MNC Finance Teams Care</div><ul class="card-items"><li>Notes contain segment information (which division is profitable)</li><li>Capital commitments show future spending plans</li><li>Debt covenants and borrowing facilities disclosed</li><li>Management compensation in notes</li></ul><div class="card-tag">Management Info</div></div>
+    </div>
+  </div>
+
+  <!-- 3.9 WHO USES FS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">3.9</div>
+      <div class="section-title">Who Uses Financial Statements and Why</div>
+    </div>
+    <table class="data-table">
+      <tr><th>User</th><th>What They Look For</th><th>Key Statement</th></tr>
+      <tr><td>Investors / Shareholders</td><td>Is the company profitable? Should I buy/sell shares?</td><td>Income Statement, EPS</td></tr>
+      <tr><td>Banks & Lenders</td><td>Can this company repay the loan? Is it solvent?</td><td>Balance Sheet, Cash Flow</td></tr>
+      <tr><td>Management (CFO, CEO)</td><td>How are we performing? Where to cut costs?</td><td>All 4 + Management accounts</td></tr>
+      <tr><td>Tax Authorities (Income Tax Dept)</td><td>How much tax does this company owe?</td><td>Income Statement (PBT)</td></tr>
+      <tr><td>Auditors (Big 4)</td><td>Are the statements true and fair? Any fraud?</td><td>All 4 + Notes</td></tr>
+      <tr><td>Employees</td><td>Is the company stable? Job security?</td><td>Balance Sheet, Cash Flow</td></tr>
+      <tr><td>Competitors</td><td>How does their margin compare to ours?</td><td>Income Statement (margins)</td></tr>
+      <tr><td>Regulators (SEBI, RBI)</td><td>Are disclosures complete and compliant with law?</td><td>All 4 + Notes</td></tr>
+    </table>
+  </div>
+
+  <!-- 3.10 ACCA MAPPING -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">3.10</div>
+      <div class="section-title">Financial Statements & ACCA — Paper Mapping</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>ACCA Paper</th><th>Level</th><th>What's Tested</th></tr>
+      <tr><td>Prepare Income Statement</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Full P&L from trial balance</td></tr>
+      <tr><td>Prepare Balance Sheet</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Full SFP from trial balance</td></tr>
+      <tr><td>Cash Flow Statement</td><td>FA → FR</td><td>Knowledge → Skills</td><td>Indirect method, adjustments</td></tr>
+      <tr><td>SOCE</td><td>FA → FR</td><td>Knowledge → Skills</td><td>Movements in equity</td></tr>
+      <tr><td>IAS 1 — Presentation</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Compliance, disclosures</td></tr>
+      <tr><td>Profit vs Cash Analysis</td><td>FA → SBR</td><td>Knowledge → Strategic</td><td>Interpretation questions</td></tr>
+      <tr><td>Notes & Disclosures</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Policy notes, segment reporting</td></tr>
+    </table>
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 ACCA FA Exam — What to Expect on Financial Statements</div>
+      The FA paper regularly asks you to <strong>prepare a full Income Statement and Balance Sheet from a trial balance</strong>. You'll be given a list of account balances and must classify them correctly, apply adjustments (accruals, depreciation, closing inventory), and present in proper format. Practice this until it's automatic — it's worth a large chunk of marks.
+    </div>
+  </div>
+
+  <!-- 3.11 TAKEAWAYS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">3.11</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">There Are 4 Statements</div><ul class="card-items"><li>P&L, Balance Sheet, Cash Flow, SOCE</li><li>Each answers a different question</li><li>Together they give the complete financial picture</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">They All Connect</div><ul class="card-items"><li>Profit → Retained Earnings → Balance Sheet</li><li>Closing Cash → Balance Sheet</li><li>Never prepare them in isolation</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Profit ≠ Cash</div><ul class="card-items"><li>Most important insight in accounting</li><li>Depreciation, debtors, creditors cause the gap</li><li>Cash Flow Statement bridges this gap</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Learn the Format by Heart</div><ul class="card-items"><li>Exams give you a trial balance, you build the statements</li><li>ACCA FA format is non-negotiable — learn it</li><li>Practice preparing all 4 from scratch</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Read Real Financial Statements</div><ul class="card-items"><li>Download Infosys or TCS annual report</li><li>Find each of the 4 statements</li><li>Read the notes — see what they explain</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">IAS 1 is Your Friend</div><ul class="card-items"><li>Governs presentation of all financial statements</li><li>Know it by name — examiners test this</li><li>Studied in both FA and FR papers</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 3 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Draw the structure of all 4 statements from memory</span>
+        <span class="tag teal">✅ Prepare a P&L and Balance Sheet from a sample trial balance</span>
+        <span class="tag teal">✅ Download Infosys Annual Report — find all 4 statements</span>
+        <span class="tag teal">✅ Explain Profit vs Cash difference to a friend in simple words</span>
+        <span class="tag teal">✅ Attempt ACCA FA past paper Q on financial statement preparation</span>
+        <span class="tag teal">✅ Read IAS 1 summary on OpenTuition.com</span>
+        <span class="tag teal">✅ Practice the 4-statement link: trace profit → equity → balance sheet</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">3.12</div>
+      <div class="section-title">Events After the Reporting Period (IAS 10)</div>
+    </div>
+    <p class="section-label">Part A — The Core Question IAS 10 Answers</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px;">Financial statements aren't finalised the instant the year ends — there's always a gap between the reporting date (e.g. 31 March) and the date the statements are actually authorised for issue (e.g. board approval in May). <strong style="color:var(--text);">IAS 10</strong> tells you how to treat things that happen or become known during that gap.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔧</div>
+        <div class="card-title">Adjusting Events</div>
+        <ul class="card-items">
+          <li>Provide EVIDENCE of conditions that ALREADY EXISTED at the reporting date</li>
+          <li>Financial statements MUST be adjusted to reflect this new evidence</li>
+          <li>Example: a customer goes bankrupt in April, confirming a receivable was already uncollectible at 31 March</li>
+          <li>Example: a court case pending at year-end is settled after year-end, confirming the amount of a provision</li>
+        </ul>
+        <div class="card-tag">Update the Numbers</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📢</div>
+        <div class="card-title">Non-Adjusting Events</div>
+        <ul class="card-items">
+          <li>Indicate conditions that AROSE AFTER the reporting date — didn't exist at year-end</li>
+          <li>Financial statements are NOT adjusted — but must be DISCLOSED in the notes if material</li>
+          <li>Example: a fire destroys a warehouse in April (didn't affect the 31 March position)</li>
+          <li>Example: a major acquisition or share issue announced after year-end</li>
+        </ul>
+        <div class="card-tag">Disclose, Don't Adjust</div>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Part B — Worked Example</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: Classifying 3 Post-Year-End Events</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Company's year-end: 31 March. Statements authorised for issue: 20 May.</strong><br><br>
+        <strong style="color:var(--text);">Event 1:</strong> On 10 April, a major customer who owed ₹15,00,000 at 31 March is declared insolvent, with the liquidator confirming only ₹2,00,000 will ever be recovered.<br>
+        <strong style="color:var(--text);">Classification: ADJUSTING.</strong> The customer's financial distress existed at year-end (they didn't become insolvent overnight) — this is new evidence about a condition that already existed. <strong style="color:var(--accent2);">Action: Write down the receivable to ₹2,00,000, recognising a ₹13,00,000 bad debt expense in the year ended 31 March.</strong><br><br>
+        <strong style="color:var(--text);">Event 2:</strong> On 5 May, the company's main factory is severely damaged by an unprecedented flood.<br>
+        <strong style="color:var(--text);">Classification: NON-ADJUSTING.</strong> The flood is a new event that occurred entirely after year-end — it says nothing about the condition of the factory AT 31 March. <strong style="color:var(--accent2);">Action: Do NOT adjust the financial statements — but disclose the nature and estimated financial impact of the flood in the notes, since it's clearly material.</strong><br><br>
+        <strong style="color:var(--text);">Event 3:</strong> On 15 May, the board announces a decision to permanently close an underperforming division — a decision made and communicated entirely after year-end, with no prior indication before 31 March.<br>
+        <strong style="color:var(--text);">Classification: NON-ADJUSTING.</strong> Since the decision was made after year-end, the division's assets/liabilities were correctly stated as a going concern at 31 March. <strong style="color:var(--accent2);">Action: Disclose the closure decision and its expected impact in the notes — but do not restate the division's assets in the 31 March statements.</strong>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 The One-Question Test</div>
+      Ask: <strong>"Did this condition already exist at the reporting date, and I'm just learning about it now — or did something genuinely NEW happen after the reporting date?"</strong> Existed-but-just-discovered = Adjusting. Genuinely new = Non-Adjusting. This single question resolves the vast majority of IAS 10 exam scenarios.
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Part C — The Going Concern Exception</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.9;">There's one critical exception to the adjusting/non-adjusting split: if an event after the reporting period indicates the <strong style="color:var(--text);">going concern basis is no longer appropriate</strong> (e.g. the company's only major customer collapses post year-end, making the company itself unable to continue trading), the financial statements must be adjusted FUNDAMENTALLY — potentially requiring a switch from the going concern basis to a break-up basis entirely, regardless of whether the triggering event itself would normally be classified as adjusting or non-adjusting.</p>
+  </div>
+
+  <!-- 3.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">3.13</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Most Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Confusing Profit with Cash Balance</strong><br>
+        Students see a healthy Net Profit and assume the company has plenty of cash. A business can be hugely profitable and still run out of cash (rising receivables, heavy capex, inventory build-up). Always check the Cash Flow Statement separately — never infer cash position from the P&L.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Forgetting That Retained Earnings Links P&L to Balance Sheet</strong><br>
+        Net Profit for the year does not just vanish — it flows into Retained Earnings in the Balance Sheet (via SOCE), after deducting any dividends paid. Forgetting this link means your Balance Sheet won't balance, and you'll miss marks on questions testing the four-statement connection.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Mixing Up Current and Non-Current Classification</strong><br>
+        An item is current if it will be realised/settled within 12 months (or the operating cycle). A common error is treating a long-term loan's current portion as fully non-current, or classifying a fixed deposit maturing in 3 months as non-current. Always check the actual timeline, not just the account name.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Preparing the Cash Flow Statement Starting From the Wrong Number</strong><br>
+        The indirect method starts from Net Profit BEFORE tax and interest (or Profit Before Tax), not from Net Profit after tax. Starting from the wrong base number and then adjusting produces a Cash Flow Statement that never reconciles to the actual closing cash balance.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Treating Depreciation as a Cash Outflow</strong><br>
+        Depreciation reduces profit but involves no cash movement — it must be ADDED BACK in the Cash Flow Statement (indirect method), not subtracted again. Double-counting depreciation as a cash outflow is one of the most frequent errors in ACCA FA/FR cash flow questions.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Ignoring Working Capital Movements</strong><br>
+        A rise in receivables or inventory is a cash OUTFLOW (cash tied up); a rise in payables is a cash INFLOW (cash retained). Students often get the direction backwards — remember: an increase in an asset uses cash, an increase in a liability provides cash.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Not Reading the Notes to Financial Statements</strong><br>
+        The notes contain critical information — accounting policies, contingent liabilities, related party transactions, segment results — that changes how the numbers should be interpreted. Skipping the notes and only looking at the primary statements gives an incomplete (sometimes misleading) picture.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Forgetting SOCE Isn't Just About Profit</strong><br>
+        The Statement of Changes in Equity captures more than retained earnings — share issues, dividends, other comprehensive income (like revaluation surplus), and prior period adjustments all flow through SOCE. Treating it as "just profit minus dividends" misses these other equity movements.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 9</div>
+        <div class="step-content"><strong>Adjusting Financial Statements for Non-Adjusting Events</strong><br>
+        A material non-adjusting event (like a fire, flood, or major post-year-end acquisition) should be DISCLOSED in the notes — not used to restate the primary financial statements. Only adjusting events (evidence of conditions that already existed at year-end) trigger an actual change to the reported figures.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards (Read These Before Every Exam)</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">The Four Statements</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the four financial statements.</strong></li>
+          <li>A: Income Statement, Balance Sheet, Cash Flow Statement, SOCE</li>
+          <li><strong>Q: What question does each answer?</strong></li>
+          <li>A: P&L = performance, BS = position, CF = cash, SOCE = equity movement</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">The Accounting Equation</div>
+        <ul class="card-items">
+          <li><strong>Q: State the accounting equation.</strong></li>
+          <li>A: Assets = Liabilities + Equity</li>
+          <li><strong>Q: Why must the Balance Sheet always balance?</strong></li>
+          <li>A: Double-entry ensures every transaction affects two sides equally</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Profit vs Cash</div>
+        <ul class="card-items">
+          <li><strong>Q: Can a profitable company go bankrupt?</strong></li>
+          <li>A: Yes — if it runs out of cash despite showing accounting profit</li>
+          <li><strong>Q: Name 3 causes of the profit-cash gap.</strong></li>
+          <li>A: Depreciation (non-cash), rising receivables, capex/inventory build-up</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Indirect Method Cash Flow</div>
+        <ul class="card-items">
+          <li><strong>Q: What's the starting point of the indirect method?</strong></li>
+          <li>A: Profit Before Tax (then add back non-cash items, adjust for working capital)</li>
+          <li><strong>Q: Increase in inventory — cash inflow or outflow?</strong></li>
+          <li>A: Outflow — cash is tied up in stock</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Three Activities in Cash Flow</div>
+        <ul class="card-items">
+          <li><strong>Q: What are the 3 sections of the Cash Flow Statement?</strong></li>
+          <li>A: Operating, Investing, Financing activities</li>
+          <li><strong>Q: Where does dividend paid appear?</strong></li>
+          <li>A: Financing activities (outflow)</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">SOCE Components</div>
+        <ul class="card-items">
+          <li><strong>Q: What flows through SOCE besides retained earnings?</strong></li>
+          <li>A: Share capital issues, dividends, OCI (e.g. revaluation surplus), prior period adjustments</li>
+          <li><strong>Q: Where does revaluation surplus first appear?</strong></li>
+          <li>A: Other Comprehensive Income, then accumulated in equity via SOCE</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Adjusting vs Non-Adjusting Events</div>
+        <ul class="card-items">
+          <li><strong>Q: What's the one-question test for IAS 10 events?</strong></li>
+          <li>A: Did the condition already exist at year-end (Adjusting) or arise entirely after (Non-Adjusting, disclose only)?</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Walk me through the three financial statements and how they connect."</td><td>Foundational understanding — the #1 most-asked finance interview question</td><td>The Income Statement shows revenue minus expenses over a period, ending in Net Profit. That Net Profit flows into Retained Earnings on the Balance Sheet (via SOCE), which shows what the company owns (assets) and owes (liabilities + equity) at a point in time. The Cash Flow Statement starts from profit and adjusts for non-cash items and working capital changes to show actual cash movement, reconciling to the cash balance on the Balance Sheet.</td></tr>
+      <tr><td>"Why can a company be profitable but still go bankrupt?"</td><td>Do you understand the profit-cash distinction?</td><td>Profit is an accounting measure that includes non-cash items (like depreciation) and recognises revenue when earned, not when cash is received. A company can show strong profit while its cash is tied up in receivables, inventory, or heavy capital expenditure — and if it cannot pay its bills as they fall due, it becomes insolvent regardless of reported profit.</td></tr>
+      <tr><td>"If depreciation increases, what happens to each of the three statements?"</td><td>Do you understand how one entry ripples across statements?</td><td>Income Statement: profit decreases (depreciation is an expense). Balance Sheet: asset's carrying value decreases, and retained earnings (equity) decreases by the same amount as the profit hit. Cash Flow Statement: no direct cash impact — but since profit fell for a non-cash reason, depreciation is added back in the indirect method, so operating cash flow itself doesn't change.</td></tr>
+      <tr><td>"What is working capital and why does it matter for cash flow?"</td><td>Practical grasp of short-term liquidity management</td><td>Working capital = Current Assets − Current Liabilities. It represents cash tied up in day-to-day operations (inventory, receivables) net of short-term obligations (payables). A growing business often needs more working capital, which consumes cash even while showing rising profits — this is a critical link between the Income Statement and Cash Flow Statement.</td></tr>
+      <tr><td>"What would you look at first when analysing a company's financial statements?"</td><td>Analytical approach and prioritisation</td><td>I'd start with the Cash Flow Statement to understand the quality of earnings — is operating cash flow tracking profit, or diverging? Then the Balance Sheet for financial position and leverage. Then the Income Statement for revenue trends and margins. Finally the notes, for accounting policies, contingencies, and anything unusual that changes the picture.</td></tr>
+    </table>
+  </div>
+
+  <!-- MANTRA -->
+  <div class="mantra">
+    <div class="mantra-formula">
+      Income Statement (Performance)<br>
+      + Balance Sheet (Position)<br>
+      + Cash Flow (Cash)<br>
+      + SOCE (Equity Movement)<br>
+      = <strong style="color:var(--accent4);">The Complete Financial Story of Any Business on Earth</strong>
+    </div>
+    <h3>Read these four — and you can read any company.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 4: IFRS Fundamentals — the global rules that govern how these statements are prepared. 🌍</p>
+  </div>
+
+</div>
+</body>
+</html>

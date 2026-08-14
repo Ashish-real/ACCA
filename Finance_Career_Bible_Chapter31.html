@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 31: SBL Strategic Frameworks</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(74,222,128,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#4ade80; border:1px solid #4ade80; padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,#4ade80,#38bdf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:#4ade80; }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:#4ade80; text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:#4ade80; min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid #4ade80; padding:14px 20px; background:rgba(74,222,128,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:#4ade80; transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:#4ade80; font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:#4ade80; background:rgba(74,222,128,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(74,222,128,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:#4ade80; text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(74,222,128,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(74,222,128,0.07),rgba(56,189,248,0.05)); border:1px solid rgba(74,222,128,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:#4ade80; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:#4ade80; flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(74,222,128,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:#4ade80; text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:#4ade80; font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(74,222,128,0.09),rgba(56,189,248,0.06)); border:1px solid rgba(74,222,128,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:#4ade80; line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,#4ade80,#38bdf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 31 · ACCA SBL Depth</div>
+  <h1>SBL Strategic<br><span>Frameworks</span></h1>
+  <p class="hero-sub">Ansoff Matrix, BCG Matrix, Porter's Five Forces, PESTEL, and Porter's Generic Strategies — the complete strategic analysis toolkit for evaluating growth options, competitive position, and market attractiveness at Strategic Professional level.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">SBL</div><div class="stat-label">Strategic Professional</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Core Frameworks</div></div>
+    <div class="stat"><div class="stat-num">SAF</div><div class="stat-label">Strategic Choice Model</div></div>
+    <div class="stat"><div class="stat-num">CFO</div><div class="stat-label">Strategic Thinking</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 31 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">31.1</span>Why Finance Professionals Need Strategic Frameworks</div>
+    <div class="toc-item"><span class="toc-num">31.2</span>PESTEL Analysis — The External Macro-Environment</div>
+    <div class="toc-item"><span class="toc-num">31.3</span>PESTEL — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">31.4</span>Porter's Five Forces — Industry Attractiveness</div>
+    <div class="toc-item"><span class="toc-num">31.5</span>Porter's Five Forces — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">31.6</span>The Ansoff Matrix — Growth Strategy Options</div>
+    <div class="toc-item"><span class="toc-num">31.7</span>Ansoff Matrix — Worked Example & Risk Gradient</div>
+    <div class="toc-item"><span class="toc-num">31.8</span>The BCG Matrix — Portfolio Analysis</div>
+    <div class="toc-item"><span class="toc-num">31.9</span>BCG Matrix — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">31.10</span>Porter's Generic Strategies — Competitive Positioning</div>
+    <div class="toc-item"><span class="toc-num">31.11</span>Value Chain Analysis</div>
+    <div class="toc-item"><span class="toc-num">31.12</span>SWOT Analysis — Synthesising Internal & External</div>
+    <div class="toc-item"><span class="toc-num">31.13</span>Strategic Choice — The Suitability, Acceptability, Feasibility (SAF) Model</div>
+    <div class="toc-item"><span class="toc-num">31.14</span>Integrating the Frameworks — A Complete Strategic Analysis</div>
+    <div class="toc-item"><span class="toc-num">31.15</span>Strategic Frameworks in Indian Business — Real World Context</div>
+    <div class="toc-item"><span class="toc-num">31.16</span>ACCA SBL Exam Technique for Strategic Analysis</div>
+    <div class="toc-item"><span class="toc-num">31.17</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">31.18</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Strategic frameworks aren't abstract business-school theory — they're structured thinking tools that help answer the questions every CFO and finance leader eventually faces: which markets should we enter? Which products deserve more investment, and which should be cut? How attractive is this industry, really? Is our competitive position sustainable? SBL tests these frameworks not as things to memorise and recite, but as analytical lenses to APPLY to messy, ambiguous business scenarios — exactly the skill a senior finance professional needs when contributing to strategic decisions, not just financial ones.</p>
+    <div class="quote">"A framework doesn't give you the answer. It gives you a structured way to make sure you haven't missed an important question."</div>
+  </div>
+
+  <!-- 31.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">31.1</div>
+      <div class="section-title">Why Finance Professionals Need Strategic Frameworks</div>
+    </div>
+    <p class="prose">Finance professionals are increasingly expected to sit at the strategic table, not just report on what already happened. Understanding these frameworks lets you engage meaningfully in strategic discussions, challenge assumptions with structured logic, and translate strategic choices into financial implications.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Capital Allocation Decisions</div>
+        <ul class="card-items">
+          <li>Understanding whether a business unit is a BCG "Star" or "Dog" directly informs investment appraisal priorities</li>
+          <li>Porter's Five Forces analysis helps assess whether a proposed market entry is genuinely attractive before committing capital</li>
+        </ul>
+        <div class="card-tag">Investment Decisions</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Board & Investor Communication</div>
+        <ul class="card-items">
+          <li>CFOs regularly present strategic rationale alongside financial numbers to boards and investors</li>
+          <li>Being able to articulate strategic logic (not just recite numbers) is a genuine career differentiator at senior levels</li>
+        </ul>
+        <div class="card-tag">Communication</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">M&A and Corporate Development</div>
+        <ul class="card-items">
+          <li>Strategic frameworks directly inform which acquisition targets or growth strategies make sense (linking back to Chapter 26's AFM content)</li>
+          <li>A financially "good deal" that fails strategic logic is often a value-destroying deal</li>
+        </ul>
+        <div class="card-tag">M&A Strategy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">31.2</div>
+      <div class="section-title">PESTEL Analysis — The External Macro-Environment</div>
+    </div>
+    <p class="prose">PESTEL is the starting point for any external strategic analysis — a structured way to scan the broad macro-environment for factors outside the organisation's direct control that could significantly affect its strategy.</p>
+    <table class="data-table">
+      <tr><th>Factor</th><th>What It Covers</th><th>Example</th></tr>
+      <tr><td>Political</td><td>Government policy, political stability, trade policy, regulation direction</td><td>Change in government trade tariffs affecting import costs</td></tr>
+      <tr><td>Economic</td><td>Interest rates, inflation, exchange rates, economic growth, unemployment</td><td>Rising interest rates increasing the cost of capital for expansion</td></tr>
+      <tr><td>Social</td><td>Demographics, cultural trends, lifestyle changes, consumer attitudes</td><td>Growing health-consciousness shifting demand toward healthier food products</td></tr>
+      <tr><td>Technological</td><td>Innovation, automation, digital disruption, R&D trends</td><td>AI-driven automation threatening to disrupt traditional business models</td></tr>
+      <tr><td>Environmental</td><td>Climate change, sustainability regulation, resource scarcity</td><td>Carbon pricing regulations increasing costs for high-emission industries</td></tr>
+      <tr><td>Legal</td><td>Employment law, consumer protection, industry-specific regulation, competition law</td><td>New data privacy legislation requiring significant compliance investment</td></tr>
+    </table>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Most Common PESTEL Exam Mistake</div>
+      Simply LISTING factors under each letter earns minimal marks. SBL requires explaining the SPECIFIC IMPACT of each identified factor on THIS particular organisation's strategy — a factor that's a major threat to one company might be a significant opportunity for a competitor with a different business model. Always connect the factor to a concrete strategic implication.
+    </div>
+  </div>
+
+  <!-- 31.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">31.3</div>
+      <div class="section-title">PESTEL — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: PESTEL Analysis for an Indian EV Component Manufacturer</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Political:</strong> Government's Production Linked Incentive (PLI) scheme for auto components creates a significant OPPORTUNITY — direct financial incentives for domestic manufacturing scale-up.<br><br>
+        <strong style="color:var(--text);">Economic:</strong> Rising lithium and battery raw material costs globally represent a THREAT to margins, while growing middle-class disposable income supports long-term EV demand growth (an opportunity).<br><br>
+        <strong style="color:var(--text);">Social:</strong> Growing urban environmental consciousness and pollution concerns in major Indian cities is an OPPORTUNITY, driving consumer preference toward EVs over traditional ICE vehicles.<br><br>
+        <strong style="color:var(--text);">Technological:</strong> Rapid battery technology evolution is a THREAT (risk of current technology investment becoming obsolete) but also an OPPORTUNITY for a company that stays at the technology frontier.<br><br>
+        <strong style="color:var(--text);">Environmental:</strong> Stricter emission norms (e.g., evolving BS/CAFE-equivalent standards) create regulatory pressure that specifically favours EV component demand — an OPPORTUNITY.<br><br>
+        <strong style="color:var(--text);">Legal:</strong> Evolving battery safety and recycling regulations could increase compliance costs — a THREAT requiring proactive investment in compliant processes.<br><br>
+        <strong style="color:var(--text);">Strategic Implication:</strong> The NET assessment is cautiously positive — strong policy tailwinds and demand growth outweigh raw material and technology-obsolescence risks, but the company must specifically invest in staying at the technological frontier and managing raw material supply chain risk to fully capture the opportunity.
+      </div>
+    </div>
+  </div>
+
+  <!-- 31.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">31.4</div>
+      <div class="section-title">Porter's Five Forces — Industry Attractiveness</div>
+    </div>
+    <p class="prose">While PESTEL scans the broad macro-environment, Porter's Five Forces zooms in on the specific competitive dynamics WITHIN an industry — assessing how attractive (i.e., how likely to sustain profitability) that industry genuinely is.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚔️</div>
+        <div class="card-title">Competitive Rivalry</div>
+        <ul class="card-items">
+          <li>Intensity of competition among EXISTING players</li>
+          <li>High when: many similar-sized competitors, slow industry growth, high fixed costs, low switching costs, low product differentiation</li>
+        </ul>
+        <div class="card-tag">Central Force</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚪</div>
+        <div class="card-title">Threat of New Entrants</div>
+        <ul class="card-items">
+          <li>How easily new competitors could enter and compete</li>
+          <li>Determined by BARRIERS TO ENTRY: capital requirements, economies of scale, brand loyalty, regulatory barriers, access to distribution</li>
+        </ul>
+        <div class="card-tag">Entry Barriers</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Threat of Substitutes</div>
+        <ul class="card-items">
+          <li>Products/services from a DIFFERENT industry that meet the same underlying customer need</li>
+          <li>High when substitutes offer comparable value at lower cost, or switching to them is easy</li>
+        </ul>
+        <div class="card-tag">Alternative Solutions</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Bargaining Power of Suppliers</div>
+        <ul class="card-items">
+          <li>How much leverage suppliers have to raise prices or reduce quality/service</li>
+          <li>High when: few suppliers, no substitute inputs, switching suppliers is costly, supplier's product is critical/differentiated</li>
+        </ul>
+        <div class="card-tag">Upstream Power</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛒</div>
+        <div class="card-title">Bargaining Power of Buyers</div>
+        <ul class="card-items">
+          <li>How much leverage customers have to demand lower prices or better terms</li>
+          <li>High when: buyers are concentrated/large relative to sellers, products are undifferentiated, switching costs are low, buyers have full price information</li>
+        </ul>
+        <div class="card-tag">Downstream Power</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Interpreting the Five Forces Together</div>
+      An industry is genuinely ATTRACTIVE (sustainably profitable) when most forces are WEAK — low rivalry, high entry barriers, few substitutes, and low bargaining power from both suppliers and buyers. When most forces are STRONG, the industry structure itself makes it structurally difficult to sustain healthy margins, regardless of how well an individual company executes.
+    </div>
+  </div>
+
+  <!-- 31.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">31.5</div>
+      <div class="section-title">Porter's Five Forces — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Five Forces Analysis of the Indian Quick-Commerce (Q-Commerce) Industry</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Competitive Rivalry: HIGH</strong> — multiple well-funded players competing intensely on delivery speed and pricing, with low product differentiation (largely the same grocery SKUs available across platforms).<br><br>
+        <strong style="color:var(--text);">Threat of New Entrants: MODERATE-HIGH</strong> — significant capital required for dark-store networks and logistics, but venture capital availability has historically lowered this barrier for well-funded new entrants.<br><br>
+        <strong style="color:var(--text);">Threat of Substitutes: MODERATE</strong> — traditional retail, e-commerce (slower delivery), and local kirana stores all serve similar underlying needs, though the SPEED advantage of q-commerce is a genuine differentiator against these substitutes.<br><br>
+        <strong style="color:var(--text);">Bargaining Power of Suppliers: LOW-MODERATE</strong> — many FMCG/grocery suppliers exist, though large branded suppliers retain some negotiating leverage over smaller platforms.<br><br>
+        <strong style="color:var(--text);">Bargaining Power of Buyers: HIGH</strong> — consumers face near-zero switching costs between q-commerce apps, are highly price/promotion sensitive, and have full price transparency across platforms.<br><br>
+        <strong style="color:var(--text);">Overall Conclusion:</strong> This is a STRUCTURALLY CHALLENGING industry for sustained profitability — high rivalry combined with high buyer power creates persistent margin pressure, which is consistent with the well-documented profitability struggles across the global q-commerce sector. A company competing here needs a genuinely differentiated strategy (e.g. superior unit economics through hyper-local logistics efficiency) rather than simply competing on the same speed/price dimensions as every other player.
+      </div>
+    </div>
+  </div>
+
+  <!-- 31.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">31.6</div>
+      <div class="section-title">The Ansoff Matrix — Growth Strategy Options</div>
+    </div>
+    <p class="prose">Once an organisation understands its external environment, the Ansoff Matrix provides a structured way to evaluate GROWTH strategy options, based on two dimensions: whether the product is existing or new, and whether the market is existing or new.</p>
+    <div class="formula-block">
+      <div class="formula-header">The Four Ansoff Quadrants</div>
+      <div class="formula-row"><div class="formula-name">Market Penetration</div><div class="formula-eq">Existing Products + Existing Markets — LOWEST risk. Grow through increased market share, more frequent purchase, or winning customers from competitors within a familiar market.</div></div>
+      <div class="formula-row"><div class="formula-name">Market Development</div><div class="formula-eq">Existing Products + New Markets — MODERATE risk. Take a proven product into new geographies, new customer segments, or new use cases.</div></div>
+      <div class="formula-row"><div class="formula-name">Product Development</div><div class="formula-eq">New Products + Existing Markets — MODERATE risk. Leverage existing customer relationships and market knowledge to launch new products.</div></div>
+      <div class="formula-row"><div class="formula-name">Diversification</div><div class="formula-eq">New Products + New Markets — HIGHEST risk. Can be RELATED (leveraging some existing capability/synergy) or UNRELATED (a completely new business area, highest risk of all).</div></div>
+    </div>
+  </div>
+
+  <!-- 31.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">31.7</div>
+      <div class="section-title">Ansoff Matrix — Worked Example & Risk Gradient</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Growth Options for an Indian Ed-Tech Company</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Company profile:</strong> Currently offers online K-12 tutoring in India (existing product, existing market).<br><br>
+        <strong style="color:var(--text);">Market Penetration option:</strong> Increase marketing spend and referral incentives to capture more K-12 tutoring market share in India — LOWEST risk, builds on proven product-market fit.<br><br>
+        <strong style="color:var(--text);">Market Development option:</strong> Launch the SAME K-12 tutoring product in Southeast Asian markets with similar education system structures — MODERATE risk, product is proven but market dynamics (language, curriculum, payment behaviour) are unfamiliar.<br><br>
+        <strong style="color:var(--text);">Product Development option:</strong> Launch a NEW test-preparation product (e.g. competitive exam coaching) for the SAME existing Indian K-12 customer base — MODERATE risk, leverages existing brand trust and customer relationships, but the product itself is unproven.<br><br>
+        <strong style="color:var(--text);">Diversification option:</strong> Launch a corporate upskilling/professional training product for an entirely different customer segment (adult professionals) in an entirely new market (enterprise B2B sales) — HIGHEST risk, no existing product-market fit or customer relationship to leverage.<br><br>
+        <strong style="color:var(--text);">Strategic Conclusion:</strong> A sensible growth sequencing would typically prioritise Market Penetration and Product Development first (lower risk, leveraging existing strengths) before attempting Market Development or Diversification — though the "right" answer always depends on the specific competitive dynamics, available capital, and strategic objectives of the specific scenario given.
+      </div>
+    </div>
+  </div>
+
+  <!-- 31.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">31.8</div>
+      <div class="section-title">The BCG Matrix — Portfolio Analysis</div>
+    </div>
+    <p class="prose">For organisations with MULTIPLE business units or products, the BCG (Boston Consulting Group) Matrix helps decide where to invest, hold, or divest — plotting each unit on two dimensions: relative market share and market growth rate.</p>
+    <table class="data-table">
+      <tr><th>Quadrant</th><th>Market Growth</th><th>Market Share</th><th>Strategic Implication</th></tr>
+      <tr><td>Star</td><td>High</td><td>High</td><td>Invest heavily to maintain/grow position — tomorrow's cash cow, but currently consumes significant cash to sustain growth</td></tr>
+      <tr><td>Cash Cow</td><td>Low</td><td>High</td><td>Generates strong, stable cash flow with minimal investment needed — "milk" this business to fund Stars and Question Marks elsewhere in the portfolio</td></tr>
+      <tr><td>Question Mark (Problem Child)</td><td>High</td><td>Low</td><td>Uncertain future — requires a strategic decision to invest heavily (aiming to become a Star) or divest, since it currently consumes cash without a proven high return</td></tr>
+      <tr><td>Dog</td><td>Low</td><td>Low</td><td>Generally weak strategic position — usually a candidate for divestment or careful harvest/exit, unless it serves a genuine strategic purpose (e.g. completing a product range)</td></tr>
+    </table>
+  </div>
+
+  <!-- 31.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">31.9</div>
+      <div class="section-title">BCG Matrix — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Portfolio Analysis for a Diversified Indian Conglomerate</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Business Unit A — EV Battery Manufacturing:</strong> High-growth market (30%+ p.a.), currently building market share aggressively but not yet market leader → <strong style="color:var(--accent4);">Question Mark</strong>. Strategic decision needed: commit significant further capital to fight for leadership, or exit before losses mount further.<br><br>
+        <strong style="color:var(--text);">Business Unit B — Traditional Cement Manufacturing:</strong> Mature, low-growth market (3-4% p.a.), strong established market share and brand → <strong style="color:var(--accent4);">Cash Cow</strong>. Minimal further investment needed; generates strong steady cash flow to fund other units.<br><br>
+        <strong style="color:var(--text);">Business Unit C — Renewable Energy (Solar) Projects:</strong> High-growth market (20%+ p.a.), and the conglomerate has already built significant market-leading capacity → <strong style="color:var(--accent4);">Star</strong>. Continue investing heavily to maintain/extend leadership as the market matures.<br><br>
+        <strong style="color:var(--text);">Business Unit D — Legacy Textile Manufacturing:</strong> Low-growth, declining market, weak/declining market share due to import competition → <strong style="color:var(--accent4);">Dog</strong>. Strong candidate for divestment or wind-down, unless retained for specific non-financial reasons (e.g. employment/social commitments, or it uniquely completes a broader group offering).<br><br>
+        <strong style="color:var(--text);">Portfolio-Level Strategic Logic:</strong> The Cement Cash Cow (B) should be used to fund the Star (C)'s continued growth and to make the critical strategic bet on the Question Mark (A) — while the Dog (D) is evaluated for divestment, with proceeds potentially redirected toward the higher-potential units. This is exactly the kind of capital allocation logic a group CFO applies using the BCG framework in practice.
+      </div>
+    </div>
+  </div>
+
+  <!-- 31.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">31.10</div>
+      <div class="section-title">Porter's Generic Strategies — Competitive Positioning</div>
+    </div>
+    <p class="prose">Once industry attractiveness (Five Forces) and growth direction (Ansoff) are assessed, Porter's Generic Strategies frame the fundamental choice of HOW to compete within a chosen market.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Cost Leadership</div>
+        <ul class="card-items">
+          <li>Compete by being the LOWEST-COST producer in the industry, enabling competitive pricing while maintaining margins</li>
+          <li>Requires economies of scale, tight cost control, and often significant capital investment in efficient processes</li>
+          <li>Risk: a competitor with even lower costs, or a price war eroding the advantage</li>
+        </ul>
+        <div class="card-tag">Broad Market, Low Cost</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <div class="card-title">Differentiation</div>
+        <ul class="card-items">
+          <li>Compete by offering something UNIQUELY VALUED by customers — quality, brand, innovation, service — allowing premium pricing</li>
+          <li>Requires genuine, defensible uniqueness that's hard for competitors to replicate</li>
+          <li>Risk: the differentiating feature becomes commoditised or customers stop valuing it as much</li>
+        </ul>
+        <div class="card-tag">Broad Market, Premium</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Focus (Cost or Differentiation)</div>
+        <ul class="card-items">
+          <li>Concentrate on a NARROW market segment, applying either a cost or differentiation approach specifically tailored to that niche</li>
+          <li>Can achieve advantages a broad-market competitor can't match for that specific segment</li>
+          <li>Risk: the niche market is too small to be sustainably profitable, or a broad-market competitor decides to target the same niche</li>
+        </ul>
+        <div class="card-tag">Narrow Market</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 "Stuck in the Middle" — The Danger Zone</div>
+      Porter's original theory warns that companies attempting to pursue BOTH cost leadership AND differentiation simultaneously, without committing clearly to either, risk being "stuck in the middle" — lacking the low costs to compete on price and lacking the genuine differentiation to command premium pricing, resulting in below-average performance. This remains a frequently tested SBL critique point, though modern strategy also recognises some companies successfully blend elements of both (e.g. through operational excellence enabling both efficiency AND quality).
+    </div>
+  </div>
+
+  <!-- 31.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">31.11</div>
+      <div class="section-title">Value Chain Analysis</div>
+    </div>
+    <p class="prose">Porter's Value Chain breaks an organisation down into its individual value-adding ACTIVITIES, helping identify exactly where competitive advantage is created (or lost) within the business.</p>
+    <table class="data-table">
+      <tr><th>Activity Type</th><th>Examples</th></tr>
+      <tr><td>Primary Activities</td><td>Inbound Logistics, Operations, Outbound Logistics, Marketing & Sales, Service — directly create and deliver the product/service</td></tr>
+      <tr><td>Support Activities</td><td>Firm Infrastructure, HR Management, Technology Development, Procurement — enable the primary activities to function effectively</td></tr>
+    </table>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why Value Chain Analysis Matters Strategically</div>
+      By examining each individual activity's cost and value contribution, an organisation can identify which activities are genuine sources of competitive advantage (worth protecting and investing in) versus which are simply necessary but not differentiating (candidates for outsourcing or cost reduction) — this directly informs decisions like outsourcing, vertical integration, and where to focus improvement efforts for maximum strategic impact.
+    </div>
+  </div>
+
+  <!-- 31.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">31.12</div>
+      <div class="section-title">SWOT Analysis — Synthesising Internal & External</div>
+    </div>
+    <p class="prose">SWOT is often taught first (and treated too simplistically) — at SBL level, its real value is as a SYNTHESIS tool, pulling together the internal analysis (Value Chain, resources/capabilities) and external analysis (PESTEL, Five Forces) into a structured summary that directly informs strategic choice.</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">STRENGTHS</div><div class="step-content">Internal capabilities/resources that give genuine competitive advantage — should be evidenced by the value chain/internal analysis, not just asserted</div></div>
+      <div class="step-item"><div class="step-num">WEAKNESSES</div><div class="step-content">Internal limitations that put the organisation at a disadvantage relative to competitors</div></div>
+      <div class="step-item"><div class="step-num">OPPORTUNITIES</div><div class="step-content">External factors (from PESTEL/Five Forces) the organisation could exploit — genuinely EXTERNAL, not just "we could improve X internally"</div></div>
+      <div class="step-item"><div class="step-num">THREATS</div><div class="step-content">External factors that could damage performance — again genuinely external, distinct from internal weaknesses</div></div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Most Common SWOT Exam Error</div>
+      Confusing internal factors (Strengths/Weaknesses) with external factors (Opportunities/Threats) — for example, listing "strong brand" as an Opportunity (it's actually an internal Strength) or "new regulation" as a Weakness (it's actually an external Threat). A genuinely strategic SWOT then goes further, using a TOWS-style matrix to match Strengths to Opportunities, address Weaknesses that expose the organisation to Threats, and so on — rather than stopping at a simple four-box list.
+    </div>
+  </div>
+
+  <!-- 31.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">31.13</div>
+      <div class="section-title">Strategic Choice — The Suitability, Acceptability, Feasibility (SAF) Model</div>
+    </div>
+    <p class="prose">Once strategic OPTIONS have been generated (e.g. via Ansoff), the SAF model provides a structured way to EVALUATE and choose between them.</p>
+    <div class="formula-block">
+      <div class="formula-header">The SAF Evaluation Criteria</div>
+      <div class="formula-row"><div class="formula-name">Suitability</div><div class="formula-eq">Does the strategy actually address the strategic issues identified (from SWOT/PESTEL/Five Forces analysis)? Does it fit the organisation's overall objectives and capabilities?</div></div>
+      <div class="formula-row"><div class="formula-name">Acceptability</div><div class="formula-eq">Will the strategy deliver acceptable RETURNS (financial appraisal — NPV, ROI), acceptable RISK levels, and be acceptable to key STAKEHOLDERS (shareholders, employees, regulators)?</div></div>
+      <div class="formula-row"><div class="formula-name">Feasibility</div><div class="formula-eq">Does the organisation actually have (or can it obtain) the RESOURCES and CAPABILITIES needed to execute the strategy — finance, people, technology, time?</div></div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why All Three Criteria Are Needed Together</div>
+      A strategy can be perfectly SUITABLE (addresses the right strategic issue) and FEASIBLE (the organisation has the resources) but still fail on ACCEPTABILITY (unacceptable financial return, or key stakeholders would reject it). All three criteria must be satisfied together — failing any single one is grounds to reject or rework the strategic option, which is exactly the kind of multi-dimensional evaluation SBL case studies test.
+    </div>
+  </div>
+
+  <!-- 31.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">31.14</div>
+      <div class="section-title">Integrating the Frameworks — A Complete Strategic Analysis</div>
+    </div>
+    <p class="prose">The real skill SBL tests isn't reciting any single framework — it's knowing how they connect into ONE coherent analysis.</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">1. SCAN</div><div class="step-content"><strong>PESTEL</strong> — understand the broad macro-environment the organisation operates in</div></div>
+      <div class="step-item"><div class="step-num">2. ASSESS</div><div class="step-content"><strong>Porter's Five Forces</strong> — evaluate how attractive the specific industry structure is</div></div>
+      <div class="step-item"><div class="step-num">3. AUDIT</div><div class="step-content"><strong>Value Chain</strong> — understand internal strengths/weaknesses in detail</div></div>
+      <div class="step-item"><div class="step-num">4. SYNTHESISE</div><div class="step-content"><strong>SWOT</strong> — pull external (steps 1-2) and internal (step 3) analysis together</div></div>
+      <div class="step-item"><div class="step-num">5. GENERATE OPTIONS</div><div class="step-content"><strong>Ansoff Matrix</strong> (growth direction) + <strong>BCG Matrix</strong> (portfolio prioritisation, if multi-business) + <strong>Porter's Generic Strategies</strong> (competitive positioning)</div></div>
+      <div class="step-item"><div class="step-num">6. EVALUATE & CHOOSE</div><div class="step-content"><strong>SAF Model</strong> — test each generated option for suitability, acceptability, and feasibility before committing</div></div>
+    </div>
+  </div>
+
+  <!-- 31.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">31.15</div>
+      <div class="section-title">Strategic Frameworks in Indian Business — Real World Context</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Framework</th><th>Indian Business Application</th></tr>
+      <tr><td>Ansoff Matrix</td><td>Widely used by Indian conglomerates and startups evaluating geographic expansion (Tier 2/3 city penetration) vs new product lines</td></tr>
+      <tr><td>BCG Matrix</td><td>Explicitly used by diversified groups like Tata, Reliance, and Aditya Birla for capital allocation decisions across their portfolio of businesses</td></tr>
+      <tr><td>Porter's Five Forces</td><td>Applied by Indian corporate strategy teams and PE/VC investors assessing industry attractiveness before market entry or investment decisions</td></tr>
+      <tr><td>PESTEL</td><td>Central to India-specific strategic planning given the significant regulatory/political influence on business (GST changes, FDI policy, PLI schemes)</td></tr>
+    </table>
+  </div>
+
+  <!-- 31.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">31.16</div>
+      <div class="section-title">ACCA SBL Exam Technique for Strategic Analysis</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 The SBL Strategic Analysis Answer Method</h4>
+      <div style="font-size:13.5px;color:var(--muted);line-height:2.3;">
+        <span style="color:#4ade80;font-family:var(--mono);">1. SELECT THE RIGHT FRAMEWORK:</span> Match the framework to the actual question asked — don't force-fit Five Forces onto a growth-direction question that needs Ansoff.<br>
+        <span style="color:#4ade80;font-family:var(--mono);">2. USE THE SCENARIO'S OWN FACTS:</span> Every framework application must be grounded in SPECIFIC facts given in the case study — generic textbook points without scenario-specific application earn minimal marks.<br>
+        <span style="color:#4ade80;font-family:var(--mono);">3. DON'T JUST DESCRIBE — EVALUATE:</span> State the framework's implication, then evaluate what it means practically for THIS organisation's strategic choices.<br>
+        <span style="color:#4ade80;font-family:var(--mono);">4. CONNECT TO A RECOMMENDATION:</span> SBL almost always ultimately wants a clear recommendation or conclusion — frameworks are the analytical journey, not the destination.
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">💡 Common SBL Trap</div>
+      Reproducing a framework's standard structure (e.g. all six PESTEL letters) as a generic checklist, without genuinely APPLYING each point to the specific scenario facts, is the single most common reason for underperforming in SBL strategic analysis questions — examiners specifically reward scenario-grounded application over theoretical recall.
+    </div>
+  </div>
+
+  <!-- 31.17 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">31.17</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">PESTEL Scans the Macro-Environment</div><ul class="card-items"><li>6 factors: Political, Economic, Social, Technological, Environmental, Legal</li><li>Must connect each factor to a specific strategic implication</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Five Forces Assesses Industry Attractiveness</div><ul class="card-items"><li>Weak forces = attractive industry</li><li>Strong forces = structurally hard to sustain margins</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Ansoff Maps Growth Risk</div><ul class="card-items"><li>Penetration (lowest risk) → Diversification (highest risk)</li><li>New product OR new market OR both</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">BCG Guides Portfolio Capital Allocation</div><ul class="card-items"><li>Cash Cows fund Stars and Question Marks</li><li>Dogs are divestment candidates</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Generic Strategies = How to Compete</div><ul class="card-items"><li>Cost Leadership, Differentiation, or Focus</li><li>Avoid being "stuck in the middle"</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">SAF Tests Any Strategic Option</div><ul class="card-items"><li>Suitability + Acceptability + Feasibility — all three required</li><li>Failing any one is grounds for rejection/rework</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 31 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Run a full PESTEL analysis on an industry you're familiar with</span>
+        <span class="tag teal">✅ Apply Porter's Five Forces to assess a specific industry's attractiveness</span>
+        <span class="tag teal">✅ Plot 3-4 real business units/products on a BCG Matrix from memory</span>
+        <span class="tag teal">✅ Practice the SAF model on 2 different strategic options for a company you know</span>
+        <span class="tag teal">✅ Attempt an ACCA SBL past paper strategic analysis question using the 6-step integration method (31.14)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31.18 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">31.18</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Listing PESTEL Factors Without Explaining Their Strategic Impact</strong><br>
+        Simply stating "interest rates are rising" (Economic factor) earns minimal marks — the analysis must explain SPECIFICALLY how rising rates affect THIS organisation's strategy (e.g. increasing the cost of a planned debt-funded expansion, making a project's hurdle rate harder to clear).</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Confusing Internal and External Factors in SWOT</strong><br>
+        Strengths/Weaknesses are INTERNAL (within the organisation's control); Opportunities/Threats are EXTERNAL (from PESTEL/Five Forces). Listing "strong brand" as an Opportunity, or "new competitor entry" as a Weakness, is a fundamental and commonly-tested error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Treating Diversification as a "Safe" Growth Option Because It Spreads Risk</strong><br>
+        Diversification (new products, new markets) is the HIGHEST risk Ansoff quadrant precisely because the organisation has no existing product-market fit or customer relationship to leverage — it doesn't reduce risk at the company level, even though it may reduce concentration in any single market.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Recommending Divestment of Every "Dog" Automatically</strong><br>
+        A BCG "Dog" isn't automatically a divestment candidate — it might serve a genuine strategic purpose (completing a product range, maintaining a customer relationship that supports sales of other products, or blocking a competitor). The BCG position is an important INPUT to the decision, not an automatic conclusion.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Applying "Stuck in the Middle" Too Rigidly</strong><br>
+        While Porter's original theory warns against combining cost leadership and differentiation, some modern successful companies do blend elements of both through operational excellence — SBL answers should engage critically with this nuance rather than mechanically applying "stuck in the middle" as an automatic criticism whenever a company shows elements of both strategies.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Evaluating Strategic Options Only on Financial Acceptability</strong><br>
+        The SAF model requires ALL THREE criteria — a financially attractive strategy (Acceptability) that the organisation lacks the capability to execute (fails Feasibility) or doesn't actually address the core strategic problem (fails Suitability) should still be rejected or reworked, not approved on financial grounds alone.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Using Frameworks in Isolation Rather Than as an Integrated Analysis</strong><br>
+        SBL case studies reward candidates who show how frameworks CONNECT — e.g. how a Five Forces conclusion about industry attractiveness should directly inform which Ansoff growth option makes sense. Treating each framework as a disconnected, standalone exercise misses the integrative thinking SBL specifically tests.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Forgetting That Framework Application Must End in a Clear Recommendation</strong><br>
+        SBL almost always requires a definitive recommendation or conclusion, not just analysis for its own sake — spending all available time on framework application while leaving no room for a clear final recommendation is a common time-management and structural error.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">PESTEL 6 Factors</div>
+        <ul class="card-items">
+          <li><strong>Q: Name all 6 PESTEL factors.</strong></li>
+          <li>A: Political, Economic, Social, Technological, Environmental, Legal</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Five Forces</div>
+        <ul class="card-items">
+          <li><strong>Q: Name Porter's 5 Forces.</strong></li>
+          <li>A: Rivalry, New Entrants, Substitutes, Supplier Power, Buyer Power</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Ansoff Risk Order</div>
+        <ul class="card-items">
+          <li><strong>Q: Order the 4 Ansoff quadrants from lowest to highest risk.</strong></li>
+          <li>A: Market Penetration → Market/Product Development → Diversification</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">BCG Quadrants</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 4 BCG Matrix quadrants.</strong></li>
+          <li>A: Star, Cash Cow, Question Mark, Dog</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Generic Strategies</div>
+        <ul class="card-items">
+          <li><strong>Q: Name Porter's 3 generic strategies.</strong></li>
+          <li>A: Cost Leadership, Differentiation, Focus</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">SAF Model</div>
+        <ul class="card-items">
+          <li><strong>Q: What does SAF stand for?</strong></li>
+          <li>A: Suitability, Acceptability, Feasibility</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Value Chain Categories</div>
+        <ul class="card-items">
+          <li><strong>Q: What are the 2 categories of Value Chain activities?</strong></li>
+          <li>A: Primary Activities and Support Activities</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Cash Cow's Role</div>
+        <ul class="card-items">
+          <li><strong>Q: What's the strategic role of a Cash Cow in a BCG portfolio?</strong></li>
+          <li>A: Generate stable cash flow to fund Stars and Question Marks elsewhere in the portfolio</li>
+        </ul>
+        <div class="card-tag">Flashcard 8</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"How would you assess whether a company should enter a new market?"</td><td>Structured strategic thinking applied practically</td><td>I'd start with PESTEL to understand the macro-environment risks and opportunities in that market, then apply Porter's Five Forces to assess whether the specific industry structure is genuinely attractive. I'd map the move on the Ansoff Matrix to understand the inherent risk level (market development if it's an existing product, or diversification if both product and market are new), and finally test the specific entry strategy against the SAF model — does it suit our strategic objectives, is the expected return acceptable relative to the risk, and do we genuinely have the resources and capabilities to execute it well.</td></tr>
+      <tr><td>"How would you decide which business units in a conglomerate's portfolio deserve more investment?"</td><td>Practical application of portfolio management thinking</td><td>I'd use the BCG Matrix to plot each business unit by market growth and relative market share — Stars and promising Question Marks would be prioritised for further investment (Stars to maintain leadership, Question Marks as a strategic bet if we believe we can win), while Cash Cows are managed for steady cash generation to fund that investment, and Dogs are evaluated for divestment unless they serve a genuine non-financial strategic purpose.</td></tr>
+      <tr><td>"Why might a company's competitive strategy fail even if its financial analysis looks attractive?"</td><td>Depth of strategic judgment beyond pure financial analysis</td><td>A financially attractive strategy can still fail if it isn't SUITABLE (doesn't genuinely address the organisation's core strategic issues) or isn't FEASIBLE (the organisation lacks the actual capabilities, talent, or resources to execute it well) — the SAF model captures exactly this risk, since financial acceptability is only one of three criteria a sound strategy must satisfy, and many real-world strategic failures stem from execution/capability gaps rather than flawed financial logic.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      PESTEL (Macro-Environment) + Five Forces (Industry Attractiveness)<br>
+      + Ansoff (Growth Direction) + BCG (Portfolio Priority)<br>
+      + Generic Strategies (Competitive Position) + SAF (Strategic Choice)<br>
+      = <strong style="color:#4ade80;">The Complete Strategic Analysis Toolkit</strong>
+    </div>
+    <h3>Chapter 31: SBL Strategic Frameworks — Complete 🎯📊</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 32: Organisational Behaviour & HR Depth — leadership models, org structure, and change management. 🚀</p>
+  </div>
+
+</div>
+</body>
+</html>

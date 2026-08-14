@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 33: Valuation Basics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(0,212,170,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent2); border:1px solid var(--accent2); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent2),var(--accent5)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent2); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent2); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent2); padding:14px 20px; background:rgba(0,212,170,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent2); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent2); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent2); background:rgba(0,212,170,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(0,212,170,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent2); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(0,212,170,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(0,212,170,0.07),rgba(232,121,249,0.05)); border:1px solid rgba(0,212,170,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent2); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(0,212,170,0.1); border:1px solid rgba(0,212,170,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(0,212,170,0.09),rgba(232,121,249,0.06)); border:1px solid rgba(0,212,170,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent2); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent2),var(--accent5)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 33</div>
+  <h1>Valuation<br><span>Basics</span></h1>
+  <p class="hero-sub">How to determine what a company is actually worth — using DCF, trading multiples, precedent transactions, and asset-based methods. The skill that powers every investment decision, M&A deal, IPO, and equity research report in finance.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">DCF</div><div class="stat-label">Core Method</div></div>
+    <div class="stat"><div class="stat-num">ACCA</div><div class="stat-label">AFM & SBR Core</div></div>
+    <div class="stat"><div class="stat-num">M&A</div><div class="stat-label">Deal Foundation</div></div>
+    <div class="stat"><div class="stat-num">₹40L+</div><div class="stat-label">Valuation Analyst Salary</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 33 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">33.1</span>Why Valuation Matters — The Core Question in Finance</div>
+    <div class="toc-item"><span class="toc-num">33.2</span>The Three Pillars of Valuation — An Overview</div>
+    <div class="toc-item"><span class="toc-num">33.3</span>Intrinsic Value vs Market Value — Key Distinction</div>
+    <div class="toc-item"><span class="toc-num">33.4</span>DCF Valuation — Discounted Cash Flow Method (Deep Dive)</div>
+    <div class="toc-item"><span class="toc-num">33.5</span>WACC as the Discount Rate — Linking Chapter 22 to 23</div>
+    <div class="toc-item"><span class="toc-num">33.6</span>Terminal Value — The Biggest Number in Valuation</div>
+    <div class="toc-item"><span class="toc-num">33.7</span>Relative Valuation — Trading Multiples (EV/EBITDA, P/E, P/B)</div>
+    <div class="toc-item"><span class="toc-num">33.8</span>Precedent Transaction Analysis</div>
+    <div class="toc-item"><span class="toc-num">33.9</span>Asset-Based Valuation — NAV Method</div>
+    <div class="toc-item"><span class="toc-num">33.10</span>Enterprise Value vs Equity Value — The Bridge</div>
+    <div class="toc-item"><span class="toc-num">33.11</span>Valuation in Practice — The Football Field Chart</div>
+    <div class="toc-item"><span class="toc-num">33.12</span>Sensitivity Analysis & Scenario Planning in Valuation</div>
+    <div class="toc-item"><span class="toc-num">33.13</span>Valuation in India — Real World Context</div>
+    <div class="toc-item"><span class="toc-num">33.14</span>ACCA AFM Exam Technique</div>
+    <div class="toc-item"><span class="toc-num">33.15</span>Key Takeaways & Action Steps</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Valuation is arguably the most important skill in all of finance. Every financial decision — whether to acquire a company, whether to invest in a stock, whether to launch a project, whether to take a company public — requires an answer to one fundamental question: <strong>What is this thing actually worth?</strong> This chapter teaches you the major methods professionals use to answer that question, with the same rigour used by investment bankers, PE analysts, and CFOs at the world's top firms.</p>
+    <div class="quote">"Price is what you pay. Value is what you get. The entire discipline of valuation exists to bridge the gap between the two — and exploit it." — Warren Buffett (adapted)</div>
+  </div>
+
+  <!-- 33.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">33.1</div>
+      <div class="section-title">Why Valuation Matters — The Core Question in Finance</div>
+    </div>
+    <p class="prose">Every major financial event requires valuation. An IPO needs a price. An M&A deal needs a negotiated value. A private equity fund needs to know what to pay for a target. An equity research analyst needs to decide if a stock is cheap or expensive. A CFO needs to know if their own company is undervalued or overvalued before raising capital. <strong>Valuation is the common language of all these decisions.</strong></p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">Investment Banking</div>
+        <ul class="card-items">
+          <li>Value M&A targets — advise buyers on what to pay and sellers on what to accept</li>
+          <li>Price IPOs — set an offer price that is fair to both issuer and investors</li>
+          <li>Fairness opinions — tell a board whether a deal price is fair</li>
+          <li>Leveraged buyout (LBO) models — determine maximum price PE can pay and still hit return targets</li>
+          <li>Valuation is the #1 technical skill tested in IB interviews</li>
+        </ul>
+        <div class="card-tag">M&A / IPO</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Equity Research</div>
+        <ul class="card-items">
+          <li>Analysts build DCF models to estimate intrinsic value of listed stocks</li>
+          <li>Compare to current market price → Buy, Hold, or Sell recommendation</li>
+          <li>Publish price targets — what the stock should be worth in 12 months</li>
+          <li>Update models after every earnings release, guidance change, macro event</li>
+          <li>Institutional investors use this research to allocate billions</li>
+        </ul>
+        <div class="card-tag">Stock Analysis</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Private Equity & VC</div>
+        <ul class="card-items">
+          <li>PE: buy companies at one value, improve them, sell at higher value — entry and exit valuation critical</li>
+          <li>VC: value early-stage startups with no earnings — use revenue multiples, market size, comparables</li>
+          <li>LBO modelling: reverse-engineer what price yields target IRR (typically 20-25%+)</li>
+          <li>Portfolio company valuation for fund reporting — mark-to-market quarterly</li>
+        </ul>
+        <div class="card-tag">PE / VC</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Corporate Finance (CFO Role)</div>
+        <ul class="card-items">
+          <li>Value acquisition targets — should we buy this company? What is it worth to us?</li>
+          <li>Assess our own valuation — are we cheap? Should we buy back shares?</li>
+          <li>Value new projects / capex — NPV is a form of project valuation (Chapter 22)</li>
+          <li>Impairment testing — IFRS requires valuing goodwill and assets for impairment annually</li>
+          <li>Fairness opinions for transactions — CFO must defend the price paid to shareholders</li>
+        </ul>
+        <div class="card-tag">CFO / Corp Dev</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Accounting & Audit (ACCA Context)</div>
+        <ul class="card-items">
+          <li>IFRS 13 — Fair Value Measurement: assets and liabilities must be valued at fair value under many IFRS standards</li>
+          <li>Goodwill impairment testing: recoverable amount (higher of fair value less costs to sell and value in use)</li>
+          <li>Financial instruments at fair value — equity investments, derivatives</li>
+          <li>Purchase price allocation (PPA) in business combinations — IFRS 3</li>
+          <li>ACCA AFM and SBR both test valuation extensively</li>
+        </ul>
+        <div class="card-tag">ACCA / IFRS</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">Valuation in India — Regulatory Context</div>
+        <ul class="card-items">
+          <li>SEBI (Securities and Exchange Board of India) mandates independent valuation for open offers, delistings, related party transactions</li>
+          <li>ICAI has published Valuation Standards (2018) — framework for registered valuers</li>
+          <li>Companies Act 2013 — certain transactions require valuation by registered valuer (under IBBI)</li>
+          <li>IBBI (Insolvency and Bankruptcy Board of India) — registered valuers for insolvency resolution</li>
+          <li>Tax (Section 56 of Income Tax Act) — share valuation for unlisted companies to prevent tax avoidance</li>
+        </ul>
+        <div class="card-tag">India Regulatory</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">33.2</div>
+      <div class="section-title">The Three Pillars of Valuation — An Overview</div>
+    </div>
+    <p class="prose">All valuation methods fall into three broad categories. Each answers the same question — what is this company worth — but from a different angle. No single method is perfect. Professionals always use multiple methods together and triangulate a range. <strong>Knowing all three, and when to use each, is what separates a competent analyst from an outstanding one.</strong></p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔮</div>
+        <div class="card-title">Pillar 1 — Intrinsic Valuation (DCF)</div>
+        <ul class="card-items">
+          <li>What is this company worth based on its own future cash flows?</li>
+          <li>Discounted Cash Flow (DCF) — project future free cash flows and discount to present value</li>
+          <li>Theoretically the most rigorous — value comes from fundamentals, not market sentiment</li>
+          <li>Limitations: highly sensitive to assumptions (growth rate, discount rate) — small changes in inputs = large changes in output</li>
+          <li>Best for: mature, predictable businesses with stable cash flows</li>
+          <li>Used heavily by: equity analysts, PE investors, corporate acquirers</li>
+        </ul>
+        <div class="card-tag">DCF Method</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Pillar 2 — Relative Valuation (Multiples)</div>
+        <ul class="card-items">
+          <li>What do similar companies trade at in the market? Apply those multiples to our company.</li>
+          <li>Trading Comps: P/E ratio, EV/EBITDA, EV/Revenue, P/B — compared to listed peers</li>
+          <li>Faster to compute than DCF, anchored to real market prices</li>
+          <li>Limitation: if the whole market is overvalued (bubble), comparables are also overvalued — you can be "relatively cheap" but still absolutely expensive</li>
+          <li>Best for: businesses with clear public comparables; quick sanity checks</li>
+          <li>Used by: virtually everyone — investment bankers, analysts, fund managers</li>
+        </ul>
+        <div class="card-tag">Multiples / Comps</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏗️</div>
+        <div class="card-title">Pillar 3 — Asset-Based Valuation</div>
+        <ul class="card-items">
+          <li>What are the net assets of this company worth if we liquidated or replaced them?</li>
+          <li>Net Asset Value (NAV) — total assets minus total liabilities at fair value</li>
+          <li>Replacement Cost — what would it cost to rebuild this business from scratch?</li>
+          <li>Limitation: ignores going-concern value (the value of future earnings above and beyond asset value)</li>
+          <li>Best for: asset-heavy businesses (real estate, banks, holding companies), distressed companies, liquidation scenarios</li>
+          <li>Used by: banks valuing collateral, restructuring advisors, real estate analysts</li>
+        </ul>
+        <div class="card-tag">NAV / Asset</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Golden Rule of Valuation — Never Use Just One Method</div>
+      Every professional valuation uses at least two or three methods and presents a range of values — not a single number. A DCF gives you intrinsic value. Trading comps give you market context. Precedent transactions give you deal-level pricing. The truth usually lies somewhere in the overlap. The skill is not just knowing each method — it is knowing how to weight them given the specific situation, asset type, and purpose of the valuation.
+    </div>
+
+    <table class="data-table" style="margin-top:20px;">
+      <tr><th>Method</th><th>Based On</th><th>Best For</th><th>Limitation</th><th>ACCA Relevance</th></tr>
+      <tr><td>DCF</td><td>Future free cash flows discounted to PV</td><td>Mature businesses, investment decisions, project appraisal</td><td>Garbage in = garbage out. Sensitive to WACC and growth rate assumptions.</td><td>Core AFM topic. SBR (impairment — value in use).</td></tr>
+      <tr><td>Trading Comps (P/E, EV/EBITDA)</td><td>Current market prices of comparable listed companies</td><td>Quick market-based reference; M&A, IPO pricing</td><td>Market may be mispriced. Comparables may not be truly comparable.</td><td>AFM — relative valuation questions.</td></tr>
+      <tr><td>Precedent Transactions</td><td>Prices paid in past M&A deals for similar companies</td><td>M&A deal negotiation; setting offer price</td><td>Deals may be old; market conditions change. Control premium inflates values.</td><td>AFM — M&A valuation scenarios.</td></tr>
+      <tr><td>NAV / Asset-Based</td><td>Balance sheet — assets minus liabilities at fair value</td><td>Banks, real estate, holding cos, liquidation</td><td>Ignores earnings power and intangible value (brand, relationships).</td><td>SBR — impairment testing, IFRS 13 fair value.</td></tr>
+    </table>
+  </div>
+
+  <!-- 33.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">33.3</div>
+      <div class="section-title">Intrinsic Value vs Market Value — Key Distinction</div>
+    </div>
+    <p class="prose">Before diving into the methods, you must understand the fundamental distinction between <strong>Intrinsic Value</strong> and <strong>Market Value</strong>. These are often different — and exploiting that difference is how investors make money.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Intrinsic Value</div>
+        <ul class="card-items">
+          <li>The "true" value of a company based on its fundamentals — cash flows, growth, risk</li>
+          <li>Calculated through analysis — DCF is the primary method</li>
+          <li>Does NOT depend on what the market currently thinks or what other people are paying</li>
+          <li>A company generating ₹100Cr of free cash flow per year, growing at 12%, with low risk has a specific intrinsic value regardless of its current share price</li>
+          <li>Warren Buffett's entire investment philosophy: buy companies whose intrinsic value is far above market price</li>
+          <li>Problem: intrinsic value requires assumptions about the future — two analysts can calculate very different intrinsic values for the same company</li>
+        </ul>
+        <div class="card-tag">Fundamental Value</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📉</div>
+        <div class="card-title">Market Value</div>
+        <ul class="card-items">
+          <li>The price the market is currently willing to pay — share price × shares outstanding = Market Cap</li>
+          <li>Reflects collective opinion of all investors at this moment in time</li>
+          <li>Driven by: current earnings, sentiment, macro conditions, news flow, technical factors, momentum</li>
+          <li>Can deviate significantly from intrinsic value — especially during bubbles (overvalued) or crashes (undervalued)</li>
+          <li>In the short run, market price is driven by supply and demand. In the long run, it tends to converge to intrinsic value.</li>
+          <li>Benjamin Graham: "In the short run, the market is a voting machine. In the long run, it is a weighing machine."</li>
+        </ul>
+        <div class="card-tag">Market Price</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">The Margin of Safety</div>
+        <ul class="card-items">
+          <li>The gap between intrinsic value and the price you actually pay</li>
+          <li>If intrinsic value = ₹200 per share and you buy at ₹120 → margin of safety = 40%</li>
+          <li>Protects you against errors in your own analysis (you might be wrong about growth rate)</li>
+          <li>Protects you against bad luck (unexpected events hit the business)</li>
+          <li>The larger the margin of safety, the better the investment — core principle of value investing</li>
+          <li>ACCA AFM: understand this concept even though it is not always explicitly tested — it underpins all valuation</li>
+        </ul>
+        <div class="card-tag">Buffett / Graham</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Why Valuation Is Hard — The Efficient Market Hypothesis (EMH)</div>
+      The Efficient Market Hypothesis (EMH) says that market prices already reflect all available information — so it is impossible to consistently find undervalued stocks. If EMH is true, intrinsic value = market value at all times, and valuation analysis is pointless.<br><br>
+      <strong>Three forms:</strong> Weak form (prices reflect all past price data — technical analysis useless), Semi-strong form (prices reflect all public information — fundamental analysis useless), Strong form (prices reflect all information including insider information — no one can beat the market).<br><br>
+      <strong>ACCA AFM:</strong> Know all three forms of EMH. The exam often asks you to discuss implications for analysts, investors, and corporate decisions (e.g. timing of share issues). Most practitioners believe markets are semi-strong at best — there are still opportunities for rigorous valuation analysis.
+    </div>
+  </div>
+
+  <!-- 33.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">33.4</div>
+      <div class="section-title">DCF Valuation — Discounted Cash Flow Method (Deep Dive)</div>
+      <div class="section-meta">Most Important Valuation Method</div>
+    </div>
+    <p class="prose">DCF is the gold standard of valuation. The core idea is simple: <strong>a company is worth the present value of all the future cash flows it will ever generate.</strong> In practice, this means projecting free cash flows for a forecast period (typically 5–10 years), then calculating a terminal value for everything beyond that, and discounting everything back to today using an appropriate discount rate (WACC).</p>
+
+    <div class="quote">"The value of any investment is, and always must be, the present value of all the cash it will generate over its lifetime." — John Burr Williams, The Theory of Investment Value (1938)</div>
+
+    <p class="section-label">DCF Step-by-Step Process</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">STEP 01</div>
+        <div class="step-content"><strong>Understand the Business & Gather Historical Data</strong><br>
+        Read annual reports, understand the business model, revenue drivers, cost structure, capex intensity. Gather 3–5 years of historical financials. Calculate historical revenue growth, EBITDA margins, Free Cash Flow conversion. This tells you what the business has delivered — the foundation for your forecast.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 02</div>
+        <div class="step-content"><strong>Project Free Cash Flow to Firm (FCFF) for 5–10 Years</strong><br>
+        Build a financial model forecasting Revenue → EBIT → NOPAT (Net Operating Profit After Tax) → Add back: Depreciation & Amortisation → Subtract: Capex, Changes in Working Capital → = Free Cash Flow to Firm (FCFF). Assumptions should be justified by industry dynamics, management guidance, competitive position, and macro outlook.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 03</div>
+        <div class="step-content"><strong>Calculate the Discount Rate (WACC)</strong><br>
+        WACC = Cost of Equity (from CAPM — covered in Chapter 22) weighted by equity proportion + Cost of Debt (post-tax) weighted by debt proportion. WACC reflects the risk of the entire business — the higher the risk, the higher the WACC, the lower the present value. (Full WACC detail in Section 33.5.)</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 04</div>
+        <div class="step-content"><strong>Calculate Terminal Value</strong><br>
+        After your forecast period ends, the company still has value — this is the terminal value. Two methods: Gordon Growth Model (GGM) — assume FCF grows at a constant rate forever; or Exit Multiple — apply a multiple (e.g. EV/EBITDA) to the final year's metric. Terminal value often accounts for 60–80% of total DCF value — so getting this right is critical. (Full detail in Section 33.6.)</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 05</div>
+        <div class="step-content"><strong>Discount Everything Back to Present Value</strong><br>
+        PV of each year's FCFF = FCFF ÷ (1 + WACC)^n. PV of Terminal Value = Terminal Value ÷ (1 + WACC)^n (where n = end of forecast period). Sum of all PVs = Enterprise Value (EV). This is the total value of the business including both equity and debt.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 06</div>
+        <div class="step-content"><strong>Bridge from Enterprise Value to Equity Value (Share Price)</strong><br>
+        Equity Value = Enterprise Value − Net Debt (Total Debt − Cash). This gives you the value attributable to equity shareholders. Equity Value ÷ Shares Outstanding = Intrinsic Value Per Share. Compare to current market price to determine if the stock is undervalued (buy) or overvalued (sell).</div>
+      </div>
+    </div>
+
+    <p class="section-label">Free Cash Flow to Firm — The Full Build</p>
+    <div class="formula-block">
+      <div class="formula-header">FCFF Build — From P&L and Balance Sheet</div>
+      <div class="formula-row">
+        <div class="formula-name">EBIT (Earnings Before Interest & Tax)</div>
+        <div class="formula-eq">Revenue − COGS − Operating Expenses − D&A<br><span style="color:var(--muted);">This is operating profit — the return generated by the business before financing costs and tax.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">NOPAT (Net Operating Profit After Tax)</div>
+        <div class="formula-eq">EBIT × (1 − Tax Rate)<br><span style="color:var(--muted);">Tax-adjusted operating profit. Removes the tax benefit of debt interest — treats firm as if all equity financed (tax effect captured in WACC separately).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">+ Depreciation & Amortisation</div>
+        <div class="formula-eq">Add back D&A (non-cash charge)<br><span style="color:var(--muted);">D&A reduced EBIT but did not consume cash — we add it back to get to cash earnings.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">− Capital Expenditure (Capex)</div>
+        <div class="formula-eq">Subtract investment in PP&E and other long-term assets<br><span style="color:var(--muted);">Cash actually spent on maintaining and growing the asset base. From cash flow statement or capex schedule.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">− / + Change in Working Capital</div>
+        <div class="formula-eq">−ΔInventory − ΔReceivables + ΔPayables<br><span style="color:var(--muted);">Growing businesses often need more working capital — this consumes cash. Shrinking WC (e.g. reducing receivables) releases cash.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">= Free Cash Flow to Firm (FCFF)</div>
+        <div class="formula-eq">NOPAT + D&A − Capex − ΔNWC<br><span style="color:var(--muted);">The cash the business generates after all operating investments. Available to be distributed to both debt and equity holders — hence "to firm."</span></div>
+      </div>
+    </div>
+
+    <p class="section-label">DCF Worked Example — XYZ Ltd</p>
+    <div class="wide-card">
+      <h4>📊 Full DCF Valuation — XYZ Manufacturing Ltd</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;">
+        <strong style="color:var(--text);">Company:</strong> XYZ Manufacturing Ltd. Revenue FY25 = ₹500Cr. EBIT Margin = 18%. Tax Rate = 25%. D&A = ₹30Cr/yr. Capex = ₹40Cr/yr. Change in NWC = ₹10Cr/yr (growing). WACC = 12%. Revenue grows at 10%/yr for 5 years. Terminal Growth Rate = 5%. Net Debt = ₹200Cr. Shares Outstanding = 10Cr.<br><br>
+
+        <strong style="color:var(--text);">Step 1 — Calculate Base Year FCFF (FY25):</strong><br>
+        EBIT = ₹500Cr × 18% = ₹90Cr<br>
+        NOPAT = ₹90Cr × (1 − 25%) = ₹67.5Cr<br>
+        FCFF = ₹67.5Cr + ₹30Cr − ₹40Cr − ₹10Cr = <span style="color:var(--accent2);font-family:var(--mono);">₹47.5Cr</span><br><br>
+
+        <strong style="color:var(--text);">Step 2 — Project FCFF (assume FCFF grows in line with revenue at 10%/yr):</strong><br>
+        FY26: ₹47.5Cr × 1.10 = ₹52.25Cr → PV = 52.25 ÷ 1.12 = ₹46.65Cr<br>
+        FY27: ₹57.48Cr → PV = 57.48 ÷ 1.12² = ₹45.84Cr<br>
+        FY28: ₹63.22Cr → PV = ₹44.95Cr<br>
+        FY29: ₹69.55Cr → PV = ₹44.18Cr<br>
+        FY30: ₹76.50Cr → PV = ₹43.40Cr<br>
+        <strong style="color:var(--text);">Sum of PV of FCFF (FY26–FY30) = ₹225.02Cr</strong><br><br>
+
+        <strong style="color:var(--text);">Step 3 — Terminal Value (Gordon Growth Model, at end of FY30):</strong><br>
+        Terminal Value = FCFF_FY30 × (1 + g) ÷ (WACC − g)<br>
+        = ₹76.50Cr × 1.05 ÷ (12% − 5%)<br>
+        = ₹80.33Cr ÷ 7%<br>
+        = ₹1,147.5Cr<br>
+        PV of Terminal Value = ₹1,147.5Cr ÷ 1.12⁵ = <span style="color:var(--accent2);font-family:var(--mono);">₹651.0Cr</span><br><br>
+
+        <strong style="color:var(--text);">Step 4 — Enterprise Value:</strong><br>
+        EV = ₹225.02Cr + ₹651.0Cr = <span style="color:var(--accent2);font-family:var(--mono);">₹876.0Cr</span><br><br>
+
+        <strong style="color:var(--text);">Step 5 — Equity Value & Intrinsic Share Price:</strong><br>
+        Equity Value = EV − Net Debt = ₹876Cr − ₹200Cr = ₹676Cr<br>
+        Intrinsic Share Price = ₹676Cr ÷ 10Cr shares = <span style="color:var(--accent2);font-family:var(--mono);">₹67.6 per share</span><br><br>
+
+        <strong style="color:var(--text);">Decision:</strong> If the stock currently trades at ₹50 → it is undervalued by 35% → potential BUY. If it trades at ₹90 → it is overvalued → potential SELL or HOLD.
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">⚠️ Key DCF Limitations — Always Discuss in Exams</div>
+      <strong>1. Garbage In, Garbage Out:</strong> The DCF is only as good as its assumptions. Change WACC from 12% to 10% and the value jumps dramatically. Change terminal growth from 5% to 6% and the value can increase by 30–40%.<br><br>
+      <strong>2. Terminal Value Dominates:</strong> In most DCF models, 60–80% of the total value comes from the terminal value — which is itself based on a perpetuity assumption. This is highly uncertain for any business beyond 5 years.<br><br>
+      <strong>3. No Capture of Optionality:</strong> DCF values the business as it is, not what it could become. High-growth startups, biotech companies with pipeline drugs, or companies with real options (expansion rights, patents) are hard to value with DCF alone.<br><br>
+      <strong>ACCA exam tip:</strong> When asked to evaluate a DCF, always acknowledge its limitations AND explain what information you would need to improve the analysis.
+    </div>
+  </div>
+
+  <!-- 33.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">33.5</div>
+      <div class="section-title">WACC as the Discount Rate — Linking Chapter 22 to 23</div>
+    </div>
+    <p class="prose">The discount rate in a DCF should reflect the risk of the cash flows being discounted. Since FCFF is the cash available to all providers of capital (both debt and equity), the correct discount rate is <strong>WACC — Weighted Average Cost of Capital</strong> (covered fully in Chapter 22). Here we focus on how WACC connects to and impacts the DCF valuation.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">WACC Formula — Recap</div>
+      <div class="formula-row">
+        <div class="formula-name">WACC</div>
+        <div class="formula-eq">WACC = Ke × [E/(E+D)] + Kd(1−t) × [D/(E+D)]<br><br>
+        <span style="color:var(--muted);">Ke = Cost of Equity (from CAPM: Rf + β(Rm−Rf))<br>
+        Kd = Pre-tax cost of debt (interest rate or YTM on debt)<br>
+        t = Corporate tax rate<br>
+        E = Market value of equity | D = Market value of debt<br>
+        Always use MARKET values for weights, never book values.</span></div>
+      </div>
+    </div>
+
+    <p class="section-label">WACC Sensitivity — Small Changes Have Huge Impact</p>
+    <div class="wide-card">
+      <h4>📊 WACC vs Valuation — Why 1% Change Matters Enormously</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;">
+        <strong style="color:var(--text);">Using XYZ Ltd example from 23.4:</strong> Terminal Year FCFF = ₹76.5Cr, Terminal Growth = 5%<br><br>
+        At WACC = 10%: Terminal Value = 76.5 × 1.05 ÷ (10%−5%) = <span style="color:var(--accent2);font-family:var(--mono);">₹1,606Cr</span><br>
+        At WACC = 12%: Terminal Value = 76.5 × 1.05 ÷ (12%−5%) = <span style="color:var(--accent2);font-family:var(--mono);">₹1,148Cr</span><br>
+        At WACC = 14%: Terminal Value = 76.5 × 1.05 ÷ (14%−5%) = <span style="color:var(--accent2);font-family:var(--mono);">₹893Cr</span><br><br>
+        A 2% change in WACC changes the terminal value by 40% in either direction. This is why sensitivity analysis (Section 33.12) is non-negotiable in any serious valuation.
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-icon">📉</div>
+        <div class="card-title">Higher WACC = Lower Valuation</div>
+        <ul class="card-items">
+          <li>Higher risk businesses demand higher returns from investors</li>
+          <li>Future cash flows are discounted more heavily → lower present value</li>
+          <li>Triggered by: higher beta, more debt (financial risk), rising interest rates</li>
+          <li>Impact: destroys company valuations when rates rise (seen in 2022 rate hike cycle globally)</li>
+          <li>High-growth tech stocks most impacted — their value is mostly in far-future cash flows, which discount heavily at high rates</li>
+        </ul>
+        <div class="card-tag">Risk Up = Value Down</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Lower WACC = Higher Valuation</div>
+        <ul class="card-items">
+          <li>Lower risk, or lower interest rate environment → lower WACC</li>
+          <li>Future cash flows discounted less → higher present value</li>
+          <li>Why low-rate environments (2009–2021) drove asset price booms globally</li>
+          <li>Companies with stable, predictable cash flows (utilities, FMCG) always trade at premium — their WACC is low (low beta, low credit risk)</li>
+          <li>Debt tax shield reduces WACC (up to the point where financial distress costs rise)</li>
+        </ul>
+        <div class="card-tag">Rate Down = Value Up</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Adjusted WACC for Risk — Advanced Concept</div>
+        <ul class="card-items">
+          <li>If a company is valuing a division in a different industry (e.g. FMCG company valuing a pharma acquisition), it should use a WACC appropriate for the pharma industry — not its own WACC</li>
+          <li>Method: find a proxy company in the target industry → ungear its beta → regear to your capital structure → use in CAPM → get project-specific Ke → calculate adjusted WACC</li>
+          <li>This is the beta ungearing/regearing process — core ACCA AFM technique</li>
+        </ul>
+        <div class="card-tag">ACCA AFM — Advanced</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">33.6</div>
+      <div class="section-title">Terminal Value — The Biggest Number in Valuation</div>
+      <div class="section-meta">60–80% of Total DCF Value</div>
+    </div>
+    <p class="prose">After your explicit forecast period (typically 5–10 years), the company continues to generate cash flows into perpetuity. The <strong>Terminal Value (TV)</strong> captures this. Because TV often accounts for the majority of a DCF's total value, it deserves deep attention. There are two main methods for calculating it.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Terminal Value — Two Methods</div>
+      <div class="formula-row">
+        <div class="formula-name">Method 1 — Gordon Growth Model (GGM)</div>
+        <div class="formula-eq">TV = FCFFn × (1 + g) ÷ (WACC − g)<br><br>
+        <span style="color:var(--muted);">FCFFn = Free Cash Flow in final forecast year<br>
+        g = Long-term sustainable growth rate (usually GDP growth or inflation rate — 3–5% typically)<br>
+        WACC − g = the "spread" — must be positive (WACC must exceed g or formula breaks)<br>
+        Key rule: g should never exceed long-run GDP growth — no company can grow faster than the economy forever</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Method 2 — Exit Multiple</div>
+        <div class="formula-eq">TV = Final Year EBITDA × EV/EBITDA Multiple<br><br>
+        <span style="color:var(--muted);">Multiple = current trading multiple of comparable companies (EV/EBITDA, EV/EBIT, P/E)<br>
+        More pragmatic — anchored to real market pricing<br>
+        But introduces circular logic: if multiples compress (as in a bear market), TV falls dramatically<br>
+        Commonly used by investment bankers and PE analysts in LBO models</span></div>
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Common Terminal Value Mistakes</div>
+        <ul class="card-items">
+          <li>Using a growth rate higher than WACC — makes the formula produce negative or nonsensical value</li>
+          <li>Using unrealistically high terminal growth (e.g. 8–10% forever) — flatters valuation wildly</li>
+          <li>Forgetting to discount the TV back to present value — it exists at end of forecast period, not today</li>
+          <li>Not checking: does the implied EV/EBITDA of your GGM-derived TV make sense vs market multiples?</li>
+          <li>Allowing Capex < D&A in terminal year — implies the business is shrinking while growing</li>
+        </ul>
+        <div class="card-tag">Watch Out</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Cross-Check Your Terminal Value</div>
+        <ul class="card-items">
+          <li>Always compute implied EV/EBITDA from your GGM terminal value and check vs comparable company multiples</li>
+          <li>If your implied multiple is 35x but peers trade at 15x — your growth/margin assumptions are too aggressive</li>
+          <li>Check: what % of your EV is the terminal value? If it is 90%+, you have very little visibility — acknowledge this limitation</li>
+          <li>Run sensitivity on g (terminal growth) — typically test 3%, 4%, 5% — and show the range this creates</li>
+        </ul>
+        <div class="card-tag">Sanity Check</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">33.7</div>
+      <div class="section-title">Relative Valuation — Trading Multiples (EV/EBITDA, P/E, P/B)</div>
+    </div>
+    <p class="prose">Relative valuation asks: <strong>What are similar companies worth, and what does that imply for our company?</strong> Instead of projecting cash flows, we look at what the market is currently paying for comparable businesses and apply those same pricing ratios to the company we are valuing. This is fast, practical, and market-anchored — which is why it is the most widely used valuation tool in day-to-day finance.</p>
+
+    <table class="data-table">
+      <tr><th>Multiple</th><th>Formula</th><th>What It Measures</th><th>Best Used For</th><th>India Example</th></tr>
+      <tr><td>EV/EBITDA</td><td>Enterprise Value ÷ EBITDA</td><td>Operating value relative to cash earnings before capital structure effects. Capital structure neutral — good for cross-company comparison.</td><td>Most widely used in M&A and PE. Works across capital structures. Good for capital-intensive businesses.</td><td>Indian IT: TCS EV/EBITDA ~20–22x. Indian FMCG: HUL ~40–45x (premium for quality).</td></tr>
+      <tr><td>P/E Ratio</td><td>Share Price ÷ Earnings Per Share</td><td>How much investors pay per rupee of net profit. Most familiar multiple to retail investors.</td><td>Profitable companies with clean earnings. Not useful for loss-making companies. Affected by capital structure (interest reduces earnings).</td><td>Nifty 50 P/E historically ~20–22x. High-growth tech: 40–60x. PSU banks: 8–12x.</td></tr>
+      <tr><td>EV/Revenue</td><td>Enterprise Value ÷ Revenue</td><td>Valuation relative to top-line sales. Useful when margins are negative or not meaningful.</td><td>High-growth startups, SaaS companies, early-stage businesses with no earnings.</td><td>Indian SaaS companies typically 5–15x EV/Revenue at listing. Zomato/Swiggy: EV/Revenue used for early-stage comps.</td></tr>
+      <tr><td>Price/Book (P/B)</td><td>Share Price ÷ Book Value Per Share</td><td>Premium over accounting net asset value. Reflects return on equity vs cost of equity.</td><td>Banks and financial institutions (assets are financial, book value meaningful). Also for asset-heavy industrials.</td><td>HDFC Bank P/B ~3–4x. PSU banks P/B ~0.5–1.0x (below book = market expects poor ROE).</td></tr>
+      <tr><td>EV/EBIT</td><td>Enterprise Value ÷ EBIT</td><td>Similar to EV/EBITDA but includes D&A — better for comparing companies with different capex/asset intensities.</td><td>Asset-light vs asset-heavy comparison. More conservative than EV/EBITDA.</td><td>Used when D&A is significant and economically meaningful (e.g. airline, telecom).</td></tr>
+    </table>
+
+    <p class="section-label">How to Run a Trading Comps Analysis — Step by Step</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">STEP 01</div>
+        <div class="step-content"><strong>Select Comparable Companies</strong><br>
+        Choose 5–10 publicly listed companies that are similar to your target in: industry/sector, business model, geographies, size (revenue, market cap), growth profile, margin profile. Perfect comps rarely exist — you must use judgement. Disclose any differences and adjust for them.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 02</div>
+        <div class="step-content"><strong>Gather Financial Data for Each Comparable</strong><br>
+        Collect: Market Cap, Share Price, Shares Outstanding, Total Debt, Cash and Equivalents, EBITDA, EBIT, Net Profit (EPS), Revenue, Book Value. Sources: Bloomberg, Screener.in, Trendlyne, Moneycontrol, company filings (BSE/NSE). Use LTM (Last Twelve Months) data — or NTM (Next Twelve Months forecasts) for forward multiples.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 03</div>
+        <div class="step-content"><strong>Calculate Enterprise Value for Each Comparable</strong><br>
+        EV = Market Cap + Total Debt − Cash. Note: EV is the total value of the business independent of capital structure. This is why EV-based multiples (EV/EBITDA, EV/Revenue) are preferred for cross-company comparisons — they are not distorted by whether a company is financed with more debt or more equity.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 04</div>
+        <div class="step-content"><strong>Calculate Each Multiple for Each Comparable</strong><br>
+        Build a table: for each comparable company, calculate EV/EBITDA, P/E, EV/Revenue, P/B. Note the range — minimum, 25th percentile, median, 75th percentile, maximum. Exclude outliers if there is a clear reason (exceptional item, distressed company). The median is usually the best reference point.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">STEP 05</div>
+        <div class="step-content"><strong>Apply the Range of Multiples to Your Target</strong><br>
+        If comps trade at EV/EBITDA of 12x–18x (median 15x) and your target's LTM EBITDA is ₹100Cr:<br>
+        → Low case: 12 × ₹100Cr = ₹1,200Cr EV<br>
+        → Base case: 15 × ₹100Cr = ₹1,500Cr EV<br>
+        → High case: 18 × ₹100Cr = ₹1,800Cr EV<br>
+        Then deduct net debt to get equity value range. This gives you a valuation range, not a single number.</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Premium and Discount Adjustments — When to Apply</div>
+      Rarely is your target perfectly comparable to its peers. Consider adjusting (applying a premium or discount) for:<br><br>
+      <strong>Premium for:</strong> Market leader position, superior margins, faster growth, stronger brand, better management, cleaner balance sheet, ESG leadership.<br><br>
+      <strong>Discount for:</strong> Smaller size (small-cap discount, typically 10–20%), lower liquidity, key-man risk (business dependent on one founder), minority stake (lack of control), less diversified revenue base, weaker corporate governance, regulatory risk.<br><br>
+      These adjustments require professional judgement — and should always be explicitly stated and justified in a valuation report.
+    </div>
+  </div>
+
+  <!-- 33.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">33.8</div>
+      <div class="section-title">Precedent Transaction Analysis</div>
+    </div>
+    <p class="prose">Precedent transactions (also called "deal comps") look at <strong>what acquirers have actually paid for similar companies in past M&A transactions</strong>. Unlike trading comps (which show minority stake prices in the stock market), precedent transactions reflect <strong>control premiums</strong> — the extra amount buyers pay above market value to acquire control of a company.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Control Premium — Why Deals Are Priced Higher</div>
+        <ul class="card-items">
+          <li>When you buy 51%+ of a company, you gain CONTROL — you decide strategy, management, dividends, capex</li>
+          <li>Control is worth more than a minority stake — hence acquirers pay a premium</li>
+          <li>Typical control premium: 20–40% above pre-deal market price (varies by industry, deal type, competitive bidding)</li>
+          <li>This is why precedent transaction multiples are always HIGHER than trading comp multiples</li>
+          <li>In a competitive auction (multiple bidders), premiums can be 50%+ as bidders compete</li>
+          <li>ACCA AFM: understand that deal multiples > trading multiples due to control premium</li>
+        </ul>
+        <div class="card-tag">M&A Premium</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">How to Find Precedent Transactions</div>
+        <ul class="card-items">
+          <li>Bloomberg M&A database — professional standard, requires subscription</li>
+          <li>Capital IQ (S&P Global) — comprehensive deal database</li>
+          <li>Mergermarket — deal news and data</li>
+          <li>In India: SEBI open offer disclosures, stock exchange announcements, Acquisdata, VCCEdge</li>
+          <li>Key filters: same industry, past 3–5 years (older deals less relevant due to market changes), similar target size, strategic vs financial buyer</li>
+          <li>Look for deals where full financials of target were disclosed — not all are</li>
+        </ul>
+        <div class="card-tag">Data Sources</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Key Transaction Multiples</div>
+        <ul class="card-items">
+          <li>EV/EBITDA (LTM and NTM) — most common in M&A</li>
+          <li>EV/Revenue — for high-growth or loss-making targets</li>
+          <li>P/E — less common in M&A (capital structure noise), more in minority stake deals</li>
+          <li>EV/EBIT — for capital-intensive businesses</li>
+          <li>Premium to Pre-Deal Market Price — measures control premium directly</li>
+          <li>Always note: was deal all-cash, all-stock, or mixed? Stock deals may be priced differently from cash deals.</li>
+        </ul>
+        <div class="card-tag">Multiples Used</div>
+      </div>
+    </div>
+
+    <table class="data-table" style="margin-top:20px;">
+      <tr><th>Feature</th><th>Trading Comps</th><th>Precedent Transactions</th></tr>
+      <tr><td>What they measure</td><td>Minority stake prices in public markets — daily quoted prices</td><td>Control prices actually paid in M&A deals</td></tr>
+      <tr><td>Multiple level</td><td>Lower — minority stake, liquid, no control</td><td>Higher — includes control premium (20–40%+)</td></tr>
+      <tr><td>Timeliness</td><td>Fully current — updated every trading day</td><td>Historical — may be months or years old</td></tr>
+      <tr><td>Market conditions</td><td>Reflects current sentiment (may be depressed in bear markets)</td><td>Reflects market conditions at time of deal</td></tr>
+      <tr><td>Data availability</td><td>Widely available for listed companies</td><td>Depends on public disclosure — not always fully available</td></tr>
+      <tr><td>Used for</td><td>Minority investment decisions, equity research, quick benchmarking</td><td>M&A deal pricing, fairness opinions, acquisition decisions</td></tr>
+    </table>
+  </div>
+
+  <!-- 33.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">33.9</div>
+      <div class="section-title">Asset-Based Valuation — NAV Method</div>
+    </div>
+    <p class="prose">Asset-based valuation determines company value by looking at what its assets are worth, minus what it owes. The key principle: <strong>you are valuing the balance sheet at fair value, not at historical cost.</strong> This is the dominant method for banks, real estate companies, holding companies, and businesses in financial distress.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Net Asset Value (NAV) Calculation</div>
+      <div class="formula-row">
+        <div class="formula-name">Book NAV (Accounting)</div>
+        <div class="formula-eq">Total Equity on Balance Sheet = Total Assets − Total Liabilities<br><span style="color:var(--muted);">At historical cost. Quick but not meaningful for valuation purposes — ignores fair value changes in assets.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Adjusted NAV (Fair Value)</div>
+        <div class="formula-eq">Fair Value of All Assets − Fair Value of All Liabilities<br><span style="color:var(--muted);">Revalue each asset class to current market/fair value (PP&E, investments, real estate, intangibles). Adjust liabilities for current market value of debt. This gives the true economic net asset value per share.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">NAV Per Share</div>
+        <div class="formula-eq">Adjusted NAV ÷ Shares Outstanding<br><span style="color:var(--muted);">Compare to current share price. P/B = Share Price ÷ NAV per share. P/B &lt; 1 means market prices company below its net assets — unusual for profitable companies, common for distressed or capital-destroying businesses.</span></div>
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">NAV for Banks — Why P/B Is the Key Multiple</div>
+        <ul class="card-items">
+          <li>Banks' assets ARE financial instruments (loans, bonds, securities) — they can be reliably fair valued</li>
+          <li>P/B ratio is the primary valuation multiple for banks: P/B = Market Cap ÷ Book Equity</li>
+          <li>A bank with P/B = 3x → market values it at 3x its book equity (implies high ROE, strong franchise)</li>
+          <li>A bank with P/B = 0.8x → market values it below book equity (implies ROE &lt; cost of equity, poor quality assets, or distress)</li>
+          <li>HDFC Bank: P/B ~3–4x (premium private sector bank). Many PSU banks: P/B 0.5–1x.</li>
+          <li>Relationship: P/B = (ROE − g) ÷ (Ke − g). Higher ROE → deserves higher P/B.</li>
+        </ul>
+        <div class="card-tag">Banking Sector</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏠</div>
+        <div class="card-title">NAV for Real Estate Companies</div>
+        <ul class="card-items">
+          <li>Real estate companies' primary assets are properties — valued at market price by independent valuers</li>
+          <li>NAV = current market value of property portfolio − debt − other liabilities</li>
+          <li>Discount to NAV: real estate listed companies often trade at 10–20% discount to NAV (illiquidity discount, management fee drag, complexity)</li>
+          <li>REITs (Real Estate Investment Trusts) — in India: Embassy REIT, Mindspace REIT — also valued on NAV and distribution yield</li>
+          <li>Key metric: RNAV (Revalued Net Asset Value) — widely used for real estate developers</li>
+        </ul>
+        <div class="card-tag">Real Estate</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">NAV for Holding Companies</div>
+        <ul class="card-items">
+          <li>A holding company owns stakes in other listed or unlisted companies</li>
+          <li>NAV = Sum of fair values of all investee company stakes − holding company's own debt and costs</li>
+          <li>For listed investees: value = share price × number of shares held</li>
+          <li>For unlisted investees: value = DCF or multiples-based valuation of that investee</li>
+          <li>Holding company discount: holdcos typically trade at 20–40% discount to their NAV — due to lack of control, tax inefficiency of dividends flowing up, complexity</li>
+          <li>India example: Bajaj Holdings, Tata Investment Corporation — both trade at significant holdco discounts</li>
+        </ul>
+        <div class="card-tag">Holdco / Conglomerate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">33.10</div>
+      <div class="section-title">Enterprise Value vs Equity Value — The Bridge</div>
+    </div>
+    <p class="prose">One of the most important and frequently confused distinctions in valuation is between <strong>Enterprise Value (EV)</strong> and <strong>Equity Value (Market Cap)</strong>. Getting this wrong invalidates an entire valuation. Every analyst must master this bridge.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">The EV ↔ Equity Value Bridge</div>
+      <div class="formula-row">
+        <div class="formula-name">Enterprise Value (EV)</div>
+        <div class="formula-eq">EV = Market Cap + Total Debt + Preference Shares + Minority Interest − Cash & Cash Equivalents<br><span style="color:var(--muted);">EV is the TOTAL value of the business — what you would pay to buy the whole company (all equity + all debt) and then receive the cash sitting in it. Capital structure neutral.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">From EV → Equity Value</div>
+        <div class="formula-eq">Equity Value = EV − Total Debt − Preference Shares − Minority Interest + Cash<br><span style="color:var(--muted);">Alternatively: EV − Net Debt (where Net Debt = Total Debt − Cash). This is what is left for equity shareholders after all debt obligations are accounted for.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">From Equity Value → Share Price</div>
+        <div class="formula-eq">Intrinsic Share Price = Equity Value ÷ Diluted Shares Outstanding<br><span style="color:var(--muted);">Use DILUTED shares — include options, warrants, convertibles that could dilute equity. This is what the stock is worth per share — compare to market price.</span></div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">⚠️ Most Common Valuation Mistakes — EV/Equity Confusion</div>
+      <strong>Mistake 1:</strong> Using an EV multiple (like EV/EBITDA) but comparing to equity value (market cap). EBITDA is pre-debt metric → must compare to EV. Net Income is post-debt → must compare to equity value (P/E).<br><br>
+      <strong>Mistake 2:</strong> Forgetting to subtract debt when going from EV to equity value. If a company has EV of ₹1,000Cr and debt of ₹400Cr, equity value is only ₹600Cr — not ₹1,000Cr.<br><br>
+      <strong>Mistake 3:</strong> Adding cash instead of subtracting debt (or vice versa). Remember: EV = Market Cap + Net Debt. To get from EV back to equity value, subtract net debt (not add it).<br><br>
+      <strong>ACCA Rule:</strong> EV-based multiples (EV/EBITDA, EV/EBIT, EV/Sales) pair with metrics available to ALL capital providers. Equity-based multiples (P/E, P/B, P/FCF) pair with metrics available to EQUITY shareholders only.
+    </div>
+  </div>
+
+  <!-- 33.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">33.11</div>
+      <div class="section-title">Valuation in Practice — The Football Field Chart</div>
+    </div>
+    <p class="prose">In real investment banking and equity research, valuations are never presented as a single number. They are presented as a <strong>range of values</strong> from multiple methods — visualised as a "football field" chart (horizontal bar chart with each method showing a range). This is how valuation is communicated to boards, clients, and investors professionally.</p>
+
+    <div class="wide-card">
+      <h4>📊 Football Field Chart — XYZ Ltd Valuation Summary</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.4;">
+        <div style="display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:center;margin-bottom:10px;">
+          <span style="color:var(--text);font-weight:600;">DCF (Base Case)</span>
+          <div style="background:rgba(0,212,170,0.15);border-left:3px solid var(--accent2);padding:6px 14px;border-radius:0 8px 8px 0;font-family:var(--mono);font-size:12px;color:var(--accent2);">₹55 — ₹72 per share (Base: ₹67.6)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:center;margin-bottom:10px;">
+          <span style="color:var(--text);font-weight:600;">Trading Comps (EV/EBITDA)</span>
+          <div style="background:rgba(232,121,249,0.15);border-left:3px solid var(--accent5);padding:6px 14px;border-radius:0 8px 8px 0;font-family:var(--mono);font-size:12px;color:var(--accent5);">₹50 — ₹68 per share</div>
+        </div>
+        <div style="display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:center;margin-bottom:10px;">
+          <span style="color:var(--text);font-weight:600;">Precedent Transactions</span>
+          <div style="background:rgba(255,217,61,0.15);border-left:3px solid var(--accent4);padding:6px 14px;border-radius:0 8px 8px 0;font-family:var(--mono);font-size:12px;color:var(--accent4);">₹65 — ₹88 per share (incl. control premium)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:center;margin-bottom:10px;">
+          <span style="color:var(--text);font-weight:600;">Current Market Price</span>
+          <div style="background:rgba(255,107,107,0.15);border-left:3px solid var(--accent3);padding:6px 14px;border-radius:0 8px 8px 0;font-family:var(--mono);font-size:12px;color:var(--accent3);">₹50 per share (reference)</div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+          <strong style="color:var(--text);">Conclusion:</strong> All three methods suggest XYZ is worth ₹55–₹88 per share vs current market price of ₹50. The stock appears undervalued on all methods. The overlap zone (₹65–₹68) is the most credible reference range. A fair M&A offer price would be ₹70–₹80 (applying a 15–20% control premium to the DCF/trading comps central estimate).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">33.12</div>
+      <div class="section-title">Sensitivity Analysis & Scenario Planning in Valuation</div>
+    </div>
+    <p class="prose">Because DCF assumptions are inherently uncertain, every professional valuation includes <strong>sensitivity analysis</strong> — showing how the valuation changes as key assumptions change. This is not optional — it is a core professional standard, and <strong>always tested in ACCA AFM.</strong></p>
+
+    <p class="section-label">Sensitivity Table — WACC vs Terminal Growth Rate</p>
+    <div class="wide-card">
+      <h4>📊 XYZ Ltd — Equity Value Per Share (₹) at Different WACC & g Combinations</h4>
+      <table class="data-table" style="margin-top:10px;">
+        <tr><th>WACC \ Growth (g)</th><th>3.0%</th><th>4.0%</th><th>5.0%</th><th>6.0%</th><th>7.0%</th></tr>
+        <tr><td>10.0%</td><td>₹74</td><td>₹86</td><td>₹104</td><td>₹130</td><td>₹173</td></tr>
+        <tr><td>11.0%</td><td>₹62</td><td>₹71</td><td>₹83</td><td>₹99</td><td>₹125</td></tr>
+        <tr><td>12.0%</td><td>₹52</td><td>₹59</td><td>₹68</td><td>₹79</td><td>₹95</td></tr>
+        <tr><td>13.0%</td><td>₹45</td><td>₹50</td><td>₹56</td><td>₹65</td><td>₹76</td></tr>
+        <tr><td>14.0%</td><td>₹39</td><td>₹43</td><td>₹48</td><td>₹54</td><td>₹60</td></tr>
+      </table>
+      <div style="font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.9;">
+        <strong style="color:var(--text);">How to read this:</strong> Each cell shows the equity value per share at that combination of WACC (discount rate, rows) and g (terminal growth rate, columns). The current market price is ₹50. The highlighted zone (WACC 12%, g 5%) is our base case at ₹68. Notice: the value ranges from ₹39 to ₹173 across the full table — enormous sensitivity. This is exactly why presenting a range is more honest than a single point estimate.<br><br>
+        <strong style="color:var(--text);">ACCA Exam:</strong> Build this kind of two-variable sensitivity table. Identify which combination of assumptions would justify the current market price. Conclude whether the stock appears under or overvalued.
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Scenario Analysis — Three Cases</div>
+        <ul class="card-items">
+          <li><strong>Base Case:</strong> Management guidance or consensus analyst forecasts — the most likely outcome</li>
+          <li><strong>Bull Case (Upside):</strong> Everything goes right — higher growth, margin expansion, successful new products. Typically adds 20–40% to base case value.</li>
+          <li><strong>Bear Case (Downside):</strong> Competition intensifies, macro worsens, execution fails. Typically 20–40% below base case.</li>
+          <li>Assign probability weights: Base 50%, Bull 25%, Bear 25% → probability-weighted value</li>
+          <li>More sophisticated: Monte Carlo simulation — run thousands of random scenarios using probability distributions for each key variable</li>
+        </ul>
+        <div class="card-tag">3-Case Model</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Key Variables to Sensitise</div>
+        <ul class="card-items">
+          <li><strong>Revenue growth rate:</strong> What if growth is 3% lower or higher than forecast?</li>
+          <li><strong>EBITDA margin:</strong> What if margins compress by 200bps due to competition?</li>
+          <li><strong>WACC:</strong> 1% higher WACC (rising rates, increased risk) — what does it do to value?</li>
+          <li><strong>Terminal growth rate:</strong> What if the business matures faster than expected?</li>
+          <li><strong>Capex intensity:</strong> What if the business needs more reinvestment than planned?</li>
+          <li><strong>Tax rate:</strong> What if tax rates change (policy risk)?</li>
+        </ul>
+        <div class="card-tag">Key Drivers</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">33.13</div>
+      <div class="section-title">Valuation in India — Real World Context</div>
+    </div>
+    <p class="prose">India's capital markets and M&A landscape have specific characteristics that impact how valuation is applied in practice. Understanding these nuances is essential for anyone working in Indian finance — and for ACCA students who want to anchor theoretical concepts in Indian reality.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Indian Market Multiples — Structural Premium</div>
+        <ul class="card-items">
+          <li>Indian listed equities historically trade at a premium to global emerging markets — due to strong growth, rule of law, democracy, large domestic consumption story</li>
+          <li>Nifty 50 forward P/E: typically 18–24x vs global EM average ~12–14x</li>
+          <li>Quality Indian franchises command extreme premiums: HUL 60x+, Asian Paints 70x+, HDFC Bank 3–4x book</li>
+          <li>Justification: superior ROE, strong balance sheets, pricing power, dominant market position, India's long-term growth story</li>
+          <li>Risk: when these premiums compress (global risk-off, macro shock), these stocks correct sharply</li>
+        </ul>
+        <div class="card-tag">India Premium</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Regulatory Valuation Requirements</div>
+        <ul class="card-items">
+          <li><strong>SEBI Open Offer:</strong> If you acquire 25%+ of a listed company, you must make an open offer at a SEBI-specified floor price (based on highest acquisition price and market average)</li>
+          <li><strong>Delisting:</strong> Reverse Book Building process — shareholders quote the price at which they are willing to exit. Acquirer must accept if discovered price meets threshold.</li>
+          <li><strong>Related Party Transactions:</strong> Listed companies must get independent valuation for material RPTs — SEBI regulations</li>
+          <li><strong>Income Tax (Sec 56(2)(x) & 56(2)(viib)):</strong> Shares of unlisted companies issued above fair value — excess is taxable as income for recipient. Drives need for independent valuation for every unlisted share deal.</li>
+        </ul>
+        <div class="card-tag">SEBI / Tax</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">India M&A — Valuation Dynamics</div>
+        <ul class="card-items">
+          <li>Indian M&A deal volumes growing — driven by PE activity, consolidation in banking, telecom, real estate</li>
+          <li>Control premium in India: typically 25–45% for strategic acquisitions in quality businesses</li>
+          <li>Promoter-driven businesses: valuation often affected by governance questions — markets apply discount if promoter credibility is questioned</li>
+          <li>Family-owned businesses with succession issues: may have depressed valuations due to uncertainty</li>
+          <li>Private equity: PIPE deals (Private Investment in Public Equity) common — PE funds buy stakes in listed companies at a negotiated price, usually at a discount to market</li>
+        </ul>
+        <div class="card-tag">Indian M&A</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <div class="card-title">Startup Valuation in India</div>
+        <ul class="card-items">
+          <li>India's startup ecosystem — 100+ unicorns. Traditional DCF difficult for loss-making early-stage companies.</li>
+          <li>VC valuation methods: Revenue multiples (EV/Revenue of 5–20x for SaaS), GMV multiples (for marketplaces), user acquisition metrics (cost per user, LTV:CAC ratio)</li>
+          <li>Stage-based approach: Seed (team + idea + TAM), Series A (product-market fit), Series B+ (scale, unit economics), Pre-IPO (profitability path)</li>
+          <li>Zomato, Paytm, Nykaa listed at high revenue multiples — post-listing reality check when profitability questioned</li>
+          <li>Lesson: valuation disconnected from fundamentals always corrects — eventually</li>
+        </ul>
+        <div class="card-tag">Startup / VC</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">33.14</div>
+      <div class="section-title">ACCA AFM Exam Technique — Valuation Questions</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>Typical Question Format</th><th>Marks</th><th>Key Technique</th></tr>
+      <tr><td>DCF Business Valuation</td><td>Given revenue forecasts, margins, capex, working capital data — value the company or division. Discount at WACC.</td><td>15–25</td><td>Build FCFF step by step. Show WACC calc. Compute TV using GGM. Bridge to equity value. Present a range, not a single number. Always state and justify assumptions.</td></tr>
+      <tr><td>Terminal Value</td><td>Asked to compute TV using both GGM and exit multiple — compare and comment.</td><td>8–12</td><td>Show both methods. Note which is higher and why. Comment on appropriateness of growth rate (should not exceed GDP). Cross-check with implied EV/EBITDA.</td></tr>
+      <tr><td>Relative Valuation (Multiples)</td><td>Given a set of comparable companies with EV/EBITDA and P/E ratios — value the target. Discuss appropriateness.</td><td>10–15</td><td>Apply median multiple. Adjust for size/growth/risk differences. Acknowledge limitation of each method. Compare result to DCF and explain any divergence.</td></tr>
+      <tr><td>Efficient Market Hypothesis</td><td>Discuss implications of EMH for investors, analysts, and companies raising capital.</td><td>8–12</td><td>Define all three forms. Apply to the specific scenario — e.g. if semi-strong: fundamental analysis irrelevant in theory. Challenge with real-world evidence (anomalies, value investing success).</td></tr>
+      <tr><td>Sensitivity Analysis</td><td>Produce a sensitivity table for DCF value at different WACC and growth rate combinations. Comment on risk.</td><td>8–10</td><td>Clearly lay out the two-way table. Identify the base case cell. Comment on the range and which variable drives most uncertainty. Recommend whether the investment is justified given the risk.</td></tr>
+      <tr><td>M&A Valuation & Control Premium</td><td>Target company is valued — should the acquirer pay the offer price? Is it fair?</td><td>10–20</td><td>Value target using DCF and/or multiples. Add synergies (quantify if data given). Compare to offer price. Is control premium reasonable? Discuss max price acquirer should pay (EV of target + synergies − integration costs).</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 ACCA AFM Golden Rules — Valuation Questions</div>
+      <strong>1. Always Calculate WACC Explicitly:</strong> Show Ke from CAPM, Kd post-tax, weights from market values. Do not shortcut this — marks are awarded for each component.<br><br>
+      <strong>2. Always Present a Range:</strong> No credible valuation gives a single number. Use "the company is worth approximately ₹X–₹Y per share based on our analysis."<br><br>
+      <strong>3. State All Assumptions Clearly:</strong> Growth rate, terminal growth rate, WACC, margin assumptions — all must be stated and justified. The examiner rewards transparent, well-reasoned assumptions even if you chose a slightly different number.<br><br>
+      <strong>4. Always Conclude:</strong> Don't just calculate — answer the question. "Based on our DCF valuation of ₹X and trading comps of ₹Y, the proposed acquisition price of ₹Z appears [fair/undervalued/overvalued] and [should/should not] be recommended to the board."<br><br>
+      <strong>5. Discuss Limitations:</strong> Every valuation method has weaknesses. ACCA always awards marks for critically evaluating your own analysis.
+    </div>
+  </div>
+
+  <!-- 33.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">33.15</div>
+      <div class="section-title">Key Takeaways, Common Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+    </div>
+
+    <!-- PART A: EXTENDED KEY TAKEAWAYS -->
+    <p class="section-label">Part A — 12 Core Takeaways (Must Know)</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Three Valuation Pillars — Never Just One</div><ul class="card-items"><li>Intrinsic (DCF) — fundamental value based on future cash flows</li><li>Relative (Multiples) — what market pays for similar businesses</li><li>Asset-Based (NAV) — balance sheet at fair value</li><li>Always use at least 2 methods — present a range, never one number</li><li>If methods diverge, explain WHY — that explanation is the real insight</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">DCF Core Formula — Memorise This</div><ul class="card-items"><li>FCFF = NOPAT + D&A − Capex − ΔNWC</li><li>NOPAT = EBIT × (1 − Tax Rate)</li><li>Discount FCFF at WACC for each forecast year</li><li>Add PV of Terminal Value</li><li>EV − Net Debt = Equity Value ÷ Shares = Intrinsic Share Price</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Terminal Value = The Most Important Number</div><ul class="card-items"><li>Usually 60–80% of total DCF value — do not guess this</li><li>GGM: TV = FCFFn × (1+g) ÷ (WACC − g)</li><li>g must always be less than WACC — otherwise formula breaks</li><li>g should not exceed long-run nominal GDP growth rate</li><li>Always cross-check: implied EV/EBITDA from TV vs peer multiples</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">EV vs Equity Value — Never Mix Up</div><ul class="card-items"><li>EV = Market Cap + Total Debt − Cash (total business value)</li><li>Equity Value = EV − Net Debt (what belongs to shareholders)</li><li>EV multiples → pair with pre-debt metrics (EBITDA, EBIT, Revenue)</li><li>Equity multiples → pair with post-debt metrics (Net Profit, Book Value)</li><li>Mixing these up = entire valuation is wrong</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">WACC — Every 1% Change Is Massive</div><ul class="card-items"><li>Higher WACC = higher discount = lower valuation</li><li>1% increase in WACC can reduce DCF value by 15–25%</li><li>Rising interest rates (Rf ↑) → WACC ↑ → company values fall</li><li>This is exactly what happened globally in 2022 rate hike cycle</li><li>Always run WACC sensitivity in your model — non-negotiable</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Control Premium — Deal Price vs Market Price</div><ul class="card-items"><li>Precedent transaction multiples are ALWAYS higher than trading comps</li><li>Because: buyers pay extra for CONTROL (strategy, management, dividends)</li><li>Typical control premium: 20–40% above pre-deal market price</li><li>In competitive auctions: can go to 50%+</li><li>Max price to pay = Target EV + Synergies − Integration Costs</li></ul></div>
+      <div class="card"><div class="card-icon">7️⃣</div><div class="card-title">Multiples — Choose the Right One</div><ul class="card-items"><li>EV/EBITDA → best all-round multiple for M&A (capital structure neutral)</li><li>P/E → good for profitable companies, distorted by leverage</li><li>EV/Revenue → use when company has no earnings (startups, loss-making)</li><li>P/B → banks and financial companies only (assets = financial instruments)</li><li>Always compare to same-sector peers — cross-sector multiples are meaningless</li></ul></div>
+      <div class="card"><div class="card-icon">8️⃣</div><div class="card-title">Intrinsic vs Market Value — Core Philosophy</div><ul class="card-items"><li>Intrinsic value = what a business is worth based on fundamentals</li><li>Market value = what people are currently willing to pay</li><li>They diverge constantly — and that divergence creates investment opportunity</li><li>Margin of Safety = buy only when market price is well below intrinsic value</li><li>Long run: market price converges to intrinsic value (Benjamin Graham)</li></ul></div>
+      <div class="card"><div class="card-icon">9️⃣</div><div class="card-title">Sensitivity Analysis — Always Do It</div><ul class="card-items"><li>Build a 2-variable sensitivity table: WACC vs terminal growth rate</li><li>Run 3 scenarios: Bull (optimistic), Base (likely), Bear (pessimistic)</li><li>Assign probability weights — calculate probability-weighted value</li><li>The range of outputs tells you how confident you can be in the valuation</li><li>Wide range = high uncertainty = require higher margin of safety</li></ul></div>
+      <div class="card"><div class="card-icon">🔟</div><div class="card-title">Efficient Market Hypothesis (EMH)</div><ul class="card-items"><li>Weak form: past prices irrelevant — technical analysis cannot beat market</li><li>Semi-strong form: all public info already priced in — research cannot beat market</li><li>Strong form: even insider info priced in — impossible to beat market</li><li>Reality: markets are roughly semi-strong — but not perfectly efficient</li><li>ACCA AFM: know all 3 forms and implications for investors and corporates</li></ul></div>
+      <div class="card"><div class="card-icon">1️⃣1️⃣</div><div class="card-title">NAV — When to Use Asset-Based Valuation</div><ul class="card-items"><li>Banks and financial institutions: assets are financial → P/B is key multiple</li><li>Real estate companies: property at market value → RNAV method</li><li>Holding companies: sum of investee stakes at fair value</li><li>Distressed companies: liquidation value → what creditors will recover</li><li>Never use NAV for asset-light businesses (IT, pharma) — ignores earnings power</li></ul></div>
+      <div class="card"><div class="card-icon">1️⃣2️⃣</div><div class="card-title">Football Field Chart — Professional Communication</div><ul class="card-items"><li>Always present valuation as a range from multiple methods</li><li>Visualise as horizontal bar chart — one bar per method showing low–high range</li><li>Mark current market price as a vertical line for reference</li><li>The overlap zone across methods = most defensible valuation range</li><li>This is how investment bankers present to boards and clients — learn this format</li></ul></div>
+    </div>
+
+    <!-- PART B: COMMON MISTAKES -->
+    <p class="section-label" style="margin-top:40px;">Part B — Most Common Valuation Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Using Book Value Weights in WACC Instead of Market Values</strong><br>
+        Book value of equity (from balance sheet) is historical cost — it is irrelevant for WACC. Always use market value of equity (share price × shares) and market value of debt (current fair value of outstanding debt). Using book values understates or overstates the WACC and corrupts the entire DCF.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Terminal Growth Rate Higher Than WACC</strong><br>
+        If g ≥ WACC, the Gordon Growth Model denominator (WACC − g) becomes zero or negative, producing an infinite or negative terminal value. This is mathematically impossible. In an exam, if your numbers produce this, re-check your inputs — you have made an error somewhere. In practice, g should not exceed long-run GDP growth (roughly 5–7% nominal for India).</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Forgetting to Discount the Terminal Value Back to Present</strong><br>
+        The terminal value is calculated at the END of your forecast period (e.g., Year 5). You must discount it back to today: PV of TV = TV ÷ (1 + WACC)^5. Forgetting this step means you overvalue the company by counting future money as if it were present money — a very common and costly error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Mixing Up EV Multiples and Equity Multiples</strong><br>
+        Applying an EV/EBITDA multiple to derive Equity Value directly (without subtracting net debt) is wrong. EV multiples → derive EV → then subtract net debt → get Equity Value. Equity multiples (P/E) → apply to earnings directly → get Equity Value. Confusing these inflates or deflates the value by the entire net debt amount.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Using Pre-Tax Cost of Debt in WACC</strong><br>
+        Interest is tax-deductible. The actual cost of debt to the company is Kd × (1 − tax rate). Using the gross interest rate without the tax adjustment overstates WACC and understates company value. Always: Kd (post-tax) = pre-tax interest rate × (1 − corporate tax rate).</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Presenting a Single Valuation Number Without a Range</strong><br>
+        No professional valuation produces a single answer. DCF assumptions are inherently uncertain — a small change in WACC or growth rate produces a large change in value. Always present a range: "Based on our analysis, the company is worth ₹55–₹72 per share." A single number implies false precision and is unprofessional.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Using Capex Less Than D&A in Terminal Year</strong><br>
+        In the terminal year, if Capex &lt; D&A, it implies the company is consuming its asset base without replacing it — inconsistent with an assumption that it will grow forever. In the terminal year, Capex should at minimum equal D&A (maintenance capex) plus any incremental capex needed to support the assumed growth rate. This is a subtle but important modelling discipline.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Ignoring Working Capital Changes in FCFF</strong><br>
+        A growing business usually needs more working capital (more inventory, more receivables). This is a real cash outflow that reduces FCFF. Students often forget to include ΔNWC and overstate free cash flow. Conversely, a shrinking or more efficient business releases working capital — which is a real cash inflow.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 9</div>
+        <div class="step-content"><strong>Not Adjusting Comparables for Differences</strong><br>
+        Applying the same multiple to a company that is smaller, riskier, or growing slower than the comparables overstates its value. Always consider: size discount, growth premium/discount, margin differences, geographic risk differences, liquidity discount (for unlisted companies). Acknowledge these in your answer — ACCA marks discussion of adjustments.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 10</div>
+        <div class="step-content"><strong>Not Concluding After the Calculation</strong><br>
+        The biggest mistake in ACCA AFM exams: doing all the calculations but not answering the actual question. The question usually asks: "Should the board accept this offer?" or "Is the share undervalued?" After your valuation — always conclude clearly. State whether the price is fair, too high, or too low, and give a recommendation. Calculations without conclusion earn fewer marks.</div>
+      </div>
+    </div>
+
+    <!-- PART C: QUICK REVISION FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part C — Quick Revision Flashcards (Read These Before Every Exam)</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">FCFF Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: What is the FCFF formula?</strong></li>
+          <li>A: FCFF = EBIT × (1−t) + D&A − Capex − ΔNWC</li>
+          <li><strong>Q: Why add back D&A?</strong></li>
+          <li>A: D&A is non-cash — it reduced EBIT but did not use cash</li>
+          <li><strong>Q: Why use EBIT not EBITDA as starting point?</strong></li>
+          <li>A: EBIT already includes D&A expense which we then add back — same result. Starting from EBITDA: FCFF = EBITDA×(1−t) + D&A×t − Capex − ΔNWC</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">WACC Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: WACC formula?</strong></li>
+          <li>A: WACC = Ke × [E/(E+D)] + Kd(1−t) × [D/(E+D)]</li>
+          <li><strong>Q: What is Ke?</strong></li>
+          <li>A: Ke = Rf + β(Rm − Rf) — from CAPM</li>
+          <li><strong>Q: What weights to use?</strong></li>
+          <li>A: Always MARKET VALUE weights — never book values</li>
+          <li><strong>Q: Why post-tax Kd?</strong></li>
+          <li>A: Interest is tax-deductible — actual cost = rate × (1−tax rate)</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Terminal Value</div>
+        <ul class="card-items">
+          <li><strong>Q: GGM terminal value formula?</strong></li>
+          <li>A: TV = FCFFn × (1+g) ÷ (WACC − g)</li>
+          <li><strong>Q: What is g?</strong></li>
+          <li>A: Perpetual growth rate — must be less than WACC and ≤ GDP growth</li>
+          <li><strong>Q: Exit multiple method?</strong></li>
+          <li>A: TV = Final Year EBITDA × EV/EBITDA Multiple (from comps)</li>
+          <li><strong>Q: When to prefer exit multiple over GGM?</strong></li>
+          <li>A: When market multiples are reliable and you want market-anchored TV</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">EV Bridge</div>
+        <ul class="card-items">
+          <li><strong>Q: EV formula?</strong></li>
+          <li>A: EV = Market Cap + Total Debt + Pref Shares + Minority Interest − Cash</li>
+          <li><strong>Q: EV → Equity Value?</strong></li>
+          <li>A: Equity Value = EV − Net Debt (Net Debt = Total Debt − Cash)</li>
+          <li><strong>Q: Equity Value → Share Price?</strong></li>
+          <li>A: Price = Equity Value ÷ Diluted Shares Outstanding</li>
+          <li><strong>Q: Why EV/EBITDA instead of P/E?</strong></li>
+          <li>A: EV/EBITDA is capital structure neutral — better for cross-company comparison</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Multiples — Quick Reference</div>
+        <ul class="card-items">
+          <li><strong>EV/EBITDA:</strong> Best all-round M&A multiple. Nifty 50 avg ~15–18x</li>
+          <li><strong>P/E:</strong> Most common. India market ~20x forward. High growth: 40–60x</li>
+          <li><strong>P/B:</strong> Banks only. Good banks: 3–5x. Weak banks: below 1x</li>
+          <li><strong>EV/Revenue:</strong> Loss-making startups. SaaS: 5–15x. Marketplace: 2–6x</li>
+          <li><strong>Control Premium:</strong> 20–40% above market for M&A deals typically</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">EMH — Three Forms</div>
+        <ul class="card-items">
+          <li><strong>Weak:</strong> Prices reflect all past price data. Technical analysis useless.</li>
+          <li><strong>Semi-strong:</strong> Prices reflect all public info. Fundamental analysis useless in theory.</li>
+          <li><strong>Strong:</strong> Prices reflect ALL info including insider info. Nothing beats market.</li>
+          <li><strong>Reality:</strong> Markets are roughly semi-strong — but not perfectly so</li>
+          <li><strong>Implication for companies:</strong> Cannot time share issues to exploit overvaluation if markets are efficient</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Margin of Safety</div>
+        <ul class="card-items">
+          <li><strong>Q: What is margin of safety?</strong></li>
+          <li>A: Gap between intrinsic value and the price you pay. Buy at ₹70 when worth ₹100 → 30% margin of safety</li>
+          <li><strong>Q: Why is it important?</strong></li>
+          <li>A: Protects against errors in your analysis AND unexpected bad events</li>
+          <li><strong>Q: Who invented the concept?</strong></li>
+          <li>A: Benjamin Graham (mentor of Warren Buffett) — The Intelligent Investor</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">NAV — When to Use</div>
+        <ul class="card-items">
+          <li><strong>Q: When is NAV the primary valuation method?</strong></li>
+          <li>A: Banks, real estate companies, holding companies, distressed businesses</li>
+          <li><strong>Q: What is P/B below 1 telling you?</strong></li>
+          <li>A: Market believes company destroys value (ROE &lt; Cost of Equity)</li>
+          <li><strong>Q: What is holdco discount?</strong></li>
+          <li>A: Holding companies trade 20–40% below their NAV — due to lack of direct control, tax drag, complexity</li>
+        </ul>
+        <div class="card-tag">Flashcard 8</div>
+      </div>
+    </div>
+
+    <!-- PART D: INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part D — Interview Questions & Model Answers (Big 4, IB, PE, Equity Research)</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Walk me through a DCF."</td><td>Can you explain valuation methodology clearly and logically?</td><td>Project Free Cash Flows to Firm (FCFF = NOPAT + D&A − Capex − ΔNWC) for 5–10 years. Discount at WACC. Add Terminal Value using Gordon Growth Model or Exit Multiple. Sum all PVs = Enterprise Value. Subtract Net Debt = Equity Value. Divide by shares = Intrinsic Share Price. Compare to market price.</td></tr>
+      <tr><td>"Why do we use EBITDA and not Net Income in EV multiples?"</td><td>Do you understand the EV vs equity value distinction?</td><td>EV is the value of the entire business — for both debt and equity holders. EBITDA is pre-interest and pre-tax, so it belongs to all capital providers. Net Income is post-interest and post-tax — it belongs to equity only. Using EV/Net Income would mix debt-level value with equity-level earnings — apples and oranges.</td></tr>
+      <tr><td>"What happens to a company's DCF value when interest rates rise?"</td><td>Do you understand how WACC and rates connect to valuation?</td><td>Rising interest rates increase the risk-free rate (Rf), which increases WACC (via CAPM: Ke = Rf + β(Rm−Rf)). Higher WACC means future cash flows are discounted more heavily — reducing PV of every cash flow and especially the Terminal Value. This is why rising rates in 2022 crushed equity valuations globally, especially high-growth tech stocks whose value was concentrated in far-future cash flows.</td></tr>
+      <tr><td>"Why is precedent transaction EV/EBITDA usually higher than trading comps EV/EBITDA?"</td><td>Do you understand control premiums and M&A pricing?</td><td>Precedent transactions include a control premium — the extra amount a buyer pays to acquire controlling ownership. Control is valuable: it gives the acquirer the right to change management, strategy, and capital allocation. Trading comps reflect minority stake prices in liquid markets — no control premium. Typically the gap is 20–40% for most industries.</td></tr>
+      <tr><td>"If two companies have the same EBITDA, why might one have a higher EV?"</td><td>Deep understanding of valuation drivers</td><td>Many reasons: higher growth expectations (more valuable future cash flows), better quality earnings (more recurring, less cyclical), stronger competitive moat (pricing power, barriers to entry), cleaner balance sheet (less risk), higher margins (showing operational efficiency), better management track record, more diversified revenue, higher ESG score attracting premium investors, or simply being in a more favoured sector.</td></tr>
+      <tr><td>"What are the limitations of DCF valuation?"</td><td>Critical thinking — can you evaluate your own work?</td><td>1) GIGO — highly sensitive to assumptions; small changes in WACC or growth rate massively change output. 2) Terminal value dominates (60–80% of value) — highly uncertain for periods 5+ years away. 3) Cannot value optionality (startup potential, pipeline value, real options). 4) Requires predicting the future — inherently uncertain. 5) Discount rate (WACC) itself involves subjective inputs (beta, equity risk premium). Despite limitations, DCF remains essential — it forces discipline and explicit documentation of assumptions.</td></tr>
+      <tr><td>"When would you NOT use a DCF?"</td><td>Judgment — knowing when NOT to use a tool is as important as knowing when to use it</td><td>Early-stage startups with no earnings or cash flows (use revenue multiples or VC methods). Banks and financial institutions (use P/B and dividend discount model — their FCFF is not meaningful). Companies in distress or likely to go bankrupt (use liquidation/NAV). Situations with extreme uncertainty where any 5-year forecast is essentially fiction. In these cases, multiples or asset-based methods are more appropriate primary valuation tools.</td></tr>
+      <tr><td>"What is the difference between intrinsic value and market value?"</td><td>Core investment philosophy</td><td>Intrinsic value is the fundamental worth of a business based on its expected future cash flows, discounted at an appropriate rate — independent of what the market currently says. Market value is the price the market is currently willing to pay — driven by sentiment, momentum, macro, and information flow. The two diverge constantly. Skilled investors like Buffett identify when market value is significantly below intrinsic value and invest with a margin of safety — the gap between the two.</td></tr>
+    </table>
+
+    <!-- PART E: ALL FORMULAS QUICK REFERENCE -->
+    <p class="section-label" style="margin-top:40px;">Part E — All Key Formulas Quick Reference Sheet</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 33 — Complete Formula Sheet</div>
+      <div class="formula-row">
+        <div class="formula-name">Free Cash Flow to Firm (FCFF)</div>
+        <div class="formula-eq">FCFF = EBIT × (1−t) + D&A − Capex − ΔNWC<br><span style="color:var(--muted);">Or: NOPAT + D&A − Capex − ΔNWC</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">WACC</div>
+        <div class="formula-eq">WACC = Ke × [E/(E+D)] + Kd(1−t) × [D/(E+D)]<br><span style="color:var(--muted);">Always: market value weights, post-tax cost of debt</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Cost of Equity (CAPM)</div>
+        <div class="formula-eq">Ke = Rf + β(Rm − Rf)</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Terminal Value — Gordon Growth Model</div>
+        <div class="formula-eq">TV = FCFFn × (1+g) ÷ (WACC − g)<br><span style="color:var(--muted);">Condition: g &lt; WACC always</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Terminal Value — Exit Multiple</div>
+        <div class="formula-eq">TV = Final Year EBITDA × EV/EBITDA Multiple</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">PV of any Cash Flow</div>
+        <div class="formula-eq">PV = Cash Flow ÷ (1 + WACC)^n<br><span style="color:var(--muted);">n = number of years from today</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Enterprise Value (from market)</div>
+        <div class="formula-eq">EV = Market Cap + Total Debt + Pref Shares + Minority Interest − Cash</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Equity Value (from EV)</div>
+        <div class="formula-eq">Equity Value = EV − Net Debt<br><span style="color:var(--muted);">Net Debt = Total Debt − Cash</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Intrinsic Share Price</div>
+        <div class="formula-eq">Share Price = Equity Value ÷ Diluted Shares Outstanding</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">P/E Ratio</div>
+        <div class="formula-eq">P/E = Share Price ÷ Earnings Per Share (EPS)</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">EV/EBITDA Multiple</div>
+        <div class="formula-eq">EV/EBITDA = Enterprise Value ÷ EBITDA</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Price to Book (P/B)</div>
+        <div class="formula-eq">P/B = Market Cap ÷ Book Value of Equity<br><span style="color:var(--muted);">Or: Share Price ÷ Book Value Per Share</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Implied P/B from Fundamentals</div>
+        <div class="formula-eq">P/B = (ROE − g) ÷ (Ke − g)<br><span style="color:var(--muted);">Higher ROE → deserves higher P/B. If ROE = Ke → P/B = 1</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">NAV Per Share</div>
+        <div class="formula-eq">NAV/Share = (Fair Value of Assets − Fair Value of Liabilities) ÷ Shares Outstanding</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Margin of Safety</div>
+        <div class="formula-eq">Margin of Safety = (Intrinsic Value − Market Price) ÷ Intrinsic Value × 100%</div>
+      </div>
+    </div>
+
+    <!-- PART F: ACCA SPECIFIC TIPS -->
+    <p class="section-label" style="margin-top:40px;">Part F — ACCA AFM Specific Exam Strategy</p>
+    <div class="wide-card">
+      <h4>🎯 How to Score 65%+ in AFM Valuation Questions</h4>
+      <div style="font-size:13.5px;color:var(--muted);line-height:2.2;">
+        <strong style="color:var(--accent2);">1. Read the question TWICE before writing anything.</strong> Identify: What valuation method is being tested? What is the ultimate question (buy/sell/accept/reject)? What data has been given? What have they NOT given (and what assumptions must you make)?<br><br>
+        <strong style="color:var(--accent2);">2. Structure your answer with clear headings.</strong> ACCA markers mark against a marking scheme — they are looking for specific points. Use headings like "WACC Calculation", "FCFF Projection", "Terminal Value", "Enterprise Value", "Equity Value", "Recommendation". This makes it easy for the marker to award you marks.<br><br>
+        <strong style="color:var(--accent2);">3. Show ALL workings — even if you think they are obvious.</strong> Every intermediate calculation is potentially worth marks. Write: formula → substitute values → intermediate step → final answer. Never skip steps.<br><br>
+        <strong style="color:var(--accent2);">4. State assumptions explicitly.</strong> "I have assumed a terminal growth rate of 4% based on India's long-run real GDP growth plus inflation." Markers award marks for clearly stated, reasonably justified assumptions — even if your number differs from the model answer.<br><br>
+        <strong style="color:var(--accent2);">5. If you get stuck on a number — use a reasonable assumption and move on.</strong> ACCA AFM allows own-figure marks (OFM) — if your earlier calculation was wrong but you correctly applied it in later steps, you still get those marks. Never leave a whole section blank because one input is wrong.<br><br>
+        <strong style="color:var(--accent2);">6. Always write a conclusion / recommendation.</strong> The question always ultimately asks for a recommendation. Write it clearly: "Based on our DCF valuation of ₹X per share, which exceeds the current market price of ₹Y, the share appears undervalued. We recommend the board considers this an attractive acquisition target at a price up to ₹Z (which includes a 25% control premium over intrinsic value)."<br><br>
+        <strong style="color:var(--accent2);">7. Discuss limitations — always.</strong> 2–4 marks are nearly always available for discussing limitations of the valuation method you used. Mention: sensitivity to assumptions, uncertainty of terminal value, comparability issues with peers, market conditions.
+      </div>
+    </div>
+
+    <!-- PART G: ACTION STEPS -->
+    <p class="section-label" style="margin-top:32px;">Part G — Action Steps (This Week + This Month)</p>
+    <div class="wide-card">
+      <h4>📋 Your Complete Chapter 33 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ THIS WEEK: Pick any Nifty 50 company — download annual report — build a simple 5-year FCFF projection using real P&L and balance sheet data</span>
+        <span class="tag teal">✅ THIS WEEK: Calculate WACC for your chosen company — use NSE beta, current G-Sec yield as Rf, actual interest rate from notes to accounts as Kd</span>
+        <span class="tag teal">✅ THIS WEEK: Find 5 comparable listed companies using Screener.in — calculate their EV/EBITDA and P/E — build a proper comps table</span>
+        <span class="tag teal">✅ THIS WEEK: Apply your comps multiples to your target — compare to DCF result — write 3 sentences explaining any gap</span>
+        <span class="tag teal">✅ THIS WEEK: Build a 5×5 sensitivity table in Excel — WACC on rows, terminal growth on columns — for your DCF</span>
+        <span class="tag teal">✅ THIS WEEK: Attempt 1 ACCA AFM past paper valuation question under timed conditions (1.8 min per mark)</span>
+        <span class="tag teal">✅ THIS WEEK: Read one Indian M&A news story — identify the EV/EBITDA multiple paid — compare to sector trading multiples</span>
+        <span class="tag teal">✅ THIS WEEK: Explain EV vs Equity Value to a friend or out loud — until you can do it without hesitation</span>
+        <span class="tag teal">✅ THIS MONTH: Complete a full DCF model for one Indian listed company in Excel — from scratch, with all steps</span>
+        <span class="tag teal">✅ THIS MONTH: Complete the football field chart exercise — value one company using DCF, comps, AND precedent transactions — present side by side</span>
+        <span class="tag teal">✅ THIS MONTH: Memorise all formulas in Part E — test yourself without looking — write them on paper from memory</span>
+        <span class="tag teal">✅ THIS MONTH: Practice answering the 8 interview questions in Part D out loud — time yourself — aim for clear 2-minute answers</span>
+        <span class="tag teal">✅ THIS MONTH: Review 3 ACCA AFM past paper valuation questions — mark your answers against the model answers — identify your weak spots</span>
+        <span class="tag teal">✅ THIS MONTH: Read Aswath Damodaran's free online notes on DCF valuation (pages.stern.nyu.edu/~adamodar) — the world's best free resource on valuation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      DCF (Intrinsic Value — What the Business is WORTH)<br>
+      + Trading Comps (Market Value — What the MARKET Says)<br>
+      + Precedent Transactions (Deal Value — What BUYERS Have Paid)<br>
+      + Sensitivity Analysis (Risk Range — How UNCERTAIN Are We)<br>
+      + Margin of Safety (Investment Discipline — PRICE vs VALUE)<br>
+      = <strong style="color:var(--accent4);">Valuation Mastery — The Language of Every Financial Decision</strong>
+    </div>
+    <h3>Chapter 33: Valuation Basics — Complete 📊💰</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 34: Audit Fundamentals — how auditors examine financial statements to give assurance to stakeholders. 🔍</p>
+  </div>
+
+</div>
+</body>
+</html>

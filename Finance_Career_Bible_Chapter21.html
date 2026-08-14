@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 21: Financial Modelling</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #2dd4bf; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(45,212,191,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent5); border:1px solid var(--accent5); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent5),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent5); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent5); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent5); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-teal   { background:rgba(45,212,191,0.2);  color:var(--accent5); border:1px solid rgba(45,212,191,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent5); padding:14px 20px; background:rgba(45,212,191,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent5); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent5); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent5); background:rgba(45,212,191,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(45,212,191,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent5); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(45,212,191,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(45,212,191,0.07),rgba(0,212,170,0.05)); border:1px solid rgba(45,212,191,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent5); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent5); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .model-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .model-header { background:rgba(45,212,191,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent5); text-transform:uppercase; letter-spacing:2px; }
+  .model-row { display:grid; grid-template-columns:0.7fr 1fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .model-row:last-child { border-bottom:none; }
+  .model-tab { font-weight:700; color:var(--accent5); font-family:var(--mono); font-size:11px; }
+  .model-name { font-weight:600; color:var(--text); }
+  .model-desc { color:var(--muted); font-size:11.5px; line-height:1.7; }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(45,212,191,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent5); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent5); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .schedule-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .schedule-header { background:rgba(45,212,191,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent5); text-transform:uppercase; letter-spacing:2px; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(45,212,191,0.1); border:1px solid rgba(45,212,191,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mistake-item { background:var(--card); border:1px solid rgba(255,107,107,0.25); border-radius:10px; padding:16px 18px; margin-bottom:10px; }
+  .mistake-title { font-size:13px; font-weight:600; color:var(--accent3); margin-bottom:6px; }
+  .mistake-desc { font-size:12.5px; color:var(--muted); line-height:1.7; }
+  .mistake-fix { font-size:11.5px; color:var(--accent2); font-family:var(--mono); margin-top:6px; }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(45,212,191,0.09),rgba(0,212,170,0.06)); border:1px solid rgba(45,212,191,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent5); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent5),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 21</div>
+  <h1>Financial<br><span>Modelling</span></h1>
+  <p class="hero-sub">The technical skill that separates good finance professionals from great ones. Build professional 3-statement models, master supporting schedules, learn Excel functions, audit techniques, scenario analysis, and every model type used in FP&A, Big 4, and Investment Banking.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">3-Stmt</div><div class="stat-label">Core Model</div></div>
+    <div class="stat"><div class="stat-num">Full</div><div class="stat-label">Schedules</div></div>
+    <div class="stat"><div class="stat-num">Excel</div><div class="stat-label">Deep Dive</div></div>
+    <div class="stat"><div class="stat-num">₹25L+</div><div class="stat-label">Modeller Salary</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 21 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">21.1</span>What Is Financial Modelling & Who Uses It</div>
+    <div class="toc-item"><span class="toc-num">21.2</span>Golden Rules of Model Building — The Professional Standard</div>
+    <div class="toc-item"><span class="toc-num">21.3</span>Model Structure — The Complete Tab Architecture</div>
+    <div class="toc-item"><span class="toc-num">21.4</span>The Assumptions Sheet — The Brain of the Model</div>
+    <div class="toc-item"><span class="toc-num">21.5</span>The 3-Statement Model — Building It Step by Step</div>
+    <div class="toc-item"><span class="toc-num">21.6</span>The Depreciation & PP&E Schedule</div>
+    <div class="toc-item"><span class="toc-num">21.7</span>The Debt Schedule</div>
+    <div class="toc-item"><span class="toc-num">21.8</span>The Working Capital Schedule</div>
+    <div class="toc-item"><span class="toc-num">21.9</span>Essential Excel Functions for Financial Modelling</div>
+    <div class="toc-item"><span class="toc-num">21.10</span>Excel Shortcuts & Speed Techniques for Modellers</div>
+    <div class="toc-item"><span class="toc-num">21.11</span>Scenario & Sensitivity Analysis — Building It In the Model</div>
+    <div class="toc-item"><span class="toc-num">21.12</span>Model Audit Techniques — Checking Someone Else's Model</div>
+    <div class="toc-item"><span class="toc-num">21.13</span>Types of Financial Models — When to Use Each</div>
+    <div class="toc-item"><span class="toc-num">21.14</span>Common Modelling Mistakes & How to Avoid Them</div>
+    <div class="toc-item"><span class="toc-num">21.15</span>Financial Modelling Interview Questions & Answers</div>
+    <div class="toc-item"><span class="toc-num">21.16</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">21.17</span>Quick Revision Flashcards</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Chapter 20 taught you how companies plan using budgets. Financial modelling is the <strong>technical implementation</strong> of that planning — the structured Excel skill that makes projections dynamic, auditable, and professional. A financial model is not just a spreadsheet — it is a <strong>mathematical representation of a business</strong> that lets you change any assumption and immediately see the impact on every financial output.</p>
+    <div class="quote">"A financial model is a structured story about a business told in numbers. The best modellers are not just Excel experts — they are people who deeply understand how a business actually works."</div>
+  </div>
+
+  <!-- 21.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">21.1</div>
+      <div class="section-title">What Is Financial Modelling & Who Uses It</div>
+    </div>
+    <p class="prose">A <strong>financial model</strong> is a spreadsheet-based representation of a company's financial performance — both historical and projected. It links assumptions (growth rates, margins, costs, capex) to outputs (revenue, EBITDA, free cash flow, valuation) through formulas. The magic: change one assumption → every output updates instantly and consistently.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">Investment Banking</div>
+        <ul class="card-items">
+          <li>DCF valuation models — what is this company worth?</li>
+          <li>LBO (Leveraged Buyout) models — PE acquisition returns</li>
+          <li>Merger models — is this acquisition accretive to EPS?</li>
+          <li>IPO models — financial projections for the prospectus</li>
+          <li>Most complex models — multi-tab, multi-entity, multi-currency</li>
+          <li>Junior analysts spend 70%+ of time in Excel modelling</li>
+        </ul>
+        <div class="card-tag">Highest Complexity</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">FP&A (Corporate Finance)</div>
+        <ul class="card-items">
+          <li>Annual budget model — all sub-budgets linked to master</li>
+          <li>Rolling forecast model — updated monthly</li>
+          <li>Long-range plan (3–5 year strategic projection)</li>
+          <li>Business case models — should we open a new plant?</li>
+          <li>Scenario models — Base/Bull/Bear for CFO decisions</li>
+          <li>Most common use of modelling — every large company has FP&A models</li>
+        </ul>
+        <div class="card-tag">Most Common Use</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Big 4 Advisory & Audit</div>
+        <ul class="card-items">
+          <li>Transaction Advisory (TAS) — financial due diligence models</li>
+          <li>Valuations — DCF and comparable company models for client transactions</li>
+          <li>Restructuring — distressed company cash flow models</li>
+          <li>Audit — impairment testing models (IAS 36), going concern models</li>
+          <li>Infrastructure Advisory — project finance models</li>
+        </ul>
+        <div class="card-tag">Big 4 Core</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Why Financial Modelling Is a Career-Defining Skill</div>
+      Financial modelling is the skill that determines <strong>how senior you can get in finance.</strong> Any analyst can read a ratio. Very few can build a clean, dynamic, auditable model from scratch that a CFO trusts for a ₹500Cr acquisition decision. The ability to model is what gets you from analyst to manager to director — because at every level, the complexity of decisions you support increases, and all those decisions require models. Start building now. Read about it 10%. Build it 90%.
+    </div>
+  </div>
+
+  <!-- 21.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">21.2</div>
+      <div class="section-title">Golden Rules of Model Building — The Professional Standard</div>
+    </div>
+    <p class="prose">Professional financial models follow strict conventions that have evolved over decades of investment banking and advisory practice. These rules exist for one reason: <strong>a model that others can audit, understand, and trust.</strong> Break these rules and your model becomes a liability, not an asset.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <div class="card-title">Rule 1 — Colour Code Everything</div>
+        <ul class="card-items">
+          <li><strong style="color:#6b9ff8;">Blue text</strong> = hardcoded inputs you typed directly (assumptions)</li>
+          <li><strong style="color:#e8e8f0;">Black text</strong> = formula outputs — never type a number here</li>
+          <li><strong style="color:#4ade80;">Green text</strong> = links from other sheets or external files</li>
+          <li>This colour convention is universal in IB, Big 4, and corporate finance</li>
+          <li>When reviewing a model: blue cells are the only things you change</li>
+          <li>Any black cell that contains a hardcoded number is a model error</li>
+        </ul>
+        <div class="card-tag">Universal Standard</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <div class="card-title">Rule 2 — One Input, One Place Only</div>
+        <ul class="card-items">
+          <li>Every assumption (tax rate, growth rate, margin) lives in the Assumptions tab ONLY</li>
+          <li>All other sheets reference that one cell — they never have their own hardcoded input</li>
+          <li>Change the assumption once → model updates everywhere automatically</li>
+          <li>The worst modelling sin: the same number hardcoded in 15 different places</li>
+          <li>When you update one and forget another → model is internally inconsistent</li>
+          <li>One input, one place = zero risk of inconsistency</li>
+        </ul>
+        <div class="card-tag">No Repetition</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">➡️</div>
+        <div class="card-title">Rule 3 — Flow Left to Right, Top to Bottom</div>
+        <ul class="card-items">
+          <li>Time flows left to right: Year 1 | Year 2 | Year 3 | Year 4 | Year 5</li>
+          <li>P&L flows top to bottom: Revenue → COGS → GP → Opex → EBIT → Interest → PBT → Tax → PAT</li>
+          <li>Never write a formula that references a cell to its right or below it</li>
+          <li>Exception: circular references handled separately with iteration</li>
+          <li>This makes the model auditable — you can trace any formula logically</li>
+          <li>Reviewers can follow the flow without getting lost</li>
+        </ul>
+        <div class="card-tag">Logic Flow</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚫</div>
+        <div class="card-title">Rule 4 — No Circular References</div>
+        <ul class="card-items">
+          <li>A formula that directly or indirectly references itself = circular reference</li>
+          <li>Causes Excel instability, #REF errors, and unpredictable outputs</li>
+          <li>Most common accidental circular: interest expense calculated on ending debt, ending debt includes interest — creates a loop</li>
+          <li>Solution for interest: calculate interest on opening debt balance (not ending) — approximation that avoids circularity</li>
+          <li>Advanced solution: use Excel iteration settings (File → Options → Formulas → Enable Iterative Calculation)</li>
+          <li>Always check: Formulas → Error Checking → Circular References</li>
+        </ul>
+        <div class="card-tag">Avoid Always</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Rule 5 — Always Build a Balance Sheet Check</div>
+        <ul class="card-items">
+          <li>The Balance Sheet must always balance: Total Assets = Total Liabilities + Equity</li>
+          <li>Build a CHECK cell: =IF(Assets=Liabilities+Equity,"✅ BALANCED","❌ ERROR")</li>
+          <li>Format it: green background when balanced, red when not</li>
+          <li>A model that doesn't balance has an error somewhere — find it before presenting</li>
+          <li>Also build cash reconciliation check: Opening Cash + Net Change = Closing Cash</li>
+          <li>Presenting an unbalanced model to a CFO or client = career-limiting moment</li>
+        </ul>
+        <div class="card-tag">Non-Negotiable</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <div class="card-title">Rule 6 — Simple Beats Clever</div>
+        <ul class="card-items">
+          <li>A formula that does 7 things in one cell looks impressive but is impossible to audit</li>
+          <li>Break every complex calculation into intermediate steps — each with a label</li>
+          <li>Anyone (including future you in 6 months) must be able to understand and verify every cell</li>
+          <li>"If you can't explain what this formula does in one sentence, break it into two cells"</li>
+          <li>Clever models fail in client meetings when you can't explain them under pressure</li>
+          <li>Simple models get the job done and get approved</li>
+        </ul>
+        <div class="card-tag">Auditability</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📁</div>
+        <div class="card-title">Rule 7 — Version Control</div>
+        <ul class="card-items">
+          <li>Never save over the previous version — always save as a new file</li>
+          <li>Naming convention: CompanyName_Model_YYYYMMDD_v1.xlsx</li>
+          <li>Example: TataMotors_DCF_20250615_v3.xlsx</li>
+          <li>Keep a version log tab: date, version number, what changed, who changed it</li>
+          <li>In corporate environments: use SharePoint/OneDrive version history</li>
+          <li>The horror story: "Model_FINAL_FINAL_USE_THIS_v7_CORRECT.xlsx" — never be this person</li>
+        </ul>
+        <div class="card-tag">Professional Habit</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖊️</div>
+        <div class="card-title">Rule 8 — Label Everything</div>
+        <ul class="card-items">
+          <li>Every row must have a clear label in column A</li>
+          <li>Every assumption must state its unit: %, ₹ Cr, Days, x multiple</li>
+          <li>Headers must show the time period: FY2023A (Actual), FY2024E (Estimate), FY2025F (Forecast)</li>
+          <li>A = Actual, E = Estimate, F = Forecast, B = Budget — use these consistently</li>
+          <li>Unlabelled numbers are unauditable and unpresentable</li>
+          <li>Your model will be reviewed by people who did not build it — label for them</li>
+        </ul>
+        <div class="card-tag">Clarity</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">21.3</div>
+      <div class="section-title">Model Structure — The Complete Tab Architecture</div>
+    </div>
+    <p class="prose">A professional financial model is not one giant, scrollable sheet — it is a <strong>set of logically organised, linked tabs</strong>, each with a specific purpose. This structure keeps the model clean, navigable, and auditable. Here is the full tab architecture used in professional models.</p>
+
+    <div class="model-block">
+      <div class="model-header">Complete Model Tab Structure — Professional Standard</div>
+      <div class="model-row" style="background:rgba(45,212,191,0.04);font-family:var(--mono);font-size:10px;color:var(--muted);padding:8px 20px;">
+        <div>TAB</div><div>NAME</div><div>PURPOSE & CONTENTS</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 1</div>
+        <div class="model-name">Cover / Contents</div>
+        <div class="model-desc">Company name, model title, version number, date, author, disclaimer, confidentiality notice. Hyperlinks to each tab for navigation. First thing any reviewer sees — make it professional. Include a brief model description: "3-Statement Projection Model for XYZ Ltd — FY2025–FY2029."</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 2</div>
+        <div class="model-name">Assumptions</div>
+        <div class="model-desc">ALL hardcoded inputs live here and ONLY here. Organised by category: Revenue Assumptions, Margin Assumptions, Working Capital Assumptions, Capex Assumptions, Financing Assumptions, Tax Rate. Colour-coded blue throughout. This is the single place anyone goes to change model inputs. Labelled with units (%, ₹, Days). The brain of the entire model.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 3</div>
+        <div class="model-name">Revenue Build</div>
+        <div class="model-desc">Detailed revenue calculation — broken down by product line, geography, or customer segment. Volume × Price build. Growth rate applied to prior year. References assumptions from Tab 2. Output: Total Revenue by year → feeds P&L Tab. More detailed than a single "Revenue" row — shows the business logic behind the top line.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 4</div>
+        <div class="model-name">Income Statement (P&L)</div>
+        <div class="model-desc">Full projected P&L — Revenue (from Revenue Build tab), COGS, Gross Profit, Operating Expenses, EBITDA, Depreciation & Amortisation, EBIT, Interest Income, Interest Expense, PBT, Tax, Net Profit. Each line linked from Assumptions or other schedules — no hardcoded numbers except in base year historical data.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 5</div>
+        <div class="model-name">PP&E Schedule</div>
+        <div class="model-desc">Depreciation and fixed asset schedule: Opening PP&E + Capex additions − Depreciation = Closing PP&E. Depreciation feeds P&L (D&A line). Closing PP&E feeds Balance Sheet (Fixed Assets). Capex feeds Cash Flow Statement (Investing Activities). This schedule is one of the three key supporting schedules.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 6</div>
+        <div class="model-name">Debt Schedule</div>
+        <div class="model-desc">Opening Debt + New Borrowings − Repayments = Closing Debt. Interest Expense = Opening Debt × Interest Rate. Closing Debt feeds Balance Sheet (Long-term Liabilities). Interest feeds P&L (Finance Costs). Debt drawdowns and repayments feed Cash Flow Statement (Financing Activities).</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 7</div>
+        <div class="model-name">Working Capital Schedule</div>
+        <div class="model-desc">Calculates Trade Receivables (Receivable Days × Revenue/365), Inventory (Inventory Days × COGS/365), Trade Payables (Payable Days × COGS/365). Changes in WC feed Cash Flow Statement (Operating Activities). Closing balances feed Balance Sheet (Current Assets / Current Liabilities).</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 8</div>
+        <div class="model-name">Balance Sheet</div>
+        <div class="model-desc">Full projected Balance Sheet — Fixed Assets (from PP&E Schedule), Current Assets (Cash from CF, Receivables from WC Schedule, Inventory from WC Schedule), Long-term Debt (from Debt Schedule), Current Liabilities (Payables from WC Schedule), Equity (Opening + Net Profit − Dividends). Must balance every year.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 9</div>
+        <div class="model-name">Cash Flow Statement</div>
+        <div class="model-desc">Indirect method: Net Profit → Add back D&A → Adjust WC changes → Operating Cash Flow → Subtract Capex → Free Cash Flow → Add/subtract debt movements and equity issuance → Net Change in Cash → Closing Cash. Closing Cash feeds Balance Sheet Tab. This tab reconciles the entire model.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 10</div>
+        <div class="model-name">Valuation / Output</div>
+        <div class="model-desc">DCF valuation (if applicable), comparable company multiples, key ratio summary, scenario output comparison table. This is what goes into the client presentation. Pulls from P&L, Balance Sheet, CF tabs — all outputs, no inputs or formulas of its own beyond ratios.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 11</div>
+        <div class="model-name">Checks</div>
+        <div class="model-desc">Balance Sheet check (Assets = L + E) for every year — green/red indicator. Cash reconciliation check. Any other model integrity checks. If any check is red, the model has an error. This tab should always be all green before presenting. Non-negotiable.</div>
+      </div>
+      <div class="model-row">
+        <div class="model-tab">Tab 12</div>
+        <div class="model-name">Scenario Manager</div>
+        <div class="model-desc">If the model has multiple scenarios (Base/Bull/Bear) — this tab houses the scenario-specific assumption sets and a dropdown selector. Using CHOOSE or OFFSET functions, selecting a scenario automatically updates all Assumptions tab inputs. Outputs tab shows all scenarios side by side.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">21.4</div>
+      <div class="section-title">The Assumptions Sheet — The Brain of the Model</div>
+    </div>
+    <p class="prose">The Assumptions sheet is the most important tab in any financial model. <strong>Every single input lives here.</strong> The quality of a model's outputs is entirely dependent on the quality of its assumptions. Garbage in, garbage out — but also: unclear assumptions in, unauditable model out.</p>
+
+    <p class="section-label">How to Structure the Assumptions Sheet</p>
+    <table class="data-table">
+      <tr><th>Section</th><th>What Goes Here</th><th>Example Assumptions</th></tr>
+      <tr><td>Revenue Assumptions</td><td>Growth rates, volume drivers, pricing, market share</td><td>Revenue growth: 12% FY25, 15% FY26, 10% FY27. ASP growth: 3% per year. New product launch: FY26 adds ₹50Cr</td></tr>
+      <tr><td>Margin Assumptions</td><td>Gross margin %, EBITDA margin %, operating leverage assumptions</td><td>Gross Margin: 38% (FY25), 40% (FY26) as scale improves. EBITDA Margin: 20% stable through forecast period.</td></tr>
+      <tr><td>Cost Assumptions</td><td>Key cost line items as % of revenue or absolute — whichever is more appropriate</td><td>Employee costs: 18% of revenue. Marketing: 5% of revenue (FY25), 4% (FY26+). Rent: ₹12Cr fixed per year.</td></tr>
+      <tr><td>Working Capital</td><td>Receivable Days, Inventory Days, Payable Days — drives WC schedule</td><td>Receivable Days: 45. Inventory Days: 60 (improving to 50 by FY27). Payable Days: 30.</td></tr>
+      <tr><td>Capex Assumptions</td><td>Maintenance capex %, growth capex items (specific projects)</td><td>Maintenance Capex: 3% of revenue. Growth Capex: ₹200Cr new plant (FY25 only).</td></tr>
+      <tr><td>Depreciation</td><td>Useful life of assets, depreciation method</td><td>Useful Life: 10 years. SLM depreciation. Salvage value: nil.</td></tr>
+      <tr><td>Financing Assumptions</td><td>Interest rates, debt repayment schedule, new borrowings</td><td>Interest Rate on debt: 8.5%. ₹100Cr term loan repaid ₹20Cr per year from FY25. Dividend payout: 30% of PAT.</td></tr>
+      <tr><td>Tax Assumptions</td><td>Effective tax rate, deferred tax considerations</td><td>Effective Tax Rate: 25.17% (Indian corporate tax rate). No significant deferred tax adjustments assumed.</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Driver-Based vs Flat Rate Assumptions — Always Choose Driver-Based</div>
+      <strong>Lazy assumption:</strong> "Revenue grows 12% per year" — gives you no insight into WHY and no ability to stress-test individual drivers.<br><br>
+      <strong>Professional assumption:</strong> "Volume (units) grows 8% per year. Average Selling Price grows 3.5% per year. Net revenue = Volume × ASP × (1 − discount rate of 2%)."<br><br>
+      The driver-based approach lets you ask: "What if volume growth slows to 4% but we hold pricing?" — a question impossible to answer with a flat growth rate assumption. This is what makes a model a decision-support tool rather than just a projection exercise.
+    </div>
+  </div>
+
+  <!-- 21.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">21.5</div>
+      <div class="section-title">The 3-Statement Model — Building It Step by Step</div>
+      <div class="section-meta">Foundation of All Models</div>
+    </div>
+    <p class="prose">The <strong>3-Statement Model</strong> links the Income Statement, Balance Sheet, and Cash Flow Statement so they update together whenever any assumption changes. It is the foundation of every other model type. If you can build a clean, balanced 3-statement model — you can build anything.</p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">Step 1</div>
+        <div class="step-content"><strong>Input Historical Data (3 Years Minimum)</strong><br>Start by entering 3 years of actual financial data from the company's annual reports into the P&L, Balance Sheet, and Cash Flow tabs. Colour these blue — they are hardcoded inputs. This gives you the historical base from which all projections grow. Label the columns: FY2022A | FY2023A | FY2024A | FY2025F | FY2026F | FY2027F. Check that historical BS balances and historical CF reconciles before moving to projections.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 2</div>
+        <div class="step-content"><strong>Build the Revenue Build Tab</strong><br>Using Assumptions tab inputs, project revenue for each forecast year. If driver-based: Volume × Price × Market Share adjustments. If segment-based: Segment A + Segment B + Segment C. Apply growth rates or absolute projections as defined in Assumptions. Total projected revenue flows from this tab into the P&L tab. Do not hardcode revenue in the P&L — always link from Revenue Build.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 3</div>
+        <div class="step-content"><strong>Build the P&L (Income Statement)</strong><br>Revenue (link from Revenue Build) → COGS (Revenue × COGS% from Assumptions) → Gross Profit → Operating Expenses (each line as % of revenue or absolute from Assumptions) → EBITDA → D&A (link from PP&E Schedule — build this BEFORE completing P&L) → EBIT → Interest Expense (link from Debt Schedule) → PBT → Tax (PBT × Tax Rate from Assumptions) → Net Profit. Every line must be a formula — no hardcoded numbers in forecast years.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 4</div>
+        <div class="step-content"><strong>Build the PP&E Schedule (Tab 5)</strong><br>Opening PP&E (prior year closing) + Capex additions (from Assumptions) − Depreciation (Opening PP&E ÷ Useful Life for SLM) = Closing PP&E. Closing PP&E → Balance Sheet (Fixed Assets). Depreciation → P&L (D&A line). Capex → Cash Flow (Investing). Build this before completing P&L because D&A must feed into P&L. This schedule is often where beginners get stuck — build it carefully, check the closing balance flows correctly.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 5</div>
+        <div class="step-content"><strong>Build the Debt Schedule (Tab 6)</strong><br>Opening Debt (prior year closing) + New Borrowings − Scheduled Repayments = Closing Debt. Interest Expense = Opening Debt × Interest Rate (use opening to avoid circularity). Closing Debt → Balance Sheet (Long-term Liabilities). Interest → P&L (Finance Costs). New Borrowings and Repayments → Cash Flow (Financing Activities). Note: if the company has multiple debt instruments (term loan + revolving credit + bonds) — each gets its own row in the debt schedule.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 6</div>
+        <div class="step-content"><strong>Build the Working Capital Schedule (Tab 7)</strong><br>Trade Receivables = (Receivable Days ÷ 365) × Revenue. Inventory = (Inventory Days ÷ 365) × COGS. Trade Payables = (Payable Days ÷ 365) × COGS. Closing balances → Balance Sheet. Change in WC (current year WC − prior year WC) → Cash Flow Operating Activities. Note: Increase in Receivables/Inventory = cash outflow (you are owed more but haven't received it). Increase in Payables = cash inflow (you owe more but haven't paid). Get this sign convention right — it is a common source of errors.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 7</div>
+        <div class="step-content"><strong>Build the Cash Flow Statement (Tab 9)</strong><br>Start with Net Profit (from P&L). Add back D&A (non-cash — from PP&E Schedule). Adjust for WC changes (from WC Schedule — using correct signs). = Operating Cash Flow. Subtract Capex (from PP&E Schedule). = Free Cash Flow. Add new borrowings (from Debt Schedule). Subtract repayments (from Debt Schedule). Subtract dividends paid (PAT × Payout Ratio from Assumptions). = Net Change in Cash. Opening Cash + Net Change = Closing Cash. Closing Cash → Cash line on Balance Sheet.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 8</div>
+        <div class="step-content"><strong>Build the Balance Sheet (Tab 8)</strong><br>Fixed Assets (Closing PP&E from PP&E Schedule). Trade Receivables (from WC Schedule). Inventory (from WC Schedule). Cash (Closing Cash from Cash Flow Statement). = Total Assets. Trade Payables (from WC Schedule). Long-term Debt (Closing Debt from Debt Schedule). Share Capital (constant unless equity issuance). Retained Earnings (Opening RE + Net Profit − Dividends). = Total Liabilities + Equity. Go to Checks tab: does Total Assets = Total Liabilities + Equity? If not — find and fix the error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 9</div>
+        <div class="step-content"><strong>Verify All Checks Are Green</strong><br>Balance Sheet balanced every year? Cash reconciliation correct? Any #REF, #VALUE, or #DIV/0 errors? If all checks pass — test the model by changing one assumption (e.g. revenue growth from 12% to 8%) and verify that ALL connected outputs update correctly and the BS still balances. If anything breaks — fix it before proceeding. A model that breaks on assumption changes is not fit for purpose.</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Two Critical Stitches — Why Models Often Fail to Balance</div>
+      There are two linkages that hold the 3-statement model together. If either is wrong, the Balance Sheet will not balance:<br><br>
+      <strong>Stitch 1 — Net Profit to Retained Earnings:</strong> Net Profit from P&L must flow into Retained Earnings on the Balance Sheet (minus dividends paid). Formula: Closing RE = Opening RE + Net Profit − Dividends Paid.<br><br>
+      <strong>Stitch 2 — Closing Cash to Balance Sheet:</strong> Closing Cash from the Cash Flow Statement must equal the Cash line on the Balance Sheet. Formula: BS Cash = CF Closing Cash.<br><br>
+      When a Balance Sheet does not balance, check these two stitches first — they are the cause 80% of the time.
+    </div>
+  </div>
+
+  <!-- 21.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">21.6</div>
+      <div class="section-title">The Depreciation & PP&E Schedule</div>
+      <div class="section-meta">Supporting Schedule 1 of 3</div>
+    </div>
+    <p class="prose">The PP&E Schedule tracks the movement in fixed assets over the forecast period — accounting for new capex additions, depreciation charges, and asset disposals. It feeds three statements simultaneously: D&A into P&L, closing PP&E into Balance Sheet, and Capex into Cash Flow. It must be built before the P&L can be completed.</p>
+
+    <p class="section-label">PP&E Schedule Structure — Full Layout</p>
+    <table class="data-table">
+      <tr><th>Line Item</th><th>FY2024A</th><th>FY2025F</th><th>FY2026F</th><th>Formula Logic</th></tr>
+      <tr><td>Opening Gross PP&E</td><td>500</td><td>500</td><td>680</td><td>= Prior year Closing Gross PP&E</td></tr>
+      <tr><td>+ Capex Additions</td><td>—</td><td>180</td><td>60</td><td>= From Assumptions tab (Capex schedule)</td></tr>
+      <tr><td>− Asset Disposals (cost)</td><td>—</td><td>0</td><td>0</td><td>= From Assumptions (if any assets sold)</td></tr>
+      <tr><td>Closing Gross PP&E</td><td>500</td><td>680</td><td>740</td><td>= Opening + Additions − Disposals</td></tr>
+      <tr><td>Opening Accumulated Depreciation</td><td>(150)</td><td>(150)</td><td>(201)</td><td>= Prior year Closing Accum. Depr.</td></tr>
+      <tr><td>+ Depreciation Charge (P&L)</td><td>—</td><td>(51)</td><td>(55)</td><td>= Opening Gross PP&E ÷ Useful Life (SLM). Feeds P&L D&A line.</td></tr>
+      <tr><td>− Accumulated Depr. on Disposals</td><td>—</td><td>0</td><td>0</td><td>= Remove depr. of disposed asset</td></tr>
+      <tr><td>Closing Accumulated Depreciation</td><td>(150)</td><td>(201)</td><td>(256)</td><td>= Opening + Charge − Disposal depr.</td></tr>
+      <tr><td><strong>Net PP&E (Balance Sheet)</strong></td><td><strong>350</strong></td><td><strong>479</strong></td><td><strong>484</strong></td><td>= Closing Gross PP&E − Closing Accum. Depr. → Feeds Balance Sheet Fixed Assets</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 Capex vs Revenue Distinction — Critical for Model Accuracy</div>
+      Not all spending on assets is Capex. Only spending that creates an asset with useful life greater than 1 year is Capex (capitalised). Spending that benefits only the current year is an operating expense (expensed). Examples:<br><br>
+      <strong>Capex (Balance Sheet):</strong> New machinery (₹50Cr, 10-year life), building expansion (₹200Cr, 30-year life), IT infrastructure (₹30Cr, 5-year life).<br>
+      <strong>Operating Expense (P&L):</strong> Annual maintenance contracts, repairs that don't extend asset life, consumables.<br><br>
+      Misclassifying opex as capex inflates current year profit (expense deferred over asset life) — this is a common accounting manipulation technique (WorldCom did exactly this in their fraud).
+    </div>
+  </div>
+
+  <!-- 21.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">21.7</div>
+      <div class="section-title">The Debt Schedule</div>
+      <div class="section-meta">Supporting Schedule 2 of 3</div>
+    </div>
+    <p class="prose">The Debt Schedule tracks all borrowings — term loans, revolving credit facilities, bonds, debentures — through the forecast period. It calculates interest expense (feeds P&L), tracks debt movements (feeds Cash Flow), and outputs closing debt balances (feeds Balance Sheet).</p>
+
+    <p class="section-label">Debt Schedule Structure — Full Layout</p>
+    <table class="data-table">
+      <tr><th>Line Item</th><th>FY2024A</th><th>FY2025F</th><th>FY2026F</th><th>Formula Logic</th></tr>
+      <tr><td>Opening Debt Balance</td><td>300</td><td>300</td><td>230</td><td>= Prior year Closing Debt Balance</td></tr>
+      <tr><td>+ New Borrowings Drawn</td><td>—</td><td>0</td><td>0</td><td>= From Assumptions (planned new debt)</td></tr>
+      <tr><td>− Scheduled Repayments</td><td>—</td><td>(70)</td><td>(70)</td><td>= From Assumptions (repayment schedule)</td></tr>
+      <tr><td>Closing Debt Balance</td><td>300</td><td>230</td><td>160</td><td>= Opening + Drawdowns − Repayments → Feeds Balance Sheet</td></tr>
+      <tr><td>Average Debt (for interest)</td><td>—</td><td>265</td><td>195</td><td>= (Opening + Closing) ÷ 2 — or use Opening only to avoid circularity</td></tr>
+      <tr><td>Interest Rate (from Assumptions)</td><td>—</td><td>8.5%</td><td>8.5%</td><td>= Link from Assumptions tab</td></tr>
+      <tr><td><strong>Interest Expense (P&L)</strong></td><td>—</td><td><strong>22.5</strong></td><td><strong>16.6</strong></td><td>= Average Debt × Interest Rate → Feeds P&L Finance Costs line</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">⚠️ The Circularity Problem in Debt Schedules — And How to Solve It</div>
+      If you calculate Interest = Ending Debt × Rate, and Ending Debt depends on Net Profit (via retained earnings), and Net Profit depends on Interest — you have a circular reference. Three solutions:<br><br>
+      <strong>Solution 1 (Simplest):</strong> Use Opening Debt × Rate for interest — eliminates circularity, slight approximation.<br>
+      <strong>Solution 2 (Standard):</strong> Use Average Debt ((Opening + Closing)/2) — better approximation, still circular but manageable with Excel iteration.<br>
+      <strong>Solution 3 (Advanced):</strong> Enable Excel Iterative Calculation (File → Options → Formulas → Enable Iterative Calculation, Max Iterations: 100). Allows Excel to solve circular references iteratively.<br><br>
+      For most FP&A and entry-level models: Solution 1 is perfectly acceptable. For IB-grade models: Solution 3 is standard.
+    </div>
+  </div>
+
+  <!-- 21.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">21.8</div>
+      <div class="section-title">The Working Capital Schedule</div>
+      <div class="section-meta">Supporting Schedule 3 of 3</div>
+    </div>
+    <p class="prose">The Working Capital Schedule calculates the three core working capital items — Trade Receivables, Inventory, and Trade Payables — using Days assumptions from the Assumptions tab. It is the link between operational efficiency assumptions and their financial statement impact.</p>
+
+    <p class="section-label">Working Capital Schedule — Full Layout</p>
+    <table class="data-table">
+      <tr><th>Line Item</th><th>FY2024A</th><th>FY2025F</th><th>FY2026F</th><th>Formula</th></tr>
+      <tr><td>Receivable Days (Assumption)</td><td>45</td><td>45</td><td>42</td><td>= From Assumptions tab</td></tr>
+      <tr><td>Trade Receivables (Balance Sheet)</td><td>124</td><td>135</td><td>148</td><td>= (Receivable Days ÷ 365) × Revenue</td></tr>
+      <tr><td>Change in Receivables (Cash Flow)</td><td>—</td><td>(11)</td><td>(13)</td><td>= Prior year balance − Current year balance. Increase = cash outflow (negative sign in CF)</td></tr>
+      <tr><td>Inventory Days (Assumption)</td><td>60</td><td>58</td><td>55</td><td>= From Assumptions tab (improving)</td></tr>
+      <tr><td>Inventory (Balance Sheet)</td><td>98</td><td>103</td><td>107</td><td>= (Inventory Days ÷ 365) × COGS</td></tr>
+      <tr><td>Change in Inventory (Cash Flow)</td><td>—</td><td>(5)</td><td>(4)</td><td>= Increase in inventory = cash outflow (negative)</td></tr>
+      <tr><td>Payable Days (Assumption)</td><td>30</td><td>32</td><td>35</td><td>= From Assumptions tab (improving — paying suppliers later)</td></tr>
+      <tr><td>Trade Payables (Balance Sheet)</td><td>49</td><td>55</td><td>63</td><td>= (Payable Days ÷ 365) × COGS</td></tr>
+      <tr><td>Change in Payables (Cash Flow)</td><td>—</td><td>6</td><td>8</td><td>= Increase in payables = cash inflow (positive — you owe more but haven't paid)</td></tr>
+      <tr><td><strong>Net WC Change (Cash Flow)</strong></td><td>—</td><td><strong>(10)</strong></td><td><strong>(9)</strong></td><td>= Sum of all three changes → feeds Operating Cash Flow</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Sign Convention for WC Changes — The Most Confusing Part</div>
+      This trips up almost every beginner. The rule is simple:<br><br>
+      <strong>Increase in Current Asset (Receivables, Inventory) = Cash Outflow (Negative)</strong><br>
+      You are owed more money / holding more stock — but you haven't received the cash yet → cash outflow.<br><br>
+      <strong>Increase in Current Liability (Payables) = Cash Inflow (Positive)</strong><br>
+      You owe more to suppliers — but you haven't paid them yet → you are effectively borrowing from them → cash inflow.<br><br>
+      Memory trick: <strong>Assets up = cash down. Liabilities up = cash up.</strong>
+    </div>
+  </div>
+
+  <!-- 21.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">21.9</div>
+      <div class="section-title">Essential Excel Functions for Financial Modelling</div>
+    </div>
+    <p class="prose">You do not need to know every Excel function. You need to master the specific functions that appear in professional financial models. Here is the complete list — with modelling context for each.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">Must-Know Excel Functions — With Modelling Context</div>
+      <div class="formula-row" style="background:rgba(45,212,191,0.04);font-family:var(--mono);font-size:10px;color:var(--muted);padding:8px 20px;">
+        <div>FUNCTION</div><div>USE IN FINANCIAL MODELLING</div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">IF / IFS / IFERROR</div>
+        <div class="formula-eq">=IF(year&gt;=start_year, revenue*margin, 0)<br>=IFERROR(EBIT/Interest, "N/A")<br><span style="color:var(--muted)">Conditional logic throughout models. IF for business rules (tax only when PBT positive). IFERROR to handle divide-by-zero in early years or loss years — keeps model clean.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">XLOOKUP</div>
+        <div class="formula-eq">=XLOOKUP(year, years_header_row, values_row, "N/A")<br><span style="color:var(--muted)">Pull specific year's assumption or output. Used in Scenario Manager to pull the right assumption set. Replaced VLOOKUP — use XLOOKUP in all new models.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">INDEX / MATCH</div>
+        <div class="formula-eq">=INDEX(data_range, MATCH(lookup_value, lookup_range, 0))<br><span style="color:var(--muted)">More flexible than XLOOKUP for two-dimensional lookups. Used when pulling data from comparable company tables or historical data with both row and column references.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">SUMIF / SUMIFS</div>
+        <div class="formula-eq">=SUMIFS(amount_col, category_col, "Revenue", year_col, 2025)<br><span style="color:var(--muted)">Aggregate financial data by multiple criteria. Used in revenue build (sum revenue by product line and year), cost aggregation by department. Essential for models pulling from large data tables.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">CHOOSE</div>
+        <div class="formula-eq">=CHOOSE(Assumptions!$B$2, base_value, bull_value, bear_value)<br><span style="color:var(--muted)">The scenario selector function. Cell B2 contains 1/2/3 from dropdown. CHOOSE returns the right scenario's assumption. Cleaner than nested IFs for 3-scenario models.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">OFFSET</div>
+        <div class="formula-eq">=OFFSET(start_cell, rows_down, cols_right)<br><span style="color:var(--muted)">Dynamic range reference that shifts based on inputs. Used in rolling forecast models where the "current month" reference moves forward each month. Also used for dynamic chart ranges.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">NPV</div>
+        <div class="formula-eq">=NPV(discount_rate, cashflow_year1:cashflow_year5) + initial_investment<br><span style="color:var(--muted)">Net Present Value of future cash flows. Core formula in DCF valuation (Chapter 33). Note: NPV() in Excel discounts from period 1 — add Year 0 investment separately (it is already at present value).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">IRR / XIRR</div>
+        <div class="formula-eq">=IRR(cashflow_range)<br>=XIRR(cashflow_range, dates_range)<br><span style="color:var(--muted)">Internal Rate of Return. Used in investment appraisal, LBO return calculations, project finance models. XIRR is more accurate — uses actual dates rather than assuming equal periods.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">MAX / MIN</div>
+        <div class="formula-eq">=MAX(0, EBIT) — floor at zero<br>=MIN(cash_balance, debt_repayment) — can't repay more than cash available<br><span style="color:var(--muted)">Critical for model logic constraints. Tax cannot be negative (use MAX(0, PBT × tax_rate)). Debt cannot go below zero. Cash surplus cannot exceed revolving credit limit. These prevent model from showing impossible outputs.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Data Validation (Dropdowns)</div>
+        <div class="formula-eq">Data → Data Validation → List → "Base,Bull,Bear"<br><span style="color:var(--muted)">Creates scenario selector dropdown. Links to CHOOSE function. Makes model user-friendly for non-modellers — CFO selects scenario from dropdown, all outputs update automatically without touching formulas.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Conditional Formatting</div>
+        <div class="formula-eq">Home → Conditional Formatting → Highlight Rules<br><span style="color:var(--muted)">Format Checks tab: green when balanced, red when not. Highlight negative cash balances in red. Highlight cells exceeding thresholds (e.g. gearing &gt; 70% turns red). Makes model self-annotating — errors and risks are visually obvious.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">What-If Data Table</div>
+        <div class="formula-eq">Data → What-If Analysis → Data Table (1 or 2 variable)<br><span style="color:var(--muted)">Builds sensitivity grids automatically. Row input = Revenue Growth %. Column input = EBITDA Margin %. Output = EBITDA for every combination. Essential for sensitivity analysis section of any model.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">21.10</div>
+      <div class="section-title">Excel Shortcuts & Speed Techniques for Modellers</div>
+      <div class="section-meta">Build 3x Faster</div>
+    </div>
+    <p class="prose">Professional modellers build models in a fraction of the time beginners take — not because they know different formulas, but because they use <strong>keyboard shortcuts religiously.</strong> Mouse usage is the biggest speed killer in Excel modelling. These shortcuts are worth memorising before your first day in any finance role.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⌨️</div>
+        <div class="card-title">Navigation Shortcuts</div>
+        <ul class="card-items">
+          <li><strong>Ctrl + Arrow:</strong> Jump to last populated cell in direction — navigate large models instantly</li>
+          <li><strong>Ctrl + Home / End:</strong> Jump to cell A1 / last used cell</li>
+          <li><strong>Ctrl + PgUp / PgDn:</strong> Move between worksheet tabs</li>
+          <li><strong>Ctrl + G (F5):</strong> Go To — jump to named range or specific cell</li>
+          <li><strong>Ctrl + F:</strong> Find — search any value or formula in the model</li>
+          <li><strong>Alt + Tab:</strong> Switch between open Excel files</li>
+        </ul>
+        <div class="card-tag">Speed Navigation</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Selection & Editing Shortcuts</div>
+        <ul class="card-items">
+          <li><strong>Ctrl + Shift + Arrow:</strong> Select from current cell to last populated cell</li>
+          <li><strong>Ctrl + D:</strong> Fill Down — copy formula from top cell to selected range below</li>
+          <li><strong>Ctrl + R:</strong> Fill Right — copy formula from left cell to selected range right</li>
+          <li><strong>F2:</strong> Enter edit mode in a cell — see and modify the formula</li>
+          <li><strong>Ctrl + Z / Y:</strong> Undo / Redo — use constantly</li>
+          <li><strong>Ctrl + Shift + L:</strong> Toggle AutoFilter on/off — essential for data tables</li>
+        </ul>
+        <div class="card-tag">Edit Fast</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Formatting Shortcuts</div>
+        <ul class="card-items">
+          <li><strong>Ctrl + 1:</strong> Open Format Cells dialog — most important formatting shortcut</li>
+          <li><strong>Ctrl + B / I / U:</strong> Bold / Italic / Underline</li>
+          <li><strong>Alt + H + B + A:</strong> All borders — format table quickly</li>
+          <li><strong>Ctrl + Shift + $:</strong> Currency format</li>
+          <li><strong>Ctrl + Shift + %:</strong> Percentage format</li>
+          <li><strong>Alt + H + H:</strong> Fill color — colour-code assumption cells blue instantly</li>
+        </ul>
+        <div class="card-tag">Format Pro</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Formula Audit Shortcuts</div>
+        <ul class="card-items">
+          <li><strong>Ctrl + `(backtick):</strong> Toggle show formulas — see all formulas in all cells at once. Essential for auditing.</li>
+          <li><strong>F5 → Special → Precedents:</strong> Select all cells that feed into current cell</li>
+          <li><strong>Ctrl + [ :</strong> Jump to precedent cells (cells this formula references)</li>
+          <li><strong>Ctrl + ] :</strong> Jump to dependent cells (cells that use this cell)</li>
+          <li><strong>Alt + M + P:</strong> Trace Precedents — draw arrows showing formula sources</li>
+          <li><strong>Alt + M + D:</strong> Trace Dependents — draw arrows showing where this feeds</li>
+        </ul>
+        <div class="card-tag">Audit Mode</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Power User Techniques</div>
+        <ul class="card-items">
+          <li><strong>Named Ranges:</strong> Name key cells (e.g. "TaxRate" for the tax assumption cell) — use the name in formulas instead of cell references. Much more readable and auditable.</li>
+          <li><strong>F4 — Absolute References:</strong> Press F4 when writing a formula to toggle between $A$1 (fully fixed), A$1 (row fixed), $A1 (column fixed), A1 (fully relative). Essential for building formulas that copy correctly across rows and columns.</li>
+          <li><strong>Paste Special (Ctrl+Alt+V):</strong> Paste Values Only (V), Paste Formats Only (T), Paste Transpose (E). Use Paste Values to break formula links when needed.</li>
+          <li><strong>Ctrl + T:</strong> Convert range to Excel Table — enables dynamic ranges, structured references, and automatic formula extension.</li>
+        </ul>
+        <div class="card-tag">Advanced</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">21.11</div>
+      <div class="section-title">Scenario & Sensitivity Analysis — Building It Into the Model</div>
+    </div>
+    <p class="prose">A model that produces only one set of outputs is incomplete. Professional models always incorporate scenario and sensitivity analysis — built into the model architecture, not tacked on as an afterthought. Here is how to build it properly.</p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">Setup</div>
+        <div class="step-content"><strong>Create Three Assumption Sets in the Scenario Manager Tab</strong><br>Build three columns in the Scenario Manager tab — one for Base Case, one for Bull Case, one for Bear Case. Each column contains a complete set of all assumptions: revenue growth, margins, capex, working capital days, debt levels, etc. The differences between scenarios reflect specific risk/opportunity factors you have identified in your business analysis.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Selector</div>
+        <div class="step-content"><strong>Build the Scenario Selector Dropdown</strong><br>In the Assumptions tab, add a cell (e.g. B1) with a Data Validation dropdown: choices = 1 (Base), 2 (Bull), 3 (Bear). Add a label next to it: "Active Scenario: Base Case". All assumption cells in the Assumptions tab use CHOOSE to pull from the right scenario column: =CHOOSE($B$1, Base_Revenue_Growth, Bull_Revenue_Growth, Bear_Revenue_Growth). Now selecting 1/2/3 from the dropdown instantly updates all model outputs.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Output</div>
+        <div class="step-content"><strong>Build a Scenario Comparison Output Table</strong><br>In the Valuation/Output tab, build a table showing key metrics for all three scenarios simultaneously — not just the selected one. Use direct cell references to the scenario-specific assumption columns (bypassing the CHOOSE selector). This allows side-by-side comparison: "Base EBITDA = ₹112Cr | Bull EBITDA = ₹146Cr | Bear EBITDA = ₹82Cr." This is what gets presented to the CFO or board.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Sensitivity</div>
+        <div class="step-content"><strong>Build a Data Table Sensitivity Grid</strong><br>Select an output cell (e.g. EBITDA in FY2026). Set up a data table: rows = Revenue Growth % (ranging from 5% to 20% in 2.5% increments), columns = EBITDA Margin (ranging from 16% to 24% in 1% increments). Go to Data → What-If Analysis → Data Table → Row Input = Revenue Growth Assumption cell, Column Input = EBITDA Margin Assumption cell. Excel instantly populates the full grid showing EBITDA for every combination. Format with conditional formatting (red = low EBITDA, green = high) for visual impact.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">21.12</div>
+      <div class="section-title">Model Audit Techniques — Checking Someone Else's Model</div>
+      <div class="section-meta">Critical Skill for Big 4 and FP&A</div>
+    </div>
+    <p class="prose">In real finance roles, you will often inherit models built by someone else — or be asked to review a client's model for errors and reliability. <strong>Model auditing</strong> is the systematic process of verifying a model's logic, accuracy, and integrity. In Big 4 Transaction Advisory, model auditing is a billable service.</p>
+
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">Step 1</div>
+        <div class="step-content"><strong>Toggle Show Formulas (Ctrl + `)</strong><br>This reveals every formula in every cell simultaneously. Immediately look for: hardcoded numbers in formula cells (black cells that should be formulas), inconsistent formulas across a row (a formula that is different in one column vs all others — often indicates a manual override error), and cells that should have formulas but are empty.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 2</div>
+        <div class="step-content"><strong>Check the Balance Sheet — Does It Balance Every Year?</strong><br>The first thing any auditor checks. If it does not balance, there is an error somewhere. Note which year it starts to diverge — this narrows down where the error was introduced. Common causes: a WC or debt movement with wrong sign, a retained earnings formula that is missing a year's profit, or a cash balance that is manually hardcoded instead of linked from the CF statement.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 3</div>
+        <div class="step-content"><strong>Trace Key Formula Chains</strong><br>Pick the most important output (e.g. Free Cash Flow or EBITDA) and trace it back through every formula to the original assumption. Use Ctrl + [ to jump to precedent cells. Verify: does every step make mathematical and logical sense? Are the sign conventions correct (income positive, costs negative)? Is the formula the same across all years?</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 4</div>
+        <div class="step-content"><strong>Stress-Test the Assumptions</strong><br>Change key assumptions to extreme values and check if the model behaves logically. Set revenue growth to 0% — does profit fall appropriately? Set it to 100% — does the model remain stable without errors? Set the tax rate to 0% — does net profit equal PBT exactly? If any extreme assumption causes the model to break or produce nonsensical output — there is a logic error in the model structure.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 5</div>
+        <div class="step-content"><strong>Verify Historical vs Actual</strong><br>If the model contains historical data, cross-reference every historical number against the company's actual published financial statements. Any discrepancy must be explained. Models built from incorrect historical data produce unreliable projections — garbage historical data in, garbage forecasts out.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">Step 6</div>
+        <div class="step-content"><strong>Sense-Check Outputs Against Industry Benchmarks</strong><br>Does the projected EBITDA margin of 35% make sense for a manufacturing company (where industry average is 12%)? Does a projected cash conversion of 250% make sense? If any output looks unusual, trace it back to the assumption driving it. Either the assumption is wrong, or the formula is wrong — or occasionally, the company genuinely is exceptional and you can explain why.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">21.13</div>
+      <div class="section-title">Types of Financial Models — When to Use Each</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Model Type</th><th>Purpose</th><th>Key Features</th><th>Who Uses It</th><th>Complexity</th></tr>
+      <tr><td>3-Statement Model</td><td>Core financial projection — P&L, BS, CF linked and balanced</td><td>All three statements integrated, supporting schedules, 5-year forecast</td><td>FP&A, Big 4 Advisory, all finance roles</td><td>⭐⭐⭐</td></tr>
+      <tr><td>Budget Model</td><td>Annual budget — revenue and cost planning by department</td><td>Multiple input sheets, consolidation, variance tracking capability</td><td>FP&A in all companies</td><td>⭐⭐⭐</td></tr>
+      <tr><td>DCF Model</td><td>Value a company based on discounted future free cash flows</td><td>3-statement base, WACC calculation, terminal value, sensitivity on WACC and growth</td><td>IB, PE, Big 4 Valuations, equity research</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>LBO Model</td><td>Model returns to PE investors from leveraged acquisition at exit</td><td>Purchase price, debt tranches, operating model, exit assumptions, IRR/MoM waterfall</td><td>Private Equity firms, IB</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Merger Model (M&A)</td><td>Assess if acquiring a company is accretive or dilutive to EPS</td><td>Acquirer + target models, purchase price adjustments, synergy assumptions, pro forma combined P&L</td><td>IB, Big 4 Transaction Advisory</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Comparable Company Analysis</td><td>Value a company using trading multiples of peer companies</td><td>Peer selection, multiple calculation (EV/EBITDA, P/E, P/B), implied valuation range</td><td>IB, equity research, Big 4 Valuations</td><td>⭐⭐</td></tr>
+      <tr><td>Project Finance Model</td><td>Infrastructure/energy projects — model debt repayment from project cash flows</td><td>DSCR (Debt Service Coverage), construction period, ramp-up, sponsor equity returns</td><td>Infrastructure finance, banks, Big 4 Advisory</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>Business Case Model</td><td>Evaluate a specific investment or initiative — should we do this?</td><td>Incremental revenues, incremental costs, NPV, IRR, payback period, sensitivity</td><td>FP&A in all companies — new product, new market, new plant</td><td>⭐⭐</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🎯 For Your Career — Build in This Order</div>
+      <strong>Stage 1 (Now — Age 17–19):</strong> 3-Statement Model. Master this completely. It is the foundation of everything else.<br><br>
+      <strong>Stage 2 (ACCA FM + first internship):</strong> Business Case Model and Budget Model. These are what FP&A roles require and what you will actually use on the job.<br><br>
+      <strong>Stage 3 (Big 4 or IB target):</strong> DCF Model and Comparable Company Analysis. These are valuation tools used in advisory and banking.<br><br>
+      <strong>Stage 4 (Specialist path):</strong> LBO, Merger, Project Finance — if you go into PE, IB M&A, or infrastructure finance specifically.
+    </div>
+  </div>
+
+  <!-- 21.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">21.14</div>
+      <div class="section-title">Common Modelling Mistakes & How to Avoid Them</div>
+    </div>
+    <p class="prose">These are the mistakes that cause models to produce wrong outputs, fail audit reviews, and embarrass analysts in client meetings. Know them, avoid them, and check for them when auditing others' models.</p>
+
+    <div class="mistake-item">
+      <div class="mistake-title">❌ Mistake 1 — Hardcoding Numbers in Formula Cells</div>
+      <div class="mistake-desc">Writing =A1*0.25 where 0.25 is a hardcoded tax rate in a formula cell. Next year the tax rate changes — you must hunt through every formula to find and update every instance. Meanwhile, someone changes the Assumptions tab tax rate and nothing updates because the formulas don't reference it.</div>
+      <div class="mistake-fix">FIX: Every assumption lives in the Assumptions tab. Formula cells only reference those cells: =A1*Assumptions!$B$15. Change once, updates everywhere.</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-title">❌ Mistake 2 — Not Checking If the Balance Sheet Balances</div>
+      <div class="mistake-desc">Building the entire model without checking whether the Balance Sheet actually balances. Presenting a model to a CFO where Assets ≠ Liabilities + Equity. This is a fatal credibility error — it tells the reviewer the modeller does not understand basic accounting or has not quality-checked their own work.</div>
+      <div class="mistake-fix">FIX: Build the CHECK tab first, before building any other tab. Make the check cell visible and monitor it throughout the build process. The model is not complete until every year balances.</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-title">❌ Mistake 3 — Wrong Sign Conventions on WC Changes</div>
+      <div class="mistake-desc">Showing an increase in receivables as a positive cash inflow in the Cash Flow Statement — the exact opposite of reality. This makes the Cash Flow Statement wrong, the Balance Sheet fail to balance, and every output after it incorrect. Extremely common in beginner models.</div>
+      <div class="mistake-fix">FIX: Increase in Current Asset = Negative Cash Flow. Increase in Current Liability = Positive Cash Flow. Asset up = cash down. Liability up = cash up. Memorise this forever.</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-title">❌ Mistake 4 — Including Depreciation in the Cash Budget / Cash Flow</div>
+      <div class="mistake-desc">Treating depreciation as a cash payment in the Cash Flow Statement or Cash Budget. Depreciation is a non-cash accounting charge — it reduces profit but involves no cash movement. Including it as a cash payment understates operating cash flow.</div>
+      <div class="mistake-fix">FIX: In the Cash Flow Statement (indirect method), you START with Net Profit (which already has D&A deducted) and ADD BACK D&A because it was non-cash. In Cash Budgets, simply exclude depreciation entirely.</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-title">❌ Mistake 5 — Building Before Planning</div>
+      <div class="mistake-desc">Opening Excel immediately and starting to type — without first sketching the model structure on paper. Results in a disorganised, illogical model that has to be rebuilt from scratch. The most time-consuming mistake a modeller can make.</div>
+      <div class="mistake-fix">FIX: Spend 10–15 minutes mapping the model on paper first. What are the inputs? What are the outputs? What tabs are needed? What feeds what? This planning saves hours of rebuilding later.</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-title">❌ Mistake 6 — Inconsistent Formulas Across a Row</div>
+      <div class="mistake-desc">Year 1 formula: =Revenue*0.38. Year 2 formula: =Revenue*GrossMargin (linked correctly). Year 3 formula: =D14 (hardcoded link to a specific cell). This happens when someone manually edits one cell without updating the others — creates silent errors that are almost impossible to detect without formula auditing.</div>
+      <div class="mistake-fix">FIX: Always use Ctrl + ` to check that all formulas in a row are identical (except for the column reference changing). Any deviation must be intentional and documented.</div>
+    </div>
+    <div class="mistake-item">
+      <div class="mistake-title">❌ Mistake 7 — No Version Control</div>
+      <div class="mistake-desc">Saving over the previous version of the model. Three weeks later the CFO asks "what did the model look like before the acquisition assumption was added?" — you cannot answer because you overwrote it. Or worse: two people are editing simultaneously and one overwrites the other's work.</div>
+      <div class="mistake-fix">FIX: Date-stamp every version. CompanyName_Model_YYYYMMDD.xlsx. Never save over. Keep a version log tab. Use SharePoint/OneDrive for shared models with version history enabled.</div>
+    </div>
+  </div>
+
+  <!-- 21.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">21.15</div>
+      <div class="section-title">Financial Modelling Interview Questions & Answers</div>
+      <div class="section-meta">Big 4 & FP&A Interviews</div>
+    </div>
+    <p class="prose">Financial modelling is tested in interviews for Big 4 Advisory, FP&A, corporate finance, and investment banking roles. Here are the most common questions — with model answers that demonstrate genuine understanding.</p>
+
+    <table class="data-table">
+      <tr><th>Interview Question</th><th>Strong Answer</th></tr>
+      <tr><td>"Walk me through a 3-statement financial model."</td><td>"A 3-statement model links the Income Statement, Balance Sheet, and Cash Flow Statement. I start with the Assumptions tab — all inputs live there. Revenue flows from a Revenue Build tab into the P&L. Supporting schedules (PP&E, Debt, Working Capital) feed the three statements. Net Profit flows to Retained Earnings on the Balance Sheet. Closing Cash from the Cash Flow Statement is the Cash line on the Balance Sheet. I always build a check tab to verify the BS balances every year."</td></tr>
+      <tr><td>"If net income increases by ₹100, what happens to the three statements?"</td><td>"P&L: Net income increases by ₹100. Balance Sheet: Retained Earnings (and therefore Equity) increases by ₹100. If no cash has been distributed, Cash also increases by ₹100, keeping BS balanced. Cash Flow Statement: Operating Cash Flow increases by ₹100 (assuming the profit is cash-backed and WC is unchanged). All three statements update consistently."</td></tr>
+      <tr><td>"What is the most common mistake in financial modelling?"</td><td>"Hardcoding assumptions directly into formula cells rather than referencing a dedicated Assumptions tab. This makes the model impossible to update cleanly and creates inconsistencies when one instance is updated and another is missed. The second most common mistake is incorrect sign conventions for working capital changes in the Cash Flow Statement."</td></tr>
+      <tr><td>"How do you avoid circular references in a model?"</td><td>"Circular references most commonly arise in the Debt Schedule — if interest is calculated on ending debt, and ending debt depends on net profit, which depends on interest. I solve this by calculating interest on the opening debt balance — a slight approximation but avoids circularity. For more complex models, I enable Excel's iterative calculation setting which allows Excel to solve circular references iteratively."</td></tr>
+      <tr><td>"What is driver-based forecasting and why is it better?"</td><td>"Driver-based forecasting links financial outputs to specific operational metrics — for example, revenue = Volume × Average Selling Price × Market Share, rather than simply 'revenue grows 12%.' It is better because it connects finance to business reality, enables meaningful sensitivity analysis on specific levers, and makes assumptions debatable and testable. When revenue misses, you can immediately identify whether it was volume, price, or market share — which is impossible with a flat growth rate assumption."</td></tr>
+      <tr><td>"How do you build sensitivity analysis into a model?"</td><td>"I use two methods. For scenario analysis, I build three assumption sets (Base/Bull/Bear) in a Scenario Manager tab and use CHOOSE functions linked to a dropdown selector — selecting a scenario updates all outputs instantly. For single-variable sensitivity, I use Excel's Data Table function (Data → What-If → Data Table) to build a grid showing how an output changes as two variables change simultaneously. I format with conditional formatting — red to green — for visual impact in presentations."</td></tr>
+    </table>
+  </div>
+
+  <!-- 21.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">21.16</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">8 Golden Rules — Non-Negotiable</div><ul class="card-items"><li>Blue inputs, Black formulas, Green links</li><li>One input, one place (Assumptions tab only)</li><li>Always build and monitor BS check</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">3-Statement Model = Foundation</div><ul class="card-items"><li>Build in order: Assumptions → Revenue → P&L → Schedules → BS → CF</li><li>Two critical stitches: Net Profit → RE, Cash → BS</li><li>Check balances before presenting — always</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">3 Supporting Schedules</div><ul class="card-items"><li>PP&E Schedule: Capex → D&A → Net PP&E</li><li>Debt Schedule: Opening + Draws − Repayments = Closing. Interest on opening balance.</li><li>WC Schedule: Days assumptions → balance → CF change</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">WC Signs — Memorise Forever</div><ul class="card-items"><li>Asset up = cash down (negative CF)</li><li>Liability up = cash up (positive CF)</li><li>D&A is non-cash — add back in CF, exclude from cash budget</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Excel Mastery — 12 Functions</div><ul class="card-items"><li>IF, IFERROR, XLOOKUP, SUMIFS, CHOOSE</li><li>OFFSET, NPV, IRR, MAX, MIN</li><li>Data Validation, What-If Data Table</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Build, Don't Just Read</div><ul class="card-items"><li>Reading about modelling = 10% learning</li><li>Building from scratch = 90% learning</li><li>Start with a simple 3-year 3-statement model this week</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 21 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Set up the 12-tab model structure in a blank Excel file — just tab names and column headers</span>
+        <span class="tag teal">✅ Build a simple 3-year P&L model from scratch for a made-up company — Assumptions tab only for inputs</span>
+        <span class="tag teal">✅ Add a PP&E Schedule — opening PP&E + capex − depreciation = closing. Link D&A to P&L.</span>
+        <span class="tag teal">✅ Build a Debt Schedule — opening debt + draws − repayments = closing. Interest on opening balance.</span>
+        <span class="tag teal">✅ Build a Working Capital Schedule — receivables, inventory, payables using days assumptions</span>
+        <span class="tag teal">✅ Add a Balance Sheet and Cash Flow Statement — link all schedules. Check that BS balances.</span>
+        <span class="tag teal">✅ Practice CHOOSE function — build a 3-scenario dropdown that changes all Assumptions tab inputs</span>
+        <span class="tag teal">✅ Build a sensitivity table using Data → What-If → Data Table for EBITDA vs Revenue Growth and Margin</span>
+        <span class="tag teal">✅ Use Ctrl + ` to check all formulas — find any inconsistent cells and fix them</span>
+        <span class="tag teal">✅ Download a free model template from CFI.co — reverse engineer it, then rebuild from scratch without looking</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21.17 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">21.17</div>
+      <div class="section-title">Quick Revision Flashcards</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Golden Rule of Modelling</div>
+        <ul class="card-items">
+          <li><strong>Q: What's the #1 golden rule of professional model building?</strong></li>
+          <li>A: Never hardcode assumptions in formula cells — all inputs live in a dedicated Assumptions tab</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">WC Sign Convention</div>
+        <ul class="card-items">
+          <li><strong>Q: Increase in a current asset — cash inflow or outflow?</strong></li>
+          <li>A: Outflow (cash tied up); increase in a current liability = inflow</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Circular Reference Fix</div>
+        <ul class="card-items">
+          <li><strong>Q: How do modellers commonly avoid circularity in the debt schedule?</strong></li>
+          <li>A: Calculate interest on the opening (not ending) debt balance</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Driver-Based Forecasting</div>
+        <ul class="card-items">
+          <li><strong>Q: Give an example of driver-based revenue forecasting.</strong></li>
+          <li>A: Revenue = Volume × Average Selling Price × Market Share (vs a flat "revenue grows 12%" assumption)</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">The Check Tab</div>
+        <ul class="card-items">
+          <li><strong>Q: What should always be built and monitored throughout a model build?</strong></li>
+          <li>A: A CHECK tab confirming the Balance Sheet balances (Assets = Liabilities + Equity) every year</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      8 Golden Rules (Never Break Them)<br>
+      + 12-Tab Architecture (Organised & Auditable)<br>
+      + 3-Statement Model (Linked & Balanced)<br>
+      + 3 Supporting Schedules (PP&E, Debt, WC)<br>
+      + 12 Excel Functions + Shortcuts<br>
+      + Scenario & Sensitivity Built In<br>
+      + Model Audit Mindset<br>
+      = <strong style="color:var(--accent4);">Professional Financial Model — CFO-Ready</strong>
+    </div>
+    <h3>Chapter 21: Financial Modelling — Complete 🏗️📊</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 22: Corporate Finance — capital structure, cost of capital, and how companies make their biggest financial decisions. 🚀</p>
+  </div>
+
+</div>
+</body>
+</html>

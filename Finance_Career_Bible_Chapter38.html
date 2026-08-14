@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 38: Corporate Governance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #e879f9; --accent2: #6c63ff; --accent3: #00d4aa; --accent4: #ffd93d;
+    --accent5: #ff6b6b; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(232,121,249,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:var(--accent); }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:var(--accent); min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent);  border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent3); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent5); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent2); border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid var(--accent); padding:14px 20px; background:rgba(232,121,249,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:var(--accent); transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:var(--accent); font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:var(--accent); background:rgba(232,121,249,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(232,121,249,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:var(--accent); text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(232,121,249,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(232,121,249,0.07),rgba(108,99,255,0.05)); border:1px solid rgba(232,121,249,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:var(--accent); }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(232,121,249,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent); font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(232,121,249,0.1); border:1px solid rgba(232,121,249,0.2); color:var(--text); }
+  .tag.pink { color:var(--accent); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(232,121,249,0.09),rgba(108,99,255,0.06)); border:1px solid rgba(232,121,249,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:var(--accent); line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 38</div>
+  <h1>Corporate<br><span>Governance</span></h1>
+  <p class="hero-sub">How companies are directed, controlled, and held accountable — the system of rules, practices, and processes that ensure organisations are run in the best interests of all stakeholders. The foundation of investor trust, capital market integrity, and sustainable business.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">SEBI</div><div class="stat-label">India's Regulator</div></div>
+    <div class="stat"><div class="stat-num">ACCA</div><div class="stat-label">P1 & SBL Core</div></div>
+    <div class="stat"><div class="stat-num">ESG</div><div class="stat-label">Governance = G</div></div>
+    <div class="stat"><div class="stat-num">Board</div><div class="stat-label">Governance Centre</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 38 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">38.1</span>What is Corporate Governance & Why It Matters</div>
+    <div class="toc-item"><span class="toc-num">38.2</span>The Agency Problem — The Root of Governance</div>
+    <div class="toc-item"><span class="toc-num">38.3</span>Theories of Corporate Governance</div>
+    <div class="toc-item"><span class="toc-num">38.4</span>The Board of Directors — Structure, Roles & Responsibilities</div>
+    <div class="toc-item"><span class="toc-num">38.5</span>Board Committees — Audit, Remuneration, Nomination & Risk</div>
+    <div class="toc-item"><span class="toc-num">38.6</span>Shareholder Rights & Stakeholder Theory</div>
+    <div class="toc-item"><span class="toc-num">38.7</span>Executive Remuneration — Aligning Incentives</div>
+    <div class="toc-item"><span class="toc-num">38.8</span>Disclosure, Transparency & Reporting</div>
+    <div class="toc-item"><span class="toc-num">38.9</span>Rules-Based vs Principles-Based Governance</div>
+    <div class="toc-item"><span class="toc-num">38.10</span>Corporate Governance in India — Companies Act & SEBI</div>
+    <div class="toc-item"><span class="toc-num">38.11</span>Global Governance Codes — UK, USA, OECD</div>
+    <div class="toc-item"><span class="toc-num">38.12</span>Governance Failures — Case Studies</div>
+    <div class="toc-item"><span class="toc-num">38.13</span>ESG & Governance — The G in ESG</div>
+    <div class="toc-item"><span class="toc-num">38.14</span>Key Takeaways, Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+  </div>
+
+  <!-- 38.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">38.1</div>
+      <div class="section-title">What is Corporate Governance & Why It Matters</div>
+    </div>
+    <p class="prose">Corporate governance is the <strong>system by which companies are directed and controlled</strong>. It defines the relationships between a company's management, its board, its shareholders, and other stakeholders — and sets the framework for achieving company objectives, monitoring performance, and ensuring accountability.</p>
+
+    <div class="quote">"Corporate governance is about promoting corporate fairness, transparency and accountability." — James Wolfensohn, former World Bank President. Good governance is the difference between a company that creates lasting value and one that destroys it through scandal, fraud, or short-termism.</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">What Good Governance Achieves</div>
+        <ul class="card-items">
+          <li><strong>Investor Confidence:</strong> Investors commit capital more readily and at lower cost when they trust the governance — lower cost of equity (CAPM: lower risk premium)</li>
+          <li><strong>Reduced Agency Costs:</strong> Controls on management behaviour reduce the risk of self-serving decisions at shareholders' expense</li>
+          <li><strong>Better Decision Making:</strong> Diverse, independent boards make better strategic decisions — challenge management, avoid groupthink</li>
+          <li><strong>Regulatory Compliance:</strong> Good governance ensures compliance with Companies Act, SEBI regulations, and listing requirements — avoiding fines and sanctions</li>
+          <li><strong>Sustainability:</strong> Companies with good governance tend to take a longer-term view — balancing profit with stakeholder wellbeing and ESG considerations</li>
+          <li><strong>Access to Capital:</strong> Institutional investors (pension funds, FIIs) increasingly require strong governance as a prerequisite for investment</li>
+        </ul>
+        <div class="card-tag">Benefits</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💥</div>
+        <div class="card-title">What Poor Governance Causes</div>
+        <ul class="card-items">
+          <li><strong>Fraud and Corruption:</strong> Satyam, Enron, Wirecard — all involved governance failures that allowed fraud to persist for years</li>
+          <li><strong>Value Destruction:</strong> Promoter tunnelling (diverting company assets for personal benefit), excessive related party transactions, empire-building acquisitions that destroy shareholder value</li>
+          <li><strong>Short-termism:</strong> Management focused on next quarter's results rather than long-term value — under-investment in R&D, people, and infrastructure</li>
+          <li><strong>Reputational Collapse:</strong> When governance fails publicly — investor exodus, credit downgrades, regulatory action, talent flight</li>
+          <li><strong>System-wide Risk:</strong> IL&FS governance failure triggered India's NBFC crisis — affected the entire financial system, not just one company</li>
+        </ul>
+        <div class="card-tag">Consequences</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Governance & Company Value — The Evidence</div>
+        <ul class="card-items">
+          <li>McKinsey Global Investor Opinion Survey: institutional investors willing to pay premium of 20-25% for companies with good governance</li>
+          <li>Companies with strong governance consistently outperform peers over long run — lower cost of capital, fewer blow-ups, better strategic decisions</li>
+          <li>India: companies with governance concerns trade at significant discount — "governance discount" is real and measurable</li>
+          <li>After Satyam: entire Indian IT sector de-rated temporarily — governance failure of one company hurt the whole industry's reputation</li>
+          <li>MSCI ESG Ratings, ISS Governance scores increasingly used by global investors to screen and price Indian stocks</li>
+        </ul>
+        <div class="card-tag">Value Link</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">38.2</div>
+      <div class="section-title">The Agency Problem — The Root of Governance</div>
+    </div>
+    <p class="prose">All corporate governance exists because of one fundamental problem — the <strong>Agency Problem</strong>. When the people who own a company (principals — shareholders) are different from those who run it (agents — directors and management), conflicts of interest inevitably arise.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">The Agency Problem — Core Framework</div>
+      <div class="formula-row">
+        <div class="formula-name">Principals</div>
+        <div class="formula-eq">Shareholders — they OWN the company but don't manage it day-to-day<br><span style="color:var(--muted);">Want: maximum long-term shareholder value, sustainable returns, transparency, dividends. Risk-tolerant (diversified portfolio). Long-term view.</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Agents</div>
+        <div class="formula-eq">Directors and Management — they RUN the company on behalf of shareholders<br><span style="color:var(--muted);">May want: personal wealth maximisation, job security, prestige, empire building. Risk-averse (concentrated human capital in one company). Potentially short-term view (linked to bonus cycle).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Agency Costs</div>
+        <div class="formula-eq">Costs arising from the separation of ownership and control<br><span style="color:var(--muted);">Monitoring costs (audit, board oversight, shareholder meetings), Bonding costs (management incentive schemes, employment contracts), Residual loss (value destroyed by management self-interest even after monitoring).</span></div>
+      </div>
+      <div class="formula-row">
+        <div class="formula-name">Governance Solution</div>
+        <div class="formula-eq">Mechanisms to align agent behaviour with principal interests<br><span style="color:var(--muted);">Independent board oversight, performance-linked remuneration, shareholder voting rights, audit and disclosure requirements, regulatory enforcement. Goal: minimise residual agency loss.</span></div>
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Common Agency Problems in Practice</div>
+        <ul class="card-items">
+          <li><strong>Empire Building:</strong> CEO acquires businesses to increase personal prestige and power — even when acquisitions destroy value for shareholders</li>
+          <li><strong>Excessive Perquisites:</strong> Management uses company resources for personal benefit — private jets, luxury offices, personal expenses charged to company</li>
+          <li><strong>Short-termism:</strong> Management cuts R&D, maintenance, and long-term investment to boost short-term profits and hit bonus targets — at long-term expense</li>
+          <li><strong>Earnings Management:</strong> Management manipulates accounting to show smooth, growing earnings — even when underlying reality is volatile</li>
+          <li><strong>Entrenchment:</strong> Management resists takeovers even when they would benefit shareholders — because their jobs would be lost</li>
+          <li><strong>Tunnelling (India):</strong> Promoters divert company assets or opportunities to related parties for personal gain — at minority shareholders' expense</li>
+        </ul>
+        <div class="card-tag">Agency Conflicts</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">India-Specific: Promoter-Minority Conflict</div>
+        <ul class="card-items">
+          <li>In India, the classic agency problem is not just shareholders vs management — it is <strong>promoters vs minority shareholders</strong></li>
+          <li>Most large Indian companies are promoter-controlled — the promoter family holds 50%+ and also runs the management</li>
+          <li>Promoters may extract value at minority shareholders' expense through: related party transactions at non-arm's-length prices, excessive promoter salary and perquisites, using company cash for promoter family businesses, pledging promoter shares (creates financial risk for company)</li>
+          <li>SEBI's governance reforms primarily aimed at protecting minority shareholders from promoter exploitation</li>
+          <li>Kotak Committee Report (2017) — landmark governance reform specifically addressing India's promoter-heavy structure</li>
+        </ul>
+        <div class="card-tag">India Context</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">38.3</div>
+      <div class="section-title">Theories of Corporate Governance</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Theory</th><th>Core Idea</th><th>Governance Implication</th><th>ACCA Relevance</th></tr>
+      <tr><td>Agency Theory</td><td>Principals (shareholders) hire agents (management) — conflicts of interest arise. Governance mechanisms align interests and reduce agency costs.</td><td>Need independent boards, performance pay, audits, shareholder voting — all to monitor and control management behaviour.</td><td>Most tested theory. Foundation of all governance discussion. Always cite when asked about board independence or remuneration.</td></tr>
+      <tr><td>Stewardship Theory</td><td>Managers are NOT self-interested — they are good stewards of company resources who want to do the right thing. Governance should empower, not restrict.</td><td>Less emphasis on monitoring and control. More trust in management. CEO-Chairman combination acceptable if both are trustworthy stewards.</td><td>Contrasts with Agency Theory. Useful for discussing whether strict governance is always beneficial or can be unnecessarily burdensome.</td></tr>
+      <tr><td>Stakeholder Theory</td><td>Companies have obligations to ALL stakeholders — not just shareholders. Management should balance the interests of employees, customers, suppliers, communities, environment.</td><td>Board composition should include stakeholder representatives. Performance measured beyond profit (ESG). Shareholder primacy challenged.</td><td>Links to ESG, sustainability reporting, integrated reporting. Contrasts with shareholder-centric model.</td></tr>
+      <tr><td>Transaction Cost Theory</td><td>Governance structures exist to minimise the transaction costs of organising economic activity — including monitoring, enforcement, and opportunistic behaviour.</td><td>Internalise activities where market transaction costs are high. Design governance to reduce costs of contracting and monitoring.</td><td>Less directly tested but provides economic rationale for why governance structures take specific forms.</td></tr>
+      <tr><td>Resource Dependency Theory</td><td>Boards provide access to resources — networks, expertise, legitimacy, relationships with capital providers — not just monitoring.</td><td>Board composition should focus on bringing valuable external resources and networks, not just independence.</td><td>Explains why boards include industry experts, ex-regulators, prominent public figures beyond their monitoring role.</td></tr>
+    </table>
+  </div>
+
+  <!-- 38.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">38.4</div>
+      <div class="section-title">The Board of Directors — Structure, Roles & Responsibilities</div>
+      <div class="section-meta">Heart of Corporate Governance</div>
+    </div>
+    <p class="prose">The Board of Directors is the central institution of corporate governance. It sits between the shareholders (who own the company) and the management (who run it). The board's primary role is to provide <strong>strategic oversight, accountability, and protection of shareholder interests.</strong></p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Board Roles & Responsibilities</div>
+        <ul class="card-items">
+          <li><strong>Strategic Direction:</strong> Approve overall strategy, major investments, M&A decisions, capital allocation</li>
+          <li><strong>Management Oversight:</strong> Appoint, evaluate, and if necessary remove the CEO and senior management</li>
+          <li><strong>Financial Oversight:</strong> Approve annual budget, financial statements, dividend policy, major financing decisions</li>
+          <li><strong>Risk Governance:</strong> Set risk appetite, oversee risk management framework, ensure adequate internal controls</li>
+          <li><strong>Compliance & Ethics:</strong> Ensure legal and regulatory compliance, set ethical tone for the organisation</li>
+          <li><strong>Stakeholder Accountability:</strong> Represent shareholder interests, communicate with key stakeholders</li>
+          <li><strong>Succession Planning:</strong> Ensure pipeline of leadership for CEO and senior management roles</li>
+        </ul>
+        <div class="card-tag">Board Functions</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">👔</div>
+        <div class="card-title">Executive vs Non-Executive Directors</div>
+        <ul class="card-items">
+          <li><strong>Executive Directors (EDs):</strong> Full-time employees of the company — CEO, CFO, COO as board members. Deep operational knowledge but less independent — conflict of interest in overseeing themselves.</li>
+          <li><strong>Non-Executive Directors (NEDs):</strong> Part-time, not employed by the company. Bring external perspective, independence, specialised expertise. Primary monitoring role — challenging management.</li>
+          <li><strong>Independent NEDs:</strong> NEDs with no material relationship with company — no major shareholding, no former employment, no business relationship. Maximum independence for objective oversight.</li>
+          <li>Good governance: majority of board (especially in listed companies) should be independent NEDs</li>
+          <li>India (SEBI LODR): at least 50% of board must be independent directors for listed companies with executive chairman. At least 1/3 if non-executive chairman.</li>
+        </ul>
+        <div class="card-tag">Board Composition</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔑</div>
+        <div class="card-title">Chairman vs CEO — Separation of Roles</div>
+        <ul class="card-items">
+          <li><strong>Chairman:</strong> Leads the board — sets agenda, facilitates board discussions, ensures board effectiveness, leads board evaluation. NOT responsible for running the business day-to-day.</li>
+          <li><strong>CEO (Managing Director in India):</strong> Leads the management team — responsible for executing strategy, managing operations, delivering financial results.</li>
+          <li><strong>Why separation matters:</strong> If one person is both Chairman and CEO, they chair the meetings that evaluate themselves — clear conflict of interest. No independent oversight of the most powerful person in the company.</li>
+          <li><strong>India:</strong> SEBI mandated separation of Chairman and MD/CEO roles for top 500 listed companies. Still being implemented.</li>
+          <li><strong>USA:</strong> Combined Chairman-CEO still common (Apple, Amazon at various times) — different tradition. SOX oversight provides some compensation.</li>
+        </ul>
+        <div class="card-tag">Separation of Powers</div>
+      </div>
+    </div>
+
+    <p class="section-label">Qualities of Effective Board Members — ACCA Framework</p>
+    <div class="wide-card">
+      <h4>🎯 What Makes a Good Non-Executive Director?</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;font-size:13px;color:var(--muted);line-height:2;">
+        <div>
+          <div style="color:var(--accent);font-family:var(--mono);font-size:10px;margin-bottom:10px;">SKILLS & KNOWLEDGE</div>
+          Financial literacy — can read and challenge financial statements ✅<br>
+          Industry knowledge — understands the business context ✅<br>
+          Strategic thinking — able to evaluate long-term plans ✅<br>
+          Risk expertise — can assess risk profile ✅<br>
+          Legal/regulatory awareness — knows compliance landscape ✅<br>
+          Technology understanding — increasingly essential ✅
+        </div>
+        <div>
+          <div style="color:var(--accent);font-family:var(--mono);font-size:10px;margin-bottom:10px;">PERSONAL QUALITIES</div>
+          Independence of mind — willing to challenge management ✅<br>
+          Integrity — ethical, will not compromise for comfort ✅<br>
+          Courage — will raise uncomfortable truths ✅<br>
+          Diligence — prepares thoroughly for board meetings ✅<br>
+          Curiosity — asks probing questions ✅<br>
+          Commitment — devotes sufficient time ✅
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">⚠️ The "Rubber Stamp" Board Problem</div>
+      A rubber stamp board is one that simply approves whatever management proposes — without independent challenge, scrutiny, or oversight. This is a major governance failure.<br><br>
+      <strong>Signs of a rubber stamp board:</strong> All resolutions passed unanimously every time. Board meetings extremely short (30 minutes for major decisions). NEDs never ask difficult questions. Chairman is also CEO (no independent chair). All NEDs are personal friends of the promoter/CEO. No dissenting votes ever recorded.<br><br>
+      <strong>India examples:</strong> IL&FS board — several eminent independent directors failed to challenge management despite clear warning signs. Satyam — board approved large (and later cancelled) acquisition of promoter's companies, until shareholder revolt forced reversal. These show that formal board structures without genuine independence are meaningless.
+    </div>
+  </div>
+
+  <!-- 38.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">38.5</div>
+      <div class="section-title">Board Committees — Audit, Remuneration, Nomination & Risk</div>
+    </div>
+    <p class="prose">For efficiency and expertise, boards delegate specific governance functions to committees. These committees are composed primarily or entirely of independent NEDs — ensuring objectivity on the most sensitive matters. Four key committees are standard for well-governed listed companies.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">Audit Committee</div>
+        <ul class="card-items">
+          <li><strong>Composition:</strong> Minimum 3 independent NEDs, at least one with financial expertise (CA/CFA/equivalent)</li>
+          <li><strong>Key roles:</strong></li>
+          <li>Oversee financial reporting — review financial statements before board approval</li>
+          <li>Manage relationship with external auditors — recommend appointment, agree scope, review findings</li>
+          <li>Oversee internal audit function — approve audit plan, review reports, track recommendations</li>
+          <li>Review internal controls — assess adequacy, ensure management addresses weaknesses</li>
+          <li>Whistleblower oversight — receive and investigate concerns about financial irregularities</li>
+          <li>Approve related party transactions — most critical function in India</li>
+          <li><strong>India mandate:</strong> Companies Act 2013, Section 177 — mandatory for listed companies and certain large companies</li>
+        </ul>
+        <div class="card-tag">Most Important</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Remuneration (Compensation) Committee</div>
+        <ul class="card-items">
+          <li><strong>Composition:</strong> Majority independent NEDs. Chairman must be independent.</li>
+          <li><strong>Key roles:</strong></li>
+          <li>Set remuneration policy for executive directors and senior management</li>
+          <li>Determine specific pay packages — salary, bonus, ESOP grants, pension</li>
+          <li>Ensure pay is linked to performance — align management incentives with shareholder value</li>
+          <li>Benchmark against peers — ensure pay is competitive but not excessive</li>
+          <li>Manage shareholder engagement on pay — especially if advisory vote is close</li>
+          <li><strong>Key principle:</strong> Management should NOT participate in decisions about their own remuneration — massive conflict of interest</li>
+          <li><strong>India:</strong> Nomination and Remuneration Committee (NRC) — combined under Companies Act 2013, Section 178</li>
+        </ul>
+        <div class="card-tag">Pay Oversight</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <div class="card-title">Nomination Committee</div>
+        <ul class="card-items">
+          <li><strong>Composition:</strong> Majority independent NEDs</li>
+          <li><strong>Key roles:</strong></li>
+          <li>Identify and recommend candidates for board appointments</li>
+          <li>Succession planning for Chairman, CEO, and other key board roles</li>
+          <li>Evaluate board composition — skills gaps, diversity, independence</li>
+          <li>Annual board effectiveness evaluation — assess individual director and collective board performance</li>
+          <li>Recommend re-election of directors standing for re-election at AGM</li>
+          <li><strong>Diversity:</strong> Increasingly expected to ensure gender, ethnic, and skills diversity on the board. SEBI: at least one woman independent director mandatory for listed companies.</li>
+        </ul>
+        <div class="card-tag">Board Composition</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Risk Committee</div>
+        <ul class="card-items">
+          <li><strong>Composition:</strong> Mix of executives and independent NEDs. CRO typically presents to this committee.</li>
+          <li><strong>Key roles:</strong></li>
+          <li>Oversee the organisation's risk management framework — ensure it is adequate and effective</li>
+          <li>Review and approve risk appetite statement</li>
+          <li>Review top risks from risk register — challenge management on risk responses</li>
+          <li>Monitor emerging risks — cyber, ESG, geopolitical</li>
+          <li>Ensure adequate risk culture across the organisation</li>
+          <li><strong>India mandate:</strong> SEBI LODR — mandatory Risk Management Committee for top 1,000 listed companies</li>
+          <li>Separate from Audit Committee — though in smaller companies, audit committee may perform risk oversight role</li>
+        </ul>
+        <div class="card-tag">Risk Oversight</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">38.6</div>
+      <div class="section-title">Shareholder Rights & Stakeholder Theory</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🗳️</div>
+        <div class="card-title">Shareholder Rights — Core Entitlements</div>
+        <ul class="card-items">
+          <li><strong>Voting Rights:</strong> One share, one vote (generally). Vote at AGM/EGM on resolutions — director appointments, dividend approval, auditor appointment, major transactions</li>
+          <li><strong>Dividend Rights:</strong> Right to receive dividends when declared by board and approved by shareholders</li>
+          <li><strong>Information Rights:</strong> Right to receive Annual Report, financial statements, notices of meetings</li>
+          <li><strong>Pre-emption Rights:</strong> Right to subscribe to new shares before they are offered to outsiders — prevents dilution without consent</li>
+          <li><strong>Right to Attend AGM:</strong> Ask questions, raise concerns, vote on resolutions</li>
+          <li><strong>Right to Requisition EGM:</strong> Shareholders holding 10%+ can call an Extraordinary General Meeting</li>
+          <li><strong>Right to Inspect Records:</strong> Memorandum, Articles of Association, register of members, minutes of general meetings</li>
+        </ul>
+        <div class="card-tag">Shareholder Rights</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title">Stakeholder Theory — Beyond Shareholders</div>
+        <ul class="card-items">
+          <li>R. Edward Freeman (1984): companies have obligations to ALL stakeholders — not just shareholders</li>
+          <li><strong>Key stakeholders:</strong> Shareholders (return on investment), Employees (fair pay, safe conditions, development), Customers (quality products/services, fair treatment), Suppliers (fair payment terms, long-term relationships), Communities (local employment, environmental responsibility), Government (tax compliance, regulatory adherence), Environment (sustainability, emissions reduction)</li>
+          <li><strong>Business Roundtable Statement (2019):</strong> 181 US CEOs redefined the purpose of a corporation to include all stakeholders — moving away from pure shareholder primacy</li>
+          <li>Tension: satisfying all stakeholders simultaneously is difficult — prioritisation required. Profit still necessary — but how it is made matters.</li>
+          <li>Governance implication: Board must balance competing stakeholder interests — not just maximise short-term shareholder returns</li>
+        </ul>
+        <div class="card-tag">Stakeholders</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">Institutional Investors & Stewardship</div>
+        <ul class="card-items">
+          <li>Institutional investors (pension funds, mutual funds, insurance companies, sovereign wealth funds) own large blocks of shares — their engagement is critical for governance</li>
+          <li><strong>Stewardship Codes:</strong> UK Stewardship Code 2020, India's Stewardship Code (SEBI, 2019) — require institutional investors to: actively engage with companies on governance, vote thoughtfully at AGMs (not rubber stamp), report on their stewardship activities</li>
+          <li><strong>Proxy Advisory Firms:</strong> ISS, Glass Lewis — advise institutional investors how to vote. Their recommendations carry enormous influence — companies lobby hard to get positive recommendations.</li>
+          <li><strong>Activist Shareholders:</strong> Hedge funds or large shareholders who actively push for governance changes — board changes, strategy shifts, capital returns. Growing in India (Hindenburg vs Adani — though more financial attack than governance activism)</li>
+        </ul>
+        <div class="card-tag">Institutional Engagement</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">38.7</div>
+      <div class="section-title">Executive Remuneration — Aligning Incentives</div>
+    </div>
+    <p class="prose">Executive remuneration is one of the most debated topics in corporate governance. The central challenge: <strong>how do you pay management enough to attract and retain the best talent, while ensuring pay is linked to genuine long-term performance?</strong></p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Components of Executive Pay</div>
+        <ul class="card-items">
+          <li><strong>Base Salary:</strong> Fixed component — reflects role, experience, market benchmark. Should not be excessive — keeps fixed cost manageable.</li>
+          <li><strong>Annual Bonus:</strong> Short-term incentive — linked to annual performance targets (revenue, EBITDA, EPS, strategic goals). Typically 50-150% of base salary. Risk: encourages short-termism if targets are purely financial.</li>
+          <li><strong>Long-Term Incentive Plan (LTIP):</strong> Equity-based — shares or options vesting over 3-5 years based on long-term performance (TSR, EPS growth, ROCE). Most important for alignment — management wealth tied to long-term share price.</li>
+          <li><strong>Employee Stock Options (ESOPs):</strong> Right to buy shares at a fixed price — valuable if share price rises above exercise price. Very common in India for senior management and key employees.</li>
+          <li><strong>Pension:</strong> Defined benefit or defined contribution. Controversial when executives receive very generous pensions not available to ordinary employees.</li>
+          <li><strong>Perquisites (Perks):</strong> Company car, housing, club memberships, travel. Should be business-justified and transparent.</li>
+        </ul>
+        <div class="card-tag">Pay Structure</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Governance Principles for Executive Pay</div>
+        <ul class="card-items">
+          <li><strong>Pay for Performance:</strong> Variable pay must be genuinely linked to stretching but achievable performance targets — not guaranteed</li>
+          <li><strong>Clawback Provisions:</strong> Ability to recover bonuses paid for performance later found to be misstated — essential after Enron/Lehman-type events</li>
+          <li><strong>Malus:</strong> Reduce unvested awards if events occur that justify reduction (misconduct, restatement) — applies before vesting</li>
+          <li><strong>Holding Periods:</strong> Executives required to hold vested shares for further period — aligns with long-term shareholder interest</li>
+          <li><strong>Shareholder Vote on Pay:</strong> Advisory say-on-pay vote at AGM — not binding in India yet but growing pressure</li>
+          <li><strong>Pay Ratio Disclosure:</strong> CEO pay vs median employee pay — increasingly disclosed to highlight inequality concerns</li>
+          <li><strong>India:</strong> Companies Act requires shareholder approval for managerial remuneration above prescribed limits (11% of net profits)</li>
+        </ul>
+        <div class="card-tag">Governance Principles</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚫</div>
+        <div class="card-title">Problems with Executive Pay</div>
+        <ul class="card-items">
+          <li><strong>Ratchet Effect:</strong> Remuneration consultants benchmark against peers — everyone wants to be "above median" → pay spirals upward regardless of performance</li>
+          <li><strong>Rewards for Failure:</strong> "Golden parachutes" — large payoffs when executives leave despite poor performance. Undermines pay for performance.</li>
+          <li><strong>Short-termism:</strong> Annual bonus targets can encourage decisions that boost short-term metrics at long-term expense (cutting R&D to hit EBITDA target)</li>
+          <li><strong>Manipulation:</strong> Management may time announcements, make accounting choices, or conduct buybacks to maximise share price before option exercise dates</li>
+          <li><strong>Pay inequality:</strong> CEO pay has grown 10-100x faster than average employee pay over past 30 years — social and reputational concern</li>
+        </ul>
+        <div class="card-tag">Problems</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">38.8</div>
+      <div class="section-title">Disclosure, Transparency & Reporting</div>
+    </div>
+    <p class="prose">Transparency is a cornerstone of good governance. If stakeholders cannot see what a company is doing — with their money, with their assets, with their future — they cannot hold it accountable. Disclosure requirements ensure companies publish material information promptly and accurately.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">What Must Be Disclosed — Listed Companies (India)</div>
+        <ul class="card-items">
+          <li><strong>Financial Results:</strong> Quarterly and annual financial results within 45 days of quarter end (60 days for annual) — to BSE/NSE</li>
+          <li><strong>Material Events:</strong> Any event that could affect share price must be disclosed immediately — mergers, acquisitions, large contracts, legal proceedings, regulatory actions</li>
+          <li><strong>Shareholding Pattern:</strong> Quarterly — promoter holding, institutional holding, public holding</li>
+          <li><strong>Related Party Transactions:</strong> All material RPTs must be disclosed and approved by Audit Committee / shareholders</li>
+          <li><strong>Board Changes:</strong> Appointment/resignation of directors, CEO, CFO, Company Secretary — within 24 hours</li>
+          <li><strong>Annual Report:</strong> Comprehensive — financial statements, Director's Report, Corporate Governance Report, MD&A, Secretarial Audit Report</li>
+          <li><strong>Promoter Pledging:</strong> When promoters pledge shares as collateral — must disclose percentage pledged. High pledging = red flag.</li>
+        </ul>
+        <div class="card-tag">SEBI Requirements</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Integrated Reporting — The Future of Disclosure</div>
+        <ul class="card-items">
+          <li>Integrated Reporting (&lt;IR&gt;) — framework by IIRC (International Integrated Reporting Council): how an organisation creates value over time using six capitals</li>
+          <li><strong>Six Capitals:</strong> Financial (money), Manufactured (physical assets), Intellectual (IP, knowledge), Human (employees), Social & Relationship (brand, community), Natural (environmental resources)</li>
+          <li>Tells a holistic story — not just financial results, but how ALL capitals are used and changed</li>
+          <li>Adopted by: Infosys, Wipro, Tata group companies among Indian leaders in integrated reporting</li>
+          <li>SEBI BRSR (Business Responsibility and Sustainability Reporting) — mandatory for top 1,000 listed companies from FY2022-23 — India's version of integrated/ESG reporting requirement</li>
+          <li>Links directly to ESG investing — the information investors need to assess non-financial risks and performance</li>
+        </ul>
+        <div class="card-tag">Integrated Reporting</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">38.9</div>
+      <div class="section-title">Rules-Based vs Principles-Based Governance</div>
+    </div>
+    <p class="prose">Two fundamentally different approaches to corporate governance exist globally. Understanding the difference is essential for ACCA exams and for understanding why governance works differently across countries.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Rules-Based Approach</div>
+        <ul class="card-items">
+          <li>Governance requirements codified in LAW — companies MUST comply or face legal penalties</li>
+          <li>Specific, detailed, prescriptive — little room for judgement or flexibility</li>
+          <li><strong>Primary example:</strong> USA — Sarbanes-Oxley Act (SOX) 2002. SEC regulations. Detailed requirements with criminal penalties for non-compliance.</li>
+          <li><strong>India (partially):</strong> Companies Act 2013 + SEBI LODR contain many mandatory requirements — not purely principles-based</li>
+          <li><strong>Advantages:</strong> Clear expectations, level playing field, no "comply or explain" loopholes, strong enforcement</li>
+          <li><strong>Disadvantages:</strong> Inflexible — one size fits all. Compliance focus over substance. Very costly (SOX compliance costs run into millions). "Tick-box" mentality — doing the minimum to comply without genuine governance.</li>
+        </ul>
+        <div class="card-tag">USA / India</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">Principles-Based Approach</div>
+        <ul class="card-items">
+          <li>Governance based on PRINCIPLES and BEST PRACTICE codes — "comply or explain" mechanism</li>
+          <li>Companies either COMPLY with each provision or EXPLAIN why they don't — market judges the explanation</li>
+          <li><strong>Primary example:</strong> UK Corporate Governance Code — the model for principles-based governance globally</li>
+          <li><strong>Advantages:</strong> Flexible — allows governance to fit company size and circumstances. Focuses on substance over form. Encourages thoughtful governance rather than tick-box compliance. Allows innovation in governance.</li>
+          <li><strong>Disadvantages:</strong> "Explain" can become a loophole — weak explanations accepted. No criminal penalties for poor governance. Relies on market discipline (investor scrutiny) which may not always be effective.</li>
+          <li><strong>Comply or Explain:</strong> A company can deviate from a Code provision if it provides a clear, reasoned explanation — and investors/market can hold them accountable</li>
+        </ul>
+        <div class="card-tag">UK Model</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">💡 ACCA Favourite — Advantages and Disadvantages of Each Approach</div>
+      <strong>Rules-Based Advantages:</strong> Certainty (everyone knows exactly what's required), Consistency (same rules for all), Strong enforcement (legal penalties deter non-compliance), Investor confidence (know minimum standards are met).<br><br>
+      <strong>Rules-Based Disadvantages:</strong> Inflexible (can't adapt to company size/circumstances), Costly compliance (especially for smaller companies), "Tick-box" culture (companies do minimum to comply), May stifle innovation in governance, Regulatory burden discourages listing.<br><br>
+      <strong>Principles-Based Advantages:</strong> Flexible (companies can adapt to their circumstances), Substance over form (focus on genuine governance, not compliance theatre), Less costly (proportionate to company size), Encourages disclosure and explanation (valuable information for investors).<br><br>
+      <strong>Principles-Based Disadvantages:</strong> "Explain" can be a loophole (weak explanations not challenged), Relies on market discipline (works only if investors are engaged), Inconsistency (different companies interpret principles differently), Difficult to enforce (no clear breach when it's principles, not rules).
+    </div>
+  </div>
+
+  <!-- 38.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">38.10</div>
+      <div class="section-title">Corporate Governance in India — Companies Act & SEBI</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Companies Act 2013 — Key Governance Provisions</div>
+        <ul class="card-items">
+          <li><strong>Independent Directors:</strong> At least 1/3 of board must be independent. Listed companies and certain large companies. Maximum 5-year term, renewable once with shareholder approval. Cannot serve on same board for more than 10 consecutive years.</li>
+          <li><strong>Women Director:</strong> At least one woman director mandatory for listed companies and certain large public companies</li>
+          <li><strong>Audit Committee:</strong> Mandatory (Section 177) — minimum 3 independent directors, at least one with financial expertise</li>
+          <li><strong>NRC:</strong> Nomination and Remuneration Committee (Section 178) — mandatory for listed companies</li>
+          <li><strong>CSR:</strong> Companies with net worth ≥₹500Cr, turnover ≥₹1,000Cr, or net profit ≥₹5Cr — must spend 2% of average 3-year net profit on CSR activities</li>
+          <li><strong>Secretarial Audit:</strong> Listed companies and large companies must have annual secretarial audit by Company Secretary — reports on governance compliance</li>
+          <li><strong>Whistleblower:</strong> Vigil mechanism mandatory for listed companies and those accepting public deposits</li>
+        </ul>
+        <div class="card-tag">Companies Act</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">SEBI LODR — Listed Company Requirements</div>
+        <ul class="card-items">
+          <li><strong>Board Composition:</strong> Minimum 50% independent directors if executive chairman; minimum 1/3 if non-executive chairman</li>
+          <li><strong>Chairman-MD Separation:</strong> Top 500 listed companies — chairman should not be part of promoter group (being implemented)</li>
+          <li><strong>Board Meetings:</strong> Minimum 4 per year, with maximum gap of 120 days</li>
+          <li><strong>RPT Approval:</strong> Material related party transactions require shareholder approval — related parties cannot vote. Audit committee must approve all RPTs.</li>
+          <li><strong>Corporate Governance Report:</strong> Mandatory section in Annual Report — details board composition, committee meetings, attendance, remuneration disclosures</li>
+          <li><strong>BRSR:</strong> Business Responsibility and Sustainability Reporting — mandatory for top 1,000 listed companies. Covers ESG disclosures across 9 principles.</li>
+          <li><strong>Stewardship Code:</strong> Institutional investors (mutual funds, FIIs) must engage with investee companies on governance</li>
+        </ul>
+        <div class="card-tag">SEBI LODR</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🇮🇳</div>
+        <div class="card-title">Kotak Committee Report (2017) — Landmark India Reform</div>
+        <ul class="card-items">
+          <li>SEBI constituted committee under Uday Kotak (Kotak Mahindra Bank) to review corporate governance norms for listed companies</li>
+          <li><strong>Key recommendations implemented:</strong></li>
+          <li>Minimum 6 board members for top 1,000 listed companies</li>
+          <li>Top 500 companies: at least one independent woman director</li>
+          <li>Separation of Chairman and MD/CEO roles</li>
+          <li>Limit on maximum directorships — no individual can be NED of more than 7 listed companies</li>
+          <li>Mandatory disclosure of utilisation of funds raised through preferential allotment</li>
+          <li>Enhanced related party transaction disclosures and approval requirements</li>
+          <li>Quarterly disclosure of promoter pledging</li>
+          <li>Significant and comprehensive — moved India governance significantly closer to global standards</li>
+        </ul>
+        <div class="card-tag">Kotak Committee</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">38.11</div>
+      <div class="section-title">Global Governance Codes — UK, USA, OECD</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Code / Framework</th><th>Country / Scope</th><th>Key Features</th><th>Approach</th></tr>
+      <tr><td>UK Corporate Governance Code (2018/2024)</td><td>UK Listed Companies</td><td>5 principles: Leadership, Effectiveness, Accountability, Remuneration, Relations with Shareholders. Independent board, separate chairman-CEO, board effectiveness evaluation, remuneration linked to long-term performance, shareholder engagement.</td><td>Principles-based — "comply or explain"</td></tr>
+      <tr><td>Sarbanes-Oxley Act (SOX) 2002</td><td>USA (all SEC-registered companies)</td><td>Section 302: CEO/CFO must personally certify financial statements. Section 404: Management + auditor must assess internal controls over financial reporting. Criminal penalties for false certification. Independent audit committee mandatory. Auditor independence rules.</td><td>Rules-based — mandatory law</td></tr>
+      <tr><td>Cadbury Report (1992, UK)</td><td>UK — Historical landmark</td><td>First major governance code — introduced concept of independent directors, audit committee, separation of chairman-CEO, "comply or explain". Foundation of all subsequent governance codes globally. Triggered by BCCI, Maxwell, Polly Peck scandals.</td><td>Principles-based — first "comply or explain" code</td></tr>
+      <tr><td>OECD Principles of Corporate Governance (2023)</td><td>Global — G20 countries</td><td>Six sections: Ensuring basis for effective governance framework, Rights and equitable treatment of shareholders, Institutional investors & capital markets, Disclosure and transparency, Board responsibilities, Sustainability and resilience (added in 2023 revision). Non-binding but influential framework used by World Bank, IMF.</td><td>Principles-based — guidance, not mandatory</td></tr>
+      <tr><td>King IV Report (South Africa, 2016)</td><td>South Africa — leading emerging market code</td><td>Integrated thinking, stakeholder inclusivity, sustainable development. "Apply and explain" (stronger than comply or explain). Governance outcomes over compliance. Highly influential for ESG integration in governance.</td><td>Principles-based — "apply and explain"</td></tr>
+    </table>
+  </div>
+
+  <!-- 38.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">38.12</div>
+      <div class="section-title">Governance Failures — Case Studies</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Case</th><th>Key Governance Failures</th><th>Consequences</th><th>Lessons</th></tr>
+      <tr><td>Enron (USA, 2001)</td><td>Board approved complex SPV structures that hid debt. Audit committee did not question auditor independence (Arthur Andersen earned huge non-audit fees). CEO Jeff Skilling created aggressive performance culture that suppressed dissent. Compensation highly stock-option based — encouraged earnings manipulation.</td><td>$74B shareholder loss. Thousands of employee pension funds wiped out. Arthur Andersen collapsed. Led to SOX 2002.</td><td>Independent directors must be genuinely independent and sufficiently informed. Auditor independence is non-negotiable. Culture of fear destroys governance. Stock option compensation creates perverse incentives.</td></tr>
+      <tr><td>Satyam (India, 2009)</td><td>Founder Raju had unchecked power — no genuine board challenge. Board approved acquisition of promoter's companies before shareholder revolt. Auditor PwC India accepted fabricated confirmations. Independent directors were prominent but not genuinely independent.</td><td>₹7,136Cr fraud exposed. Company sold to Tech Mahindra at distressed price. Raju imprisoned. Led to NFRA, SEBI governance reforms.</td><td>Board diversity and independence means nothing without genuine courage to challenge. Auditors must be truly independent — not captured by management. Promoter control without board oversight is extremely dangerous.</td></tr>
+      <tr><td>IL&FS (India, 2018)</td><td>CEO served for 30 years — extreme entrenchment. Salary of ₹26Cr while company was collapsing. Board of eminent persons (ex-RBI governors, etc.) but none raised adequate alarm. Complex group structure hid debt. Rating agencies failed. Multiple auditors, none saw whole picture.</td><td>₹91,000Cr default. NBFC crisis triggered. Systemic risk to India's financial system. Government took over company.</td><td>Long-tenure CEO is a major governance red flag. Board seniority does not equal effectiveness. Complex structures are often designed to obscure. Group-level governance must be as strong as individual entity governance.</td></tr>
+      <tr><td>Wirecard (Germany, 2020)</td><td>CEO had extraordinary power — board did not challenge. Supervisory board accepted explanations without adequate scrutiny. EY (auditor) failed to confirm €1.9B cash directly with banks. Regulator BaFin actually attacked short sellers who correctly identified fraud instead of investigating company.</td><td>€1.9B of cash found to not exist. Company collapsed. CEO arrested, CFO fled. EY under regulatory scrutiny globally.</td><td>Auditors must NEVER accept management representations without independent verification of material balances. Regulators must investigate concerns, not attack those who raise them. Board must be able to understand and challenge complex business models.</td></tr>
+      <tr><td>Vijay Mallya / Kingfisher (India, 2012-16)</td><td>Lenders (public sector banks) failed to enforce covenant breaches. Board did not challenge promoter's use of airline cash. Promoter pledged company assets for personal loans. Governance of lending banks was itself weak — political pressure to lend.</td><td>₹9,000Cr+ bank fraud. Mallya fled to UK. Became symbol of "wilful defaulters" and governance of PSU banks.</td><td>Covenants in loan agreements must be enforced. Board must prevent promoter from treating company as personal piggy bank. PSU bank governance must be depoliticised. Related party transactions require strict oversight.</td></tr>
+    </table>
+  </div>
+
+  <!-- 38.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">38.13</div>
+      <div class="section-title">ESG & Governance — The G in ESG</div>
+    </div>
+    <p class="prose">ESG stands for Environmental, Social, and Governance. Governance (the G) is arguably the most foundational of the three — because without good governance, companies cannot credibly deliver on Environmental or Social commitments. Good governance IS the mechanism that ensures ESG promises are kept.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🌱</div>
+        <div class="card-title">G in ESG — What It Covers</div>
+        <ul class="card-items">
+          <li><strong>Board Composition:</strong> Independence, diversity (gender, ethnicity, skills), relevant expertise for ESG oversight</li>
+          <li><strong>Board Oversight of ESG:</strong> Board-level responsibility for ESG strategy and targets — not just delegated to management</li>
+          <li><strong>Executive Remuneration linked to ESG:</strong> CEO and senior management bonuses tied to ESG metrics (carbon reduction, employee safety, diversity targets)</li>
+          <li><strong>Anti-corruption & Bribery:</strong> Clear policies, training, zero tolerance, strong controls</li>
+          <li><strong>Tax Transparency:</strong> Fair, responsible tax practices — not aggressive avoidance that shifts burden to society</li>
+          <li><strong>Supply Chain Governance:</strong> Ensuring ESG standards extend to suppliers — no forced labour, safe conditions, environmental compliance</li>
+          <li><strong>Lobbying Transparency:</strong> Disclosure of political lobbying activities and expenditure</li>
+        </ul>
+        <div class="card-tag">ESG-G Factors</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Why ESG Governance Matters to Investors</div>
+        <ul class="card-items">
+          <li>Global ESG assets under management: $35+ trillion (2025 estimate) — institutional capital increasingly ESG-screened</li>
+          <li>Companies with weak G scores face: higher cost of capital, exclusion from ESG indices, lower institutional ownership, regulatory scrutiny</li>
+          <li>MSCI ESG Ratings — widely used by global investors. Indian companies increasingly rated. Poor governance → poor MSCI rating → reduced FII investment.</li>
+          <li>Proxy advisory firms (ISS, Glass Lewis) rate governance quality — their negative recommendations can swing shareholder votes</li>
+          <li>India: BRSR (Business Responsibility and Sustainability Reporting) mandatory for top 1,000 listed companies — forces governance disclosure</li>
+          <li>SEBI's sustainability disclosure requirements growing — aligning India with global standards (ISSB Standards)</li>
+        </ul>
+        <div class="card-tag">ESG Investing</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-pink">38.14</div>
+      <div class="section-title">Key Takeaways, Mistakes, Flashcards, Interview Q&A & Action Steps</div>
+    </div>
+
+    <p class="section-label">Part A — 12 Core Takeaways</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Governance = Direction + Control + Accountability</div><ul class="card-items"><li>System by which companies are directed and controlled</li><li>Board sits between shareholders (own) and management (run)</li><li>Good governance → lower cost of capital, better decisions, sustainable value</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Agency Problem — Root of All Governance</div><ul class="card-items"><li>Principals (shareholders) vs Agents (management) — conflicts of interest</li><li>Agency costs: monitoring + bonding + residual loss</li><li>India variant: Promoters vs Minority shareholders</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Board Composition — Independence Matters</div><ul class="card-items"><li>NEDs provide independent oversight</li><li>Independent directors: no material relationship with company</li><li>India: 50% independent directors (listed with executive chairman)</li><li>Separate Chairman and CEO — no one can oversee themselves</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Four Key Board Committees</div><ul class="card-items"><li>Audit Committee — financial reporting, internal controls, auditors</li><li>Remuneration Committee — executive pay linked to performance</li><li>Nomination Committee — board composition, succession</li><li>Risk Committee — risk appetite, top risks, risk culture</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Rules vs Principles Based</div><ul class="card-items"><li>Rules-based (USA/SOX): mandatory, prescriptive, criminal penalties</li><li>Principles-based (UK Code): comply or explain, flexible, market discipline</li><li>India: hybrid — mandatory requirements (Companies Act) + principles (SEBI)</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Executive Pay — Align, Don't Just Pay</div><ul class="card-items"><li>Base + Annual Bonus (short-term) + LTIP/ESOP (long-term)</li><li>Clawback and malus provisions — recover if performance was false</li><li>Remuneration Committee must be independent of management</li><li>Pay for performance — not guaranteed bonuses</li></ul></div>
+      <div class="card"><div class="card-icon">7️⃣</div><div class="card-title">India Governance Framework</div><ul class="card-items"><li>Companies Act 2013: board composition, audit committee, NRC, CSR, whistleblower</li><li>SEBI LODR: quarterly disclosure, RPT approval, board independence</li><li>Kotak Committee 2017: landmark reforms for listed companies</li><li>BRSR: ESG reporting mandatory for top 1,000 listed cos</li></ul></div>
+      <div class="card"><div class="card-icon">8️⃣</div><div class="card-title">Transparency & Disclosure</div><ul class="card-items"><li>Material events → immediate disclosure to stock exchange</li><li>Related party transactions: Audit Committee + shareholder approval</li><li>Promoter pledging: quarterly disclosure → red flag if high</li><li>Annual Report: CG Report mandatory section</li></ul></div>
+      <div class="card"><div class="card-icon">9️⃣</div><div class="card-title">Stakeholder Theory</div><ul class="card-items"><li>Companies have obligations beyond shareholders</li><li>Employees, customers, suppliers, community, environment</li><li>Business Roundtable 2019: redefining corporate purpose</li><li>Governance must balance — not just maximise short-term profit</li></ul></div>
+      <div class="card"><div class="card-icon">🔟</div><div class="card-title">Governance Theories</div><ul class="card-items"><li>Agency Theory: management must be monitored and incentivised</li><li>Stewardship Theory: managers are good stewards — trust them</li><li>Stakeholder Theory: obligations to all, not just shareholders</li><li>Resource Dependency: board brings resources, not just monitoring</li></ul></div>
+      <div class="card"><div class="card-icon">1️⃣1️⃣</div><div class="card-title">ESG — G is the Foundation</div><ul class="card-items"><li>Without good governance, E and S promises are meaningless</li><li>Board must own ESG — not just delegate to management</li><li>ESG-linked executive pay: growing standard globally</li><li>MSCI ESG ratings increasingly affect FII investment in India</li></ul></div>
+      <div class="card"><div class="card-icon">1️⃣2️⃣</div><div class="card-title">Governance Failure Common Themes</div><ul class="card-items"><li>Dominant personality with unchecked power (Raju, Skilling)</li><li>Board that doesn't genuinely challenge management</li><li>Auditor not truly independent</li><li>Complex structures hiding reality</li><li>Culture of fear preventing bad news from rising</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part B — Common Exam Mistakes</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">❌ MISTAKE 1</div><div class="step-content"><strong>Confusing Independence and Effectiveness</strong><br>Independent directors on paper do not guarantee governance quality. Independence is a necessary but not sufficient condition. An independent director must also have the courage, knowledge, and time to genuinely challenge management. Many governance failures had formally independent boards that were rubber stamps in practice.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 2</div><div class="step-content"><strong>Saying Rules-Based is Always Better Than Principles-Based</strong><br>Both approaches have significant advantages and disadvantages. Rules-based gives certainty but creates tick-box compliance. Principles-based is flexible but can be gamed. ACCA exam questions often ask for balanced evaluation — present both sides, then conclude based on the specific context given.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 3</div><div class="step-content"><strong>Forgetting India-Specific Context</strong><br>India has a promoter-dominated corporate structure that creates unique agency problems. Generic answers about shareholders vs management miss the India-specific promoter vs minority shareholder dynamic. Always relate governance concepts to India's specific context when relevant.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 4</div><div class="step-content"><strong>Treating Stakeholder Theory as Opposed to Shareholder Value</strong><br>Stakeholder theory does not mean ignoring shareholders — it means recognising that long-term shareholder value is best created by serving all stakeholders well. Happy employees → better products → satisfied customers → sustainable profits → long-term shareholder value. Not a zero-sum game.</div></div>
+      <div class="step-item"><div class="step-num">❌ MISTAKE 5</div><div class="step-content"><strong>Recommending Only One Governance Improvement in Scenario Questions</strong><br>When asked to identify governance weaknesses in a scenario, aim for 3-5 specific, well-explained points. Each should follow: Issue identified → Why it is a governance problem → Specific recommendation to address it. Generic recommendations earn few marks.</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part C — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Agency Problem</div><ul class="card-items"><li>Principals = Shareholders (own)</li><li>Agents = Directors/Management (run)</li><li>Conflict: agents may not act in principals' interests</li><li>Solution: board oversight, incentive pay, audit, disclosure</li></ul><div class="card-tag">Flashcard 1</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Board Committees</div><ul class="card-items"><li>Audit: financial reporting + auditors + IFC</li><li>Remuneration: executive pay linked to performance</li><li>Nomination: board composition + succession</li><li>Risk: risk appetite + top risks + culture</li></ul><div class="card-tag">Flashcard 2</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Rules vs Principles</div><ul class="card-items"><li>Rules: mandatory, legal penalties, USA (SOX), prescriptive</li><li>Principles: comply or explain, flexible, UK Code, market discipline</li><li>India: hybrid approach</li></ul><div class="card-tag">Flashcard 3</div></div>
+      <div class="card"><div class="card-icon">🃏</div><div class="card-title">Governance Theories</div><ul class="card-items"><li>Agency: monitor & incentivise management</li><li>Stewardship: trust good managers</li><li>Stakeholder: serve all, not just shareholders</li><li>Resource Dependency: board brings resources</li></ul><div class="card-tag">Flashcard 4</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:36px;">Part D — Interview Q&A</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>Model Answer</th></tr>
+      <tr><td>"What is corporate governance and why does it matter?"</td><td>Corporate governance is the system by which companies are directed and controlled — it defines the relationships between the board, management, shareholders, and other stakeholders, and sets the framework for achieving objectives and ensuring accountability. It matters because it reduces the agency problem — ensuring management acts in shareholders' interests, not their own. Good governance gives investors confidence, reduces cost of capital, improves decision making, and prevents the kind of fraud and value destruction seen in Enron, Satyam, and IL&FS. Poor governance destroys both company value and broader market trust.</td></tr>
+      <tr><td>"What is the difference between executive and non-executive directors?"</td><td>Executive directors are full-time employees of the company — CEO, CFO, COO — who sit on the board. They have deep operational knowledge but are not independent — they cannot objectively oversee themselves. Non-executive directors (NEDs) are part-time, not employed by the company, and bring external perspective and independent judgement. Independent NEDs have no material relationship with the company — making them most effective for monitoring, challenging management, and serving on audit and remuneration committees. Good governance requires a majority of independent NEDs on the board.</td></tr>
+      <tr><td>"What are the advantages and disadvantages of a principles-based approach to governance?"</td><td>Principles-based governance (like the UK Corporate Governance Code) uses "comply or explain" — companies either follow each provision or explain why they don't. Advantages: flexibility (governance can fit company size and circumstances), focus on substance over tick-box compliance, less costly than prescriptive rules, encourages meaningful disclosure. Disadvantages: "explain" can become a loophole if explanations are not challenged, relies on market discipline (which may be weak), inconsistent application across companies, difficult to enforce. The alternative rules-based approach (SOX) provides more certainty but is inflexible and costly.</td></tr>
+      <tr><td>"Why is separating the roles of Chairman and CEO important?"</td><td>If one person holds both roles, they chair the board meetings that are supposed to hold them accountable — a clear conflict of interest. The Chairman should independently lead the board, set agendas, and ensure management is properly challenged and held to account. The CEO should focus on running the business and executing strategy. Separation ensures genuine board independence from management. Without it, the most powerful person in the company faces no independent oversight — a major governance risk, as seen in cases like IL&FS where a long-serving CEO faced insufficient board challenge.</td></tr>
+    </table>
+
+    <p class="section-label" style="margin-top:36px;">Part E — Action Steps</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 38 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag pink">✅ THIS WEEK: Read the Corporate Governance Report of any Nifty 50 company's Annual Report — identify board composition, committee membership, independent director details</span>
+        <span class="tag pink">✅ THIS WEEK: For that same company — assess: is the Chairman independent from management? How many truly independent directors? Any governance red flags?</span>
+        <span class="tag pink">✅ THIS WEEK: Research the IL&FS governance failure in detail — list every specific governance failure and link each to a governance principle</span>
+        <span class="tag pink">✅ THIS WEEK: Explain Agency Theory, Stewardship Theory, and Stakeholder Theory out loud — in your own words — clearly and concisely</span>
+        <span class="tag pink">✅ THIS MONTH: Read the UK Corporate Governance Code (freely available online) — understand the 5 principles and key provisions</span>
+        <span class="tag pink">✅ THIS MONTH: Attempt 2 ACCA SBL/P1 past paper governance questions — practice identifying governance weaknesses and recommending improvements in scenario format</span>
+        <span class="tag pink">✅ THIS MONTH: Compare governance of TCS vs a mid-cap company — what specific differences exist in board independence, committee quality, RPT disclosures?</span>
+        <span class="tag pink">✅ THIS MONTH: Research SEBI LODR requirements — create a one-page summary of all mandatory governance requirements for top 500 listed companies</span>
+        <span class="tag pink">✅ THIS MONTH: Read about the Kotak Committee Report 2017 — understand what changed and why it was needed</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Independent Board (Challenge Management — Don't Just Approve)<br>
+      + Separation of Powers (Chairman ≠ CEO — Oversight Needs Distance)<br>
+      + Transparency (Disclose Everything Material — Promptly and Completely)<br>
+      + Aligned Incentives (Pay for Long-Term Performance — Not Short-Term Metrics)<br>
+      + Stakeholder Balance (Shareholders Matter Most — But Not the Only Ones)<br>
+      + Culture of Integrity (Governance is Lived — Not Just Written in Policies)<br>
+      = <strong style="color:var(--accent4);">Corporate Governance Excellence — The Foundation of Every Trustworthy Organisation</strong>
+    </div>
+    <h3>Chapter 38: Corporate Governance — Complete 🏛️✅</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 39: Excel Mastery — the most important technical tool in finance, mastered from basics to advanced modelling. 📊</p>
+  </div>
+
+</div>
+</body>
+</html>

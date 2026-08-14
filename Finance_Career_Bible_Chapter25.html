@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 25: Advanced Working Capital & Treasury</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+  :root {
+    --bg: #0a0a0f; --surface: #13131a; --card: #1a1a24; --border: #2a2a3a;
+    --accent: #6c63ff; --accent2: #00d4aa; --accent3: #ff6b6b; --accent4: #ffd93d;
+    --accent5: #e879f9; --text: #e8e8f0; --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace; --sans: 'Space Grotesk', sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6; }
+  .hero { padding:60px 24px 48px; text-align:center; position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+  .hero::before { content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%); width:700px; height:700px; background:radial-gradient(circle, rgba(74,222,128,0.10) 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#4ade80; border:1px solid #4ade80; padding:4px 14px; border-radius:100px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(28px,6vw,52px); font-weight:700; line-height:1.1; margin-bottom:12px; }
+  .hero h1 span { background:linear-gradient(135deg,#4ade80,var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { color:var(--muted); font-size:15px; max-width:560px; margin:0 auto 28px; }
+  .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+  .stat { text-align:center; }
+  .stat-num { font-family:var(--mono); font-size:22px; font-weight:700; color:#4ade80; }
+  .stat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
+  .container { max-width:920px; margin:0 auto; padding:0 20px 80px; }
+  .toc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-top:32px; }
+  .toc-title { font-family:var(--mono); font-size:10px; color:#4ade80; text-transform:uppercase; letter-spacing:2px; margin-bottom:14px; }
+  .toc-item { display:flex; align-items:center; gap:12px; padding:7px 0; border-bottom:1px solid rgba(42,42,58,0.4); font-size:13px; }
+  .toc-item:last-child { border-bottom:none; }
+  .toc-num { font-family:var(--mono); font-size:10px; color:#4ade80; min-width:36px; }
+  .section { margin-top:56px; }
+  .section-header { display:flex; align-items:center; gap:14px; margin-bottom:22px; padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .sec-badge { font-family:var(--mono); font-size:10px; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
+  .badge-pink   { background:rgba(232,121,249,0.2); color:var(--accent5); border:1px solid rgba(232,121,249,0.3); }
+  .badge-teal   { background:rgba(0,212,170,0.2);   color:var(--accent2); border:1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background:rgba(255,107,107,0.2); color:var(--accent3); border:1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background:rgba(255,217,61,0.2);  color:var(--accent4); border:1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background:rgba(108,99,255,0.2);  color:var(--accent);  border:1px solid rgba(108,99,255,0.3); }
+  .badge-blue   { background:rgba(56,189,248,0.2);  color:#38bdf8;        border:1px solid rgba(56,189,248,0.3); }
+  .badge-green  { background:rgba(74,222,128,0.2);  color:#4ade80;        border:1px solid rgba(74,222,128,0.3); }
+  .badge-orange { background:rgba(249,115,22,0.2);  color:#f97316;        border:1px solid rgba(249,115,22,0.3); }
+  .section-title { font-size:21px; font-weight:700; }
+  .section-meta { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--muted); }
+  .section-label { font-family:var(--mono); font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:28px; margin-bottom:10px; }
+  .prose { font-size:14px; color:var(--muted); line-height:1.9; margin-bottom:16px; }
+  .prose strong { color:var(--text); }
+  .quote { border-left:3px solid #4ade80; padding:14px 20px; background:rgba(74,222,128,0.05); border-radius:0 10px 10px 0; margin:22px 0; font-size:14px; color:var(--text); font-style:italic; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s,transform 0.2s; }
+  .card:hover { border-color:#4ade80; transform:translateY(-2px); }
+  .card-icon { font-size:22px; margin-bottom:10px; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text); }
+  .card-items { list-style:none; }
+  .card-items li { font-size:12.5px; color:var(--muted); padding:4px 0; display:flex; align-items:flex-start; gap:7px; line-height:1.6; }
+  .card-items li::before { content:'→'; color:#4ade80; font-size:10px; margin-top:3px; flex-shrink:0; }
+  .card-tag { margin-top:12px; font-family:var(--mono); font-size:10px; color:#4ade80; background:rgba(74,222,128,0.1); padding:3px 8px; border-radius:4px; display:inline-block; }
+  .data-table { width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--border); margin-top:14px; }
+  .data-table th { background:rgba(74,222,128,0.1); padding:11px 14px; text-align:left; font-size:11px; font-family:var(--mono); color:#4ade80; text-transform:uppercase; letter-spacing:1px; border-bottom:1px solid var(--border); }
+  .data-table td { padding:11px 14px; font-size:12.5px; color:var(--muted); border-bottom:1px solid rgba(42,42,58,0.5); vertical-align:top; line-height:1.6; }
+  .data-table td:first-child { color:var(--text); font-weight:500; }
+  .data-table tr:last-child td { border-bottom:none; }
+  .data-table tr:hover td { background:rgba(74,222,128,0.02); }
+  .highlight { background:linear-gradient(135deg,rgba(74,222,128,0.07),rgba(0,212,170,0.05)); border:1px solid rgba(74,222,128,0.25); border-radius:12px; padding:18px 22px; margin:22px 0; font-size:13.5px; color:var(--text); line-height:1.8; }
+  .highlight-title { font-family:var(--mono); font-size:10px; color:var(--accent4); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px; }
+  .wide-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px; margin-top:14px; }
+  .wide-card h4 { font-size:13px; font-weight:600; margin-bottom:14px; color:#4ade80; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:#4ade80; flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(74,222,128,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:#4ade80; text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:#4ade80; font-family:var(--mono); font-size:11px; line-height:1.8; }
+  .tag-wrap { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag { font-size:12px; padding:5px 13px; border-radius:100px; background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.2); color:var(--text); }
+  .tag.teal { background:rgba(0,212,170,0.1); border-color:rgba(0,212,170,0.2); color:var(--accent2); }
+  .mantra { margin-top:56px; background:linear-gradient(135deg,rgba(74,222,128,0.09),rgba(0,212,170,0.06)); border:1px solid rgba(74,222,128,0.3); border-radius:16px; padding:36px; text-align:center; }
+  .mantra-formula { font-family:var(--mono); font-size:clamp(12px,2.5vw,14px); color:#4ade80; line-height:2.4; margin-bottom:18px; }
+  .mantra h3 { font-size:19px; font-weight:700; background:linear-gradient(135deg,#4ade80,var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 25 · ACCA FM Depth</div>
+  <h1>Advanced Working Capital<br><span>& Treasury</span></h1>
+  <p class="hero-sub">The mathematical models that optimise inventory, cash, and currency risk — Economic Order Quantity, the Miller-Orr cash management model, and forex hedging techniques every treasury professional must master.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">FM</div><div class="stat-label">ACCA Applied Skills</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Quantitative Models</div></div>
+    <div class="stat"><div class="stat-num">EOQ</div><div class="stat-label">+ Miller-Orr + FX</div></div>
+    <div class="stat"><div class="stat-num">Treasury</div><div class="stat-label">Real-World Function</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 25 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">25.1</span>Why Working Capital Needs Quantitative Models</div>
+    <div class="toc-item"><span class="toc-num">25.2</span>Economic Order Quantity (EOQ) — The Model</div>
+    <div class="toc-item"><span class="toc-num">25.3</span>EOQ — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">25.4</span>EOQ With Quantity Discounts</div>
+    <div class="toc-item"><span class="toc-num">25.5</span>Reorder Levels & Safety Stock</div>
+    <div class="toc-item"><span class="toc-num">25.6</span>The Miller-Orr Cash Management Model</div>
+    <div class="toc-item"><span class="toc-num">25.7</span>Miller-Orr — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">25.8</span>Receivables Management — Credit Policy & Factoring</div>
+    <div class="toc-item"><span class="toc-num">25.9</span>Credit Policy — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">25.10</span>Foreign Exchange Risk — Types & Exposure</div>
+    <div class="toc-item"><span class="toc-num">25.11</span>Forex Hedging Techniques</div>
+    <div class="toc-item"><span class="toc-num">25.12</span>Currency Option — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">25.13</span>Forward Contract — Worked Example</div>
+    <div class="toc-item"><span class="toc-num">25.14</span>Treasury Function in Indian Companies — Real World Context</div>
+    <div class="toc-item"><span class="toc-num">25.15</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">25.16</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Working capital management (covered at foundation level in earlier chapters) becomes genuinely powerful when paired with quantitative optimisation models. How much inventory should you actually order, and when? How much cash should a treasury team hold, and when should it move cash into short-term investments? How does a company protect itself from currency movements on a cross-border deal? This chapter answers all three with the specific mathematical models ACCA FM tests — and that real treasury departments actually use.</p>
+    <div class="quote">"Working capital management isn't about avoiding risk — it's about holding exactly the right amount of it, no more, no less."</div>
+  </div>
+
+  <!-- 25.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">25.1</div>
+      <div class="section-title">Why Working Capital Needs Quantitative Models</div>
+    </div>
+    <p class="prose">Holding too much inventory or cash ties up capital that could be earning a return elsewhere. Holding too little risks stockouts, missed sales, or an inability to pay bills. The models in this chapter find the mathematically optimal balance point.</p>
+    <table class="data-table">
+      <tr><th>Resource</th><th>Too Much = </th><th>Too Little = </th><th>Optimisation Model</th></tr>
+      <tr><td>Inventory</td><td>Excess holding cost, obsolescence risk, tied-up cash</td><td>Stockouts, lost sales, production stoppages</td><td>Economic Order Quantity (EOQ)</td></tr>
+      <tr><td>Cash</td><td>Opportunity cost of idle cash (foregone investment return)</td><td>Inability to pay bills, forced borrowing at unfavourable rates</td><td>Miller-Orr Model</td></tr>
+      <tr><td>Currency Exposure</td><td>Over-hedging costs money and removes upside</td><td>Under-hedging exposes profit to adverse currency swings</td><td>Forward/Option Hedging</td></tr>
+    </table>
+  </div>
+
+  <!-- 25.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">25.2</div>
+      <div class="section-title">Economic Order Quantity (EOQ) — The Model</div>
+    </div>
+    <p class="prose">EOQ answers a precise question: <strong>what order quantity minimises the total cost of ordering and holding inventory?</strong> It balances two opposing costs — order LARGE quantities infrequently, and you save on ordering costs but pay more to hold inventory; order SMALL quantities frequently, and holding costs fall but ordering costs rise.</p>
+
+    <div class="formula-block">
+      <div class="formula-header">EOQ Formula</div>
+      <div class="formula-row"><div class="formula-name">Economic Order Quantity</div><div class="formula-eq">EOQ = √[(2 × D × Co) ÷ Ch]<br>D = Annual Demand (units); Co = Cost per Order; Ch = Holding Cost per unit per year</div></div>
+      <div class="formula-row"><div class="formula-name">Total Annual Ordering Cost</div><div class="formula-eq">(D ÷ EOQ) × Co</div></div>
+      <div class="formula-row"><div class="formula-name">Total Annual Holding Cost</div><div class="formula-eq">(EOQ ÷ 2) × Ch</div></div>
+      <div class="formula-row"><div class="formula-name">Key Insight at EOQ</div><div class="formula-eq">At the EOQ point, Total Ordering Cost EXACTLY EQUALS Total Holding Cost — this is the mathematical minimum of total inventory cost</div></div>
+    </div>
+  </div>
+
+  <!-- 25.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">25.3</div>
+      <div class="section-title">EOQ — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: A Retailer's Annual Inventory Order</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Annual demand (D) = 10,000 units. Cost per order (Co) = ₹500. Holding cost per unit per year (Ch) = ₹8.<br><br>
+        <strong style="color:var(--text);">Step 1 — Calculate EOQ:</strong><br>
+        EOQ = √[(2 × 10,000 × 500) ÷ 8] = √[10,000,000 ÷ 8] = √1,250,000 = <strong style="color:#4ade80;">1,118 units</strong> (rounded)<br><br>
+        <strong style="color:var(--text);">Step 2 — Number of orders per year:</strong><br>
+        10,000 ÷ 1,118 = 8.94 ≈ 9 orders per year<br><br>
+        <strong style="color:var(--text);">Step 3 — Total annual ordering cost:</strong><br>
+        (10,000 ÷ 1,118) × ₹500 = 8.94 × 500 = ₹4,472<br><br>
+        <strong style="color:var(--text);">Step 4 — Total annual holding cost:</strong><br>
+        (1,118 ÷ 2) × ₹8 = 559 × 8 = ₹4,472<br><br>
+        <strong style="color:var(--text);">Verification:</strong> Ordering cost (₹4,472) = Holding cost (₹4,472) — confirming this IS the EOQ minimum point, exactly as the theory predicts.<br>
+        <strong style="color:var(--text);">Total Annual Cost:</strong> ₹4,472 + ₹4,472 = <strong style="color:#4ade80;">₹8,944</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">25.4</div>
+      <div class="section-title">EOQ With Quantity Discounts</div>
+    </div>
+    <p class="prose">Suppliers often offer discounts for ordering in larger quantities. The basic EOQ model must be adjusted to check whether taking the discount (even at a higher holding cost) reduces TOTAL cost overall.</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">STEP 1</div><div class="step-content">Calculate the basic EOQ ignoring the discount</div></div>
+      <div class="step-item"><div class="step-num">STEP 2</div><div class="step-content">Calculate total cost (purchase + ordering + holding) at the basic EOQ order quantity</div></div>
+      <div class="step-item"><div class="step-num">STEP 3</div><div class="step-content">Calculate total cost (purchase + ordering + holding) at the MINIMUM quantity needed to qualify for the discount</div></div>
+      <div class="step-item"><div class="step-num">STEP 4</div><div class="step-content">Compare total costs — choose whichever order quantity gives the LOWEST overall total cost, even if it means ordering above the mathematical EOQ</div></div>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title">🔑 Key Point</div>
+      Purchase cost must be included in the comparison once discounts are involved — the discount saves money on the PURCHASE cost even though holding cost rises with a larger order quantity. The basic EOQ formula alone doesn't capture this trade-off.
+    </div>
+  </div>
+
+  <!-- 25.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">25.5</div>
+      <div class="section-title">Reorder Levels & Safety Stock</div>
+    </div>
+    <div class="formula-block">
+      <div class="formula-header">Reorder & Safety Stock Formulas</div>
+      <div class="formula-row"><div class="formula-name">Reorder Level (no uncertainty)</div><div class="formula-eq">Average Daily Usage × Lead Time (days)</div></div>
+      <div class="formula-row"><div class="formula-name">Reorder Level (with safety stock)</div><div class="formula-eq">(Average Daily Usage × Lead Time) + Safety Stock</div></div>
+      <div class="formula-row"><div class="formula-name">Maximum Stock Level</div><div class="formula-eq">Reorder Level + Reorder Quantity − (Minimum Usage × Minimum Lead Time)</div></div>
+      <div class="formula-row"><div class="formula-name">Minimum Stock Level</div><div class="formula-eq">Reorder Level − (Average Usage × Average Lead Time)</div></div>
+    </div>
+    <p class="prose">Safety stock provides a buffer against uncertainty in demand or supplier lead time — but holding it is not free, so the amount held should reflect a genuine trade-off between stockout risk/cost and additional holding cost.</p>
+  </div>
+
+  <!-- 25.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">25.6</div>
+      <div class="section-title">The Miller-Orr Cash Management Model</div>
+    </div>
+    <p class="prose">While EOQ optimises inventory, the <strong>Miller-Orr model</strong> answers the equivalent question for CASH: given that daily cash flows are unpredictable (unlike steady, predictable inventory usage), how should a treasury team decide when to move cash into/out of short-term investments?</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">The Core Idea</div>
+        <ul class="card-items">
+          <li>Sets THREE cash balance levels: a lower limit, an upper limit, and a "return point"</li>
+          <li>Cash balance is left alone to fluctuate randomly (day to day) between the lower and upper limits</li>
+          <li>When cash hits the UPPER limit → invest the excess to bring balance back down to the return point</li>
+          <li>When cash hits the LOWER limit → sell investments to bring balance back up to the return point</li>
+        </ul>
+        <div class="card-tag">3-Limit System</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Why It's Better Than a Simple Rule</div>
+        <ul class="card-items">
+          <li>Unlike EOQ (which assumes steady, predictable demand), cash flows are genuinely random day-to-day</li>
+          <li>Miller-Orr is specifically designed for this randomness — it doesn't try to predict cash flows, just manages the RANGE they're allowed to fluctuate within</li>
+          <li>Minimises the total cost of transferring cash to/from investments, balanced against the opportunity cost of holding idle cash</li>
+        </ul>
+        <div class="card-tag">Handles Uncertainty</div>
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-header">Miller-Orr Model Formulas</div>
+      <div class="formula-row"><div class="formula-name">Spread (Upper − Lower Limit)</div><div class="formula-eq">3 × [(0.75 × Transaction Cost × Variance of Daily Cash Flows) ÷ Interest Rate]^(1/3)</div></div>
+      <div class="formula-row"><div class="formula-name">Return Point</div><div class="formula-eq">Lower Limit + (Spread ÷ 3)</div></div>
+      <div class="formula-row"><div class="formula-name">Upper Limit</div><div class="formula-eq">Lower Limit + Spread</div></div>
+    </div>
+  </div>
+
+  <!-- 25.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">25.7</div>
+      <div class="section-title">Miller-Orr — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Setting Cash Control Limits</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Lower limit (set by management, minimum safety cash) = ₹10,000. Transaction cost per transfer = ₹50. Daily interest rate = 0.025% (0.00025). Standard deviation of daily cash flows = ₹2,000 (so variance = 2,000² = 4,000,000).<br><br>
+        <strong style="color:var(--text);">Step 1 — Calculate the Spread:</strong><br>
+        Spread = 3 × [(0.75 × 50 × 4,000,000) ÷ 0.00025]^(1/3)<br>
+        = 3 × [150,000,000 ÷ 0.00025]^(1/3)<br>
+        = 3 × [600,000,000,000]^(1/3)<br>
+        = 3 × 8,434 (approx cube root)<br>
+        = <strong style="color:#4ade80;">₹25,302</strong> (rounded)<br><br>
+        <strong style="color:var(--text);">Step 2 — Upper Limit:</strong><br>
+        Upper Limit = ₹10,000 + ₹25,302 = <strong style="color:#4ade80;">₹35,302</strong><br><br>
+        <strong style="color:var(--text);">Step 3 — Return Point:</strong><br>
+        Return Point = ₹10,000 + (₹25,302 ÷ 3) = ₹10,000 + ₹8,434 = <strong style="color:#4ade80;">₹18,434</strong><br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> Cash is allowed to fluctuate freely between ₹10,000 and ₹35,302. If it hits ₹35,302, the treasury team invests ₹16,868 (35,302 − 18,434) to bring it back to the ₹18,434 return point. If it falls to ₹10,000, they liquidate ₹8,434 of investments to bring it back up to ₹18,434.
+      </div>
+    </div>
+  </div>
+
+  <!-- 25.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">25.8</div>
+      <div class="section-title">Receivables Management — Credit Policy & Factoring</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <div class="card-title">Credit Policy Decisions</div>
+        <ul class="card-items">
+          <li>Trade-off: looser credit terms boost sales volume but increase receivables financing cost and bad debt risk</li>
+          <li>Evaluate proposed policy changes by comparing the INCREMENTAL contribution from extra sales against the incremental costs (financing + bad debts)</li>
+          <li>Early settlement discounts trade a small margin reduction for faster cash collection — evaluate using the effective annual cost of the discount</li>
+        </ul>
+        <div class="card-tag">Credit Terms</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💵</div>
+        <div class="card-title">Factoring & Invoice Discounting</div>
+        <ul class="card-items">
+          <li><strong>Factoring:</strong> a third party (factor) takes over receivables management and collection, advancing a % of invoice value immediately, for a fee</li>
+          <li><strong>Invoice Discounting:</strong> similar cash-advance mechanism but the company retains control of collection and the customer relationship — often confidential</li>
+          <li>Both improve cash flow immediately at the cost of a financing fee — useful for rapidly growing businesses with cash tied up in receivables</li>
+        </ul>
+        <div class="card-tag">Accelerating Cash</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">25.9</div>
+      <div class="section-title">Credit Policy — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Should the Company Relax Its Credit Terms?</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Current annual sales = ₹5 Crore, all on 30-day credit terms, contribution margin = 40%, current bad debts = 1% of sales, current receivables financing cost = 10% p.a.<br>
+        Proposed policy: extend credit terms to 60 days, expected to increase sales by 20% (to ₹6 Crore), but bad debts would rise to 2% of sales.<br><br>
+        <strong style="color:var(--text);">Step 1 — Incremental contribution from extra sales:</strong><br>
+        Incremental sales = ₹6 Cr − ₹5 Cr = ₹1 Cr<br>
+        Incremental contribution = ₹1 Cr × 40% = <strong style="color:#4ade80;">₹40,00,000 (benefit)</strong><br><br>
+        <strong style="color:var(--text);">Step 2 — Incremental bad debts:</strong><br>
+        Old bad debts = ₹5 Cr × 1% = ₹5,00,000<br>
+        New bad debts = ₹6 Cr × 2% = ₹12,00,000<br>
+        Incremental bad debts = ₹12,00,000 − ₹5,00,000 = <strong style="color:var(--accent3);">₹7,00,000 (cost)</strong><br><br>
+        <strong style="color:var(--text);">Step 3 — Incremental receivables financing cost:</strong><br>
+        Old average receivables = ₹5 Cr × (30/365) = ₹41,09,589<br>
+        New average receivables = ₹6 Cr × (60/365) = ₹98,63,014<br>
+        Incremental receivables investment = ₹98,63,014 − ₹41,09,589 = ₹57,53,425<br>
+        Incremental financing cost = ₹57,53,425 × 10% = <strong style="color:var(--accent3);">₹5,75,343 (cost)</strong><br><br>
+        <strong style="color:var(--text);">Step 4 — Net effect of the policy change:</strong><br>
+        Benefit: ₹40,00,000<br>
+        Costs: ₹7,00,000 + ₹5,75,343 = ₹12,75,343<br>
+        Net benefit = ₹40,00,000 − ₹12,75,343 = <strong style="color:#4ade80;">₹27,24,657 — POLICY SHOULD BE ADOPTED</strong><br><br>
+        <strong style="color:var(--text);">Interpretation:</strong> Even though bad debts more than double in percentage terms and financing costs rise, the incremental contribution from higher sales volume comfortably outweighs both incremental costs — this incremental (marginal) analysis approach, comparing ALL costs and benefits of a proposed change, is the standard ACCA FM/AFM technique for any credit policy decision.
+      </div>
+    </div>
+  </div>
+
+  <!-- 25.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">25.10</div>
+      <div class="section-title">Foreign Exchange Risk — Types & Exposure</div>
+    </div>
+    <p class="prose">Any company with international revenue, costs, or financing faces currency risk. ACCA FM identifies three distinct types of exposure, each requiring different management approaches.</p>
+    <table class="data-table">
+      <tr><th>Exposure Type</th><th>What It Is</th><th>Example</th></tr>
+      <tr><td>Transaction Exposure</td><td>Risk on a SPECIFIC, already-agreed future transaction in a foreign currency</td><td>An Indian exporter has agreed to receive $100,000 in 90 days for goods already shipped</td></tr>
+      <tr><td>Translation Exposure</td><td>Risk from consolidating foreign subsidiary financial statements into the parent's reporting currency</td><td>An Indian parent company's UK subsidiary's Balance Sheet, translated from GBP to INR, changes in value purely due to exchange rate movement</td></tr>
+      <tr><td>Economic Exposure</td><td>The broader, long-term impact of exchange rate movements on a company's competitive position and future cash flows</td><td>A sustained rupee appreciation makes an Indian exporter's products less price-competitive globally over time</td></tr>
+    </table>
+  </div>
+
+  <!-- 25.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">25.11</div>
+      <div class="section-title">Forex Hedging Techniques</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <div class="card-title">Forward Contracts</div>
+        <ul class="card-items">
+          <li>Locks in an exchange rate today for a transaction settling at a specific future date</li>
+          <li>Fully eliminates uncertainty — but also removes any upside if the rate moves favourably</li>
+          <li>Simplest, most commonly used hedge — offered by virtually all banks</li>
+        </ul>
+        <div class="card-tag">Lock the Rate</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Currency Options</div>
+        <ul class="card-items">
+          <li>Gives the RIGHT (not obligation) to exchange at a set rate — buyer pays a premium for this flexibility</li>
+          <li>Protects against adverse movement while still allowing the company to benefit if the rate moves favourably</li>
+          <li>More expensive than a forward (due to the premium) but more flexible</li>
+        </ul>
+        <div class="card-tag">Flexible Protection</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Money Market Hedge</div>
+        <ul class="card-items">
+          <li>Uses borrowing/lending/deposits in the two currencies to synthetically fix the exchange rate outcome, without a formal forward or option contract</li>
+          <li>Achieves an economically equivalent result to a forward contract, using the money markets instead</li>
+        </ul>
+        <div class="card-tag">Synthetic Hedge</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">Natural Hedging</div>
+        <ul class="card-items">
+          <li>Matching foreign currency inflows and outflows internally (e.g. borrowing in the same currency as foreign revenue)</li>
+          <li>No transaction cost, but requires the right natural business structure to work</li>
+          <li>Multinationals actively structure operations to maximise natural hedging opportunities</li>
+        </ul>
+        <div class="card-tag">No-Cost Hedge</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">25.12</div>
+      <div class="section-title">Currency Option — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Comparing a Currency Option to a Forward Contract</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Facts:</strong> The same Indian importer from the forward contract example (25.13) needs to pay $500,000 in 3 months. Instead of a forward, they buy a CALL option on USD (the right to buy USD) at a strike price of ₹83.60/$, paying a premium of ₹1.50/$ (total premium = $500,000 × ₹1.50 = ₹7,50,000, paid upfront).<br><br>
+        <strong style="color:var(--text);">Scenario A — Rupee weakens to ₹86/$ at settlement:</strong><br>
+        The option is "in the money" — company EXERCISES the option, buying USD at the strike rate ₹83.60 instead of the market rate ₹86.<br>
+        Cost: $500,000 × ₹83.60 = ₹4,18,00,000 + premium ₹7,50,000 = <strong style="color:var(--accent2);">₹4,25,50,000 total</strong><br>
+        (Without any hedge, cost would have been $500,000 × ₹86 = ₹4,30,00,000 — the option saved money AND capped the downside)<br><br>
+        <strong style="color:var(--text);">Scenario B — Rupee strengthens to ₹81/$ at settlement:</strong><br>
+        The option is "out of the money" — company LETS THE OPTION LAPSE, buying USD at the better market rate ₹81 instead.<br>
+        Cost: $500,000 × ₹81 = ₹4,05,00,000 + premium ₹7,50,000 = <strong style="color:var(--accent2);">₹4,12,50,000 total</strong><br>
+        (Under a forward hedge locked at ₹83.60, the cost would have been a FIXED ₹4,18,00,000 regardless — the option holder benefits from the favourable rate movement, something a forward contract holder cannot do)<br><br>
+        <strong style="color:var(--text);">Key Comparison:</strong> The option costs an extra ₹7,50,000 premium upfront compared to a "free" forward contract — but in exchange, it preserves the ability to benefit if the rupee strengthens (Scenario B), while a forward locks in a single fixed rate regardless of which way the market moves. The option is the more expensive but more flexible hedge; the forward is free but rigid.
+      </div>
+    </div>
+  </div>
+
+  <!-- 25.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">25.13</div>
+      <div class="section-title">Forward Contract — Worked Example</div>
+    </div>
+    <div class="wide-card">
+      <h4>📋 Scenario: Indian Importer Hedging a USD Payable</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Facts:</strong> An Indian company must pay a US supplier $500,000 in 3 months. Current spot rate: ₹83.00/$. 3-month forward rate quoted by the bank: ₹83.60/$.<br><br>
+        <strong style="color:var(--text);">Without hedging:</strong> The company is exposed to whatever the spot rate is in 3 months — if the rupee weakens to ₹85/$, the payment would cost ₹4,25,00,000 instead of the ₹4,15,00,000 it would cost today.<br><br>
+        <strong style="color:var(--text);">With a forward hedge:</strong> The company locks in ₹83.60/$ today, so regardless of what the spot rate actually is in 3 months, the payment will cost exactly:<br>
+        $500,000 × ₹83.60 = <strong style="color:#4ade80;">₹4,18,00,000</strong><br><br>
+        <strong style="color:var(--text);">Trade-off:</strong> If the rupee actually strengthens to ₹81/$ by the payment date, the company would have paid LESS (₹4,05,00,000) without the hedge — but it has certainty and protection against the downside scenario, which is the entire point of hedging: removing uncertainty, not maximising every possible outcome.
+      </div>
+    </div>
+  </div>
+
+  <!-- 25.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">25.14</div>
+      <div class="section-title">Treasury Function in Indian Companies — Real World Context</div>
+    </div>
+    <p class="prose">Indian corporate treasury operations are shaped by RBI regulations on foreign exchange, which differ meaningfully from fully open capital account jurisdictions.</p>
+    <table class="data-table">
+      <tr><th>Area</th><th>Indian Context</th></tr>
+      <tr><td>Forex Regulation</td><td>Governed by FEMA (Foreign Exchange Management Act) — RBI regulates permissible hedging instruments and documentation requirements</td></tr>
+      <tr><td>Hedging Instruments</td><td>Forwards, options, and currency swaps are available through Authorised Dealer banks; must generally relate to genuine underlying exposure (not pure speculation)</td></tr>
+      <tr><td>Cash Management</td><td>Large Indian corporates increasingly use cash pooling and centralised treasury structures to optimise group-wide cash and reduce idle balances across subsidiaries</td></tr>
+      <tr><td>Working Capital Financing</td><td>Cash credit and overdraft facilities remain the dominant short-term financing tools for Indian businesses, alongside commercial paper for larger corporates</td></tr>
+    </table>
+  </div>
+
+  <!-- 25.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-blue">25.15</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">EOQ Minimises Total Inventory Cost</div><ul class="card-items"><li>EOQ = √[(2DCo)/Ch]</li><li>At EOQ, ordering cost = holding cost exactly</li><li>Discounts require full total-cost comparison</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Miller-Orr Manages Random Cash Flows</div><ul class="card-items"><li>3 limits: lower, upper, return point</li><li>Designed specifically for unpredictable daily cash flows</li><li>Minimises transfer + opportunity cost together</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">3 Types of Forex Exposure</div><ul class="card-items"><li>Transaction (specific deal), Translation (consolidation), Economic (long-term competitiveness)</li><li>Each needs a different management approach</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Forwards Lock Certainty, Options Buy Flexibility</div><ul class="card-items"><li>Forward = obligation, no upside, no cost</li><li>Option = right only, keeps upside, costs a premium</li><li>Natural hedging is free but needs the right structure</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 25 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Calculate EOQ for a sample scenario and verify ordering cost = holding cost at that point</span>
+        <span class="tag teal">✅ Work through a full Miller-Orr calculation from scratch</span>
+        <span class="tag teal">✅ Practice classifying 3 real business scenarios by forex exposure type</span>
+        <span class="tag teal">✅ Compare the cost of a forward hedge vs no hedge for a hypothetical import payment</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25.16 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">25.16</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Forgetting to Include Purchase Cost in EOQ Discount Comparisons</strong><br>
+        When evaluating whether to take a quantity discount, the total cost comparison must include the PURCHASE cost (which falls with the discount), not just ordering and holding costs — comparing only ordering + holding costs misses the entire point of the discount decision.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Using Standard Deviation Instead of Variance in the Miller-Orr Formula</strong><br>
+        The Miller-Orr spread formula requires the VARIANCE of daily cash flows, not the standard deviation. Since variance = standard deviation squared, plugging in standard deviation directly (without squaring it) gives a significantly wrong spread.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Confusing Transaction and Translation Exposure</strong><br>
+        Transaction exposure relates to a SPECIFIC, already-committed cash flow (hedgeable with forwards/options). Translation exposure arises purely from consolidation accounting and doesn't involve actual cash flows — hedging it (if done at all) uses different techniques and is often considered lower priority than transaction exposure.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Assuming Hedging Always Improves the Financial Outcome</strong><br>
+        Hedging REMOVES uncertainty — it doesn't guarantee a better outcome than staying unhedged. If the exchange rate happens to move favourably, an unhedged position would have been cheaper. The value of hedging lies in certainty and risk reduction, not in guaranteed profit.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Applying EOQ to Situations With Highly Variable Demand</strong><br>
+        The basic EOQ model assumes constant, predictable demand and lead time. Applying it directly to volatile, unpredictable demand situations (without incorporating safety stock or a more sophisticated model) can lead to frequent stockouts despite "optimal" ordering.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Only Considering Bad Debts When Evaluating a Credit Policy Change</strong><br>
+        As the worked example in 25.9 shows, a full credit policy evaluation must include incremental contribution from extra sales, incremental bad debts, AND incremental financing cost from higher average receivables — evaluating only the bad debt impact in isolation, without weighing it against the sales benefit, leads to systematically rejecting policies that are actually value-creating.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Forgetting the Option Premium Is Paid Regardless of Whether the Option Is Exercised</strong><br>
+        Unlike a forward contract (no upfront cost), an option's premium is paid whether or not the option ends up being exercised — it's the cost of the flexibility itself. Comparing only the "exercise cost" of an option to a forward's locked rate, while ignoring the premium already paid, understates the option's true total cost.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Choosing a Forward Over an Option Purely Because It's "Free"</strong><br>
+        A forward contract has no upfront premium, but it eliminates ALL upside if the exchange rate moves favourably — while an option costs a premium but preserves that upside. The right choice depends on the company's risk appetite and view on likely currency movement, not simply which hedge appears cheaper at first glance.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">EOQ Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: State the EOQ formula.</strong></li>
+          <li>A: EOQ = √[(2 × D × Co) ÷ Ch]</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Miller-Orr 3 Limits</div>
+        <ul class="card-items">
+          <li><strong>Q: What are the 3 limits in the Miller-Orr model?</strong></li>
+          <li>A: Lower limit, upper limit, and return point</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">3 Types of Forex Exposure</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 3 types of foreign exchange exposure.</strong></li>
+          <li>A: Transaction, Translation, Economic</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Forward vs Option</div>
+        <ul class="card-items">
+          <li><strong>Q: What's the key difference between a forward and an option?</strong></li>
+          <li>A: Forward = obligation, no premium; Option = right only, requires a premium</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">India's Forex Law</div>
+        <ul class="card-items">
+          <li><strong>Q: Which Indian law governs forex hedging?</strong></li>
+          <li>A: FEMA (Foreign Exchange Management Act), regulated by RBI</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Credit Policy Evaluation</div>
+        <ul class="card-items">
+          <li><strong>Q: What 3 elements must a credit policy change evaluation include?</strong></li>
+          <li>A: Incremental contribution, incremental bad debts, incremental financing cost</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Option Premium</div>
+        <ul class="card-items">
+          <li><strong>Q: Is the option premium refunded if the option isn't exercised?</strong></li>
+          <li>A: No — it's paid upfront regardless of whether the option is later exercised</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">In the Money vs Out of the Money</div>
+        <ul class="card-items">
+          <li><strong>Q: When would a call option holder exercise their option?</strong></li>
+          <li>A: When the market rate is worse than the strike rate ("in the money") — otherwise let it lapse</li>
+        </ul>
+        <div class="card-tag">Flashcard 8</div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part C — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"How would you decide how much cash a company should hold?"</td><td>Applied understanding of cash management trade-offs</td><td>Too much idle cash has an opportunity cost — it could be earning a return elsewhere; too little risks being unable to meet obligations. Models like Miller-Orr formalise this by setting a range within which cash is allowed to fluctuate, only actively moving cash to/from short-term investments when it hits the boundaries — balancing transaction costs of moving cash against the opportunity cost of holding it idle.</td></tr>
+      <tr><td>"An Indian exporter is worried about the rupee strengthening before they get paid in dollars. What are their options?"</td><td>Practical forex risk management knowledge</td><td>They could use a forward contract to lock in today's exchange rate for the future receipt, eliminating uncertainty entirely. Alternatively, a currency option would let them benefit if the rupee actually weakens (keeping upside) while still protecting against it strengthening, at the cost of an upfront premium. A money market hedge could achieve a similar locked-in outcome using borrowing/lending in the two currencies instead of a formal derivative contract.</td></tr>
+      <tr><td>"Walk me through the trade-off in the EOQ model."</td><td>Core understanding of a fundamental working capital model</td><td>Ordering large quantities infrequently reduces total ordering costs (fewer orders means fewer fixed order costs) but increases holding costs (more average inventory sitting in the warehouse). Ordering small quantities frequently does the opposite. EOQ finds the exact order quantity where these two opposing costs are minimized in total — and mathematically, at that exact point, total ordering cost equals total holding cost.</td></tr>
+      <tr><td>"When would you recommend an option over a forward contract for hedging currency risk?"</td><td>Applied judgment on hedge selection</td><td>An option makes sense when the company wants protection against adverse currency movement but still wants to benefit if the rate moves favourably, and is willing to pay a premium for that flexibility — useful when there's a genuine view that the rate could move either way, or the exposure itself is uncertain (e.g. a bid for a contract that may not be won). A forward is more appropriate when the exposure is certain and the priority is complete cost certainty rather than preserving upside potential.</td></tr>
+      <tr><td>"How would you evaluate whether to offer a customer more generous credit terms?"</td><td>Practical working capital decision-making</td><td>I'd run an incremental analysis comparing the additional contribution from any resulting sales increase against the additional costs — higher bad debt risk and the financing cost of carrying larger average receivables balances for longer. If the incremental benefit exceeds the incremental costs, the policy change creates value; if I'm uncertain about the sales response assumption, I'd sensitivity-test it to see how much the sales increase estimate would need to fall before the decision reverses.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      EOQ (Optimal Inventory Ordering)<br>
+      + Miller-Orr (Optimal Cash Management)<br>
+      + Forex Hedging (Forward, Option, Money Market, Natural)<br>
+      = <strong style="color:#4ade80;">The Quantitative Treasury Toolkit</strong>
+    </div>
+    <h3>Chapter 25: Advanced Working Capital & Treasury — Complete 💰🌍</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 26: Advanced Financial Management (AFM) — advanced valuation, M&A, and international investment appraisal. 🚀</p>
+  </div>
+
+</div>
+</body>
+</html>

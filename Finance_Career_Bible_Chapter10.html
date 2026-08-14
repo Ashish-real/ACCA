@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 10: Financial Instruments Basics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #818cf8;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero { padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(129,140,248,0.10) 0%, transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-indigo { background: rgba(129,140,248,0.2); color: var(--accent5); border: 1px solid rgba(129,140,248,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(129,140,248,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(129,140,248,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(129,140,248,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(129,140,248,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(129,140,248,0.07), rgba(0,212,170,0.05)); border: 1px solid rgba(129,140,248,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  .equation { background: var(--card); border: 1px solid var(--accent5); border-radius: 12px; padding: 20px 24px; margin: 20px 0; text-align: center; }
+  .equation-text { font-family: var(--mono); font-size: clamp(12px,2.5vw,15px); color: var(--accent2); letter-spacing: 1px; line-height: 2; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* CLASSIFICATION FLOW */
+  .flow-tree { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+  .flow-box { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
+  .flow-box.decision { border-color: var(--accent5); background: rgba(129,140,248,0.05); }
+  .flow-box-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .flow-box-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .flow-arrow-center { text-align: center; font-size: 16px; color: var(--accent5); }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(129,140,248,0.1); border: 1px solid rgba(129,140,248,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(129,140,248,0.09), rgba(0,212,170,0.06)); border: 1px solid rgba(129,140,248,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 10</div>
+  <h1>Financial Instruments<br><span>Basics</span></h1>
+  <p class="hero-sub">IFRS 9 — how companies classify, measure, and account for investments, loans, receivables, and the expected credit loss model that changed banking forever.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">IFRS 9</div><div class="stat-label">The Standard</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Classifications</div></div>
+    <div class="stat"><div class="stat-num">ECL</div><div class="stat-label">Impairment Model</div></div>
+    <div class="stat"><div class="stat-num">FR+SBR</div><div class="stat-label">ACCA Papers</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 10 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">10.1</span>What is a Financial Instrument?</div>
+    <div class="toc-item"><span class="toc-num">10.2</span>Financial Assets — The 3 Classifications</div>
+    <div class="toc-item"><span class="toc-num">10.3</span>The Business Model & Cash Flow Tests</div>
+    <div class="toc-item"><span class="toc-num">10.4</span>Initial & Subsequent Measurement</div>
+    <div class="toc-item"><span class="toc-num">10.5</span>Financial Liabilities — Classification & Measurement</div>
+    <div class="toc-item"><span class="toc-num">10.6</span>Expected Credit Loss (ECL) Model — Impairment</div>
+    <div class="toc-item"><span class="toc-num">10.7</span>Equity vs Liability — IAS 32 Classification</div>
+    <div class="toc-item"><span class="toc-num">10.8</span>Hedge Accounting — Introduction</div>
+    <div class="toc-item"><span class="toc-num">10.9</span>Real-World Application — Banking & MNCs</div>
+    <div class="toc-item"><span class="toc-num">10.10</span>IFRS 9 & ACCA — Paper Mapping</div>
+    <div class="toc-item"><span class="toc-num">10.11</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">10.12</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Every company holds financial instruments — cash, receivables, investments, loans, payables, shares. IFRS 9 governs how these are <strong>classified, measured, and tested for impairment</strong>. It is one of the most complex standards in IFRS — but also one of the most important for banks, FinTechs, and any MNC with investments or significant debtors.</p>
+    <div class="quote">"Financial instruments are contracts that create rights and obligations to receive or pay cash, shares, or other financial assets. They are the plumbing of the financial system."</div>
+  </div>
+
+  <!-- 10.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-indigo">10.1</div>
+      <div class="section-title">What is a Financial Instrument?</div>
+    </div>
+    <p class="prose">A financial instrument is <strong>any contract that gives rise to a financial asset of one entity and a financial liability or equity instrument of another entity</strong>.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Financial Assets</div>
+        <ul class="card-items">
+          <li>Cash and cash equivalents</li>
+          <li>Trade receivables (debtors)</li>
+          <li>Investments in shares and bonds</li>
+          <li>Loans receivable</li>
+          <li>Derivative assets (options, futures)</li>
+        </ul>
+        <div class="card-tag">Rights to Receive</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📄</div>
+        <div class="card-title">Financial Liabilities</div>
+        <ul class="card-items">
+          <li>Trade payables (creditors)</li>
+          <li>Bank loans and overdrafts</li>
+          <li>Bonds and debentures issued</li>
+          <li>Lease liabilities</li>
+          <li>Derivative liabilities</li>
+        </ul>
+        <div class="card-tag">Obligations to Pay</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📜</div>
+        <div class="card-title">Equity Instruments</div>
+        <ul class="card-items">
+          <li>Ordinary shares issued by the entity</li>
+          <li>Represents a residual interest</li>
+          <li>No obligation to deliver cash</li>
+          <li>Critical distinction from liability — IAS 32</li>
+        </ul>
+        <div class="card-tag">Residual Interest</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📚 The Three IFRS Standards Working Together</div>
+      <strong>IAS 32</strong> — Presentation: defines what is equity vs liability<br>
+      <strong>IFRS 9</strong> — Classification, measurement, and impairment of financial instruments<br>
+      <strong>IFRS 7</strong> — Disclosure: what must be disclosed about financial instruments<br><br>
+      These three standards work together to give a complete picture — ACCA SBR often tests scenarios spanning all three.
+    </div>
+  </div>
+
+  <!-- 10.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">10.2</div>
+      <div class="section-title">Financial Assets — The 3 Classifications</div>
+      <div class="section-meta">IFRS 9's Core Framework</div>
+    </div>
+    <p class="prose">IFRS 9 classifies financial assets into <strong>three categories</strong> based on two tests: the entity's business model for managing the asset, and the contractual cash flow characteristics of the asset.</p>
+
+    <table class="data-table">
+      <tr><th>Classification</th><th>Measurement</th><th>Where Gains/Losses Go</th><th>Examples</th></tr>
+      <tr><td>Amortised Cost</td><td>Effective interest method</td><td>Interest income to P&L; no fair value movements</td><td>Trade receivables, loans held to collect</td></tr>
+      <tr><td>Fair Value through OCI (FVOCI)</td><td>Fair value</td><td>Fair value changes to OCI; interest/dividends to P&L</td><td>Debt instruments held to collect AND sell; some equity investments</td></tr>
+      <tr><td>Fair Value through P&L (FVTPL)</td><td>Fair value</td><td>All gains/losses to P&L</td><td>Trading investments, derivatives, default category</td></tr>
+    </table>
+  </div>
+
+  <!-- 10.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">10.3</div>
+      <div class="section-title">The Business Model & Cash Flow Tests</div>
+      <div class="section-meta">How to Classify Correctly</div>
+    </div>
+    <p class="prose">To determine classification, apply <strong>two tests</strong> in sequence. This is the most tested decision-tree in ACCA FR and SBR.</p>
+
+    <div class="flow-tree">
+      <div class="flow-box decision">
+        <div class="flow-box-title">Test 1 — Business Model Test</div>
+        <div class="flow-box-desc">What is the entity's objective for holding this asset?</div>
+      </div>
+      <div class="flow-arrow-center">↓</div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <div class="card-title">Hold to Collect</div>
+          <ul class="card-items">
+            <li>Objective: collect contractual cash flows (interest + principal)</li>
+            <li>Sales are infrequent and incidental</li>
+            <li>Passes business model test for Amortised Cost</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔄</div>
+          <div class="card-title">Hold to Collect AND Sell</div>
+          <ul class="card-items">
+            <li>Objective: both collect cash flows AND sell asset</li>
+            <li>Regular sales activity is part of the strategy</li>
+            <li>Points toward FVOCI classification</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-icon">📈</div>
+          <div class="card-title">Other Business Models</div>
+          <ul class="card-items">
+            <li>Trading — buy and sell for short-term profit</li>
+            <li>Managed on a fair value basis</li>
+            <li>Defaults to FVTPL</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flow-arrow-center">↓</div>
+      <div class="flow-box decision">
+        <div class="flow-box-title">Test 2 — SPPI Test (Solely Payments of Principal & Interest)</div>
+        <div class="flow-box-desc">Do the contractual cash flows represent SOLELY payments of principal and interest on the principal outstanding? If YES → proceeds to Amortised Cost or FVOCI based on business model. If NO (e.g. convertible bonds, equity-linked returns) → FVTPL.</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">💡 Equity Investments — Special Rule</div>
+      Investments in equity instruments (shares) are normally measured at <strong>FVTPL</strong>. However, an entity can make an <strong>irrevocable election</strong> at initial recognition to present fair value changes in OCI (FVOCI) — but this election means <strong>no recycling to P&L</strong> ever, even on disposal. Only dividend income goes to P&L. This election is common for strategic, non-trading equity investments.
+    </div>
+  </div>
+
+  <!-- 10.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">10.4</div>
+      <div class="section-title">Initial & Subsequent Measurement</div>
+      <div class="section-meta">Worked Examples</div>
+    </div>
+    <p class="prose">All financial assets are initially measured at <strong>fair value</strong>. Transaction costs are added for Amortised Cost and FVOCI assets, but <strong>expensed immediately</strong> for FVTPL assets.</p>
+
+    <table class="data-table">
+      <tr><th>Category</th><th>Initial Measurement</th><th>Transaction Costs</th><th>Subsequent Measurement</th></tr>
+      <tr><td>Amortised Cost</td><td>Fair value</td><td>Added to cost</td><td>Amortised cost using effective interest rate</td></tr>
+      <tr><td>FVOCI</td><td>Fair value</td><td>Added to cost</td><td>Fair value — changes to OCI</td></tr>
+      <tr><td>FVTPL</td><td>Fair value</td><td>Expensed to P&L immediately</td><td>Fair value — changes to P&L</td></tr>
+    </table>
+
+    <p class="section-label">Worked Example — Bond Investment at Amortised Cost</p>
+    <div class="wide-card">
+      <h4>Ashish Investments Ltd — 3-Year Bond</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        <strong style="color:var(--text);">Purchase:</strong> Bond purchased for ₹9,52,000 (face value ₹10,00,000, 5% coupon, effective rate 7%)<br>
+        Held to collect contractual cash flows → <strong style="color:var(--accent5);">Amortised Cost classification</strong><br><br>
+        <strong style="color:var(--text);">Year 1:</strong><br>
+        Interest income (P&L) = ₹9,52,000 × 7% = ₹66,640<br>
+        Cash received (coupon) = ₹10,00,000 × 5% = ₹50,000<br>
+        Difference added to carrying amount = ₹16,640<br>
+        <strong style="color:var(--accent2);">Closing carrying amount = ₹9,52,000 + ₹16,640 = ₹9,68,640</strong><br><br>
+        <span style="color:var(--muted);font-size:12px;">This continues until carrying amount = ₹10,00,000 (face value) at maturity. The effective interest method spreads the discount over the bond's life.</span>
+      </div>
+    </div>
+
+    <p class="section-label">Worked Example — FVTPL Investment</p>
+    <div class="wide-card">
+      <h4>Ashish Investments Ltd — Trading Shares</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        Shares purchased for ₹5,00,000 (brokerage ₹5,000 — expensed immediately)<br>
+        Year-end fair value = ₹5,80,000<br><br>
+        <strong style="color:var(--accent5);">Gain to P&L = ₹5,80,000 − ₹5,00,000 = ₹80,000</strong><br>
+        <span style="color:var(--muted);font-size:12px;">Journal: Dr Investment ₹80,000 | Cr Gain on FV (P&L) ₹80,000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">10.5</div>
+      <div class="section-title">Financial Liabilities — Classification & Measurement</div>
+    </div>
+    <p class="prose">Most financial liabilities are measured at <strong>amortised cost</strong> using the effective interest method — the same logic as financial assets, but for what the entity owes.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">Amortised Cost (Default)</div>
+        <ul class="card-items">
+          <li>Most liabilities: loans, bonds issued, trade payables</li>
+          <li>Effective interest rate method</li>
+          <li>Interest expense to P&L</li>
+          <li>Most common classification</li>
+        </ul>
+        <div class="card-tag">Default Category</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">FVTPL — Designated or Held for Trading</div>
+        <ul class="card-items">
+          <li>Derivative liabilities (always FVTPL)</li>
+          <li>Liabilities held for short-term trading</li>
+          <li>Fair value option to reduce accounting mismatch</li>
+          <li>Fair value changes to P&L</li>
+        </ul>
+        <div class="card-tag">Less Common</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">⚡ Compound Financial Instruments — Convertible Bonds</div>
+      A convertible bond contains BOTH a liability component (obligation to pay interest/principal) AND an equity component (option to convert to shares). IAS 32 requires <strong>splitting</strong> these:<br><br>
+      <strong>Liability component</strong> = PV of cash flows discounted at market rate for a similar bond WITHOUT conversion option<br>
+      <strong>Equity component</strong> = Total proceeds − Liability component (balancing figure)<br><br>
+      This split is a classic ACCA SBR exam question — the equity component is NEVER subsequently remeasured.
+    </div>
+  </div>
+
+  <!-- 10.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-indigo">10.6</div>
+      <div class="section-title">Expected Credit Loss (ECL) Model</div>
+      <div class="section-meta">The Game-Changer for Banking</div>
+    </div>
+    <p class="prose">Before IFRS 9, impairment losses were only recognised when there was <strong>objective evidence</strong> of a loss event (incurred loss model). IFRS 9 introduced the <strong>Expected Credit Loss (ECL) model</strong> — a forward-looking approach that recognises expected losses BEFORE they happen.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🟢</div>
+        <div class="card-title">Stage 1 — Performing</div>
+        <ul class="card-items">
+          <li>No significant increase in credit risk since initial recognition</li>
+          <li>Recognise: 12-month ECL</li>
+          <li>Interest calculated on gross carrying amount</li>
+          <li>Most loans/receivables start here</li>
+        </ul>
+        <div class="card-tag">12-Month ECL</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🟡</div>
+        <div class="card-title">Stage 2 — Underperforming</div>
+        <ul class="card-items">
+          <li>Significant increase in credit risk since initial recognition</li>
+          <li>Recognise: Lifetime ECL</li>
+          <li>Interest still on gross carrying amount</li>
+          <li>Example: payments overdue but not yet defaulted</li>
+        </ul>
+        <div class="card-tag">Lifetime ECL</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔴</div>
+        <div class="card-title">Stage 3 — Non-Performing (Credit-Impaired)</div>
+        <ul class="card-items">
+          <li>Objective evidence of impairment (default, bankruptcy)</li>
+          <li>Recognise: Lifetime ECL</li>
+          <li>Interest calculated on NET carrying amount (after ECL)</li>
+          <li>Example: borrower in default, legal proceedings started</li>
+        </ul>
+        <div class="card-tag">Credit-Impaired</div>
+      </div>
+    </div>
+
+    <div class="equation">
+      <div class="equation-text">
+        ECL = Probability of Default (PD) × Loss Given Default (LGD) × Exposure at Default (EAD)
+      </div>
+      <div class="equation-label">The core ECL formula — used by banks and FinTechs for provisioning</div>
+    </div>
+
+    <p class="section-label">Simplified Approach — Trade Receivables (Most Common for ACCA)</p>
+    <div class="wide-card">
+      <h4>Provision Matrix — Ashish Trading Co. Receivables</h4>
+      <table class="data-table" style="margin-top:8px;">
+        <tr><th>Ageing</th><th>Receivable Amount</th><th>ECL %</th><th>Provision</th></tr>
+        <tr><td>Current (0-30 days)</td><td>₹10,00,000</td><td>0.5%</td><td>₹5,000</td></tr>
+        <tr><td>31-60 days</td><td>₹4,00,000</td><td>2%</td><td>₹8,000</td></tr>
+        <tr><td>61-90 days</td><td>₹2,00,000</td><td>10%</td><td>₹20,000</td></tr>
+        <tr><td>Over 90 days</td><td>₹1,00,000</td><td>40%</td><td>₹40,000</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--muted);margin-top:10px;"><strong style="color:var(--accent5);">Total ECL Provision = ₹73,000</strong> — Dr Impairment Loss (P&L) ₹73,000 | Cr Allowance for ECL ₹73,000</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:6px;">For trade receivables, IFRS 9 permits a <strong>simplified approach</strong> — always recognise lifetime ECL (no need to track stage migrations). This is the most commonly examined approach in ACCA FR.</p>
+    </div>
+  </div>
+
+  <!-- 10.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">10.7</div>
+      <div class="section-title">Equity vs Liability — IAS 32 Classification</div>
+    </div>
+    <p class="prose">One of the most important judgments in IFRS — <strong>is an instrument equity or a liability?</strong> The answer depends on substance, not legal form.</p>
+
+    <table class="data-table">
+      <tr><th>Test</th><th>If YES → Liability</th><th>If NO → Equity</th></tr>
+      <tr><td>Contractual obligation to deliver cash/assets?</td><td>Redeemable preference shares</td><td>Ordinary shares (no redemption)</td></tr>
+      <tr><td>Mandatory dividend payments?</td><td>Liability — like interest</td><td>Discretionary dividends — equity</td></tr>
+      <tr><td>Settlement in variable number of own shares?</td><td>Liability</td><td>Fixed number of shares — equity</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 Why This Classification Matters</div>
+      If a preference share is classified as a liability, its "dividend" is actually <strong>interest expense</strong> — reducing profit. This affects: gearing ratios, EPS, debt covenants, and how the company appears to lenders and investors. Companies sometimes structure instruments carefully to achieve a desired classification — a major area of scrutiny for auditors and SBR exam questions.
+    </div>
+  </div>
+
+  <!-- 10.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">10.8</div>
+      <div class="section-title">Hedge Accounting — Introduction</div>
+    </div>
+    <p class="prose">Companies use derivatives (forwards, futures, options, swaps) to <strong>manage risk</strong> — currency risk, interest rate risk, commodity price risk. Hedge accounting allows the gain/loss on the hedging instrument to be matched with the gain/loss on the hedged item.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💵</div>
+        <div class="card-title">Fair Value Hedge</div>
+        <ul class="card-items">
+          <li>Hedges exposure to changes in fair value of an asset/liability</li>
+          <li>Both hedging instrument and hedged item measured at FV through P&L</li>
+          <li>Example: hedging fixed-rate debt against interest rate changes</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <div class="card-title">Cash Flow Hedge</div>
+        <ul class="card-items">
+          <li>Hedges exposure to variability in future cash flows</li>
+          <li>Effective portion of gain/loss → OCI</li>
+          <li>Example: hedging future foreign currency purchases</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">Net Investment Hedge</div>
+        <ul class="card-items">
+          <li>Hedges currency exposure on investment in foreign operations</li>
+          <li>Common for MNCs with overseas subsidiaries</li>
+          <li>Effective portion → OCI (translation reserve)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">10.9</div>
+      <div class="section-title">Real-World Application — Banking & MNCs</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-title">Banking Sector</div>
+        <ul class="card-items">
+          <li>Loan portfolios classified using IFRS 9 model</li>
+          <li>ECL provisioning is the biggest P&L impact of IFRS 9</li>
+          <li>RBI requires Ind AS 109 (IFRS 9) compliance from large NBFCs</li>
+          <li>ECL models built by risk teams, validated by finance</li>
+        </ul>
+        <div class="card-tag">Risk & Compliance Careers</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Corporate Finance & Treasury</div>
+        <ul class="card-items">
+          <li>Treasury teams manage investment portfolios under IFRS 9</li>
+          <li>FX hedging accounted for using hedge accounting rules</li>
+          <li>Receivables provisioning under simplified ECL approach</li>
+          <li>Big 4 advisory teams help clients implement IFRS 9 models</li>
+        </ul>
+        <div class="card-tag">FinTech & Treasury Careers</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-indigo">10.10</div>
+      <div class="section-title">IFRS 9 & ACCA — Paper Mapping</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>ACCA Paper</th><th>Level</th><th>What's Tested</th></tr>
+      <tr><td>Classification (Amortised Cost, FVOCI, FVTPL)</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Apply business model + SPPI tests</td></tr>
+      <tr><td>Amortised cost — effective interest method</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Calculate interest income, carrying amounts</td></tr>
+      <tr><td>ECL — simplified approach for receivables</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Calculate and journal ECL provision</td></tr>
+      <tr><td>Equity vs liability (IAS 32)</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Classify instruments, split compound instruments</td></tr>
+      <tr><td>Convertible bonds — split accounting</td><td>SBR (Strategic Business Reporting)</td><td>Strategic Professional</td><td>Calculate liability and equity components</td></tr>
+      <tr><td>Hedge accounting basics</td><td>SBR + AFM</td><td>Strategic Professional</td><td>Identify hedge type, OCI vs P&L treatment</td></tr>
+    </table>
+  </div>
+
+  <!-- 10.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">10.11</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">3 Classifications for Financial Assets</div><ul class="card-items"><li>Amortised Cost, FVOCI, FVTPL</li><li>Determined by business model + SPPI test</li><li>Default = FVTPL if neither test passed</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">ECL = Forward Looking</div><ul class="card-items"><li>3-stage model for loans</li><li>Simplified approach for trade receivables</li><li>Biggest impact: banking and lending sectors</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Equity vs Liability is Substance Over Form</div><ul class="card-items"><li>Contractual obligation = liability</li><li>Compound instruments must be split</li><li>Affects gearing and EPS significantly</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Effective Interest Method</div><ul class="card-items"><li>Spreads discount/premium over instrument life</li><li>Applies to both assets and liabilities</li><li>Master this calculation — frequently tested</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Hedge Accounting Matches Timing</div><ul class="card-items"><li>Fair value hedge: both sides to P&L</li><li>Cash flow hedge: effective portion to OCI</li><li>Reduces P&L volatility from risk management</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Career Relevance</div><ul class="card-items"><li>Banking, FinTech, treasury roles all need this</li><li>Big 4 financial instruments specialists — premium pay</li><li>Foundation for AFM and SBR papers</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 10 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Classify 5 different financial assets using business model + SPPI tests</span>
+        <span class="tag teal">✅ Calculate amortised cost using effective interest method for 2 years</span>
+        <span class="tag teal">✅ Build a simple ECL provision matrix for trade receivables</span>
+        <span class="tag teal">✅ Identify whether 5 instruments are equity or liability under IAS 32</span>
+        <span class="tag teal">✅ Read about a convertible bond split calculation example</span>
+        <span class="tag teal">✅ Watch a YouTube explainer on IFRS 9 ECL model (search "IFRS 9 ECL explained")</span>
+        <span class="tag teal">✅ Attempt ACCA FR past paper questions on financial instruments</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">10.12</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Adding Transaction Costs to FVTPL Assets</strong><br>
+        Transaction costs are capitalised (added to cost) for Amortised Cost and FVOCI assets, but must be EXPENSED IMMEDIATELY to P&L for FVTPL assets — never added to the initial carrying amount. This is a frequently tested classification rule.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Confusing the Business Model Test with the Cash Flow Characteristics Test</strong><br>
+        Classification under IFRS 9 requires BOTH tests to pass for Amortised Cost/FVOCI: the business model test (is the asset held to collect cash flows, to sell, or both?) AND the SPPI test (are cash flows solely payments of principal and interest?). Passing only one test doesn't achieve the classification — both are required.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Calculating Interest on Gross Carrying Amount for Stage 3 (Credit-Impaired) Assets</strong><br>
+        For Stage 1 and Stage 2, interest income is calculated on the gross carrying amount. But once an asset moves to Stage 3 (credit-impaired), interest must be calculated on the NET carrying amount (after deducting the ECL allowance) — a detail often missed.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Treating All Convertible Bonds as Pure Liabilities</strong><br>
+        A convertible bond is a compound instrument under IAS 32 — it must be split into a liability component (PV of cash flows at market rate) and an equity component (residual). Recording the entire proceeds as a liability ignores the embedded conversion option's equity nature.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Applying the General Approach Instead of the Simplified Approach for Trade Receivables</strong><br>
+        IFRS 9 permits (and most companies use) a simplified approach for trade receivables — recognising lifetime ECL immediately without tracking stage migrations. Applying the full 3-stage general model to simple trade receivables is unnecessarily complex and not the examinable default for most ACCA FR questions.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Forgetting Equity Instruments Can Elect FVOCI (No Recycling)</strong><br>
+        For equity investments (not held for trading), an entity can irrevocably elect FVOCI at initial recognition. Unlike FVOCI for debt, gains/losses on equity FVOCI are NEVER reclassified ("recycled") to P&L, even on disposal — only dividend income hits P&L.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Three Classifications</div>
+        <ul class="card-items">
+          <li><strong>Q: Name the 3 classifications of financial assets under IFRS 9.</strong></li>
+          <li>A: Amortised Cost, FVOCI, FVTPL</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Two Classification Tests</div>
+        <ul class="card-items">
+          <li><strong>Q: What 2 tests determine classification?</strong></li>
+          <li>A: Business Model test and SPPI (cash flow characteristics) test</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">ECL Stages</div>
+        <ul class="card-items">
+          <li><strong>Q: Stage 1 recognises what level of ECL?</strong></li>
+          <li>A: 12-month ECL</li>
+          <li><strong>Q: Stage 2 and 3 recognise what?</strong></li>
+          <li>A: Lifetime ECL</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">ECL Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: State the ECL formula.</strong></li>
+          <li>A: ECL = Probability of Default × Loss Given Default × Exposure at Default</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Convertible Bond Split</div>
+        <ul class="card-items">
+          <li><strong>Q: How is a convertible bond split under IAS 32?</strong></li>
+          <li>A: Liability = PV of cash flows at market rate; Equity = Total proceeds − Liability (residual)</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+    </div>
+
+    <!-- FORMULA REFERENCE -->
+    <p class="section-label" style="margin-top:40px;">Part C — Formula Quick Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 10 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Expected Credit Loss (ECL)</div><div class="formula-eq">Probability of Default × Loss Given Default × Exposure at Default</div></div>
+      <div class="formula-row"><div class="formula-name">Amortised Cost Interest Income</div><div class="formula-eq">Opening Carrying Amount × Effective Interest Rate</div></div>
+      <div class="formula-row"><div class="formula-name">Compound Instrument — Equity Component</div><div class="formula-eq">Total Proceeds − Liability Component (PV at market rate)</div></div>
+      <div class="formula-row"><div class="formula-name">FVTPL Gain/Loss</div><div class="formula-eq">Fair Value at Reporting Date − Carrying Amount</div></div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"What's the difference between the incurred loss model and the expected credit loss model?"</td><td>Understanding the key IFRS 9 reform vs its predecessor IAS 39</td><td>The incurred loss model (under old IAS 39) only recognised impairment when there was objective evidence of a loss event already occurring — often described as "too little, too late," notably during the 2008 financial crisis. IFRS 9's ECL model is forward-looking, requiring entities to recognise expected losses based on reasonable and supportable forecasts before an actual default occurs, providing earlier warning of credit deterioration.</td></tr>
+      <tr><td>"How would you classify a bond your company plans to hold until maturity?"</td><td>Practical application of the classification framework</td><td>If the business model is to hold the asset to collect contractual cash flows (not to sell), and those cash flows are solely payments of principal and interest (passing the SPPI test), the bond would be classified at Amortised Cost — measured using the effective interest method, with no fair value remeasurement through profit or OCI.</td></tr>
+      <tr><td>"Why does IFRS 9 matter more for banks than for a typical manufacturing company?"</td><td>Real-world sector awareness</td><td>Banks hold large portfolios of loans and financial instruments as their core business, making classification, ECL provisioning, and fair value measurement central to their financial statements and regulatory capital calculations. A manufacturer's financial instruments (cash, trade receivables, maybe some investments) are comparatively small relative to operating assets, so IFRS 9's impact, while still relevant, is less material to overall reported performance.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Classify (Amortised Cost / FVOCI / FVTPL)<br>
+      + Measure at Fair Value Initially<br>
+      + Apply ECL Model<br>
+      + Equity vs Liability (Substance)<br>
+      = <strong style="color:var(--accent4);">Financial Instruments Mastered for FR, SBR & Real-World Finance</strong>
+    </div>
+    <h3>Behind every number is a contract — and behind every contract is IFRS 9.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 11: Consolidation Basics — how group accounts combine parent and subsidiary companies into one set of financial statements. 🏢</p>
+  </div>
+
+</div>
+</body>
+</html>

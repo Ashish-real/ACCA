@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 7: Revenue Recognition</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #f97316;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero { padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(249,115,22,0.09) 0%, transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-orange { background: rgba(249,115,22,0.2); color: var(--accent5); border: 1px solid rgba(249,115,22,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(249,115,22,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(249,115,22,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(249,115,22,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(249,115,22,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(249,115,22,0.07), rgba(255,217,61,0.05)); border: 1px solid rgba(249,115,22,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  /* 5-STEP MODEL */
+  .five-steps { display: flex; flex-direction: column; gap: 0; margin-top: 16px; }
+  .step-item { display: flex; gap: 16px; align-items: flex-start; }
+  .step-connector { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .step-circle { width: 40px; height: 40px; border-radius: 50%; background: rgba(249,115,22,0.15); border: 2px solid var(--accent5); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent5); flex-shrink: 0; }
+  .step-line { width: 2px; height: 24px; background: linear-gradient(to bottom, var(--accent5), rgba(249,115,22,0.2)); margin: 4px 0; }
+  .step-content { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; flex: 1; }
+  .step-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .step-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .step-key { font-family: var(--mono); font-size: 10px; color: var(--accent5); margin-top: 8px; }
+
+  .equation { background: var(--card); border: 1px solid var(--accent5); border-radius: 12px; padding: 20px 24px; margin: 20px 0; text-align: center; }
+  .equation-text { font-family: var(--mono); font-size: clamp(12px,2.5vw,15px); color: var(--accent2); letter-spacing: 1px; line-height: 2; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(249,115,22,0.09), rgba(255,217,61,0.06)); border: 1px solid rgba(249,115,22,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 7</div>
+  <h1>Revenue<br><span>Recognition</span></h1>
+  <p class="hero-sub">IFRS 15 — the 5-step model that governs when and how every company in the world recognises revenue. The most important standard for MNC finance teams.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Step Model</div></div>
+    <div class="stat"><div class="stat-num">IFRS 15</div><div class="stat-label">The Standard</div></div>
+    <div class="stat"><div class="stat-num">FR+SBR</div><div class="stat-label">ACCA Papers</div></div>
+    <div class="stat"><div class="stat-num">2018</div><div class="stat-label">Effective Date</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 7 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">7.1</span>Why Revenue Recognition Matters</div>
+    <div class="toc-item"><span class="toc-num">7.2</span>Before IFRS 15 — The Problem</div>
+    <div class="toc-item"><span class="toc-num">7.3</span>IFRS 15 — The 5-Step Model (Overview)</div>
+    <div class="toc-item"><span class="toc-num">7.4</span>Step 1 — Identify the Contract</div>
+    <div class="toc-item"><span class="toc-num">7.5</span>Step 2 — Identify Performance Obligations</div>
+    <div class="toc-item"><span class="toc-num">7.6</span>Step 3 — Determine the Transaction Price</div>
+    <div class="toc-item"><span class="toc-num">7.7</span>Step 4 — Allocate the Transaction Price</div>
+    <div class="toc-item"><span class="toc-num">7.8</span>Step 5 — Recognise Revenue</div>
+    <div class="toc-item"><span class="toc-num">7.9</span>Special Topics — Contract Costs, Modifications & More</div>
+    <div class="toc-item"><span class="toc-num">7.10</span>Real-World Industry Applications</div>
+    <div class="toc-item"><span class="toc-num">7.11</span>IFRS 15 & ACCA — Paper Mapping</div>
+    <div class="toc-item"><span class="toc-num">7.12</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">7.13</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Revenue is the top line of every Income Statement — the number that everything else flows from. <strong>But when exactly should revenue be recognised?</strong> When a contract is signed? When cash is received? When the product is delivered? When service is completed? IFRS 15 answers all of these questions with one unified 5-step model.</p>
+    <div class="quote">"Revenue is vanity, profit is sanity, cash is reality — but recognising revenue at the right time is the foundation of all three."</div>
+  </div>
+
+  <!-- 7.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">7.1</div>
+      <div class="section-title">Why Revenue Recognition Matters</div>
+    </div>
+    <p class="prose">Revenue recognition is one of the most important — and most manipulated — areas of accounting. Getting it wrong, deliberately or accidentally, can massively distort financial statements.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Why It's Critical</div>
+        <ul class="card-items">
+          <li>Revenue drives every key financial metric</li>
+          <li>Earnings per share, P/E ratio, market cap — all linked to revenue</li>
+          <li>Investors make buy/sell decisions based on revenue trends</li>
+          <li>Early or late recognition = misleading financial statements</li>
+          <li>Major frauds (Satyam, Enron) involved revenue manipulation</li>
+        </ul>
+        <div class="card-tag">Most Audited Line Item</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">The Core Principle</div>
+        <ul class="card-items">
+          <li>Recognise revenue when (or as) performance obligations are satisfied</li>
+          <li>At the amount of consideration the entity expects to receive</li>
+          <li>This replaces old "risks and rewards" approach</li>
+          <li>Now based on transfer of control to customer</li>
+          <li>Applies to ALL contracts with customers — every industry</li>
+        </ul>
+        <div class="card-tag">IFRS 15 Core Principle</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Who is Affected</div>
+        <ul class="card-items">
+          <li>Every company that earns revenue from customers</li>
+          <li>Especially complex: software, construction, telecom, retail</li>
+          <li>Big 4 audit teams spend significant time on revenue</li>
+          <li>MNC finance teams need IFRS 15 expertise for reporting</li>
+          <li>ACCA FR and SBR papers test it heavily</li>
+        </ul>
+        <div class="card-tag">Universal Application</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">7.2</div>
+      <div class="section-title">Before IFRS 15 — The Problem</div>
+    </div>
+    <p class="prose">Before IFRS 15 (effective 2018), revenue was governed by two separate standards — IAS 18 (Revenue) for goods and services, and IAS 11 (Construction Contracts) for long-term contracts. These standards were inconsistent, incomplete, and left too much room for judgment — creating opportunities for manipulation.</p>
+    <div class="highlight">
+      <div class="highlight-title">📌 The Satyam Fraud — Revenue Recognition Gone Wrong</div>
+      India's biggest accounting scandal — Satyam Computers (2009) — involved the CEO falsifying revenue and cash figures for years. Fictitious invoices were raised, revenue was inflated by ₹5,040 crore, and fake bank balances were created. The result: investors lost billions, the company nearly collapsed, and PwC (the auditor) faced massive penalties. <strong>IFRS 15's stricter controls and disclosure requirements make this type of fraud much harder to execute today.</strong>
+    </div>
+  </div>
+
+  <!-- 7.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">7.3</div>
+      <div class="section-title">IFRS 15 — The 5-Step Model</div>
+      <div class="section-meta">The Heart of Revenue Recognition</div>
+    </div>
+    <p class="prose">IFRS 15 introduced one unified model for all revenue recognition — the <strong>5-Step Model</strong>. Every revenue transaction, no matter how simple or complex, must go through these five steps.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Step 1: Identify the CONTRACT with a customer<br>
+        Step 2: Identify the PERFORMANCE OBLIGATIONS<br>
+        Step 3: Determine the TRANSACTION PRICE<br>
+        Step 4: ALLOCATE the price to performance obligations<br>
+        Step 5: RECOGNISE revenue when obligation is satisfied
+      </div>
+      <div class="equation-label">The IFRS 15 Five-Step Model — applies to every contract with every customer</div>
+    </div>
+  </div>
+
+  <!-- 7.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">7.4</div>
+      <div class="section-title">Step 1 — Identify the Contract</div>
+    </div>
+    <p class="prose">A contract is an <strong>agreement between two or more parties that creates enforceable rights and obligations</strong>. Under IFRS 15, a contract exists only if all five criteria are met.</p>
+
+    <table class="data-table">
+      <tr><th>#</th><th>Criterion</th><th>What It Means</th></tr>
+      <tr><td>1</td><td>Approved & Committed</td><td>Both parties have approved the contract and are committed to performing obligations</td></tr>
+      <tr><td>2</td><td>Rights Identified</td><td>Each party's rights regarding goods/services are clearly identified</td></tr>
+      <tr><td>3</td><td>Payment Terms</td><td>Payment terms for the goods/services are clearly identified</td></tr>
+      <tr><td>4</td><td>Commercial Substance</td><td>The contract has commercial substance — it changes expected future cash flows</td></tr>
+      <tr><td>5</td><td>Probable Collection</td><td>It is probable that the entity will collect the consideration it is entitled to</td></tr>
+    </table>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">💡 Contract Combination & Modification</div>
+      <strong>Contract Combination:</strong> Multiple contracts entered at same time with same customer may be combined if linked.<br>
+      <strong>Contract Modification:</strong> When contract terms change — account as a new contract OR modification of existing one depending on whether distinct goods/services are added and at standalone price.
+    </div>
+  </div>
+
+  <!-- 7.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">7.5</div>
+      <div class="section-title">Step 2 — Identify Performance Obligations</div>
+    </div>
+    <p class="prose">A <strong>performance obligation</strong> is a promise to transfer a distinct good or service to a customer. One contract can have multiple performance obligations — and each must be accounted for separately.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">When is a Good/Service Distinct?</div>
+        <ul class="card-items">
+          <li><strong>Capable of being distinct:</strong> Customer can benefit from it on its own or with other available resources</li>
+          <li><strong>Distinct in context of contract:</strong> Separately identifiable from other promises in contract</li>
+          <li>BOTH criteria must be met for it to be distinct</li>
+          <li>If not distinct → combine with other obligations until distinct</li>
+        </ul>
+        <div class="card-tag">Both Criteria Required</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <div class="card-title">Examples — Multiple Obligations</div>
+        <ul class="card-items">
+          <li>Phone + 24-month service plan = 2 obligations</li>
+          <li>Software licence + annual support = 2 obligations</li>
+          <li>Car + 3-year warranty = 2 obligations</li>
+          <li>Construction contract (single building) = 1 obligation</li>
+          <li>Audit + tax return = 2 separate obligations</li>
+        </ul>
+        <div class="card-tag">Real World Examples</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⏰</div>
+        <div class="card-title">Series of Distinct Services</div>
+        <ul class="card-items">
+          <li>Substantially the same services transferred over time</li>
+          <li>Same pattern of transfer (over time)</li>
+          <li>Treated as single performance obligation</li>
+          <li>Example: Monthly cleaning service for 12 months</li>
+          <li>Revenue recognised evenly each month</li>
+        </ul>
+        <div class="card-tag">Ongoing Services</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">7.6</div>
+      <div class="section-title">Step 3 — Determine the Transaction Price</div>
+    </div>
+    <p class="prose">The transaction price is the <strong>amount of consideration the entity expects to be entitled to</strong> in exchange for transferring goods or services. It sounds simple — but many contracts have variable or complex consideration.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <div class="card-title">Variable Consideration</div>
+        <ul class="card-items">
+          <li>Price includes discounts, rebates, refunds, bonuses, penalties</li>
+          <li>Must estimate variable consideration</li>
+          <li>Use Expected Value OR Most Likely Amount method</li>
+          <li>Only include if highly probable no significant reversal will occur</li>
+          <li>Example: Bonus of ₹10L if project completed on time</li>
+        </ul>
+        <div class="card-tag">Estimation Required</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⏳</div>
+        <div class="card-title">Significant Financing Component</div>
+        <ul class="card-items">
+          <li>If payment deferred more than 12 months — adjust for time value</li>
+          <li>Discount the transaction price to present value</li>
+          <li>Recognise interest income separately over deferral period</li>
+          <li>Practical expedient: ignore if less than 12 months</li>
+          <li>Example: ₹1.1L receivable in 1 year → ₹1L revenue now</li>
+        </ul>
+        <div class="card-tag">Time Value of Money</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Non-Cash Consideration</div>
+        <ul class="card-items">
+          <li>Customer pays in goods, shares, or services</li>
+          <li>Measure at fair value of non-cash consideration</li>
+          <li>If fair value can't be measured → use standalone selling price</li>
+          <li>Example: Customer gives company shares as payment</li>
+        </ul>
+        <div class="card-tag">Fair Value Measurement</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎁</div>
+        <div class="card-title">Consideration Payable to Customer</div>
+        <ul class="card-items">
+          <li>If entity pays consideration to customer (e.g. vouchers, slotting fees)</li>
+          <li>Reduce transaction price UNLESS it's for distinct good/service</li>
+          <li>Example: Supermarket pays ₹5L slotting fee to retailer</li>
+          <li>Reduces revenue, not an expense</li>
+        </ul>
+        <div class="card-tag">Revenue Reduction</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">7.7</div>
+      <div class="section-title">Step 4 — Allocate the Transaction Price</div>
+    </div>
+    <p class="prose">When a contract has multiple performance obligations, the total transaction price must be <strong>allocated to each obligation based on its relative standalone selling price (SSP)</strong>.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Allocation = (SSP of Obligation ÷ Total SSP of all Obligations) × Transaction Price
+      </div>
+      <div class="equation-label">Standalone Selling Price (SSP) = price charged when sold separately</div>
+    </div>
+
+    <p class="section-label">Complete Worked Example — Phone + Service Plan</p>
+    <div class="wide-card">
+      <h4>Ashish Telecom — Contract with Customer</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        <strong style="color:var(--text);">Contract:</strong> Customer pays ₹24,000 for a phone + 24-month service plan<br>
+        <strong style="color:var(--text);">Standalone prices:</strong> Phone = ₹18,000 | Service plan = ₹12,000 (₹500/month × 24)<br>
+        <strong style="color:var(--text);">Total SSP:</strong> ₹18,000 + ₹12,000 = ₹30,000<br><br>
+        <strong style="color:var(--accent5);">Allocation:</strong><br>
+        Phone: ₹18,000 ÷ ₹30,000 × ₹24,000 = <strong style="color:var(--accent2);">₹14,400</strong><br>
+        Service plan: ₹12,000 ÷ ₹30,000 × ₹24,000 = <strong style="color:var(--accent2);">₹9,600</strong><br><br>
+        <strong style="color:var(--text);">Revenue recognition:</strong><br>
+        ₹14,400 recognised immediately when phone delivered (point in time)<br>
+        ₹9,600 recognised over 24 months = ₹400/month (over time)
+      </div>
+    </div>
+  </div>
+
+  <!-- 7.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">7.8</div>
+      <div class="section-title">Step 5 — Recognise Revenue</div>
+      <div class="section-meta">The Final Step</div>
+    </div>
+    <p class="prose">Revenue is recognised when (or as) a performance obligation is satisfied — i.e., when <strong>control of the good or service transfers to the customer</strong>. This happens either at a point in time or over time.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">At a Point in Time</div>
+        <ul class="card-items">
+          <li>Most goods and some services recognised at a single point</li>
+          <li>When control transfers — indicated by:</li>
+          <li>Customer has right to payment</li>
+          <li>Customer has legal title / physical possession</li>
+          <li>Customer has risks and rewards of ownership</li>
+          <li>Example: Selling a laptop — revenue on delivery</li>
+        </ul>
+        <div class="card-tag">Single Moment</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📅</div>
+        <div class="card-title">Over Time</div>
+        <ul class="card-items">
+          <li>Revenue spread over the period of performance</li>
+          <li>If ANY of these criteria met:</li>
+          <li>Customer simultaneously receives and consumes benefit</li>
+          <li>Entity creates/enhances asset customer controls</li>
+          <li>No alternative use + right to payment for work done</li>
+          <li>Example: Construction contract, SaaS subscription, cleaning service</li>
+        </ul>
+        <div class="card-tag">Spread Over Period</div>
+      </div>
+    </div>
+
+    <p class="section-label">Measuring Progress for Over-Time Recognition</p>
+    <table class="data-table">
+      <tr><th>Method</th><th>How It Works</th><th>Best Used For</th></tr>
+      <tr><td>Output Method</td><td>Based on value of outputs delivered (surveys, milestones, units produced)</td><td>When output can be clearly measured</td></tr>
+      <tr><td>Input Method</td><td>Based on resources consumed (costs incurred, hours worked, materials used)</td><td>Construction contracts, long-term projects</td></tr>
+      <tr><td>Straight-Line</td><td>Equal amount each period (special case of output/input)</td><td>Subscriptions, licences, maintenance</td></tr>
+    </table>
+
+    <p class="section-label">Construction Contract Example — Over-Time Recognition</p>
+    <div class="wide-card">
+      <h4>Ashish Infrastructure — ₹1 Crore Building Contract</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        <strong style="color:var(--text);">Contract value:</strong> ₹1,00,00,000 | <strong style="color:var(--text);">Total expected cost:</strong> ₹80,00,000<br>
+        <strong style="color:var(--text);">Year 1 costs incurred:</strong> ₹32,00,000<br><br>
+        <strong style="color:var(--accent5);">Stage of completion (Input method):</strong><br>
+        ₹32,00,000 ÷ ₹80,00,000 = <strong style="color:var(--accent2);">40% complete</strong><br><br>
+        <strong style="color:var(--accent5);">Revenue recognised Year 1:</strong><br>
+        40% × ₹1,00,00,000 = <strong style="color:var(--accent2);">₹40,00,000</strong><br><br>
+        <strong style="color:var(--accent5);">Gross Profit Year 1:</strong><br>
+        ₹40,00,000 − ₹32,00,000 = <strong style="color:var(--accent2);">₹8,00,000</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">7.9</div>
+      <div class="section-title">Special Topics</div>
+      <div class="section-meta">Contract Costs, Licences & More</div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">💸</div>
+        <div class="card-title">Contract Costs</div>
+        <ul class="card-items">
+          <li><strong>Costs to obtain a contract</strong> (e.g. sales commission) — capitalise if expected to be recovered</li>
+          <li>Amortise over the period of benefit</li>
+          <li><strong>Costs to fulfil a contract</strong> — capitalise if they generate resources used to satisfy future obligations</li>
+          <li>Practical expedient: expense if amortisation period ≤ 1 year</li>
+        </ul>
+        <div class="card-tag">Capitalise if Recoverable</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔑</div>
+        <div class="card-title">Licences</div>
+        <ul class="card-items">
+          <li><strong>Right to access</strong> — revenue over licence period (e.g. Netflix, SaaS)</li>
+          <li><strong>Right to use</strong> — revenue at point in time (e.g. software licence, patent)</li>
+          <li>Sales-based/usage-based royalties — recognise when later of sale/usage or obligation satisfied</li>
+          <li>Film/music royalties are a classic exam example</li>
+        </ul>
+        <div class="card-tag">Access vs Use</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">↩️</div>
+        <div class="card-title">Returns, Warranties & Repurchases</div>
+        <ul class="card-items">
+          <li>Expected returns → reduce revenue (refund liability)</li>
+          <li>Assurance warranties → not a performance obligation (expense under IAS 37)</li>
+          <li>Service warranties → separate performance obligation</li>
+          <li>Repurchase agreements → may be a lease or financing arrangement</li>
+        </ul>
+        <div class="card-tag">Common Exam Areas</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎟️</div>
+        <div class="card-title">Customer Loyalty Programmes</div>
+        <ul class="card-items">
+          <li>Points/rewards = separate performance obligation</li>
+          <li>Allocate portion of transaction price to points</li>
+          <li>Recognise when points redeemed or expire</li>
+          <li>Example: Airline miles, credit card reward points</li>
+          <li>Major revenue recognition issue for retail & airlines</li>
+        </ul>
+        <div class="card-tag">Loyalty Points</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">7.10</div>
+      <div class="section-title">Real-World Industry Applications</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Industry</th><th>Revenue Challenge</th><th>IFRS 15 Approach</th></tr>
+      <tr><td>Software / SaaS</td><td>Licence + implementation + support in one contract</td><td>Identify separate obligations; allocate based on SSP</td></tr>
+      <tr><td>Construction</td><td>Long-term contracts spanning multiple years</td><td>Over-time recognition using input/output method</td></tr>
+      <tr><td>Telecom</td><td>Handset + data plan bundled at discounted price</td><td>Allocate to handset (point) and plan (over time)</td></tr>
+      <tr><td>Retail / E-commerce</td><td>Right of return, loyalty points, gift cards</td><td>Refund liability for returns; points as separate obligation</td></tr>
+      <tr><td>Consulting / Big 4</td><td>Fixed-fee projects over several months</td><td>Over-time using input method (hours/costs)</td></tr>
+      <tr><td>Real Estate</td><td>Pre-sold flats — when to recognise revenue?</td><td>Usually over time if customer controls WIP; else at completion</td></tr>
+      <tr><td>Pharma</td><td>Milestone payments, royalties based on drug sales</td><td>Variable consideration; sales-based royalties at point of sale</td></tr>
+    </table>
+  </div>
+
+  <!-- 7.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">7.11</div>
+      <div class="section-title">IFRS 15 & ACCA — Paper Mapping</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>ACCA Paper</th><th>Level</th><th>What's Tested</th></tr>
+      <tr><td>5-Step Model overview</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Apply all 5 steps to a scenario</td></tr>
+      <tr><td>Performance obligations — distinct?</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Identify and separate obligations</td></tr>
+      <tr><td>Variable consideration</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Estimate and constrain variable consideration</td></tr>
+      <tr><td>Allocation using SSP</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Calculate allocation, prepare journal entries</td></tr>
+      <tr><td>Point vs over-time recognition</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Apply criteria, calculate revenue per period</td></tr>
+      <tr><td>Construction contracts (over time)</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Stage of completion, revenue, gross profit</td></tr>
+      <tr><td>Licences, warranties, returns</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Identify type; account for correctly</td></tr>
+    </table>
+  </div>
+
+  <!-- 7.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-orange">7.12</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">5 Steps — Always in Order</div><ul class="card-items"><li>Contract → Obligations → Price → Allocate → Recognise</li><li>Never skip steps in exam answers</li><li>Show your working for each step</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Control, Not Risk & Rewards</div><ul class="card-items"><li>Old approach: risks & rewards transfer</li><li>IFRS 15: control transfers to customer</li><li>This single change affected thousands of companies</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Point vs Over Time</div><ul class="card-items"><li>Most goods = point in time</li><li>Services often = over time</li><li>3 criteria for over-time — know them by heart</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Variable Consideration</div><ul class="card-items"><li>Include only if highly probable no reversal</li><li>Expected value or most likely amount</li><li>Common in construction, pharma, retail</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">SSP Drives Allocation</div><ul class="card-items"><li>Always allocate based on standalone selling prices</li><li>Not contract price — SSP</li><li>Discount is shared proportionally</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Industry Context Matters</div><ul class="card-items"><li>Same standard — different application per industry</li><li>Telecom, SaaS, construction, pharma all complex</li><li>Big 4 revenue specialists earn premium salaries</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 7 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Write the 5-step model from memory — no notes</span>
+        <span class="tag teal">✅ Apply 5 steps to a simple contract scenario you create yourself</span>
+        <span class="tag teal">✅ Practice the allocation calculation (SSP method) with 3 examples</span>
+        <span class="tag teal">✅ Work through a construction contract: stage of completion + revenue</span>
+        <span class="tag teal">✅ Identify point vs over-time for 10 different businesses</span>
+        <span class="tag teal">✅ Attempt ACCA FR past paper questions on IFRS 15</span>
+        <span class="tag teal">✅ Read the ACCA technical article on IFRS 15 at accaglobal.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">7.13</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Recognising Revenue When Cash is Received, Not When Control Transfers</strong><br>
+        The core principle of IFRS 15 is that revenue is recognised when control of the goods/service transfers to the customer — not when invoiced or when cash is collected. Students often default to cash-basis thinking, which contradicts the entire 5-step model.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Missing Separate Performance Obligations</strong><br>
+        A single contract can contain multiple distinct performance obligations (e.g. a phone + service plan), each recognised on its own timeline. Treating the whole contract as one obligation and recognising all revenue at delivery understates deferred revenue for ongoing services.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Allocating Transaction Price Using Contract Price Instead of Standalone Selling Price</strong><br>
+        Allocation must be based on relative STANDALONE selling prices (SSP) of each obligation — not simply splitting the contract price evenly, and not using the price stated in the contract for each item (which may include a bundled discount).</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Confusing "Point in Time" vs "Over Time" Recognition</strong><br>
+        Revenue is recognised over time only if specific criteria are met (customer simultaneously receives/consumes benefits, or the entity's performance creates/enhances an asset the customer controls, or the asset has no alternative use with a right to payment). Otherwise, revenue is recognised at a point in time — when control transfers, typically on delivery.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Not Adjusting Transaction Price for Variable Consideration</strong><br>
+        Discounts, rebates, refunds, and performance bonuses must be estimated and included in the transaction price (using expected value or most-likely-amount methods), subject to a constraint that avoids overstating revenue that is highly uncertain to be earned. Ignoring these adjustments overstates revenue.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Treating a Contract Modification as a Brand New Contract Automatically</strong><br>
+        IFRS 15 has specific rules for contract modifications — depending on whether the additional goods/services are distinct and priced at standalone value, the modification may be treated as a separate contract, a termination of the old contract with a new one, or a cumulative catch-up adjustment. Applying a blanket "always treat as new contract" rule is incorrect.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">The 5-Step Model</div>
+        <ul class="card-items">
+          <li><strong>Q: List the 5 steps of IFRS 15.</strong></li>
+          <li>A: 1) Identify contract 2) Identify performance obligations 3) Determine transaction price 4) Allocate price 5) Recognise revenue</li>
+        </ul>
+        <div class="card-tag">Flashcard 1</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Core Principle</div>
+        <ul class="card-items">
+          <li><strong>Q: When is revenue recognised under IFRS 15?</strong></li>
+          <li>A: When control of goods/services transfers to the customer</li>
+        </ul>
+        <div class="card-tag">Flashcard 2</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Allocation Basis</div>
+        <ul class="card-items">
+          <li><strong>Q: What is the allocation basis for multi-element contracts?</strong></li>
+          <li>A: Relative standalone selling price (SSP) of each performance obligation</li>
+        </ul>
+        <div class="card-tag">Flashcard 3</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Over Time vs Point in Time</div>
+        <ul class="card-items">
+          <li><strong>Q: Name one criterion for over-time recognition.</strong></li>
+          <li>A: Customer simultaneously receives and consumes benefits as the entity performs</li>
+        </ul>
+        <div class="card-tag">Flashcard 4</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Standard Replaced</div>
+        <ul class="card-items">
+          <li><strong>Q: Which standards did IFRS 15 replace?</strong></li>
+          <li>A: IAS 18 (Revenue) and IAS 11 (Construction Contracts)</li>
+        </ul>
+        <div class="card-tag">Flashcard 5</div>
+      </div>
+    </div>
+
+    <!-- FORMULA REFERENCE -->
+    <p class="section-label" style="margin-top:40px;">Part C — Formula Quick Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 7 — Core Formula</div>
+      <div class="formula-row"><div class="formula-name">Price Allocation to an Obligation</div><div class="formula-eq">(SSP of Obligation ÷ Total SSP of All Obligations) × Total Transaction Price</div></div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Walk me through the IFRS 15 5-step revenue recognition model."</td><td>Foundational IFRS 15 knowledge — extremely common in finance interviews</td><td>Step 1: Identify the contract with the customer. Step 2: Identify the distinct performance obligations within it. Step 3: Determine the total transaction price, including any variable consideration. Step 4: Allocate that price across the obligations based on relative standalone selling prices. Step 5: Recognise revenue as (or when) each obligation is satisfied — either over time or at a point in time.</td></tr>
+      <tr><td>"Why did the IASB replace IAS 18 with IFRS 15?"</td><td>Understanding of the standard's purpose and history</td><td>IAS 18 was criticised for being too high-level and inconsistent across industries, particularly for multi-element and long-term contracts. IFRS 15 introduced a single, comprehensive 5-step model applicable across all industries and contract types, improving comparability and reducing judgment-driven inconsistency in revenue reporting.</td></tr>
+      <tr><td>"Give an example of when revenue would be recognised over time rather than at a point in time."</td><td>Practical application ability</td><td>A long-term software customisation contract where the customer receives and controls the work-in-progress as it's built (e.g. a bespoke system built directly on the customer's infrastructure) would typically qualify for over-time recognition — since the customer simultaneously consumes the benefit as the entity performs, one of the three IFRS 15 criteria for over-time recognition.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Identify Contract + Identify Obligations<br>
+      + Determine Price + Allocate<br>
+      + Recognise When Control Transfers<br>
+      = <strong style="color:var(--accent4);">Revenue Recognised Correctly — Every Time, For Every Industry</strong>
+    </div>
+    <h3>Revenue is not earned when cash arrives — it is earned when control transfers.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 8: Property, Plant & Equipment (IAS 16) — how to account for the physical assets every business depends on. 🏗️</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finance Career Bible — Chapter 8: Property, Plant & Equipment</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --border: #2a2a3a;
+    --accent: #6c63ff;
+    --accent2: #00d4aa;
+    --accent3: #ff6b6b;
+    --accent4: #ffd93d;
+    --accent5: #34d399;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+
+  .hero { padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hero::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(52,211,153,0.09) 0%, transparent 70%); pointer-events: none; }
+  .hero-tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent5); border: 1px solid var(--accent5); padding: 4px 14px; border-radius: 100px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px,6vw,52px); font-weight: 700; line-height: 1.1; margin-bottom: 12px; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { color: var(--muted); font-size: 15px; max-width: 540px; margin: 0 auto 28px; }
+  .hero-stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent5); }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 32px; }
+  .toc-title { font-family: var(--mono); font-size: 10px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num { font-family: var(--mono); font-size: 10px; color: var(--accent5); min-width: 36px; }
+
+  .section { margin-top: 48px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .sec-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .badge-green  { background: rgba(52,211,153,0.2); color: var(--accent5); border: 1px solid rgba(52,211,153,0.3); }
+  .badge-teal   { background: rgba(0,212,170,0.2); color: var(--accent2); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-red    { background: rgba(255,107,107,0.2); color: var(--accent3); border: 1px solid rgba(255,107,107,0.3); }
+  .badge-yellow { background: rgba(255,217,61,0.2); color: var(--accent4); border: 1px solid rgba(255,217,61,0.3); }
+  .badge-purple { background: rgba(108,99,255,0.2); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+  .section-title { font-size: 20px; font-weight: 600; }
+  .section-meta { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: 28px; margin-bottom: 10px; }
+
+  .prose { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .prose strong { color: var(--text); }
+
+  .quote { border-left: 3px solid var(--accent5); padding: 12px 20px; background: rgba(52,211,153,0.05); border-radius: 0 10px 10px 0; margin: 20px 0; font-size: 14px; color: var(--text); font-style: italic; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: border-color 0.2s, transform 0.2s; }
+  .card:hover { border-color: var(--accent5); transform: translateY(-2px); }
+  .card-icon { font-size: 22px; margin-bottom: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+  .card-items { list-style: none; }
+  .card-items li { font-size: 12px; color: var(--muted); padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+  .card-items li::before { content: '→'; color: var(--accent5); font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+  .card-tag { margin-top: 12px; font-family: var(--mono); font-size: 10px; color: var(--accent5); background: rgba(52,211,153,0.1); padding: 3px 8px; border-radius: 4px; display: inline-block; }
+
+  .data-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-top: 14px; }
+  .data-table th { background: rgba(52,211,153,0.1); padding: 10px 14px; text-align: left; font-size: 11px; font-family: var(--mono); color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(42,42,58,0.5); vertical-align: top; }
+  .data-table td:first-child { color: var(--text); font-weight: 500; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(52,211,153,0.02); }
+
+  .highlight { background: linear-gradient(135deg, rgba(52,211,153,0.07), rgba(0,212,170,0.05)); border: 1px solid rgba(52,211,153,0.25); border-radius: 12px; padding: 18px 20px; margin: 20px 0; font-size: 13px; color: var(--text); }
+  .highlight-title { font-family: var(--mono); font-size: 10px; color: var(--accent4); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+
+  .wide-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 14px; }
+  .wide-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--accent5); }
+
+  .equation { background: var(--card); border: 1px solid var(--accent5); border-radius: 12px; padding: 20px 24px; margin: 20px 0; text-align: center; }
+  .equation-text { font-family: var(--mono); font-size: clamp(12px,2.5vw,15px); color: var(--accent2); letter-spacing: 1px; line-height: 2; }
+  .equation-label { font-size: 11px; color: var(--muted); margin-top: 8px; }
+
+  /* DEPRECIATION CALC */
+  .dep-block { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 14px; }
+  .dep-header { background: rgba(52,211,153,0.08); padding: 12px 20px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; color: var(--accent5); text-transform: uppercase; letter-spacing: 2px; }
+  .dep-row { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr; padding: 9px 16px; border-bottom: 1px solid rgba(42,42,58,0.3); font-size: 12px; align-items: center; }
+  .dep-row:last-child { border-bottom: none; }
+  .dep-row.header { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.2); }
+  .dep-row.total { background: rgba(52,211,153,0.08); font-weight: 700; color: var(--accent5); border-top: 2px solid var(--accent5); }
+  .dep-num { font-family: var(--mono); text-align: right; color: var(--muted); }
+  .dep-num.green { color: var(--accent5); font-weight: 600; }
+  .dep-num.red { color: var(--accent3); }
+
+  /* JOURNAL */
+  .journal { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 14px; }
+  .journal-header { background: rgba(52,211,153,0.08); padding: 10px 16px; font-family: var(--mono); font-size: 11px; color: var(--accent5); text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+  .journal-row { display: grid; grid-template-columns: 2fr 1fr 1fr; padding: 9px 16px; border-bottom: 1px solid rgba(42,42,58,0.4); font-size: 13px; align-items: center; }
+  .journal-row:last-child { border-bottom: none; }
+  .journal-row.header-row { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.2); }
+  .journal-row.credit-row .account { padding-left: 20px; color: var(--muted); }
+  .journal-row.debit-row .account { color: var(--text); font-weight: 500; }
+  .dr { color: var(--accent2); font-family: var(--mono); font-weight: 700; }
+  .cr { color: var(--accent3); font-family: var(--mono); font-weight: 700; }
+  .empty { color: var(--muted); }
+
+  .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 12px; padding: 4px 12px; border-radius: 100px; background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2); color: var(--text); }
+  .tag.teal { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--accent2); }
+
+  .mantra { margin-top: 48px; background: linear-gradient(135deg, rgba(52,211,153,0.09), rgba(0,212,170,0.06)); border: 1px solid rgba(52,211,153,0.3); border-radius: 16px; padding: 32px; text-align: center; }
+  .mantra-formula { font-family: var(--mono); font-size: clamp(12px,2.5vw,14px); color: var(--accent5); line-height: 2.2; margin-bottom: 16px; }
+  .mantra h3 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, var(--accent5), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  @media (max-width: 600px) {
+    .dep-row { grid-template-columns: 1fr 1fr 1fr 1fr 1fr; font-size: 10px; padding: 8px 10px; }
+  }
+  .steps { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .step-item { display:flex; gap:16px; align-items:flex-start; background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .step-num { font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2); flex-shrink:0; width:72px; }
+  .step-content { font-size:13px; color:var(--muted); line-height:1.8; }
+  .step-content strong { color:var(--text); }
+  .formula-block { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; margin-top:14px; }
+  .formula-header { background:rgba(0,212,170,0.08); padding:12px 20px; border-bottom:1px solid var(--border); font-family:var(--mono); font-size:11px; color:var(--accent2); text-transform:uppercase; letter-spacing:2px; }
+  .formula-row { display:grid; grid-template-columns:1.2fr 2fr; padding:12px 20px; border-bottom:1px solid rgba(42,42,58,0.3); font-size:12px; align-items:start; gap:12px; }
+  .formula-row:last-child { border-bottom:none; }
+  .formula-name { font-weight:600; color:var(--text); line-height:1.6; }
+  .formula-eq { color:var(--accent2); font-family:var(--mono); font-size:11px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Finance Career Bible · Chapter 8</div>
+  <h1>Property, Plant<br><span>& Equipment</span></h1>
+  <p class="hero-sub">IAS 16 — how to recognise, measure, depreciate, revalue and derecognise the physical assets that every business depends on. A core ACCA and MNC finance topic.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">IAS 16</div><div class="stat-label">The Standard</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Dep Methods</div></div>
+    <div class="stat"><div class="stat-num">FA+FR</div><div class="stat-label">ACCA Papers</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Measurement Models</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc" style="margin-top:40px;">
+    <div class="toc-title">Chapter 8 — Table of Contents</div>
+    <div class="toc-item"><span class="toc-num">8.1</span>What is PPE — Definition & Scope</div>
+    <div class="toc-item"><span class="toc-num">8.2</span>Recognition — When Does PPE Go on the Balance Sheet?</div>
+    <div class="toc-item"><span class="toc-num">8.3</span>Initial Measurement — What is the Cost?</div>
+    <div class="toc-item"><span class="toc-num">8.4</span>Subsequent Measurement — Cost vs Revaluation Model</div>
+    <div class="toc-item"><span class="toc-num">8.5</span>Depreciation — Methods & Calculations</div>
+    <div class="toc-item"><span class="toc-num">8.6</span>Revaluation Model — Deep Dive</div>
+    <div class="toc-item"><span class="toc-num">8.7</span>Impairment of PPE (IAS 36)</div>
+    <div class="toc-item"><span class="toc-num">8.8</span>Derecognition — Disposal of PPE</div>
+    <div class="toc-item"><span class="toc-num">8.9</span>Disclosure Requirements</div>
+    <div class="toc-item"><span class="toc-num">8.10</span>PPE & ACCA — Paper Mapping</div>
+    <div class="toc-item"><span class="toc-num">8.11</span>Key Takeaways & Action Steps</div>
+    <div class="toc-item"><span class="toc-num">8.12</span>Leases (IFRS 16)</div>
+    <div class="toc-item"><span class="toc-num">8.13</span>Provisions, Contingent Liabilities & Contingent Assets (IAS 37)</div>
+    <div class="toc-item"><span class="toc-num">8.14</span>Intangible Assets (IAS 38)</div>
+    <div class="toc-item"><span class="toc-num">8.15</span>Common Mistakes, Flashcards & Interview Q&A</div>
+  </div>
+
+  <div class="section">
+    <p class="prose">Every business owns physical assets — buildings, machinery, vehicles, computers, furniture. These are called <strong>Property, Plant & Equipment (PPE)</strong> — and IAS 16 governs exactly how they must be recognised, measured, depreciated, revalued, and eventually removed from the books. This is one of the most tested topics in ACCA FA and FR papers.</p>
+    <div class="quote">"PPE is the backbone of every manufacturing, infrastructure, and service business. Get the accounting wrong and the entire Balance Sheet is misstated."</div>
+  </div>
+
+  <!-- 8.1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">8.1</div>
+      <div class="section-title">What is PPE — Definition & Scope</div>
+    </div>
+    <p class="prose">Under IAS 16, PPE are <strong>tangible items held for use in production, supply of goods/services, rental to others, or administrative purposes</strong> — and expected to be used for more than one accounting period.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🏢</div>
+        <div class="card-title">Property</div>
+        <ul class="card-items">
+          <li>Land (not depreciated — infinite useful life)</li>
+          <li>Buildings (offices, factories, warehouses)</li>
+          <li>Leasehold improvements</li>
+          <li>Investment property excluded → IAS 40</li>
+        </ul>
+        <div class="card-tag">Land Never Depreciated</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">Plant</div>
+        <ul class="card-items">
+          <li>Manufacturing machinery and equipment</li>
+          <li>Production lines, assembly equipment</li>
+          <li>Industrial tools and heavy equipment</li>
+          <li>Power generators, compressors</li>
+        </ul>
+        <div class="card-tag">Production Assets</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚗</div>
+        <div class="card-title">Equipment</div>
+        <ul class="card-items">
+          <li>Computers, servers, office equipment</li>
+          <li>Vehicles — cars, trucks, forklifts</li>
+          <li>Furniture and fixtures</li>
+          <li>Medical equipment, lab instruments</li>
+        </ul>
+        <div class="card-tag">All Other Tangibles</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">📌 What IAS 16 Does NOT Cover</div>
+      <strong>IAS 2:</strong> Inventory (assets held for sale in ordinary course) &nbsp;|&nbsp;
+      <strong>IAS 40:</strong> Investment property (held for rental income/capital appreciation) &nbsp;|&nbsp;
+      <strong>IFRS 5:</strong> Non-current assets held for sale &nbsp;|&nbsp;
+      <strong>IAS 41:</strong> Biological assets (living animals/plants) &nbsp;|&nbsp;
+      <strong>IFRS 16:</strong> Right-of-use assets under leases
+    </div>
+  </div>
+
+  <!-- 8.2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">8.2</div>
+      <div class="section-title">Recognition — When Does PPE Go on the Balance Sheet?</div>
+    </div>
+    <p class="prose">An item of PPE is recognised as an asset only when <strong>both</strong> of these criteria are met:</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Criterion 1 — Probable Future Benefits</div>
+        <ul class="card-items">
+          <li>It is probable that future economic benefits will flow to the entity</li>
+          <li>The asset will generate revenue, reduce costs, or provide service potential</li>
+          <li>Example: A delivery van will help generate delivery revenue</li>
+          <li>Not speculative — must be probable (more likely than not)</li>
+        </ul>
+        <div class="card-tag">Economic Benefit Test</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📏</div>
+        <div class="card-title">Criterion 2 — Reliable Measurement</div>
+        <ul class="card-items">
+          <li>The cost of the item can be measured reliably</li>
+          <li>Usually straightforward — invoice, contract, receipt</li>
+          <li>For self-constructed assets — sum of all construction costs</li>
+          <li>Estimated costs acceptable if reliable estimate possible</li>
+        </ul>
+        <div class="card-tag">Measurability Test</div>
+      </div>
+    </div>
+
+    <div class="highlight" style="margin-top:16px;">
+      <div class="highlight-title">💡 Spare Parts & Servicing Equipment</div>
+      Major spare parts and standby equipment qualify as PPE if used for more than one period. Routine servicing costs (oil, filters, small repairs) are <strong>expensed to P&L immediately</strong> — they are not capitalised. Only <strong>major inspections or overhauls</strong> that extend useful life can be capitalised.
+    </div>
+  </div>
+
+  <!-- 8.3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">8.3</div>
+      <div class="section-title">Initial Measurement — What is the Cost?</div>
+      <div class="section-meta">Everything Included in Cost</div>
+    </div>
+    <p class="prose">When PPE is first recognised, it is measured at <strong>cost</strong>. Cost is not just the purchase price — it includes everything necessary to bring the asset to its intended location and condition for use.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Cost = Purchase Price (less trade discounts)<br>
+        + Import Duties & Non-refundable Taxes<br>
+        + Directly Attributable Costs<br>
+        + Initial Estimate of Dismantling/Restoration Costs
+      </div>
+      <div class="equation-label">IAS 16 — The complete cost of a PPE item at initial recognition</div>
+    </div>
+
+    <p class="section-label">What IS Included in Cost vs What is NOT</p>
+    <table class="data-table">
+      <tr><th>✅ INCLUDED in Cost</th><th>❌ NOT Included — Expensed to P&L</th></tr>
+      <tr><td>Purchase price (net of trade discounts)</td><td>Abnormal waste of materials/labour during construction</td></tr>
+      <tr><td>Import duties and irrecoverable VAT</td><td>General admin and overhead costs</td></tr>
+      <tr><td>Site preparation costs</td><td>Initial operating losses before asset achieves planned performance</td></tr>
+      <tr><td>Installation and assembly costs</td><td>Staff training costs (to operate the asset)</td></tr>
+      <tr><td>Professional fees (architects, engineers)</td><td>Advertising and promotional costs</td></tr>
+      <tr><td>Delivery and handling costs</td><td>Relocation costs (moving asset to new location later)</td></tr>
+      <tr><td>Testing costs (net of proceeds from test output)</td><td>Routine maintenance and servicing</td></tr>
+      <tr><td>Estimated decommissioning/dismantling costs (PV)</td><td>Borrowing costs (unless IAS 23 qualifying asset)</td></tr>
+    </table>
+
+    <p class="section-label">Complete Cost Calculation Example</p>
+    <div class="wide-card">
+      <h4>Ashish Manufacturing — New Production Machine</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        List price: ₹10,00,000 | Trade discount: 10% → Purchase price = <strong style="color:var(--text);">₹9,00,000</strong><br>
+        Import duty: <strong style="color:var(--text);">₹50,000</strong><br>
+        Site preparation: <strong style="color:var(--text);">₹30,000</strong><br>
+        Installation & testing: <strong style="color:var(--text);">₹40,000</strong><br>
+        Staff training to use machine: <strong style="color:var(--accent3);">₹20,000 ❌ (expense)</strong><br>
+        PV of dismantling cost in 10 years: <strong style="color:var(--text);">₹25,000</strong><br><br>
+        <strong style="color:var(--accent5);">Total Cost of Machine = ₹9,00,000 + ₹50,000 + ₹30,000 + ₹40,000 + ₹25,000 = ₹10,45,000</strong><br>
+        <span style="color:var(--muted);font-size:12px;">Training cost of ₹20,000 is expensed to P&L — not part of asset cost.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8.4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">8.4</div>
+      <div class="section-title">Subsequent Measurement — Cost vs Revaluation Model</div>
+    </div>
+    <p class="prose">After initial recognition, IAS 16 allows TWO models for measuring PPE. The entity must choose one policy per <strong>class of assets</strong> and apply it consistently.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📌</div>
+        <div class="card-title">Cost Model</div>
+        <ul class="card-items">
+          <li>Asset carried at: Cost − Accumulated Depreciation − Impairment</li>
+          <li>Simple, reliable, easy to apply</li>
+          <li>Most common in practice</li>
+          <li>No fair value movements through P&L or OCI</li>
+          <li>Preferred by most companies for simplicity</li>
+        </ul>
+        <div class="card-tag">Simpler · Most Common</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Revaluation Model</div>
+        <ul class="card-items">
+          <li>Asset carried at: Fair Value − Subsequent Depreciation − Impairment</li>
+          <li>Revaluations must be regular enough to keep CV close to FV</li>
+          <li>Revaluation surplus → Other Comprehensive Income (OCI)</li>
+          <li>Revaluation deficit → P&L (unless reversing prior surplus)</li>
+          <li>Must apply to entire class of assets</li>
+        </ul>
+        <div class="card-tag">Fair Value · Complex</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8.5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">8.5</div>
+      <div class="section-title">Depreciation — Methods & Calculations</div>
+      <div class="section-meta">The Most Tested PPE Topic</div>
+    </div>
+    <p class="prose">Depreciation is the <strong>systematic allocation of the depreciable amount of an asset over its useful life</strong>. It is not about the market value of the asset — it is about spreading the cost over the periods that benefit from using it.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Depreciable Amount = Cost (or Revalued Amount) − Residual Value<br>
+        Carrying Amount = Cost − Accumulated Depreciation
+      </div>
+      <div class="equation-label">Key terms — know these definitions for every depreciation question</div>
+    </div>
+
+    <p class="section-label">Three Depreciation Methods</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">📏</div>
+        <div class="card-title">Straight-Line Method (SLM)</div>
+        <ul class="card-items">
+          <li>Equal depreciation charge every year</li>
+          <li>Formula: (Cost − Residual Value) ÷ Useful Life</li>
+          <li>Simple, consistent, widely used</li>
+          <li>Best for: buildings, furniture, office equipment</li>
+          <li>Most common method in practice</li>
+        </ul>
+        <div class="card-tag">Equal Each Year</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📉</div>
+        <div class="card-title">Reducing Balance Method</div>
+        <ul class="card-items">
+          <li>Higher depreciation in early years, lower later</li>
+          <li>Formula: Carrying Amount × Depreciation %</li>
+          <li>Residual value not deducted in calculation</li>
+          <li>Best for: technology, vehicles (lose value fast early)</li>
+          <li>Reflects economic reality better for some assets</li>
+        </ul>
+        <div class="card-tag">Higher Early Years</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">Units of Production Method</div>
+        <ul class="card-items">
+          <li>Depreciation based on actual usage/output</li>
+          <li>Formula: (Cost − RV) ÷ Total Units × Units This Period</li>
+          <li>Best for: mining equipment, machines with known capacity</li>
+          <li>Zero depreciation if asset not used</li>
+          <li>Most accurate reflection of consumption</li>
+        </ul>
+        <div class="card-tag">Usage Based</div>
+      </div>
+    </div>
+
+    <p class="section-label">Complete Depreciation Comparison — All 3 Methods</p>
+    <div class="dep-block">
+      <div class="dep-header">Ashish Manufacturing — Machine: Cost ₹10,00,000 | RV ₹1,00,000 | Life 5 years | Reducing Rate 30%</div>
+      <div class="dep-row header">
+        <div>Year</div>
+        <div style="text-align:right;">SLM Dep</div>
+        <div style="text-align:right;">SLM CV</div>
+        <div style="text-align:right;">RB Dep</div>
+        <div style="text-align:right;">RB CV</div>
+      </div>
+      <div class="dep-row">
+        <div>Year 1</div>
+        <div class="dep-num">1,80,000</div>
+        <div class="dep-num green">8,20,000</div>
+        <div class="dep-num">3,00,000</div>
+        <div class="dep-num green">7,00,000</div>
+      </div>
+      <div class="dep-row">
+        <div>Year 2</div>
+        <div class="dep-num">1,80,000</div>
+        <div class="dep-num green">6,40,000</div>
+        <div class="dep-num">2,10,000</div>
+        <div class="dep-num green">4,90,000</div>
+      </div>
+      <div class="dep-row">
+        <div>Year 3</div>
+        <div class="dep-num">1,80,000</div>
+        <div class="dep-num green">4,60,000</div>
+        <div class="dep-num">1,47,000</div>
+        <div class="dep-num green">3,43,000</div>
+      </div>
+      <div class="dep-row">
+        <div>Year 4</div>
+        <div class="dep-num">1,80,000</div>
+        <div class="dep-num green">2,80,000</div>
+        <div class="dep-num">1,02,900</div>
+        <div class="dep-num green">2,40,100</div>
+      </div>
+      <div class="dep-row">
+        <div>Year 5</div>
+        <div class="dep-num">1,80,000</div>
+        <div class="dep-num green">1,00,000</div>
+        <div class="dep-num">72,030</div>
+        <div class="dep-num green">1,68,070</div>
+      </div>
+      <div class="dep-row total">
+        <div>Total Dep</div>
+        <div class="dep-num green">9,00,000</div>
+        <div class="dep-num">= RV ✅</div>
+        <div class="dep-num green">8,31,930</div>
+        <div class="dep-num">≠ RV*</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">*Reducing balance rarely reaches exact residual value — rate chosen to approximate it. SLM: Dep = (₹10L − ₹1L) ÷ 5 = ₹1,80,000/year</p>
+
+    <p class="section-label">Depreciation Journal Entry</p>
+    <div class="journal">
+      <div class="journal-header">Annual depreciation entry — Year 1 (SLM)</div>
+      <div class="journal-row header-row"><div>Account</div><div>Dr (₹)</div><div>Cr (₹)</div></div>
+      <div class="journal-row debit-row"><div class="account">Depreciation Expense A/c</div><div class="dr">1,80,000</div><div class="empty">—</div></div>
+      <div class="journal-row credit-row"><div class="account">Accumulated Depreciation A/c</div><div class="empty">—</div><div class="cr">1,80,000</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">Note: Accumulated Depreciation is a contra-asset — shown as deduction from PPE on Balance Sheet. The asset account itself is NOT credited.</p>
+  </div>
+
+  <!-- 8.6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-yellow">8.6</div>
+      <div class="section-title">Revaluation Model — Deep Dive</div>
+    </div>
+    <p class="prose">When an entity chooses the revaluation model, the asset is carried at <strong>fair value</strong>. Revaluations create either a <strong>surplus (gain)</strong> or a <strong>deficit (loss)</strong> — and each is treated differently.</p>
+
+    <table class="data-table">
+      <tr><th>Situation</th><th>Treatment</th><th>Where it Goes</th></tr>
+      <tr><td>Revaluation Surplus (first time)</td><td>Credit Revaluation Surplus</td><td>Other Comprehensive Income (OCI) → Equity</td></tr>
+      <tr><td>Revaluation Deficit (first time)</td><td>Debit P&L as expense</td><td>Income Statement (loss)</td></tr>
+      <tr><td>Deficit after previous surplus</td><td>First reduce existing surplus, then P&L for remainder</td><td>OCI (up to surplus) then P&L</td></tr>
+      <tr><td>Surplus after previous deficit</td><td>First reverse P&L loss, then OCI for remainder</td><td>P&L (up to prior loss) then OCI</td></tr>
+      <tr><td>Revaluation surplus on disposal</td><td>Transfer surplus to retained earnings</td><td>Within equity (not through P&L)</td></tr>
+    </table>
+
+    <p class="section-label">Revaluation Worked Example</p>
+    <div class="wide-card">
+      <h4>Building Revaluation — Ashish Properties</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        <strong style="color:var(--text);">Year 1:</strong> Building purchased for ₹50,00,000. Depreciated ₹2,00,000. Carrying Value = ₹48,00,000<br>
+        <strong style="color:var(--text);">Revaluation to ₹60,00,000:</strong> Surplus = ₹60,00,000 − ₹48,00,000 = <strong style="color:var(--accent5);">₹12,00,000</strong><br>
+        → Dr Building ₹12,00,000 | Cr Revaluation Surplus (OCI) ₹12,00,000<br><br>
+        <strong style="color:var(--text);">Year 3:</strong> Market crashes. Revaluation to ₹44,00,000. New carrying value after depreciation = ₹56,00,000<br>
+        Deficit = ₹56,00,000 − ₹44,00,000 = <strong style="color:var(--accent3);">₹12,00,000</strong><br>
+        → First use revaluation surplus ₹12,00,000 (OCI reversal)<br>
+        → Remaining deficit ₹0 → P&L<br>
+        <span style="color:var(--muted);font-size:12px;">If deficit exceeded surplus, the excess would go to P&L as a loss.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8.7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">8.7</div>
+      <div class="section-title">Impairment of PPE — IAS 36</div>
+    </div>
+    <p class="prose">An asset is <strong>impaired</strong> when its carrying amount exceeds its recoverable amount. IAS 36 requires entities to assess at each reporting date whether there are any indicators of impairment.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Recoverable Amount = Higher of:<br>
+        Fair Value Less Costs of Disposal (FVLCD)<br>
+        OR<br>
+        Value in Use (VIU) — PV of future cash flows from asset
+      </div>
+      <div class="equation-label">If Carrying Amount > Recoverable Amount → Impairment Loss = write down to Recoverable Amount</div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚠️</div>
+        <div class="card-title">Impairment Indicators</div>
+        <ul class="card-items">
+          <li>Significant decline in market value</li>
+          <li>Technological obsolescence</li>
+          <li>Asset damaged or idle</li>
+          <li>Poor economic performance of asset</li>
+          <li>Increase in market interest rates</li>
+          <li>Net assets exceed market capitalisation</li>
+        </ul>
+        <div class="card-tag">Triggers Review</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📉</div>
+        <div class="card-title">Impairment Loss Treatment</div>
+        <ul class="card-items">
+          <li>Cost model: impairment loss → P&L immediately</li>
+          <li>Revaluation model: first reduce revaluation surplus</li>
+          <li>Then any excess → P&L</li>
+          <li>Impairment can be reversed in later periods (except goodwill)</li>
+          <li>Reversal credited to P&L (or OCI if revalued asset)</li>
+        </ul>
+        <div class="card-tag">IAS 36</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8.8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">8.8</div>
+      <div class="section-title">Derecognition — Disposal of PPE</div>
+    </div>
+    <p class="prose">An asset is <strong>derecognised</strong> (removed from the Balance Sheet) when it is disposed of, or when no future economic benefits are expected. A gain or loss arises on disposal.</p>
+
+    <div class="equation">
+      <div class="equation-text">
+        Gain/Loss on Disposal = Proceeds Received − Carrying Amount at Date of Disposal<br>
+        Carrying Amount = Cost − Accumulated Depreciation − Impairment
+      </div>
+      <div class="equation-label">Positive = Gain (P&L Credit) | Negative = Loss (P&L Debit)</div>
+    </div>
+
+    <p class="section-label">Complete Disposal Example</p>
+    <div class="wide-card">
+      <h4>Disposal of Vehicle — Ashish Consulting</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.2;margin-top:8px;">
+        Vehicle cost: ₹8,00,000 | Accumulated depreciation: ₹5,50,000<br>
+        <strong style="color:var(--text);">Carrying Amount = ₹8,00,000 − ₹5,50,000 = ₹2,50,000</strong><br>
+        Sale proceeds received: ₹3,20,000<br>
+        <strong style="color:var(--accent5);">Gain on disposal = ₹3,20,000 − ₹2,50,000 = ₹70,000 (P&L Credit)</strong>
+      </div>
+    </div>
+
+    <p class="section-label">Disposal Journal Entries</p>
+    <div class="journal">
+      <div class="journal-header">Step 1 — Remove accumulated depreciation</div>
+      <div class="journal-row header-row"><div>Account</div><div>Dr (₹)</div><div>Cr (₹)</div></div>
+      <div class="journal-row debit-row"><div class="account">Accumulated Depreciation A/c</div><div class="dr">5,50,000</div><div class="empty">—</div></div>
+      <div class="journal-row credit-row"><div class="account">Vehicle (PPE) A/c</div><div class="empty">—</div><div class="cr">5,50,000</div></div>
+    </div>
+    <div class="journal" style="margin-top:10px;">
+      <div class="journal-header">Step 2 — Record proceeds and gain</div>
+      <div class="journal-row header-row"><div>Account</div><div>Dr (₹)</div><div>Cr (₹)</div></div>
+      <div class="journal-row debit-row"><div class="account">Cash / Bank A/c</div><div class="dr">3,20,000</div><div class="empty">—</div></div>
+      <div class="journal-row credit-row"><div class="account">Vehicle (PPE) A/c</div><div class="empty">—</div><div class="cr">2,50,000</div></div>
+      <div class="journal-row credit-row"><div class="account">Gain on Disposal (P&L)</div><div class="empty">—</div><div class="cr">70,000</div></div>
+    </div>
+  </div>
+
+  <!-- 8.9 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">8.9</div>
+      <div class="section-title">Disclosure Requirements</div>
+    </div>
+    <p class="prose">IAS 16 requires extensive disclosures in the notes to financial statements. These are tested in ACCA FR and SBR — and reviewed by auditors in every Big 4 engagement.</p>
+
+    <table class="data-table">
+      <tr><th>Disclosure Required</th><th>Detail</th></tr>
+      <tr><td>Measurement bases used</td><td>Cost model or revaluation model for each class</td></tr>
+      <tr><td>Depreciation methods</td><td>SLM, reducing balance, units of production per class</td></tr>
+      <tr><td>Useful lives / depreciation rates</td><td>Estimates used for each class of asset</td></tr>
+      <tr><td>Gross carrying amount & accumulated dep</td><td>Opening and closing balances per class</td></tr>
+      <tr><td>Reconciliation of carrying amounts</td><td>Additions, disposals, depreciation, impairments, revaluations</td></tr>
+      <tr><td>Revaluation details (if applicable)</td><td>Effective date, independent valuer, revaluation surplus</td></tr>
+      <tr><td>Contractual commitments</td><td>Future capital expenditure contracted but not yet incurred</td></tr>
+    </table>
+  </div>
+
+  <!-- 8.10 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-green">8.10</div>
+      <div class="section-title">PPE & ACCA — Paper Mapping</div>
+    </div>
+    <table class="data-table">
+      <tr><th>Topic</th><th>ACCA Paper</th><th>Level</th><th>What's Tested</th></tr>
+      <tr><td>Recognition criteria</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Identify if item qualifies as PPE</td></tr>
+      <tr><td>Initial cost calculation</td><td>FA → FR</td><td>Knowledge → Skills</td><td>Include/exclude items from cost</td></tr>
+      <tr><td>All 3 depreciation methods</td><td>FA (Financial Accounting)</td><td>Applied Knowledge</td><td>Calculate depreciation, CV, accumulated dep</td></tr>
+      <tr><td>Cost vs Revaluation model</td><td>FR (Financial Reporting)</td><td>Applied Skills</td><td>Apply model, prepare journal entries</td></tr>
+      <tr><td>Revaluation surplus/deficit</td><td>FR → SBR</td><td>Skills → Strategic</td><td>OCI vs P&L treatment</td></tr>
+      <tr><td>Impairment (IAS 36)</td><td>FR → SBR</td><td>Skills → Strategic</td><td>Calculate RA, impairment loss, reversal</td></tr>
+      <tr><td>Disposal — gain/loss</td><td>FA → FR</td><td>Knowledge → Skills</td><td>Calculate gain/loss, journal entries</td></tr>
+    </table>
+  </div>
+
+  <!-- 8.11 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">8.11</div>
+      <div class="section-title">Key Takeaways & Action Steps</div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="card-icon">1️⃣</div><div class="card-title">Recognition = 2 Criteria</div><ul class="card-items"><li>Probable future economic benefits</li><li>Reliably measurable cost</li><li>Both must be met — not just one</li></ul></div>
+      <div class="card"><div class="card-icon">2️⃣</div><div class="card-title">Cost Includes More Than Price</div><ul class="card-items"><li>Add: duties, installation, testing, dismantling PV</li><li>Exclude: training, admin, abnormal waste</li><li>Classic exam trap — always check inclusions</li></ul></div>
+      <div class="card"><div class="card-icon">3️⃣</div><div class="card-title">Land Never Depreciated</div><ul class="card-items"><li>Infinite useful life</li><li>Separate land from buildings — different treatment</li><li>Buildings on land ARE depreciated</li></ul></div>
+      <div class="card"><div class="card-icon">4️⃣</div><div class="card-title">Two Models — Choose One Per Class</div><ul class="card-items"><li>Cost: simple, reliable</li><li>Revaluation: fair value, OCI surplus</li><li>Cannot switch frequently</li></ul></div>
+      <div class="card"><div class="card-icon">5️⃣</div><div class="card-title">Revaluation — OCI Then P&L</div><ul class="card-items"><li>Surplus first to OCI (equity)</li><li>Deficit first reverses OCI, then P&L</li><li>Most common exam mistake — getting this wrong</li></ul></div>
+      <div class="card"><div class="card-icon">6️⃣</div><div class="card-title">Disposal = Proceeds − CV</div><ul class="card-items"><li>Always calculate CV at date of disposal</li><li>Include depreciation up to disposal date</li><li>Gain/loss → P&L</li></ul></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Action Steps — Start This Week</p>
+    <div class="wide-card">
+      <h4>📋 Your Chapter 8 Checklist</h4>
+      <div class="tag-wrap">
+        <span class="tag teal">✅ Calculate depreciation for one asset using all 3 methods</span>
+        <span class="tag teal">✅ Practice a cost calculation — include/exclude 10 items</span>
+        <span class="tag teal">✅ Prepare journal entries for: purchase, depreciation, revaluation, disposal</span>
+        <span class="tag teal">✅ Work through a revaluation surplus/deficit scenario</span>
+        <span class="tag teal">✅ Calculate impairment loss using FVLCD and VIU</span>
+        <span class="tag teal">✅ Attempt ACCA FA past paper questions on PPE</span>
+        <span class="tag teal">✅ Read IAS 16 summary on OpenTuition — 20 minutes</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8.12 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-teal">8.12</div>
+      <div class="section-title">Leases (IFRS 16)</div>
+    </div>
+    <p class="section-label">Part A — The Big Change IFRS 16 Made</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px;">Before IFRS 16, companies could keep most leases entirely OFF the balance sheet (as "operating leases"), simply expensing rent as incurred. IFRS 16 abolished this — with narrow exceptions, <strong style="color:var(--text);">almost all leases now appear on the balance sheet</strong> as a right-of-use asset and a corresponding lease liability, dramatically increasing reported assets and liabilities for lease-heavy industries (retail, airlines, hospitality).</p>
+
+    <div class="formula-block">
+      <div class="formula-header">IFRS 16 — Initial Recognition</div>
+      <div class="formula-row"><div class="formula-name">Lease Liability (Initial)</div><div class="formula-eq">Present Value of Future Lease Payments, discounted at the interest rate implicit in the lease (or the lessee's incremental borrowing rate if that rate isn't readily determinable)</div></div>
+      <div class="formula-row"><div class="formula-name">Right-of-Use (ROU) Asset (Initial)</div><div class="formula-eq">Lease Liability + Initial Direct Costs + Payments Made Before Commencement − Lease Incentives Received</div></div>
+      <div class="formula-row"><div class="formula-name">Subsequent Measurement — Liability</div><div class="formula-eq">Increases by interest charged (unwinding the discount) each period, decreases by actual lease payments made — same logic as a loan amortisation schedule</div></div>
+      <div class="formula-row"><div class="formula-name">Subsequent Measurement — ROU Asset</div><div class="formula-eq">Depreciated on a straight-line basis (usually) over the shorter of the lease term or the asset's useful life</div></div>
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Part B — Worked Example</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: A 4-Year Equipment Lease</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> Company leases equipment for 4 years, annual payments of ₹5,00,000 paid at the END of each year. Interest rate implicit in the lease = 8%. No initial direct costs or incentives.<br><br>
+        <strong style="color:var(--text);">Step 1 — Initial Lease Liability (PV of payments):</strong><br>
+        PV = ₹5,00,000 × [Annuity Factor, 8%, 4 years]<br>
+        Annuity Factor (8%, 4 yrs) = 3.312<br>
+        Lease Liability = ₹5,00,000 × 3.312 = <strong style="color:var(--accent2);">₹16,56,000</strong><br><br>
+        <strong style="color:var(--text);">Step 2 — Initial ROU Asset:</strong><br>
+        ROU Asset = ₹16,56,000 (same as liability, since no other adjustments)<br><br>
+        <strong style="color:var(--text);">Step 3 — Year 1 Liability Movement:</strong><br>
+        Interest expense = ₹16,56,000 × 8% = ₹1,32,480<br>
+        Liability before payment = ₹16,56,000 + ₹1,32,480 = ₹17,88,480<br>
+        Less payment = ₹17,88,480 − ₹5,00,000 = <strong style="color:var(--accent2);">₹12,88,480 (closing liability, Year 1)</strong><br><br>
+        <strong style="color:var(--text);">Step 4 — Year 1 P&L Impact:</strong><br>
+        Depreciation = ₹16,56,000 ÷ 4 years = ₹4,14,000<br>
+        Interest expense = ₹1,32,480<br>
+        Total Year 1 expense = ₹4,14,000 + ₹1,32,480 = <strong style="color:var(--accent2);">₹5,46,480</strong><br><br>
+        <strong style="color:var(--text);">Key Point:</strong> Total Year 1 P&L expense (₹5,46,480) is HIGHER than the actual cash paid (₹5,00,000) — this "front-loading" effect is a direct, frequently-tested consequence of IFRS 16: interest expense is higher in early years (when the liability balance is largest), making reported expenses front-loaded compared to the old straight-line rent expense under the previous standard.
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Recognition Exemptions — What's Still Off Balance Sheet</div>
+      IFRS 16 provides two narrow exemptions where a lessee CAN still simply expense payments (no ROU asset/liability): <strong>short-term leases</strong> (12 months or less, with no purchase option) and <strong>low-value asset leases</strong> (e.g. laptops, small office furniture — based on the asset's value when new, not its lease term). Outside these two exceptions, virtually all leases now hit the balance sheet.
+    </div>
+  </div>
+
+  <!-- 8.13 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">8.13</div>
+      <div class="section-title">Provisions, Contingent Liabilities & Contingent Assets (IAS 37)</div>
+    </div>
+    <p class="section-label">Part A — The Three-Way Classification</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px;">IAS 37 governs uncertain obligations and possible assets — a genuinely judgment-heavy area, since the treatment depends entirely on the PROBABILITY of the outcome.</p>
+
+    <table class="data-table">
+      <tr><th>Classification</th><th>Definition</th><th>Accounting Treatment</th></tr>
+      <tr><td>Provision</td><td>A present obligation (legal or constructive) from a past event, where an outflow is PROBABLE (more likely than not) and can be reliably estimated</td><td>RECOGNISE as a liability on the balance sheet, at the best estimate of the amount required to settle it</td></tr>
+      <tr><td>Contingent Liability</td><td>A possible obligation depending on uncertain future events, OR a present obligation where an outflow is POSSIBLE but not probable, OR the amount can't be reliably measured</td><td>Do NOT recognise — DISCLOSE in the notes (nature, estimated financial effect, uncertainties) unless the probability is remote</td></tr>
+      <tr><td>Contingent Asset</td><td>A possible asset depending on uncertain future events (e.g. a pending legal claim IN THE COMPANY'S FAVOUR)</td><td>Do NOT recognise — DISCLOSE only if the inflow is PROBABLE. If VIRTUALLY CERTAIN, it's no longer contingent — recognise as an actual asset</td></tr>
+    </table>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 The Probability Thresholds — Memorise These</div>
+      <strong>Probable</strong> (>50% likely) is the threshold for recognising a LIABILITY. <strong>Possible</strong> (some chance, but ≤50%) means disclose only, don't recognise. <strong>Remote</strong> (very unlikely) means no disclosure needed at all. Notice the ASYMMETRY: for liabilities, "probable" (>50%) triggers recognition — a relatively LOW bar, reflecting accounting's prudence principle. For ASSETS, the bar is much higher — "virtually certain" (near 100%) — asymmetric treatment that deliberately avoids overstating assets while ensuring liabilities aren't understated.
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Part B — Worked Example</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: Classifying 3 Uncertain Items</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Item 1:</strong> The company is being sued for ₹50,00,000 for a product defect. Legal counsel assesses a 70% chance of losing the case, with damages likely to be around ₹30,00,000.<br>
+        <strong style="color:var(--text);">Classification: PROVISION.</strong> Probability is 70% (probable, >50%) and the amount can be reliably estimated. <strong style="color:var(--accent3);">Recognise a provision of ₹30,00,000</strong> as a liability, with a corresponding expense in P&L.<br><br>
+        <strong style="color:var(--text);">Item 2:</strong> The company has provided a guarantee for a supplier's bank loan of ₹20,00,000. Legal counsel assesses only a 15% chance the supplier will default and the guarantee will be called upon.<br>
+        <strong style="color:var(--text);">Classification: CONTINGENT LIABILITY.</strong> Probability is only 15% (possible, not probable). <strong style="color:var(--accent3);">Do NOT recognise a liability — disclose the nature and maximum exposure (₹20,00,000) in the notes.</strong><br><br>
+        <strong style="color:var(--text);">Item 3:</strong> The company has filed an insurance claim for ₹10,00,000 following a warehouse fire. The insurer has verbally confirmed the claim will be paid in full, with only routine paperwork remaining.<br>
+        <strong style="color:var(--text);">Classification: Effectively VIRTUALLY CERTAIN — recognise as an ASSET</strong> (a receivable from the insurer), not merely disclosed as a contingent asset, since the inflow is no longer meaningfully uncertain.
+      </div>
+    </div>
+  </div>
+
+  <!-- 8.14 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-purple">8.14</div>
+      <div class="section-title">Intangible Assets (IAS 38)</div>
+    </div>
+    <p class="section-label">Part A — Recognition Criteria</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:16px;">An intangible asset (patents, licences, software, trademarks — excluding goodwill, which follows IFRS 3) can only be recognised if it's <strong style="color:var(--text);">identifiable</strong> (separable from the business, or arising from contractual/legal rights), the entity has <strong style="color:var(--text);">control</strong> over it, and it's expected to generate <strong style="color:var(--text);">future economic benefits</strong>.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🛒</div>
+        <div class="card-title">Purchased Intangibles</div>
+        <ul class="card-items">
+          <li>Recognised at COST (purchase price + directly attributable costs) — relatively straightforward, since there's an objective transaction price</li>
+          <li>Examples: a purchased patent, an acquired customer list, a purchased software licence</li>
+        </ul>
+        <div class="card-tag">Capitalise at Cost</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <div class="card-title">Internally Generated Intangibles — The R&D Split</div>
+        <ul class="card-items">
+          <li><strong>Research phase:</strong> ALWAYS expensed immediately — too uncertain to demonstrate future economic benefit</li>
+          <li><strong>Development phase:</strong> CAPITALISED only if ALL 6 strict criteria are met (technical feasibility, intention to complete, ability to use/sell, probable future benefit, adequate resources, ability to reliably measure the cost)</li>
+        </ul>
+        <div class="card-tag">Research vs Development</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="highlight-title">🔑 Why Internally Generated Brands, Customer Lists & Goodwill Are NEVER Capitalised</div>
+      IAS 38 specifically PROHIBITS capitalising internally generated brands, mastheads, customer lists, and goodwill — because their cost cannot be reliably distinguished from the cost of developing the business as a whole. This is a frequently tested contrast: a PURCHASED brand (bought from another company) CAN be capitalised at its purchase cost, but a brand a company builds up itself over years through marketing spend CANNOT be recognised as an intangible asset, no matter how valuable it's genuinely become.
+    </div>
+
+    <p class="section-label" style="margin-top:32px;">Part B — Worked Example</p>
+    <div class="wide-card">
+      <h4>📋 Scenario: R&D Cost Classification</h4>
+      <div style="font-size:13px;color:var(--muted);line-height:2.0;">
+        <strong style="color:var(--text);">Given:</strong> A pharma company spends ₹2 Crore over a year on a new drug project: ₹1.2 Crore on early-stage research (exploring biological compounds, no clear product yet identified) and ₹0.8 Crore on later-stage development (after regulatory approval pathway confirmed, technical feasibility demonstrated, and management has committed the budget to complete and commercialise the drug).<br><br>
+        <strong style="color:var(--text);">Research phase (₹1.2 Crore):</strong> <strong style="color:var(--accent5);">Expensed immediately</strong> to P&L — the 6 capitalisation criteria clearly cannot be met at this exploratory stage (no confirmed technical feasibility, no confirmed commercial viability yet).<br><br>
+        <strong style="color:var(--text);">Development phase (₹0.8 Crore):</strong> <strong style="color:var(--accent5);">Capitalised</strong> as an intangible asset — assuming all 6 criteria are genuinely met (which the facts given suggest: technical feasibility demonstrated, clear intention and resources to complete).<br><br>
+        <strong style="color:var(--text);">P&L impact:</strong> Only ₹1.2 Crore hits the Income Statement this year (research); the ₹0.8 Crore development cost sits on the Balance Sheet as an intangible asset, to be amortised over the drug's useful economic life once it's ready for use/sale — matching the cost against the future revenue it will help generate, rather than expensing it all upfront.
+      </div>
+    </div>
+  </div>
+
+  <!-- 8.15 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="sec-badge badge-red">8.15</div>
+      <div class="section-title">Common Mistakes, Flashcards & Interview Q&A</div>
+    </div>
+
+    <p class="section-label">Part A — Common Mistakes (Don't Repeat These)</p>
+    <div class="steps">
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 1</div>
+        <div class="step-content"><strong>Depreciating Based on Market Value Instead of Cost/Revalued Amount</strong><br>
+        Depreciation under the cost model is calculated on original cost minus residual value — not on current market value. Confusing depreciation with a market value adjustment leads to incorrect annual charges. Under the revaluation model, depreciation restarts based on the revalued amount going forward.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 2</div>
+        <div class="step-content"><strong>Deducting Residual Value in the Reducing Balance Method</strong><br>
+        Unlike straight-line, the reducing balance method applies the depreciation rate to the full carrying amount each year — residual value is NOT subtracted before applying the rate. This is a frequent source of calculation errors in exams.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 3</div>
+        <div class="step-content"><strong>Sending a Revaluation Deficit Straight to P&L Without Checking for Prior Surplus</strong><br>
+        If there's an existing revaluation surplus on the same asset, a subsequent deficit must first be offset against that surplus (via OCI) before any excess goes to P&L. Skipping this check and expensing the full deficit to P&L is a very commonly tested error.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 4</div>
+        <div class="step-content"><strong>Capitalising Costs That Should Be Expensed</strong><br>
+        Only costs directly attributable to bringing the asset to its working condition (purchase price, delivery, installation, professional fees) are capitalised. General administrative costs, staff training on the new asset, and costs of relocating/reorganising operations must be expensed, not added to the asset's cost.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 5</div>
+        <div class="step-content"><strong>Forgetting to Test for Impairment Separately from Depreciation</strong><br>
+        Depreciation is a planned, systematic allocation of cost. Impairment (IAS 36) is a separate, unplanned write-down when recoverable amount falls below carrying amount — triggered by indicators like physical damage, obsolescence, or adverse market changes. Treating heavy depreciation as a substitute for impairment testing misses real economic losses.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 6</div>
+        <div class="step-content"><strong>Crediting the Asset Account Directly for Depreciation</strong><br>
+        Depreciation is always credited to Accumulated Depreciation (a contra-asset account), not directly to the asset account itself. This preserves the historical cost on the books while showing accumulated wear separately — crediting the asset account directly loses this audit trail.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 7</div>
+        <div class="step-content"><strong>Keeping Operating Leases Off the Balance Sheet</strong><br>
+        Under IFRS 16, almost all leases (outside short-term and low-value exemptions) must be recognised as a right-of-use asset and lease liability — the old "operating lease = just expense the rent" treatment no longer applies for the vast majority of leases.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 8</div>
+        <div class="step-content"><strong>Recognising a Provision for a Merely "Possible" Obligation</strong><br>
+        A provision requires the outflow to be PROBABLE (>50% likely). An obligation that's merely "possible" (≤50%) should only be disclosed as a contingent liability, not recognised as an actual liability on the balance sheet.</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">❌ MISTAKE 9</div>
+        <div class="step-content"><strong>Capitalising Research Costs or Internally Generated Brands</strong><br>
+        Research phase costs must ALWAYS be expensed immediately, regardless of how promising the project looks — only development phase costs meeting all 6 strict criteria can be capitalised. Internally generated brands, customer lists, and goodwill can never be capitalised under IAS 38, no matter how valuable they've become.</div>
+      </div>
+    </div>
+
+    <!-- FLASHCARDS -->
+    <p class="section-label" style="margin-top:40px;">Part B — Quick Revision Flashcards</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">IFRS 16 Recognition</div>
+        <ul class="card-items">
+          <li><strong>Q: What 2 items does a lessee recognise for almost every lease under IFRS 16?</strong></li>
+          <li>A: A right-of-use asset and a lease liability</li>
+        </ul>
+        <div class="card-tag">Flashcard 6</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Provision Recognition Threshold</div>
+        <ul class="card-items">
+          <li><strong>Q: What probability threshold triggers recognising a provision?</strong></li>
+          <li>A: Probable — more than 50% likely</li>
+        </ul>
+        <div class="card-tag">Flashcard 7</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Research vs Development</div>
+        <ul class="card-items">
+          <li><strong>Q: How is research phase spend treated vs development phase spend?</strong></li>
+          <li>A: Research = always expensed; Development = capitalised if all 6 criteria are met</li>
+        </ul>
+        <div class="card-tag">Flashcard 8</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Depreciable Amount</div>
+        <ul class="card-items">
+          <li><strong>Q: What is Depreciable Amount?</strong></li>
+          <li>A: Cost (or Revalued Amount) − Residual Value</li>
+        </ul>
+        <div class="card-tag">Flashcard 9</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Straight-Line Formula</div>
+        <ul class="card-items">
+          <li><strong>Q: SLM depreciation formula?</strong></li>
+          <li>A: (Cost − Residual Value) ÷ Useful Life</li>
+        </ul>
+        <div class="card-tag">Flashcard 10</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Revaluation Surplus Treatment</div>
+        <ul class="card-items">
+          <li><strong>Q: Where does a first-time revaluation surplus go?</strong></li>
+          <li>A: Other Comprehensive Income (OCI) → Equity, NOT through P&L</li>
+        </ul>
+        <div class="card-tag">Flashcard 11</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Governing Standards</div>
+        <ul class="card-items">
+          <li><strong>Q: Which standard governs PPE?</strong></li>
+          <li>A: IAS 16</li>
+          <li><strong>Q: Which standard governs impairment?</strong></li>
+          <li>A: IAS 36</li>
+        </ul>
+        <div class="card-tag">Flashcard 12</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🃏</div>
+        <div class="card-title">Contra-Asset Account</div>
+        <ul class="card-items">
+          <li><strong>Q: What type of account is Accumulated Depreciation?</strong></li>
+          <li>A: A contra-asset account — deducted from the asset's cost on the Balance Sheet</li>
+        </ul>
+        <div class="card-tag">Flashcard 13</div>
+      </div>
+    </div>
+
+    <!-- FORMULA REFERENCE -->
+    <p class="section-label" style="margin-top:40px;">Part C — Formula Quick Reference</p>
+    <div class="formula-block">
+      <div class="formula-header">Chapter 8 — Core Formulas</div>
+      <div class="formula-row"><div class="formula-name">Depreciable Amount</div><div class="formula-eq">Cost (or Revalued Amount) − Residual Value</div></div>
+      <div class="formula-row"><div class="formula-name">Straight-Line Depreciation</div><div class="formula-eq">(Cost − Residual Value) ÷ Useful Life</div></div>
+      <div class="formula-row"><div class="formula-name">Reducing Balance Depreciation</div><div class="formula-eq">Carrying Amount × Depreciation Rate %</div></div>
+      <div class="formula-row"><div class="formula-name">Units of Production Depreciation</div><div class="formula-eq">(Cost − Residual Value) ÷ Total Units × Units This Period</div></div>
+      <div class="formula-row"><div class="formula-name">Carrying Amount</div><div class="formula-eq">Cost − Accumulated Depreciation (− Impairment, if any)</div></div>
+      <div class="formula-row"><div class="formula-name">Revaluation Surplus/Deficit</div><div class="formula-eq">Fair Value − Carrying Amount (before revaluation)</div></div>
+    </div>
+
+    <!-- INTERVIEW Q&A -->
+    <p class="section-label" style="margin-top:40px;">Part D — Interview Questions & Model Answers</p>
+    <table class="data-table">
+      <tr><th>Question</th><th>What They Are Testing</th><th>Model Answer</th></tr>
+      <tr><td>"Explain the difference between the cost model and the revaluation model under IAS 16."</td><td>Core IAS 16 conceptual understanding</td><td>Under the cost model, PPE is carried at historical cost less accumulated depreciation and impairment — simple and objective. Under the revaluation model, PPE is carried at fair value at the revaluation date less subsequent depreciation, with gains typically recognised in OCI/equity and losses in P&L (unless offsetting a prior surplus). Once chosen, the model must be applied consistently to an entire class of assets.</td></tr>
+      <tr><td>"Why does depreciation not represent a company setting aside cash?"</td><td>Understanding depreciation as a non-cash accounting allocation</td><td>Depreciation is purely an accounting allocation — it spreads the historical cost of an asset over its useful life to match the expense with the revenue it helps generate. It has no direct cash impact in the period it's charged; the actual cash outflow happened when the asset was originally purchased, which is why it's added back in the Cash Flow Statement.</td></tr>
+      <tr><td>"How would you account for a building that's been revalued upward and then downward in later years?"</td><td>Applied knowledge of the OCI/P&L interaction rule</td><td>The initial upward revaluation creates a surplus recognised in OCI, building up equity. If the asset is later revalued downward, that deficit is first offset against the existing OCI surplus (reducing it, potentially to zero) before any remaining excess deficit is charged to P&L as an expense — this prevents double-counting gains and losses on the same underlying asset.</td></tr>
+    </table>
+  </div>
+
+  <div class="mantra">
+    <div class="mantra-formula">
+      Recognise → Measure at Cost → Depreciate<br>
+      → Revalue or Impair if Needed<br>
+      → Derecognise on Disposal<br>
+      = <strong style="color:var(--accent4);">IAS 16 — Complete PPE Accounting Mastery</strong>
+    </div>
+    <h3>Every asset has a life. Account for every stage of it.</h3>
+    <p style="color:var(--muted);font-size:13px;margin-top:10px;">Next → Chapter 9: Inventory Accounting (IAS 2) — how to value the stock that drives every manufacturing and retail business. 📦</p>
+  </div>
+
+</div>
+</body>
+</html>

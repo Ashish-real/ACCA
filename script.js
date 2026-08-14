@@ -535,20 +535,32 @@ function fallbackCopy(txt) {
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function launchAnimatedReader(filename) {
+  const file = filename || localStorage.getItem('last_read_chapter') || 'Finance_Career_Bible_Chapter2.html';
+  const btn = document.getElementById('btnBookRead');
+  if (btn) {
+    btn.style.transform = 'scale(0.96)';
+    btn.style.background = '#10b981';
+    btn.style.color = '#080a0f';
+    setTimeout(() => {
+      btn.style.transform = '';
+      btn.style.background = '';
+      btn.style.color = '';
+      openChapterFile(file);
+    }, 250);
+  } else {
+    openChapterFile(file);
+  }
+}
+
 function resumeReading() {
-  const last = localStorage.getItem('last_read_chapter') || 'Finance_Career_Bible_Chapter2.html';
-  openChapterFile(last);
+  launchAnimatedReader();
 }
 
 function toggle3DBook() {
   const book = document.getElementById('book');
-  const btn = document.getElementById('bookToggleBtn');
   if (!book) return;
   book.classList.toggle('open');
-  const isOpen = book.classList.contains('open');
-  if (btn) {
-    btn.innerHTML = isOpen ? '✕ Close Book' : '📖 Open Book';
-  }
 }
 
 /* ── HERO BOOK: MOUSE PARALLAX ──

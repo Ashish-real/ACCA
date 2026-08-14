@@ -722,56 +722,142 @@ button { font: inherit; color: inherit; }
   min-width: 20px;
 }
 
-/* Inside Page Content (Realistic Cream Leaf) */
+/* Inside Page Content (Realistic Vintage Cream Leaf) */
 .page-content {
-  padding: 22px 18px;
+  padding: 20px 16px;
   color: #1e2430;
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
+  background: 
+    radial-gradient(circle at top right, rgba(217, 119, 6, 0.06) 0%, transparent 60%),
+    linear-gradient(to right, #cfc5af 0%, #faf6ec 12%, #fffdf8 100%);
+  border-right: 1px solid #d4cbb8;
+}
+
+.page-header-ribbon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid #dcd3c0;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
 }
 .page-top-label {
   font-family: var(--mono);
   font-size: 7.5px;
-  letter-spacing: 2px;
+  letter-spacing: 1.8px;
   color: #059669;
+  font-weight: 800;
+}
+.page-num {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  color: #9ca3af;
   font-weight: 700;
-  margin-bottom: 8px;
-  border-bottom: 1px solid #dcd3c0;
-  padding-bottom: 4px;
+}
+
+.toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 .toc-row {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
   font-size: 9px;
   color: #374151;
-  padding: 4px 0;
+  padding: 4px 6px;
+  border-radius: 4px;
   border-bottom: 1px dotted #e5ddcd;
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
-.toc-row b {
+.toc-row:hover {
+  background: rgba(16, 185, 129, 0.12);
+  color: #065f46;
+  transform: translateX(2px);
+}
+.toc-num {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  color: #9ca3af;
+  font-weight: 700;
+}
+.toc-title {
+  flex: 1;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.toc-ch {
   font-family: var(--mono);
   font-size: 8px;
   color: #d97706;
+  font-weight: 700;
 }
+
+/* Animated Start Reading Button */
 .btn-read-inside {
   margin-top: auto;
-  align-self: flex-start;
-  background: #0f172a;
+  align-self: stretch;
+  background: linear-gradient(135deg, #090d16 0%, #151d2d 100%);
   color: #10b981;
-  border: 1px solid #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.4);
   font-family: var(--mono);
   font-size: 8px;
   font-weight: 700;
   letter-spacing: 1px;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 7px 10px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+.btn-read-inside::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.btn-read-inside:hover::before {
+  transform: translateX(100%);
 }
 .btn-read-inside:hover {
   background: #10b981;
-  color: #0f172a;
+  color: #090d16;
+  border-color: #10b981;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4);
 }
+.btn-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseDot 1.8s infinite;
+}
+.btn-read-inside:hover .btn-pulse-dot {
+  background: #090d16;
+  box-shadow: 0 0 6px #090d16;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(1.3); }
+}
+.btn-arrow { font-size: 10px; transition: transform 0.2s ease; }
+.btn-read-inside:hover .btn-arrow { transform: translateX(2px) translateY(-1px); }
 
 /* Inside Back Cover */
 .cover-back-design {
@@ -800,31 +886,54 @@ button { font: inherit; color: inherit; }
 }
 
 .book-caption {
-  margin-top: 24px;
+  margin-top: 20px;
   font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 2px;
+  font-size: 9.5px;
+  letter-spacing: 1.8px;
   color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  text-transform: uppercase;
 }
 
-.book-toggle-btn {
-  background: var(--card);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 5px 14px;
-  border-radius: 100px;
-  font-size: 10px;
-  font-weight: 600;
+/* ── 2D MOBILE FALLBACK CARD (SHOWN ON <= 768px) ── */
+.mobile-book-card {
+  display: none;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
-.book-toggle-btn:hover {
-  border-color: var(--accent2);
-  color: var(--accent2);
-  background: var(--surface-elevated);
+.mobile-book-cover {
+  background: linear-gradient(155deg, #181d2a 0%, #0d111a 50%, #06080e 100%);
+  border: 1.5px solid rgba(245, 158, 11, 0.35);
+  border-radius: 12px;
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+.mobile-book-cover .cover-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 10px 0 6px;
+  color: #fff;
+}
+.mobile-book-cover .cover-title span {
+  font-style: italic;
+  color: var(--accent4);
+}
+.btn-mobile-read {
+  margin-top: 14px;
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent2), #059669);
+  color: #080a0f;
+  border: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 /* ── STAT STRIP ───────────────────────────────────────────────────────── */
@@ -995,16 +1104,16 @@ button { font: inherit; color: inherit; }
   font-weight: 700;
 }
 
-/* ── ENHANCED INTERACTIVE ROADMAP ─────────────────────────────────────── */
+/* ── EXPANDED INTERACTIVE ROADMAP ─────────────────────────────────────── */
 
-.roadmap-wrap { position: relative; margin-top: 54px; }
+.roadmap-wrap { position: relative; margin-top: 48px; }
 
 .roadmap-svg { width: 100%; height: auto; display: block; overflow: visible; }
 .roadmap-track { fill: none; stroke: var(--border); stroke-width: 2; }
 .roadmap-path {
   fill: none;
   stroke: url(#roadGradient);
-  stroke-width: 3;
+  stroke-width: 3.5;
   stroke-linecap: round;
   transition: stroke-dashoffset 2.4s var(--ease);
 }
@@ -1012,41 +1121,138 @@ button { font: inherit; color: inherit; }
 .road-node circle.ring {
   fill: var(--bg);
   stroke: var(--border);
-  stroke-width: 2;
+  stroke-width: 2.5;
   transition: stroke .4s, filter .4s;
 }
 .road-node circle.core { fill: var(--border); r: 4; transition: fill .4s; }
-.road-node.lit circle.ring { stroke: var(--accent2); filter: drop-shadow(0 0 10px rgba(0, 212, 170, 0.9)); }
+.road-node.lit circle.ring { stroke: var(--accent2); filter: drop-shadow(0 0 12px rgba(0, 212, 170, 0.95)); }
 .road-node.lit circle.core { fill: var(--accent2); }
 
 .road-steps {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
-  margin-top: 22px;
+  gap: 16px;
+  margin-top: 24px;
 }
 .road-step {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 18px 16px;
+  padding: 20px 18px;
   opacity: 0;
   transform: translateY(14px);
   transition: opacity .5s var(--ease), transform .5s var(--ease), border-color .3s, box-shadow .3s;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 .road-step:hover {
   border-color: var(--accent2);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6);
 }
 .road-step.lit { opacity: 1; transform: none; }
-.road-step.lit.current { border-color: var(--accent2); }
+.road-step.lit:hover { transform: translateY(-5px); }
+.road-step.lit.current { border-color: var(--accent2); box-shadow: 0 0 24px rgba(0, 212, 170, 0.2); }
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
 .road-step .no {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 9.5px;
   color: var(--accent);
   letter-spacing: 1.5px;
+  font-weight: 700;
+}
+.step-badge {
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--accent2);
+  background: rgba(0, 212, 170, 0.12);
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  border-radius: 4px;
+  padding: 2px 6px;
+  letter-spacing: 0.8px;
+}
+.step-badge.hot {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+.step-badge.gold {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.road-step h3 { font-size: 14.5px; font-weight: 600; margin: 4px 0 8px; color: var(--text); line-height: 1.35; }
+.road-step p { font-size: 12px; color: var(--muted); line-height: 1.55; margin-bottom: 12px; }
+
+.step-meta-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: auto;
+  margin-bottom: 14px;
+}
+.meta-chip {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.step-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+.road-step .tagline {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--accent2);
+  font-weight: 700;
+}
+.step-jump-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--accent2);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.step-jump-btn:hover {
+  background: var(--accent2);
+  color: #080a0f;
+  border-color: var(--accent2);
+}
+
+/* ── RESPONSIVE MEDIA QUERIES (MOBILE OPTIMIZATION) ───────────────────── */
+
+@media (max-width: 768px) {
+  .hardcover-book { display: none !important; }
+  .mobile-book-card { display: block !important; }
+  .book-scene { min-height: auto; padding: 20px 0; }
+  
+  .road-steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .roadmap-svg { display: none; }
 }
 .road-step h3 { font-size: 14px; font-weight: 600; margin: 7px 0 5px; }
 .road-step p { font-size: 12px; color: var(--muted); line-height: 1.55; }

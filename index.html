@@ -63,9 +63,9 @@
           <!-- 3D CODROPS HARDCOVER BOOK -->
           <div class="book-scene" id="bookScene">
             <div class="book-glow"></div>
-            <figure class="book hardcover-book" id="book" onclick="toggle3DBook()" title="Click to open or close book">
+            <figure class="book hardcover-book" id="book" onclick="toggle3DBook()" title="Click book to open / close">
 
-              <!-- FRONT COVER (3D Bevels & Inlay) -->
+              <!-- FRONT COVER (3D Bevels & Gold Inlay) -->
               <ul class="hardcover_front">
                 <li>
                   <div class="coverDesign dark">
@@ -98,13 +98,42 @@
                 <li></li>
                 <li>
                   <div class="page-content">
-                    <div class="page-top-label">CONTENTS PREVIEW</div>
-                    <div class="toc-row"><span>01. Accounting Basics</span><b>Ch 2</b></div>
-                    <div class="toc-row"><span>02. IFRS Financial Reporting</span><b>Ch 4</b></div>
-                    <div class="toc-row"><span>03. Financial Modelling</span><b>Ch 21</b></div>
-                    <div class="toc-row"><span>04. DCF Valuation</span><b>Ch 33</b></div>
-                    <div class="toc-row"><span>05. Big 4 Career Strategy</span><b>Ch 43</b></div>
-                    <button class="btn-read-inside" onclick="event.stopPropagation(); resumeReading();">Read Chapter ↗</button>
+                    <div class="page-header-ribbon">
+                      <span class="page-top-label">CONTENTS PREVIEW</span>
+                      <span class="page-num">P. 01</span>
+                    </div>
+                    <div class="toc-list">
+                      <div class="toc-row" onclick="event.stopPropagation(); launchAnimatedReader('Finance_Career_Bible_Chapter2.html');">
+                        <span class="toc-num">01</span>
+                        <span class="toc-title">Accounting Foundations</span>
+                        <b class="toc-ch">Ch 2</b>
+                      </div>
+                      <div class="toc-row" onclick="event.stopPropagation(); launchAnimatedReader('Finance_Career_Bible_Chapter4.html');">
+                        <span class="toc-num">02</span>
+                        <span class="toc-title">IFRS Financial Reporting</span>
+                        <b class="toc-ch">Ch 4</b>
+                      </div>
+                      <div class="toc-row" onclick="event.stopPropagation(); launchAnimatedReader('Finance_Career_Bible_Chapter21.html');">
+                        <span class="toc-num">03</span>
+                        <span class="toc-title">Financial Modelling</span>
+                        <b class="toc-ch">Ch 21</b>
+                      </div>
+                      <div class="toc-row" onclick="event.stopPropagation(); launchAnimatedReader('Finance_Career_Bible_Chapter33.html');">
+                        <span class="toc-num">04</span>
+                        <span class="toc-title">DCF Valuation Basics</span>
+                        <b class="toc-ch">Ch 33</b>
+                      </div>
+                      <div class="toc-row" onclick="event.stopPropagation(); launchAnimatedReader('Finance_Career_Bible_Chapter43.html');">
+                        <span class="toc-num">05</span>
+                        <span class="toc-title">Big 4 Career Guide</span>
+                        <b class="toc-ch">Ch 43</b>
+                      </div>
+                    </div>
+                    <button class="btn-read-inside" id="btnBookRead" onclick="event.stopPropagation(); launchAnimatedReader('Finance_Career_Bible_Chapter2.html');">
+                      <span class="btn-pulse-dot"></span>
+                      <span>Start Reading Ch 2</span>
+                      <span class="btn-arrow">↗</span>
+                    </button>
                   </div>
                 </li>
                 <li></li>
@@ -130,9 +159,19 @@
               </ul>
             </figure>
 
+            <!-- 2D MOBILE FALLBACK CARD (SHOWN ON <= 768px) -->
+            <div class="mobile-book-card" onclick="launchAnimatedReader('Finance_Career_Bible_Chapter2.html')">
+              <div class="mobile-book-cover">
+                <span class="ribbon">2026</span>
+                <div class="cover-top">ACCA • FINANCE • CAREER</div>
+                <h3 class="cover-title">Finance <span>Career</span> Bible</h3>
+                <p class="cover-sub">50 Chapters from zero to Big 4 technical seat.</p>
+                <button class="btn-mobile-read">📖 Start Reading Masterclass ↗</button>
+              </div>
+            </div>
+
             <div class="book-caption">
-              <span>ACCA • Skills • Career</span>
-              <button class="book-toggle-btn" id="bookToggleBtn" onclick="toggle3DBook()">📖 Open Book</button>
+              <span>Click book to open &amp; explore</span>
             </div>
           </div>
         </div>
@@ -231,8 +270,8 @@
         <div class="section-head">
           <div class="kicker">03 / THE JOURNEY</div>
           <h2>Your ACCA journey is<br><span class="grad">bigger than the exam.</span></h2>
-          <p>The qualification is the beginning; the career is the goal. Five stages from
-             school-leaver to a technical seat at a Big 4 firm.</p>
+          <p>The qualification is the beginning; the career is the goal. Five comprehensive stages from
+             school-leaver to a high-impact technical seat at a Big 4 firm.</p>
         </div>
 
         <div class="roadmap-wrap" id="roadmapWrap">
@@ -240,49 +279,108 @@
             <defs>
               <linearGradient id="roadGradient" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0%"   stop-color="#6c63ff"/>
-                <stop offset="100%" stop-color="#00d4aa"/>
+                <stop offset="50%"  stop-color="#10b981"/>
+                <stop offset="100%" stop-color="#f59e0b"/>
               </linearGradient>
             </defs>
-            <!-- Static rail, then the gradient path drawn over it -->
             <path class="roadmap-track" d="M 100 60 L 300 60 L 500 60 L 700 60 L 900 60" />
             <path class="roadmap-path" id="roadmapPath" d="M 100 60 L 300 60 L 500 60 L 700 60 L 900 60" />
-            <g class="road-node" data-node="0"><circle class="ring" cx="100" cy="60" r="11"/><circle class="core" cx="100" cy="60" r="4"/></g>
-            <g class="road-node" data-node="1"><circle class="ring" cx="300" cy="60" r="11"/><circle class="core" cx="300" cy="60" r="4"/></g>
-            <g class="road-node" data-node="2"><circle class="ring" cx="500" cy="60" r="11"/><circle class="core" cx="500" cy="60" r="4"/></g>
-            <g class="road-node" data-node="3"><circle class="ring" cx="700" cy="60" r="11"/><circle class="core" cx="700" cy="60" r="4"/></g>
-            <g class="road-node" data-node="4"><circle class="ring" cx="900" cy="60" r="11"/><circle class="core" cx="900" cy="60" r="4"/></g>
+            <g class="road-node" data-node="0"><circle class="ring" cx="100" cy="60" r="12"/><circle class="core" cx="100" cy="60" r="4"/></g>
+            <g class="road-node" data-node="1"><circle class="ring" cx="300" cy="60" r="12"/><circle class="core" cx="300" cy="60" r="4"/></g>
+            <g class="road-node" data-node="2"><circle class="ring" cx="500" cy="60" r="12"/><circle class="core" cx="500" cy="60" r="4"/></g>
+            <g class="road-node" data-node="3"><circle class="ring" cx="700" cy="60" r="12"/><circle class="core" cx="700" cy="60" r="4"/></g>
+            <g class="road-node" data-node="4"><circle class="ring" cx="900" cy="60" r="12"/><circle class="core" cx="900" cy="60" r="4"/></g>
           </svg>
 
           <div class="road-steps">
+            <!-- STAGE 1 -->
             <div class="road-step" data-step="0">
-              <div class="no">STAGE 01</div>
-              <h3>Class 12</h3>
-              <p>Choose your direction and understand what a finance career actually involves.</p>
-              <span class="tagline">CH 01</span>
+              <div class="step-header">
+                <span class="no">STAGE 01</span>
+                <span class="step-badge">FOUNDATION</span>
+              </div>
+              <h3>Commerce &amp; Career Direction</h3>
+              <p>Understand the finance ecosystem, evaluate ACCA vs CA/CMA/CFA, and build double-entry mechanics.</p>
+              <div class="step-meta-chips">
+                <span class="meta-chip">Class 11/12</span>
+                <span class="meta-chip">First Principles</span>
+              </div>
+              <div class="step-footer">
+                <span class="tagline">CH 01–03</span>
+                <button class="step-jump-btn" onclick="openChapterFile('Finance_Career_Bible_Chapter1.html')">Explore ↗</button>
+              </div>
             </div>
+
+            <!-- STAGE 2 -->
             <div class="road-step" data-step="1">
-              <div class="no">STAGE 02</div>
-              <h3>ACCA / B.Com + ACCA</h3>
-              <p>Build the academic foundation — Applied Knowledge through Applied Skills.</p>
-              <span class="tagline">CH 13–17</span>
+              <div class="step-header">
+                <span class="no">STAGE 02</span>
+                <span class="step-badge">APPLIED KNOWLEDGE</span>
+              </div>
+              <h3>ACCA Knowledge &amp; B.Com Core</h3>
+              <p>Master Business &amp; Technology (BT), Management Accounting (MA), and Financial Accounting (FA) alongside graduation.</p>
+              <div class="step-meta-chips">
+                <span class="meta-chip">Papers BT · MA · FA</span>
+                <span class="meta-chip">IFRS Core</span>
+              </div>
+              <div class="step-footer">
+                <span class="tagline">CH 04–17</span>
+                <button class="step-jump-btn" onclick="openChapterFile('Finance_Career_Bible_Chapter13.html')">Explore ↗</button>
+              </div>
             </div>
+
+            <!-- STAGE 3 -->
             <div class="road-step current" data-step="2">
-              <div class="no">STAGE 03</div>
-              <h3>Knowledge + Skills</h3>
-              <p>Go beyond exam preparation into Excel, Power BI, modelling and analytics.</p>
-              <span class="tagline">CH 39–42</span>
+              <div class="step-header">
+                <span class="no">STAGE 03</span>
+                <span class="step-badge hot">SKILLS + TECH</span>
+              </div>
+              <h3>Applied Skills &amp; Financial Modelling</h3>
+              <p>Tackle FR, PM, TX, AA, FM while mastering 3-statement models, DCF valuation, Power BI dashboards &amp; Python automation.</p>
+              <div class="step-meta-chips">
+                <span class="meta-chip">FR · PM · TX · AA · FM</span>
+                <span class="meta-chip">Excel · Power BI</span>
+              </div>
+              <div class="step-footer">
+                <span class="tagline">CH 18–42</span>
+                <button class="step-jump-btn" onclick="openChapterFile('Finance_Career_Bible_Chapter21.html')">Explore ↗</button>
+              </div>
             </div>
+
+            <!-- STAGE 4 -->
             <div class="road-step" data-step="3">
-              <div class="no">STAGE 04</div>
-              <h3>Experience</h3>
-              <p>Turn knowledge into practice — PER, internships and real reporting cycles.</p>
-              <span class="tagline">CH 43–45</span>
+              <div class="step-header">
+                <span class="no">STAGE 04</span>
+                <span class="step-badge">PROFESSIONAL</span>
+              </div>
+              <h3>Strategic Leader &amp; 36M PER</h3>
+              <p>Complete Strategic Business Leader (SBL), SBR, and advanced option papers (AFM/APM/AAA) with verified Practical Experience.</p>
+              <div class="step-meta-chips">
+                <span class="meta-chip">SBL · SBR · AFM</span>
+                <span class="meta-chip">36M PER · EPSM</span>
+              </div>
+              <div class="step-footer">
+                <span class="tagline">CH 43–45</span>
+                <button class="step-jump-btn" onclick="openChapterFile('Finance_Career_Bible_Chapter43.html')">Explore ↗</button>
+              </div>
             </div>
+
+            <!-- STAGE 5 -->
             <div class="road-step" data-step="4">
-              <div class="no">STAGE 05</div>
-              <h3>Big 4 Finance Career</h3>
-              <p>Audit, advisory or valuation at PwC, Deloitte, EY or KPMG — and beyond.</p>
-              <span class="tagline">CH 46–50</span>
+              <div class="step-header">
+                <span class="no">STAGE 05</span>
+                <span class="step-badge gold">BIG 4 SEAT</span>
+              </div>
+              <h3>Big 4 Advisory &amp; Technical Seat</h3>
+              <p>Crack technical interview rounds in Audit, M&amp;A Advisory, Tax Strategy, and Valuation at PwC, Deloitte, EY, and KPMG.</p>
+              <div class="step-meta-chips">
+                <span class="meta-chip">PwC · Deloitte · EY · KPMG</span>
+                <span class="meta-chip">Advisory · Valuation</span>
+              </div>
+              <div class="step-footer">
+                <span class="tagline">CH 46–50</span>
+                <button class="step-jump-btn" onclick="openChapterFile('Finance_Career_Bible_Chapter45.html')">Explore ↗</button>
+              </div>
             </div>
           </div>
         </div>

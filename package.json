@@ -1,0 +1,17 @@
+{
+  "name": "acca-masterclass",
+  "version": "1.0.0",
+  "description": "Finance Career Bible — ACCA Big 4 Masterclass",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y serve . -p 8000",
+    "start": "npx -y serve . -p 8000"
+  },
+  "keywords": [
+    "acca",
+    "finance",
+    "masterclass"
+  ],
+  "author": "",
+  "license": "MIT"
+}

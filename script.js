@@ -535,6 +535,17 @@ function fallbackCopy(txt) {
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function toggle3DBook() {
+  const book = document.getElementById('book');
+  const btn = document.getElementById('bookToggleBtn');
+  if (!book) return;
+  book.classList.toggle('open');
+  const isOpen = book.classList.contains('open');
+  if (btn) {
+    btn.innerHTML = isOpen ? '✕ Close Book' : '📖 Open Book';
+  }
+}
+
 /* ── HERO BOOK: MOUSE PARALLAX ──
    Written as CSS custom properties so the tilt composes with the idle float
    animation instead of overwriting its transform. */

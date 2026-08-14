@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="search_index.js"></script>
   <style>
     :root {
       --bg: #050505;
@@ -18,7 +19,7 @@
       --border-emerald: rgba(16, 185, 129, 0.4);
       
       --emerald: #10b981;
-      --emerald-glow: rgba(16, 185, 129, 0.2);
+      --emerald-glow: rgba(16, 185, 129, 0.25);
       --mint: #34d399;
       --cyan: #06b6d4;
       --gold: #f59e0b;
@@ -54,7 +55,7 @@
       max-width: 1300px;
       margin: 0 auto;
       width: calc(100% - 32px);
-      background: rgba(13, 14, 18, 0.85);
+      background: rgba(13, 14, 18, 0.88);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border: 1px solid var(--border);
@@ -131,6 +132,40 @@
       color: #000;
       font-weight: 700;
       box-shadow: 0 0 15px var(--emerald-glow);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .global-search-trigger {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .global-search-trigger:hover {
+      border-color: var(--emerald);
+      color: var(--text-main);
+    }
+
+    .kbd-chip {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-subtle);
     }
 
     .btn-resume {
@@ -317,22 +352,32 @@
       border-radius: 8px;
     }
 
-    /* ── PILLAR SECTIONS ── */
+    /* ── COLLAPSIBLE PILLAR SECTIONS ── */
     .pillar-section {
-      margin-bottom: 48px;
+      margin-bottom: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .pillar-section:hover {
+      border-color: var(--border-emerald);
     }
 
     .pillar-header {
+      padding: 24px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 14px;
-      margin-bottom: 24px;
+      cursor: pointer;
+      user-select: none;
+      background: var(--surface);
     }
 
     .pillar-title {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       display: flex;
       align-items: center;
@@ -345,21 +390,40 @@
       background: rgba(16, 185, 129, 0.1);
       color: var(--emerald);
       border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 100px;
+    }
+
+    .accordion-arrow {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
+    }
+
+    .pillar-section.collapsed .accordion-arrow {
+      transform: rotate(-90deg);
+    }
+
+    .pillar-body {
+      padding: 0 28px 28px;
+      transition: all 0.3s ease;
+    }
+
+    .pillar-section.collapsed .pillar-body {
+      display: none;
     }
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 20px;
     }
 
     .chapter-card {
-      background: var(--surface);
+      background: var(--surface-elevated);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px;
+      border-radius: 16px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -579,6 +643,108 @@
       display: none;
     }
 
+    /* ── FULL-TEXT GLOBAL SEARCH MODAL ── */
+    .search-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(5, 5, 5, 0.88);
+      backdrop-filter: blur(20px);
+      z-index: 5000;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 80px;
+    }
+
+    .search-modal-overlay.active {
+      display: flex;
+    }
+
+    .search-dialog {
+      width: 100%;
+      max-width: 720px;
+      background: var(--surface);
+      border: 1px solid var(--border-emerald);
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: 80vh;
+    }
+
+    .search-dialog-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .search-dialog-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.15rem;
+      outline: none;
+      font-family: var(--font-sans);
+    }
+
+    .search-dialog-results {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .search-match-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .search-match-card:hover {
+      border-color: var(--emerald);
+      background: var(--card);
+    }
+
+    .search-match-ch {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--emerald);
+      margin-bottom: 4px;
+    }
+
+    .search-match-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .search-match-snippet {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    mark.search-highlight {
+      background: rgba(16, 185, 129, 0.3);
+      color: var(--mint);
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 0 4px;
+    }
+
     /* ── FULLSCREEN READER MODAL ── */
     .reader-modal {
       position: fixed;
@@ -641,12 +807,6 @@
       color: var(--emerald);
       font-weight: 700;
     }
-
-    iframe {
-      flex: 1;
-      height: 100%;
-      border: none;
-    }
   </style>
 </head>
 <body>
@@ -667,7 +827,12 @@
       <button class="nav-btn" onclick="switchTab('about', this)">About ACCA & Big 4</button>
     </div>
 
-    <button class="btn-resume" onclick="resumeReading()">📖 Resume Reading</button>
+    <div class="header-right">
+      <button class="global-search-trigger" onclick="openGlobalSearchModal()">
+        🔍 Full-Text Search <span class="kbd-chip">Ctrl + K</span>
+      </button>
+      <button class="btn-resume" onclick="resumeReading()">📖 Resume Reading</button>
+    </div>
   </header>
 
   <main>
@@ -719,49 +884,59 @@
         </div>
       </div>
 
-      <!-- PILLAR 1: FINANCIAL & ACCOUNTING CORE -->
-      <section class="pillar-section">
-        <div class="pillar-header">
+      <!-- COLLAPSIBLE PILLAR 1 -->
+      <section class="pillar-section" id="section-financial">
+        <div class="pillar-header" onclick="togglePillarSection('section-financial')">
           <h2 class="pillar-title">📊 1. Financial & Accounting Core <span class="count-chip">10 Chapters</span></h2>
-          <span style="font-size: 0.85rem; color: var(--text-subtle);">FA / FR / SBR</span>
+          <span class="accordion-arrow">▼</span>
         </div>
-        <div class="cards-grid" id="grid-financial"></div>
+        <div class="pillar-body">
+          <div class="cards-grid" id="grid-financial"></div>
+        </div>
       </section>
 
-      <!-- PILLAR 2: TAXATION & AUDIT CORE -->
-      <section class="pillar-section">
-        <div class="pillar-header">
+      <!-- COLLAPSIBLE PILLAR 2 -->
+      <section class="pillar-section" id="section-tax-audit">
+        <div class="pillar-header" onclick="togglePillarSection('section-tax-audit')">
           <h2 class="pillar-title">⚖️ 2. Taxation & Audit Core <span class="count-chip">5 Chapters</span></h2>
-          <span style="font-size: 0.85rem; color: var(--text-subtle);">TX / ATX / AA / AAA</span>
+          <span class="accordion-arrow">▼</span>
         </div>
-        <div class="cards-grid" id="grid-tax-audit"></div>
+        <div class="pillar-body">
+          <div class="cards-grid" id="grid-tax-audit"></div>
+        </div>
       </section>
 
-      <!-- PILLAR 3: CORPORATE FINANCE, FP&A & STRATEGY -->
-      <section class="pillar-section">
-        <div class="pillar-header">
+      <!-- COLLAPSIBLE PILLAR 3 -->
+      <section class="pillar-section" id="section-finance-strategy">
+        <div class="pillar-header" onclick="togglePillarSection('section-finance-strategy')">
           <h2 class="pillar-title">📈 3. Corporate Finance, FP&A & Strategy <span class="count-chip">13 Chapters</span></h2>
-          <span style="font-size: 0.85rem; color: var(--text-subtle);">MA / PM / FM / AFM / SBL / APM</span>
+          <span class="accordion-arrow">▼</span>
         </div>
-        <div class="cards-grid" id="grid-finance-strategy"></div>
+        <div class="pillar-body">
+          <div class="cards-grid" id="grid-finance-strategy"></div>
+        </div>
       </section>
 
-      <!-- PILLAR 4: PRACTICAL SKILLS & BIG 4 CAREER PREP -->
-      <section class="pillar-section">
-        <div class="pillar-header">
+      <!-- COLLAPSIBLE PILLAR 4 -->
+      <section class="pillar-section" id="section-skills-career">
+        <div class="pillar-header" onclick="togglePillarSection('section-skills-career')">
           <h2 class="pillar-title">💼 4. Practical Skills & Big 4 Career Prep <span class="count-chip">10 Chapters</span></h2>
-          <span style="font-size: 0.85rem; color: var(--text-subtle);">Excel / Power BI / AI / Interviews</span>
+          <span class="accordion-arrow">▼</span>
         </div>
-        <div class="cards-grid" id="grid-skills-career"></div>
+        <div class="pillar-body">
+          <div class="cards-grid" id="grid-skills-career"></div>
+        </div>
       </section>
 
-      <!-- PILLAR 5: ACCA EXAM GUIDANCE & TOOLS -->
-      <section class="pillar-section">
-        <div class="pillar-header">
+      <!-- COLLAPSIBLE PILLAR 5 -->
+      <section class="pillar-section" id="section-exam-tools">
+        <div class="pillar-header" onclick="togglePillarSection('section-exam-tools')">
           <h2 class="pillar-title">🎓 5. ACCA Exam Guidance & Practice Bank <span class="count-chip">8 Chapters</span></h2>
-          <span style="font-size: 0.85rem; color: var(--text-subtle);">Qualification Structure / Formulas / Question Bank</span>
+          <span class="accordion-arrow">▼</span>
         </div>
-        <div class="cards-grid" id="grid-exam-tools"></div>
+        <div class="pillar-body">
+          <div class="cards-grid" id="grid-exam-tools"></div>
+        </div>
       </section>
     </div>
 
@@ -807,6 +982,20 @@
       </div>
     </div>
   </main>
+
+  <!-- FULL-TEXT GLOBAL SEARCH MODAL -->
+  <div class="search-modal-overlay" id="globalSearchOverlay" onclick="if(event.target===this) closeGlobalSearchModal()">
+    <div class="search-dialog">
+      <div class="search-dialog-header">
+        <span>🔍</span>
+        <input type="text" class="search-dialog-input" id="fullTextSearchInput" placeholder="Search full text across all 51 chapters (e.g., IAS 16, NPV, WACC, PESTEL, Goodwill)..." oninput="handleFullTextSearch(this.value)">
+        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-subtle);">ESC to close</span>
+      </div>
+      <div class="search-dialog-results" id="fullTextSearchResults">
+        <div style="text-align: center; padding: 40px; color: var(--text-subtle);">Type any formula, concept, standard, or keyword to search full chapter texts.</div>
+      </div>
+    </div>
+  </div>
 
   <!-- FULLSCREEN READER MODAL -->
   <div class="reader-modal" id="readerModal">
@@ -909,7 +1098,7 @@
       }
     ];
 
-    let completedSet = new Set(JSON.parse(localStorage.getItem('acc_done_oe') || '[]'));
+    let completedSet = new Set(JSON.parse(localStorage.getItem('acc_done_v2') || '[]'));
     let currentChIdx = 0;
     let quizIdx = 0;
     let quizScore = 0;
@@ -919,6 +1108,21 @@
       renderTOC();
       renderFormulas();
       loadQuiz();
+
+      document.addEventListener('keydown', e => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          openGlobalSearchModal();
+        }
+        if (e.key === 'Escape') {
+          closeGlobalSearchModal();
+        }
+      });
+    }
+
+    function togglePillarSection(secId) {
+      const el = document.getElementById(secId);
+      if (el) el.classList.toggle('collapsed');
     }
 
     function switchTab(tabId, btn) {
@@ -1041,8 +1245,8 @@
       document.getElementById('readerModal').classList.add('open');
 
       completedSet.add(c.filename);
-      localStorage.setItem('acc_done_oe', JSON.stringify([...completedSet]));
-      localStorage.setItem('acc_last_oe', c.filename);
+      localStorage.setItem('acc_done_v2', JSON.stringify([...completedSet]));
+      localStorage.setItem('acc_last_v2', c.filename);
       renderPillars();
       renderTOC();
     }
@@ -1053,7 +1257,7 @@
     }
 
     function resumeReading() {
-      const last = localStorage.getItem('acc_last_oe') || CHAPTERS[0].filename;
+      const last = localStorage.getItem('acc_last_v2') || CHAPTERS[0].filename;
       openChapterFile(last);
     }
 
@@ -1070,6 +1274,70 @@
     function toggleToc() {
       const box = document.getElementById('tocBox');
       box.style.display = box.style.display === 'none' ? 'flex' : 'none';
+    }
+
+    /* ── FULL-TEXT GLOBAL SEARCH ENGINE ── */
+    function openGlobalSearchModal() {
+      document.getElementById('globalSearchOverlay').classList.add('active');
+      document.getElementById('fullTextSearchInput').focus();
+    }
+
+    function closeGlobalSearchModal() {
+      document.getElementById('globalSearchOverlay').classList.remove('active');
+    }
+
+    function handleFullTextSearch(query) {
+      const resultsContainer = document.getElementById('fullTextSearchResults');
+      resultsContainer.innerHTML = '';
+
+      const q = query.trim().toLowerCase();
+      if (!q || q.length < 2) {
+        resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">Type at least 2 characters to search text across all 51 chapters...</div>`;
+        return;
+      }
+
+      if (typeof FULL_TEXT_INDEX === 'undefined') {
+        resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">Search index loading...</div>`;
+        return;
+      }
+
+      const matches = [];
+      const regex = new RegExp(`(${escapeRegExp(q)})`, 'gi');
+
+      for (let item of FULL_TEXT_INDEX) {
+        if (item.text.toLowerCase().includes(q) || item.title.toLowerCase().includes(q)) {
+          matches.push(item);
+          if (matches.length >= 25) break; // cap results for speed
+        }
+      }
+
+      if (matches.length === 0) {
+        resultsContainer.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-subtle);">No text matches found for "${query}". Try another term.</div>`;
+        return;
+      }
+
+      matches.forEach(m => {
+        const card = document.createElement('div');
+        card.className = 'search-match-card';
+        card.onclick = () => {
+          closeGlobalSearchModal();
+          openChapterFile(m.filename);
+        };
+
+        const highlightedSnippet = m.text.replace(regex, '<mark class="search-highlight">$1</mark>');
+
+        card.innerHTML = `
+          <div class="search-match-ch">${m.filename.replace("Finance_Career_Bible_", "").replace(".html", "")}</div>
+          <div class="search-match-title">${m.title}</div>
+          <div class="search-match-snippet">...${highlightedSnippet}...</div>
+        `;
+
+        resultsContainer.appendChild(card);
+      });
+    }
+
+    function escapeRegExp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
     function copyText(txt) {

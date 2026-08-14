@@ -64,6 +64,11 @@
           <div class="book-scene" id="bookScene">
             <div class="book-glow"></div>
             <div class="book" id="book" onclick="toggle3DBook()" title="Click to open/close book">
+              <!-- Back Cover -->
+              <div class="book-face book-back">
+                <div class="back-seal">FCB</div>
+                <div class="back-text">ACCA • BIG 4 CAREER BIBLE</div>
+              </div>
 
               <!-- Inner leaf, revealed as the cover swings open -->
               <div class="book-face book-inner">
@@ -87,8 +92,11 @@
                 <div class="cover-foot"><span>50 CHAPTERS</span><span>ED. 2026</span></div>
               </div>
 
-              <div class="book-pages"></div>
-              <div class="book-spine"><span>FINANCE CAREER BIBLE</span></div>
+              <!-- 3D Box Edges -->
+              <div class="book-edge book-pages-right"></div>
+              <div class="book-edge book-pages-top"></div>
+              <div class="book-edge book-pages-bottom"></div>
+              <div class="book-edge book-spine"><span>FINANCE CAREER BIBLE</span></div>
             </div>
             <div class="book-caption">
               <span>ACCA • Skills • Career</span>
@@ -128,7 +136,7 @@
             <span class="count-chip">10</span>
             <span class="accordion-arrow">▼</span>
           </button>
-          <div class="pillar-body"><div class="cards-grid" id="grid-financial"></div></div>
+          <div class="pillar-body-wrap"><div class="pillar-body"><div class="cards-grid" id="grid-financial"></div></div></div>
         </section>
 
         <section class="pillar-section collapsed" id="section-tax-audit">
@@ -141,7 +149,7 @@
             <span class="count-chip">6</span>
             <span class="accordion-arrow">▼</span>
           </button>
-          <div class="pillar-body"><div class="cards-grid" id="grid-tax-audit"></div></div>
+          <div class="pillar-body-wrap"><div class="pillar-body"><div class="cards-grid" id="grid-tax-audit"></div></div></div>
         </section>
 
         <section class="pillar-section collapsed" id="section-finance-strategy">
@@ -154,7 +162,7 @@
             <span class="count-chip">16</span>
             <span class="accordion-arrow">▼</span>
           </button>
-          <div class="pillar-body"><div class="cards-grid" id="grid-finance-strategy"></div></div>
+          <div class="pillar-body-wrap"><div class="pillar-body"><div class="cards-grid" id="grid-finance-strategy"></div></div></div>
         </section>
 
         <section class="pillar-section collapsed" id="section-skills-career">
@@ -167,7 +175,7 @@
             <span class="count-chip">10</span>
             <span class="accordion-arrow">▼</span>
           </button>
-          <div class="pillar-body"><div class="cards-grid" id="grid-skills-career"></div></div>
+          <div class="pillar-body-wrap"><div class="pillar-body"><div class="cards-grid" id="grid-skills-career"></div></div></div>
         </section>
 
         <section class="pillar-section collapsed" id="section-exam-tools">
@@ -180,7 +188,7 @@
             <span class="count-chip">9</span>
             <span class="accordion-arrow">▼</span>
           </button>
-          <div class="pillar-body"><div class="cards-grid" id="grid-exam-tools"></div></div>
+          <div class="pillar-body-wrap"><div class="pillar-body"><div class="cards-grid" id="grid-exam-tools"></div></div></div>
         </section>
       </section>
     </div>

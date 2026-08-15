@@ -97,6 +97,17 @@ function init() {
     else if (hash === 'quiz' || hash === 'practice') switchTab('quiz');
     else if (hash === 'about') switchTab('about');
     else if (hash === 'pillars' || hash === 'chapters') switchTab('pillars');
+  } else {
+    // Restore saved tab if no direct hash was given
+    const savedTab = localStorage.getItem('acc_active_tab_v6');
+    if (savedTab) switchTab(savedTab);
+  }
+
+  // Restore reader modal if user was actively reading upon reload
+  const wasReaderOpen = localStorage.getItem('acc_reader_open_v6') === 'true';
+  const lastChapter = localStorage.getItem('acc_last_v6');
+  if (wasReaderOpen && lastChapter) {
+    openChapterFile(lastChapter);
   }
 
   document.addEventListener('keydown', e => {
@@ -137,8 +148,17 @@ function switchTab(tabId, btn) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
 
-  document.getElementById('tab-' + tabId).classList.add('active');
-  if (btn) btn.classList.add('active');
+  const targetTab = document.getElementById('tab-' + tabId);
+  if (targetTab) targetTab.classList.add('active');
+
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    const navBtn = Array.from(document.querySelectorAll('.nav-links button, .nav-links a')).find(b => b.getAttribute('onclick')?.includes(`'${tabId}'`));
+    if (navBtn) navBtn.classList.add('active');
+  }
+
+  localStorage.setItem('acc_active_tab_v6', tabId);
 
   // Collapse the mobile menu after a jump.
   const nav = document.getElementById('navLinks');
@@ -519,10 +539,25 @@ function renderTOC() {
     const originalIdx = CHAPTERS.findIndex(item => item.filename === c.filename);
     const item = document.createElement('div');
     item.className = `toc-item ${originalIdx === currentChIdx ? 'active' : ''}`;
+    item.setAttribute('data-idx', String(originalIdx));
     item.onclick = () => openChapterIdx(originalIdx);
     const label = c.num === 999 ? 'Appendices' : `Ch ${c.num}`;
     item.innerText = `${label}: ${c.title.replace(/^(Chapter \d+: |Appendices: )/, '')}`;
     box.appendChild(item);
+  });
+}
+
+function updateTocActive(idx) {
+  const box = document.getElementById('tocBox');
+  if (!box) return;
+  const items = box.querySelectorAll('.toc-item');
+  items.forEach(item => {
+    const itemIdx = parseInt(item.getAttribute('data-idx'), 10);
+    const isActive = itemIdx === idx;
+    item.classList.toggle('active', isActive);
+    if (isActive) {
+      item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
   });
 }
 
@@ -652,7 +687,11 @@ function openChapterIdx(idx, searchTerm = '') {
   document.getElementById('readerFrame').src = c.filename;
   document.getElementById('readerModal').classList.add('open');
 
+  // Update TOC active highlight
+  updateTocActive(idx);
+
   localStorage.setItem('acc_last_v6', c.filename);
+  localStorage.setItem('acc_reader_open_v6', 'true');
   startReadingTracker(c.filename);
 }
 
@@ -684,6 +723,7 @@ function closeReader() {
   clearInterval(activeReadTimer);
   document.getElementById('readerModal').classList.remove('open');
   document.getElementById('readerFrame').src = 'about:blank';
+  localStorage.removeItem('acc_reader_open_v6');
   currentSearchTerm = '';
   currentReadingFilename = '';
 }

@@ -157,6 +157,7 @@
     gap: 6px;
     transition: transform 0.2s, box-shadow 0.2s;
     margin-left: 6px;
+    cursor: pointer;
   }
 
   .nav-cta:hover {
@@ -215,9 +216,9 @@
 
   /* ── MAIN CONTAINER ── */
   .container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 40px 24px 80px;
+    padding: 40px 24px 100px;
   }
 
   /* ── LIVE SEARCH TOOLBAR ── */
@@ -375,7 +376,7 @@
   /* ── PAPERS CARDS GRID INSIDE TIMELINE STAGE ── */
   .stage-papers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 540px), 1fr));
     gap: 22px;
   }
 
@@ -572,7 +573,7 @@
       <a href="index.html#formulas" class="nav-btn">Formula Vault</a>
       <a href="index.html#quiz" class="nav-btn">Practice</a>
       <a href="index.html#about" class="nav-btn">About</a>
-      <a href="index.html" class="nav-cta">Home →</a>
+      <a href="index.html" onclick="localStorage.setItem('acc_reader_open_v6','true');" class="nav-cta">Resume →</a>
     </nav>
   </div>
 </header>
@@ -591,7 +592,7 @@
   <div class="search-wrap">
     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <input type="text" class="search-input" id="syllabusSearch"
-           placeholder="Filter syllabus: IFRS 16, WACC, Audit Risk, PESTEL, Transfer Pricing, VAT, ABC costing…"
+           placeholder="Filter syllabus: IFRS 16, WACC, Audit Risk, PESTEL, Transfer Pricing, VAT, ABC costing, APV…"
            oninput="filterTimeline()">
   </div>
 
@@ -670,22 +671,22 @@ const SYLLABUS_TIMELINE = [
     topics: [
       {
         name: "Business Organisation & Stakeholders",
-        desc: "Organisation structures, stakeholders, corporate governance, organisational culture.",
+        desc: "Organisation types (sole trader, partnership, LLP, limited companies), corporate governance, agency theory, stakeholder analysis & matrix.",
         chapters: [{ file: "Finance_Career_Bible_Chapter1.html", label: "Ch 01: Finance Overview" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
       },
       {
-        name: "Macro & Micro Environment",
-        desc: "PESTEL analysis, Porter's Five Forces, competitive advantage, market structure.",
-        chapters: [{ file: "Finance_Career_Bible_Chapter27.html", label: "Ch 27: Strategy" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
+        name: "Macro & Micro Environmental Forces",
+        desc: "PESTEL analysis (Political, Economic, Social, Tech, Environmental, Legal), Porter's Five Forces, competitive advantage, market structure.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter27.html", label: "Ch 27: Business Strategy" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
       },
       {
-        name: "Ethics, Governance & Regulation",
-        desc: "IESBA ethical principles, public interest, anti-fraud controls, regulatory bodies.",
-        chapters: [{ file: "Finance_Career_Bible_Chapter13.html", label: "Ch 13: Profession" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
+        name: "Accounting Functions, Governance & Ethics",
+        desc: "Role of accounting in business, financial control, IESBA Code of Ethics (5 fundamental principles: Integrity, Objectivity, Competence, Confidentiality, Behavior).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter13.html", label: "Ch 13: ACCA Profession" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
       },
       {
-        name: "Digital Finance & Technology",
-        desc: "Cloud accounting, Big Data, FinTech ecosystems, cybersecurity, AI in finance.",
+        name: "Digital Finance, AI & Cybersecurity",
+        desc: "Cloud ERP systems, Big Data 4Vs, FinTech ecosystems, cybersecurity vulnerabilities, robotic process automation (RPA) in accounting.",
         chapters: [{ file: "Finance_Career_Bible_Chapter30.html", label: "Ch 30: Tech & AI" }, { file: "Finance_Career_Bible_Chapter31.html", label: "Ch 31: Data & Analytics" }]
       }
     ]
@@ -699,23 +700,23 @@ const SYLLABUS_TIMELINE = [
     topics: [
       {
         name: "Cost Classification & Behaviour",
-        desc: "Fixed vs. variable costs, High-Low method, step costs, cost centers and cost allocation.",
+        desc: "Fixed, variable, semi-variable, step costs, High-Low method, cost centers, profit centers, investment centers.",
         chapters: [{ file: "Finance_Career_Bible_Chapter5.html", label: "Ch 05: Cost Accounting" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       },
       {
         name: "Absorption vs. Marginal Costing",
-        desc: "Cost accumulation, reconciliation of absorption/marginal profit, Activity-Based Costing (ABC).",
+        desc: "Overhead absorption rates (OAR), under/over-absorption adjustments, profit reconciliation between absorption and marginal costing.",
         chapters: [{ file: "Finance_Career_Bible_Chapter5.html", label: "Ch 05: Cost Accounting" }, { file: "Finance_Career_Bible_Chapter6.html", label: "Ch 06: Decision Making" }]
       },
       {
-        name: "Budgeting & Forecasting",
-        desc: "Functional budgets, cash budgets, flexible budgeting, rolling forecasts.",
+        name: "Budgeting & Forecasting Models",
+        desc: "Functional budgets (sales, production, materials, labor), cash budgets, flexible budgets, time-series forecasting & index numbers.",
         chapters: [{ file: "Finance_Career_Bible_Chapter7.html", label: "Ch 07: Budgeting & FP&A" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       },
       {
         name: "Standard Costing & Variance Analysis",
-        desc: "Material price & usage, labor rate & efficiency, overhead expenditure & volume variances.",
-        chapters: [{ file: "Finance_Career_Bible_Chapter8.html", label: "Ch 08: Variances" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+        desc: "Material price & usage, labor rate, efficiency & idle time, variable & fixed overhead expenditure/volume variances.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter8.html", label: "Ch 08: Variance Analysis" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       }
     ]
   },
@@ -727,23 +728,23 @@ const SYLLABUS_TIMELINE = [
     format: "2h CBE · Double-Entry & IFRS Core",
     topics: [
       {
-        name: "Double-Entry & Trial Balance",
-        desc: "Debits/credits, ledger mechanics, journal entries, error corrections & suspense accounts.",
+        name: "Double-Entry Mechanics & Trial Balance",
+        desc: "Debits/credits, ledger accounts, source documents, bank reconciliation, petty cash, correction of errors & suspense accounts.",
         chapters: [{ file: "Finance_Career_Bible_Chapter2.html", label: "Ch 02: Accounting Mechanics" }, { file: "Finance_Career_Bible_Chapter3.html", label: "Ch 03: Financial Statements" }]
       },
       {
         name: "Core IFRS Asset Standards",
-        desc: "IAS 2 (Inventories), IAS 16 (PPE & Depreciation methods), IAS 38 (Intangibles).",
+        desc: "IAS 2 (Inventories - FIFO & AVCO), IAS 16 (PPE, depreciation, revaluation), IAS 38 (Research vs. Development), IAS 36 (Impairment).",
         chapters: [{ file: "Finance_Career_Bible_Chapter4.html", label: "Ch 04: Key Standards" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       },
       {
-        name: "Financial Statements (IAS 1 & 7)",
-        desc: "Statement of Profit or Loss, Balance Sheet, Statement of Cash Flows (Operating, Investing, Financing).",
+        name: "Preparation of Financial Statements",
+        desc: "IAS 1 (Statement of Profit or Loss & Balance Sheet), IAS 7 (Statement of Cash Flows - Direct & Indirect methods).",
         chapters: [{ file: "Finance_Career_Bible_Chapter3.html", label: "Ch 03: Financial Statements" }]
       },
       {
-        name: "Basic Consolidation",
-        desc: "Subsidiary accounting, goodwill calculation, non-controlling interest (NCI).",
+        name: "Basic Group Accounts & Consolidation",
+        desc: "Concept of control (IFRS 10), calculating goodwill, non-controlling interest (NCI), intra-group balances & unrealised profit.",
         chapters: [{ file: "Finance_Career_Bible_Chapter18.html", label: "Ch 18: Group Accounts" }]
       }
     ]
@@ -758,18 +759,18 @@ const SYLLABUS_TIMELINE = [
     format: "2h CBE · Contract, Company & Insolvency",
     topics: [
       {
-        name: "Legal Systems & Sources of Law",
-        desc: "Court structures, precedent, statutory interpretation, European/international law.",
+        name: "Legal Systems & Court Hierarchy",
+        desc: "Sources of law, statutory interpretation, judicial precedent, common law vs. equity, human rights legislation.",
         chapters: [{ file: "Finance_Career_Bible_Chapter13.html", label: "Ch 13: Profession" }]
       },
       {
         name: "Law of Obligations (Contract & Tort)",
-        desc: "Offer, acceptance, consideration, breach of contract, remedies, professional negligence.",
+        desc: "Offer, acceptance, consideration, intention, misrepresentation, breach of contract, remedies, tort of negligence & professional advice.",
         chapters: [{ file: "Finance_Career_Bible_Chapter13.html", label: "Ch 13: Legal Framework" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
       },
       {
-        name: "Company Formation & Governance",
-        desc: "Articles of association, share capital, directors' duties, insider dealing, insolvency proceedings.",
+        name: "Company Formation, Management & Insolvency",
+        desc: "Promoters, articles of association, share capital rules, directors' statutory duties, fraudulent/wrongful trading, administration & liquidation.",
         chapters: [{ file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
       }
     ]
@@ -782,18 +783,18 @@ const SYLLABUS_TIMELINE = [
     format: "3h CBE · Advanced Costing & Decision Making",
     topics: [
       {
-        name: "Specialist Cost Management",
-        desc: "Activity-Based Costing (ABC), Target Costing, Life-Cycle Costing, Throughput Accounting.",
+        name: "Specialist Cost Management Techniques",
+        desc: "Activity-Based Costing (ABC cost drivers & cost pools), Target Costing (cost gap), Life-Cycle Costing, Throughput Accounting (TA ratio).",
         chapters: [{ file: "Finance_Career_Bible_Chapter5.html", label: "Ch 05: Costing" }, { file: "Finance_Career_Bible_Chapter6.html", label: "Ch 06: Decision Making" }]
       },
       {
-        name: "Decision-Making Techniques",
-        desc: "CVP analysis, limiting factors, make vs. buy, shutdown analysis, pricing strategies.",
+        name: "Decision-Making & Limiting Factors",
+        desc: "Multi-product CVP analysis, limiting factors & linear programming, make-or-buy, shutdown decisions, price elasticity & pricing strategies.",
         chapters: [{ file: "Finance_Career_Bible_Chapter6.html", label: "Ch 06: Decision Making" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       },
       {
-        name: "Performance Measurement & Control",
-        desc: "Balanced Scorecard, transfer pricing methods, divisional ROI vs. Residual Income (RI).",
+        name: "Divisional Performance & Transfer Pricing",
+        desc: "Return on Investment (ROI), Residual Income (RI), Economic Value Added (EVA), cost-plus, market-based & dual transfer pricing.",
         chapters: [{ file: "Finance_Career_Bible_Chapter7.html", label: "Ch 07: FP&A" }, { file: "Finance_Career_Bible_Chapter27.html", label: "Ch 27: Strategy" }]
       }
     ]
@@ -806,18 +807,18 @@ const SYLLABUS_TIMELINE = [
     format: "3h CBE · Direct, Corporate & Indirect Tax",
     topics: [
       {
-        name: "Individual Income Tax",
-        desc: "Employment income, trading income, property income, allowances & progressive rate bands.",
+        name: "Individual Income Tax & National Insurance",
+        desc: "Employment income, benefits in kind, property income, trading income, personal allowances, progressive tax bands.",
         chapters: [{ file: "Finance_Career_Bible_Chapter9.html", label: "Ch 09: Tax Principles" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       },
       {
-        name: "Corporation Tax & Allowances",
-        desc: "Adjusted trading profit, capital allowances, loss reliefs, group relief rules.",
+        name: "Corporation Tax & Capital Allowances",
+        desc: "Adjusted trading profit, Annual Investment Allowance (AIA), Writing Down Allowance (WDA), loss reliefs (carry back, carry forward, group relief).",
         chapters: [{ file: "Finance_Career_Bible_Chapter9.html", label: "Ch 09: Tax Principles" }, { file: "Finance_Career_Bible_Chapter10.html", label: "Ch 10: Tax Planning" }]
       },
       {
-        name: "Capital Gains Tax & Indirect Taxes",
-        desc: "Asset disposals, reliefs (BADR, rollover), VAT/GST schemes and compliance.",
+        name: "Capital Gains Tax & Indirect Taxes (VAT/GST)",
+        desc: "Chargeable gains, exempt assets, Business Asset Disposal Relief (BADR), rollover relief, VAT registration, standard vs. zero-rated supplies.",
         chapters: [{ file: "Finance_Career_Bible_Chapter10.html", label: "Ch 10: Tax Planning" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       }
     ]
@@ -830,18 +831,18 @@ const SYLLABUS_TIMELINE = [
     format: "3h CBE · Advanced IFRS & Group Accounts",
     topics: [
       {
-        name: "Advanced IFRS Standards",
-        desc: "IAS 16, IAS 36 (Impairment), IAS 38, IAS 37 (Provisions), IAS 12 (Taxes), IFRS 15 (Revenue), IFRS 16 (Leases).",
+        name: "Advanced IFRS Standards & Measurement",
+        desc: "IAS 16 (PPE), IAS 20 (Grants), IAS 23 (Borrowing costs), IAS 36 (Impairment), IAS 37 (Provisions), IAS 38 (Intangibles), IAS 40 (Investment Property), IFRS 15 (5-step revenue), IFRS 16 (Leases).",
         chapters: [{ file: "Finance_Career_Bible_Chapter4.html", label: "Ch 04: Key Standards" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       },
       {
-        name: "Group Financial Statements",
-        desc: "Consolidated P&L, Consolidated Balance Sheet, fair value adjustments, goodwill, NCI, associates (IAS 28).",
+        name: "Group Financial Statements Consolidation",
+        desc: "Consolidated P&L, Consolidated Balance Sheet, fair value adjustments, goodwill, NCI at proportionate / fair value, associates under IAS 28.",
         chapters: [{ file: "Finance_Career_Bible_Chapter18.html", label: "Ch 18: Group Accounts" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       },
       {
-        name: "Financial Statement Analysis",
-        desc: "Profitability, liquidity, gearing, working capital ratios, cash flow interpretation.",
+        name: "Financial Statement Analysis & Interpretation",
+        desc: "Profitability (ROCE, gross margin, net margin), liquidity (current, quick), efficiency (inventory/receivable/payable days), gearing & interest cover.",
         chapters: [{ file: "Finance_Career_Bible_Chapter19.html", label: "Ch 19: Financial Analysis" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       }
     ]
@@ -854,18 +855,18 @@ const SYLLABUS_TIMELINE = [
     format: "3h CBE · Risk Assessment & Evidence",
     topics: [
       {
-        name: "Audit Framework & Ethics",
-        desc: "External audit purpose, ISA regulatory framework, IESBA Code of Ethics (5 fundamental principles).",
+        name: "Audit Framework, Regulation & Ethics",
+        desc: "External audit purpose, ISA regulatory framework, corporate governance requirements, IESBA Code of Ethics (5 fundamental principles & threats).",
         chapters: [{ file: "Finance_Career_Bible_Chapter11.html", label: "Ch 11: Audit Foundations" }, { file: "Finance_Career_Bible_Chapter12.html", label: "Ch 12: Audit Execution" }]
       },
       {
-        name: "Audit Planning, Risk & Controls",
-        desc: "Audit risk model (Inherent, Control, Detection), materiality calculations, testing sales/purchases controls.",
+        name: "Planning, Audit Risk & Internal Controls",
+        desc: "Audit Risk = Inherent Risk × Control Risk × Detection Risk; materiality calculations, internal control components (COSO), test of controls.",
         chapters: [{ file: "Finance_Career_Bible_Chapter24.html", label: "Ch 24: Internal Controls" }, { file: "Finance_Career_Bible_Chapter25.html", label: "Ch 25: Audit Evidence" }]
       },
       {
-        name: "Substantive Procedures & Reporting",
-        desc: "Substantive testing across balance sheet cycles, audit sampling, unmodified vs. modified opinions.",
+        name: "Substantive Procedures & Audit Reporting",
+        desc: "Substantive procedures across key cycles (sales, purchases, payroll, bank, inventory count), ISA 700/705/706 audit opinions (unmodified vs. qualified, adverse, disclaimer).",
         chapters: [{ file: "Finance_Career_Bible_Chapter25.html", label: "Ch 25: Audit Evidence" }, { file: "Finance_Career_Bible_Chapter26.html", label: "Ch 26: Risk & Reporting" }]
       }
     ]
@@ -879,22 +880,22 @@ const SYLLABUS_TIMELINE = [
     topics: [
       {
         name: "Working Capital Management",
-        desc: "Cash operating cycle, EOQ, Miller-Orr / Baumol cash models, trade credit management.",
+        desc: "Cash operating cycle, Economic Order Quantity (EOQ), Miller-Orr and Baumol cash management models, factoring & invoice discounting.",
         chapters: [{ file: "Finance_Career_Bible_Chapter14.html", label: "Ch 14: Working Capital" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       },
       {
-        name: "Investment Appraisal (DCF)",
-        desc: "NPV, IRR, Payback, Accounting Rate of Return (ARR), inflation, taxation & capital rationing.",
+        name: "Investment Appraisal (DCF & Risk)",
+        desc: "Net Present Value (NPV), Internal Rate of Return (IRR), Payback, Accounting Rate of Return (ARR), capital rationing & replacement cycles.",
         chapters: [{ file: "Finance_Career_Bible_Chapter15.html", label: "Ch 15: Appraisal" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
       },
       {
-        name: "Cost of Capital & Valuation",
-        desc: "Cost of equity (CAPM, Dividend Growth Model), WACC, gearing theories, PE and asset valuation.",
+        name: "Cost of Capital, Capital Structure & Valuation",
+        desc: "Cost of equity (CAPM & Dividend Growth Model), cost of debt, WACC, Modigliani-Miller capital structure theorems, PE and asset valuation.",
         chapters: [{ file: "Finance_Career_Bible_Chapter16.html", label: "Ch 16: Cost of Capital" }, { file: "Finance_Career_Bible_Chapter20.html", label: "Ch 20: Business Valuation" }]
       },
       {
-        name: "Risk Management (FX & Rates)",
-        desc: "Currency forwards, money market hedges, interest rate hedging fundamentals.",
+        name: "Risk Management (Currency & Interest Rates)",
+        desc: "Foreign exchange risk (transaction, translation, economic), forward contracts, money market hedges, interest rate forward rate agreements (FRAs).",
         chapters: [{ file: "Finance_Career_Bible_Chapter22.html", label: "Ch 22: FX Risk" }, { file: "Finance_Career_Bible_Chapter23.html", label: "Ch 23: Derivatives" }]
       }
     ]
@@ -909,23 +910,23 @@ const SYLLABUS_TIMELINE = [
     format: "4h Integrated Case Study",
     topics: [
       {
-        name: "Leadership, Governance & Ethics",
-        desc: "Board composition, agency theory, stakeholder management, code of conduct, public interest.",
+        name: "Leadership, Governance & Professional Ethics",
+        desc: "Board structures, leadership theories, public interest duty, agency theory, stakeholder management (Mendelow's Matrix), corporate code of conduct.",
         chapters: [{ file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }, { file: "Finance_Career_Bible_Chapter35.html", label: "Ch 35: Professionalism" }]
       },
       {
-        name: "Strategic Analysis & Choice",
-        desc: "PESTEL, Porter's, Resource-Based View (VRIO), Ansoff Matrix, strategic options, change management.",
+        name: "Strategic Analysis & Commercial Choice",
+        desc: "PESTEL, Porter's Five Forces, Value Chain analysis, Resource-Based View (VRIO), Bowman's Strategy Clock, Ansoff Matrix, acquisition & alliance strategy.",
         chapters: [{ file: "Finance_Career_Bible_Chapter27.html", label: "Ch 27: Strategy" }, { file: "Finance_Career_Bible_Chapter38.html", label: "Ch 38: Career Mastery" }]
       },
       {
-        name: "Risk Management & Internal Audit",
-        desc: "Enterprise risk management frameworks (COSO), risk response strategies (TARA), audit committees.",
+        name: "Enterprise Risk Management & Control",
+        desc: "COSO enterprise risk management framework, TARA risk response model (Transfer, Avoid, Reduce, Accept), audit committee oversight & whistleblowing.",
         chapters: [{ file: "Finance_Career_Bible_Chapter26.html", label: "Ch 26: Risk & Reporting" }]
       },
       {
-        name: "Technology, Data & Sustainability",
-        desc: "Cloud architecture, Big Data governance, FinTech disruption, ESG integration.",
+        name: "Digital Transformation, Data & ESG",
+        desc: "Cloud adoption, Big Data strategy, artificial intelligence governance, cybersecurity defenses, ESG stakeholder reporting & green finance.",
         chapters: [{ file: "Finance_Career_Bible_Chapter30.html", label: "Ch 30: Tech & AI" }, { file: "Finance_Career_Bible_Chapter36.html", label: "Ch 36: ESG Reporting" }]
       }
     ]
@@ -938,18 +939,23 @@ const SYLLABUS_TIMELINE = [
     format: "3h 15m · Advisory & Stakeholder",
     topics: [
       {
-        name: "Advanced IFRS Standards",
-        desc: "IFRS 2 (Share-based payments), IFRS 9 (Financial assets/hedging), IFRS 15, IFRS 16, IAS 19 (Pensions).",
-        chapters: [{ file: "Finance_Career_Bible_Chapter4.html", label: "Ch 04: Standards" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+        name: "Fundamental Ethical Framework & Judgement",
+        desc: "Ethical pressure in financial reporting, corporate governance disclosures, professional skepticism in accounting judgments.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter4.html", label: "Ch 04: Standards" }, { file: "Finance_Career_Bible_Chapter35.html", label: "Ch 35: Professionalism" }]
       },
       {
-        name: "Complex Group Reporting",
-        desc: "Step acquisitions, foreign subsidiaries (IAS 21), partial disposals, joint arrangements (IFRS 11).",
+        name: "Complex Group Accounting & Reconstructions",
+        desc: "Step acquisitions, foreign currency subsidiaries (IAS 21), partial disposals with loss of control, joint arrangements (IFRS 11), structured entities.",
         chapters: [{ file: "Finance_Career_Bible_Chapter18.html", label: "Ch 18: Group Accounts" }, { file: "Finance_Career_Bible_Chapter19.html", label: "Ch 19: Financial Analysis" }]
       },
       {
-        name: "Sustainability & Ethical Impact",
-        desc: "ISSB (IFRS S1/S2) sustainability disclosures, ethical pressure on accounting treatment.",
+        name: "Advanced IFRS Standards in Practice",
+        desc: "IFRS 2 (Share-based payment), IFRS 9 (Impairment & hedge accounting), IFRS 13 (Fair value hierarchy), IFRS 15, IFRS 16, IAS 19 (Employee benefits).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter4.html", label: "Ch 04: Standards" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Sustainability Disclosures (ISSB S1/S2)",
+        desc: "IFRS Sustainability Disclosure Standards (IFRS S1 & S2), climate-related financial disclosures, CSRD impact, stakeholder value reporting.",
         chapters: [{ file: "Finance_Career_Bible_Chapter36.html", label: "Ch 36: ESG Reporting" }]
       }
     ]
@@ -964,13 +970,18 @@ const SYLLABUS_TIMELINE = [
     format: "3h 15m Specialist Elective",
     topics: [
       {
-        name: "Advanced Valuation & Restructuring",
-        desc: "Advanced Adjusted Present Value (APV), M&A valuation, financing strategies, corporate restructuring.",
-        chapters: [{ file: "Finance_Career_Bible_Chapter15.html", label: "Ch 15: Appraisal" }, { file: "Finance_Career_Bible_Chapter20.html", label: "Ch 20: Valuation" }, { file: "Finance_Career_Bible_Chapter21.html", label: "Ch 21: M&A Strategy" }]
+        name: "Advanced Investment Appraisal & APV",
+        desc: "Adjusted Present Value (APV), international DCF with tax and remittance restrictions, modified internal rate of return (MIRR), real option valuation.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter15.html", label: "Ch 15: Appraisal" }, { file: "Finance_Career_Bible_Chapter20.html", label: "Ch 20: Valuation" }]
       },
       {
-        name: "Advanced Hedging & Treasury",
-        desc: "Currency options, interest rate swaps, collar strategies, international cash and treasury management.",
+        name: "Mergers, Acquisitions & Corporate Restructuring",
+        desc: "Valuation of target companies (Free Cash Flow to Firm/Equity), synergy valuation, bid tactics, defense mechanisms, leveraged buyouts (LBOs), demergers.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter21.html", label: "Ch 21: M&A Strategy" }]
+      },
+      {
+        name: "Advanced Treasury & Derivative Hedging",
+        desc: "Currency options, futures, forward rate agreements (FRAs), interest rate swaps, caps, floors and collars for large-scale enterprise risk.",
         chapters: [{ file: "Finance_Career_Bible_Chapter22.html", label: "Ch 22: FX Risk" }, { file: "Finance_Career_Bible_Chapter23.html", label: "Ch 23: Derivatives" }]
       }
     ]
@@ -983,14 +994,19 @@ const SYLLABUS_TIMELINE = [
     format: "3h 15m Specialist Elective",
     topics: [
       {
-        name: "Strategic Performance Frameworks",
-        desc: "Economic Value Added (EVA), Performance Prism, Value-Based Management, corporate scorecards.",
+        name: "Strategic Performance Measurement Frameworks",
+        desc: "Economic Value Added (EVA), Market Value Added (MVA), Performance Prism, Fitzgerald & Moon Building Block model, Balanced Scorecard.",
         chapters: [{ file: "Finance_Career_Bible_Chapter5.html", label: "Ch 05: Costing" }, { file: "Finance_Career_Bible_Chapter27.html", label: "Ch 27: Strategy" }]
       },
       {
-        name: "Modern Operational Excellence",
-        desc: "Just-In-Time (JIT), Kaizen costing, Total Quality Management (TQM), multinational transfer pricing.",
+        name: "Operational Excellence & Quality Systems",
+        desc: "Just-In-Time (JIT), Total Quality Management (TQM), Kaizen costing, Six Sigma, Value Chain analysis, lean operations in modern enterprise.",
         chapters: [{ file: "Finance_Career_Bible_Chapter6.html", label: "Ch 06: Decision Making" }, { file: "Finance_Career_Bible_Chapter7.html", label: "Ch 07: FP&A" }]
+      },
+      {
+        name: "Multinational Transfer Pricing & Control",
+        desc: "Transfer pricing across international jurisdictions, tax optimization vs. local divisional motivation, behavioral consequences of budgeting.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter7.html", label: "Ch 07: FP&A" }, { file: "Finance_Career_Bible_Chapter27.html", label: "Ch 27: Strategy" }]
       }
     ]
   },
@@ -1002,14 +1018,19 @@ const SYLLABUS_TIMELINE = [
     format: "3h 15m Specialist Elective",
     topics: [
       {
-        name: "International & Group Tax Structuring",
-        desc: "Advanced cross-border tax planning, transfer pricing rules, permanent establishment, group tax relief.",
+        name: "Cross-Border & International Tax Planning",
+        desc: "Double tax relief treaties, permanent establishment rules, controlled foreign companies (CFC), transfer pricing compliance and thin capitalisation.",
         chapters: [{ file: "Finance_Career_Bible_Chapter9.html", label: "Ch 09: Tax Principles" }, { file: "Finance_Career_Bible_Chapter10.html", label: "Ch 10: Tax Planning" }]
       },
       {
-        name: "Corporate Reorganisation & Wealth",
-        desc: "Demergers, share exchanges, inheritance tax planning, trust structures, business asset disposal.",
+        name: "Corporate Reorganisation & Group Restructuring",
+        desc: "Demergers, share-for-share exchanges, reconstructed groups, utilization of pre-entry and trading capital losses, consortium relief.",
         chapters: [{ file: "Finance_Career_Bible_Chapter10.html", label: "Ch 10: Tax Planning" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
+      },
+      {
+        name: "High Net Worth Wealth & Succession Planning",
+        desc: "Trust taxation (discretionary vs. interest-in-possession), inheritance tax planning, business property relief, agricultural property relief.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter10.html", label: "Ch 10: Tax Planning" }]
       }
     ]
   },
@@ -1021,14 +1042,19 @@ const SYLLABUS_TIMELINE = [
     format: "3h 15m Specialist Elective",
     topics: [
       {
-        name: "Group Audits & Quality Management",
-        desc: "Transnational audits, ISQM 1/2 quality management, forensic investigations, anti-money laundering.",
+        name: "Transnational Audits & Quality Management",
+        desc: "ISQM 1 & 2 firm quality management, auditing group financial statements across global jurisdictions, joint audits, component auditor reliance.",
         chapters: [{ file: "Finance_Career_Bible_Chapter11.html", label: "Ch 11: Audit" }, { file: "Finance_Career_Bible_Chapter25.html", label: "Ch 25: Evidence" }]
       },
       {
-        name: "Non-Audit Assurance & ESG Auditing",
-        desc: "Due diligence reporting, prospective financial information reviews, ESG sustainability assurance.",
-        chapters: [{ file: "Finance_Career_Bible_Chapter26.html", label: "Ch 26: Risk" }, { file: "Finance_Career_Bible_Chapter36.html", label: "Ch 36: ESG Assurance" }]
+        name: "Forensic Investigations, Fraud & Money Laundering",
+        desc: "Forensic audit techniques, digital evidence preservation, fraud risk identification, anti-money laundering (AML) reporting obligations.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter24.html", label: "Ch 24: Controls" }, { file: "Finance_Career_Bible_Chapter26.html", label: "Ch 26: Risk" }]
+      },
+      {
+        name: "Non-Audit Assurance & ESG Sustainability Audits",
+        desc: "ISAE 3000/3410 assurance on greenhouse gas statements, ESG reporting assurance, due diligence reviews, prospective financial information (PFI).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter26.html", label: "Ch 26: Risk" }, { file: "Finance_Career_Bible_Chapter36.html", label: "Ch 36: ESG" }]
       }
     ]
   }

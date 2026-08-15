@@ -5,6 +5,7 @@
    ========================================================================== */
 
 const CHAPTERS = [
+  { num: 1, filename: "Finance_Career_Bible_Chapter1.html", title: "Chapter 1: Finance Industry Overview", pillar: "financial", cat: "Industry Overview", time: "15 min" },
   { num: 2, filename: "Finance_Career_Bible_Chapter2.html", title: "Chapter 2: Accounting From Zero", pillar: "financial", cat: "Financial Accounting", time: "20 min" },
   { num: 3, filename: "Finance_Career_Bible_Chapter3.html", title: "Chapter 3: Financial Statements", pillar: "financial", cat: "Financial Accounting", time: "22 min" },
   { num: 4, filename: "Finance_Career_Bible_Chapter4.html", title: "Chapter 4: IFRS Fundamentals", pillar: "financial", cat: "Financial Reporting", time: "18 min" },
@@ -51,7 +52,6 @@ const CHAPTERS = [
   { num: 47, filename: "Finance_Career_Bible_Chapter47.html", title: "Chapter 47: Future of Finance (2030–2050)", pillar: "skills-career", cat: "Future Trends", time: "20 min" },
   { num: 48, filename: "Finance_Career_Bible_Chapter48.html", title: "Chapter 48: Lifelong Learning Roadmap", pillar: "skills-career", cat: "Career Growth", time: "16 min" },
 
-  { num: 1, filename: "Finance_Career_Bible_Chapter1.html", title: "Chapter 1: Finance Industry Overview", pillar: "exam-tools", cat: "Overview", time: "15 min" },
   { num: 13, filename: "Finance_Career_Bible_Chapter13.html", title: "Chapter 13: ACCA Qualification Structure", pillar: "exam-tools", cat: "Exam Guidance", time: "15 min" },
   { num: 14, filename: "Finance_Career_Bible_Chapter14.html", title: "Chapter 14: Skills Level Papers", pillar: "exam-tools", cat: "Exam Guidance", time: "15 min" },
   { num: 15, filename: "Finance_Career_Bible_Chapter15.html", title: "Chapter 15: Strategic Professional Papers", pillar: "exam-tools", cat: "Exam Guidance", time: "16 min" },
@@ -137,6 +137,37 @@ function toggleMenu() {
   if (nav) nav.classList.toggle('open');
 }
 
+function highlightRoadmapChapters(nums, targetPillar) {
+  switchTab('pillars');
+  const sec = document.getElementById('sec-' + targetPillar);
+  if (sec && sec.classList.contains('collapsed')) {
+    togglePillarSection('sec-' + targetPillar);
+  }
+
+  setTimeout(() => {
+    const firstCard = document.querySelector(`.chapter-card[data-ch-num="${nums[0]}"]`);
+    if (firstCard) {
+      firstCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (sec) {
+      sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.querySelectorAll('.chapter-card').forEach(card => {
+      card.classList.remove('roadmap-pulse-glow');
+      const cardNum = parseInt(card.getAttribute('data-ch-num'), 10);
+      if (nums.includes(cardNum)) {
+        card.classList.add('roadmap-pulse-glow');
+      }
+    });
+
+    setTimeout(() => {
+      document.querySelectorAll('.chapter-card.roadmap-pulse-glow').forEach(c => {
+        c.classList.remove('roadmap-pulse-glow');
+      });
+    }, 3500);
+  }, 150);
+}
+
 function renderPillars() {
   const pillars = ['financial', 'tax-audit', 'finance-strategy', 'skills-career', 'exam-tools'];
 
@@ -146,15 +177,20 @@ function renderPillars() {
     grid.innerHTML = '';
 
     const list = CHAPTERS.filter(c => c.pillar === p);
+    list.sort((a, b) => a.num - b.num);
 
     list.forEach(c => {
       const card = document.createElement('div');
       card.className = `chapter-card ${completedSet.has(c.filename) ? 'completed' : ''}`;
+      card.setAttribute('data-ch-num', String(c.num));
+      card.id = `ch-card-${c.num}`;
       card.onclick = () => openChapterFile(c.filename);
+
+      const badgeText = c.num === 999 ? 'APPENDICES' : 'CH ' + (c.num < 10 ? '0' + c.num : c.num);
 
       card.innerHTML = `
         <div class="card-top">
-          <span class="ch-badge">${c.num === 999 ? 'APP' : 'CH ' + (c.num < 10 ? '0' + c.num : c.num)}</span>
+          <span class="ch-badge">${badgeText}</span>
           <span class="ch-time">⏱️ ${c.time}</span>
         </div>
         <h3 class="ch-title">${c.title}</h3>
@@ -340,11 +376,15 @@ function renderTOC() {
   if (!box) return;
   box.innerHTML = '';
 
-  CHAPTERS.forEach((c, idx) => {
+  const sorted = [...CHAPTERS].sort((a, b) => a.num - b.num);
+
+  sorted.forEach(c => {
+    const originalIdx = CHAPTERS.findIndex(item => item.filename === c.filename);
     const item = document.createElement('div');
-    item.className = `toc-item ${idx === currentChIdx ? 'active' : ''}`;
-    item.onclick = () => openChapterIdx(idx);
-    item.innerText = `Ch ${c.num}: ${c.title.replace(/Chapter \d+: /, '')}`;
+    item.className = `toc-item ${originalIdx === currentChIdx ? 'active' : ''}`;
+    item.onclick = () => openChapterIdx(originalIdx);
+    const label = c.num === 999 ? 'Appendices' : `Ch ${c.num}`;
+    item.innerText = `${label}: ${c.title.replace(/^(Chapter \d+: |Appendices: )/, '')}`;
     box.appendChild(item);
   });
 }

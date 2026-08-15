@@ -1141,6 +1141,23 @@ button { font: inherit; color: inherit; }
   font-weight: 700;
 }
 
+/* Roadmap Stage Jump Glowing Highlight */
+.chapter-card.roadmap-pulse-glow {
+  border-color: var(--accent2) !important;
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.85), inset 0 0 15px rgba(16, 185, 129, 0.25) !important;
+  transform: translateY(-5px) scale(1.02) !important;
+  animation: roadmapGlowPulse 1.2s infinite alternate !important;
+  z-index: 10;
+}
+@keyframes roadmapGlowPulse {
+  0% {
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.4), inset 0 0 5px rgba(16, 185, 129, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 35px rgba(16, 185, 129, 1), inset 0 0 20px rgba(16, 185, 129, 0.4);
+  }
+}
+
 /* ── EXPANDED INTERACTIVE ROADMAP ─────────────────────────────────────── */
 
 .roadmap-wrap { position: relative; margin-top: 48px; }

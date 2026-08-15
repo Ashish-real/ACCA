@@ -537,17 +537,6 @@ function fallbackCopy(txt) {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function initBookCTA() {
-  const btn = document.getElementById('btnBookRead');
-  if (btn) {
-    const handleRead = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      launchAnimatedReader('Finance_Career_Bible_Chapter2.html');
-    };
-    btn.onclick = handleRead;
-    btn.onpointerdown = handleRead;
-  }
-
   document.querySelectorAll('.toc-row').forEach(row => {
     const handleRow = (e) => {
       e.preventDefault();

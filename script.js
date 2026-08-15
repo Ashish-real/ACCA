@@ -89,6 +89,16 @@ function init() {
   initBookCTA();
   selectRoadmapStage(0);
 
+  // Hash-based direct tab routing (e.g., index.html#formulas)
+  const hash = window.location.hash.replace('#', '').toLowerCase();
+  if (hash) {
+    if (hash === 'roadmap' || hash === 'roadmap-tab') switchTab('roadmap-tab');
+    else if (hash === 'formulas') switchTab('formulas');
+    else if (hash === 'quiz' || hash === 'practice') switchTab('quiz');
+    else if (hash === 'about') switchTab('about');
+    else if (hash === 'pillars' || hash === 'chapters') switchTab('pillars');
+  }
+
   document.addEventListener('keydown', e => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
       e.preventDefault();

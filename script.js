@@ -110,6 +110,12 @@ function init() {
     openChapterFile(lastChapter);
   }
 
+  // Restore search modal if navigated from search button
+  if (localStorage.getItem('acc_open_search_v6') === 'true') {
+    localStorage.removeItem('acc_open_search_v6');
+    setTimeout(openGlobalSearchModal, 100);
+  }
+
   document.addEventListener('keydown', e => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
       e.preventDefault();

@@ -4,169 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ACCA 13-Paper Syllabus Timeline | Finance Career Bible</title>
+<link rel="stylesheet" href="style.css">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
-
-  :root {
-    --bg: #0a0a0f;
-    --surface: #13131a;
-    --card: #1a1a24;
-    --border: #2a2a3a;
-    --accent: #6c63ff;
-    --accent2: #00d4aa;
-    --accent3: #ff6b6b;
-    --accent4: #ffd93d;
-    --accent5: #e879f9;
-    --text: #e8e8f0;
-    --muted: #7a7a9a;
-    --mono: 'Space Mono', monospace;
-    --sans: 'Space Grotesk', sans-serif;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    word-break: normal;
-    overflow-wrap: normal;
-    hyphens: none;
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    line-height: 1.65;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  /* ── SITE HEADER (IDENTICAL TO MAIN PORTAL) ── */
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(10, 10, 15, 0.94);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .header-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 24px;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: var(--text);
-  }
-
-  .brand-mark {
-    font-family: var(--mono);
-    font-weight: 700;
-    font-size: 14px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: #0a0a0f;
-    padding: 6px 10px;
-    border-radius: 8px;
-    letter-spacing: 1px;
-  }
-
-  .brand-name {
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .brand-name small {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--accent2);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .menu-toggle {
-    display: none;
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-size: 18px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .nav-btn {
-    font-family: var(--sans);
-    font-size: 13.5px;
-    font-weight: 500;
-    color: var(--muted);
-    text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 8px;
-    transition: all 0.2s;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .nav-btn:hover {
-    color: var(--text);
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  .nav-btn.active {
-    color: var(--accent2);
-    background: rgba(0, 212, 170, 0.1);
-    border: 1px solid rgba(0, 212, 170, 0.25);
-  }
-
-  .nav-cta {
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--accent2), #38bdf8);
-    color: #080a0f;
-    padding: 8px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-left: 6px;
-    cursor: pointer;
-  }
-
-  .nav-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 212, 170, 0.3);
-  }
-
-  /* ── HERO BANNER ── */
-  .hero {
+  /* ── CUSTOM TIMELINE ENHANCEMENTS LAYERED ON STYLE.CSS ── */
+  .timeline-hero {
     padding: 64px 24px 44px;
     text-align: center;
     position: relative;
@@ -175,7 +16,7 @@
     background: radial-gradient(circle at 50% -10%, rgba(0, 212, 170, 0.12) 0%, transparent 65%);
   }
 
-  .hero-tag {
+  .timeline-hero-tag {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -191,22 +32,22 @@
     background: rgba(0, 212, 170, 0.06);
   }
 
-  .hero h1 {
-    font-size: clamp(32px, 5.5vw, 56px);
+  .timeline-hero h1 {
+    font-size: clamp(32px, 5.5vw, 54px);
     font-weight: 700;
     line-height: 1.12;
     margin-bottom: 16px;
     letter-spacing: -0.02em;
   }
 
-  .hero h1 span {
+  .timeline-hero h1 span {
     background: linear-gradient(135deg, var(--accent2), #38bdf8, var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .hero-sub {
+  .timeline-hero-sub {
     color: var(--muted);
     font-size: 15.5px;
     max-width: 740px;
@@ -214,14 +55,12 @@
     line-height: 1.7;
   }
 
-  /* ── MAIN CONTAINER ── */
-  .container {
+  .timeline-container-wrap {
     max-width: 1240px;
     margin: 0 auto;
     padding: 40px 24px 100px;
   }
 
-  /* ── LIVE SEARCH TOOLBAR ── */
   .search-wrap {
     max-width: 720px;
     margin: 0 auto 36px;
@@ -239,7 +78,7 @@
     pointer-events: none;
   }
 
-  .search-input {
+  .timeline-search-input {
     width: 100%;
     background: var(--surface);
     border: 1px solid var(--border);
@@ -253,12 +92,11 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
 
-  .search-input:focus {
+  .timeline-search-input:focus {
     border-color: var(--accent2);
     box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.18);
   }
 
-  /* ── EXAM BEST PRACTICE CALLOUT ── */
   .callout-box {
     background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(0, 212, 170, 0.06));
     border: 1px solid rgba(0, 212, 170, 0.3);
@@ -307,7 +145,6 @@
     line-height: 1.75;
   }
 
-  /* ── TIMELINE SPARK ARCHITECTURE ── */
   .timeline-container {
     position: relative;
     padding-left: 48px;
@@ -373,7 +210,6 @@
     color: var(--text);
   }
 
-  /* ── PAPERS CARDS GRID INSIDE TIMELINE STAGE ── */
   .stage-papers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 540px), 1fr));
@@ -512,30 +348,7 @@
     color: #0a0a0f;
   }
 
-  /* ── MOBILE RESPONSIVENESS ── */
   @media (max-width: 768px) {
-    .header-inner {
-      height: 60px;
-      padding: 0 16px;
-    }
-    .menu-toggle {
-      display: block;
-    }
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      flex-direction: column;
-      padding: 16px 20px;
-      gap: 10px;
-    }
-    .nav-links.open {
-      display: flex;
-    }
     .timeline-container {
       padding-left: 36px;
     }
@@ -556,10 +369,10 @@
 </head>
 <body>
 
-<!-- SITE HEADER -->
+<!-- SITE HEADER (IDENTICAL PIXEL-PERFECT CLONE OF MAIN PORTAL) -->
 <header class="header">
   <div class="header-inner">
-    <a class="brand" href="index.html">
+    <a class="brand" href="index.html#pillars">
       <span class="brand-mark">FCB</span>
       <span class="brand-name">Finance Career Bible<small>ACCA · BIG 4</small></span>
     </a>
@@ -567,31 +380,34 @@
     <button class="menu-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">☰</button>
 
     <nav class="nav-links" id="navLinks" aria-label="Primary">
-      <a href="index.html#pillars" class="nav-btn">Chapters</a>
-      <a href="index.html#roadmap" class="nav-btn">Roadmap</a>
-      <a href="ACCA_Syllabus_Mapping.html" class="nav-btn active">Syllabus Map</a>
-      <a href="index.html#formulas" class="nav-btn">Formula Vault</a>
-      <a href="index.html#quiz" class="nav-btn">Practice</a>
-      <a href="index.html#about" class="nav-btn">About</a>
-      <a href="index.html" onclick="localStorage.setItem('acc_reader_open_v6','true');" class="nav-cta">Resume →</a>
+      <a href="index.html#pillars" class="nav-btn" style="text-decoration:none;">Chapters</a>
+      <a href="index.html#roadmap" class="nav-btn" style="text-decoration:none;">Roadmap</a>
+      <a href="ACCA_Syllabus_Mapping.html" class="nav-btn active" style="text-decoration:none;">Syllabus Map</a>
+      <a href="index.html#formulas" class="nav-btn" style="text-decoration:none;">Formula Vault</a>
+      <a href="index.html#quiz" class="nav-btn" style="text-decoration:none;">Practice</a>
+      <a href="index.html#about" class="nav-btn" style="text-decoration:none;">About</a>
+      <a href="index.html" onclick="localStorage.setItem('acc_open_search_v6','true');" class="nav-search" style="text-decoration:none;">
+        <span>Search</span><kbd>Ctrl K</kbd>
+      </a>
+      <a href="index.html" onclick="localStorage.setItem('acc_reader_open_v6','true');" class="nav-cta" style="text-decoration:none;">Resume →</a>
     </nav>
   </div>
 </header>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-tag">Official Syllabus Cross-Reference</div>
+<div class="timeline-hero">
+  <div class="timeline-hero-tag">Official Syllabus Cross-Reference</div>
   <h1>ACCA 13-Paper<br><span>Syllabus Timeline</span></h1>
-  <p class="hero-sub">The structured journey from Foundations to Strategic Leadership — with every syllabus topic mapped to its corresponding masterclass chapter and formula cheat-sheet.</p>
+  <p class="timeline-hero-sub">The structured journey from Foundations to Strategic Leadership — with every syllabus topic mapped to its corresponding masterclass chapter and formula cheat-sheet.</p>
 </div>
 
 <!-- CONTAINER -->
-<div class="container">
+<div class="timeline-container-wrap">
 
   <!-- LIVE SEARCH TOOLBAR -->
   <div class="search-wrap">
     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" class="search-input" id="syllabusSearch"
+    <input type="text" class="timeline-search-input" id="syllabusSearch"
            placeholder="Filter syllabus: IFRS 16, WACC, Audit Risk, PESTEL, Transfer Pricing, VAT, ABC costing, APV…"
            oninput="filterTimeline()">
   </div>
@@ -659,6 +475,15 @@ function toggleMenu() {
   const nav = document.getElementById('navLinks');
   if (nav) nav.classList.toggle('open');
 }
+
+// Ctrl + K global listener on syllabus timeline page
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    localStorage.setItem('acc_open_search_v6', 'true');
+    window.location.href = 'index.html';
+  }
+});
 
 const SYLLABUS_TIMELINE = [
   // STAGE 1: KNOWLEDGE

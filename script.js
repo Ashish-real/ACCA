@@ -58,7 +58,7 @@ const CHAPTERS = [
   { num: 16, filename: "Finance_Career_Bible_Chapter16.html", title: "Chapter 16: Ethics & Professional Skills", pillar: "exam-tools", cat: "Exam Guidance", time: "16 min" },
   { num: 17, filename: "Finance_Career_Bible_Chapter17.html", title: "Chapter 17: ACCA Exam Strategy", pillar: "exam-tools", cat: "Exam Strategy", time: "15 min" },
   { num: 49, filename: "Finance_Career_Bible_Chapter49.html", title: "Chapter 49: Master Formula Cheat-Sheet", pillar: "exam-tools", cat: "Formula Bank", time: "40 min" },
-  { num: 50, filename: "Finance_Career_Bible_Chapter50.html", title: "Chapter 50: Practice Questions Bank", pillar: "exam-tools", cat: "Question Bank", time: "30 min" },
+  { num: 50, filename: "Finance_Career_Bible_Chapter50.html", title: "Chapter 50: Core Revision Questions", pillar: "exam-tools", cat: "Revision Core", time: "30 min" },
   { num: 999, filename: "Finance_Career_Bible_Appendices.html", title: "Appendices: Reference Data & Tables", pillar: "exam-tools", cat: "Reference", time: "20 min" }
 ];
 

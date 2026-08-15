@@ -117,12 +117,37 @@ function init() {
   }
 
   document.addEventListener('keydown', e => {
+    const tag = e.target.tagName.toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) return;
+
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
       e.preventDefault();
       openGlobalSearchModal();
+      return;
     }
     if (e.key === 'Escape') {
       closeGlobalSearchModal();
+      const reader = document.getElementById('readerModal');
+      if (reader && reader.classList.contains('open')) {
+        closeReader();
+      }
+      return;
+    }
+
+    const reader = document.getElementById('readerModal');
+    const isReaderOpen = reader && reader.classList.contains('open');
+
+    // Arrow keys navigate chapters
+    if (e.key === 'ArrowRight') {
+      if (isReaderOpen) {
+        e.preventDefault();
+        navChapter(1);
+      }
+    } else if (e.key === 'ArrowLeft') {
+      if (isReaderOpen) {
+        e.preventDefault();
+        navChapter(-1);
+      }
     }
   });
 
@@ -134,6 +159,21 @@ function init() {
       if (currentSearchTerm) {
         highlightTextInIframe(iframe.contentDocument, currentSearchTerm);
       }
+
+      // Keyboard arrow navigation inside reader iframe
+      iframe.contentDocument.addEventListener('keydown', e => {
+        const tag = e.target.tagName.toLowerCase();
+        if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) return;
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          navChapter(1);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          navChapter(-1);
+        } else if (e.key === 'Escape') {
+          closeReader();
+        }
+      });
     }
   };
 }

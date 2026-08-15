@@ -754,7 +754,7 @@ function handleFullTextSearch(query) {
 
   const q = query.trim().toLowerCase();
   if (!q || q.length < 2) {
-    resultsContainer.innerHTML = `<div class="search-placeholder">Type at least 2 characters to search text across all 51 chapters...</div>`;
+    resultsContainer.innerHTML = `<div class="search-placeholder">Type at least 2 characters to search text across all 50 chapters & appendices...</div>`;
     return;
   }
 

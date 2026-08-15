@@ -142,7 +142,7 @@ Qualification mapping, exam strategy, ethics module, master formula cheat-sheet,
 ## Key Web Application Features
 
 1. **Unified Dark Aesthetic Across Portal and Chapters**:
-   - The portal shell and all 51 chapter pages share one design system: obsidian background (`#0a0a0f`), elevated cards (`#1a1a24`), violet (`#6c63ff`) and teal (`#00d4aa`) accents, with Space Grotesk / Space Mono typography.
+   - The portal shell and all 50 chapter pages (+ comprehensive appendices) share one design system: obsidian background (`#0a0a0f`), elevated cards (`#1a1a24`), violet (`#6c63ff`) and teal (`#00d4aa`) accents, with Space Grotesk / Space Mono typography.
 
 2. **Animated 3D Hero Book**:
    - A true CSS 3D book (`transform-style: preserve-3d`) whose cover swings open on load to reveal a contents leaf, idles with a slow float, and tilts to follow the pointer.
@@ -155,7 +155,7 @@ Qualification mapping, exam strategy, ethics module, master formula cheat-sheet,
    - Closed by default to keep the homepage clean, fast, and uncluttered.
 
 5. **Global Full-Text Search Engine (`Ctrl + K`)**:
-   - Powered by `search_index.js`, which indexes all **5,327 text blocks across all 51 chapter HTML files**.
+   - Powered by `search_index.js`, which indexes all **5,327 text blocks across all 50 chapters and comprehensive appendices**.
    - Text-level search (searches body content, formulas, standards, and terms).
    - Opens the matched chapter and auto-scrolls to the highlighted keyword.
 

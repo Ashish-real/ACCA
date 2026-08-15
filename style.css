@@ -1069,9 +1069,33 @@ button { font: inherit; color: inherit; }
   flex-shrink: 0;
   display: grid; place-items: center;
   border-radius: 10px;
-  background: rgba(108, 99, 255, .12);
-  border: 1px solid rgba(108, 99, 255, .3);
+  background: rgba(16, 185, 129, .1);
+  border: 1px solid rgba(16, 185, 129, .25);
   font-size: 17px;
+}
+.pillar-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--accent2);
+}
+.pill-svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.time-svg {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  stroke: currentColor;
+  margin-right: 3px;
 }
 .pillar-title { font-size: 16px; font-weight: 600; margin: 0; color: var(--text); }
 .pillar-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
@@ -1911,8 +1935,19 @@ button { font: inherit; color: inherit; }
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
 }
 .gap-icon {
-  font-size: 24px;
-  margin-bottom: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+.gap-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--accent2);
 }
 .gap-card h4 {
   font-family: var(--display);
@@ -2048,6 +2083,12 @@ button { font: inherit; color: inherit; }
   gap: 12px;
   padding: 17px 20px;
   border-bottom: 1px solid var(--border);
+}
+.search-dialog-svg {
+  width: 19px;
+  height: 19px;
+  stroke: var(--accent2);
+  flex-shrink: 0;
 }
 .search-dialog-input {
   flex: 1;
@@ -2322,6 +2363,91 @@ mark.search-highlight {
   font-family: var(--mono);
   font-size: 10px;
   color: var(--muted);
+}
+
+/* ── DESKTOP PC TYPOGRAPHIC HIERARCHY & SPACING (>= 1024px) ───────────── */
+@media (min-width: 1024px) {
+  :root {
+    --shell: 1260px;
+  }
+  .hero-title {
+    font-size: clamp(44px, 4.6vw, 68px);
+    line-height: 1.08;
+    margin-bottom: 24px;
+  }
+  .hero-sub {
+    font-size: 17.5px;
+    line-height: 1.7;
+    margin-bottom: 34px;
+    max-width: 620px;
+  }
+  .section-head {
+    margin-bottom: 42px;
+  }
+  .section-head h2 {
+    font-size: 38px;
+    line-height: 1.2;
+    margin: 10px 0 14px;
+  }
+  .section-head p {
+    font-size: 16.5px;
+    line-height: 1.7;
+    max-width: 700px;
+  }
+  .pillar-header {
+    padding: 22px 26px;
+  }
+  .pillar-title {
+    font-size: 18.5px;
+  }
+  .pillar-meta {
+    font-size: 13px;
+  }
+  .ch-title {
+    font-size: 15.5px;
+    line-height: 1.45;
+  }
+  .ch-time {
+    font-size: 12px;
+  }
+  .road-step h3 {
+    font-size: 16px;
+  }
+  .road-step p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .about-hero-left h3 {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  .about-hero-left p {
+    font-size: 15.5px;
+    line-height: 1.7;
+  }
+  .about-stat-item b {
+    font-size: 24px;
+  }
+  .gap-card h4 {
+    font-size: 17.5px;
+  }
+  .gap-card p {
+    font-size: 13.5px;
+    line-height: 1.62;
+  }
+  .quiz-box {
+    padding: 38px;
+  }
+  .quiz-q {
+    font-size: 18.5px;
+    line-height: 1.5;
+  }
+  .formula-head h3 {
+    font-size: 17px;
+  }
+  .formula-math {
+    font-size: 15px;
+  }
 }
 
 /* ── RESPONSIVE ───────────────────────────────────────────────────────── */

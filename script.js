@@ -245,7 +245,7 @@ function selectRoadmapStage(idx, btn) {
     card.innerHTML = `
       <div class="rm-card-top">
         <span class="rm-ch-tag">${badgeLabel}</span>
-        <span class="rm-ch-time">⏱️ ${c.time}</span>
+        <span class="rm-ch-time"><svg class="time-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ${c.time}</span>
       </div>
       <h4 class="rm-ch-title">${c.title}</h4>
       <div class="rm-card-footer">
@@ -317,7 +317,7 @@ function renderPillars() {
       card.innerHTML = `
         <div class="card-top">
           <span class="ch-badge">${badgeText}</span>
-          <span class="ch-time">⏱️ ${c.time}</span>
+          <span class="ch-time"><svg class="time-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ${c.time}</span>
         </div>
         <h3 class="ch-title">${c.title}</h3>
         <div class="card-bottom">

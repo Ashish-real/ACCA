@@ -194,21 +194,38 @@
         <!-- CURRICULUM PILLAR FILTER QUICK-BAR -->
         <div class="pillar-filter-bar">
           <button class="filter-pill active" onclick="filterCurriculumPillar('all', this)">All Pillars (50)</button>
-          <button class="filter-pill" onclick="filterCurriculumPillar('section-financial', this)">📊 Financial Core (11)</button>
-          <button class="filter-pill" onclick="filterCurriculumPillar('section-tax-audit', this)">⚖️ Tax &amp; Audit (6)</button>
-          <button class="filter-pill" onclick="filterCurriculumPillar('section-finance-strategy', this)">📈 Corporate Finance &amp; Valuation (16)</button>
-          <button class="filter-pill" onclick="filterCurriculumPillar('section-skills-career', this)">💼 Big 4 &amp; Practical Skills (10)</button>
-          <button class="filter-pill" onclick="filterCurriculumPillar('section-exam-tools', this)">🎓 Exam Strategy &amp; Tools (8)</button>
+          <button class="filter-pill" onclick="filterCurriculumPillar('section-financial', this)">
+            <svg class="pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+            <span>Financial Core (11)</span>
+          </button>
+          <button class="filter-pill" onclick="filterCurriculumPillar('section-tax-audit', this)">
+            <svg class="pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>Tax &amp; Audit (6)</span>
+          </button>
+          <button class="filter-pill" onclick="filterCurriculumPillar('section-finance-strategy', this)">
+            <svg class="pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+            <span>Valuation &amp; Strategy (16)</span>
+          </button>
+          <button class="filter-pill" onclick="filterCurriculumPillar('section-skills-career', this)">
+            <svg class="pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span>Big 4 &amp; Skills (10)</span>
+          </button>
+          <button class="filter-pill" onclick="filterCurriculumPillar('section-exam-tools', this)">
+            <svg class="pill-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <span>Exam Tools (8)</span>
+          </button>
         </div>
 
         <section class="pillar-section collapsed" id="section-financial">
           <button class="pillar-header" aria-expanded="false" onclick="togglePillarSection('section-financial', this)">
-            <span class="pillar-icon">📊</span>
+            <span class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+            </span>
             <span>
               <h3 class="pillar-title">Financial &amp; Accounting Core</h3>
               <div class="pillar-meta">IFRS · revenue · consolidation · reporting</div>
             </span>
-            <span class="count-chip">10</span>
+            <span class="count-chip">11</span>
             <span class="accordion-arrow">▼</span>
           </button>
           <div class="pillar-body-wrap"><div class="pillar-body"><div class="cards-grid" id="grid-financial"></div></div></div>
@@ -216,7 +233,9 @@
 
         <section class="pillar-section collapsed" id="section-tax-audit">
           <button class="pillar-header" aria-expanded="false" onclick="togglePillarSection('section-tax-audit', this)">
-            <span class="pillar-icon">⚖️</span>
+            <span class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
             <span>
               <h3 class="pillar-title">Taxation &amp; Audit Core</h3>
               <div class="pillar-meta">LW · TX · ATX · AA · AAA · controls</div>
@@ -229,7 +248,9 @@
 
         <section class="pillar-section collapsed" id="section-finance-strategy">
           <button class="pillar-header" aria-expanded="false" onclick="togglePillarSection('section-finance-strategy', this)">
-            <span class="pillar-icon">📈</span>
+            <span class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+            </span>
             <span>
               <h3 class="pillar-title">Corporate Finance, FP&amp;A &amp; Strategy</h3>
               <div class="pillar-meta">modelling · valuation · risk · governance · AFM · SBL</div>
@@ -242,7 +263,9 @@
 
         <section class="pillar-section collapsed" id="section-skills-career">
           <button class="pillar-header" aria-expanded="false" onclick="togglePillarSection('section-skills-career', this)">
-            <span class="pillar-icon">💼</span>
+            <span class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </span>
             <span>
               <h3 class="pillar-title">Practical Skills &amp; Big 4 Career Prep</h3>
               <div class="pillar-meta">Excel · Power BI · analytics · AI · interviews · ESG</div>
@@ -255,12 +278,14 @@
 
         <section class="pillar-section collapsed" id="section-exam-tools">
           <button class="pillar-header" aria-expanded="false" onclick="togglePillarSection('section-exam-tools', this)">
-            <span class="pillar-icon">🎓</span>
+            <span class="pillar-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </span>
             <span>
               <h3 class="pillar-title">ACCA Exam Guidance &amp; Tools</h3>
               <div class="pillar-meta">qualification map · ethics · formula bank · appendices</div>
             </span>
-            <span class="count-chip">9</span>
+            <span class="count-chip">8</span>
             <span class="accordion-arrow">▼</span>
           </button>
           <div class="pillar-body-wrap"><div class="pillar-body"><div class="cards-grid" id="grid-exam-tools"></div></div></div>
@@ -558,19 +583,25 @@
 
         <div class="gaps-grid">
           <div class="gap-card">
-            <div class="gap-icon">📉</div>
+            <div class="gap-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </div>
             <h4>Gap 1: Theory vs Excel Modeling</h4>
             <p>Textbooks teach debit/credit theory on paper, but employers demand dynamic 3-statement Excel models with scenario toggles and debt schedules.</p>
             <div class="gap-solution"><b>FCB Solution:</b> Direct model walkthroughs in Chapters 21, 33, and 39.</div>
           </div>
           <div class="gap-card">
-            <div class="gap-icon">🎯</div>
+            <div class="gap-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
             <h4>Gap 2: Passing Exams vs Technical Interviews</h4>
             <p>Scoring 60% in SBR/AFM does not guarantee you can answer a partner's question on enterprise value vs equity value under pressure.</p>
             <div class="gap-solution"><b>FCB Solution:</b> Big 4 technical interview blueprints in Chapters 43, 44, and 45.</div>
           </div>
           <div class="gap-card">
-            <div class="gap-icon">🧩</div>
+            <div class="gap-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
             <h4>Gap 3: Siloed Paper Modules</h4>
             <p>Students study FA, FM, and TX as separate silos without realizing tax affects WACC, which dictates DCF valuation and impairment tests.</p>
             <div class="gap-solution"><b>FCB Solution:</b> Integrated 5-Pillar ecosystem showing cross-paper interplay.</div>
@@ -670,7 +701,7 @@
        onclick="if(event.target===this) closeGlobalSearchModal()">
     <div class="search-dialog" role="dialog" aria-label="Full-text search">
       <div class="search-dialog-header">
-        <span>🔍</span>
+        <svg class="search-dialog-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="text" class="search-dialog-input" id="fullTextSearchInput"
                placeholder="Search all 51 chapters — IAS 16, NPV, WACC, PESTEL, goodwill…"
                oninput="handleFullTextSearch(this.value)">

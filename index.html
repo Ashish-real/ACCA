@@ -183,6 +183,37 @@
         </div>
       </section>
 
+      <!-- ACCA STUDY GUIDANCE CALLOUT (EXACT REPLICA OF USER SCREENSHOT) -->
+      <section class="shell" style="margin-top: 40px; margin-bottom: 20px;">
+        <div class="acca-guidance-card" style="background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(108, 99, 255, 0.06)); border: 1px solid rgba(0, 212, 170, 0.35); border-radius: 14px; padding: 24px 28px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
+            <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent2); font-weight: 700; display: flex; align-items: center; gap: 8px;">
+              <span>💻 HOW TO USE THIS BIBLE WITH YOUR ACCA STUDIES</span>
+            </div>
+            <a href="ACCA_Syllabus_Mapping.html" class="callout-link" style="font-family: var(--mono); font-size: 11px; font-weight: 700; color: #0a0a0f; background: var(--accent2); padding: 6px 14px; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: transform 0.2s;">
+              VIEW 13-PAPER SYLLABUS MAP ↗
+            </a>
+          </div>
+          
+          <p style="font-size: 14px; color: #ffffff; line-height: 1.7; margin-bottom: 12px; font-weight: 500;">
+            <strong>First Principles &amp; Intuitive Understanding:</strong> The <em>Finance Career Bible</em> condenses thousands of pages of academic theory into clear, deal-ready concepts and mental models designed for real-world finance careers and interview excellence.
+          </p>
+
+          <p style="font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 18px;">
+            <strong style="color: var(--text);">Formal Exam Preparation Note:</strong> Use this Bible to build crystal-clear comprehension of <em>why</em> accounting standards and finance mechanics work. To pass formal ACCA examinations, you <strong>must also practice high-volume exam questions using an approved Kaplan or BPP Exam Kit</strong> and the official <strong>ACCA CBE Practice Platform</strong>.
+          </p>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="ACCA_Syllabus_Mapping.html" style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent2); background: rgba(0, 212, 170, 0.12); border: 1px solid rgba(0, 212, 170, 0.35); padding: 8px 16px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;">
+              🗺️ 13-Paper Syllabus Matrix
+            </a>
+            <button onclick="switchTab('quiz')" style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent); background: rgba(108, 99, 255, 0.12); border: 1px solid rgba(108, 99, 255, 0.35); padding: 8px 16px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;">
+              📝 Chapter 50 Core Revision MCQs
+            </button>
+          </div>
+        </div>
+      </section>
+
       <!-- LIBRARY -->
       <section class="section shell">
         <div class="section-head">
@@ -628,11 +659,31 @@
 
           <div class="faq-item" onclick="toggleFaq(this)">
             <div class="faq-q">
-              <span>How does this portal track my progress?</span>
+              <span>How does this Bible map to official ACCA papers?</span>
               <span class="faq-chevron">+</span>
             </div>
             <div class="faq-a">
-              <p>Everything is stored locally in your browser using local storage. Completed chapters, last-read positions, and practice quiz scores persist across your sessions with zero login or telemetry required.</p>
+              <p>Every official syllabus area across all 13 ACCA papers (Applied Knowledge, Applied Skills, Strategic Professional, and Options) is mapped directly to its corresponding chapter in our <a href="ACCA_Syllabus_Mapping.html" style="color:var(--accent2);text-decoration:underline;">Interactive Syllabus Timeline Matrix</a>.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">
+              <span>Do I still need Kaplan or BPP Exam Kits to pass formal ACCA exams?</span>
+              <span class="faq-chevron">+</span>
+            </div>
+            <div class="faq-a">
+              <p>Yes. The Finance Career Bible builds first-principles comprehension, mental models, and real-world deal mechanics. For formal exam sitting, candidates <strong>must pair this understanding with an approved Kaplan or BPP Exam Kit</strong> and the official <strong>ACCA CBE Practice Platform</strong> for high-volume timed question practice.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">
+              <span>How does local storage progress tracking work?</span>
+              <span class="faq-chevron">+</span>
+            </div>
+            <div class="faq-a">
+              <p>Everything is stored locally in your browser storage. Completed chapter badges, active reading positions, timer state, and practice quiz scores persist seamlessly across your sessions with zero login or telemetry required.</p>
             </div>
           </div>
 
@@ -642,7 +693,17 @@
               <span class="faq-chevron">+</span>
             </div>
             <div class="faq-a">
-              <p>Yes. The entire repository is self-contained HTML5, CSS, and vanilla JavaScript. Once cloned or downloaded, every chapter, formula, and practice question operates completely offline.</p>
+              <p>Yes. The entire repository is self-contained HTML5, CSS, and vanilla JavaScript. Once downloaded or cloned, every chapter, formula, and practice question operates 100% offline.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">
+              <span>How does the Bible prepare me for Big 4 technical partner interviews?</span>
+              <span class="faq-chevron">+</span>
+            </div>
+            <div class="faq-a">
+              <p>Chapters 43 through 48 contain specialized Big 4 interview blueprints, audit workpapers, M&amp;A due diligence cases, and technical partner round Q&amp;A models used across PwC, Deloitte, EY, and KPMG.</p>
             </div>
           </div>
 
@@ -652,7 +713,7 @@
               <span class="faq-chevron">+</span>
             </div>
             <div class="faq-a">
-              <p>Follow the interactive 5-Stage Roadmap tab. Complete 2 chapters per week alongside your active exam preparation to cover the entire curriculum and practical modeling within 6 months.</p>
+              <p>Follow the interactive 5-Stage Roadmap tab. Completing 2 to 3 chapters per week alongside active exam preparation allows full curriculum coverage and practical modeling mastery within 4 to 6 months.</p>
             </div>
           </div>
         </div>

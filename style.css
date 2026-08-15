@@ -89,7 +89,12 @@ button { font: inherit; color: inherit; }
   border-radius: 4px;
 }
 
-.shell { max-width: var(--shell); margin: 0 auto; padding: 0 28px; }
+.shell, .nav-inner, .hero-inner, .footer-inner, .timeline-container-wrap, .stat-strip-inner {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding-left: clamp(20px, 4vw, 32px) !important;
+  padding-right: clamp(20px, 4vw, 32px) !important;
+}
 
 /* Shared eyebrow label — mono, spaced, teal. */
 .kicker {

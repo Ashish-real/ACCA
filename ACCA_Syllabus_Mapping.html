@@ -217,23 +217,34 @@
   .stage-papers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 540px), 1fr));
-    gap: 22px;
+    gap: 24px;
   }
 
   .paper-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 22px;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    background: linear-gradient(145deg, rgba(20, 25, 35, 0.95), rgba(15, 19, 28, 0.95));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.25s cubic-bezier(.16, 1, .3, 1);
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .paper-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent), var(--accent5));
+    opacity: 0.7;
   }
 
   .paper-card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(0, 212, 170, 0.4);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transform: translateY(-3px);
+    border-color: rgba(0, 212, 170, 0.45);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 212, 170, 0.1);
   }
 
   .paper-top {
@@ -243,30 +254,31 @@
     gap: 12px;
     margin-bottom: 16px;
     padding-bottom: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .paper-badge-group {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
 
   .paper-code {
     font-family: var(--mono);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--accent2);
-    background: rgba(0, 212, 170, 0.12);
-    border: 1px solid rgba(0, 212, 170, 0.3);
-    padding: 4px 10px;
-    border-radius: 6px;
+    background: rgba(0, 212, 170, 0.14);
+    border: 1px solid rgba(0, 212, 170, 0.35);
+    padding: 5px 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0, 212, 170, 0.15);
   }
 
   .paper-title {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
-    color: var(--text);
+    color: #ffffff;
     line-height: 1.25;
   }
 
@@ -274,13 +286,15 @@
     font-family: var(--mono);
     font-size: 11px;
     color: var(--muted);
+    margin-top: 2px;
   }
 
   .paper-format {
     font-family: var(--mono);
     font-size: 10.5px;
-    color: var(--muted);
-    background: rgba(255, 255, 255, 0.03);
+    color: var(--accent2);
+    background: rgba(0, 212, 170, 0.06);
+    border: 1px solid rgba(0, 212, 170, 0.2);
     padding: 4px 10px;
     border-radius: 6px;
     white-space: nowrap;
@@ -294,24 +308,38 @@
   }
 
   .topic-item {
-    background: var(--surface);
-    border: 1px solid rgba(42, 42, 58, 0.6);
-    border-radius: 8px;
-    padding: 12px 14px;
+    background: rgba(14, 18, 26, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 14px 16px;
+    transition: border-color 0.2s;
+  }
+
+  .topic-item:hover {
+    border-color: rgba(108, 99, 255, 0.35);
   }
 
   .topic-name {
-    font-size: 13.5px;
+    font-size: 14px;
     font-weight: 600;
-    color: var(--text);
+    color: #ffffff;
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .topic-name::before {
+    content: '◆';
+    font-size: 8px;
+    color: var(--accent2);
   }
 
   .topic-desc {
-    font-size: 12px;
+    font-size: 12.5px;
     color: var(--muted);
-    line-height: 1.55;
-    margin-bottom: 8px;
+    line-height: 1.6;
+    margin-bottom: 10px;
   }
 
   .topic-chapters {

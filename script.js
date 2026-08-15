@@ -87,6 +87,7 @@ function init() {
   initBookParallax();
   initRoadmap();
   initBookCTA();
+  selectRoadmapStage(0);
 
   document.addEventListener('keydown', e => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -100,8 +101,11 @@ function init() {
 
   const iframe = document.getElementById('readerFrame');
   iframe.onload = () => {
-    if (currentSearchTerm && iframe.contentDocument) {
-      highlightTextInIframe(iframe.contentDocument, currentSearchTerm);
+    if (iframe.contentDocument) {
+      bindIframeScrollTracker(iframe.contentDocument);
+      if (currentSearchTerm) {
+        highlightTextInIframe(iframe.contentDocument, currentSearchTerm);
+      }
     }
   };
 }
@@ -135,6 +139,124 @@ function switchTab(tabId, btn) {
 function toggleMenu() {
   const nav = document.getElementById('navLinks');
   if (nav) nav.classList.toggle('open');
+}
+
+/* ── CURRICULUM PILLAR QUICK-BAR FILTER ── */
+function filterCurriculumPillar(secId, btn) {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  const allSections = document.querySelectorAll('.pillar-section');
+  if (secId === 'all') {
+    allSections.forEach(s => {
+      s.style.display = 'block';
+    });
+  } else {
+    allSections.forEach(s => {
+      if (s.id === secId) {
+        s.style.display = 'block';
+        s.classList.remove('collapsed');
+        const header = s.querySelector('.pillar-header');
+        if (header) header.setAttribute('aria-expanded', 'true');
+        s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        s.style.display = 'none';
+      }
+    });
+  }
+}
+
+/* ── DEDICATED ROADMAP CHAPTER CATALOG ── */
+const ROADMAP_DATA = [
+  {
+    stage: "STAGE 01",
+    badge: "FOUNDATIONS & ORIENTATION",
+    title: "Commerce & Career Direction Modules",
+    desc: "Understanding the global finance ecosystem, evaluating ACCA vs CA/CFA/CMA career trajectories, and building double-entry ledger foundations.",
+    chapterNums: [1, 2, 3]
+  },
+  {
+    stage: "STAGE 02",
+    badge: "APPLIED KNOWLEDGE CORE",
+    title: "ACCA Applied Knowledge & B.Com Core",
+    desc: "Mastering core financial accounting, IFRS reporting standards (IAS 16, IFRS 15, inventory, PPE), business technology, and graduation-aligned subjects.",
+    chapterNums: [4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+  },
+  {
+    stage: "STAGE 03",
+    badge: "SKILLS & FINANCIAL MODELLING",
+    title: "Applied Skills & Practical Financial Modelling",
+    desc: "Tackling FR, PM, TX, AA, FM while building dynamic 3-statement models, DCF valuation, Power BI analytics, and FP&A forecasting.",
+    chapterNums: [5, 6, 18, 19, 20, 21, 22, 24, 25, 26, 27, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]
+  },
+  {
+    stage: "STAGE 04",
+    badge: "STRATEGIC PROFESSIONAL",
+    title: "Strategic Leader & 36M Practical Experience",
+    desc: "Advanced corporate reporting (SBR), strategic business leadership (SBL), advanced taxation, audit assurance, and completing the 36-month PER requirement.",
+    chapterNums: [23, 28, 29, 30, 31, 32, 43, 44, 45]
+  },
+  {
+    stage: "STAGE 05",
+    badge: "BIG 4 & TECHNICAL SEAT",
+    title: "Big 4 Advisory & Technical Interview Mastery",
+    desc: "Cracking technical partner rounds in Audit, M&A Advisory, Tax Strategy, and Valuation at PwC, Deloitte, EY, and KPMG with complete formula cheat-sheets.",
+    chapterNums: [43, 44, 45, 46, 47, 48, 49, 50, 999]
+  }
+];
+
+let currentRoadmapStage = 0;
+
+function selectRoadmapStage(idx, btn) {
+  currentRoadmapStage = idx;
+  const stage = ROADMAP_DATA[idx] || ROADMAP_DATA[0];
+
+  const badgeEl = document.getElementById('catalogStageBadge');
+  const titleEl = document.getElementById('catalogStageTitle');
+  const descEl = document.getElementById('catalogStageDesc');
+  const gridEl = document.getElementById('roadmapCatalogGrid');
+
+  if (badgeEl) badgeEl.innerText = `${stage.stage} · ${stage.badge}`;
+  if (titleEl) titleEl.innerText = stage.title;
+  if (descEl) descEl.innerText = stage.desc;
+
+  document.querySelectorAll('.stage-select-btn').forEach((b, i) => {
+    b.classList.toggle('active', i === idx);
+  });
+
+  if (!gridEl) return;
+  gridEl.innerHTML = '';
+
+  const matched = CHAPTERS.filter(c => stage.chapterNums.includes(c.num));
+  matched.sort((a, b) => a.num - b.num);
+
+  matched.forEach(c => {
+    const card = document.createElement('div');
+    const isDone = completedSet.has(c.filename);
+    card.className = `roadmap-ch-card ${isDone ? 'completed' : ''}`;
+    card.onclick = () => openChapterFile(c.filename);
+
+    const badgeLabel = c.num === 999 ? 'APP' : 'CH ' + (c.num < 10 ? '0' + c.num : c.num);
+
+    card.innerHTML = `
+      <div class="rm-card-top">
+        <span class="rm-ch-tag">${badgeLabel}</span>
+        <span class="rm-ch-time">⏱️ ${c.time}</span>
+      </div>
+      <h4 class="rm-ch-title">${c.title}</h4>
+      <div class="rm-card-footer">
+        <span class="rm-ch-cat">${c.cat}</span>
+        <button class="rm-read-btn">Read Chapter ↗</button>
+      </div>
+    `;
+
+    gridEl.appendChild(card);
+  });
+
+  const catalogSec = document.getElementById('roadmapCatalogSection');
+  if (catalogSec && !btn) {
+    catalogSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 }
 
 function highlightRoadmapChapters(nums, targetPillar) {
@@ -389,6 +511,85 @@ function renderTOC() {
   });
 }
 
+let activeReadTimer = null;
+let activeReadSeconds = 0;
+const REQUIRED_READ_SECONDS = 300; // 5 minutes dwell time
+let activeScrollPercent = 0;
+let currentReadingFilename = '';
+
+function startReadingTracker(filename) {
+  clearInterval(activeReadTimer);
+  activeReadSeconds = 0;
+  activeScrollPercent = 0;
+  currentReadingFilename = filename;
+
+  const timerBadge = document.getElementById('readTimerBadge');
+  const scrollBadge = document.getElementById('readScrollBadge');
+  const statusBadge = document.getElementById('readStatusBadge');
+
+  if (timerBadge) timerBadge.innerText = '⏱️ 00:00 / 05:00';
+  if (scrollBadge) scrollBadge.innerText = '📜 Scroll: 0%';
+
+  const alreadyDone = completedSet.has(filename);
+  if (statusBadge) {
+    statusBadge.className = `read-status-chip ${alreadyDone ? 'completed' : 'in-progress'}`;
+    statusBadge.innerText = alreadyDone ? '✅ Completed' : 'Reading';
+  }
+
+  activeReadTimer = setInterval(() => {
+    activeReadSeconds++;
+    const mins = String(Math.floor(activeReadSeconds / 60)).padStart(2, '0');
+    const secs = String(activeReadSeconds % 60).padStart(2, '0');
+    if (timerBadge) {
+      timerBadge.innerText = `⏱️ ${mins}:${secs} / 05:00`;
+    }
+    checkCompletionCriteria();
+  }, 1000);
+}
+
+function checkCompletionCriteria() {
+  if (!currentReadingFilename || completedSet.has(currentReadingFilename)) return;
+
+  // Criteria: 5 min dwell time (300s) AND at least 85% scrolled through chapter
+  if (activeReadSeconds >= REQUIRED_READ_SECONDS && activeScrollPercent >= 85) {
+    completedSet.add(currentReadingFilename);
+    localStorage.setItem('acc_done_v6', JSON.stringify([...completedSet]));
+
+    const statusBadge = document.getElementById('readStatusBadge');
+    if (statusBadge) {
+      statusBadge.className = 'read-status-chip completed';
+      statusBadge.innerText = '✅ Completed!';
+    }
+    renderPillars();
+    renderTOC();
+    if (typeof selectRoadmapStage === 'function') selectRoadmapStage(currentRoadmapStage);
+  }
+}
+
+function bindIframeScrollTracker(doc) {
+  if (!doc) return;
+  const win = doc.defaultView || window;
+
+  const handleScroll = () => {
+    const el = doc.documentElement;
+    const max = el.scrollHeight - el.clientHeight;
+    if (max > 0) {
+      activeScrollPercent = Math.min(100, Math.round((el.scrollTop / max) * 100));
+    } else {
+      activeScrollPercent = 100;
+    }
+
+    const scrollBadge = document.getElementById('readScrollBadge');
+    if (scrollBadge) {
+      scrollBadge.innerText = `📜 Scroll: ${activeScrollPercent}%`;
+    }
+    checkCompletionCriteria();
+  };
+
+  win.addEventListener('scroll', handleScroll, { passive: true });
+  doc.addEventListener('scroll', handleScroll, { passive: true });
+}
+
 function openChapterIdx(idx, searchTerm = '') {
   currentChIdx = idx;
   currentSearchTerm = searchTerm;
@@ -398,11 +599,8 @@ function openChapterIdx(idx, searchTerm = '') {
   document.getElementById('readerFrame').src = c.filename;
   document.getElementById('readerModal').classList.add('open');
 
-  completedSet.add(c.filename);
-  localStorage.setItem('acc_done_v6', JSON.stringify([...completedSet]));
   localStorage.setItem('acc_last_v6', c.filename);
-  renderPillars();
-  renderTOC();
+  startReadingTracker(c.filename);
 }
 
 function openChapterFile(fn, searchTerm = '') {
@@ -421,9 +619,11 @@ function navChapter(dir) {
 }
 
 function closeReader() {
+  clearInterval(activeReadTimer);
   document.getElementById('readerModal').classList.remove('open');
   document.getElementById('readerFrame').src = 'about:blank';
   currentSearchTerm = '';
+  currentReadingFilename = '';
 }
 
 function toggleToc() {

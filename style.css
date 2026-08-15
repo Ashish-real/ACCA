@@ -1003,6 +1003,40 @@ button { font: inherit; color: inherit; }
   margin-top: 3px;
 }
 
+/* ── PILLAR QUICK-FILTER BAR ─────────────────────────────────────────── */
+.pillar-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.filter-pill {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.filter-pill:hover {
+  border-color: var(--accent);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.filter-pill.active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: var(--accent2);
+  color: var(--accent2);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+}
+
 /* ── PILLAR ACCORDIONS (SILKY SMOOTH GRID TRANSITION) ──────────────────── */
 
 .pillar-section {
@@ -1293,6 +1327,148 @@ button { font: inherit; color: inherit; }
   background: var(--accent2);
   color: #080a0f;
   border-color: var(--accent2);
+}
+
+/* ── DEDICATED ROADMAP CATALOG DRAWER ────────────────────────────────── */
+.roadmap-catalog-card {
+  margin-top: 36px;
+  background: linear-gradient(145deg, #0d121c 0%, #131824 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+.catalog-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.catalog-stage-badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--accent2);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+.catalog-stage-title {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+.catalog-stage-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.55;
+  max-width: 600px;
+}
+.stage-selector-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.stage-select-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.stage-select-btn:hover {
+  border-color: var(--accent2);
+  color: #ffffff;
+}
+.stage-select-btn.active {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+.roadmap-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.roadmap-ch-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.roadmap-ch-card:hover {
+  border-color: var(--accent2);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+}
+.roadmap-ch-card.completed {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+.rm-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.rm-ch-tag {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(108, 99, 255, 0.12);
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+.rm-ch-time {
+  font-size: 11px;
+  color: var(--muted);
+}
+.rm-ch-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+  margin: 0;
+}
+.rm-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.rm-ch-cat {
+  font-size: 10.5px;
+  color: var(--muted);
+}
+.rm-read-btn {
+  background: none;
+  border: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent2);
+  cursor: pointer;
 }
 
 /* ── RESPONSIVE MEDIA QUERIES (MOBILE OPTIMIZATION) ───────────────────── */
@@ -1868,6 +2044,47 @@ mark.search-highlight {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 320px;
+}
+
+/* ── READER TRACKER BADGES ───────────────────────────────────────────── */
+.reader-tracker-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.read-tracker-chip {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+.read-status-chip {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+.read-status-chip.in-progress {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+.read-status-chip.completed {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+@media (max-width: 860px) {
+  .reader-tracker-group { display: none; }
 }
 .reader-btn {
   background: var(--card);

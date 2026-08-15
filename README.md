@@ -3,9 +3,17 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![ACCA Qualification](https://img.shields.io/badge/ACCA-13%20Papers%20Covered-10b981.svg)](#comprehensive-chapter-breakdown-5-pillars)
 [![Chapters](https://img.shields.io/badge/Curriculum-50%20Chapters%20%2B%20Appendices-34d399.svg)](#comprehensive-chapter-breakdown-5-pillars)
+[![Author](https://img.shields.io/badge/Author-Ashish-38bdf8.svg)](#author--masterclass-creator)
 [![Target Career](https://img.shields.io/badge/Target-Big%204%20(PwC%2C%20Deloitte%2C%20EY%2C%20KPMG)-f59e0b.svg)](#big-4-career-target)
 
 > **The definitive 50-chapter masterclass portal for the Association of Chartered Certified Accountants (ACCA) qualification, financial modelling, FP&A forecasting, IFRS standards, and Big 4 advisory career preparation.**
+> **Conceived, Authored, and Engineered by Ashish over months of dedicated technical drafting and curriculum synthesis.**
+
+---
+
+## Author & Masterclass Creator
+
+The **Finance Career Bible** represents months of painstaking research, deep curriculum synthesis, and technical drafting by **Ashish**. Built to solve the disconnect between textbook theory and real-world financial execution, Ashish engineered this 50-chapter masterclass ecosystem to empower ACCA candidates, B.Com undergraduates, and finance professionals with deal-ready mental models, zero-cost accessibility, and Big 4 technical interview confidence.
 
 ---
 

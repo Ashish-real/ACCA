@@ -444,21 +444,6 @@
            oninput="filterTimeline()">
   </div>
 
-  <!-- VIEW MODE SWITCHER BAR -->
-  <div class="view-mode-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; background: rgba(20, 25, 35, 0.85); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-    <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent2); font-weight: 700; display: flex; align-items: center; gap: 8px;">
-      <span>👁️ SYLLABUS PRESENTATION MODE</span>
-    </div>
-    <div style="display: flex; gap: 10px;">
-      <button id="btnViewTimeline" class="mode-btn active" onclick="switchSyllabusView('timeline')" style="font-family: var(--mono); font-size: 11.5px; font-weight: 700; padding: 7px 16px; border-radius: 8px; cursor: pointer; border: 1px solid var(--accent2); background: rgba(0, 212, 170, 0.15); color: var(--accent2); transition: all 0.2s;">
-        📋 Stage Timeline View
-      </button>
-      <button id="btnViewGraphic" class="mode-btn" onclick="switchSyllabusView('graphic')" style="font-family: var(--mono); font-size: 11.5px; font-weight: 700; padding: 7px 16px; border-radius: 8px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.04); color: var(--muted); transition: all 0.2s;">
-        🕸️ Interactive Graphic Node Map Mode
-      </button>
-    </div>
-  </div>
-
   <!-- EXAM BEST PRACTICE CALLOUT -->
   <div class="callout-box">
     <div class="callout-header">
@@ -467,91 +452,6 @@
     </div>
     <div class="callout-text">
       The <strong>Finance Career Bible</strong> delivers the intuitive mental models, practical financial analysis, and standard breakdowns textbook explanations skip. To ensure 100% exam readiness, pair this conceptual mastery with an approved <strong>Kaplan or BPP Exam Kit</strong> and the official <strong>ACCA CBE Practice Platform</strong> for timed volume question drills.
-    </div>
-  </div>
-
-  <!-- INTERACTIVE GRAPHIC NODE MAP CONTAINER (HIDDEN BY DEFAULT) -->
-  <div id="graphicContainer" style="display: none; background: rgba(14, 18, 26, 0.95); border: 1px solid rgba(0, 212, 170, 0.3); border-radius: 20px; padding: 32px; margin-bottom: 50px; position: relative; overflow: hidden; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-      <div>
-        <div style="font-family: var(--mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent2); font-weight: 700; margin-bottom: 4px;">GRAPHIC MATRIX VISUALIZATION</div>
-        <h3 style="font-size: 22px; font-weight: 700; color: #ffffff; margin: 0;">ACCA 13-Paper Qualification Network</h3>
-      </div>
-      <span style="font-family: var(--mono); font-size: 11px; color: var(--muted); background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 100px;">Click any paper node to inspect syllabus details</span>
-    </div>
-
-    <!-- SVG NODE MAP CONNECTOR NET -->
-    <div style="position: relative; min-height: 480px; display: flex; align-items: center; justify-content: center;">
-      <!-- Glowing Background Center Radial -->
-      <div style="position: absolute; width: 320px; height: 320px; background: radial-gradient(circle, rgba(0, 212, 170, 0.15) 0%, rgba(108, 99, 255, 0.08) 50%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
-
-      <!-- CENTER HUB NODE -->
-      <div style="position: absolute; z-index: 3; background: linear-gradient(135deg, var(--accent2), var(--accent)); padding: 2px; border-radius: 50%; box-shadow: 0 0 30px rgba(0, 212, 170, 0.4);">
-        <div style="background: #0a0a0f; border-radius: 50%; width: 140px; height: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 12px;">
-          <span style="font-size: 20px;">🎓</span>
-          <strong style="font-size: 13px; color: #ffffff; margin-top: 4px; line-height: 1.2;">ACCA CORE</strong>
-          <span style="font-family: var(--mono); font-size: 9.5px; color: var(--accent2);">13 PAPERS</span>
-        </div>
-      </div>
-
-      <!-- INTERACTIVE GRAPHIC STAGE ORBIT GRID -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 24px; width: 100%; z-index: 4; position: relative;">
-        <!-- STAGE 1 ORBIT -->
-        <div style="background: rgba(20, 25, 35, 0.85); border: 1px solid rgba(0, 212, 170, 0.3); border-radius: 14px; padding: 18px;">
-          <div style="font-family: var(--mono); font-size: 10px; color: var(--accent2); font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
-            <span>● STAGE 01 · KNOWLEDGE</span>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <button onclick="inspectGraphicPaper('BT')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent2); background: rgba(0, 212, 170, 0.14); border: 1px solid rgba(0, 212, 170, 0.4); padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: all 0.2s; box-shadow: 0 0 10px rgba(0,212,170,0.15);">BT (F1)</button>
-            <button onclick="inspectGraphicPaper('MA')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent2); background: rgba(0, 212, 170, 0.14); border: 1px solid rgba(0, 212, 170, 0.4); padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: all 0.2s; box-shadow: 0 0 10px rgba(0,212,170,0.15);">MA (F2)</button>
-            <button onclick="inspectGraphicPaper('FA')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent2); background: rgba(0, 212, 170, 0.14); border: 1px solid rgba(0, 212, 170, 0.4); padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: all 0.2s; box-shadow: 0 0 10px rgba(0,212,170,0.15);">FA (F3)</button>
-          </div>
-        </div>
-
-        <!-- STAGE 2 ORBIT -->
-        <div style="background: rgba(20, 25, 35, 0.85); border: 1px solid rgba(108, 99, 255, 0.3); border-radius: 14px; padding: 18px;">
-          <div style="font-family: var(--mono); font-size: 10px; color: var(--accent); font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
-            <span>● STAGE 02 · APPLIED SKILLS</span>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <button onclick="inspectGraphicPaper('LW')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent); background: rgba(108, 99, 255, 0.14); border: 1px solid rgba(108, 99, 255, 0.4); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">LW (F4)</button>
-            <button onclick="inspectGraphicPaper('PM')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent); background: rgba(108, 99, 255, 0.14); border: 1px solid rgba(108, 99, 255, 0.4); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">PM (F5)</button>
-            <button onclick="inspectGraphicPaper('TX')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent); background: rgba(108, 99, 255, 0.14); border: 1px solid rgba(108, 99, 255, 0.4); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">TX (F6)</button>
-            <button onclick="inspectGraphicPaper('FR')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent); background: rgba(108, 99, 255, 0.14); border: 1px solid rgba(108, 99, 255, 0.4); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">FR (F7)</button>
-            <button onclick="inspectGraphicPaper('AA')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent); background: rgba(108, 99, 255, 0.14); border: 1px solid rgba(108, 99, 255, 0.4); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">AA (F8)</button>
-            <button onclick="inspectGraphicPaper('FM')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent); background: rgba(108, 99, 255, 0.14); border: 1px solid rgba(108, 99, 255, 0.4); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">FM (F9)</button>
-          </div>
-        </div>
-
-        <!-- STAGE 3 ORBIT -->
-        <div style="background: rgba(20, 25, 35, 0.85); border: 1px solid rgba(255, 77, 109, 0.3); border-radius: 14px; padding: 18px;">
-          <div style="font-family: var(--mono); font-size: 10px; color: var(--accent5); font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
-            <span>● STAGE 03 · STRATEGIC LEADERSHIP</span>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <button onclick="inspectGraphicPaper('SBL')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent5); background: rgba(255, 77, 109, 0.14); border: 1px solid rgba(255, 77, 109, 0.4); padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">SBL</button>
-            <button onclick="inspectGraphicPaper('SBR')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent5); background: rgba(255, 77, 109, 0.14); border: 1px solid rgba(255, 77, 109, 0.4); padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">SBR</button>
-          </div>
-        </div>
-
-        <!-- STAGE 4 ORBIT -->
-        <div style="background: rgba(20, 25, 35, 0.85); border: 1px solid rgba(255, 217, 61, 0.3); border-radius: 14px; padding: 18px;">
-          <div style="font-family: var(--mono); font-size: 10px; color: var(--accent4); font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
-            <span>● STAGE 04 · SPECIALIST ELECTIVES</span>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <button onclick="inspectGraphicPaper('AFM')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent4); background: rgba(255, 217, 61, 0.14); border: 1px solid rgba(255, 217, 61, 0.4); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">AFM (P4)</button>
-            <button onclick="inspectGraphicPaper('APM')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent4); background: rgba(255, 217, 61, 0.14); border: 1px solid rgba(255, 217, 61, 0.4); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">APM (P5)</button>
-            <button onclick="inspectGraphicPaper('ATX')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent4); background: rgba(255, 217, 61, 0.14); border: 1px solid rgba(255, 217, 61, 0.4); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">ATX (P6)</button>
-            <button onclick="inspectGraphicPaper('AAA')" style="font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent4); background: rgba(255, 217, 61, 0.14); border: 1px solid rgba(255, 217, 61, 0.4); padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s;">AAA (P7)</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- GRAPHIC PAPER INSPECTION DISPLAY BOX -->
-    <div id="graphicInspectionBox" style="margin-top: 24px; background: #0a0a0f; border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 20px; display: none;">
-      <div id="graphicInspectionContent"></div>
     </div>
   </div>
 

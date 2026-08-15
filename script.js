@@ -709,9 +709,20 @@ function applyUniversalTableResponsive(doc) {
       .container, .content, .chapter-body, .section, main, .chapter-content {
         max-width: 100% !important;
       }
-      .card, .grid-2, .grid-3, .cards-grid, .grid, .grid-cols-2 {
+      .cards, .grid-2, .grid-3, .cards-grid, .grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 22px !important;
+      }
+      .card {
         min-width: 0 !important;
         max-width: 100% !important;
+      }
+      @media (max-width: 820px) {
+        .cards, .grid-2, .grid-3, .cards-grid, .grid {
+          grid-template-columns: 1fr !important;
+          gap: 16px !important;
+        }
       }
       .card-items, .card ul {
         list-style: none !important;

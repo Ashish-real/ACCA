@@ -538,8 +538,8 @@ function startReadingTracker(filename) {
   const mins = String(Math.floor(activeReadSeconds / 60)).padStart(2, '0');
   const secs = String(activeReadSeconds % 60).padStart(2, '0');
 
-  if (timerBadge) timerBadge.innerText = `⏱️ ${mins}:${secs} / 05:00`;
-  if (scrollBadge) scrollBadge.innerText = `📜 ${activeScrollPercent}%`;
+  if (timerBadge) timerBadge.innerText = `${mins}:${secs} / 05:00`;
+  if (scrollBadge) scrollBadge.innerText = `${activeScrollPercent}%`;
 
   const alreadyDone = completedSet.has(filename) || (activeReadSeconds >= REQUIRED_READ_SECONDS && activeScrollPercent >= 85);
   if (statusBadge) {
@@ -552,7 +552,7 @@ function startReadingTracker(filename) {
     const m = String(Math.floor(activeReadSeconds / 60)).padStart(2, '0');
     const s = String(activeReadSeconds % 60).padStart(2, '0');
     if (timerBadge) {
-      timerBadge.innerText = `⏱️ ${m}:${s} / 05:00`;
+      timerBadge.innerText = `${m}:${s} / 05:00`;
     }
 
     // Persist active progress to localStorage
@@ -600,7 +600,7 @@ function bindIframeScrollTracker(doc) {
 
     const scrollBadge = document.getElementById('readScrollBadge');
     if (scrollBadge) {
-      scrollBadge.innerText = `📜 ${activeScrollPercent}%`;
+      scrollBadge.innerText = `${activeScrollPercent}%`;
     }
 
     if (currentReadingFilename) {

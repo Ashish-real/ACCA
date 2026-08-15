@@ -29,8 +29,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 html { scroll-behavior: smooth; }
@@ -46,15 +48,18 @@ body {
   max-width: 100vw;
 }
 
+a, code, pre, .url {
+  overflow-wrap: anywhere;
+}
+
 .card, .chapter-card, .road-step, .formula-card, .about-hero-card, .gap-card, .quiz-box {
   min-width: 0;
   max-width: 100%;
-  overflow-wrap: break-word;
-  word-break: break-word;
 }
 .card-items li, .card ul li {
-  overflow-wrap: break-word;
-  word-break: break-word;
+  display: block;
+  position: relative;
+  padding-left: 18px;
 }
 .table-responsive-wrapper, .table-wrap {
   width: 100%;

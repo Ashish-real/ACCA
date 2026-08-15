@@ -687,31 +687,53 @@ function toggleToc() {
 function applyUniversalTableResponsive(doc) {
   if (!doc) return;
 
-  // 1. Inject responsive CSS to prevent card/container overflow on PC and mobile
+  // 1. Inject responsive CSS to ensure natural word flow, no mid-word hyphenation, and spacious table layouts
   if (!doc.getElementById('universal-responsive-fix')) {
     const style = doc.createElement('style');
     style.id = 'universal-responsive-fix';
     style.textContent = `
       * {
         box-sizing: border-box !important;
-        overflow-wrap: break-word !important;
-        word-break: break-word !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+        hyphens: none !important;
+        -webkit-hyphens: none !important;
       }
       body {
         overflow-x: hidden !important;
         max-width: 100vw !important;
       }
+      a, code, pre, .url, .code-block {
+        overflow-wrap: anywhere !important;
+      }
       .container, .content, .chapter-body, .section, main, .chapter-content {
         max-width: 100% !important;
-        overflow-x: hidden !important;
       }
-      .card, .grid-2, .grid-3, .cards-grid, .grid {
+      .card, .grid-2, .grid-3, .cards-grid, .grid, .grid-cols-2 {
         min-width: 0 !important;
         max-width: 100% !important;
       }
+      .card-items, .card ul {
+        list-style: none !important;
+        padding-left: 0 !important;
+      }
       .card-items li, .card ul li {
-        overflow-wrap: break-word !important;
-        word-break: break-word !important;
+        display: block !important;
+        position: relative !important;
+        padding: 6px 0 6px 18px !important;
+        line-height: 1.65 !important;
+        font-size: 13.5px !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+      }
+      .card-items li::before, .card ul li::before {
+        content: '→' !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 6px !important;
+        color: var(--accent, #6366f1) !important;
+        font-size: 11px !important;
+        margin: 0 !important;
       }
       .table-responsive-wrapper {
         width: 100% !important;
@@ -726,30 +748,33 @@ function applyUniversalTableResponsive(doc) {
       }
       table, .data-table {
         width: 100% !important;
-        min-width: 560px !important;
+        min-width: 680px !important;
         border-collapse: collapse !important;
         margin: 0 !important;
+        table-layout: auto !important;
       }
       th, td {
-        padding: 12px 16px !important;
+        padding: 13px 18px !important;
         text-align: left !important;
         vertical-align: top !important;
-        overflow-wrap: break-word !important;
-        word-break: break-word !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+        line-height: 1.62 !important;
       }
       th {
         background: rgba(255, 255, 255, 0.04) !important;
         color: var(--accent2, #00d4aa) !important;
         font-family: var(--mono, monospace) !important;
-        font-size: 11.5px !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
         letter-spacing: 1px !important;
         text-transform: uppercase !important;
         border-bottom: 1px solid var(--border, #2a2a3a) !important;
+        white-space: nowrap !important;
       }
       td {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
         font-size: 14px !important;
-        line-height: 1.6 !important;
       }
       @media (max-width: 768px) {
         .table-responsive-wrapper {
@@ -757,11 +782,11 @@ function applyUniversalTableResponsive(doc) {
           border-radius: 8px !important;
         }
         table, .data-table {
-          min-width: 520px !important;
+          min-width: 620px !important;
           font-size: 13px !important;
         }
         th, td {
-          padding: 10px 12px !important;
+          padding: 10px 14px !important;
         }
       }
     `;

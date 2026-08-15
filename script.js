@@ -250,7 +250,7 @@ function selectRoadmapStage(idx, btn) {
       <h4 class="rm-ch-title">${c.title}</h4>
       <div class="rm-card-footer">
         <span class="rm-ch-cat">${c.cat}</span>
-        <button class="rm-read-btn">Read Chapter ↗</button>
+        <span class="rm-read-link">Read Chapter →</span>
       </div>
     `;
 
@@ -517,36 +517,51 @@ function renderTOC() {
 
 let activeReadTimer = null;
 let activeReadSeconds = 0;
+let progressMap = JSON.parse(localStorage.getItem('acc_progress_v6') || '{}');
 const REQUIRED_READ_SECONDS = 300; // 5 minutes dwell time
 let activeScrollPercent = 0;
 let currentReadingFilename = '';
 
 function startReadingTracker(filename) {
   clearInterval(activeReadTimer);
-  activeReadSeconds = 0;
-  activeScrollPercent = 0;
   currentReadingFilename = filename;
+
+  // Restore saved progress if existing
+  const saved = progressMap[filename] || { seconds: 0, scroll: 0 };
+  activeReadSeconds = saved.seconds || 0;
+  activeScrollPercent = saved.scroll || 0;
 
   const timerBadge = document.getElementById('readTimerBadge');
   const scrollBadge = document.getElementById('readScrollBadge');
   const statusBadge = document.getElementById('readStatusBadge');
 
-  if (timerBadge) timerBadge.innerText = '⏱️ 00:00 / 05:00';
-  if (scrollBadge) scrollBadge.innerText = '📜 Scroll: 0%';
+  const mins = String(Math.floor(activeReadSeconds / 60)).padStart(2, '0');
+  const secs = String(activeReadSeconds % 60).padStart(2, '0');
 
-  const alreadyDone = completedSet.has(filename);
+  if (timerBadge) timerBadge.innerText = `⏱️ ${mins}:${secs} / 05:00`;
+  if (scrollBadge) scrollBadge.innerText = `📜 ${activeScrollPercent}%`;
+
+  const alreadyDone = completedSet.has(filename) || (activeReadSeconds >= REQUIRED_READ_SECONDS && activeScrollPercent >= 85);
   if (statusBadge) {
-    statusBadge.className = `read-status-chip ${alreadyDone ? 'completed' : 'in-progress'}`;
-    statusBadge.innerText = alreadyDone ? '✅ Completed' : 'Reading';
+    statusBadge.className = `tracker-badge ${alreadyDone ? 'completed' : 'in-progress'}`;
+    statusBadge.innerText = alreadyDone ? 'Completed' : 'Reading';
   }
 
   activeReadTimer = setInterval(() => {
     activeReadSeconds++;
-    const mins = String(Math.floor(activeReadSeconds / 60)).padStart(2, '0');
-    const secs = String(activeReadSeconds % 60).padStart(2, '0');
+    const m = String(Math.floor(activeReadSeconds / 60)).padStart(2, '0');
+    const s = String(activeReadSeconds % 60).padStart(2, '0');
     if (timerBadge) {
-      timerBadge.innerText = `⏱️ ${mins}:${secs} / 05:00`;
+      timerBadge.innerText = `⏱️ ${m}:${s} / 05:00`;
     }
+
+    // Persist active progress to localStorage
+    progressMap[currentReadingFilename] = {
+      seconds: activeReadSeconds,
+      scroll: activeScrollPercent
+    };
+    localStorage.setItem('acc_progress_v6', JSON.stringify(progressMap));
+
     checkCompletionCriteria();
   }, 1000);
 }
@@ -561,8 +576,8 @@ function checkCompletionCriteria() {
 
     const statusBadge = document.getElementById('readStatusBadge');
     if (statusBadge) {
-      statusBadge.className = 'read-status-chip completed';
-      statusBadge.innerText = '✅ Completed!';
+      statusBadge.className = 'tracker-badge completed';
+      statusBadge.innerText = 'Completed!';
     }
     renderPillars();
     renderTOC();
@@ -585,8 +600,17 @@ function bindIframeScrollTracker(doc) {
 
     const scrollBadge = document.getElementById('readScrollBadge');
     if (scrollBadge) {
-      scrollBadge.innerText = `📜 Scroll: ${activeScrollPercent}%`;
+      scrollBadge.innerText = `📜 ${activeScrollPercent}%`;
     }
+
+    if (currentReadingFilename) {
+      progressMap[currentReadingFilename] = {
+        seconds: activeReadSeconds,
+        scroll: activeScrollPercent
+      };
+      localStorage.setItem('acc_progress_v6', JSON.stringify(progressMap));
+    }
+
     checkCompletionCriteria();
   };
 

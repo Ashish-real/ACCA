@@ -685,19 +685,39 @@
   <!-- ══════════════════ READER ══════════════════ -->
   <div class="reader-modal" id="readerModal">
     <div class="reader-bar">
-      <div class="reader-bar-group">
-        <button class="reader-btn" onclick="toggleToc()">☰ Contents</button>
-        <span id="readerTitle">Chapter</span>
+      <!-- Left: TOC Button & Chapter Title -->
+      <div class="reader-left-group">
+        <button class="reader-btn toc-btn" onclick="toggleToc()" title="Table of Contents">
+          <span class="btn-icon">☰</span>
+          <span class="btn-text">Contents</span>
+        </button>
+        <span id="readerTitle" title="Chapter Title">Chapter</span>
       </div>
+
+      <!-- Center: Smart Progress Tracker -->
       <div class="reader-tracker-group">
-        <span class="read-tracker-chip" id="readTimerBadge">⏱️ 00:00 / 05:00</span>
-        <span class="read-tracker-chip" id="readScrollBadge">📜 Scroll: 0%</span>
-        <span class="read-status-chip in-progress" id="readStatusBadge">Reading</span>
+        <div class="tracker-pill" id="readTrackerPill" title="5-minute dwell and 85% scroll required">
+          <span class="tracker-time-text" id="readTimerBadge">⏱️ 00:00 / 05:00</span>
+          <span class="tracker-divider">·</span>
+          <span class="tracker-scroll-text" id="readScrollBadge">📜 0%</span>
+          <span class="tracker-badge in-progress" id="readStatusBadge">Reading</span>
+        </div>
       </div>
-      <div class="reader-bar-group">
-        <button class="reader-btn" onclick="navChapter(-1)">← Prev</button>
-        <button class="reader-btn" onclick="navChapter(1)">Next →</button>
-        <button class="reader-btn close" onclick="closeReader()">✕ Close</button>
+
+      <!-- Right: Navigation & Close -->
+      <div class="reader-right-group">
+        <button class="reader-btn nav-prev" onclick="navChapter(-1)" title="Previous Chapter">
+          <span class="btn-icon">←</span>
+          <span class="btn-text">Prev</span>
+        </button>
+        <button class="reader-btn nav-next" onclick="navChapter(1)" title="Next Chapter">
+          <span class="btn-text">Next</span>
+          <span class="btn-icon">→</span>
+        </button>
+        <button class="reader-btn close-btn" onclick="closeReader()" title="Close Reader">
+          <span class="btn-icon">✕</span>
+          <span class="btn-text">Close</span>
+        </button>
       </div>
     </div>
     <div class="reader-body">

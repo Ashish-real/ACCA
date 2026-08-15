@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ACCA Official 13-Paper Syllabus Mapping | Finance Career Bible</title>
+<title>ACCA 13-Paper Syllabus Mapping Matrix | Finance Career Bible</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
@@ -16,6 +16,7 @@
     --accent2: #00d4aa;
     --accent3: #ff6b6b;
     --accent4: #ffd93d;
+    --accent5: #e879f9;
     --text: #e8e8f0;
     --muted: #7a7a9a;
     --mono: 'Space Mono', monospace;
@@ -41,32 +42,138 @@
     overflow-x: hidden;
   }
 
-  /* ── HERO ── */
+  /* ── TOP HEADER / NAVBAR (CONNECTED TO MAIN PORTAL) ── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 15, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .brand-mark {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #0a0a0f;
+    padding: 6px 10px;
+    border-radius: 8px;
+    letter-spacing: 1px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-name small {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--accent2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-link {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .nav-link.active {
+    color: var(--accent2);
+    background: rgba(0, 212, 170, 0.1);
+    border: 1px solid rgba(0, 212, 170, 0.25);
+  }
+
+  .nav-btn-home {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent2), #38bdf8);
+    color: #080a0f;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .nav-btn-home:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 212, 170, 0.3);
+  }
+
+  /* ── HERO BANNER ── */
   .hero {
-    padding: 70px 24px 50px;
+    padding: 60px 24px 44px;
     text-align: center;
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid var(--border);
-    background: radial-gradient(circle at 50% -20%, rgba(0, 212, 170, 0.12) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% -10%, rgba(0, 212, 170, 0.12) 0%, transparent 65%);
   }
 
   .hero-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--accent2);
-    border: 1px solid var(--accent2);
+    border: 1px solid rgba(0, 212, 170, 0.3);
     padding: 5px 16px;
     border-radius: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     background: rgba(0, 212, 170, 0.06);
   }
 
   .hero h1 {
-    font-size: clamp(30px, 5.5vw, 56px);
+    font-size: clamp(32px, 5.5vw, 54px);
     font-weight: 700;
     line-height: 1.12;
     margin-bottom: 16px;
@@ -83,97 +190,131 @@
   .hero-sub {
     color: var(--muted);
     font-size: 15.5px;
-    max-width: 720px;
-    margin: 0 auto 30px;
+    max-width: 740px;
+    margin: 0 auto 28px;
     line-height: 1.7;
   }
 
-  .hero-nav-actions {
+  /* ── MAIN CONTAINER ── */
+  .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+  }
+
+  /* ── LIVE SEARCH TOOLBAR ── */
+  .toolbar {
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .search-input-wrap {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    stroke: var(--muted);
+    pointer-events: none;
+  }
+
+  .search-input {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    padding: 15px 20px 15px 50px;
+    border-radius: 12px;
+    outline: none;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .search-input:focus {
+    border-color: var(--accent2);
+    box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.18);
+  }
+
+  /* ── LEVEL FILTER BUTTONS ── */
+  .filter-row {
     display: flex;
     justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .hero-btn {
-    font-family: var(--mono);
-    font-size: 12px;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: transform 0.2s, background 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .hero-btn.primary {
-    background: var(--accent2);
-    color: #0a0a0f;
-  }
-
-  .hero-btn.secondary {
-    background: var(--card);
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-
-  .hero-btn:hover {
-    transform: translateY(-2px);
-  }
-
-  /* ── CONTAINER ── */
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
-
-  /* ── FILTER CHIPS ── */
-  .filter-bar {
-    display: flex;
     gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 36px;
-    justify-content: center;
   }
 
   .filter-btn {
     font-family: var(--mono);
-    font-size: 11.5px;
-    padding: 8px 16px;
+    font-size: 12px;
+    padding: 9px 18px;
     border-radius: 100px;
     background: var(--card);
     border: 1px solid var(--border);
     color: var(--muted);
     cursor: pointer;
     transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  .filter-btn.active, .filter-btn:hover {
+  .filter-btn:hover, .filter-btn.active {
     background: rgba(0, 212, 170, 0.12);
     border-color: var(--accent2);
     color: var(--accent2);
   }
 
-  /* ── DISCLAIMER CALLOUT ── */
+  /* ── EXAM BEST PRACTICE CALLOUT ── */
   .callout-box {
-    background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(0, 212, 170, 0.05));
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(0, 212, 170, 0.06));
     border: 1px solid rgba(0, 212, 170, 0.3);
     border-radius: 14px;
     padding: 24px 28px;
     margin-bottom: 40px;
   }
 
+  .callout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
   .callout-title {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 11.5px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--accent2);
-    margin-bottom: 10px;
     font-weight: 700;
+  }
+
+  .callout-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: #0a0a0f;
+    background: var(--accent2);
+    padding: 4px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+
+  .callout-link:hover {
+    transform: translateY(-1px);
   }
 
   .callout-text {
@@ -182,682 +323,679 @@
     line-height: 1.75;
   }
 
-  /* ── LEVEL SECTION ── */
-  .level-section {
-    margin-bottom: 50px;
+  /* ── GRID OF 13 PAPERS (DISTINCT MATRIX CARDS) ── */
+  .papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 560px), 1fr));
+    gap: 26px;
   }
 
-  .level-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 24px;
-  }
-
-  .level-badge {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 6px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .badge-knowledge { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
-  .badge-skills { background: rgba(0, 212, 170, 0.15); color: var(--accent2); border: 1px solid rgba(0, 212, 170, 0.3); }
-  .badge-essentials { background: rgba(232, 121, 249, 0.15); color: #e879f9; border: 1px solid rgba(232, 121, 249, 0.3); }
-  .badge-options { background: rgba(255, 217, 61, 0.15); color: var(--accent4); border: 1px solid rgba(255, 217, 61, 0.3); }
-
-  .level-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  /* ── PAPER CARDS ── */
   .paper-card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px 26px;
-    margin-bottom: 24px;
-    transition: border-color 0.2s;
+    border-radius: 16px;
+    padding: 26px;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
   }
 
   .paper-card:hover {
-    border-color: rgba(0, 212, 170, 0.5);
+    transform: translateY(-3px);
+    border-color: rgba(0, 212, 170, 0.45);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   }
 
-  .paper-head {
+  .paper-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 18px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .paper-code-title {
-    font-size: 17px;
+  .paper-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .paper-code {
+    font-family: var(--mono);
+    font-size: 16px;
     font-weight: 700;
-    color: var(--text);
-  }
-
-  .paper-code-title span {
     color: var(--accent2);
-    font-family: var(--mono);
-    margin-right: 8px;
-  }
-
-  .paper-meta {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 212, 170, 0.12);
+    border: 1px solid rgba(0, 212, 170, 0.3);
     padding: 4px 10px;
     border-radius: 6px;
   }
 
-  /* ── TABLE RESPONSIVE ── */
-  .table-responsive-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 10px;
-    border: 1px solid rgba(42, 42, 58, 0.7);
-    background: var(--surface);
-  }
-
-  table {
-    width: 100%;
-    min-width: 650px;
-    border-collapse: collapse;
-    font-size: 13.5px;
-  }
-
-  th {
-    background: rgba(255, 255, 255, 0.03);
-    color: var(--accent2);
-    font-family: var(--mono);
-    font-size: 11.5px;
+  .paper-title {
+    font-size: 17px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 12px 16px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-
-  td {
-    padding: 12px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    color: var(--muted);
-    vertical-align: top;
-    line-height: 1.6;
-  }
-
-  tr:last-child td {
-    border-bottom: none;
-  }
-
-  td strong {
     color: var(--text);
+    line-height: 1.2;
   }
 
-  .ch-pill {
-    display: inline-block;
-    background: rgba(108, 99, 255, 0.15);
-    border: 1px solid var(--accent);
-    color: #ffffff;
+  .paper-old-code {
     font-family: var(--mono);
     font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 4px;
-    margin: 2px 4px 2px 0;
-    text-decoration: none;
+    color: var(--muted);
+  }
+
+  .paper-format {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  /* ── TOPIC ITEMS INSIDE PAPER CARD ── */
+  .topics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex-grow: 1;
+  }
+
+  .topic-item {
+    background: var(--surface);
+    border: 1px solid rgba(42, 42, 58, 0.7);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+
+  .topic-name {
+    font-size: 14px;
     font-weight: 600;
-    transition: background 0.2s;
+    color: var(--text);
+    margin-bottom: 6px;
   }
 
-  .ch-pill:hover {
+  .topic-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .topic-chapters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .ch-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(108, 99, 255, 0.18);
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .ch-btn:hover {
     background: var(--accent);
+    transform: translateY(-1px);
   }
 
-  .ch-pill.formula {
+  .ch-btn.formula {
     background: rgba(255, 217, 61, 0.15);
     border-color: var(--accent4);
     color: var(--accent4);
   }
 
-  .footer-nav {
-    text-align: center;
-    margin-top: 60px;
-    padding-top: 30px;
-    border-top: 1px solid var(--border);
+  .ch-btn.formula:hover {
+    background: var(--accent4);
+    color: #0a0a0f;
+  }
+
+  /* ── STICKY BOTTOM RETURN BAR ── */
+  .floating-footer-bar {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(19, 19, 26, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 100px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 900;
+  }
+
+  .floating-btn {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+
+  .floating-btn.primary {
+    background: var(--accent2);
+    color: #080a0f;
+  }
+
+  .floating-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .floating-btn.primary:hover {
+    background: #00e6b8;
+  }
+
+  @media (max-width: 768px) {
+    .header-inner {
+      height: 60px;
+      padding: 0 16px;
+    }
+    .nav-links {
+      display: none;
+    }
+    .papers-grid {
+      grid-template-columns: 1fr;
+    }
+    .floating-footer-bar {
+      width: calc(100% - 32px);
+      justify-content: center;
+    }
   }
 </style>
 </head>
 <body>
 
+<!-- TOP HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">FCB</span>
+      <span class="brand-name">Finance Career Bible<small>ACCA · BIG 4</small></span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html#pillars" class="nav-link">50 Chapters</a>
+      <a href="index.html#roadmap" class="nav-link">Roadmap</a>
+      <a href="ACCA_Syllabus_Mapping.html" class="nav-link active">Syllabus Map</a>
+      <a href="index.html#formulas" class="nav-link">Formula Vault</a>
+      <a href="index.html#quiz" class="nav-link">Practice</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html" class="nav-btn-home">← Back to Portal</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
 <div class="hero">
   <div class="hero-tag">Official Syllabus Cross-Reference</div>
   <h1>ACCA 13-Paper<br><span>Syllabus Mapping Matrix</span></h1>
-  <p class="hero-sub">Every core topic from the official ACCA syllabus mapped directly to the chapters, standard cheat-sheets, and practical modules in the <em>Finance Career Bible</em>.</p>
-  <div class="hero-nav-actions">
-    <a href="index.html" class="hero-btn primary">← Back to Master Portal</a>
-    <a href="Finance_Career_Bible_Chapter49.html" class="hero-btn secondary">📐 Master Formula Vault (Ch 49)</a>
-    <a href="Finance_Career_Bible_Chapter50.html" class="hero-btn secondary">📝 Core Revision Questions (Ch 50)</a>
-  </div>
+  <p class="hero-sub">Every official syllabus area mapped directly to the chapters, standards, and practical models in the <em>Finance Career Bible</em>. Click any chapter badge to read it immediately.</p>
 </div>
 
+<!-- MAIN CONTENT -->
 <div class="container">
 
-  <!-- DISCLAIMER CALLOUT -->
+  <!-- LIVE SEARCH TOOLBAR -->
+  <div class="toolbar">
+    <div class="search-input-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" class="search-input" id="syllabusSearch"
+             placeholder="Search syllabus topics, IFRS standards, formulas — IFRS 16, WACC, Audit Risk, PESTEL, Transfer Pricing, VAT…"
+             oninput="filterSyllabus()">
+    </div>
+  </div>
+
+  <!-- LEVEL FILTER BUTTONS -->
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="setLevelFilter('ALL', this)">All Papers (13)</button>
+    <button class="filter-btn" onclick="setLevelFilter('knowledge', this)">Applied Knowledge (3)</button>
+    <button class="filter-btn" onclick="setLevelFilter('skills', this)">Applied Skills (6)</button>
+    <button class="filter-btn" onclick="setLevelFilter('professional', this)">Strategic Professional (4)</button>
+  </div>
+
+  <!-- EXAM BEST PRACTICE CALLOUT -->
   <div class="callout-box">
-    <div class="callout-title">💡 How to Use This Masterclass with Formal Exam Kits</div>
+    <div class="callout-header">
+      <span class="callout-title">🎯 Essential Exam Preparation Strategy</span>
+      <a href="https://practice.accaglobal.com/" target="_blank" class="callout-link">Official CBE Practice Platform ↗</a>
+    </div>
     <div class="callout-text">
-      The <strong>Finance Career Bible</strong> is engineered to give you the intuitive, practical, and first-principles mastery of finance concepts that textbooks miss. It explains <em>how and why</em> accounting standards, financial management decisions, and Big 4 audits work in the real world.
-      <br><br>
-      For formal ACCA exam preparation, use this syllabus matrix to cross-reference each paper's topics. Always complement your conceptual mastery with an approved <strong>BPP or Kaplan Exam Kit</strong> and practice on the official <strong>ACCA CBE Practice Platform</strong> for high-volume exam drills.
+      The <strong>Finance Career Bible</strong> is designed to build intuitive understanding, real-world finance models, and first-principles mastery behind every topic. For formal exam sitting, students <strong>must pair this conceptual foundation with an approved Kaplan or BPP Exam Kit</strong> and the official <strong>ACCA CBE Practice Platform</strong> for timed volume question drills.
     </div>
   </div>
 
-  <!-- LEVEL 1: APPLIED KNOWLEDGE -->
-  <div class="level-section">
-    <div class="level-header">
-      <span class="level-badge badge-knowledge">Level 1</span>
-      <h2 class="level-title">Applied Knowledge (3 Papers)</h2>
-    </div>
-
-    <!-- BT -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>BT</span> Business and Technology (F1)</div>
-        <div class="paper-meta">Computer-Based Exam · 2 Hours · 100% Objective</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Business Organisation &amp; Structure</strong></td>
-              <td>Types of organisations, stakeholders, governance structures, organizational culture.</td>
-              <td><a href="Finance_Career_Bible_Chapter1.html" class="ch-pill">Ch 01</a> <a href="Finance_Career_Bible_Chapter28.html" class="ch-pill">Ch 28</a></td>
-            </tr>
-            <tr>
-              <td><strong>Macro &amp; Micro Environment</strong></td>
-              <td>PESTEL analysis, Porter's Five Forces, competitive advantage, market structures.</td>
-              <td><a href="Finance_Career_Bible_Chapter27.html" class="ch-pill">Ch 27</a> <a href="Finance_Career_Bible_Chapter28.html" class="ch-pill">Ch 28</a></td>
-            </tr>
-            <tr>
-              <td><strong>Governance, Ethics &amp; Regulation</strong></td>
-              <td>Corporate governance, public interest, ethical dilemmas, regulatory framework.</td>
-              <td><a href="Finance_Career_Bible_Chapter13.html" class="ch-pill">Ch 13</a> <a href="Finance_Career_Bible_Chapter28.html" class="ch-pill">Ch 28</a></td>
-            </tr>
-            <tr>
-              <td><strong>Technology &amp; Digital Finance</strong></td>
-              <td>Cloud systems, Big Data, FinTech ecosystems, cybersecurity, AI in accounting.</td>
-              <td><a href="Finance_Career_Bible_Chapter30.html" class="ch-pill">Ch 30</a> <a href="Finance_Career_Bible_Chapter31.html" class="ch-pill">Ch 31</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- MA -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>MA</span> Management Accounting (F2)</div>
-        <div class="paper-meta">Computer-Based Exam · 2 Hours · Cost &amp; Variance Core</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Cost Classification &amp; Behaviour</strong></td>
-              <td>Fixed, variable, semi-variable, step costs, high-low method, cost centers.</td>
-              <td><a href="Finance_Career_Bible_Chapter5.html" class="ch-pill">Ch 05</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-            <tr>
-              <td><strong>Costing Methodologies</strong></td>
-              <td>Absorption vs. Marginal costing, Activity-Based Costing (ABC) principles.</td>
-              <td><a href="Finance_Career_Bible_Chapter5.html" class="ch-pill">Ch 05</a> <a href="Finance_Career_Bible_Chapter6.html" class="ch-pill">Ch 06</a></td>
-            </tr>
-            <tr>
-              <td><strong>Budgeting &amp; Forecasting</strong></td>
-              <td>Functional budgets, cash budgets, flexible budgets, rolling forecasts.</td>
-              <td><a href="Finance_Career_Bible_Chapter7.html" class="ch-pill">Ch 07</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-            <tr>
-              <td><strong>Standard Costing &amp; Variances</strong></td>
-              <td>Material price &amp; usage, labor rate &amp; efficiency, overhead variances.</td>
-              <td><a href="Finance_Career_Bible_Chapter8.html" class="ch-pill">Ch 08</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- FA -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>FA</span> Financial Accounting (F3)</div>
-        <div class="paper-meta">Computer-Based Exam · 2 Hours · Double Entry &amp; IFRS Foundations</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Double Entry &amp; Trial Balance</strong></td>
-              <td>Debits/credits, ledger accounts, journal entries, error corrections &amp; suspense.</td>
-              <td><a href="Finance_Career_Bible_Chapter2.html" class="ch-pill">Ch 02</a></td>
-            </tr>
-            <tr>
-              <td><strong>Core IFRS Asset Standards</strong></td>
-              <td>IAS 2 (Inventories), IAS 16 (PPE &amp; Depreciation), IAS 38 (Intangibles).</td>
-              <td><a href="Finance_Career_Bible_Chapter4.html" class="ch-pill">Ch 04</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-            <tr>
-              <td><strong>Financial Statements (IAS 1 &amp; 7)</strong></td>
-              <td>Statement of Profit or Loss, Balance Sheet, Statement of Cash Flows.</td>
-              <td><a href="Finance_Career_Bible_Chapter3.html" class="ch-pill">Ch 03</a></td>
-            </tr>
-            <tr>
-              <td><strong>Basic Consolidation</strong></td>
-              <td>Subsidiaries, goodwill calculation, non-controlling interest (NCI).</td>
-              <td><a href="Finance_Career_Bible_Chapter18.html" class="ch-pill">Ch 18</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- LEVEL 2: APPLIED SKILLS -->
-  <div class="level-section">
-    <div class="level-header">
-      <span class="level-badge badge-skills">Level 2</span>
-      <h2 class="level-title">Applied Skills (6 Papers)</h2>
-    </div>
-
-    <!-- LW -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>LW</span> Corporate and Business Law (F4)</div>
-        <div class="paper-meta">CBE Exam · Contract Law, Companies Act, Insolvency</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Essential Elements of Legal Systems</strong></td>
-              <td>Sources of law, court systems, statutory interpretation, precedents.</td>
-              <td><a href="Finance_Career_Bible_Chapter13.html" class="ch-pill">Ch 13</a></td>
-            </tr>
-            <tr>
-              <td><strong>Law of Obligations (Contract &amp; Tort)</strong></td>
-              <td>Offer/acceptance, consideration, terms, breach, remedies, negligence.</td>
-              <td><a href="Finance_Career_Bible_Chapter13.html" class="ch-pill">Ch 13</a> <a href="Finance_Career_Bible_Chapter28.html" class="ch-pill">Ch 28</a></td>
-            </tr>
-            <tr>
-              <td><strong>Company Formation &amp; Governance</strong></td>
-              <td>Articles of Association, directors' duties, shareholder rights, insolvency.</td>
-              <td><a href="Finance_Career_Bible_Chapter28.html" class="ch-pill">Ch 28</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- PM -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>PM</span> Performance Management (F5)</div>
-        <div class="paper-meta">CBE Exam · 3 Hours · Advanced Costing, Decision Making &amp; Control</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Specialist Cost &amp; Management Accounting</strong></td>
-              <td>Activity-based costing (ABC), Target costing, Life-cycle costing, Throughput accounting.</td>
-              <td><a href="Finance_Career_Bible_Chapter5.html" class="ch-pill">Ch 05</a> <a href="Finance_Career_Bible_Chapter6.html" class="ch-pill">Ch 06</a></td>
-            </tr>
-            <tr>
-              <td><strong>Decision-Making Techniques</strong></td>
-              <td>CVP analysis, limiting factors, make vs. buy, shutdown decisions, pricing strategies.</td>
-              <td><a href="Finance_Career_Bible_Chapter6.html" class="ch-pill">Ch 06</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-            <tr>
-              <td><strong>Performance Measurement &amp; Control</strong></td>
-              <td>Financial &amp; non-financial KPIs, Balanced Scorecard, divisional transfer pricing, ROI vs. RI.</td>
-              <td><a href="Finance_Career_Bible_Chapter7.html" class="ch-pill">Ch 07</a> <a href="Finance_Career_Bible_Chapter27.html" class="ch-pill">Ch 27</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- TX -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>TX</span> Taxation (F6)</div>
-        <div class="paper-meta">CBE Exam · Direct Tax, Corporate Tax, VAT/GST &amp; Capital Gains</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Individual Income Tax</strong></td>
-              <td>Employment income, trading income, property income, allowances &amp; rate bands.</td>
-              <td><a href="Finance_Career_Bible_Chapter9.html" class="ch-pill">Ch 09</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-            <tr>
-              <td><strong>Corporation Tax &amp; Capital Allowances</strong></td>
-              <td>Adjusted trading profits, capital allowances, loss reliefs, group relief rules.</td>
-              <td><a href="Finance_Career_Bible_Chapter9.html" class="ch-pill">Ch 09</a> <a href="Finance_Career_Bible_Chapter10.html" class="ch-pill">Ch 10</a></td>
-            </tr>
-            <tr>
-              <td><strong>Capital Gains Tax &amp; Indirect Tax (VAT/GST)</strong></td>
-              <td>Disposal of assets, reliefs (Entrepreneurs/BADR, Rollover), VAT schemes, compliance.</td>
-              <td><a href="Finance_Career_Bible_Chapter10.html" class="ch-pill">Ch 10</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- FR -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>FR</span> Financial Reporting (F7)</div>
-        <div class="paper-meta">CBE Exam · 3 Hours · Advanced IFRS &amp; Complex Group Consolidation</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Core IFRS Accounting Standards</strong></td>
-              <td>IAS 16, IAS 36 (Impairment), IAS 38, IAS 37 (Provisions), IAS 12 (Taxes), IFRS 15 (Revenue), IFRS 16 (Leases).</td>
-              <td><a href="Finance_Career_Bible_Chapter4.html" class="ch-pill">Ch 04</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-            <tr>
-              <td><strong>Group Financial Statements</strong></td>
-              <td>Consolidated P&amp;L, Consolidated Balance Sheet, fair value adjustments, goodwill, NCI, associates (IAS 28).</td>
-              <td><a href="Finance_Career_Bible_Chapter18.html" class="ch-pill">Ch 18</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-            <tr>
-              <td><strong>Financial Statement Analysis</strong></td>
-              <td>Profitability, liquidity, gearing, working capital ratios, cash flow interpretation.</td>
-              <td><a href="Finance_Career_Bible_Chapter19.html" class="ch-pill">Ch 19</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- AA -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>AA</span> Audit and Assurance (F8)</div>
-        <div class="paper-meta">CBE Exam · 3 Hours · Risk Assessment, Internal Controls &amp; Reporting</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Audit Framework &amp; Professional Ethics</strong></td>
-              <td>External audit purpose, ISA regulatory framework, IESBA Code of Ethics (5 fundamental principles).</td>
-              <td><a href="Finance_Career_Bible_Chapter11.html" class="ch-pill">Ch 11</a> <a href="Finance_Career_Bible_Chapter12.html" class="ch-pill">Ch 12</a></td>
-            </tr>
-            <tr>
-              <td><strong>Audit Planning, Risk &amp; Internal Controls</strong></td>
-              <td>Audit risk model (Inherent, Control, Detection), materiality calculations, testing sales/purchases controls.</td>
-              <td><a href="Finance_Career_Bible_Chapter24.html" class="ch-pill">Ch 24</a> <a href="Finance_Career_Bible_Chapter25.html" class="ch-pill">Ch 25</a></td>
-            </tr>
-            <tr>
-              <td><strong>Substantive Procedures &amp; Audit Reports</strong></td>
-              <td>Substantive testing across balance sheet cycles, audit sampling, unmodified vs. modified opinions.</td>
-              <td><a href="Finance_Career_Bible_Chapter25.html" class="ch-pill">Ch 25</a> <a href="Finance_Career_Bible_Chapter26.html" class="ch-pill">Ch 26</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- FM -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>FM</span> Financial Management (F9)</div>
-        <div class="paper-meta">CBE Exam · 3 Hours · Working Capital, Valuation, WACC &amp; Risk Hedging</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Working Capital Management</strong></td>
-              <td>Cash operating cycle, EOQ, Miller-Orr / Baumol cash models, trade credit management.</td>
-              <td><a href="Finance_Career_Bible_Chapter14.html" class="ch-pill">Ch 14</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-            <tr>
-              <td><strong>Investment Appraisal (DCF)</strong></td>
-              <td>NPV, IRR, Payback, Accounting Rate of Return (ARR), inflation, taxation &amp; capital rationing.</td>
-              <td><a href="Finance_Career_Bible_Chapter15.html" class="ch-pill">Ch 15</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-            <tr>
-              <td><strong>Cost of Capital &amp; Business Valuation</strong></td>
-              <td>Cost of equity (CAPM, Dividend Growth Model), WACC, gearing theories, PE and asset valuation.</td>
-              <td><a href="Finance_Career_Bible_Chapter16.html" class="ch-pill">Ch 16</a> <a href="Finance_Career_Bible_Chapter20.html" class="ch-pill">Ch 20</a></td>
-            </tr>
-            <tr>
-              <td><strong>Risk Management (FX &amp; Interest Rates)</strong></td>
-              <td>Currency forwards, money market hedges, interest rate hedging fundamentals.</td>
-              <td><a href="Finance_Career_Bible_Chapter22.html" class="ch-pill">Ch 22</a> <a href="Finance_Career_Bible_Chapter23.html" class="ch-pill">Ch 23</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- LEVEL 3: STRATEGIC PROFESSIONAL -->
-  <div class="level-section">
-    <div class="level-header">
-      <span class="level-badge badge-essentials">Level 3</span>
-      <h2 class="level-title">Strategic Professional — Essentials &amp; Options</h2>
-    </div>
-
-    <!-- SBL -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>SBL</span> Strategic Business Leader</div>
-        <div class="paper-meta">4-Hour Integrated Case Study · Leadership, Strategy &amp; Governance</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Leadership, Governance &amp; Ethics</strong></td>
-              <td>Board composition, agency theory, stakeholder management, code of conduct, public interest.</td>
-              <td><a href="Finance_Career_Bible_Chapter28.html" class="ch-pill">Ch 28</a> <a href="Finance_Career_Bible_Chapter35.html" class="ch-pill">Ch 35</a></td>
-            </tr>
-            <tr>
-              <td><strong>Strategic Analysis, Choice &amp; Change</strong></td>
-              <td>PESTEL, Porter's, Resource-Based View (VRIO), Ansoff Matrix, strategic options, change management.</td>
-              <td><a href="Finance_Career_Bible_Chapter27.html" class="ch-pill">Ch 27</a> <a href="Finance_Career_Bible_Chapter38.html" class="ch-pill">Ch 38</a></td>
-            </tr>
-            <tr>
-              <td><strong>Risk Management &amp; Internal Audit</strong></td>
-              <td>Enterprise risk management frameworks (COSO), risk response strategies (TARA), audit committees.</td>
-              <td><a href="Finance_Career_Bible_Chapter26.html" class="ch-pill">Ch 26</a></td>
-            </tr>
-            <tr>
-              <td><strong>Technology, Data &amp; Sustainability</strong></td>
-              <td>Cloud architecture, Big Data governance, FinTech disruption, ESG integration.</td>
-              <td><a href="Finance_Career_Bible_Chapter30.html" class="ch-pill">Ch 30</a> <a href="Finance_Career_Bible_Chapter36.html" class="ch-pill">Ch 36</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- SBR -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>SBR</span> Strategic Business Reporting</div>
-        <div class="paper-meta">3-Hour 15-Min Exam · Advanced IFRS Advisory &amp; Stakeholder Reporting</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Official Syllabus Area</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Advanced IFRS Standards</strong></td>
-              <td>IFRS 2 (Share-based payments), IFRS 9 (Financial assets/hedging), IFRS 15, IFRS 16, IAS 19 (Pensions).</td>
-              <td><a href="Finance_Career_Bible_Chapter4.html" class="ch-pill">Ch 04</a> <a href="Finance_Career_Bible_Chapter49.html" class="ch-pill formula">Ch 49</a></td>
-            </tr>
-            <tr>
-              <td><strong>Complex Group Reporting</strong></td>
-              <td>Step acquisitions, foreign subsidiaries (IAS 21), partial disposals, joint arrangements (IFRS 11).</td>
-              <td><a href="Finance_Career_Bible_Chapter18.html" class="ch-pill">Ch 18</a> <a href="Finance_Career_Bible_Chapter19.html" class="ch-pill">Ch 19</a></td>
-            </tr>
-            <tr>
-              <td><strong>Sustainability &amp; Ethical Impact</strong></td>
-              <td>ISSB (IFRS S1/S2) sustainability disclosures, ethical pressure on accounting treatment.</td>
-              <td><a href="Finance_Career_Bible_Chapter36.html" class="ch-pill">Ch 36</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- OPTIONS: AFM, APM, ATX, AAA -->
-    <div class="paper-card">
-      <div class="paper-head">
-        <div class="paper-code-title"><span>OPTIONS</span> AFM · APM · ATX · AAA (Advanced Papers)</div>
-        <div class="paper-meta">Specialist Electives (Choose 2 of 4)</div>
-      </div>
-      <div class="table-responsive-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 32%;">Elective Paper</th>
-              <th style="width: 44%;">Core Topics Covered</th>
-              <th style="width: 24%;">Bible Chapters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>AFM — Adv. Financial Management</strong></td>
-              <td>Advanced APV, M&amp;A valuation, financing strategies, currency options/swaps, international treasury.</td>
-              <td><a href="Finance_Career_Bible_Chapter15.html" class="ch-pill">Ch 15</a> <a href="Finance_Career_Bible_Chapter21.html" class="ch-pill">Ch 21</a> <a href="Finance_Career_Bible_Chapter23.html" class="ch-pill">Ch 23</a></td>
-            </tr>
-            <tr>
-              <td><strong>APM — Adv. Performance Management</strong></td>
-              <td>Value-Based Management (EVA), Performance Prism, JIT, Kaizen, transfer pricing across multinationals.</td>
-              <td><a href="Finance_Career_Bible_Chapter5.html" class="ch-pill">Ch 05</a> <a href="Finance_Career_Bible_Chapter27.html" class="ch-pill">Ch 27</a></td>
-            </tr>
-            <tr>
-              <td><strong>ATX — Advanced Taxation</strong></td>
-              <td>Advanced international tax structuring, transfer pricing, corporate restructuring &amp; wealth preservation.</td>
-              <td><a href="Finance_Career_Bible_Chapter9.html" class="ch-pill">Ch 09</a> <a href="Finance_Career_Bible_Chapter10.html" class="ch-pill">Ch 10</a></td>
-            </tr>
-            <tr>
-              <td><strong>AAA — Adv. Audit &amp; Assurance</strong></td>
-              <td>Group audits, ISQM 1/2 quality management, forensic investigations, ESG assurance, crisis reporting.</td>
-              <td><a href="Finance_Career_Bible_Chapter11.html" class="ch-pill">Ch 11</a> <a href="Finance_Career_Bible_Chapter25.html" class="ch-pill">Ch 25</a> <a href="Finance_Career_Bible_Chapter36.html" class="ch-pill">Ch 36</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-nav">
-    <a href="index.html" class="hero-btn primary">← Return to Master ACCA Portal</a>
-  </div>
+  <!-- PAPERS GRID -->
+  <div class="papers-grid" id="papersGrid"></div>
 
 </div>
+
+<!-- STICKY FLOATING RETURN BAR -->
+<div class="floating-footer-bar">
+  <a href="index.html" class="floating-btn primary">← Back to Master Portal</a>
+  <a href="Finance_Career_Bible_Chapter49.html" class="floating-btn">📐 Formula Vault (Ch 49)</a>
+  <a href="Finance_Career_Bible_Chapter50.html" class="floating-btn">📝 Revision MCQs (Ch 50)</a>
+</div>
+
+<script>
+const PAPERS = [
+  {
+    code: "BT",
+    name: "Business and Technology",
+    oldCode: "F1",
+    level: "knowledge",
+    format: "2h CBE · 100% Objective",
+    topics: [
+      {
+        name: "Business Organisation & Stakeholders",
+        desc: "Organisation structures, stakeholders, corporate governance, organisational culture.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter1.html", label: "Ch 01: Finance Overview" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
+      },
+      {
+        name: "Macro & Micro Environment",
+        desc: "PESTEL analysis, Porter's Five Forces, competitive advantage, market structure.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter27.html", label: "Ch 27: Business Strategy" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
+      },
+      {
+        name: "Ethics, Governance & Regulation",
+        desc: "IESBA ethical principles, public interest, anti-fraud controls, regulatory bodies.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter13.html", label: "Ch 13: ACCA Profession" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
+      },
+      {
+        name: "Digital Finance & Technology",
+        desc: "Cloud accounting, Big Data, FinTech ecosystems, cybersecurity, AI in finance.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter30.html", label: "Ch 30: Tech & AI" }, { file: "Finance_Career_Bible_Chapter31.html", label: "Ch 31: Data & Analytics" }]
+      }
+    ]
+  },
+  {
+    code: "MA",
+    name: "Management Accounting",
+    oldCode: "F2",
+    level: "knowledge",
+    format: "2h CBE · Cost & Variance Core",
+    topics: [
+      {
+        name: "Cost Classification & Behaviour",
+        desc: "Fixed vs. variable costs, High-Low method, step costs, cost centers and cost allocation.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter5.html", label: "Ch 05: Cost & Mgmt Acct" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Absorption vs. Marginal Costing",
+        desc: "Cost accumulation, reconciliation of absorption/marginal profit, Activity-Based Costing (ABC).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter5.html", label: "Ch 05: Cost Accounting" }, { file: "Finance_Career_Bible_Chapter6.html", label: "Ch 06: Decision Making" }]
+      },
+      {
+        name: "Budgeting & Forecasting",
+        desc: "Functional budgets, cash budgets, flexible budgeting, rolling forecasts.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter7.html", label: "Ch 07: Budgeting & FP&A" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Standard Costing & Variance Analysis",
+        desc: "Material price & usage, labor rate & efficiency, overhead expenditure & volume variances.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter8.html", label: "Ch 08: Variance Analysis" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      }
+    ]
+  },
+  {
+    code: "FA",
+    name: "Financial Accounting",
+    oldCode: "F3",
+    level: "knowledge",
+    format: "2h CBE · Double-Entry & IFRS Core",
+    topics: [
+      {
+        name: "Double-Entry & Trial Balance",
+        desc: "Debits/credits, ledger mechanics, journal entries, error corrections & suspense accounts.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter2.html", label: "Ch 02: Accounting Mechanics" }, { file: "Finance_Career_Bible_Chapter3.html", label: "Ch 03: Financial Statements" }]
+      },
+      {
+        name: "Core IFRS Asset Standards",
+        desc: "IAS 2 (Inventories), IAS 16 (PPE & Depreciation methods), IAS 38 (Intangibles).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter4.html", label: "Ch 04: Key Standards" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Financial Statements (IAS 1 & 7)",
+        desc: "Statement of Profit or Loss, Balance Sheet, Statement of Cash Flows (Operating, Investing, Financing).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter3.html", label: "Ch 03: Financial Statements" }]
+      },
+      {
+        name: "Basic Consolidation",
+        desc: "Subsidiary accounting, goodwill calculation, non-controlling interest (NCI).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter18.html", label: "Ch 18: Group Accounts" }]
+      }
+    ]
+  },
+  {
+    code: "LW",
+    name: "Corporate & Business Law",
+    oldCode: "F4",
+    level: "skills",
+    format: "2h CBE · Contract, Company & Insolvency",
+    topics: [
+      {
+        name: "Legal Systems & Sources of Law",
+        desc: "Court structures, precedent, statutory interpretation, European/international law.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter13.html", label: "Ch 13: ACCA Profession" }]
+      },
+      {
+        name: "Law of Obligations (Contract & Tort)",
+        desc: "Offer, acceptance, consideration, breach of contract, remedies, professional negligence.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter13.html", label: "Ch 13: Legal Environment" }, { file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }]
+      },
+      {
+        name: "Company Formation & Governance",
+        desc: "Articles of association, share capital, directors' duties, insider dealing, insolvency proceedings.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Corporate Governance" }]
+      }
+    ]
+  },
+  {
+    code: "PM",
+    name: "Performance Management",
+    oldCode: "F5",
+    level: "skills",
+    format: "3h CBE · Advanced Costing & Decision Making",
+    topics: [
+      {
+        name: "Specialist Cost Management",
+        desc: "Activity-Based Costing (ABC), Target Costing, Life-Cycle Costing, Throughput Accounting.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter5.html", label: "Ch 05: Cost Accounting" }, { file: "Finance_Career_Bible_Chapter6.html", label: "Ch 06: Decision Making" }]
+      },
+      {
+        name: "Decision-Making Techniques",
+        desc: "CVP analysis, limiting factors, make vs. buy, shutdown analysis, pricing strategies.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter6.html", label: "Ch 06: Decision Making" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Performance Measurement & Control",
+        desc: "Balanced Scorecard, transfer pricing methods, divisional ROI vs. Residual Income (RI).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter7.html", label: "Ch 07: Budgeting & FP&A" }, { file: "Finance_Career_Bible_Chapter27.html", label: "Ch 27: Business Strategy" }]
+      }
+    ]
+  },
+  {
+    code: "TX",
+    name: "Taxation",
+    oldCode: "F6",
+    level: "skills",
+    format: "3h CBE · Direct, Corporate & Indirect Tax",
+    topics: [
+      {
+        name: "Individual Income Tax",
+        desc: "Employment income, trading income, property income, allowances & progressive rate bands.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter9.html", label: "Ch 09: Tax Principles" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Corporation Tax & Allowances",
+        desc: "Adjusted trading profit, capital allowances, loss reliefs, group relief rules.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter9.html", label: "Ch 09: Tax Principles" }, { file: "Finance_Career_Bible_Chapter10.html", label: "Ch 10: Advanced Tax Planning" }]
+      },
+      {
+        name: "Capital Gains Tax & Indirect Taxes",
+        desc: "Asset disposals, reliefs (BADR, rollover), VAT/GST schemes and compliance.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter10.html", label: "Ch 10: Tax Planning" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      }
+    ]
+  },
+  {
+    code: "FR",
+    name: "Financial Reporting",
+    oldCode: "F7",
+    level: "skills",
+    format: "3h CBE · Advanced IFRS & Group Accounts",
+    topics: [
+      {
+        name: "Advanced IFRS Standards",
+        desc: "IAS 16, IAS 36 (Impairment), IAS 38, IAS 37 (Provisions), IAS 12 (Taxes), IFRS 15 (Revenue), IFRS 16 (Leases).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter4.html", label: "Ch 04: Key Standards" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Group Financial Statements",
+        desc: "Consolidated P&L, Consolidated Balance Sheet, fair value adjustments, goodwill, NCI, associates (IAS 28).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter18.html", label: "Ch 18: Group Accounts" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Financial Statement Analysis",
+        desc: "Profitability, liquidity, gearing, working capital ratios, cash flow interpretation.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter19.html", label: "Ch 19: Financial Analysis" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      }
+    ]
+  },
+  {
+    code: "AA",
+    name: "Audit & Assurance",
+    oldCode: "F8",
+    level: "skills",
+    format: "3h CBE · Risk Assessment & Evidence",
+    topics: [
+      {
+        name: "Audit Framework & Ethics",
+        desc: "External audit purpose, ISA regulatory framework, IESBA Code of Ethics (5 fundamental principles).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter11.html", label: "Ch 11: Audit Foundations" }, { file: "Finance_Career_Bible_Chapter12.html", label: "Ch 12: Audit Execution" }]
+      },
+      {
+        name: "Audit Planning, Risk & Controls",
+        desc: "Audit risk model (Inherent, Control, Detection), materiality calculations, testing sales/purchases controls.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter24.html", label: "Ch 24: Internal Controls" }, { file: "Finance_Career_Bible_Chapter25.html", label: "Ch 25: Audit Evidence" }]
+      },
+      {
+        name: "Substantive Procedures & Reporting",
+        desc: "Substantive testing across balance sheet cycles, audit sampling, unmodified vs. modified opinions.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter25.html", label: "Ch 25: Audit Evidence" }, { file: "Finance_Career_Bible_Chapter26.html", label: "Ch 26: Risk & Reporting" }]
+      }
+    ]
+  },
+  {
+    code: "FM",
+    name: "Financial Management",
+    oldCode: "F9",
+    level: "skills",
+    format: "3h CBE · DCF, Valuation & WACC",
+    topics: [
+      {
+        name: "Working Capital Management",
+        desc: "Cash operating cycle, EOQ, Miller-Orr / Baumol cash models, trade credit management.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter14.html", label: "Ch 14: Working Capital" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Investment Appraisal (DCF)",
+        desc: "NPV, IRR, Payback, Accounting Rate of Return (ARR), inflation, taxation & capital rationing.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter15.html", label: "Ch 15: Investment Appraisal" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Cost of Capital & Valuation",
+        desc: "Cost of equity (CAPM, Dividend Growth Model), WACC, gearing theories, PE and asset valuation.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter16.html", label: "Ch 16: Cost of Capital" }, { file: "Finance_Career_Bible_Chapter20.html", label: "Ch 20: Business Valuation" }]
+      },
+      {
+        name: "Risk Management (FX & Rates)",
+        desc: "Currency forwards, money market hedges, interest rate hedging fundamentals.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter22.html", label: "Ch 22: FX Risk" }, { file: "Finance_Career_Bible_Chapter23.html", label: "Ch 23: Derivatives" }]
+      }
+    ]
+  },
+  {
+    code: "SBL",
+    name: "Strategic Business Leader",
+    oldCode: "Essentials",
+    level: "professional",
+    format: "4h Integrated Case Study",
+    topics: [
+      {
+        name: "Leadership, Governance & Ethics",
+        desc: "Board composition, agency theory, stakeholder management, code of conduct, public interest.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter28.html", label: "Ch 28: Governance" }, { file: "Finance_Career_Bible_Chapter35.html", label: "Ch 35: Professionalism" }]
+      },
+      {
+        name: "Strategic Analysis & Choice",
+        desc: "PESTEL, Porter's, Resource-Based View (VRIO), Ansoff Matrix, strategic options, change management.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter27.html", label: "Ch 27: Business Strategy" }, { file: "Finance_Career_Bible_Chapter38.html", label: "Ch 38: Career Mastery" }]
+      },
+      {
+        name: "Risk Management & Internal Audit",
+        desc: "Enterprise risk management frameworks (COSO), risk response strategies (TARA), audit committees.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter26.html", label: "Ch 26: Risk & Reporting" }]
+      },
+      {
+        name: "Technology, Data & Sustainability",
+        desc: "Cloud architecture, Big Data governance, FinTech disruption, ESG integration.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter30.html", label: "Ch 30: Tech & AI" }, { file: "Finance_Career_Bible_Chapter36.html", label: "Ch 36: ESG Reporting" }]
+      }
+    ]
+  },
+  {
+    code: "SBR",
+    name: "Strategic Business Reporting",
+    oldCode: "Essentials",
+    level: "professional",
+    format: "3h 15m · Advisory & Stakeholder",
+    topics: [
+      {
+        name: "Advanced IFRS Standards",
+        desc: "IFRS 2 (Share-based payments), IFRS 9 (Financial assets/hedging), IFRS 15, IFRS 16, IAS 19 (Pensions).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter4.html", label: "Ch 04: Standards" }, { file: "Finance_Career_Bible_Chapter49.html", label: "Ch 49: Formulas", isFormula: true }]
+      },
+      {
+        name: "Complex Group Reporting",
+        desc: "Step acquisitions, foreign subsidiaries (IAS 21), partial disposals, joint arrangements (IFRS 11).",
+        chapters: [{ file: "Finance_Career_Bible_Chapter18.html", label: "Ch 18: Group Accounts" }, { file: "Finance_Career_Bible_Chapter19.html", label: "Ch 19: Financial Analysis" }]
+      },
+      {
+        name: "Sustainability & Ethical Impact",
+        desc: "ISSB (IFRS S1/S2) sustainability disclosures, ethical pressure on accounting treatment.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter36.html", label: "Ch 36: ESG Reporting" }]
+      }
+    ]
+  },
+  {
+    code: "OPTIONS",
+    name: "AFM · APM · ATX · AAA",
+    oldCode: "Electives",
+    level: "professional",
+    format: "Specialist Electives (Choose 2)",
+    topics: [
+      {
+        name: "AFM — Advanced Financial Management",
+        desc: "Advanced APV, M&A valuation, financing strategies, currency options/swaps, international treasury.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter15.html", label: "Ch 15: Appraisal" }, { file: "Finance_Career_Bible_Chapter21.html", label: "Ch 21: M&A Strategy" }, { file: "Finance_Career_Bible_Chapter23.html", label: "Ch 23: Derivatives" }]
+      },
+      {
+        name: "APM — Advanced Performance Management",
+        desc: "Value-Based Management (EVA), Performance Prism, JIT, Kaizen, transfer pricing across multinationals.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter5.html", label: "Ch 05: Costing" }, { file: "Finance_Career_Bible_Chapter27.html", label: "Ch 27: Strategy" }]
+      },
+      {
+        name: "ATX — Advanced Taxation",
+        desc: "Advanced international tax structuring, transfer pricing, corporate restructuring & wealth preservation.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter9.html", label: "Ch 09: Tax" }, { file: "Finance_Career_Bible_Chapter10.html", label: "Ch 10: Advanced Tax" }]
+      },
+      {
+        name: "AAA — Advanced Audit & Assurance",
+        desc: "Group audits, ISQM 1/2 quality management, forensic investigations, ESG assurance, crisis reporting.",
+        chapters: [{ file: "Finance_Career_Bible_Chapter11.html", label: "Ch 11: Audit" }, { file: "Finance_Career_Bible_Chapter25.html", label: "Ch 25: Evidence" }, { file: "Finance_Career_Bible_Chapter36.html", label: "Ch 36: ESG" }]
+      }
+    ]
+  }
+];
+
+let currentLevel = 'ALL';
+
+function renderPapers(list) {
+  const grid = document.getElementById('papersGrid');
+  grid.innerHTML = '';
+
+  if (!list.length) {
+    grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 60px 20px; color: var(--muted);">No syllabus topics matched your query. Try searching for "IFRS 16", "WACC", "Variance", "Audit", or "Tax".</div>`;
+    return;
+  }
+
+  list.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'paper-card';
+
+    let topicsHtml = p.topics.map(t => `
+      <div class="topic-item">
+        <div class="topic-name">${t.name}</div>
+        <div class="topic-desc">${t.desc}</div>
+        <div class="topic-chapters">
+          ${t.chapters.map(c => `<a href="${c.file}" class="ch-btn ${c.isFormula ? 'formula' : ''}">${c.label} ↗</a>`).join('')}
+        </div>
+      </div>
+    `).join('');
+
+    card.innerHTML = `
+      <div class="paper-top">
+        <div class="paper-badge-group">
+          <span class="paper-code">${p.code}</span>
+          <div>
+            <div class="paper-title">${p.name}</div>
+            <div class="paper-old-code">${p.oldCode}</div>
+          </div>
+        </div>
+        <div class="paper-format">${p.format}</div>
+      </div>
+      <div class="topics-list">
+        ${topicsHtml}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function setLevelFilter(lvl, btn) {
+  currentLevel = lvl;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  filterSyllabus();
+}
+
+function filterSyllabus() {
+  const query = (document.getElementById('syllabusSearch').value || '').trim().toLowerCase();
+  
+  const filtered = PAPERS.filter(p => {
+    const matchesLevel = currentLevel === 'ALL' || p.level === currentLevel;
+    if (!matchesLevel) return false;
+
+    if (!query) return true;
+
+    const inHeader = p.code.toLowerCase().includes(query) || p.name.toLowerCase().includes(query) || p.oldCode.toLowerCase().includes(query);
+    if (inHeader) return true;
+
+    return p.topics.some(t => 
+      t.name.toLowerCase().includes(query) ||
+      t.desc.toLowerCase().includes(query) ||
+      t.chapters.some(c => c.label.toLowerCase().includes(query))
+    );
+  });
+
+  renderPapers(filtered);
+}
+
+// Initial Render
+renderPapers(PAPERS);
+</script>
 
 </body>
 </html>

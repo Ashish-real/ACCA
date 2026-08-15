@@ -646,8 +646,17 @@ function openChapterIdx(idx, searchTerm = '') {
 }
 
 function openChapterFile(fn, searchTerm = '') {
-  const idx = CHAPTERS.findIndex(c => c.filename === fn);
-  if (idx !== -1) openChapterIdx(idx, searchTerm);
+  if (!fn) fn = CHAPTERS[0].filename;
+  const normalized = fn.endsWith('.html') ? fn : fn + '.html';
+  let idx = CHAPTERS.findIndex(c => c.filename === normalized || c.filename === fn);
+  if (idx === -1) {
+    idx = CHAPTERS.findIndex(c => c.filename.toLowerCase().includes(fn.toLowerCase().replace('.html', '')));
+  }
+  if (idx !== -1) {
+    openChapterIdx(idx, searchTerm);
+  } else {
+    openChapterIdx(0, searchTerm);
+  }
 }
 
 function resumeReading() {

@@ -86,6 +86,7 @@ function init() {
   setQuizPaper('ALL');
   initBookParallax();
   initRoadmap();
+  initBookCTA();
 
   document.addEventListener('keydown', e => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -535,8 +536,28 @@ function fallbackCopy(txt) {
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function initBookCTA() {
+  const btn = document.getElementById('btnBookRead');
+  if (btn) {
+    btn.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      launchAnimatedReader('Finance_Career_Bible_Chapter2.html');
+    };
+  }
+
+  document.querySelectorAll('.toc-row').forEach(row => {
+    row.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const ch = row.getAttribute('data-ch') || 'Finance_Career_Bible_Chapter2.html';
+      launchAnimatedReader(ch);
+    };
+  });
+}
+
 function launchAnimatedReader(filename) {
-  const file = filename || localStorage.getItem('last_read_chapter') || 'Finance_Career_Bible_Chapter2.html';
+  const file = filename || localStorage.getItem('acc_last_v6') || localStorage.getItem('last_read_chapter') || 'Finance_Career_Bible_Chapter2.html';
   const btn = document.getElementById('btnBookRead');
   if (btn) {
     btn.style.transform = 'scale(0.96)';
@@ -547,7 +568,7 @@ function launchAnimatedReader(filename) {
       btn.style.background = '';
       btn.style.color = '';
       openChapterFile(file);
-    }, 250);
+    }, 150);
   } else {
     openChapterFile(file);
   }

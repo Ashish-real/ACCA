@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -457,34 +457,121 @@
     <div id="tab-about" class="tab-content">
       <section class="section shell">
         <div class="section-head">
-          <div class="kicker">01 / THE IDEA</div>
-          <h2>More than <span class="grad">study material.</span></h2>
+          <div class="kicker">01 / THE ARCHITECTURE</div>
+          <h2>Where ACCA qualification meets <span class="grad">Big 4 execution.</span></h2>
+          <p class="section-desc">A unified curriculum connecting theoretical accounting standards to real-world corporate finance, financial modelling, valuation, and executive career seats.</p>
         </div>
 
-        <div class="about-grid">
-          <div class="about-copy">
-            <p class="lead">
-              Finance Career Bible brings ACCA learning, finance knowledge, practical skills
-              and career guidance into one structured system.
-            </p>
-            <p>
-              Whether you are starting after Class 12, studying B.Com alongside ACCA, already
-              deep into the Strategic Professional papers, or simply building a career in
-              finance — the material is designed to give you a clear path from learning to
-              professional growth.
-            </p>
-            <p>
-              Every chapter is self-contained and readable offline. Progress, last-read
-              position and quiz scores are saved locally in your browser.
-            </p>
+        <!-- ABOUT HERO CARD -->
+        <div class="about-hero-card">
+          <div class="about-hero-left">
+            <span class="about-badge">THE MASTERCLASS PHILOSOPHY</span>
+            <h3>Traditional study materials prepare you to pass exams. <span class="text-emerald">We prepare you to lead deals.</span></h3>
+            <p>Finance Career Bible was built to solve the single biggest dilemma in modern finance: the gap between textbook accounting rules and real-world financial decision-making.</p>
+            <p>Every single one of the 50 chapters is crafted from first principles, integrating IFRS reporting, Excel mechanics, corporate valuation, and Big 4 case studies into a single, offline-ready masterclass.</p>
+            <div class="about-stats-row">
+              <div class="about-stat-item"><b>50</b><span>Chapters</span></div>
+              <div class="about-stat-item"><b>13</b><span>ACCA Papers</span></div>
+              <div class="about-stat-item"><b>322</b><span>Formulas</span></div>
+              <div class="about-stat-item"><b>100%</b><span>Free &amp; Open</span></div>
+            </div>
+          </div>
+          <div class="about-hero-right">
+            <div class="pedagogy-step">
+              <div class="p-num">01</div>
+              <div class="p-text">
+                <b>First Principles Foundations</b>
+                <p>Understand double-entry mechanics, IFRS standards, and cash flow dynamics without rote memorization.</p>
+              </div>
+            </div>
+            <div class="pedagogy-step">
+              <div class="p-num">02</div>
+              <div class="p-text">
+                <b>Applied Financial Modelling</b>
+                <p>Build 3-statement models, DCF valuations, and working capital schedules in Excel &amp; Power BI.</p>
+              </div>
+            </div>
+            <div class="pedagogy-step">
+              <div class="p-num">03</div>
+              <div class="p-text">
+                <b>Big 4 &amp; IB Technical Readiness</b>
+                <p>Master valuation cases, audit workpapers, M&amp;A due diligence, and technical partner round interviews.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- THE 3 TRADITIONAL GAPS SOLVED -->
+        <div class="section-head" style="margin-top: 56px;">
+          <div class="kicker">02 / THE METHODOLOGY</div>
+          <h2>The 3 Gaps in <span class="grad">Traditional Learning.</span></h2>
+        </div>
+
+        <div class="gaps-grid">
+          <div class="gap-card">
+            <div class="gap-icon">📉</div>
+            <h4>Gap 1: Theory vs Excel Modeling</h4>
+            <p>Textbooks teach debit/credit theory on paper, but employers demand dynamic 3-statement Excel models with scenario toggles and debt schedules.</p>
+            <div class="gap-solution"><b>FCB Solution:</b> Direct model walkthroughs in Chapters 21, 33, and 39.</div>
+          </div>
+          <div class="gap-card">
+            <div class="gap-icon">🎯</div>
+            <h4>Gap 2: Passing Exams vs Technical Interviews</h4>
+            <p>Scoring 60% in SBR/AFM does not guarantee you can answer a partner's question on enterprise value vs equity value under pressure.</p>
+            <div class="gap-solution"><b>FCB Solution:</b> Big 4 technical interview blueprints in Chapters 43, 44, and 45.</div>
+          </div>
+          <div class="gap-card">
+            <div class="gap-icon">🧩</div>
+            <h4>Gap 3: Siloed Paper Modules</h4>
+            <p>Students study FA, FM, and TX as separate silos without realizing tax affects WACC, which dictates DCF valuation and impairment tests.</p>
+            <div class="gap-solution"><b>FCB Solution:</b> Integrated 5-Pillar ecosystem showing cross-paper interplay.</div>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE FAQ ACCORDION -->
+        <div class="section-head" style="margin-top: 56px;">
+          <div class="kicker">03 / FREQUENTLY ASKED QUESTIONS</div>
+          <h2>Student &amp; Professional <span class="grad">Guidance.</span></h2>
+        </div>
+
+        <div class="faq-accordion">
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">
+              <span>Who is Finance Career Bible designed for?</span>
+              <span class="faq-chevron">+</span>
+            </div>
+            <div class="faq-a">
+              <p>It is designed for students starting after Class 12, university undergraduates studying B.Com alongside ACCA, working professionals clearing Strategic Professional papers, and finance aspirants preparing for technical analyst interviews at PwC, Deloitte, EY, KPMG, or boutique investment banks.</p>
+            </div>
           </div>
 
-          <div>
-            <div class="mini-pillars">
-              <div><span>01</span><b>Learn</b><small>ACCA &amp; finance fundamentals</small></div>
-              <div><span>02</span><b>Build</b><small>Practical technical skills</small></div>
-              <div><span>03</span><b>Prepare</b><small>Exams &amp; Big 4 interviews</small></div>
-              <div><span>04</span><b>Grow</b><small>Long-term career strategy</small></div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">
+              <span>How does this portal track my progress?</span>
+              <span class="faq-chevron">+</span>
+            </div>
+            <div class="faq-a">
+              <p>Everything is stored locally in your browser using local storage. Completed chapters, last-read positions, and practice quiz scores persist across your sessions with zero login or telemetry required.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">
+              <span>Can I use this material offline?</span>
+              <span class="faq-chevron">+</span>
+            </div>
+            <div class="faq-a">
+              <p>Yes. The entire repository is self-contained HTML5, CSS, and vanilla JavaScript. Once cloned or downloaded, every chapter, formula, and practice question operates completely offline.</p>
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q">
+              <span>How should I pace my study through the 50 chapters?</span>
+              <span class="faq-chevron">+</span>
+            </div>
+            <div class="faq-a">
+              <p>Follow the interactive 5-Stage Roadmap tab. Complete 2 chapters per week alongside your active exam preparation to cover the entire curriculum and practical modeling within 6 months.</p>
             </div>
           </div>
         </div>

@@ -113,6 +113,11 @@ function togglePillarSection(secId, headerEl) {
   if (headerEl) headerEl.setAttribute('aria-expanded', String(!el.classList.contains('collapsed')));
 }
 
+function toggleFaq(faqItem) {
+  if (!faqItem) return;
+  faqItem.classList.toggle('open');
+}
+
 function switchTab(tabId, btn) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));

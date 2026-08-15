@@ -1457,18 +1457,43 @@ button { font: inherit; color: inherit; }
   padding-top: 10px;
   border-top: 1px solid var(--border);
 }
-.rm-ch-cat {
-  font-size: 10.5px;
-  color: var(--muted);
+.desktop-chips { display: flex; }
+.desktop-desc { display: block; }
+.mobile-stage-picker-wrap { display: none; }
+.mobile-desc { display: none; }
+
+.select-dropdown-container {
+  position: relative;
+  width: 100%;
 }
-.rm-read-btn {
-  background: none;
-  border: none;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--accent2);
+.stage-dropdown-select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #151b27;
+  border: 1px solid var(--accent2);
+  color: #ffffff;
+  font-family: var(--display);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 12px 38px 12px 14px;
+  border-radius: 10px;
   cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.stage-dropdown-select option {
+  background: #0f141f;
+  color: #ffffff;
+  padding: 10px;
+}
+.dropdown-chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent2);
+  pointer-events: none;
+  font-size: 11px;
 }
 
 /* ── RESPONSIVE MEDIA QUERIES (MOBILE OPTIMIZATION) ───────────────────── */
@@ -1483,6 +1508,33 @@ button { font: inherit; color: inherit; }
     gap: 16px;
   }
   .roadmap-svg { display: none; }
+
+  .desktop-chips { display: none !important; }
+  .desktop-desc { display: none !important; }
+  .mobile-stage-picker-wrap { display: block !important; width: 100%; margin-top: 8px; }
+  .mobile-desc {
+    display: block !important;
+    margin-top: 12px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  
+  .roadmap-catalog-card {
+    padding: 20px 14px;
+    border-radius: 14px;
+    margin-top: 22px;
+  }
+  .catalog-top-bar {
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+  }
+  .catalog-stage-title {
+    font-size: 18px;
+  }
 }
 .road-step h3 { font-size: 14px; font-weight: 600; margin: 7px 0 5px; }
 .road-step p { font-size: 12px; color: var(--muted); line-height: 1.55; }

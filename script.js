@@ -214,11 +214,15 @@ function selectRoadmapStage(idx, btn) {
   const badgeEl = document.getElementById('catalogStageBadge');
   const titleEl = document.getElementById('catalogStageTitle');
   const descEl = document.getElementById('catalogStageDesc');
+  const descMobileEl = document.getElementById('catalogStageDescMobile');
+  const selectEl = document.getElementById('mobileStageSelect');
   const gridEl = document.getElementById('roadmapCatalogGrid');
 
   if (badgeEl) badgeEl.innerText = `${stage.stage} · ${stage.badge}`;
   if (titleEl) titleEl.innerText = stage.title;
   if (descEl) descEl.innerText = stage.desc;
+  if (descMobileEl) descMobileEl.innerText = stage.desc;
+  if (selectEl) selectEl.value = String(idx);
 
   document.querySelectorAll('.stage-select-btn').forEach((b, i) => {
     b.classList.toggle('active', i === idx);

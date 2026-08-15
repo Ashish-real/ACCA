@@ -394,16 +394,36 @@
               <div class="catalog-header-info">
                 <span class="catalog-stage-badge" id="catalogStageBadge">STAGE 01 · CURATED ROADMAP MODULES</span>
                 <h3 class="catalog-stage-title" id="catalogStageTitle">Commerce &amp; Career Direction</h3>
-                <p class="catalog-stage-desc" id="catalogStageDesc">Foundational chapters covering the finance industry landscape, ACCA vs CA/CFA decision matrix, and double-entry accounting mechanics.</p>
+                <p class="catalog-stage-desc desktop-desc" id="catalogStageDesc">Foundational chapters covering the finance industry landscape, ACCA vs CA/CFA decision matrix, and double-entry accounting mechanics.</p>
               </div>
-              <div class="stage-selector-chips" id="stageSelectorChips">
+
+              <!-- DESKTOP STAGE SELECTOR (PC >= 769px) -->
+              <div class="stage-selector-chips desktop-chips" id="stageSelectorChips">
                 <button class="stage-select-btn active" onclick="selectRoadmapStage(0, this)">Stage 1 (Ch 1–3)</button>
                 <button class="stage-select-btn" onclick="selectRoadmapStage(1, this)">Stage 2 (Ch 4–17)</button>
                 <button class="stage-select-btn" onclick="selectRoadmapStage(2, this)">Stage 3 (Ch 18–42)</button>
                 <button class="stage-select-btn" onclick="selectRoadmapStage(3, this)">Stage 4 (Ch 43–45)</button>
                 <button class="stage-select-btn" onclick="selectRoadmapStage(4, this)">Stage 5 (Ch 46–50)</button>
               </div>
+
+              <!-- MOBILE STAGE SELECTOR DROPDOWN (Smartphones <= 768px) -->
+              <div class="mobile-stage-picker-wrap">
+                <div class="select-dropdown-container">
+                  <select class="stage-dropdown-select" id="mobileStageSelect" onchange="selectRoadmapStage(parseInt(this.value, 10))">
+                    <option value="0" selected>🎯 Stage 01: Commerce &amp; Direction (Ch 1–3)</option>
+                    <option value="1">📚 Stage 02: Applied Knowledge (Ch 4–17)</option>
+                    <option value="2">⚡ Stage 03: Skills &amp; Modelling (Ch 18–42)</option>
+                    <option value="3">🏆 Stage 04: Strategic Leader (Ch 43–45)</option>
+                    <option value="4">💼 Stage 05: Big 4 Advisory Seat (Ch 46–50)</option>
+                  </select>
+                  <span class="dropdown-chevron">▼</span>
+                </div>
+              </div>
             </div>
+
+            <!-- Mobile Description rendered neatly below the selector -->
+            <p class="catalog-stage-desc mobile-desc" id="catalogStageDescMobile">Foundational chapters covering the finance industry landscape, ACCA vs CA/CFA decision matrix, and double-entry accounting mechanics.</p>
+
             <div class="roadmap-catalog-grid" id="roadmapCatalogGrid"></div>
           </div>
         </div>

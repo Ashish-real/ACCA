@@ -2226,7 +2226,7 @@ mark.search-highlight {
   .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .menu-toggle { display: block; }
   .nav-links {
     position: absolute;
@@ -2242,25 +2242,65 @@ mark.search-highlight {
   .nav-links.open { display: flex; }
   .nav-btn, .nav-search, .nav-cta { width: 100%; justify-content: center; text-align: center; }
 
-  .section { padding: 56px 0; }
-  .hero { padding: 46px 0 60px; }
-  .book { width: 240px; height: 330px; }
-  .cover-title { font-size: 32px; }
+  .shell, .nav-inner, .footer-inner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .section { padding: 40px 0 !important; }
+  .hero { padding: 36px 0 48px; }
+  .section-head { margin-bottom: 24px !important; }
+  .section-head h2 {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+    margin: 8px 0 10px !important;
+  }
+  .section-head p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Pillars Tab */
+  .pillar-filter-bar { gap: 8px; margin-bottom: 22px; padding-bottom: 14px; }
+  .filter-pill { font-size: 12px; padding: 7px 13px; }
+  .pillar-header { padding: 16px 18px; }
+  .pillar-title { font-size: 15px; }
+  .pillar-body { padding: 0 16px 18px; }
+  .cards-grid { grid-template-columns: 1fr; gap: 12px; padding-top: 16px; }
+
+  /* Roadmap Tab */
   .roadmap-svg { display: none; }
-  .road-steps { grid-template-columns: 1fr; }
-  .road-step { opacity: 1; transform: none; }
-  .quiz-box { padding: 22px; }
+  .road-steps { grid-template-columns: 1fr; gap: 14px; }
+  .road-step { opacity: 1; transform: none; padding: 18px; }
+  .skill-cloud { gap: 8px; margin-top: 18px; }
+  .skill { padding: 7px 14px; font-size: 12px; }
+
+  /* Formula Vault Tab */
+  .formula-grid { grid-template-columns: 1fr; gap: 14px; }
+  .formula-card { padding: 18px 16px; }
+  .formula-head h3 { font-size: 15px; }
+
+  /* Quiz Tab */
+  .quiz-box { padding: 22px 18px !important; border-radius: 14px !important; }
+  .quiz-q { font-size: 16px !important; line-height: 1.45 !important; margin-bottom: 18px !important; }
+  .quiz-opt { padding: 12px 14px !important; font-size: 13.5px !important; }
+
+  /* About Tab */
+  .about-hero-card { padding: 22px 18px !important; border-radius: 14px !important; margin-bottom: 24px !important; }
+  .about-hero-left h3 { font-size: 20px !important; line-height: 1.35 !important; }
+  .gaps-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .gap-card { padding: 18px 16px !important; }
+  .faq-q { padding: 15px 16px !important; font-size: 14px !important; }
+
   .reader-toc { position: absolute; z-index: 5; height: calc(100% - 58px); bottom: 0; }
 }
 
 @media (max-width: 420px) {
-  .shell, .nav-inner, .hero-inner, .footer-inner { padding-left: 18px; padding-right: 18px; }
-  .stat-strip-inner { grid-template-columns: repeat(2, 1fr); }
-  .book { width: 205px; height: 285px; }
-  .cover-title { font-size: 27px; }
-  .formula-grid, .cards-grid { grid-template-columns: 1fr; }
+  .shell, .nav-inner, .hero-inner, .footer-inner { padding-left: 16px !important; padding-right: 16px !important; }
+  .stat-strip-inner { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .section-head h2 { font-size: 23px !important; }
   .footer-top { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
 }
 
 /* ── REDUCED MOTION ───────────────────────────────────────────────────── */

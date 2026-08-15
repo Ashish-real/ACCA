@@ -539,20 +539,24 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 function initBookCTA() {
   const btn = document.getElementById('btnBookRead');
   if (btn) {
-    btn.onclick = (e) => {
+    const handleRead = (e) => {
       e.preventDefault();
       e.stopPropagation();
       launchAnimatedReader('Finance_Career_Bible_Chapter2.html');
     };
+    btn.onclick = handleRead;
+    btn.onpointerdown = handleRead;
   }
 
   document.querySelectorAll('.toc-row').forEach(row => {
-    row.onclick = (e) => {
+    const handleRow = (e) => {
       e.preventDefault();
       e.stopPropagation();
       const ch = row.getAttribute('data-ch') || 'Finance_Career_Bible_Chapter2.html';
       launchAnimatedReader(ch);
     };
+    row.onclick = handleRow;
+    row.onpointerdown = handleRow;
   });
 }
 
@@ -560,15 +564,15 @@ function launchAnimatedReader(filename) {
   const file = filename || localStorage.getItem('acc_last_v6') || localStorage.getItem('last_read_chapter') || 'Finance_Career_Bible_Chapter2.html';
   const btn = document.getElementById('btnBookRead');
   if (btn) {
-    btn.style.transform = 'scale(0.96)';
+    btn.style.transform = 'scale(0.96) translateZ(10px)';
     btn.style.background = '#10b981';
     btn.style.color = '#080a0f';
     setTimeout(() => {
-      btn.style.transform = '';
+      btn.style.transform = 'translateZ(10px)';
       btn.style.background = '';
       btn.style.color = '';
       openChapterFile(file);
-    }, 150);
+    }, 120);
   } else {
     openChapterFile(file);
   }
@@ -594,11 +598,17 @@ function initBookParallax() {
   if (window.matchMedia('(hover: none)').matches) return;
 
   scene.addEventListener('pointermove', e => {
+    // Freeze 3D tilt coordinates when hovering over pages or when open so mouse clicks land rock-solid
+    if (book.classList.contains('open') || e.target.closest('.page') || e.target.closest('.btn-read-inside') || e.target.closest('.toc-row')) {
+      book.style.setProperty('--tilt-y', '0deg');
+      book.style.setProperty('--tilt-x', '0deg');
+      return;
+    }
     const r = scene.getBoundingClientRect();
     const dx = (e.clientX - r.left) / r.width - .5;
     const dy = (e.clientY - r.top) / r.height - .5;
-    book.style.setProperty('--tilt-y', `${dx * 18}deg`);
-    book.style.setProperty('--tilt-x', `${-dy * 12}deg`);
+    book.style.setProperty('--tilt-y', `${dx * 12}deg`);
+    book.style.setProperty('--tilt-x', `${-dy * 8}deg`);
   });
 
   scene.addEventListener('pointerleave', () => {

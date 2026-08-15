@@ -103,6 +103,7 @@ function init() {
   iframe.onload = () => {
     if (iframe.contentDocument) {
       bindIframeScrollTracker(iframe.contentDocument);
+      applyUniversalTableResponsive(iframe.contentDocument);
       if (currentSearchTerm) {
         highlightTextInIframe(iframe.contentDocument, currentSearchTerm);
       }
@@ -680,6 +681,103 @@ function closeReader() {
 function toggleToc() {
   const box = document.getElementById('tocBox');
   box.style.display = box.style.display === 'none' ? 'flex' : 'none';
+}
+
+/* ── UNIVERSAL RESPONSIVE TABLES & CARD OVERFLOW PROTECTION ── */
+function applyUniversalTableResponsive(doc) {
+  if (!doc) return;
+
+  // 1. Inject responsive CSS to prevent card/container overflow on PC and mobile
+  if (!doc.getElementById('universal-responsive-fix')) {
+    const style = doc.createElement('style');
+    style.id = 'universal-responsive-fix';
+    style.textContent = `
+      * {
+        box-sizing: border-box !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+      }
+      body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+      }
+      .container, .content, .chapter-body, .section, main, .chapter-content {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+      }
+      .card, .grid-2, .grid-3, .cards-grid, .grid {
+        min-width: 0 !important;
+        max-width: 100% !important;
+      }
+      .card-items li, .card ul li {
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+      }
+      .table-responsive-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        margin: 24px 0 !important;
+        border-radius: 12px !important;
+        border: 1px solid var(--border, #2a2a3a) !important;
+        background: var(--surface, #13131a) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+      }
+      table, .data-table {
+        width: 100% !important;
+        min-width: 560px !important;
+        border-collapse: collapse !important;
+        margin: 0 !important;
+      }
+      th, td {
+        padding: 12px 16px !important;
+        text-align: left !important;
+        vertical-align: top !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+      }
+      th {
+        background: rgba(255, 255, 255, 0.04) !important;
+        color: var(--accent2, #00d4aa) !important;
+        font-family: var(--mono, monospace) !important;
+        font-size: 11.5px !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        border-bottom: 1px solid var(--border, #2a2a3a) !important;
+      }
+      td {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+      }
+      @media (max-width: 768px) {
+        .table-responsive-wrapper {
+          margin: 18px 0 !important;
+          border-radius: 8px !important;
+        }
+        table, .data-table {
+          min-width: 520px !important;
+          font-size: 13px !important;
+        }
+        th, td {
+          padding: 10px 12px !important;
+        }
+      }
+    `;
+    doc.head.appendChild(style);
+  }
+
+  // 2. Wrap all tables in .table-responsive-wrapper
+  const tables = doc.querySelectorAll('table, .data-table');
+  tables.forEach(tbl => {
+    if (!tbl.parentElement.classList.contains('table-responsive-wrapper')) {
+      const wrapper = doc.createElement('div');
+      wrapper.className = 'table-responsive-wrapper';
+      tbl.parentNode.insertBefore(wrapper, tbl);
+      wrapper.appendChild(tbl);
+    }
+  });
 }
 
 /* ── IN-IFRAME KEYWORD HIGHLIGHTING & AUTO-SCROLL ── */

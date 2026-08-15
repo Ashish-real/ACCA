@@ -623,7 +623,21 @@ function openChapterIdx(idx, searchTerm = '') {
   currentSearchTerm = searchTerm;
   const c = CHAPTERS[idx];
 
-  document.getElementById('readerTitle').innerText = c.title;
+  const fullTitle = c.title;
+  const mobileTag = c.num === 999 ? 'APP' : 'CH ' + (c.num < 10 ? '0' + c.num : c.num);
+
+  const titleEl = document.getElementById('readerTitle');
+  const titleMobileEl = document.getElementById('readerTitleMobile');
+
+  if (titleEl) {
+    titleEl.innerText = fullTitle;
+    titleEl.title = fullTitle;
+  }
+  if (titleMobileEl) {
+    titleMobileEl.innerText = mobileTag;
+    titleMobileEl.title = fullTitle;
+  }
+
   document.getElementById('readerFrame').src = c.filename;
   document.getElementById('readerModal').classList.add('open');
 

@@ -2121,7 +2121,7 @@ mark.search-highlight {
   min-width: 0;
   flex: 1;
 }
-#readerTitle {
+.reader-title-full {
   font-family: var(--display);
   font-size: 13.5px;
   font-weight: 700;
@@ -2131,6 +2131,21 @@ mark.search-highlight {
   text-overflow: ellipsis;
   min-width: 0;
   max-width: 380px;
+  display: block;
+}
+.reader-title-mobile {
+  display: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--accent2);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ── SMART READER PROGRESS TRACKER ───────────────────────────────────── */
@@ -2224,9 +2239,11 @@ mark.search-highlight {
     font-size: 13px !important;
     min-width: 32px;
   }
-  #readerTitle {
-    font-size: 11.5px !important;
-    max-width: 140px;
+  .reader-title-full {
+    display: none !important;
+  }
+  .reader-title-mobile {
+    display: inline-block !important;
   }
   .tracker-pill {
     padding: 3px 6px !important;

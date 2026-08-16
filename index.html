@@ -26,12 +26,10 @@
 
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <button class="nav-btn active" onclick="switchTab('pillars', this)">Chapters</button>
-        <button class="nav-btn" onclick="switchTab('sandboxes', this)">Sandboxes</button>
         <button class="nav-btn" onclick="switchTab('roadmap-tab', this)">Roadmap</button>
         <a href="ACCA_Syllabus_Mapping.html" class="nav-btn" style="text-decoration:none;display:inline-flex;align-items:center;">Syllabus Map</a>
         <button class="nav-btn" onclick="switchTab('formulas', this)">Formula Vault</button>
         <button class="nav-btn" onclick="switchTab('quiz', this)">Practice</button>
-        <button class="nav-btn" onclick="openDictionaryModal()">Dictionary</button>
         <button class="nav-btn" onclick="switchTab('about', this)">About</button>
         <button class="nav-search" onclick="openGlobalSearchModal()">
           <span>Search</span><kbd>Ctrl K</kbd>
@@ -268,6 +266,36 @@
               ACCA 13-Paper Curriculum Breakdown
             </div>
             <div class="paper-progress-grid" id="paperProgressGrid"></div>
+          </div>
+
+          <!-- QUICK ACCESS TOOLKIT & REVISION HUB -->
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08);">
+            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:16px; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="font-size:22px; margin-bottom:6px;">📚</div>
+                <h4 style="font-size:14px; font-weight:700; color:#ffffff; margin:0 0 4px 0;">IFRS &amp; Finance Dictionary</h4>
+                <p style="font-size:12px; color:var(--muted); margin:0 0 12px 0; line-height:1.5;">100+ hyper-specific terms, recognition criteria, formulas &amp; deal examples.</p>
+              </div>
+              <button onclick="openDictionaryModal()" class="btn btn-ghost" style="font-family:var(--mono); font-size:11px; width:100%; justify-content:center;">Open Dictionary ↗</button>
+            </div>
+
+            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:16px; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="font-size:22px; margin-bottom:6px;">📊</div>
+                <h4 style="font-size:14px; font-weight:700; color:#ffffff; margin:0 0 4px 0;">Live Financial Sandboxes</h4>
+                <p style="font-size:12px; color:var(--muted); margin:0 0 12px 0; line-height:1.5;">Interactive NPV, WACC, Financial Ratios &amp; DCF sensitivity models.</p>
+              </div>
+              <button onclick="switchTab('sandboxes')" class="btn btn-primary" style="font-family:var(--mono); font-size:11px; width:100%; justify-content:center;">Launch Sandboxes ↗</button>
+            </div>
+
+            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:16px; display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="font-size:22px; margin-bottom:6px;">📥</div>
+                <h4 style="font-size:14px; font-weight:700; color:#ffffff; margin:0 0 4px 0;">1-Page PDF Cheat Sheets</h4>
+                <p style="font-size:12px; color:var(--muted); margin:0 0 12px 0; line-height:1.5;">Instant 1-click vector PDF downloads for FR, FM, and Investment Appraisal.</p>
+              </div>
+              <button onclick="switchTab('sandboxes')" class="btn btn-ghost" style="font-family:var(--mono); font-size:11px; width:100%; justify-content:center;">View Cheat Sheets ↗</button>
+            </div>
           </div>
         </div>
       </section>
@@ -719,6 +747,9 @@
               <span class="sandbox-tag">Chapter 15 · FM / AFM</span>
               <h3 class="sandbox-title">Investment Appraisal (NPV)</h3>
             </div>
+            <div style="background:rgba(0,212,170,0.06); border-left:3px solid var(--accent2); padding:10px 12px; border-radius:0 8px 8px 0; margin-bottom:14px; font-size:12px; color:var(--muted); line-height:1.5;">
+              <strong style="color:var(--accent2);">💡 Real-World Use:</strong> Used by CFOs and Investment Committees to evaluate whether investing in a project (like building a plant or buying software) will generate more cash than it costs, after accounting for interest and inflation.
+            </div>
             <div class="calc-input-group">
               <label class="calc-label">Initial Investment ($)</label>
               <input type="number" id="npvInitial" class="calc-input" value="500000" oninput="calculateNPVLive()">
@@ -753,6 +784,9 @@
             <div class="sandbox-header">
               <span class="sandbox-tag">Chapter 16 · FM / AFM</span>
               <h3 class="sandbox-title">Weighted Average Cost of Capital (WACC)</h3>
+            </div>
+            <div style="background:rgba(0,212,170,0.06); border-left:3px solid var(--accent2); padding:10px 12px; border-radius:0 8px 8px 0; margin-bottom:14px; font-size:12px; color:var(--muted); line-height:1.5;">
+              <strong style="color:var(--accent2);">💡 Real-World Use:</strong> Calculates the minimum percentage return a company MUST earn on its investments to satisfy both its bank lenders (debt) and shareholders (equity).
             </div>
             <div class="calc-input-group">
               <label class="calc-label">Market Value of Equity ($)</label>
@@ -796,6 +830,9 @@
               <span class="sandbox-tag">Chapter 19 · FR / FM</span>
               <h3 class="sandbox-title">Financial Analysis &amp; Ratio Engine</h3>
             </div>
+            <div style="background:rgba(0,212,170,0.06); border-left:3px solid var(--accent2); padding:10px 12px; border-radius:0 8px 8px 0; margin-bottom:14px; font-size:12px; color:var(--muted); line-height:1.5;">
+              <strong style="color:var(--accent2);">💡 Real-World Use:</strong> Used by credit analysts and investors to check if a company is profitable (Margins) and if it has enough cash to pay short-term bills (Liquidity).
+            </div>
             <div class="calc-input-group">
               <label class="calc-label">Total Revenue ($)</label>
               <input type="number" id="ratioRev" class="calc-input" value="1000000" oninput="calculateRatiosLive()">
@@ -837,6 +874,9 @@
             <div class="sandbox-header">
               <span class="sandbox-tag">Chapter 20 &amp; 33 · AFM Valuation</span>
               <h3 class="sandbox-title">DCF Valuation &amp; 2D Sensitivity Matrix</h3>
+            </div>
+            <div style="background:rgba(0,212,170,0.06); border-left:3px solid var(--accent2); padding:10px 12px; border-radius:0 8px 8px 0; margin-bottom:14px; font-size:12px; color:var(--muted); line-height:1.5;">
+              <strong style="color:var(--accent2);">💡 Real-World Use:</strong> The gold standard used by Goldman Sachs, Morgan Stanley, and private equity firms to determine the exact total monetary value of an entire company based on its projected future cash flows.
             </div>
             <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:14px; margin-bottom:16px;">
               <div class="calc-input-group">

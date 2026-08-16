@@ -15,14 +15,14 @@ const FORMULAS = [
   },
   {
     "paper": "MA",
-    "title": "Break-Even Revenue",
-    "eq": "Fixed Costs ÷ C/S Ratio",
+    "title": "Break-Even Revenue ($)",
+    "eq": "Fixed Costs ÷ Contribution to Sales Ratio",
     "section": "Ch5 — Core Formulas"
   },
   {
     "paper": "MA",
-    "title": "C/S Ratio",
-    "eq": "Contribution ÷ Revenue × 100",
+    "title": "Contribution to Sales Ratio (C/S Ratio)",
+    "eq": "(Contribution ÷ Revenue) × 100",
     "section": "Ch5 — Core Formulas"
   },
   {

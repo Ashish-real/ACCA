@@ -1835,8 +1835,28 @@ function generateSensitivityLive(rev, growth, margin, tax, yrs) {
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   1-PAGE PDF CHEAT SHEETS CONTROLLER
+   1-PAGE PDF CHEAT SHEETS CONTROLLER & TELEPORT NAVIGATION
    ══════════════════════════════════════════════════════════════════════════ */
+
+function navigateToCheatSheets() {
+  switchTab('sandboxes');
+  setTimeout(() => {
+    const el = document.getElementById('cheatsheets-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 80);
+}
+
+function navigateToCalculators() {
+  switchTab('sandboxes');
+  setTimeout(() => {
+    const el = document.getElementById('calculators-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 80);
+}
 
 function downloadFRPDF() {
   if (typeof PdfCheatSheetEngine !== 'undefined') {

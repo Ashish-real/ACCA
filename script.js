@@ -461,6 +461,14 @@ function formatFormulaMath(rawEq) {
   if (!rawEq) return '';
   let str = escapeHtml(rawEq);
 
+  // Protect known business ratio abbreviations from accidental slash/dash splitting
+  str = str.replace(/C\/S Ratio/gi, '___CSRATIO___')
+           .replace(/C\/S/gi, '___CS___')
+           .replace(/P\/E Ratio/gi, '___PERATIO___')
+           .replace(/P\/E/gi, '___PE___')
+           .replace(/EV\/EBITDA/gi, '___EVEBITDA___')
+           .replace(/EV\/EBIT/gi, '___EVEBIT___');
+
   // 1. Fractions inside brackets [ A / B ] or [ A ÷ B ]
   str = str.replace(/\[\s*([^\[\]\/÷]+?)\s*[\/÷]\s*([^\[\]\/÷]+?)\s*\]/g, (m, num, den) => {
     return `<span class="math-bracket">[</span><span class="math-fraction"><span class="math-num">${num.trim()}</span><span class="math-den">${den.trim()}</span></span><span class="math-bracket">]</span>`;
@@ -472,10 +480,18 @@ function formatFormulaMath(rawEq) {
   });
 
   // 3. Standalone A ÷ B
-  str = str.replace(/([a-zA-Z0-9_\(\)\s\.\$\%]+?)\s*÷\s*([a-zA-Z0-9_\(\)\s\.\$\%]+)/g, (m, num, den) => {
+  str = str.replace(/([a-zA-Z0-9_\(\)\s\.\$\%\-]+?)\s*÷\s*([a-zA-Z0-9_\(\)\s\.\$\%\-]+)/g, (m, num, den) => {
     if (num.includes('math-fraction') || den.includes('math-fraction')) return m;
     return `<span class="math-fraction"><span class="math-num">${num.trim()}</span><span class="math-den">${den.trim()}</span></span>`;
   });
+
+  // Restore protected ratio terms
+  str = str.replace(/___CSRATIO___/g, 'C/S Ratio')
+           .replace(/___CS___/g, 'C/S')
+           .replace(/___PERATIO___/g, 'P/E Ratio')
+           .replace(/___PE___/g, 'P/E')
+           .replace(/___EVEBITDA___/g, 'EV/EBITDA')
+           .replace(/___EVEBIT___/g, 'EV/EBIT');
 
   // 4. Superscript Powers: ^(exp) or ^exp
   str = str.replace(/\^\((.+?)\)/g, '<sup class="math-sup">$1</sup>');
@@ -1769,7 +1785,39 @@ function initExamCountdown() {
    LIVE FINANCIAL MODEL SANDBOXES CONTROLLER
    ══════════════════════════════════════════════════════════════════════════ */
 
+const SANDBOX_INPUT_IDS = [
+  'npvInitial', 'npvCashflow', 'npvRate', 'npvYears',
+  'waccEquity', 'waccDebt', 'waccKe', 'waccKd', 'waccTax',
+  'ratioRev', 'ratioGP', 'ratioEBIT', 'ratioCA', 'ratioCL',
+  'dcfRev', 'dcfGrowth', 'dcfMargin', 'dcfTax', 'dcfWACC', 'dcfTerminalGrowth', 'dcfYears'
+];
+
+function saveSandboxInputs() {
+  const data = {};
+  SANDBOX_INPUT_IDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) data[id] = el.value;
+  });
+  try {
+    localStorage.setItem('fcb_sandbox_state_v1', JSON.stringify(data));
+  } catch (e) {}
+}
+
+function loadSandboxInputs() {
+  try {
+    const saved = localStorage.getItem('fcb_sandbox_state_v1');
+    if (saved) {
+      const data = JSON.parse(saved);
+      SANDBOX_INPUT_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && data[id] !== undefined) el.value = data[id];
+      });
+    }
+  } catch (e) {}
+}
+
 function initSandboxes() {
+  loadSandboxInputs();
   calculateNPVLive();
   calculateWACCLive();
   calculateRatiosLive();
@@ -1781,6 +1829,8 @@ function calculateNPVLive() {
   const cf = document.getElementById('npvCashflow') ? document.getElementById('npvCashflow').value : 150000;
   const rate = document.getElementById('npvRate') ? document.getElementById('npvRate').value : 10;
   const yrs = document.getElementById('npvYears') ? document.getElementById('npvYears').value : 5;
+
+  saveSandboxInputs();
 
   if (typeof FinancialEngine !== 'undefined') {
     const res = FinancialEngine.calculateNPV(inv, cf, rate, yrs);
@@ -1804,6 +1854,8 @@ function calculateWACCLive() {
   const kd = document.getElementById('waccKd') ? document.getElementById('waccKd').value : 7;
   const tax = document.getElementById('waccTax') ? document.getElementById('waccTax').value : 25;
 
+  saveSandboxInputs();
+
   if (typeof FinancialEngine !== 'undefined') {
     const res = FinancialEngine.calculateWACC(e, d, ke, kd, tax);
     const waccEl = document.getElementById('waccResultVal');
@@ -1825,6 +1877,8 @@ function calculateRatiosLive() {
   const ca = document.getElementById('ratioCA') ? document.getElementById('ratioCA').value : 300000;
   const cl = document.getElementById('ratioCL') ? document.getElementById('ratioCL').value : 150000;
 
+  saveSandboxInputs();
+
   if (typeof FinancialEngine !== 'undefined') {
     const res = FinancialEngine.calculateRatios(rev, gp, ebit, ca, cl);
     const gpEl = document.getElementById('ratioGPMarginVal');
@@ -1845,6 +1899,8 @@ function calculateDCFLive() {
   const wacc = document.getElementById('dcfWACC') ? document.getElementById('dcfWACC').value : 10;
   const tg = document.getElementById('dcfTerminalGrowth') ? document.getElementById('dcfTerminalGrowth').value : 3;
   const yrs = document.getElementById('dcfYears') ? document.getElementById('dcfYears').value : 5;
+
+  saveSandboxInputs();
 
   if (typeof FinancialEngine !== 'undefined') {
     const res = FinancialEngine.calculateDCF(rev, growth, margin, tax, wacc, tg, yrs);

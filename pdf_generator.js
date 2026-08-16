@@ -1,7 +1,7 @@
 /* ==========================================================================
    FINANCE CAREER BIBLE (ACCA) — COMPREHENSIVE 1-PAGE PDF CHEAT SHEET ENGINE
    Ultra-dense vector 1-page PDF revision sheets with clean human-readable formulas,
-   fraction breakdowns, exam traps & decision rules.
+   fraction breakdowns, clean 'x' multiplication (no asterisks), exam traps & decision rules.
    Zero text-overlapping and zero kerning-overflow (Standard Clean ASCII Glyphs).
    ========================================================================== */
 
@@ -19,10 +19,10 @@ const PdfCheatSheetEngine = {
     const innerW = colW - (padX * 2);
     const lineHeight = 3.3;
 
-    // Split every bullet into its wrapped visual lines (Pure ASCII)
+    // Split every bullet into its wrapped visual lines (Pure Clean Typography)
     const lineList = [];
     bullets.forEach(b => {
-      // Clean any potential rogue unicode characters to avoid jsPDF kerning corruption
+      // Clean any potential rogue unicode or asterisk characters to avoid jsPDF glitches
       const cleanText = b
         .replace(/→/g, '->')
         .replace(/←/g, '<-')
@@ -166,8 +166,8 @@ const PdfCheatSheetEngine = {
       "- Goodwill = Consideration Paid + NCI at acquisition - Fair Value Net Assets.",
       "- NCI Choice: Fair Value (Full Goodwill) OR Proportionate Share of Net Assets.",
       "- Unrealised Profit (PUP): Deduct from inventory on consolidated Balance Sheet.",
-      "  * Parent sells to Sub: Charge Group Retained Earnings.",
-      "  * Sub sells to Parent: Charge Sub Retained Earnings (affects NCI share).",
+      "  - Parent sells to Sub: Charge Group Retained Earnings.",
+      "  - Sub sells to Parent: Charge Sub Retained Earnings (affects NCI share).",
       "- Intercompany Balances: Eliminate 100% of internal receivables/payables."
     ], "Consolidation");
 
@@ -219,33 +219,33 @@ const PdfCheatSheetEngine = {
     // COLUMN 1: Cost of Capital & Capital Structure
     let y1 = 25;
     y1 += this.renderCard(doc, col1X, y1, colW, "Cost of Capital & WACC Formula", [
-      "- WACC = [ Cost of Equity * (Equity / Total Capital) ] + [ Post-Tax Cost of Debt * (Debt / Total Capital) ]",
-      "- Market Value Rule: MUST use Market Values (E = Shares * Price, D = Debt Market Value).",
-      "- CAPM Cost of Equity: Ke = Risk Free Rate + Equity Beta * (Market Return - Risk Free Rate)",
+      "- WACC = [ Cost of Equity x (Equity / Total Capital) ] + [ Post-Tax Cost of Debt x (Debt / Total Capital) ]",
+      "- Market Value Rule: MUST use Market Values (Equity = Shares x Price, Debt = Debt Market Value).",
+      "- CAPM Cost of Equity: Ke = Risk Free Rate + Equity Beta x (Market Return - Risk Free Rate)",
       "- Dividend Growth Model: Ke = (Next Dividend / Current Share Price) + Growth Rate",
       "- Historical Dividend Growth: g = (Current Dividend / Earliest Dividend)^(1 / Years) - 1",
-      "- Gordon's Growth Model: g = Retention Rate (b) * Return on Capital (r)"
+      "- Gordon's Growth Model: g = Retention Rate (b) x Return on Capital (r)"
     ], "WACC & Ke");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "Beta Ungearing & Regearing (Asset Beta)", [
-      "- Asset Beta Ungearing: Asset Beta = Equity Beta * [ Equity / (Equity + Debt * (1 - Tax)) ]",
+      "- Asset Beta Ungearing: Asset Beta = Equity Beta x [ Equity / (Equity + Debt x (1 - Tax)) ]",
       "  (Strips out financial debt risk to isolate pure business risk).",
-      "- Equity Beta Regearing: Equity Beta = Asset Beta * [ (Equity + Debt * (1 - Tax)) / Equity ]",
+      "- Equity Beta Regearing: Equity Beta = Asset Beta x [ (Equity + Debt x (1 - Tax)) / Equity ]",
       "  (Re-gears business risk to match company's specific target debt ratio).",
       "- Pure-Play Method: Take competitor Equity Beta -> Ungear to Asset Beta -> Regear to own Equity Beta."
     ], "CAPM Risk");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "Cost of Debt (Kd) & Convertible Bonds", [
-      "- Irredeemable Debt: Post-Tax Kd = [ Annual Interest * (1 - Tax Rate) ] / Market Price",
+      "- Irredeemable Debt: Post-Tax Kd = [ Annual Interest x (1 - Tax Rate) ] / Market Price",
       "- Redeemable Debt: Kd = Internal Rate of Return (IRR) of cash flows:",
       "  [-Market Price at Year 0, +Annual Post-Tax Interest, +Redemption Value at Year n].",
-      "- Convertible Debt: Conversion Value = Conversion Ratio * Future Share Price.",
+      "- Convertible Debt: Conversion Value = Conversion Ratio x Future Share Price.",
       "- Redemption Cash Flow: Higher of Par Redemption Value or Conversion Value."
     ], "Debt & Yields");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "Adjusted Present Value (APV) - 3 Steps", [
       "- Step 1: Base-Case NPV = Discount all project cash flows at All-Equity Cost (Ke_ungeared).",
-      "- Step 2: Financing Effects = Present Value of Debt Tax Shields [Debt * Tax Rate * Kd] - Issue Costs.",
+      "- Step 2: Financing Effects = Present Value of Debt Tax Shields [Debt x Tax Rate x Kd] - Issue Costs.",
       "- Step 3: Total APV = Base-Case All-Equity NPV + PV of Tax Shields - Issue Costs.",
       "- When to use: When capital structure changes significantly over project life."
     ], "APV Model");
@@ -261,8 +261,8 @@ const PdfCheatSheetEngine = {
     let y2 = 25;
     y2 += this.renderCard(doc, col2X, y2, colW, "Business Valuation Models", [
       "- DCF Enterprise Value: EV = Sum of PV(FCF 1 to n) + [ Terminal Value / (1 + WACC)^n ]",
-      "- Terminal Value (Perpetuity): TV = [ Final FCF * (1 + Growth Rate) ] / (WACC - Growth Rate)",
-      "- Free Cash Flow to Firm: FCFF = Operating Profit*(1 - Tax) + Depreciation - Capex - Change in Working Capital.",
+      "- Terminal Value (Perpetuity): TV = [ Final FCF x (1 + Growth Rate) ] / (WACC - Growth Rate)",
+      "- Free Cash Flow to Firm: FCFF = Operating Profit x (1 - Tax) + Depreciation - Capex - Change in Working Capital.",
       "- Equity Value Formula: Equity Value = Enterprise Value - Net Debt (Total Debt - Cash).",
       "- Valuation Multiples: P/E (Equity Value), EV/EBITDA (Total Enterprise Value)."
     ], "Valuation");
@@ -270,8 +270,8 @@ const PdfCheatSheetEngine = {
     y2 += this.renderCard(doc, col2X, y2, colW, "Foreign Exchange Hedging (Forex)", [
       "- Forward Contract: Lock in future exchange rate today (binding legal obligation).",
       "- Money Market Hedge (4 Steps):",
-      "  * Receipt (Foreign Inflow): Borrow Foreign Currency -> Convert at Spot -> Deposit Home Currency.",
-      "  * Payment (Foreign Outflow): Borrow Home Currency -> Convert at Spot -> Deposit Foreign Currency.",
+      "  - Receipt (Foreign Inflow): Borrow Foreign Currency -> Convert at Spot -> Deposit Home Currency.",
+      "  - Payment (Foreign Outflow): Borrow Home Currency -> Convert at Spot -> Deposit Foreign Currency.",
       "- Currency Futures: Standardised exchange-traded contracts with daily margin calls.",
       "- Currency Options: Right (not obligation) to convert at strike price (pays upfront premium)."
     ], "Forex Hedging");
@@ -285,10 +285,10 @@ const PdfCheatSheetEngine = {
 
     y2 += this.renderCard(doc, col2X, y2, colW, "Working Capital & Cash Management", [
       "- Cash Conversion Cycle: CCC = Inventory Days + Receivable Days - Payable Days.",
-      "- Economic Order Quantity: EOQ = Square Root of [ (2 * Order Cost * Demand) / Holding Cost ].",
+      "- Economic Order Quantity: EOQ = Square Root of [ (2 x Order Cost x Demand) / Holding Cost ].",
       "- Miller-Orr Cash Model (Volatile Cash):",
-      "  * Cash Spread = 3 * [ (3/4 * Transaction Cost * Variance) / Daily Interest Rate ]^(1/3).",
-      "  * Target Return Point = Lower Limit + (Spread / 3); Upper Limit = Lower Limit + Spread."
+      "  - Cash Spread = 3 x [ (3/4 x Transaction Cost x Variance) / Daily Interest Rate ]^(1/3).",
+      "  - Target Return Point = Lower Limit + (Spread / 3); Upper Limit = Lower Limit + Spread."
     ], "Treasury");
 
     // Footer
@@ -343,7 +343,7 @@ const PdfCheatSheetEngine = {
     y1 += this.renderCard(doc, col1X, y1, colW, "Taxation & Capital Allowances (TAD)", [
       "- Corporation Tax: Tax paid on operating profits (often lagged by 1 year in exams).",
       "- Tax-Allowable Depreciation (TAD): Non-cash deduction that generates cash TAX SAVINGS.",
-      "  Tax Savings = TAD * Tax Rate (e.g., $100,000 TAD * 25% tax = $25,000 cash saving).",
+      "  Tax Savings = TAD x Tax Rate (e.g., $100,000 TAD x 25% tax = $25,000 cash saving).",
       "- Balancing Allowance (Disposal): Tax Base > Scrap Proceeds -> Extra tax relief saving.",
       "- Balancing Charge (Disposal): Scrap Proceeds > Tax Base -> Extra tax payment on capital gain."
     ], "Tax Relief");
@@ -358,7 +358,7 @@ const PdfCheatSheetEngine = {
     y1 += this.renderCard(doc, col1X, y1, colW, "Inflation Treatment & Fisher Equation", [
       "- Nominal Cash Flows (includes specific inflation) -> Discount at Nominal WACC Rate.",
       "- Real Cash Flows (excludes inflation) -> Discount at Real WACC Rate.",
-      "- Fisher Equation: (1 + Nominal Rate) = (1 + Real Rate) * (1 + General Inflation Rate).",
+      "- Fisher Equation: (1 + Nominal Rate) = (1 + Real Rate) x (1 + General Inflation Rate).",
       "- Exam Trap: If line items inflate at different rates, inflate each item to NOMINAL cash flows and discount at NOMINAL WACC."
     ], "Inflation");
 
@@ -366,24 +366,24 @@ const PdfCheatSheetEngine = {
     let y2 = 25;
     y2 += this.renderCard(doc, col2X, y2, colW, "Internal Rate of Return (IRR)", [
       "- Definition: The exact discount rate where project NPV = 0.",
-      "- Interpolation Formula: IRR = Lower Rate + [ NPV_Lower / (NPV_Lower - NPV_Higher) ] * (Higher Rate - Lower Rate)",
+      "- Interpolation Formula: IRR = Lower Rate + [ NPV_Lower / (NPV_Lower - NPV_Higher) ] x (Higher Rate - Lower Rate)",
       "- Decision Rule: Accept project if IRR > Cost of Capital (WACC).",
       "- NPV vs IRR Conflict: Always choose NPV. IRR assumes reinvestment at the IRR rate (unrealistic); NPV correctly assumes reinvestment at WACC."
     ], "IRR Model");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "Modified IRR (MIRR)", [
       "- Overcomes IRR's multiple rates and unrealistic reinvestment rate flaws.",
-      "- Formula: MIRR = [ PV of Cash Returns / PV of Investment Outlay ]^(1 / Years) * (1 + Reinvestment Rate) - 1",
+      "- Formula: MIRR = [ PV of Cash Returns / PV of Investment Outlay ]^(1 / Years) x (1 + Reinvestment Rate) - 1",
       "- Assumes intermediate cash flows are reinvested at company's true cost of capital (WACC).",
       "- Gives consistent rankings with NPV for mutually exclusive projects of same scale."
     ], "MIRR");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "Capital Rationing (Single Period)", [
       "- Divisible Projects (Fractions of projects allowed):",
-      "  * Profitability Index (PI) = Present Value of Future Cash Inflows / Initial Outlay.",
-      "  * Rank projects by highest PI down until capital budget is exhausted.",
+      "  - Profitability Index (PI) = Present Value of Future Cash Inflows / Initial Outlay.",
+      "  - Rank projects by highest PI down until capital budget is exhausted.",
       "- Indivisible Projects (All-or-nothing projects):",
-      "  * Test trial combinations within budget to find combination with highest total NPV.",
+      "  - Test trial combinations within budget to find combination with highest total NPV.",
       "- Multi-Period Rationing: Formulate and solve using Linear Programming."
     ], "Rationing");
 

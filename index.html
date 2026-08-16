@@ -26,10 +26,12 @@
 
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <button class="nav-btn active" onclick="switchTab('pillars', this)">Chapters</button>
+        <button class="nav-btn" onclick="switchTab('sandboxes', this)">Sandboxes</button>
         <button class="nav-btn" onclick="switchTab('roadmap-tab', this)">Roadmap</button>
         <a href="ACCA_Syllabus_Mapping.html" class="nav-btn" style="text-decoration:none;display:inline-flex;align-items:center;">Syllabus Map</a>
         <button class="nav-btn" onclick="switchTab('formulas', this)">Formula Vault</button>
         <button class="nav-btn" onclick="switchTab('quiz', this)">Practice</button>
+        <button class="nav-btn" onclick="openDictionaryModal()">Dictionary</button>
         <button class="nav-btn" onclick="switchTab('about', this)">About</button>
         <button class="nav-search" onclick="openGlobalSearchModal()">
           <span>Search</span><kbd>Ctrl K</kbd>
@@ -210,6 +212,62 @@
             <button onclick="switchTab('quiz')" style="font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--accent); background: rgba(108, 99, 255, 0.12); border: 1px solid rgba(108, 99, 255, 0.35); padding: 8px 16px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;">
               📝 Chapter 50 Core Revision MCQs
             </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ STUDENT STUDY PLANNER & STREAK TRACKER ══════════════════ -->
+      <section class="shell">
+        <div class="planner-widget">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:14px;">
+            <div>
+              <div style="font-family:var(--mono); font-size:10.5px; color:var(--accent2); font-weight:700; letter-spacing:1.5px; text-transform:uppercase;">PERSONALIZED STUDY PLANNER</div>
+              <h3 style="font-size:20px; font-weight:800; color:#ffffff; margin:4px 0 0;">ACCA Qualification &amp; Paper Tracker</h3>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button onclick="openDictionaryModal()" class="btn btn-ghost" style="font-family:var(--mono); font-size:11.5px; padding:7px 14px; border-radius:8px;">
+                📚 Open IFRS Dictionary
+              </button>
+              <button onclick="switchTab('sandboxes')" class="btn btn-primary" style="font-family:var(--mono); font-size:11.5px; padding:7px 14px; border-radius:8px;">
+                📊 Financial Sandboxes ↗
+              </button>
+            </div>
+          </div>
+
+          <!-- TOP 3 STAT CARDS: OVERALL PROGRESS, STUDY STREAK, EXAM COUNTDOWN -->
+          <div class="planner-header-grid">
+            <div class="planner-stat-card">
+              <div class="planner-stat-title">Overall Qualification Progress</div>
+              <div class="planner-stat-val" id="plannerOverallPct">0%</div>
+              <div style="background:rgba(255,255,255,0.06); height:8px; border-radius:100px; overflow:hidden; margin:10px 0 6px;">
+                <div id="plannerOverallBar" style="background:linear-gradient(90deg, var(--accent), var(--accent2)); width:0%; height:100%; transition:width 0.4s ease;"></div>
+              </div>
+              <div style="font-size:12px; color:var(--muted);" id="plannerOverallCount">0 of 50 chapters completed</div>
+            </div>
+
+            <div class="planner-stat-card">
+              <div class="planner-stat-title">🔥 Daily Study Streak</div>
+              <div class="planner-stat-val" id="studyStreakBadge">0 days</div>
+              <p style="font-size:12px; color:var(--muted); margin-top:8px; line-height:1.5;">
+                Study activity is recorded automatically when chapters are completed.
+              </p>
+            </div>
+
+            <div class="planner-stat-card">
+              <div class="planner-stat-title">⏳ Exam Countdown</div>
+              <div style="margin:8px 0 6px;">
+                <input type="date" id="examDateInput" style="background:rgba(10,10,15,0.8); border:1px solid rgba(255,255,255,0.15); color:#ffffff; font-family:var(--mono); font-size:12px; padding:6px 10px; border-radius:6px; width:100%;">
+              </div>
+              <div class="planner-stat-val" id="examCountdownBadge" style="font-size:16px; color:var(--accent4);">Select target exam</div>
+            </div>
+          </div>
+
+          <!-- 13 ACCA PAPERS MATRIX PROGRESS BARS -->
+          <div>
+            <div style="font-family:var(--mono); font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">
+              ACCA 13-Paper Curriculum Breakdown
+            </div>
+            <div class="paper-progress-grid" id="paperProgressGrid"></div>
           </div>
         </div>
       </section>
@@ -644,6 +702,244 @@
         </div>
       </section>
     </div> <!-- END TAB 1 (#tab-pillars) -->
+
+    <!-- ══════════════════ TAB — LIVE FINANCIAL SANDBOXES ══════════════════ -->
+    <div id="tab-sandboxes" class="tab-content">
+      <section class="section shell">
+        <div class="section-head">
+          <div class="kicker">03 / INTERACTIVE SIMULATION</div>
+          <h2>Live Financial <span class="grad">Model Sandboxes</span></h2>
+          <p>Interactive corporate finance calculation engines. Modify variables in real time to simulate NPV, WACC, financial ratios, and DCF valuations with 2D sensitivity analysis.</p>
+        </div>
+
+        <div class="sandbox-grid">
+          <!-- 1. CHAPTER 15: INVESTMENT APPRAISAL (NPV) -->
+          <div class="sandbox-card">
+            <div class="sandbox-header">
+              <span class="sandbox-tag">Chapter 15 · FM / AFM</span>
+              <h3 class="sandbox-title">Investment Appraisal (NPV)</h3>
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Initial Investment ($)</label>
+              <input type="number" id="npvInitial" class="calc-input" value="500000" oninput="calculateNPVLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Annual Cash Flow ($)</label>
+              <input type="number" id="npvCashflow" class="calc-input" value="150000" oninput="calculateNPVLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Discount Rate (%)</label>
+              <input type="number" id="npvRate" class="calc-input" value="10" step="0.5" oninput="calculateNPVLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Project Life (Years)</label>
+              <input type="number" id="npvYears" class="calc-input" value="5" min="1" max="30" oninput="calculateNPVLive()">
+            </div>
+            <div class="calc-result-box">
+              <div class="calc-result-row">
+                <span class="calc-result-label">Net Present Value (NPV):</span>
+                <span class="calc-result-val" id="npvResultVal">$68,618</span>
+              </div>
+              <div class="calc-result-row">
+                <span class="calc-result-label">Total Present Value (PV):</span>
+                <span class="calc-result-val" id="npvPVVal" style="color:#ffffff;">$568,618</span>
+              </div>
+              <div id="npvStatusBadge" style="font-family:var(--mono); font-size:11.5px; font-weight:800; margin-top:8px; text-align:center;">✅ ACCEPT PROJECT (NPV &gt; 0)</div>
+            </div>
+          </div>
+
+          <!-- 2. CHAPTER 16: COST OF CAPITAL (WACC) -->
+          <div class="sandbox-card">
+            <div class="sandbox-header">
+              <span class="sandbox-tag">Chapter 16 · FM / AFM</span>
+              <h3 class="sandbox-title">Weighted Average Cost of Capital (WACC)</h3>
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Market Value of Equity ($)</label>
+              <input type="number" id="waccEquity" class="calc-input" value="600000" oninput="calculateWACCLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Market Value of Debt ($)</label>
+              <input type="number" id="waccDebt" class="calc-input" value="400000" oninput="calculateWACCLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Cost of Equity Ke (%)</label>
+              <input type="number" id="waccKe" class="calc-input" value="12" step="0.5" oninput="calculateWACCLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Pre-tax Cost of Debt Kd (%)</label>
+              <input type="number" id="waccKd" class="calc-input" value="7" step="0.5" oninput="calculateWACCLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Corporate Tax Rate (%)</label>
+              <input type="number" id="waccTax" class="calc-input" value="25" oninput="calculateWACCLive()">
+            </div>
+            <div class="calc-result-box">
+              <div class="calc-result-row">
+                <span class="calc-result-label">Weighted Average Cost (WACC):</span>
+                <span class="calc-result-val" id="waccResultVal">9.30%</span>
+              </div>
+              <div class="calc-result-row">
+                <span class="calc-result-label">After-Tax Cost of Debt:</span>
+                <span class="calc-result-val" id="waccKdAfterVal" style="color:#ffffff;">5.25%</span>
+              </div>
+              <div class="calc-result-row">
+                <span class="calc-result-label">Capital Weights (E / D):</span>
+                <span style="font-family:var(--mono); font-size:12px; color:var(--muted);"><span id="waccWeightEVal">60.0%</span> / <span id="waccWeightDVal">40.0%</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. CHAPTER 19: FINANCIAL ANALYSIS RATIOS -->
+          <div class="sandbox-card">
+            <div class="sandbox-header">
+              <span class="sandbox-tag">Chapter 19 · FR / FM</span>
+              <h3 class="sandbox-title">Financial Analysis &amp; Ratio Engine</h3>
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Total Revenue ($)</label>
+              <input type="number" id="ratioRev" class="calc-input" value="1000000" oninput="calculateRatiosLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Gross Profit ($)</label>
+              <input type="number" id="ratioGP" class="calc-input" value="400000" oninput="calculateRatiosLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Operating Profit EBIT ($)</label>
+              <input type="number" id="ratioEBIT" class="calc-input" value="150000" oninput="calculateRatiosLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Current Assets ($)</label>
+              <input type="number" id="ratioCA" class="calc-input" value="300000" oninput="calculateRatiosLive()">
+            </div>
+            <div class="calc-input-group">
+              <label class="calc-label">Current Liabilities ($)</label>
+              <input type="number" id="ratioCL" class="calc-input" value="150000" oninput="calculateRatiosLive()">
+            </div>
+            <div class="calc-result-box">
+              <div class="calc-result-row">
+                <span class="calc-result-label">Gross Profit Margin:</span>
+                <span class="calc-result-val" id="ratioGPMarginVal">40.00%</span>
+              </div>
+              <div class="calc-result-row">
+                <span class="calc-result-label">Operating Margin:</span>
+                <span class="calc-result-val" id="ratioEBITMarginVal">15.00%</span>
+              </div>
+              <div class="calc-result-row">
+                <span class="calc-result-label">Current Liquidity Ratio:</span>
+                <span class="calc-result-val" id="ratioCRVal">2.00x</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. CHAPTER 20: DCF VALUATION & SENSITIVITY TABLE -->
+          <div class="sandbox-card" style="grid-column: 1 / -1;">
+            <div class="sandbox-header">
+              <span class="sandbox-tag">Chapter 20 &amp; 33 · AFM Valuation</span>
+              <h3 class="sandbox-title">DCF Valuation &amp; 2D Sensitivity Matrix</h3>
+            </div>
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:14px; margin-bottom:16px;">
+              <div class="calc-input-group">
+                <label class="calc-label">Current Revenue ($)</label>
+                <input type="number" id="dcfRev" class="calc-input" value="1000000" oninput="calculateDCFLive()">
+              </div>
+              <div class="calc-input-group">
+                <label class="calc-label">Revenue Growth (%)</label>
+                <input type="number" id="dcfGrowth" class="calc-input" value="10" oninput="calculateDCFLive()">
+              </div>
+              <div class="calc-input-group">
+                <label class="calc-label">EBITDA Margin (%)</label>
+                <input type="number" id="dcfMargin" class="calc-input" value="20" oninput="calculateDCFLive()">
+              </div>
+              <div class="calc-input-group">
+                <label class="calc-label">Tax Rate (%)</label>
+                <input type="number" id="dcfTax" class="calc-input" value="25" oninput="calculateDCFLive()">
+              </div>
+              <div class="calc-input-group">
+                <label class="calc-label">WACC (%)</label>
+                <input type="number" id="dcfWACC" class="calc-input" value="10" step="0.5" oninput="calculateDCFLive()">
+              </div>
+              <div class="calc-input-group">
+                <label class="calc-label">Terminal Growth g (%)</label>
+                <input type="number" id="dcfTerminalGrowth" class="calc-input" value="3" step="0.5" oninput="calculateDCFLive()">
+              </div>
+              <div class="calc-input-group">
+                <label class="calc-label">Forecast Years</label>
+                <input type="number" id="dcfYears" class="calc-input" value="5" min="3" max="15" oninput="calculateDCFLive()">
+              </div>
+            </div>
+
+            <div class="calc-result-box" style="margin-bottom:16px;">
+              <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+                <div class="calc-result-row">
+                  <span class="calc-result-label">Enterprise Value (EV):</span>
+                  <span class="calc-result-val" id="dcfEVVal" style="font-size:18px;">$2,488,432</span>
+                </div>
+                <div class="calc-result-row">
+                  <span class="calc-result-label">PV of Forecast Cash Flows:</span>
+                  <span class="calc-result-val" id="dcfPVExplicitVal" style="color:#ffffff;">$741,402</span>
+                </div>
+                <div class="calc-result-row">
+                  <span class="calc-result-label">Undiscounted Terminal Value:</span>
+                  <span class="calc-result-val" id="dcfTVVal" style="color:#ffffff;">$2,813,342</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-family:var(--mono); font-size:11px; color:var(--accent2); font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">
+                📊 2D Sensitivity Matrix: Enterprise Value across WACC vs. Terminal Growth
+              </div>
+              <div class="sensitivity-table-wrap">
+                <table class="sensitivity-table" id="dcfSensitivityTable"></table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1-PAGE PDF CHEAT SHEETS SECTION -->
+        <div class="section-head" style="margin-top: 56px;">
+          <div class="kicker">04 / CONDENSED REVISION</div>
+          <h2>1-Page ACCA <span class="grad">PDF Cheat Sheets</span></h2>
+          <p>Client-side downloadable vector PDF cheat sheets with key accounting standards, formulas, and investment decision criteria.</p>
+        </div>
+
+        <div class="cheatsheet-grid">
+          <div class="cheatsheet-card">
+            <div>
+              <div class="cheatsheet-icon">📑</div>
+              <h3 class="cheatsheet-title">Financial Reporting (FR / SBR)</h3>
+              <p class="cheatsheet-desc">Core IFRS standards, revenue 5-step model, lease accounting (IFRS 16), asset impairments (IAS 36), and intangibles (IAS 38).</p>
+            </div>
+            <button class="pdf-download-btn" onclick="downloadFRPDF()">
+              <span>📥 Download 1-Page PDF</span>
+            </button>
+          </div>
+
+          <div class="cheatsheet-card">
+            <div>
+              <div class="cheatsheet-icon">📈</div>
+              <h3 class="cheatsheet-title">Financial Management (FM / AFM)</h3>
+              <p class="cheatsheet-desc">WACC formula, CAPM, Gordon Growth Model, asset beta ungearing, terminal value calculations, and working capital cycles.</p>
+            </div>
+            <button class="pdf-download-btn" onclick="downloadFMPDF()">
+              <span>📥 Download 1-Page PDF</span>
+            </button>
+          </div>
+
+          <div class="cheatsheet-card">
+            <div>
+              <div class="cheatsheet-icon">🎯</div>
+              <h3 class="cheatsheet-title">Investment Appraisal Rules</h3>
+              <p class="cheatsheet-desc">Capital budgeting decision rules, NPV, IRR linear interpolation, Payback, Discounted Payback, and Profitability Index.</p>
+            </div>
+            <button class="pdf-download-btn" onclick="downloadInvestmentPDF()">
+              <span>📥 Download 1-Page PDF</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <!-- ══════════════════ TAB 3 — FORMULA VAULT ══════════════════ -->
     <div id="tab-formulas" class="tab-content">
@@ -1090,11 +1386,49 @@
     </div>
   </div>
 
-  <!-- Generated data must load before the engine that consumes it. -->
-  <script src="finance_dictionary_data.js?v=M55"></script>
-  <script src="formulas_data.js?v=M55"></script>
-  <script src="quiz_data.js?v=M55"></script>
-  <script src="search_index.js?v=M55"></script>
-  <script src="script.js?v=M55"></script>
+  <!-- ══════════════════ CENTRAL IFRS DICTIONARY MODAL ══════════════════ -->
+  <div class="dict-modal-overlay" id="dictModalOverlay" onclick="if(event.target===this) closeDictionaryModal()">
+    <div class="dict-modal-box">
+      <div class="dict-modal-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:22px;">📚</span>
+          <div>
+            <div style="font-family:var(--mono); font-size:10px; color:var(--accent2); font-weight:700; letter-spacing:1.5px; text-transform:uppercase;">CENTRAL TERMINOLOGY DATABASE</div>
+            <h3 style="font-size:19px; color:#ffffff; margin:0;">IFRS &amp; Finance Dictionary</h3>
+          </div>
+        </div>
+        <button class="dict-modal-close" onclick="closeDictionaryModal()">✕</button>
+      </div>
+
+      <div class="dict-modal-search-wrap">
+        <input type="text" class="dict-modal-search-input" id="dictGlobalSearchInput" placeholder="Search 100+ terms: FIFO, NRV, WACC, ROU Asset, ECL, Deferred Tax, ABC, Impairment..." oninput="handleDictionarySearch(this.value)">
+      </div>
+
+      <div class="dict-category-pills" id="dictCategoryPills">
+        <button class="dict-cat-pill active" onclick="filterDictionaryCategory('ALL', this)">All Terms (100+)</button>
+        <button class="dict-cat-pill" onclick="filterDictionaryCategory('IFRS Standard', this)">IFRS &amp; IAS</button>
+        <button class="dict-cat-pill" onclick="filterDictionaryCategory('Corporate Finance', this)">Corporate Finance</button>
+        <button class="dict-cat-pill" onclick="filterDictionaryCategory('Valuation', this)">Valuation &amp; M&amp;A</button>
+        <button class="dict-cat-pill" onclick="filterDictionaryCategory('Audit &amp; Assurance', this)">Audit &amp; Risk</button>
+        <button class="dict-cat-pill" onclick="filterDictionaryCategory('Management Accounting', this)">Management &amp; Cost</button>
+        <button class="dict-cat-pill" onclick="filterDictionaryCategory('Taxation', this)">Taxation</button>
+      </div>
+
+      <div class="dict-modal-results" id="dictModalResults"></div>
+    </div>
+  </div>
+
+  <!-- Client-side jsPDF for vector 1-page PDF cheat sheets -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Generated data & computation engines -->
+  <script src="calculators.js?v=M58"></script>
+  <script src="pdf_generator.js?v=M58"></script>
+  <script src="finance_dictionary_data.js?v=M58"></script>
+  <script src="formulas_data.js?v=M58"></script>
+  <script src="quiz_data.js?v=M58"></script>
+  <script src="search_index.js?v=M58"></script>
+  <script src="script.js?v=M58"></script>
 </body>
 </html>
+

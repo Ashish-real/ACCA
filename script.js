@@ -72,10 +72,29 @@ let quizScore = 0;
 let quizAnswered = 0;
 let currentSearchTerm = '';
 
+const ACCA_PAPERS = [
+  { code: "BT", name: "Business and Technology (F1)", stage: "Knowledge", chapters: [1, 23, 38] },
+  { code: "MA", name: "Management Accounting (F2)", stage: "Knowledge", chapters: [5, 6] },
+  { code: "FA", name: "Financial Accounting (F3)", stage: "Knowledge", chapters: [2, 3] },
+  { code: "LW", name: "Corporate and Business Law (F4)", stage: "Applied Skills", chapters: [23] },
+  { code: "PM", name: "Performance Management (F5)", stage: "Applied Skills", chapters: [24, 27] },
+  { code: "TX", name: "Taxation (F6)", stage: "Applied Skills", chapters: [37] },
+  { code: "FR", name: "Financial Reporting (F7)", stage: "Applied Skills", chapters: [4, 7, 8, 9, 10, 11, 12] },
+  { code: "AA", name: "Audit and Assurance (F8)", stage: "Applied Skills", chapters: [34, 35] },
+  { code: "FM", name: "Financial Management (F9)", stage: "Applied Skills", chapters: [18, 19, 20, 21, 22, 25] },
+  { code: "SBL", name: "Strategic Business Leader", stage: "Strategic Professional", chapters: [31, 32, 36, 38] },
+  { code: "SBR", name: "Strategic Business Reporting", stage: "Strategic Professional", chapters: [30] },
+  { code: "AFM", name: "Advanced Financial Management (P4)", stage: "Options", chapters: [26, 33] },
+  { code: "APM", name: "Advanced Performance Management (P5)", stage: "Options", chapters: [27] },
+  { code: "ATX", name: "Advanced Taxation (P6)", stage: "Options", chapters: [28] },
+  { code: "AAA", name: "Advanced Audit and Assurance (P7)", stage: "Options", chapters: [29] }
+];
+
 let formulaPaper = 'ALL';   // active Formula Vault paper filter
 let formulaQuery = '';      // active Formula Vault search text
 let quizPaper = 'ALL';      // active Practice paper filter
 let quizPool = [];          // QUIZ entries matching quizPaper
+let activeDictCategory = 'ALL';
 
 function init() {
   renderPillars();
@@ -89,12 +108,18 @@ function init() {
   initBookCTA();
   selectRoadmapStage(0);
 
+  // Initialize Client-Spec Features
+  initStudyPlanner();
+  initSandboxes();
+  renderDictionaryModal();
+
   // Hash-based direct tab routing (e.g., index.html#formulas)
   const hash = window.location.hash.replace('#', '').toLowerCase();
   if (hash) {
     if (hash === 'roadmap' || hash === 'roadmap-tab') switchTab('roadmap-tab');
-    else if (hash === 'formulas') switchTab('formulas');
+    else if (hash === 'formulas' || hash === 'cheatsheets') switchTab('formulas');
     else if (hash === 'quiz' || hash === 'practice') switchTab('quiz');
+    else if (hash === 'sandboxes' || hash === 'models') switchTab('sandboxes');
     else if (hash === 'about') switchTab('about');
     else if (hash === 'pillars' || hash === 'chapters') switchTab('pillars');
   } else {
@@ -676,6 +701,9 @@ function checkCompletionCriteria() {
     }
     renderPillars();
     renderTOC();
+    recordStudyActivity();
+    renderPaperProgress();
+    renderOverallProgress();
     if (typeof selectRoadmapStage === 'function') selectRoadmapStage(currentRoadmapStage);
   }
 }
@@ -1548,6 +1576,355 @@ function initRoadmap() {
       io.observe(wrap);
     }
   }).observe(tab, { attributes: true, attributeFilter: ['class'] });
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PERSONALIZED STUDY PLANNER, 13-PAPER PROGRESS & STUDY STREAK ENGINE
+   ══════════════════════════════════════════════════════════════════════════ */
+
+function initStudyPlanner() {
+  renderOverallProgress();
+  renderPaperProgress();
+  updateStudyStreak();
+  initExamCountdown();
+}
+
+function renderOverallProgress() {
+  const totalChapters = CHAPTERS.length; // 50 + Appendices
+  const completedCount = completedSet.size;
+  const pct = Math.round((completedCount / totalChapters) * 100);
+
+  const pctEl = document.getElementById('plannerOverallPct');
+  const countEl = document.getElementById('plannerOverallCount');
+  const barEl = document.getElementById('plannerOverallBar');
+
+  if (pctEl) pctEl.innerText = `${pct}%`;
+  if (countEl) countEl.innerText = `${completedCount} of ${totalChapters} chapters completed`;
+  if (barEl) barEl.style.width = `${pct}%`;
+}
+
+function renderPaperProgress() {
+  const container = document.getElementById('paperProgressGrid');
+  if (!container) return;
+
+  container.innerHTML = '';
+  ACCA_PAPERS.forEach(p => {
+    const total = p.chapters.length;
+    let done = 0;
+    p.chapters.forEach(chNum => {
+      const filename = `Finance_Career_Bible_Chapter${chNum}.html`;
+      if (completedSet.has(filename)) done++;
+    });
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+    const card = document.createElement('div');
+    card.className = 'paper-progress-item';
+    card.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <span style="font-family:var(--mono); font-size:12px; font-weight:700; color:var(--accent2);">${p.code} <span style="color:var(--muted); font-size:11px; font-weight:500;">· ${p.stage}</span></span>
+        <span style="font-family:var(--mono); font-size:12px; font-weight:800; color:${pct === 100 ? 'var(--accent2)' : 'var(--text)'};">${pct}%</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.06); height:6px; border-radius:100px; overflow:hidden;">
+        <div style="background:linear-gradient(90deg, var(--accent), var(--accent2)); width:${pct}%; height:100%; transition:width 0.3s ease;"></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--muted); margin-top:5px;">
+        <span>${p.name}</span>
+        <span>${done}/${total} Ch</span>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function updateStudyStreak() {
+  const today = new Date().toISOString().split("T")[0];
+  let streak = Number(localStorage.getItem("acc_streak_v6") || 0);
+  let lastDate = localStorage.getItem("acc_last_study_date_v6") || "";
+
+  if (lastDate && lastDate !== today) {
+    const prev = new Date(lastDate);
+    const curr = new Date(today);
+    const diffDays = Math.round((curr - prev) / (1000 * 60 * 60 * 24));
+    if (diffDays > 1) {
+      streak = 0; // broken streak
+      localStorage.setItem("acc_streak_v6", streak);
+    }
+  }
+
+  const streakEl = document.getElementById('studyStreakBadge');
+  if (streakEl) streakEl.innerText = `${streak} ${streak === 1 ? 'day' : 'days'}`;
+}
+
+function recordStudyActivity() {
+  const today = new Date().toISOString().split("T")[0];
+  let streak = Number(localStorage.getItem("acc_streak_v6") || 0);
+  let lastDate = localStorage.getItem("acc_last_study_date_v6") || "";
+
+  if (lastDate !== today) {
+    if (lastDate) {
+      const prev = new Date(lastDate);
+      const curr = new Date(today);
+      const diffDays = Math.round((curr - prev) / (1000 * 60 * 60 * 24));
+      if (diffDays === 1) {
+        streak++;
+      } else {
+        streak = 1;
+      }
+    } else {
+      streak = 1;
+    }
+    localStorage.setItem("acc_streak_v6", streak);
+    localStorage.setItem("acc_last_study_date_v6", today);
+  }
+  updateStudyStreak();
+}
+
+function initExamCountdown() {
+  const input = document.getElementById("examDateInput");
+  const badge = document.getElementById("examCountdownBadge");
+  if (!input || !badge) return;
+
+  const saved = localStorage.getItem("acc_exam_date_v6");
+  if (saved) input.value = saved;
+
+  const update = () => {
+    const val = input.value;
+    if (!val) {
+      badge.innerText = "Select target exam";
+      return;
+    }
+    localStorage.setItem("acc_exam_date_v6", val);
+    const target = new Date(val + "T23:59:59");
+    const diff = target - new Date();
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    if (days < 0) {
+      badge.innerText = "Exam date passed";
+    } else if (days === 0) {
+      badge.innerText = "Exam today! 🎯";
+    } else {
+      badge.innerText = `${days} days remaining`;
+    }
+  };
+
+  input.addEventListener("change", update);
+  update();
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   LIVE FINANCIAL MODEL SANDBOXES CONTROLLER
+   ══════════════════════════════════════════════════════════════════════════ */
+
+function initSandboxes() {
+  calculateNPVLive();
+  calculateWACCLive();
+  calculateRatiosLive();
+  calculateDCFLive();
+}
+
+function calculateNPVLive() {
+  const inv = document.getElementById('npvInitial') ? document.getElementById('npvInitial').value : 500000;
+  const cf = document.getElementById('npvCashflow') ? document.getElementById('npvCashflow').value : 150000;
+  const rate = document.getElementById('npvRate') ? document.getElementById('npvRate').value : 10;
+  const yrs = document.getElementById('npvYears') ? document.getElementById('npvYears').value : 5;
+
+  if (typeof FinancialEngine !== 'undefined') {
+    const res = FinancialEngine.calculateNPV(inv, cf, rate, yrs);
+    const npvEl = document.getElementById('npvResultVal');
+    const pvEl = document.getElementById('npvPVVal');
+    const statusEl = document.getElementById('npvStatusBadge');
+
+    if (npvEl) npvEl.innerText = res.formattedNPV;
+    if (pvEl) pvEl.innerText = res.formattedPV;
+    if (statusEl) {
+      statusEl.innerText = res.isAccepted ? "✅ ACCEPT PROJECT (NPV > 0)" : "❌ REJECT PROJECT (NPV < 0)";
+      statusEl.style.color = res.isAccepted ? "var(--accent2)" : "var(--accent3)";
+    }
+  }
+}
+
+function calculateWACCLive() {
+  const e = document.getElementById('waccEquity') ? document.getElementById('waccEquity').value : 600000;
+  const d = document.getElementById('waccDebt') ? document.getElementById('waccDebt').value : 400000;
+  const ke = document.getElementById('waccKe') ? document.getElementById('waccKe').value : 12;
+  const kd = document.getElementById('waccKd') ? document.getElementById('waccKd').value : 7;
+  const tax = document.getElementById('waccTax') ? document.getElementById('waccTax').value : 25;
+
+  if (typeof FinancialEngine !== 'undefined') {
+    const res = FinancialEngine.calculateWACC(e, d, ke, kd, tax);
+    const waccEl = document.getElementById('waccResultVal');
+    const kdAfterEl = document.getElementById('waccKdAfterVal');
+    const weightEEl = document.getElementById('waccWeightEVal');
+    const weightDEl = document.getElementById('waccWeightDVal');
+
+    if (waccEl) waccEl.innerText = res.formattedWACC;
+    if (kdAfterEl) kdAfterEl.innerText = res.formattedKdAftertax;
+    if (weightEEl) weightEEl.innerText = res.formattedWeightE;
+    if (weightDEl) weightDEl.innerText = res.formattedWeightD;
+  }
+}
+
+function calculateRatiosLive() {
+  const rev = document.getElementById('ratioRev') ? document.getElementById('ratioRev').value : 1000000;
+  const gp = document.getElementById('ratioGP') ? document.getElementById('ratioGP').value : 400000;
+  const ebit = document.getElementById('ratioEBIT') ? document.getElementById('ratioEBIT').value : 150000;
+  const ca = document.getElementById('ratioCA') ? document.getElementById('ratioCA').value : 300000;
+  const cl = document.getElementById('ratioCL') ? document.getElementById('ratioCL').value : 150000;
+
+  if (typeof FinancialEngine !== 'undefined') {
+    const res = FinancialEngine.calculateRatios(rev, gp, ebit, ca, cl);
+    const gpEl = document.getElementById('ratioGPMarginVal');
+    const ebitEl = document.getElementById('ratioEBITMarginVal');
+    const crEl = document.getElementById('ratioCRVal');
+
+    if (gpEl) gpEl.innerText = res.formattedGrossMargin;
+    if (ebitEl) ebitEl.innerText = res.formattedOperatingMargin;
+    if (crEl) crEl.innerText = res.formattedCurrentRatio;
+  }
+}
+
+function calculateDCFLive() {
+  const rev = document.getElementById('dcfRev') ? document.getElementById('dcfRev').value : 1000000;
+  const growth = document.getElementById('dcfGrowth') ? document.getElementById('dcfGrowth').value : 10;
+  const margin = document.getElementById('dcfMargin') ? document.getElementById('dcfMargin').value : 20;
+  const tax = document.getElementById('dcfTax') ? document.getElementById('dcfTax').value : 25;
+  const wacc = document.getElementById('dcfWACC') ? document.getElementById('dcfWACC').value : 10;
+  const tg = document.getElementById('dcfTerminalGrowth') ? document.getElementById('dcfTerminalGrowth').value : 3;
+  const yrs = document.getElementById('dcfYears') ? document.getElementById('dcfYears').value : 5;
+
+  if (typeof FinancialEngine !== 'undefined') {
+    const res = FinancialEngine.calculateDCF(rev, growth, margin, tax, wacc, tg, yrs);
+    const evEl = document.getElementById('dcfEVVal');
+    const pvExpEl = document.getElementById('dcfPVExplicitVal');
+    const tvEl = document.getElementById('dcfTVVal');
+
+    if (res.error) {
+      if (evEl) evEl.innerText = "WACC must > g";
+    } else {
+      if (evEl) evEl.innerText = res.formattedEV;
+      if (pvExpEl) pvExpEl.innerText = res.formattedPVExplicit;
+      if (tvEl) tvEl.innerText = res.formattedTV;
+    }
+
+    generateSensitivityLive(rev, growth, margin, tax, yrs);
+  }
+}
+
+function generateSensitivityLive(rev, growth, margin, tax, yrs) {
+  const table = document.getElementById('dcfSensitivityTable');
+  if (!table || typeof FinancialEngine === 'undefined') return;
+
+  const waccRates = [0.08, 0.09, 0.10, 0.11, 0.12];
+  const growthRates = [0.02, 0.03, 0.04, 0.05];
+  const sens = FinancialEngine.generateSensitivity(rev, growth, margin, tax, yrs, waccRates, growthRates);
+
+  let html = `<thead><tr><th>WACC \\ Growth</th>`;
+  growthRates.forEach(g => {
+    html += `<th>${(g * 100).toFixed(0)}%</th>`;
+  });
+  html += `</tr></thead><tbody>`;
+
+  sens.matrix.forEach(row => {
+    html += `<tr><th>${(row.wacc * 100).toFixed(0)}%</th>`;
+    row.values.forEach(v => {
+      html += `<td>${v.formatted}</td>`;
+    });
+    html += `</tr>`;
+  });
+  html += `</tbody>`;
+  table.innerHTML = html;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   1-PAGE PDF CHEAT SHEETS CONTROLLER
+   ══════════════════════════════════════════════════════════════════════════ */
+
+function downloadFRPDF() {
+  if (typeof PdfCheatSheetEngine !== 'undefined') {
+    PdfCheatSheetEngine.generateFRPDF();
+  } else {
+    alert("PDF generator module is initializing. Please try again.");
+  }
+}
+
+function downloadFMPDF() {
+  if (typeof PdfCheatSheetEngine !== 'undefined') {
+    PdfCheatSheetEngine.generateFMPDF();
+  } else {
+    alert("PDF generator module is initializing. Please try again.");
+  }
+}
+
+function downloadInvestmentPDF() {
+  if (typeof PdfCheatSheetEngine !== 'undefined') {
+    PdfCheatSheetEngine.generateInvestmentPDF();
+  } else {
+    alert("PDF generator module is initializing. Please try again.");
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   CENTRAL IFRS & FINANCE DICTIONARY EXPLORER MODAL
+   ══════════════════════════════════════════════════════════════════════════ */
+
+function openDictionaryModal() {
+  const modal = document.getElementById('dictModalOverlay');
+  if (modal) {
+    modal.classList.add('open');
+    renderDictionaryModal();
+    const input = document.getElementById('dictGlobalSearchInput');
+    if (input) input.focus();
+  }
+}
+
+function closeDictionaryModal() {
+  const modal = document.getElementById('dictModalOverlay');
+  if (modal) modal.classList.remove('open');
+}
+
+function filterDictionaryCategory(cat, btn) {
+  activeDictCategory = cat;
+  document.querySelectorAll('.dict-cat-pill').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderDictionaryModal();
+}
+
+function handleDictionarySearch(query) {
+  renderDictionaryModal(query);
+}
+
+function renderDictionaryModal(query = '') {
+  const container = document.getElementById('dictModalResults');
+  if (!container || typeof FINANCE_DICTIONARY === 'undefined') return;
+
+  container.innerHTML = '';
+  const q = query.toLowerCase().trim();
+
+  const filtered = FINANCE_DICTIONARY.filter(item => {
+    const matchesCat = (activeDictCategory === 'ALL' || (item.category && item.category.toLowerCase().includes(activeDictCategory.toLowerCase())));
+    const matchesQuery = !q || item.term.toLowerCase().includes(q) || item.definition.toLowerCase().includes(q) || (item.aliases && item.aliases.some(a => a.toLowerCase().includes(q)));
+    return matchesCat && matchesQuery;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:30px; color:var(--muted);">No matching terms found for "${query}". Try another keyword or filter.</div>`;
+    return;
+  }
+
+  filtered.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'dict-modal-card';
+    card.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px;">
+        <span style="font-family:var(--mono); font-size:10px; font-weight:700; color:var(--accent2); background:rgba(0,212,170,0.12); padding:3px 8px; border-radius:6px;">${item.category || 'FINANCE'}</span>
+        <span style="font-family:var(--mono); font-size:10.5px; color:var(--muted);">${item.paper || ''}</span>
+      </div>
+      <h4 style="font-size:15px; font-weight:700; color:#ffffff; margin:0 0 6px 0;">${item.term}</h4>
+      <p style="font-size:13px; color:#d1d5db; line-height:1.55; margin:0 0 10px 0;">${item.definition}</p>
+      ${item.example ? `<div style="background:rgba(10,10,15,0.6); border-left:2px solid var(--accent2); border-radius:0 6px 6px 0; padding:6px 10px; font-size:12px; color:var(--muted); line-height:1.5; margin-bottom:10px;"><strong style="color:var(--accent2);">Deal Example:</strong> ${item.example}</div>` : ''}
+      ${item.chapter ? `<a href="#" onclick="closeDictionaryModal(); openChapterFile('${item.chapter}'); return false;" style="font-family:var(--mono); font-size:11px; font-weight:700; color:var(--accent2); text-decoration:none;">${item.chapterLabel || 'Open Chapter'} ↗</a>` : ''}
+    `;
+    container.appendChild(card);
+  });
 }
 
 window.onload = init;

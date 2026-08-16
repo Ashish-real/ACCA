@@ -2841,3 +2841,380 @@ mark.search-highlight {
   text-decoration: underline;
 }
 
+/* ── STUDY PLANNER, PAPER MATRIX & STREAK TRACKER ───────────────────── */
+
+.planner-widget {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: clamp(20px, 3.5vw, 28px);
+  margin-top: 32px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.planner-header-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.planner-stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.planner-stat-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.planner-stat-val {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: var(--sans);
+}
+
+.paper-progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+.paper-progress-item {
+  background: rgba(10, 10, 15, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.paper-progress-item:hover {
+  border-color: rgba(0, 212, 170, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ── LIVE FINANCIAL MODEL SANDBOXES ─────────────────────────────────── */
+
+.sandbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.sandbox-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.sandbox-header {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sandbox-tag {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent2);
+}
+
+.sandbox-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 4px 0 0;
+}
+
+.calc-input-group {
+  margin-bottom: 14px;
+}
+
+.calc-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #d1d5db;
+  margin-bottom: 6px;
+}
+
+.calc-input {
+  width: 100%;
+  background: rgba(10, 10, 15, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-family: var(--mono);
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.calc-input:focus {
+  border-color: var(--accent2);
+  box-shadow: 0 0 12px rgba(0, 212, 170, 0.25);
+}
+
+.calc-result-box {
+  background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(108, 99, 255, 0.06));
+  border: 1px solid rgba(0, 212, 170, 0.3);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-top: auto;
+}
+
+.calc-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.calc-result-row:last-child {
+  margin-bottom: 0;
+}
+
+.calc-result-label {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.calc-result-val {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent2);
+}
+
+.sensitivity-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 14px;
+}
+
+.sensitivity-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  font-family: var(--mono);
+}
+
+.sensitivity-table th, .sensitivity-table td {
+  padding: 8px 10px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sensitivity-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent2);
+  font-weight: 700;
+}
+
+.sensitivity-table td {
+  color: #e2e8f0;
+}
+
+/* ── 1-PAGE PDF CHEAT SHEETS ────────────────────────────────────────── */
+
+.cheatsheet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.cheatsheet-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cheatsheet-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.cheatsheet-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.cheatsheet-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+.pdf-download-btn {
+  background: linear-gradient(135deg, var(--accent2), #059669);
+  color: #0a0a0f;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 800;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pdf-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(0, 212, 170, 0.4);
+}
+
+/* ── CENTRAL IFRS DICTIONARY MODAL ──────────────────────────────────── */
+
+.dict-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(5, 7, 12, 0.85);
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.dict-modal-overlay.open {
+  display: flex;
+}
+
+.dict-modal-box {
+  background: #111520;
+  border: 1px solid rgba(0, 212, 170, 0.35);
+  border-radius: 20px;
+  width: min(94vw, 840px);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  animation: dictCardPop 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.dict-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dict-modal-close {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.dict-modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.dict-modal-search-wrap {
+  padding: 16px 24px 12px;
+}
+
+.dict-modal-search-input {
+  width: 100%;
+  background: rgba(10, 10, 15, 0.9);
+  border: 1px solid rgba(0, 212, 170, 0.4);
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 15px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dict-category-pills {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px 14px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.dict-cat-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dict-cat-pill.active, .dict-cat-pill:hover {
+  background: rgba(0, 212, 170, 0.15);
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.dict-modal-results {
+  padding: 0 24px 24px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.dict-modal-card {
+  background: rgba(20, 25, 38, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 16px 18px;
+  transition: border-color 0.2s;
+}
+
+.dict-modal-card:hover {
+  border-color: rgba(0, 212, 170, 0.4);
+}
+
+

@@ -2,6 +2,8 @@
 
 ## Repository Overview & Context
 - **Repository Location**: `D:\Trinno\ACCA` (Remote: `https://github.com/Ashish-real/ACCA.git`)
+- **Current Git Commit**: `M60` (`2a78e2a`)
+- **Next Commit Prefix**: `M61`
 - **Author & Creator**: **Ashish** (Conceived, authored, and constructed over months of dedicated technical drafting)
 - **Course Mission**: Complete 50-Chapter ACCA Masterclass Portal covering foundational accounting, financial reporting, IFRS, taxation, audit, corporate finance, FP&A forecasting, DCF valuation, and Big 4 career preparation.
 - **Tech Stack**: Vanilla HTML5, Modern CSS (Glassmorphism, CSS Custom Properties, Dark Mode Palette), Vanilla ES6 JavaScript. Zero heavy frameworks or build tool dependencies.

@@ -1,6 +1,7 @@
 /* ==========================================================================
    FINANCE CAREER BIBLE (ACCA) — COMPREHENSIVE 1-PAGE PDF CHEAT SHEET ENGINE
-   Ultra-dense vector 1-page PDF revision sheets with formulas, exam traps & decision rules.
+   Ultra-dense vector 1-page PDF revision sheets with clean human-readable formulas,
+   fraction breakdowns, exam traps & decision rules.
    Zero text-overlapping and zero kerning-overflow (Standard Clean ASCII Glyphs).
    ========================================================================== */
 
@@ -99,82 +100,82 @@ const PdfCheatSheetEngine = {
     // COLUMN 1: Assets, Inventory, Leases & Impairment
     let y1 = 25;
     y1 += this.renderCard(doc, col1X, y1, colW, "IAS 16: Property, Plant & Equipment", [
-      "- Initial: Cost + delivery + install + site dismantling PV.",
-      "- Subsequent: Cost Model vs Revaluation (gain to OCI).",
+      "- Initial: Purchase Cost + Delivery + Installation + Site Dismantling PV.",
+      "- Subsequent: Cost Model vs Revaluation Model (gains go to OCI).",
       "- Depreciation: Over useful life. Land is never depreciated.",
-      "- Exam Trap: Maintenance & staff training are ALWAYS expensed."
+      "- Exam Trap: Day-to-day repairs & staff training are ALWAYS expensed."
     ], "PPE & Assets");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "IAS 2: Inventory Valuation", [
-      "- Lower of Cost and Net Realisable Value (NRV).",
-      "- Allowed: FIFO and AVCO (Weighted Average).",
-      "- Prohibited: LIFO is strictly forbidden under IFRS.",
-      "- NRV = Expected Selling Price - Completion Costs - Selling Fees."
+      "- Valuation Rule: Lower of Cost and Net Realisable Value (NRV).",
+      "- Allowed Methods: FIFO and AVCO (Weighted Average Cost).",
+      "- Strictly Prohibited: LIFO is forbidden under all IFRS standards.",
+      "- NRV Formula: Expected Selling Price - Completion Costs - Selling Fees."
     ], "Inventories");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "IAS 38: Intangible Assets & R&D", [
-      "- Research: Always expensed to P&L as incurred.",
+      "- Research Costs: Always expensed directly to P&L as incurred.",
       "- Development: Capitalise ONLY if ALL 6 PIRATE criteria are met:",
       "  Probable flow, Intention, Resources, Ability, Tech feasible, Expenses reliable.",
-      "- Goodwill: Never amortised; tested annually for impairment."
+      "- Goodwill: Never amortised; tested annually for impairment under IAS 36."
     ], "Intangibles");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "IFRS 16: Leases (Lessee Accounting)", [
-      "- Day 1: Recognise Right-of-Use (ROU) Asset & Lease Liability.",
-      "- Lease Liability = PV of future payments at incremental borrowing rate.",
-      "- ROU Asset = Initial liability + prepayments + direct costs + dismantle PV.",
-      "- P&L Impact: Straight-line depreciation on ROU + Interest on liability."
+      "- Balance Sheet Day 1: Recognise Right-of-Use (ROU) Asset & Lease Liability.",
+      "- Lease Liability = Present Value of all future lease payments.",
+      "- ROU Asset = Initial Liability + Prepayments + Direct Initial Costs + Dismantle PV.",
+      "- P&L Impact: Straight-line depreciation on ROU + Interest on Lease Liability."
     ], "Leases");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "IAS 36: Impairment of Assets & CGUs", [
-      "- Impairment when Carrying Amount > Recoverable Amount.",
-      "- Recoverable Amount = Higher of [FV Less Disposal] and [Value in Use].",
-      "- CGU Loss Allocation Order: (1) Specifically damaged assets, (2) Goodwill in full, (3) Other non-current assets pro-rata."
+      "- Impairment Trigger: Carrying Amount > Recoverable Amount.",
+      "- Recoverable Amount = Higher of [Fair Value Less Disposal] and [Value in Use].",
+      "- CGU Loss Allocation Order: (1) Specifically damaged assets, (2) Goodwill in full, (3) Other non-current assets pro-rata across values."
     ], "Impairment");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "IAS 37: Provisions & Contingencies", [
       "- Provision (B/S Liability): Present obligation + Probable outflow (>50%) + Reliable estimate.",
-      "- Contingent Liability (Notes): Possible obligation (10%-50%).",
-      "- Contingent Asset: Disclose if probable (>50%); recognise if virtually certain (>95%)."
+      "- Contingent Liability (Disclose in Notes): Possible obligation (10% to 50%).",
+      "- Contingent Asset: Disclose if probable (>50%); capitalise if virtually certain (>95%)."
     ], "Liabilities");
 
     // COLUMN 2: Revenue, Instruments, Tax & Consolidation
     let y2 = 25;
     y2 += this.renderCard(doc, col2X, y2, colW, "IFRS 15: Revenue (5-Step Model)", [
-      "- Step 1: Identify contract with customer.",
-      "- Step 2: Identify separate performance obligations.",
-      "- Step 3: Determine transaction price (variable consideration constrained).",
-      "- Step 4: Allocate price based on standalone selling prices.",
+      "- Step 1: Identify contract with customer (commercial substance).",
+      "- Step 2: Identify separate performance obligations (distinct goods).",
+      "- Step 3: Determine transaction price (exclude uncertain variable fees).",
+      "- Step 4: Allocate transaction price based on standalone selling prices.",
       "- Step 5: Recognise revenue as/when performance obligations are satisfied (over time vs point in time)."
     ], "Revenue");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "IFRS 9: Financial Instruments & ECL", [
-      "- Assets: Amortised Cost (SPPI test), FVOCI, or FVTPL.",
-      "- Liabilities: Amortised Cost using Effective Interest Rate (EIR).",
-      "- ECL 3-Stage Model: Stage 1 (12-mo ECL), Stage 2 (Lifetime ECL for credit deterioration), Stage 3 (Credit-impaired objective default)."
+      "- Financial Assets: Amortised Cost (SPPI test), FVOCI, or FVTPL.",
+      "- Financial Liabilities: Amortised Cost using Effective Interest Rate (EIR).",
+      "- ECL 3-Stage Model: Stage 1 (12-month expected loss), Stage 2 (Lifetime loss for credit risk rise), Stage 3 (Credit-impaired objective default)."
     ], "Instruments");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "IAS 12: Income Taxes & Deferred Tax", [
-      "- Balance Sheet Liability Method: Carrying Value vs Tax Base.",
-      "- Taxable Temporary Difference (Asset CV > Tax Base) -> DTL.",
-      "- Deductible Temporary Difference (Asset CV < Tax Base) -> DTA.",
-      "- Tax Rate: Use enacted/substantively enacted future settlement rate."
+      "- Balance Sheet Method: Asset Carrying Value vs Asset Tax Base.",
+      "- Taxable Difference (Asset Carrying Value > Tax Base) -> Deferred Tax Liability.",
+      "- Deductible Difference (Asset Carrying Value < Tax Base) -> Deferred Tax Asset.",
+      "- Tax Rate: Use enacted or substantively enacted future settlement rate."
     ], "Taxation");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "IFRS 3 & 10: Consolidation & Goodwill", [
-      "- Goodwill = Consideration + NCI at acq - Fair Value Net Assets.",
-      "- NCI: Fair Value (Full Goodwill) OR Proportionate Net Assets.",
-      "- Unrealised Profit (PUP): Deduct from inventory on B/S.",
-      "  * Parent sells: Charge Group Retained Earnings.",
-      "  * Sub sells: Charge Sub Retained Earnings (affects NCI).",
-      "- Intercompany: Eliminate 100% of internal receivables/payables."
+      "- Goodwill = Consideration Paid + NCI at acquisition - Fair Value Net Assets.",
+      "- NCI Choice: Fair Value (Full Goodwill) OR Proportionate Share of Net Assets.",
+      "- Unrealised Profit (PUP): Deduct from inventory on consolidated Balance Sheet.",
+      "  * Parent sells to Sub: Charge Group Retained Earnings.",
+      "  * Sub sells to Parent: Charge Sub Retained Earnings (affects NCI share).",
+      "- Intercompany Balances: Eliminate 100% of internal receivables/payables."
     ], "Consolidation");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "IAS 1 & Conceptual Framework", [
-      "- Fundamental: Relevance (predictive/confirmatory) & Faithful Rep.",
-      "- Enhancing: Comparability, Verifiability, Timeliness, Understandability.",
-      "- Core Assumptions: Going concern & Accruals concept.",
-      "- Current vs Non-Current: Realised/settled within 12 months."
+      "- Fundamental Traits: Relevance (predictive value) & Faithful Representation.",
+      "- Enhancing Traits: Comparability, Verifiability, Timeliness, Understandability.",
+      "- Core Accounting Principles: Going concern & Accruals concept.",
+      "- Current vs Non-Current Split: Realised or settled within 12 months."
     ], "Framework");
 
     // Footer
@@ -217,73 +218,77 @@ const PdfCheatSheetEngine = {
 
     // COLUMN 1: Cost of Capital & Capital Structure
     let y1 = 25;
-    y1 += this.renderCard(doc, col1X, y1, colW, "Weighted Average Cost of Capital (WACC)", [
-      "- Formula: WACC = Ke * [E/(E+D)] + Kd*(1-T) * [D/(E+D)]",
-      "- Weights: MUST use Market Values (E = Shares * Price, D = Debt MV).",
-      "- Cost of Equity (CAPM): Ke = Rf + Beta_e * (Rm - Rf)  [Rm - Rf = ERP]",
-      "- Dividend Growth Model: Ke = (D1 / P0) + g   where D1 = D0 * (1 + g)",
-      "- Growth: g = (D_now / D_past)^(1/n) - 1   or   g = b * r  (Gordon's)"
+    y1 += this.renderCard(doc, col1X, y1, colW, "Cost of Capital & WACC Formula", [
+      "- WACC = [ Cost of Equity * (Equity / Total Capital) ] + [ Post-Tax Cost of Debt * (Debt / Total Capital) ]",
+      "- Market Value Rule: MUST use Market Values (E = Shares * Price, D = Debt Market Value).",
+      "- CAPM Cost of Equity: Ke = Risk Free Rate + Equity Beta * (Market Return - Risk Free Rate)",
+      "- Dividend Growth Model: Ke = (Next Dividend / Current Share Price) + Growth Rate",
+      "- Historical Dividend Growth: g = (Current Dividend / Earliest Dividend)^(1 / Years) - 1",
+      "- Gordon's Growth Model: g = Retention Rate (b) * Return on Capital (r)"
     ], "WACC & Ke");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "Beta Ungearing & Regearing (Asset Beta)", [
-      "- Ungearing (Strips Debt Risk): Ba = Be * [E / (E + D * (1 - T))]",
-      "- Regearing (Target Debt Risk): Be = Ba * [(E + D * (1 - T)) / E]",
-      "- Pure Play Method: Competitor Be -> Ungear to Ba -> Regear to own Be.",
-      "- Note: If debt beta (Bd) given: Ba = Be*(E/V) + Bd*(D*(1-T)/V)."
+      "- Asset Beta Ungearing: Asset Beta = Equity Beta * [ Equity / (Equity + Debt * (1 - Tax)) ]",
+      "  (Strips out financial debt risk to isolate pure business risk).",
+      "- Equity Beta Regearing: Equity Beta = Asset Beta * [ (Equity + Debt * (1 - Tax)) / Equity ]",
+      "  (Re-gears business risk to match company's specific target debt ratio).",
+      "- Pure-Play Method: Take competitor Equity Beta -> Ungear to Asset Beta -> Regear to own Equity Beta."
     ], "CAPM Risk");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "Cost of Debt (Kd) & Convertible Bonds", [
-      "- Irredeemable Debt: Kd = i * (1 - T) / P0",
-      "- Redeemable Debt: Kd = IRR of Cash flows [-MV, +Interest*(1-T), +Redemption]",
-      "- Convertible Debt: Conversion Value = Ratio * Future Share Price.",
-      "- Redemption Cash Flow: Higher of Par Redemption or Conversion Value."
+      "- Irredeemable Debt: Post-Tax Kd = [ Annual Interest * (1 - Tax Rate) ] / Market Price",
+      "- Redeemable Debt: Kd = Internal Rate of Return (IRR) of cash flows:",
+      "  [-Market Price at Year 0, +Annual Post-Tax Interest, +Redemption Value at Year n].",
+      "- Convertible Debt: Conversion Value = Conversion Ratio * Future Share Price.",
+      "- Redemption Cash Flow: Higher of Par Redemption Value or Conversion Value."
     ], "Debt & Yields");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "Adjusted Present Value (APV) - 3 Steps", [
-      "- Step 1: Base Case NPV = Discount all cash flows at ungeared cost (Ke_u).",
-      "- Step 2: Financing Effects = PV of Tax Shields [D * T * Kd] - Issue Costs.",
-      "- Step 3: APV = Base Case NPV + PV of Tax Shields - Issue Costs.",
-      "- Best when: Capital structure changes significantly over project life."
+      "- Step 1: Base-Case NPV = Discount all project cash flows at All-Equity Cost (Ke_ungeared).",
+      "- Step 2: Financing Effects = Present Value of Debt Tax Shields [Debt * Tax Rate * Kd] - Issue Costs.",
+      "- Step 3: Total APV = Base-Case All-Equity NPV + PV of Tax Shields - Issue Costs.",
+      "- When to use: When capital structure changes significantly over project life."
     ], "APV Model");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "Modigliani-Miller (MM) Capital Structure", [
-      "- Without Tax (1958): WACC is constant. Debt mix does not change value.",
-      "- With Tax (1963): WACC decreases as debt increases due to tax shield.",
-      "- Trade-Off Theory: Balances tax shield against bankruptcy distress.",
-      "- Pecking Order: Retained Earnings -> Debt -> Equity Issue (Last)."
+      "- Without Tax (1958): WACC is constant. Debt mix does not change total firm value.",
+      "- With Tax (1963): WACC decreases as debt increases due to tax shield (100% debt optimal).",
+      "- Trade-Off Theory: Balances tax shield benefits against bankruptcy distress costs.",
+      "- Pecking Order: Retained Earnings (1st) -> Debt (2nd) -> New Equity Issue (Last)."
     ], "Capital Structure");
 
     // COLUMN 2: Valuation, Hedging & Working Capital
     let y2 = 25;
     y2 += this.renderCard(doc, col2X, y2, colW, "Business Valuation Models", [
-      "- DCF Enterprise Value: EV = Sum PV(FCF_1..n) + [FCF_n*(1+g)/(WACC-g)] / (1+WACC)^n",
-      "- Free Cash Flow to Firm: FCFF = EBIT*(1-T) + Depr - Capex - Change in NWC.",
-      "- Equity Value = Enterprise Value - Net Debt (Debt - Cash).",
-      "- Multiples: P/E (Equity Value), EV/EBITDA (Enterprise Value).",
-      "- Asset-Based: Net Realisable Value of assets minus liabilities."
+      "- DCF Enterprise Value: EV = Sum of PV(FCF 1 to n) + [ Terminal Value / (1 + WACC)^n ]",
+      "- Terminal Value (Perpetuity): TV = [ Final FCF * (1 + Growth Rate) ] / (WACC - Growth Rate)",
+      "- Free Cash Flow to Firm: FCFF = Operating Profit*(1 - Tax) + Depreciation - Capex - Change in Working Capital.",
+      "- Equity Value Formula: Equity Value = Enterprise Value - Net Debt (Total Debt - Cash).",
+      "- Valuation Multiples: P/E (Equity Value), EV/EBITDA (Total Enterprise Value)."
     ], "Valuation");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "Foreign Exchange Hedging (Forex)", [
-      "- Forward Contract: Lock in future exchange rate today (binding).",
+      "- Forward Contract: Lock in future exchange rate today (binding legal obligation).",
       "- Money Market Hedge (4 Steps):",
-      "  * Receipt (Foreign Inflow): Borrow Foreign -> Spot -> Deposit Home.",
-      "  * Payment (Foreign Outflow): Borrow Home -> Spot -> Deposit Foreign.",
-      "- Currency Futures: Standardised exchange contracts with daily margins.",
-      "- Currency Options: Right, not obligation, to convert at strike (pays premium)."
+      "  * Receipt (Foreign Inflow): Borrow Foreign Currency -> Convert at Spot -> Deposit Home Currency.",
+      "  * Payment (Foreign Outflow): Borrow Home Currency -> Convert at Spot -> Deposit Foreign Currency.",
+      "- Currency Futures: Standardised exchange-traded contracts with daily margin calls.",
+      "- Currency Options: Right (not obligation) to convert at strike price (pays upfront premium)."
     ], "Forex Hedging");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "Interest Rate Risk Management (AFM)", [
-      "- Forward Rate Agreement (FRA): FRA 3v9 locks 6m rate starting in 3m.",
-      "- Interest Rate Futures: Price = 100 - Rate. Buy if rates fall, sell if rates rise.",
-      "- Interest Rate Collars: Buy Cap (ceiling) + Sell Floor (reduces net cost).",
-      "- Interest Rate Swaps: Exchange Fixed rate for Floating (SOFR)."
+      "- Forward Rate Agreement (FRA): FRA 3v9 locks a 6-month borrowing rate starting in 3 months.",
+      "- Interest Rate Futures: Futures Price = 100 - Interest Rate. Buy if rates fall, sell if rates rise.",
+      "- Interest Rate Collars: Buy Cap (ceiling protection) + Sell Floor (reduces net premium cost).",
+      "- Interest Rate Swaps: Exchange Fixed rate for Floating rate (e.g. SOFR) between counterparties."
     ], "Interest Rates");
 
-    y2 += this.renderCard(doc, col2X, y2, colW, "Working Capital & Cash Models", [
+    y2 += this.renderCard(doc, col2X, y2, colW, "Working Capital & Cash Management", [
       "- Cash Conversion Cycle: CCC = Inventory Days + Receivable Days - Payable Days.",
-      "- Economic Order Quantity: EOQ = Sqrt[ (2 * Order Cost * Demand) / Holding Cost ].",
-      "- Miller-Orr Model: Spread = 3 * [ (3/4 * Cost * Variance) / Rate ]^(1/3).",
-      "  Return Point = Lower Limit + (Spread / 3); Upper = Lower + Spread."
+      "- Economic Order Quantity: EOQ = Square Root of [ (2 * Order Cost * Demand) / Holding Cost ].",
+      "- Miller-Orr Cash Model (Volatile Cash):",
+      "  * Cash Spread = 3 * [ (3/4 * Transaction Cost * Variance) / Daily Interest Rate ]^(1/3).",
+      "  * Target Return Point = Lower Limit + (Spread / 3); Upper Limit = Lower Limit + Spread."
     ], "Treasury");
 
     // Footer
@@ -327,67 +332,66 @@ const PdfCheatSheetEngine = {
     // COLUMN 1: NPV, Tax, Working Capital & Inflation
     let y1 = 25;
     y1 += this.renderCard(doc, col1X, y1, colW, "Net Present Value (NPV) - Gold Standard", [
-      "- Formula: NPV = Sum of PV(Cash Inflows) - Initial Capital Outlay.",
-      "- Decision Rule: Accept if NPV > 0. Choose highest NPV for mutually exclusive.",
-      "- Why Superior: Directly measures absolute dollar wealth added to shareholders.",
+      "- Formula: NPV = Sum of Present Value of Cash Inflows - Initial Capital Outlay.",
+      "- Decision Rule: Accept project if NPV > 0. Choose highest NPV for mutually exclusive projects.",
+      "- Why Superior: Directly measures absolute dollar shareholder wealth created.",
       "- Relevant Cash Flows: Incremental, future, cash-only.",
       "- STRICTLY EXCLUDE: Sunk costs, historical research, general overhead allocations.",
-      "- INCLUDE: Opportunity costs (e.g. forgone factory rent), lost sales on existing lines."
+      "- INCLUDE: Opportunity costs (e.g. forgone warehouse rent), lost sales on existing product lines."
     ], "NPV Method");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "Taxation & Capital Allowances (TAD)", [
-      "- Corporation Tax: Tax on operating flows (often lagged 1 yr in exams).",
-      "- Tax-Allowable Depreciation (TAD): Creates cash TAX SAVINGS.",
-      "  Tax Relief = TAD * Tax Rate (e.g., $100k TAD * 25% tax = $25k cash inflow).",
-      "- Balancing Allowance (Disposal): Tax Base > Scrap Proceeds -> Extra tax saving.",
-      "- Balancing Charge (Disposal): Scrap Proceeds > Tax Base -> Tax payment on gain."
+      "- Corporation Tax: Tax paid on operating profits (often lagged by 1 year in exams).",
+      "- Tax-Allowable Depreciation (TAD): Non-cash deduction that generates cash TAX SAVINGS.",
+      "  Tax Savings = TAD * Tax Rate (e.g., $100,000 TAD * 25% tax = $25,000 cash saving).",
+      "- Balancing Allowance (Disposal): Tax Base > Scrap Proceeds -> Extra tax relief saving.",
+      "- Balancing Charge (Disposal): Scrap Proceeds > Tax Base -> Extra tax payment on capital gain."
     ], "Tax Relief");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "Working Capital & Timing in Models", [
-      "- Year 0: Initial cash OUTFLOW for raw materials & buffer inventory.",
-      "- Years 1..n: Incremental OUTFLOW if NWC expands, INFLOW if it contracts.",
-      "- Project End: 100% of cumulative working capital is RECOVERED as inflow.",
-      "- Exam Rule: Never apply tax depreciation or tax relief to working capital."
+      "- Year 0: Initial cash OUTFLOW for raw materials and buffer inventory.",
+      "- Years 1 to n: Incremental OUTFLOW if working capital expands, INFLOW if it contracts.",
+      "- Project Termination: 100% of cumulative working capital is RECOVERED as cash inflow.",
+      "- Exam Rule: Never apply tax depreciation or tax relief to working capital items."
     ], "Working Capital");
 
     y1 += this.renderCard(doc, col1X, y1, colW, "Inflation Treatment & Fisher Equation", [
-      "- Nominal Cash Flows (includes inflation) -> Discount at Nominal WACC.",
-      "- Real Cash Flows (excludes inflation) -> Discount at Real WACC.",
-      "- Fisher Equation: (1 + Nominal Rate) = (1 + Real Rate) * (1 + Inflation).",
-      "- Exam Trap: If costs inflate at different rates, inflate each item to NOMINAL cash flows and discount at NOMINAL rate."
+      "- Nominal Cash Flows (includes specific inflation) -> Discount at Nominal WACC Rate.",
+      "- Real Cash Flows (excludes inflation) -> Discount at Real WACC Rate.",
+      "- Fisher Equation: (1 + Nominal Rate) = (1 + Real Rate) * (1 + General Inflation Rate).",
+      "- Exam Trap: If line items inflate at different rates, inflate each item to NOMINAL cash flows and discount at NOMINAL WACC."
     ], "Inflation");
 
     // COLUMN 2: IRR, MIRR, Rationing & Real Options
     let y2 = 25;
     y2 += this.renderCard(doc, col2X, y2, colW, "Internal Rate of Return (IRR)", [
-      "- Definition: Exact discount rate where project NPV = 0.",
-      "- Interpolation Formula: IRR = A + [ NPV_a / (NPV_a - NPV_b) ] * (B - A)",
-      "  (A = lower rate yielding NPV_a, B = higher rate yielding NPV_b).",
-      "- Decision: Accept if IRR > Cost of Capital (WACC).",
-      "- NPV vs IRR Conflict: Always choose NPV. IRR assumes reinvestment at IRR rate (unrealistic); NPV correctly assumes reinvestment at WACC."
+      "- Definition: The exact discount rate where project NPV = 0.",
+      "- Interpolation Formula: IRR = Lower Rate + [ NPV_Lower / (NPV_Lower - NPV_Higher) ] * (Higher Rate - Lower Rate)",
+      "- Decision Rule: Accept project if IRR > Cost of Capital (WACC).",
+      "- NPV vs IRR Conflict: Always choose NPV. IRR assumes reinvestment at the IRR rate (unrealistic); NPV correctly assumes reinvestment at WACC."
     ], "IRR Model");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "Modified IRR (MIRR)", [
-      "- Overcomes IRR's multiple rates and reinvestment rate flaws.",
-      "- Formula: MIRR = [ PV(Returns) / PV(Investment) ]^(1/n) * (1 + Reinvest Rate) - 1",
-      "- Assumes intermediate cash flows reinvest at company's true WACC.",
-      "- Consistent with NPV ranking for mutually exclusive projects of same scale."
+      "- Overcomes IRR's multiple rates and unrealistic reinvestment rate flaws.",
+      "- Formula: MIRR = [ PV of Cash Returns / PV of Investment Outlay ]^(1 / Years) * (1 + Reinvestment Rate) - 1",
+      "- Assumes intermediate cash flows are reinvested at company's true cost of capital (WACC).",
+      "- Gives consistent rankings with NPV for mutually exclusive projects of same scale."
     ], "MIRR");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "Capital Rationing (Single Period)", [
-      "- Divisible Projects (Fractions allowed):",
-      "  * Profitability Index: PI = PV of Future Cash Inflows / Initial Outlay.",
+      "- Divisible Projects (Fractions of projects allowed):",
+      "  * Profitability Index (PI) = Present Value of Future Cash Inflows / Initial Outlay.",
       "  * Rank projects by highest PI down until capital budget is exhausted.",
-      "- Indivisible Projects (All-or-nothing):",
-      "  * Test combinations within budget to find combination with highest total NPV.",
-      "- Multi-Period Rationing: Solve using Linear Programming."
+      "- Indivisible Projects (All-or-nothing projects):",
+      "  * Test trial combinations within budget to find combination with highest total NPV.",
+      "- Multi-Period Rationing: Formulate and solve using Linear Programming."
     ], "Rationing");
 
     y2 += this.renderCard(doc, col2X, y2, colW, "Real Options in Advanced Appraisal (AFM)", [
-      "- Traditional NPV ignores managerial flexibility during project life.",
-      "- Option to Expand: Call option on future growth if pilot succeeds.",
-      "- Option to Abandon: Put option to exit and sell assets if demand drops.",
-      "- Option to Delay: Call option on waiting for uncertainty to resolve.",
+      "- Traditional NPV ignores managerial flexibility during project execution.",
+      "- Option to Expand: Call option on future growth phases if initial pilot succeeds.",
+      "- Option to Abandon: Put option to exit and sell assets if demand drops below forecast.",
+      "- Option to Delay: Call option on waiting for market uncertainty to resolve.",
       "- Strategic NPV = Standard Static NPV + Real Option Value."
     ], "Real Options");
 

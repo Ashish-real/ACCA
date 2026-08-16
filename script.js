@@ -160,6 +160,9 @@ function init() {
         highlightTextInIframe(iframe.contentDocument, currentSearchTerm);
       }
 
+      // Inject interactive terminology tooltips into chapter
+      injectDictionaryTooltips(iframe.contentDocument);
+
       // Keyboard arrow navigation inside reader iframe
       iframe.contentDocument.addEventListener('keydown', e => {
         const tag = e.target.tagName.toLowerCase();
@@ -966,6 +969,353 @@ function highlightTextInIframe(doc, query) {
       firstMatchSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 200);
   }
+}
+
+/* ── INTERACTIVE FLOATING TERMINOLOGY & IFRS DICTIONARY ENGINE ── */
+function injectDictionaryTooltips(doc) {
+  if (!doc || typeof FINANCE_DICTIONARY === 'undefined' || !FINANCE_DICTIONARY.length) return;
+
+  // 1. Inject styles into document head if not already present
+  if (!doc.getElementById('finance-dict-styles')) {
+    const styleEl = doc.createElement('style');
+    styleEl.id = 'finance-dict-styles';
+    styleEl.textContent = `
+      .dict-term {
+        color: inherit !important;
+        border-bottom: 1.5px dashed #00d4aa !important;
+        cursor: pointer !important;
+        position: relative !important;
+        transition: all 0.2s ease !important;
+        display: inline !important;
+        padding: 0 2px !important;
+        border-radius: 3px !important;
+      }
+      .dict-term:hover, .dict-term:focus-visible {
+        color: #ffffff !important;
+        background: rgba(0, 212, 170, 0.18) !important;
+        border-bottom-style: solid !important;
+        border-bottom-color: #00d4aa !important;
+        text-shadow: 0 0 10px rgba(0, 212, 170, 0.4) !important;
+        outline: none !important;
+      }
+      .dict-floating-card {
+        position: absolute !important;
+        z-index: 999999 !important;
+        width: min(90vw, 360px) !important;
+        background: rgba(18, 22, 32, 0.97) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(0, 212, 170, 0.45) !important;
+        border-radius: 14px !important;
+        padding: 18px 20px !important;
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 212, 170, 0.15) !important;
+        color: #e8e8f0 !important;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+        animation: dictCardPop 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+        pointer-events: auto !important;
+        text-align: left !important;
+      }
+      @keyframes dictCardPop {
+        0% { opacity: 0; transform: translateY(6px) scale(0.97); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      .dict-card-top {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-bottom: 10px !important;
+      }
+      .dict-card-category {
+        font-family: monospace !important;
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        letter-spacing: 1.5px !important;
+        text-transform: uppercase !important;
+        color: #00d4aa !important;
+        background: rgba(0, 212, 170, 0.12) !important;
+        border: 1px solid rgba(0, 212, 170, 0.3) !important;
+        padding: 3px 8px !important;
+        border-radius: 6px !important;
+      }
+      .dict-card-paper {
+        font-family: monospace !important;
+        font-size: 10.5px !important;
+        color: #7a7a9a !important;
+      }
+      .dict-card-close {
+        background: transparent !important;
+        border: none !important;
+        color: #7a7a9a !important;
+        font-size: 16px !important;
+        cursor: pointer !important;
+        padding: 2px 6px !important;
+        border-radius: 4px !important;
+        line-height: 1 !important;
+        transition: color 0.2s !important;
+        margin-left: auto !important;
+      }
+      .dict-card-close:hover {
+        color: #ffffff !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+      }
+      .dict-card-title {
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        color: #ffffff !important;
+        margin-bottom: 8px !important;
+        line-height: 1.35 !important;
+      }
+      .dict-card-def {
+        font-size: 13px !important;
+        color: #d1d5db !important;
+        line-height: 1.55 !important;
+        margin-bottom: 10px !important;
+      }
+      .dict-card-example {
+        background: rgba(10, 10, 15, 0.65) !important;
+        border-left: 2px solid #00d4aa !important;
+        border-radius: 0 6px 6px 0 !important;
+        padding: 8px 10px !important;
+        font-size: 12px !important;
+        color: #9ca3af !important;
+        line-height: 1.5 !important;
+        margin-bottom: 12px !important;
+      }
+      .dict-card-example strong {
+        color: #00d4aa !important;
+      }
+      .dict-card-link {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        font-family: monospace !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: #00d4aa !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+        transition: color 0.2s !important;
+      }
+      .dict-card-link:hover {
+        color: #ffffff !important;
+        text-decoration: underline !important;
+      }
+    `;
+    doc.head.appendChild(styleEl);
+  }
+
+  // 2. Build sorted dictionary terms by length (longest match first)
+  const termMap = new Map();
+  const allAliases = [];
+
+  FINANCE_DICTIONARY.forEach(item => {
+    termMap.set(item.id, item);
+    allAliases.push({ text: item.term, id: item.id });
+    if (item.aliases && item.aliases.length) {
+      item.aliases.forEach(alias => {
+        if (alias.length >= 3) {
+          allAliases.push({ text: alias, id: item.id });
+        }
+      });
+    }
+  });
+
+  // Sort longest alias first to prevent shorter substrings from stealing matches
+  allAliases.sort((a, b) => b.text.length - a.text.length);
+
+  // De-duplicate alias texts (first one wins)
+  const uniqueAliases = [];
+  const seen = new Set();
+  allAliases.forEach(a => {
+    const lower = a.text.toLowerCase();
+    if (!seen.has(lower)) {
+      seen.add(lower);
+      uniqueAliases.push(a);
+    }
+  });
+
+  // Construct regex pattern
+  const pattern = uniqueAliases.map(a => escapeRegExp(a.text)).join('|');
+  if (!pattern) return;
+  const dictRegex = new RegExp(`\\b(${pattern})\\b`, 'gi');
+
+  // Helper alias to id lookup
+  const aliasToId = new Map();
+  uniqueAliases.forEach(a => {
+    aliasToId.set(a.text.toLowerCase(), a.id);
+  });
+
+  // 3. Scan text nodes using TreeWalker
+  const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, null, false);
+  let node;
+  const nodesToProcess = [];
+
+  while (node = walker.nextNode()) {
+    const parent = node.parentElement;
+    if (!parent) continue;
+    const tag = parent.tagName.toUpperCase();
+    if (['SCRIPT', 'STYLE', 'MARK', 'A', 'BUTTON', 'INPUT', 'TEXTAREA', 'H1', 'H2', 'H3', 'H4', 'CODE', 'PRE'].includes(tag)) continue;
+    if (parent.closest('.dict-term') || parent.closest('.dict-floating-card')) continue;
+
+    if (dictRegex.test(node.nodeValue)) {
+      nodesToProcess.push(node);
+    }
+  }
+
+  // 4. Wrap matches in .dict-term
+  nodesToProcess.forEach(textNode => {
+    const text = textNode.nodeValue;
+    const span = doc.createElement('span');
+    span.innerHTML = text.replace(dictRegex, match => {
+      const termId = aliasToId.get(match.toLowerCase());
+      if (termId) {
+        return `<span class="dict-term" tabindex="0" data-dict-id="${termId}">${match}</span>`;
+      }
+      return match;
+    });
+
+    if (textNode.parentNode) {
+      textNode.parentNode.replaceChild(span, textNode);
+    }
+  });
+
+  // 5. Attach event handlers to .dict-term elements
+  let activeTooltip = null;
+  let tooltipTimeout = null;
+
+  const hideActiveCard = () => {
+    if (activeTooltip && activeTooltip.parentNode) {
+      activeTooltip.parentNode.removeChild(activeTooltip);
+      activeTooltip = null;
+    }
+  };
+
+  const showCardForTerm = (targetEl) => {
+    const termId = targetEl.getAttribute('data-dict-id');
+    const termObj = termMap.get(termId);
+    if (!termObj) return;
+
+    hideActiveCard();
+
+    const card = doc.createElement('div');
+    card.className = 'dict-floating-card';
+    card.setAttribute('role', 'dialog');
+    card.setAttribute('aria-label', termObj.term);
+
+    card.innerHTML = `
+      <div class="dict-card-top">
+        <span class="dict-card-category">${termObj.category || 'FINANCE'}</span>
+        <span class="dict-card-paper">${termObj.paper || ''}</span>
+        <button class="dict-card-close" aria-label="Close">✕</button>
+      </div>
+      <div class="dict-card-title">${termObj.term}</div>
+      <div class="dict-card-def">${termObj.definition}</div>
+      ${termObj.example ? `<div class="dict-card-example"><strong>Deal Example:</strong> ${termObj.example}</div>` : ''}
+      ${termObj.chapter ? `<a class="dict-card-link" data-chapter="${termObj.chapter}">${termObj.chapterLabel || 'Open Chapter'} ↗</a>` : ''}
+    `;
+
+    // Close button listener
+    const closeBtn = card.querySelector('.dict-card-close');
+    if (closeBtn) {
+      closeBtn.onclick = (e) => {
+        e.stopPropagation();
+        hideActiveCard();
+      };
+    }
+
+    // Chapter link listener
+    const chLink = card.querySelector('.dict-card-link');
+    if (chLink) {
+      chLink.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        hideActiveCard();
+        if (window.parent && typeof window.parent.openChapterFile === 'function') {
+          window.parent.openChapterFile(termObj.chapter);
+        } else if (typeof openChapterFile === 'function') {
+          openChapterFile(termObj.chapter);
+        } else {
+          window.location.href = termObj.chapter;
+        }
+      };
+    }
+
+    doc.body.appendChild(card);
+    activeTooltip = card;
+
+    // Smart Positioning
+    const rect = targetEl.getBoundingClientRect();
+    const scrollX = (doc.defaultView && doc.defaultView.scrollX) || (doc.documentElement && doc.documentElement.scrollLeft) || 0;
+    const scrollY = (doc.defaultView && doc.defaultView.scrollY) || (doc.documentElement && doc.documentElement.scrollTop) || 0;
+    const cardWidth = card.offsetWidth || 340;
+    const cardHeight = card.offsetHeight || 220;
+    const viewportWidth = (doc.documentElement && doc.documentElement.clientWidth) || doc.body.clientWidth;
+    const viewportHeight = (doc.documentElement && doc.documentElement.clientHeight) || doc.body.clientHeight;
+
+    let left = rect.left + scrollX;
+    left = left + (rect.width / 2) - (cardWidth / 2);
+
+    // Clamp horizontally
+    const minLeft = scrollX + 12;
+    const maxLeft = scrollX + viewportWidth - cardWidth - 12;
+    left = Math.max(minLeft, Math.min(left, maxLeft));
+
+    // Determine whether to place above or below
+    let top = rect.bottom + scrollY + 8;
+    if (rect.bottom + cardHeight + 20 > viewportHeight && rect.top > cardHeight + 20) {
+      top = rect.top + scrollY - cardHeight - 8;
+    }
+
+    card.style.left = `${left}px`;
+    card.style.top = `${top}px`;
+
+    // Keep open when mouse moves into card
+    card.addEventListener('mouseenter', () => {
+      if (tooltipTimeout) clearTimeout(tooltipTimeout);
+    });
+    card.addEventListener('mouseleave', () => {
+      tooltipTimeout = setTimeout(hideActiveCard, 350);
+    });
+  };
+
+  doc.querySelectorAll('.dict-term').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      if (tooltipTimeout) clearTimeout(tooltipTimeout);
+      showCardForTerm(el);
+    });
+
+    el.addEventListener('mouseleave', () => {
+      tooltipTimeout = setTimeout(hideActiveCard, 400);
+    });
+
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showCardForTerm(el);
+    });
+
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showCardForTerm(el);
+      } else if (e.key === 'Escape') {
+        hideActiveCard();
+      }
+    });
+  });
+
+  // Dismiss on click outside or Escape
+  doc.addEventListener('click', (e) => {
+    if (activeTooltip && !activeTooltip.contains(e.target) && !e.target.classList.contains('dict-term')) {
+      hideActiveCard();
+    }
+  });
+
+  doc.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      hideActiveCard();
+    }
+  });
 }
 
 /* ── FULL-TEXT GLOBAL SEARCH ENGINE ── */

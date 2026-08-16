@@ -457,6 +457,63 @@ function renderFormulaChips() {
   });
 }
 
+function formatFormulaMath(rawEq) {
+  if (!rawEq) return '';
+  let str = escapeHtml(rawEq);
+
+  // 1. Fractions inside brackets [ A / B ] or [ A ÷ B ]
+  str = str.replace(/\[\s*([^\[\]\/÷]+?)\s*[\/÷]\s*([^\[\]\/÷]+?)\s*\]/g, (m, num, den) => {
+    return `<span class="math-bracket">[</span><span class="math-fraction"><span class="math-num">${num.trim()}</span><span class="math-den">${den.trim()}</span></span><span class="math-bracket">]</span>`;
+  });
+
+  // 2. Fractions inside parentheses ( A / B ) or ( A ÷ B )
+  str = str.replace(/\(\s*([^\(\)\/÷]+?)\s*[\/÷]\s*([^\(\)\/÷]+?)\s*\)/g, (m, num, den) => {
+    return `<span class="math-bracket">(</span><span class="math-fraction"><span class="math-num">${num.trim()}</span><span class="math-den">${den.trim()}</span></span><span class="math-bracket">)</span>`;
+  });
+
+  // 3. Standalone A ÷ B
+  str = str.replace(/([a-zA-Z0-9_\(\)\s\.\$\%]+?)\s*÷\s*([a-zA-Z0-9_\(\)\s\.\$\%]+)/g, (m, num, den) => {
+    if (num.includes('math-fraction') || den.includes('math-fraction')) return m;
+    return `<span class="math-fraction"><span class="math-num">${num.trim()}</span><span class="math-den">${den.trim()}</span></span>`;
+  });
+
+  // 4. Superscript Powers: ^(exp) or ^exp
+  str = str.replace(/\^\((.+?)\)/g, '<sup class="math-sup">$1</sup>');
+  str = str.replace(/\^([0-9a-zA-Z\/]+)/g, '<sup class="math-sup">$1</sup>');
+
+  // 5. Square / Nth Roots
+  str = str.replace(/sqrt\((.+?)\)/gi, '<span class="math-root"><span class="math-root-symbol">√</span><span class="math-root-content">$1</span></span>');
+
+  // 6. Common Financial Subscripts & Greek Symbols
+  str = str.replace(/\bKe\b/g, 'K<sub>e</sub>')
+           .replace(/\bKd\b/g, 'K<sub>d</sub>')
+           .replace(/\bKp\b/g, 'K<sub>p</sub>')
+           .replace(/\bRf\b/g, 'R<sub>f</sub>')
+           .replace(/\bRm\b/g, 'R<sub>m</sub>')
+           .replace(/\bBa\b/g, 'β<sub>a</sub>')
+           .replace(/\bBe\b/g, 'β<sub>e</sub>')
+           .replace(/\bBd\b/g, 'β<sub>d</sub>')
+           .replace(/\bBeta_e\b/g, 'β<sub>e</sub>')
+           .replace(/\bBeta_a\b/g, 'β<sub>a</sub>')
+           .replace(/\bD0\b/g, 'D<sub>0</sub>')
+           .replace(/\bD1\b/g, 'D<sub>1</sub>')
+           .replace(/\bP0\b/g, 'P<sub>0</sub>')
+           .replace(/\bPn\b/g, 'P<sub>n</sub>')
+           .replace(/\bNPVa\b/g, 'NPV<sub>a</sub>')
+           .replace(/\bNPVb\b/g, 'NPV<sub>b</sub>')
+           .replace(/\bD_now\b/g, 'D<sub>now</sub>')
+           .replace(/\bD_past\b/g, 'D<sub>past</sub>');
+
+  // 7. Math Operators
+  str = str.replace(/ × /g, ' <span class="math-op">×</span> ')
+           .replace(/ \* /g, ' <span class="math-op">×</span> ')
+           .replace(/ = /g, ' <span class="math-eq-sign">=</span> ')
+           .replace(/ \+ /g, ' <span class="math-op">+</span> ')
+           .replace(/ − /g, ' <span class="math-op">−</span> ');
+
+  return str;
+}
+
 function renderFormulas(query = '') {
   const grid = document.getElementById('formulaGrid');
   if (!grid) return;
@@ -491,13 +548,11 @@ function renderFormulas(query = '') {
     card.innerHTML = `
       <span class="formula-paper">${escapeHtml(f.paper)}</span>
       <h3 class="formula-name">${escapeHtml(f.title)}</h3>
-      <div class="formula-eq">${escapeHtml(f.eq)}</div>
+      <div class="formula-eq">${formatFormulaMath(f.eq)}</div>
       ${f.section ? `<div class="formula-section">${escapeHtml(f.section)}</div>` : ''}
       <button class="btn-copy" type="button">📋 Copy</button>
     `;
 
-    // Bind the handler rather than inlining the equation into an onclick
-    // attribute — a great many of these contain apostrophes and quotes.
     const btn = card.querySelector('.btn-copy');
     btn.addEventListener('click', () => copyFormula(f.eq, btn));
 

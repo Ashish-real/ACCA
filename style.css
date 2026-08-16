@@ -3217,4 +3217,201 @@ mark.search-highlight {
   border-color: rgba(0, 212, 170, 0.4);
 }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   TEXTBOOK & NOTEBOOK MATHEMATICS ENGINE (REAL FRACTIONS & EXPONENTS)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.formula-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.formula-card {
+  background: rgba(18, 24, 38, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+.formula-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 212, 170, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.formula-paper {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent2);
+  background: rgba(0, 212, 170, 0.12);
+  padding: 3px 9px;
+  border-radius: 6px;
+  align-self: flex-start;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+}
+
+.formula-name {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 14px 0;
+  line-height: 1.35;
+}
+
+.formula-eq {
+  font-family: var(--serif), 'Times New Roman', Georgia, serif;
+  font-size: 16px;
+  color: #f8fafc;
+  background: rgba(10, 15, 26, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  line-height: 1.5;
+  min-height: 64px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* 2-Tier Stacked Notebook Fractions */
+.math-fraction {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0 5px;
+  margin: 0 3px;
+  font-family: inherit;
+}
+
+.math-num {
+  border-bottom: 1.8px solid var(--accent2);
+  padding: 0 2px 2px 2px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.95em;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.math-den {
+  padding: 2px 2px 0 2px;
+  font-weight: 600;
+  color: #cbd5e1;
+  font-size: 0.95em;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* Powers and Exponents */
+.math-sup {
+  font-size: 0.72em;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--accent4);
+  font-weight: 700;
+  margin-left: 1px;
+}
+
+/* Subscripts */
+.formula-eq sub {
+  font-size: 0.72em;
+  vertical-align: sub;
+  line-height: 0;
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+/* Mathematical Operators */
+.math-op {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.1em;
+  margin: 0 3px;
+}
+
+.math-eq-sign {
+  color: var(--accent2);
+  font-weight: 700;
+  font-size: 1.15em;
+  margin: 0 5px;
+}
+
+.math-bracket {
+  color: var(--muted);
+  font-size: 1.25em;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Roots */
+.math-root {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 2px;
+}
+
+.math-root-symbol {
+  font-size: 1.35em;
+  color: var(--accent2);
+  margin-right: 1px;
+}
+
+.math-root-content {
+  border-top: 1.8px solid var(--accent2);
+  padding: 1px 4px 0 2px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.formula-section {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.btn-copy {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 7px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.2s;
+}
+
+.btn-copy:hover {
+  background: rgba(0, 212, 170, 0.15);
+  border-color: var(--accent2);
+  color: var(--accent2);
+}
+
+.btn-copy.copied {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+  color: #10b981;
+}
+
+
 

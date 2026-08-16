@@ -1,8 +1,8 @@
 /* ==========================================================================
    FINANCE CAREER BIBLE (ACCA) — COMPREHENSIVE 1-PAGE PDF CHEAT SHEET ENGINE
    Ultra-dense vector 1-page PDF revision sheets with clean human-readable formulas,
-   fraction breakdowns, clean 'x' multiplication (no asterisks), exam traps & decision rules.
-   Zero text-overlapping and zero kerning-overflow (Standard Clean ASCII Glyphs).
+   fraction breakdowns, native raised superscript powers (no carets ^), exam traps & decision rules.
+   Zero text-overlapping and zero kerning-overflow.
    ========================================================================== */
 
 const PdfCheatSheetEngine = {
@@ -13,16 +13,61 @@ const PdfCheatSheetEngine = {
     return null;
   },
 
-  // Helper to draw clean non-overlapping cards
+  // Helper to render text with native raised superscripts for powers (No carets ^ in PDF!)
+  drawRichMathText(doc, text, startX, y) {
+    if (!text.includes('^')) {
+      doc.setFontSize(7.0);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(30, 41, 59);
+      doc.text(text, startX, y);
+      return;
+    }
+
+    // Split text by power pattern e.g. ^(1/Years) or ^(1/3) or ^n or ^2
+    const regex = /\^\((.+?)\)|\^([0-9a-zA-Z\/]+)/g;
+    let lastIndex = 0;
+    let curX = startX;
+    let match;
+
+    while ((match = regex.exec(text)) !== null) {
+      const normalPart = text.substring(lastIndex, match.index);
+      if (normalPart) {
+        doc.setFontSize(7.0);
+        doc.setFont("helvetica", "normal");
+        doc.setTextColor(30, 41, 59);
+        doc.text(normalPart, curX, y);
+        curX += doc.getTextWidth(normalPart);
+      }
+
+      const exponentText = match[1] || match[2];
+      doc.setFontSize(5.2);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(180, 83, 9); // amber accent for raised powers
+      doc.text(exponentText, curX, y - 1.1); // raised superscript power
+      curX += doc.getTextWidth(exponentText) + 0.3;
+
+      doc.setTextColor(30, 41, 59);
+      lastIndex = regex.lastIndex;
+    }
+
+    const remaining = text.substring(lastIndex);
+    if (remaining) {
+      doc.setFontSize(7.0);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(30, 41, 59);
+      doc.text(remaining, curX, y);
+    }
+  },
+
+  // Helper to draw clean non-overlapping cards with math powers
   renderCard(doc, x, y, colW, title, bullets, tag = "") {
     const padX = 3.5;
     const innerW = colW - (padX * 2);
     const lineHeight = 3.3;
 
-    // Split every bullet into its wrapped visual lines (Pure Clean Typography)
+    // Split every bullet into wrapped visual lines
     const lineList = [];
     bullets.forEach(b => {
-      // Clean any potential rogue unicode or asterisk characters to avoid jsPDF glitches
       const cleanText = b
         .replace(/→/g, '->')
         .replace(/←/g, '<-')
@@ -32,6 +77,8 @@ const PdfCheatSheetEngine = {
         .replace(/—/g, '-')
         .replace(/•/g, '-');
 
+      // Temporarily strip carets when measuring wrapping so width is accurate
+      const measureText = cleanText.replace(/\^\((.+?)\)|\^([0-9a-zA-Z\/]+)/g, '$1$2');
       const splitLines = doc.splitTextToSize(cleanText, innerW);
       splitLines.forEach(sl => lineList.push(sl));
     });
@@ -55,14 +102,10 @@ const PdfCheatSheetEngine = {
       doc.text(tag, x + colW - padX, y + 4.8, { align: 'right' });
     }
 
-    // Draw Content line by line with guaranteed spacing
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(7.0);
-    doc.setTextColor(30, 41, 59);
-
+    // Draw Content line by line with native superscript math powers
     let currentY = y + 8.8;
     lineList.forEach(lineText => {
-      doc.text(lineText, x + padX, currentY);
+      this.drawRichMathText(doc, lineText, x + padX, currentY);
       currentY += lineHeight;
     });
 
@@ -223,7 +266,7 @@ const PdfCheatSheetEngine = {
       "- Market Value Rule: MUST use Market Values (Equity = Shares x Price, Debt = Debt Market Value).",
       "- CAPM Cost of Equity: Ke = Risk Free Rate + Equity Beta x (Market Return - Risk Free Rate)",
       "- Dividend Growth Model: Ke = (Next Dividend / Current Share Price) + Growth Rate",
-      "- Historical Dividend Growth: g = (Current Dividend / Earliest Dividend)^(1 / Years) - 1",
+      "- Historical Dividend Growth: g = (Current Dividend / Earliest Dividend)^(1/Years) - 1",
       "- Gordon's Growth Model: g = Retention Rate (b) x Return on Capital (r)"
     ], "WACC & Ke");
 
@@ -373,7 +416,7 @@ const PdfCheatSheetEngine = {
 
     y2 += this.renderCard(doc, col2X, y2, colW, "Modified IRR (MIRR)", [
       "- Overcomes IRR's multiple rates and unrealistic reinvestment rate flaws.",
-      "- Formula: MIRR = [ PV of Cash Returns / PV of Investment Outlay ]^(1 / Years) x (1 + Reinvestment Rate) - 1",
+      "- Formula: MIRR = [ PV of Cash Returns / PV of Investment Outlay ]^(1/Years) x (1 + Reinvestment Rate) - 1",
       "- Assumes intermediate cash flows are reinvested at company's true cost of capital (WACC).",
       "- Gives consistent rankings with NPV for mutually exclusive projects of same scale."
     ], "MIRR");

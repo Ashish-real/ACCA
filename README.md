@@ -1,6 +1,6 @@
 # ACCA — Big 4 Career & Exam Masterclass
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
+[![License: All Rights Reserved](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg)](LICENSE)
 [![ACCA Qualification](https://img.shields.io/badge/ACCA-13%20Papers%20Covered-10b981.svg)](#comprehensive-chapter-breakdown-5-pillars)
 [![Chapters](https://img.shields.io/badge/Curriculum-50%20Chapters%20%2B%20Appendices-34d399.svg)](#comprehensive-chapter-breakdown-5-pillars)
 [![Author](https://img.shields.io/badge/Author-Ashish-38bdf8.svg)](#author--masterclass-creator)
@@ -13,15 +13,16 @@
 
 ## Author & Masterclass Creator
 
-The **Finance Career Bible** represents months of painstaking research, deep curriculum synthesis, and technical drafting by **Ashish**. Built to solve the disconnect between textbook theory and real-world financial execution, Ashish engineered this 50-chapter masterclass ecosystem to empower ACCA candidates, B.Com undergraduates, and finance professionals with deal-ready mental models, zero-cost accessibility, and Big 4 technical interview confidence.
+The **Finance Career Bible** represents months of painstaking research, deep curriculum synthesis, and technical drafting by **Ashish**. Built to solve the disconnect between textbook theory and real-world financial execution, Ashish engineered this 50-chapter masterclass ecosystem to empower Class 11/12 commerce students, ACCA candidates, B.Com undergraduates, and finance professionals with deal-ready mental models, zero-cost accessibility, and Big 4 technical interview confidence.
 
 ---
 
 ## Executive Summary & Mission
 
-The **ACCA Big 4 Career & Exam Masterclass** is an exhaustive, open-source educational platform engineered to take candidates from zero foundational accounting knowledge to mastering complex financial analysis, IFRS reporting, valuation models, FP&A forecasting, and Strategic Professional ACCA papers.
+The **ACCA Big 4 Career & Exam Masterclass** is an exhaustive educational platform engineered to take candidates from zero foundational accounting knowledge to mastering complex financial analysis, IFRS reporting, valuation models, FP&A forecasting, and Strategic Professional ACCA papers.
 
 ### Big 4 Career Target
+
 
 This masterclass specifically bridges the gap between academic theory and practical corporate finance expectations, preparing candidates for technical entry and advisory positions at global accounting leaders:
 
@@ -212,14 +213,17 @@ npx serve . -p 8000
 ```text
 D:\Trinno\ACCA\
 ├── index.html                           # Master Single Page Application (SPA)
-├── style.css                            # Portal design system (matches chapter pages)
-├── script.js                            # Reader, search, quiz and formula engine
-├── formulas_data.js                     # Generated — 322 formulas from Chapter 49
-├── quiz_data.js                         # Generated — 44 MCQs from Chapter 50
-├── tools/extract_data.py                # Regenerates the two data files above
-├── tools/smoke_test.js                  # Headless render/interaction check
+├── style.css                            # Portal design system & mathematical typography
+├── script.js                            # Reader, search, quiz, math parser & formula engine
+├── calculators.js                       # Interactive Financial Model Sandboxes (NPV, WACC, Ratios, DCF)
+├── pdf_generator.js                     # 1-Page PDF Cheat Sheet Engine with Native Vector Powers
+├── finance_dictionary_data.js           # Central IFRS & Finance Terminology Database (85+ terms)
+├── formulas_data.js                     # Master Formula Vault Database (195+ formulas)
+├── quiz_data.js                         # Exam Practice Bank (44 MCQs across 15 papers)
 ├── search_index.js                      # Generated Full-Text Search Index (5,327 text blocks)
+├── ACCA_Syllabus_Mapping.html           # Interactive 13-Paper ACCA Syllabus Explorer
 ├── start_reader.cmd                     # Windows 1-Click Startup Batch Script
+├── LICENSE                              # Official All Rights Reserved License
 ├── README.md                            # Complete Project Documentation
 ├── Finance_Career_Bible_Chapter1.html   # Chapter 1: Finance Industry Overview
 ├── Finance_Career_Bible_Chapter2.html   # Chapter 2: Accounting From Zero
@@ -231,7 +235,9 @@ D:\Trinno\ACCA\
 
 ---
 
-## License & Credits
+## License & Copyright
 
-- **Content**: ACCA & Finance Career Bible Curriculum
-- **License**: MIT Open Source License
+- **Author & Creator**: Ashish
+- **License**: Copyright © 2026 Ashish. All Rights Reserved.
+- **Usage**: Free for online personal reading and educational study. Commercial resale, paywall bundling, scraping, or unauthorized redistribution is strictly prohibited.
+

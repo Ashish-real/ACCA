@@ -1,11 +1,99 @@
+================================================================================
+FINANCE CAREER BIBLE (ACCA BIG 4 MASTERCLASS)
+PROPRIETARY COPYRIGHT & EDUCATIONAL LICENSING DEED
+================================================================================
+
 Copyright (c) 2026 Ashish. All Rights Reserved.
 
-Finance Career Bible (ACCA Masterclass)
-Authored, Conceived & Engineered by Ashish
-
-All rights reserved. No part of this publication, curriculum, interactive models, documentation, or associated digital assets may be reproduced, distributed, transmitted, sold, licensed, or utilized in any form or by any means, electronic or mechanical, including photocopying, recording, or by any information storage and retrieval system, without the prior express written permission of the author.
-
-This project is made freely available for online educational reading and personal study only. Commercial use, unauthorized redistribution, course packaging, paywall monetization, or scraping is strictly prohibited.
-
-For inquiries, permissions, or academic partnerships:
+Conceived, Authored, Researched, and Engineered by: Ashish
 Project Repository: https://github.com/Ashish-real/ACCA
+
+--------------------------------------------------------------------------------
+1. INTERNATIONAL COPYRIGHT GOVERNANCE & FRAMEWORK
+--------------------------------------------------------------------------------
+
+This entire original work, including the curriculum architecture, written chapters,
+pedagogical structure, interactive financial model engines, master formula vault,
+terminology database, and web user interfaces, is protected under:
+
+1. The Berne Convention for the Protection of Literary and Artistic Works (1886, as amended).
+   Official Reference: https://www.wipo.int/treaties/en/ip/berne/
+2. The Universal Copyright Convention (UCC).
+3. The Indian Copyright Act, 1957 (Act No. 14 of 1957, as amended).
+4. International Intellectual Property Treaties administered by the World Intellectual
+   Property Organization (WIPO): https://www.wipo.int/
+
+All statutory rights, moral rights, and commercial exploitation rights are exclusively
+and perpetually reserved by the author, Ashish.
+
+--------------------------------------------------------------------------------
+2. SCOPE OF PROTECTED WORKS
+--------------------------------------------------------------------------------
+
+This copyright applies to all components of the Finance Career Bible repository,
+including but not limited to:
+
+- 50 Curriculum Chapters (Chapters 1 through 50 & Appendices in HTML/Markdown formats).
+- Master Formula Vault & Mathematical Typesetting Code (formulas_data.js).
+- Central IFRS & Finance Terminology Dictionary (finance_dictionary_data.js).
+- Practice Exam Question Bank & Rationales (quiz_data.js).
+- Interactive Financial Model Sandboxes (NPV, WACC, Ratios, DCF in calculators.js).
+- Client-Side Vector 1-Page PDF Cheat Sheet Engines (pdf_generator.js).
+- Full-Text Search Engine Index (search_index.js).
+- Visual Design System, SVG Roadmaps, and Typography (style.css & index.html).
+
+--------------------------------------------------------------------------------
+3. PERMITTED EDUCATIONAL USE (FREE ACCESS GRANT)
+--------------------------------------------------------------------------------
+
+Subject to the terms of this Deed, the author grants individual students, educators,
+and finance aspirants a worldwide, non-exclusive, revocable license for:
+
+- Personal Study: Accessing, viewing, and studying the material online free of charge.
+- Academic Referencing: Quoting brief excerpts in academic papers, student research,
+  or classroom presentations, provided full attribution is clearly given to Ashish
+  and the Finance Career Bible repository.
+- Non-Commercial Learning: Utilizing the interactive calculators and formula tools
+  for self-education and exam preparation.
+
+--------------------------------------------------------------------------------
+4. EXPRESS RESTRICTIONS & PROHIBITED ACTIONS
+--------------------------------------------------------------------------------
+
+Without the prior express written permission of the author (Ashish), strictly NO
+person, educational institution, commercial entity, or coaching institute may:
+
+1. Commercial Exploitation: Sell, resell, license, lease, rent, or bundle this content
+   into paid tuition packages, commercial books, online video courses, or paid test-series.
+2. Paywall Distribution: Host or republish these chapters behind paid subscription
+   paywalls, registration barriers, or monetized access platforms.
+3. Plagiarism & False Attribution: Remove, alter, obscure, or substitute the author's
+   name (Ashish) or copyright notices from any page, document, or export.
+4. Mass Scraping & AI Training: Ingest, scrape, or extract these chapters for commercial
+   training of proprietary AI language models or automated text-spinning without written consent.
+5. Unauthorized Printed Reproduction: Print or bind physical book copies for retail
+   sale or commercial institutional distribution.
+
+--------------------------------------------------------------------------------
+5. ATTRIBUTION & CITATION STANDARD
+--------------------------------------------------------------------------------
+
+When referencing this work for legitimate academic or non-commercial purposes, the
+following citation format must be used:
+
+  Author: Ashish
+  Title: Finance Career Bible — ACCA Big 4 Career & Exam Masterclass
+  Year: 2026
+  Repository: https://github.com/Ashish-real/ACCA
+  Status: Copyright (c) 2026 Ashish. All Rights Reserved.
+
+--------------------------------------------------------------------------------
+6. CONTACT & PARTNERSHIPS
+--------------------------------------------------------------------------------
+
+For academic collaboration, institutional licensing, or translation permissions:
+Official Project Repository: https://github.com/Ashish-real/ACCA
+
+================================================================================
+END OF LEGAL DEED
+================================================================================
